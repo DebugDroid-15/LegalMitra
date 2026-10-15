@@ -1,0 +1,39 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Pytest / coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Legal data / storage (keep git lightweight; test corpus is committed)
+data/01_raw/*
+!data/01_raw/.gitkeep
+data/02_normalized/*
+!data/02_normalized/.gitkeep
+data/03_generated/*
+!data/03_generated/.gitkeep
+data/04_verified/*
+!data/04_verified/.gitkeep
+data/05_evaluation/*
+!data/05_evaluation/.gitkeep
+data/splits/*
+!data/splits/.gitkeep
+
+# IDE & OS
+.vscode/
+.idea/
+*.swp
+*.swo
+Thumbs.db
+Desktop.ini
+

@@ -1,0 +1,37 @@
+# LegalMitra Pipeline Default Configuration
+project:
+  name: "LegalMitra"
+  description: "Indian Legal Dataset Engineering Pipeline"
+  jurisdiction_default: "IN"
+
+extraction:
+  backend: "docling"
+  enable_ocr: false
+  allowed_extensions:
+    - ".pdf"
+    - ".docx"
+    - ".html"
+    - ".txt"
+    - ".md"
+  max_file_size_mb: 100.0
+
+normalization:
+  preserve_statutory_numbering: true
+  preserve_case_citations: true
+  clean_unicode: true
+  detect_sections: true
+  detect_provisos: true
+  detect_explanations: true
+
+validation:
+  strict_pydantic: true
+  check_grounding: true
+  deduplication_method: "sha256_and_structural"
+
+llm_provider:
+  provider: "nemotron"
+  base_url: "https://integrate.api.nvidia.com/v1"
+  model_name: "nvidia/llama-3.1-nemotron-70b-instruct"
+  api_format: "openai_compatible"
+  timeout_seconds: 60.0
+
