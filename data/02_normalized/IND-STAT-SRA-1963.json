@@ -1,0 +1,113 @@
+{
+  "source_id": "IND-STAT-SRA-1963",
+  "act_title": "The Specific Relief Act, 1963",
+  "act_number": "Act No. 47 of 1963",
+  "jurisdiction": "IN",
+  "enactment_date": "1963-12-13",
+  "effective_date": "1964-03-01",
+  "preamble": null,
+  "sections": [
+    {
+      "section_id": "IND-STAT-SRA-1963-SEC-10",
+      "source_id": "IND-STAT-SRA-1963",
+      "act_title": "The Specific Relief Act, 1963",
+      "act_number": "Act No. 47 of 1963",
+      "chapter_number": "Chapter II",
+      "chapter_title": "Specific Performance of Contracts",
+      "section_number": "10",
+      "section_title": "Specific performance in respect of contracts",
+      "full_verbatim_text": "The specific performance of a contract shall be enforced by the court subject to the provisions contained in sub-section (2) of section 11, section 14 and section 16. [Substituted by Act 18 of 2018, s. 3 (w.e.f. 1-10-2018)].",
+      "subsections": [],
+      "provisos": [],
+      "explanations": [],
+      "illustrations": [],
+      "source_page_start": null,
+      "source_page_end": null,
+      "legal_review_status": "unverified_automated"
+    },
+    {
+      "section_id": "IND-STAT-SRA-1963-SEC-14",
+      "source_id": "IND-STAT-SRA-1963",
+      "act_title": "The Specific Relief Act, 1963",
+      "act_number": "Act No. 47 of 1963",
+      "chapter_number": "Chapter II",
+      "chapter_title": "Specific Performance of Contracts",
+      "section_number": "14",
+      "section_title": "Contracts not specifically enforceable",
+      "full_verbatim_text": "The following contracts cannot be specifically enforced, namely:— (a) where a party to the contract has obtained substituted performance of contract in accordance with the provisions of section 20; (b) a contract, the performance of which involves the performance of a continuous duty which the court cannot supervise; (c) a contract which is so dependent on the personal qualifications of the parties that the court cannot enforce specific performance of its material terms; and (d) a contract which is in its nature determinable.",
+      "subsections": [],
+      "provisos": [],
+      "explanations": [],
+      "illustrations": [],
+      "source_page_start": null,
+      "source_page_end": null,
+      "legal_review_status": "unverified_automated"
+    },
+    {
+      "section_id": "IND-STAT-SRA-1963-SEC-20",
+      "source_id": "IND-STAT-SRA-1963",
+      "act_title": "The Specific Relief Act, 1963",
+      "act_number": "Act No. 47 of 1963",
+      "chapter_number": "Chapter II",
+      "chapter_title": "Specific Performance of Contracts",
+      "section_number": "20",
+      "section_title": "Substituted performance of contract",
+      "full_verbatim_text": "(1) Where the contract is broken due to non-performance of promise by any party, the party who suffers by such breach shall have the option of substituted performance through a third party or by his own agency, and, recover the expenses and other costs actually incurred, spent or suffered by him, from the party committing such breach. [Substituted by Act 18 of 2018, s. 10 (w.e.f. 1-10-2018)].",
+      "subsections": [],
+      "provisos": [],
+      "explanations": [],
+      "illustrations": [],
+      "source_page_start": null,
+      "source_page_end": null,
+      "legal_review_status": "unverified_automated"
+    },
+    {
+      "section_id": "IND-STAT-SRA-1963-SEC-20A",
+      "source_id": "IND-STAT-SRA-1963",
+      "act_title": "The Specific Relief Act, 1963",
+      "act_number": "Act No. 47 of 1963",
+      "chapter_number": "Chapter II",
+      "chapter_title": "Specific Performance of Contracts",
+      "section_number": "20A",
+      "section_title": "Special provisions for contract relating to infrastructure project",
+      "full_verbatim_text": "(1) No injunction shall be granted by court in a suit under this Act involving a contract relating to an infrastructure project specified in the Schedule, where granting injunction would cause impediment or delay in the progress or completion of such infrastructure project. [Inserted by Act 18 of 2018, s. 10 (w.e.f. 1-10-2018)].",
+      "subsections": [
+        {
+          "sub_section_number": "(1)",
+          "text": "No injunction shall be granted by court in a suit under this Act involving a contract relating to an infrastructure project specified in the Schedule, where granting injunction would cause impediment or delay in the progress or completion of such infrastructure project.",
+          "clauses": []
+        },
+        {
+          "sub_section_number": "(2)",
+          "text": "The Central Government may, depending upon the requirement for development of infrastructure projects, and if it considers necessary or expedient to do so, by notification in the Official Gazette, amend the Schedule.",
+          "clauses": []
+        }
+      ],
+      "provisos": [],
+      "explanations": [],
+      "illustrations": [],
+      "source_page_start": null,
+      "source_page_end": null,
+      "legal_review_status": "unverified_automated"
+    },
+    {
+      "section_id": "IND-STAT-SRA-1963-SEC-41",
+      "source_id": "IND-STAT-SRA-1963",
+      "act_title": "The Specific Relief Act, 1963",
+      "act_number": "Act No. 47 of 1963",
+      "chapter_number": "Chapter VIII",
+      "chapter_title": "Perpetual Injunctions",
+      "section_number": "41",
+      "section_title": "Injunction when refused",
+      "full_verbatim_text": "An injunction cannot be granted— (ha) if it would impede or delay the progress or completion of any infrastructure project or interfere with the continued provision of relevant facility related thereto or services being the subject matter of such project.",
+      "subsections": [],
+      "provisos": [],
+      "explanations": [],
+      "illustrations": [],
+      "source_page_start": null,
+      "source_page_end": null,
+      "legal_review_status": "unverified_automated"
+    }
+  ],
+  "legal_review_status": "unverified_automated"
+}

@@ -15,19 +15,34 @@ ENV/
 .coverage
 htmlcov/
 
-# Legal data / storage (keep git lightweight; test corpus is committed)
+# Legal data / storage (keep git clean while preserving test corpus and verified artifacts)
 data/01_raw/*
 !data/01_raw/.gitkeep
 data/02_normalized/*
 !data/02_normalized/.gitkeep
+!data/02_normalized/*.json
 data/03_generated/*
 !data/03_generated/.gitkeep
+!data/03_generated/pilot_20_examples.jsonl
+!data/03_generated/pilot_20_manifest.json
+!data/03_generated/*.jsonl
+!data/03_generated/*.json
 data/04_verified/*
 !data/04_verified/.gitkeep
 data/05_evaluation/*
 !data/05_evaluation/.gitkeep
 data/splits/*
 !data/splits/.gitkeep
+
+# Databases & local runtime stores
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+!data/legalmitra_kb.db
+data/conversations.db
+backups/
+logs/
 
 # IDE & OS
 .vscode/
@@ -36,4 +51,3 @@ data/splits/*
 *.swo
 Thumbs.db
 Desktop.ini
-

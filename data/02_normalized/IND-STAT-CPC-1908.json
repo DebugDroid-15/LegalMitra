@@ -1,0 +1,159 @@
+{
+  "source_id": "IND-STAT-CPC-1908",
+  "act_title": "The Code of Civil Procedure, 1908",
+  "act_number": "Act No. 5 of 1908",
+  "jurisdiction": "IN",
+  "enactment_date": "1908-03-21",
+  "effective_date": "1909-01-01",
+  "preamble": null,
+  "sections": [
+    {
+      "section_id": "IND-STAT-CPC-1908-SEC-9",
+      "source_id": "IND-STAT-CPC-1908",
+      "act_title": "The Code of Civil Procedure, 1908",
+      "act_number": "Act No. 5 of 1908",
+      "chapter_number": "Part I",
+      "chapter_title": "Suits in General",
+      "section_number": "9",
+      "section_title": "Courts to try all civil suits unless barred",
+      "full_verbatim_text": "The Courts shall (subject to the provisions herein contained) have jurisdiction to try all suits of a civil nature excepting suits of which their cognizance is either expressly or impliedly barred.",
+      "subsections": [],
+      "provisos": [],
+      "explanations": [
+        {
+          "explanation_identifier": "Explanation I",
+          "text": "A suit in which the right to property or to an office is contested is a suit of a civil nature, notwithstanding that such right may depend entirely on the decision of questions as to religious rites or ceremonies."
+        }
+      ],
+      "illustrations": [],
+      "source_page_start": null,
+      "source_page_end": null,
+      "legal_review_status": "unverified_automated"
+    },
+    {
+      "section_id": "IND-STAT-CPC-1908-SEC-10",
+      "source_id": "IND-STAT-CPC-1908",
+      "act_title": "The Code of Civil Procedure, 1908",
+      "act_number": "Act No. 5 of 1908",
+      "chapter_number": "Part I",
+      "chapter_title": "Suits in General",
+      "section_number": "10",
+      "section_title": "Stay of suit (Res Sub-Judice)",
+      "full_verbatim_text": "No Court shall proceed with the trial of any suit in which the matter in issue is also directly and substantially in issue in a previously instituted suit between the same parties, or between parties under whom they or any of them claim litigating under the same title where such suit is pending in the same or any other Court in India having jurisdiction to grant the relief claimed.",
+      "subsections": [],
+      "provisos": [],
+      "explanations": [],
+      "illustrations": [],
+      "source_page_start": null,
+      "source_page_end": null,
+      "legal_review_status": "unverified_automated"
+    },
+    {
+      "section_id": "IND-STAT-CPC-1908-SEC-11",
+      "source_id": "IND-STAT-CPC-1908",
+      "act_title": "The Code of Civil Procedure, 1908",
+      "act_number": "Act No. 5 of 1908",
+      "chapter_number": "Part I",
+      "chapter_title": "Suits in General",
+      "section_number": "11",
+      "section_title": "Res Judicata",
+      "full_verbatim_text": "No Court shall try any suit or issue in which the matter directly and substantially in issue has been directly and substantially in issue in a former suit between the same parties, or between parties under whom they or any of them claim, litigating under the same title, in a Court competent to try such subsequent suit or the suit in which such issue has been subsequently raised, and has been heard and finally decided by such Court.",
+      "subsections": [],
+      "provisos": [],
+      "explanations": [
+        {
+          "explanation_identifier": "Explanation IV",
+          "text": "Constructive Res Judicata: Any matter which might and ought to have been made ground of defence or attack in such former suit shall be deemed to have been a matter directly and substantially in issue in such suit."
+        }
+      ],
+      "illustrations": [],
+      "source_page_start": null,
+      "source_page_end": null,
+      "legal_review_status": "unverified_automated"
+    },
+    {
+      "section_id": "IND-STAT-CPC-1908-SEC-80",
+      "source_id": "IND-STAT-CPC-1908",
+      "act_title": "The Code of Civil Procedure, 1908",
+      "act_number": "Act No. 5 of 1908",
+      "chapter_number": "Part IV",
+      "chapter_title": "Suits by or Against the Government",
+      "section_number": "80",
+      "section_title": "Notice to Government or public officer",
+      "full_verbatim_text": "(1) Save as otherwise provided in sub-section (2), no suit shall be instituted against the Government or against a public officer in respect of any act purporting to be done by such public officer in his official capacity, until the expiration of two months next after notice in writing has been delivered to, or left at the office of...",
+      "subsections": [
+        {
+          "sub_section_number": "(1)",
+          "text": "Save as otherwise provided in sub-section (2), no suit shall be instituted against the Government or against a public officer in respect of any act purporting to be done by such public officer in his official capacity, until the expiration of two months next after notice in writing has been delivered to, or left at the office of...",
+          "clauses": []
+        },
+        {
+          "sub_section_number": "(2)",
+          "text": "A suit to obtain an urgent or immediate relief against the Government or any public officer may be instituted, with the leave of the Court, without serving any notice as required by sub-section (1); but the Court shall not grant relief in the suit, whether interim or otherwise, except after giving to the Government or public officer a reasonable opportunity of showing cause.",
+          "clauses": []
+        }
+      ],
+      "provisos": [],
+      "explanations": [],
+      "illustrations": [],
+      "source_page_start": null,
+      "source_page_end": null,
+      "legal_review_status": "unverified_automated"
+    },
+    {
+      "section_id": "IND-STAT-CPC-1908-SEC-89",
+      "source_id": "IND-STAT-CPC-1908",
+      "act_title": "The Code of Civil Procedure, 1908",
+      "act_number": "Act No. 5 of 1908",
+      "chapter_number": "Part V",
+      "chapter_title": "Special Proceedings",
+      "section_number": "89",
+      "section_title": "Settlement of disputes outside the Court",
+      "full_verbatim_text": "(1) Where it appears to the Court that there exist elements of a settlement which may be acceptable to the parties, the Court shall formulate the terms of settlement and give them to the parties for their observations... the Court may refer the same for:— (a) arbitration; (b) conciliation; (c) judicial settlement including settlement through Lok Adalat; or (d) mediation.",
+      "subsections": [],
+      "provisos": [],
+      "explanations": [],
+      "illustrations": [],
+      "source_page_start": null,
+      "source_page_end": null,
+      "legal_review_status": "unverified_automated"
+    },
+    {
+      "section_id": "IND-STAT-CPC-1908-SEC-151",
+      "source_id": "IND-STAT-CPC-1908",
+      "act_title": "The Code of Civil Procedure, 1908",
+      "act_number": "Act No. 5 of 1908",
+      "chapter_number": "Part XI",
+      "chapter_title": "Miscellaneous",
+      "section_number": "151",
+      "section_title": "Saving of inherent powers of Court",
+      "full_verbatim_text": "Nothing in this Code shall be deemed to limit or otherwise affect the inherent power of the Court to make such orders as may be necessary for the ends of justice or to prevent abuse of the process of the Court.",
+      "subsections": [],
+      "provisos": [],
+      "explanations": [],
+      "illustrations": [],
+      "source_page_start": null,
+      "source_page_end": null,
+      "legal_review_status": "unverified_automated"
+    },
+    {
+      "section_id": "IND-STAT-CPC-1908-SEC-ORDER-39-RULE-1",
+      "source_id": "IND-STAT-CPC-1908",
+      "act_title": "The Code of Civil Procedure, 1908",
+      "act_number": "Act No. 5 of 1908",
+      "chapter_number": "First Schedule",
+      "chapter_title": "Orders and Rules",
+      "section_number": "Order 39 Rule 1",
+      "section_title": "Cases in which temporary injunction may be granted",
+      "full_verbatim_text": "Where in any suit it is proved by affidavit or otherwise— (a) that any property in dispute in a suit is in danger of being wasted, damaged or alienated by any party to the suit, or wrongfully sold in execution of a decree, or (b) that the defendant threatens, or intends, to remove or dispose of his property with a view to defrauding his creditors, the Court may by order grant a temporary injunction to restrain such act, or make such other order for the purpose of staying and preventing the wasting, damaging, alienation, sale, removal or disposition of the property as the Court thinks fit.",
+      "subsections": [],
+      "provisos": [],
+      "explanations": [],
+      "illustrations": [],
+      "source_page_start": null,
+      "source_page_end": null,
+      "legal_review_status": "unverified_automated"
+    }
+  ],
+  "legal_review_status": "unverified_automated"
+}

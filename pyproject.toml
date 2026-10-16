@@ -34,5 +34,8 @@ include = ["legalmitra*", "config*"]
 [tool.pytest.ini_options]
 pythonpath = ["."]
 testpaths = ["tests"]
-addopts = "-v --tb=short"
+addopts = "-v --tb=short -m 'not live'"
+markers = [
+    "live: marks tests requiring live NVIDIA Nemotron API endpoint (deselect with '-m \"not live\"')",
+]
 

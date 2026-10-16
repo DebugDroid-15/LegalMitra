@@ -67,10 +67,14 @@ def test_nemotron_mock_request(monkeypatch):
 
 
 def test_mock_llm_provider():
-    mock = MockLLMProvider("Deterministic test legal answer.")
+    mock = MockLLMProvider()
     assert mock.is_available()
-
+    
     res = mock.generate([LLMMessage(role="user", content="Explain privacy.")])
-    assert res.content == "Deterministic test legal answer."
+    # New mock provider returns JSON array
+    import json
+    parsed = json.loads(res.content)
+    assert isinstance(parsed, list)
+    assert len(parsed) > 0
     assert len(mock.calls) == 1
 

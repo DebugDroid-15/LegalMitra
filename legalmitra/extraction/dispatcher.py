@@ -23,9 +23,9 @@ class ExtractionDispatcher:
     and registry synchronization.
     """
 
-    def __init__(self, registry_manager: Optional[SourceRegistryManager] = None):
+    def __init__(self, registry_manager: Optional[SourceRegistryManager] = None, max_num_pages: int = 30):
         self.registry = registry_manager
-        self.docling_extractor = DoclingExtractor(lazy_init=True)
+        self.docling_extractor = DoclingExtractor(lazy_init=True, max_num_pages=max_num_pages)
         self.text_extractor = TextExtractor()
         self.extractors: Dict[str, BaseExtractor] = {}
 

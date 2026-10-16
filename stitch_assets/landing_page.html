@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LegalMitra — Indian Legal Intelligence</title>
+  <!-- Google Fonts: Manrope & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN with custom config matching Design System -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#172B4D',
+              navyDark: '#0E1D36',
+              ivory: '#FAF8F2',
+              ivoryDim: '#F2EDE2',
+              ivoryBorder: '#E4E1D9',
+              ashokaBlue: '#244A78',
+              ashokaLight: '#EEF4FB',
+              saffron: '#D99A35',
+              saffronLight: '#FEF8EE',
+              forest: '#356B55',
+              forestLight: '#EDF5F1',
+              ink: '#20252B',
+              slate: '#687386',
+            }
+          },
+          fontFamily: {
+            heading: ['Manrope', 'sans-serif'],
+            sans: ['Inter', 'sans-serif'],
+            devanagari: ['Noto Sans Devanagari', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Subtle Ashoka Chakra watermark circular geometry */
+    .ashoka-watermark {
+      background-image: radial-gradient(circle at center, rgba(36, 74, 120, 0.04) 0%, rgba(36, 74, 120, 0.02) 40%, transparent 70%);
+    }
+    .ashoka-pattern-dark {
+      background-image: radial-gradient(circle at center, rgba(217, 154, 53, 0.05) 0%, rgba(36, 74, 120, 0.08) 50%, transparent 80%);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #E4E1D9;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-brand-ivory text-brand-ink font-sans antialiased selection:bg-brand-ashokaLight selection:text-brand-ashokaBlue">
+
+  <!-- ================= SECTION 1: STICKY NAVIGATION HEADER ================= -->
+  <header id="main-header" class="sticky top-0 z-50 bg-brand-ivory/95 backdrop-blur-md border-b border-brand-ivoryBorder transition-all duration-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo & Identity -->
+      <a href="#" class="flex items-center space-x-3.5 group">
+        <div class="w-10 h-10 rounded-lg bg-brand-navy flex items-center justify-center text-white shadow-sm ring-1 ring-brand-navy/10 group-hover:bg-brand-ashokaBlue transition-colors">
+          <!-- Geometric Emblem: Concentric Ashoka rings + Legal Pillar / Document Motif -->
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="9.5" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 2" class="opacity-60"/>
+            <circle cx="12" cy="12" r="5.5" stroke="currentColor" stroke-width="1.2"/>
+            <path d="M12 4V20M4 12H20" stroke="currentColor" stroke-width="1" stroke-linecap="round" class="opacity-40"/>
+            <path d="M8.5 9.5L15.5 14.5M15.5 9.5L8.5 14.5" stroke="currentColor" stroke-width="0.8" class="opacity-30"/>
+            <circle cx="12" cy="12" r="2" fill="#D99A35"/>
+          </svg>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-heading font-extrabold text-xl tracking-tight text-brand-navy leading-none">LegalMitra</span>
+          <span class="text-[11px] font-medium tracking-wider text-brand-slate uppercase mt-1">Indian Legal Intelligence</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-brand-ink/80">
+        <a href="#hero" class="text-brand-ashokaBlue font-semibold transition-colors">Home</a>
+        <a href="#showcase" class="hover:text-brand-navy transition-colors">Capabilities</a>
+        <a href="#how-it-works" class="hover:text-brand-navy transition-colors">How It Works</a>
+        <a href="#sources" class="hover:text-brand-navy transition-colors">Legal Sources</a>
+        <a href="#domains" class="hover:text-brand-navy transition-colors">Topics</a>
+        <a href="#faq" class="hover:text-brand-navy transition-colors">FAQ</a>
+      </nav>
+
+      <!-- Right CTAs -->
+      <div class="flex items-center space-x-4">
+        <a href="#hero" class="hidden sm:inline-flex text-sm font-semibold text-brand-navy hover:text-brand-ashokaBlue px-3 py-2 transition-colors">
+          Sign In
+        </a>
+        <a href="#showcase" class="inline-flex items-center space-x-2 bg-brand-navy hover:bg-brand-ashokaBlue text-white text-sm font-semibold px-4 py-2.5 rounded-md shadow-sm transition-all transform active:scale-95">
+          <span>Start Asking</span>
+          <svg class="w-4 h-4 text-brand-saffron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= SECTION 2: HERO SECTION ================= -->
+  <section id="hero" class="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden ashoka-watermark border-b border-brand-ivoryBorder">
+    <!-- Fine geometric backdrop rays -->
+    <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-30">
+      <svg class="w-[840px] h-[840px] text-brand-ashokaBlue/10 animate-[spin_120s_linear_infinite]" viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="50" r="48" stroke="currentColor" stroke-width="0.3" stroke-dasharray="1 1"/>
+        <circle cx="50" cy="50" r="36" stroke="currentColor" stroke-width="0.4"/>
+        <circle cx="50" cy="50" r="22" stroke="currentColor" stroke-width="0.3"/>
+        <path d="M50 2 L50 98 M2 50 L98 50 M16 16 L84 84 M16 84 L84 16" stroke="currentColor" stroke-width="0.2"/>
+      </svg>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        
+        <!-- Left Column: Copy & Actions -->
+        <div class="lg:col-span-6 space-y-6">
+          <div class="inline-flex items-center space-x-2 bg-brand-saffronLight border border-brand-saffron/30 rounded-full px-3.5 py-1 text-xs font-semibold text-brand-navy">
+            <span class="w-2 h-2 rounded-full bg-brand-saffron animate-pulse"></span>
+            <span class="tracking-widest uppercase">Built For Indian Law &bull; 2024–2025 Codes</span>
+          </div>
+
+          <h1 class="font-heading font-extrabold text-4xl sm:text-5xl lg:text-6xl text-brand-navy tracking-tight leading-[1.12]">
+            Indian law, explained with <span class="underline decoration-brand-saffron decoration-4 underline-offset-8">clarity.</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-brand-slate leading-relaxed max-w-xl">
+            Understand statutory provisions, explore judgments, and navigate complex legal questions through an AI assistant thoughtfully grounded in Indian constitutional tradition and verified primary sources.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 pt-2">
+            <a href="#showcase" class="inline-flex justify-center items-center space-x-2 bg-brand-navy hover:bg-brand-ashokaBlue text-white font-semibold px-6 py-3.5 rounded-lg shadow-md transition-all">
+              <span>Start a Conversation</span>
+              <svg class="w-4 h-4 text-brand-saffron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+              </svg>
+            </a>
+            <a href="#sources" class="inline-flex justify-center items-center space-x-2 bg-white hover:bg-brand-ivoryDim text-brand-navy border border-brand-ivoryBorder font-semibold px-6 py-3.5 rounded-lg shadow-sm transition-all">
+              <span>Explore Capabilities</span>
+              <svg class="w-4 h-4 text-brand-slate" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Trust Subtitle -->
+          <div class="pt-4 border-t border-brand-ivoryBorder flex items-center space-x-6 text-xs text-brand-slate">
+            <div class="flex items-center space-x-1.5">
+              <svg class="w-4 h-4 text-brand-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span>Source-grounded answers</span>
+            </div>
+            <div class="flex items-center space-x-1.5">
+              <svg class="w-4 h-4 text-brand-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span>Clear statutory context</span>
+            </div>
+            <div class="flex items-center space-x-1.5">
+              <svg class="w-4 h-4 text-brand-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span>Advocate-conscious design</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Premium Chatbot Preview Card -->
+        <div class="lg:col-span-6 relative">
+          <!-- Ambient Glow Backdrop -->
+          <div class="absolute -inset-1.5 bg-gradient-to-r from-brand-ashokaBlue/15 to-brand-saffron/15 rounded-2xl blur-lg opacity-60"></div>
+          
+          <!-- Mockup Shell -->
+          <div class="relative bg-white rounded-xl shadow-xl border border-brand-ivoryBorder overflow-hidden">
+            <!-- Mockup Header -->
+            <div class="bg-brand-navy px-5 py-3.5 flex items-center justify-between text-white border-b border-brand-navyDark">
+              <div class="flex items-center space-x-3">
+                <div class="w-7 h-7 rounded-md bg-white/10 flex items-center justify-center">
+                  <span class="text-xs font-bold text-brand-saffron">LM</span>
+                </div>
+                <div>
+                  <div class="text-xs font-semibold leading-none">LegalMitra Intelligence Session</div>
+                  <div class="text-[10px] text-white/60 font-mono mt-0.5">Matter #IN-2025/BNSS-528 &bull; Verified Engine</div>
+                </div>
+              </div>
+              <div class="flex items-center space-x-2">
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-semibold bg-brand-forest text-white">
+                  Law as of 2025
+                </span>
+              </div>
+            </div>
+
+            <!-- Chat Content Mockup -->
+            <div class="p-5 space-y-4 text-xs bg-brand-ivory/40">
+              
+              <!-- User Message -->
+              <div class="flex justify-end">
+                <div class="max-w-[85%] bg-white border border-brand-ivoryBorder rounded-lg p-3 text-brand-ink shadow-sm">
+                  <div class="text-[10px] font-semibold text-brand-slate uppercase mb-1">Inquiry &bull; Commercial Quashing</div>
+                  Can a High Court quash an FIR in a commercial dispute under Section 528 BNSS (erstwhile Sec 482 CrPC)?
+                </div>
+              </div>
+
+              <!-- Assistant Response Card -->
+              <div class="space-y-3">
+                <div class="bg-white border border-brand-ivoryBorder rounded-lg p-4 shadow-sm space-y-3">
+                  <div class="flex items-center justify-between border-b border-brand-ivoryBorder pb-2">
+                    <div class="flex items-center space-x-2">
+                      <div class="w-4 h-4 rounded bg-brand-navy flex items-center justify-center text-[9px] text-white font-bold">LM</div>
+                      <span class="font-heading font-bold text-brand-navy text-xs">Statutory Short Answer</span>
+                    </div>
+                    <span class="text-[10px] font-mono text-brand-slate">Jul 2024 &bull; In Force</span>
+                  </div>
+
+                  <p class="text-brand-ink leading-relaxed">
+                    <strong>Yes.</strong> Under <span class="text-brand-ashokaBlue font-semibold underline decoration-brand-ashokaBlue/30">Section 528 BNSS, 2023</span> (saving inherent powers formerly under Sec 482 CrPC), High Courts retain jurisdiction to quash criminal proceedings when the dispute is primarily civil or commercial, preventing the process from becoming an engine of harassment.
+                  </p>
+
+                  <!-- Embedded Legal Source Card -->
+                  <div class="bg-brand-ivory border-l-2 border-brand-ashokaBlue p-2.5 rounded-r text-[11px] space-y-1">
+                    <div class="flex items-center justify-between">
+                      <span class="font-semibold text-brand-navy flex items-center space-x-1">
+                        <span class="px-1 py-0.2 bg-brand-ashokaBlue text-white text-[9px] font-bold rounded">ACT</span>
+                        <span>Bharatiya Nagarik Suraksha Sanhita, 2023</span>
+                      </span>
+                      <a href="#sources" class="text-brand-ashokaBlue hover:underline text-[10px] font-medium">View Bare Act &rarr;</a>
+                    </div>
+                    <p class="text-brand-slate italic text-[10px]">
+                      "Saving of inherent powers of High Court to prevent abuse of the process of any court..."
+                    </p>
+                  </div>
+
+                  <!-- Landmark Ratio Note -->
+                  <div class="flex items-center justify-between text-[10px] text-brand-slate pt-1 border-t border-brand-ivoryBorder">
+                    <span>Leading Precedent: <em>State of Haryana v. Bhajan Lal</em> (Category 1 &amp; 7)</span>
+                    <span class="text-brand-forest font-semibold">&check; SCC Cross-Verified</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Mini Composer Input Bar -->
+              <div class="bg-white border border-brand-ivoryBorder rounded-lg p-2.5 flex items-center justify-between shadow-inner">
+                <span class="text-brand-slate text-[11px]">Ask follow-up, e.g. 'What is the test of fraudulent intent?'...</span>
+                <div class="w-7 h-7 bg-brand-navy rounded flex items-center justify-center text-white">
+                  <svg class="w-3.5 h-3.5 text-brand-saffron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 3: TRUST STRIP ================= -->
+  <section class="bg-white border-b border-brand-ivoryBorder py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center divide-y md:divide-y-0 md:divide-x divide-brand-ivoryBorder">
+        
+        <div class="pt-2 md:pt-0 flex flex-col items-center justify-center space-y-1.5">
+          <div class="w-8 h-8 rounded-full bg-brand-ashokaLight flex items-center justify-center text-brand-ashokaBlue">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg>
+          </div>
+          <span class="font-heading font-bold text-sm text-brand-navy">Designed for Indian Law</span>
+          <span class="text-xs text-brand-slate">Central Acts, State Amendments &amp; Codes</span>
+        </div>
+
+        <div class="pt-4 md:pt-0 flex flex-col items-center justify-center space-y-1.5">
+          <div class="w-8 h-8 rounded-full bg-brand-saffronLight flex items-center justify-center text-brand-saffron">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <span class="font-heading font-bold text-sm text-brand-navy">Statute-Aware Information</span>
+          <span class="text-xs text-brand-slate">Commencement dates &amp; transition rules</span>
+        </div>
+
+        <div class="pt-4 md:pt-0 flex flex-col items-center justify-center space-y-1.5">
+          <div class="w-8 h-8 rounded-full bg-brand-forestLight flex items-center justify-center text-brand-forest">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <span class="font-heading font-bold text-sm text-brand-navy">Source-Linked Answers</span>
+          <span class="text-xs text-brand-slate">Grounding in Gazette &amp; Case Precedents</span>
+        </div>
+
+        <div class="pt-4 md:pt-0 flex flex-col items-center justify-center space-y-1.5">
+          <div class="w-8 h-8 rounded-full bg-brand-ivoryDim flex items-center justify-center text-brand-navy">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg>
+          </div>
+          <span class="font-heading font-bold text-sm text-brand-navy">Clear Legal Explanations</span>
+          <span class="text-xs text-brand-slate">Plain language without losing precision</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SECTION 4: THE PROBLEM ================= -->
+  <section class="py-20 bg-brand-ivory border-b border-brand-ivoryBorder">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-4">
+        <span class="text-xs font-bold tracking-widest text-brand-ashokaBlue uppercase">The Structural Challenge</span>
+        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-brand-navy tracking-tight">
+          The law is complex. Understanding it should not be.
+        </h2>
+        <p class="text-base text-brand-slate leading-relaxed">
+          Legal information in India can be difficult to navigate when statutes, amendments, procedural roadmaps, and landmark judgments are scattered across disparate registries and gazettes.
+        </p>
+      </div>
+
+      <!-- Problem Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-14">
+        
+        <!-- Card 1 -->
+        <div class="bg-white p-8 rounded-xl border border-brand-ivoryBorder shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+          <div class="w-12 h-12 rounded-lg bg-brand-ashokaLight flex items-center justify-center text-brand-ashokaBlue mb-6 group-hover:scale-105 transition-transform">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-brand-navy mb-3">Too Much Complexity</h3>
+          <p class="text-sm text-brand-slate leading-relaxed">
+            Legal language and cross-referencing archaic provisions can make even straightforward questions regarding everyday rights and procedures difficult to decipher.
+          </p>
+          <div class="mt-6 pt-4 border-t border-brand-ivoryBorder text-xs text-brand-ashokaBlue font-semibold flex items-center space-x-1">
+            <span>Substantive barrier for citizens</span>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bg-white p-8 rounded-xl border border-brand-ivoryBorder shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+          <div class="w-12 h-12 rounded-lg bg-brand-saffronLight flex items-center justify-center text-brand-saffron mb-6 group-hover:scale-105 transition-transform">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-brand-navy mb-3">Fragmented Information</h3>
+          <p class="text-sm text-brand-slate leading-relaxed">
+            Finding what applies often demands cross-referencing Central Acts, state rules, Ministry notifications, and conflicting High Court benches across multiple databases.
+          </p>
+          <div class="mt-6 pt-4 border-t border-brand-ivoryBorder text-xs text-brand-saffron font-semibold flex items-center space-x-1">
+            <span>Siloed gazettes &amp; precedents</span>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white p-8 rounded-xl border border-brand-ivoryBorder shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+          <div class="w-12 h-12 rounded-lg bg-brand-forestLight flex items-center justify-center text-brand-forest mb-6 group-hover:scale-105 transition-transform">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-brand-navy mb-3">Missing Legal Context</h3>
+          <p class="text-sm text-brand-slate leading-relaxed">
+            Knowing what a section textually states is only half the story. Enactment timelines, commencement notifications, proviso exceptions, and ratio decidendi define how it operates.
+          </p>
+          <div class="mt-6 pt-4 border-t border-brand-ivoryBorder text-xs text-brand-forest font-semibold flex items-center space-x-1">
+            <span>Critical commencement gaps</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 5: THE LEGALMITRA APPROACH ================= -->
+  <section class="py-24 bg-brand-navy text-white relative overflow-hidden ashoka-pattern-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="max-w-3xl space-y-4 mb-16">
+        <span class="text-xs font-bold tracking-widest text-brand-saffron uppercase">Constitutional Modernism</span>
+        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white">
+          A clearer way to explore Indian law.
+        </h2>
+        <p class="text-base sm:text-lg text-white/70 leading-relaxed">
+          LegalMitra combines the natural ease of conversational AI with strict source-oriented methodology, offering researchers, advocates, and citizens an authoritative starting point.
+        </p>
+      </div>
+
+      <!-- Principles Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Step 01 -->
+        <div class="border-t-2 border-brand-saffron pt-6 space-y-4 bg-white/[0.02] p-6 rounded-b-lg">
+          <div class="font-mono text-2xl font-bold text-brand-saffron">01</div>
+          <h3 class="font-heading font-bold text-2xl text-white">Ask Naturally</h3>
+          <p class="text-sm text-white/70 leading-relaxed">
+            Formulate questions in everyday English or colloquial terms without knowing exact statutory sections or Act numbers in advance.
+          </p>
+          <div class="text-xs text-white/40 italic">
+            e.g., "Can a cheque bounce notice be emailed?"
+          </div>
+        </div>
+
+        <!-- Step 02 -->
+        <div class="border-t-2 border-brand-saffron pt-6 space-y-4 bg-white/[0.02] p-6 rounded-b-lg">
+          <div class="font-mono text-2xl font-bold text-brand-saffron">02</div>
+          <h3 class="font-heading font-bold text-2xl text-white">Explore the Law</h3>
+          <p class="text-sm text-white/70 leading-relaxed">
+            Receive structured explanations that identify governing provisions, statutory scope, essential elements, and doctrinal exceptions clearly.
+          </p>
+          <div class="text-xs text-white/40 italic">
+            e.g., Section 138 NI Act &bull; 15-day statutory window
+          </div>
+        </div>
+
+        <!-- Step 03 -->
+        <div class="border-t-2 border-brand-saffron pt-6 space-y-4 bg-white/[0.02] p-6 rounded-b-lg">
+          <div class="font-mono text-2xl font-bold text-brand-saffron">03</div>
+          <h3 class="font-heading font-bold text-2xl text-white">Follow the Sources</h3>
+          <p class="text-sm text-white/70 leading-relaxed">
+            Directly inspect the underlying Bare Act clauses, gazette notifications, and Supreme Court ratio decidendi that justify every insight.
+          </p>
+          <div class="text-xs text-white/40 italic">
+            e.g., Supreme Court SCC pagination &amp; Gazette references
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 6: INTERACTIVE PRODUCT SHOWCASE ================= -->
+  <section id="showcase" class="py-24 bg-brand-ivory border-b border-brand-ivoryBorder">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+        <span class="text-xs font-bold tracking-widest text-brand-ashokaBlue uppercase">Interactive Product Architecture</span>
+        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-brand-navy tracking-tight">
+          More than a chatbot. A clearer way to navigate law.
+        </h2>
+        <p class="text-base text-brand-slate leading-relaxed">
+          Switch between legal archetypes to examine how LegalMitra formats statutes, judicial ratios, procedural roadmaps, and enforcement timelines.
+        </p>
+      </div>
+
+      <!-- Feature Selector & Preview Workspace -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Feature Selectors (Left 4 cols) -->
+        <div class="lg:col-span-4 space-y-2">
+          
+          <button class="w-full text-left p-4 rounded-xl border-2 border-brand-navy bg-white shadow-sm transition-all flex items-start space-x-3 group">
+            <div class="w-8 h-8 rounded-lg bg-brand-navy text-white flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            </div>
+            <div>
+              <div class="font-heading font-bold text-sm text-brand-navy group-hover:text-brand-ashokaBlue">Understand a Legal Provision</div>
+              <div class="text-xs text-brand-slate mt-0.5">Section text, plain analysis, exceptions &amp; scope</div>
+            </div>
+          </button>
+
+          <button class="w-full text-left p-4 rounded-xl border border-brand-ivoryBorder bg-white/70 hover:bg-white hover:border-brand-ashokaBlue/40 transition-all flex items-start space-x-3 group">
+            <div class="w-8 h-8 rounded-lg bg-brand-ivoryDim text-brand-navy flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg>
+            </div>
+            <div>
+              <div class="font-heading font-bold text-sm text-brand-navy group-hover:text-brand-ashokaBlue">Explore Relevant Judgments</div>
+              <div class="text-xs text-brand-slate mt-0.5">Supreme Court bench ratios, SCC citations &amp; principles</div>
+            </div>
+          </button>
+
+          <button class="w-full text-left p-4 rounded-xl border border-brand-ivoryBorder bg-white/70 hover:bg-white hover:border-brand-ashokaBlue/40 transition-all flex items-start space-x-3 group">
+            <div class="w-8 h-8 rounded-lg bg-brand-ivoryDim text-brand-navy flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/></svg>
+            </div>
+            <div>
+              <div class="font-heading font-bold text-sm text-brand-navy group-hover:text-brand-ashokaBlue">Navigate Legal Procedures</div>
+              <div class="text-xs text-brand-slate mt-0.5">Step-by-step filings, caveats &amp; jurisdictional tests</div>
+            </div>
+          </button>
+
+          <button class="w-full text-left p-4 rounded-xl border border-brand-ivoryBorder bg-white/70 hover:bg-white hover:border-brand-ashokaBlue/40 transition-all flex items-start space-x-3 group">
+            <div class="w-8 h-8 rounded-lg bg-brand-saffronLight text-brand-saffron flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            </div>
+            <div>
+              <div class="font-heading font-bold text-sm text-brand-navy group-hover:text-brand-ashokaBlue">Check the Legal Timeline</div>
+              <div class="text-xs text-brand-slate mt-0.5">Commencement notifications &amp; transition rules</div>
+            </div>
+          </button>
+
+          <button class="w-full text-left p-4 rounded-xl border border-brand-ivoryBorder bg-white/70 hover:bg-white hover:border-brand-ashokaBlue/40 transition-all flex items-start space-x-3 group">
+            <div class="w-8 h-8 rounded-lg bg-brand-forestLight text-brand-forest flex items-center justify-center flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <div>
+              <div class="font-heading font-bold text-sm text-brand-navy group-hover:text-brand-ashokaBlue">Review Source References</div>
+              <div class="text-xs text-brand-slate mt-0.5">Direct Gazette passages, Act titles &amp; authority pins</div>
+            </div>
+          </button>
+
+        </div>
+
+        <!-- Preview Viewport (Right 8 cols) -->
+        <div class="lg:col-span-8 bg-white rounded-2xl border border-brand-ivoryBorder shadow-lg p-6 sm:p-8 space-y-6">
+          
+          <!-- Viewport Header Bar -->
+          <div class="flex flex-wrap items-center justify-between pb-4 border-b border-brand-ivoryBorder gap-2">
+            <div class="flex items-center space-x-2">
+              <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-brand-ashokaBlue text-white">ACT ANALYSIS</span>
+              <span class="text-xs font-semibold text-brand-slate">Bharatiya Nyaya Sanhita, 2023 (BNS)</span>
+            </div>
+            <div class="flex items-center space-x-2 text-xs">
+              <span class="w-2 h-2 rounded-full bg-brand-forest"></span>
+              <span class="text-brand-forest font-semibold">Commenced: 1 July 2024</span>
+            </div>
+          </div>
+
+          <!-- Section Identity -->
+          <div>
+            <div class="text-xs font-mono text-brand-slate">SECTION 316 BNS &bull; ERSTWHILE SEC 405 IPC</div>
+            <h3 class="font-heading font-bold text-2xl text-brand-navy mt-1">Criminal Breach of Trust</h3>
+          </div>
+
+          <!-- Plain-Language Explanation -->
+          <div class="space-y-2">
+            <h4 class="text-xs font-bold text-brand-navy uppercase tracking-wider">Plain-Language Meaning</h4>
+            <p class="text-sm text-brand-ink leading-relaxed">
+              Criminal Breach of Trust occurs when an individual is entrusted with property or dominion over property, and subsequently dishonestly misappropriates, converts to their own use, or disposes of that property in violation of law or legal contract.
+            </p>
+          </div>
+
+          <!-- Statutory Scope & Core Elements Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-brand-ivory p-4 rounded-lg border border-brand-ivoryBorder space-y-1.5">
+              <span class="text-xs font-bold text-brand-navy">Essential Ingredients</span>
+              <ul class="text-xs text-brand-slate space-y-1 list-disc list-inside">
+                <li>Actual entrustment of property or control</li>
+                <li>Dishonest intention at the moment of conversion</li>
+                <li>Violation of lawful direction or express trust</li>
+              </ul>
+            </div>
+
+            <div class="bg-brand-ivory p-4 rounded-lg border border-brand-ivoryBorder space-y-1.5">
+              <span class="text-xs font-bold text-brand-navy">Doctrinal Distinction</span>
+              <p class="text-xs text-brand-slate leading-relaxed">
+                Distinct from Cheating (Sec 318): In Breach of Trust, entrustment is innocent at inception; dishonest mens rea develops subsequently.
+              </p>
+            </div>
+          </div>
+
+          <!-- Source Citation Footer Inside Showcase -->
+          <div class="bg-brand-ashokaLight/60 border border-brand-ashokaBlue/20 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+            <div class="space-y-0.5">
+              <div class="text-[11px] font-bold text-brand-navy flex items-center space-x-1.5">
+                <svg class="w-3.5 h-3.5 text-brand-ashokaBlue" fill="currentColor" viewBox="0 0 20 20"><path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/></svg>
+                <span>The Gazette of India: Act No. 45 of 2023</span>
+              </div>
+              <div class="text-[11px] text-brand-slate">Ministry of Law and Justice &bull; Universal Jurisdiction Across Bharat</div>
+            </div>
+            <a href="#sources" class="text-xs font-bold text-brand-ashokaBlue hover:underline flex items-center space-x-1 flex-shrink-0">
+              <span>Inspect Bare Act Clause</span>
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 7: BUILT AROUND LEGAL SOURCES ================= -->
+  <section id="sources" class="py-24 bg-white border-b border-brand-ivoryBorder">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-3xl space-y-4 mb-16">
+        <span class="text-xs font-bold tracking-widest text-brand-forest uppercase">Source-First Design</span>
+        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-brand-navy tracking-tight">
+          An answer should help you find the law behind it.
+        </h2>
+        <p class="text-base text-brand-slate leading-relaxed">
+          LegalMitra is built to anchor every explanation to verified statutory provisions, judicial rulings, and gazette notifications, enabling users and legal practitioners to audit primary authorities.
+        </p>
+      </div>
+
+      <!-- 3 Exemplary Source Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Card A: Statutory Provision -->
+        <div class="bg-brand-ivory/60 border border-brand-ivoryBorder rounded-xl p-6 flex flex-col justify-between hover:border-brand-ashokaBlue transition-colors shadow-sm">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-brand-ashokaBlue text-white">ACT PROVISION</span>
+              <span class="text-[11px] font-mono text-brand-slate">Central Enactment</span>
+            </div>
+            <div>
+              <div class="text-xs text-brand-slate">Digital Personal Data Protection Act, 2023</div>
+              <h4 class="font-heading font-bold text-lg text-brand-navy mt-1">Section 6(1) &bull; Consent Notice</h4>
+            </div>
+            <p class="text-xs text-brand-ink/80 leading-relaxed italic bg-white p-3 rounded border border-brand-ivoryBorder">
+              "The Data Fiduciary shall give to the Data Principal an itemised notice in such manner and containing such particulars as may be prescribed..."
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-brand-ivoryBorder flex items-center justify-between text-xs">
+            <span class="text-brand-slate">Act No. 22 of 2023</span>
+            <span class="text-brand-ashokaBlue font-semibold hover:underline cursor-pointer">View Act Clause &rarr;</span>
+          </div>
+        </div>
+
+        <!-- Card B: Judicial Decision -->
+        <div class="bg-brand-ivory/60 border border-brand-ivoryBorder rounded-xl p-6 flex flex-col justify-between hover:border-brand-saffron transition-colors shadow-sm">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-brand-saffron text-white">JUDGMENT</span>
+              <span class="text-[11px] font-mono text-brand-slate">Supreme Court &bull; 9-Judge</span>
+            </div>
+            <div>
+              <div class="text-xs text-brand-slate">Justice K.S. Puttaswamy v. Union of India</div>
+              <h4 class="font-heading font-bold text-lg text-brand-navy mt-1">(2017) 10 SCC 1 &bull; Privacy Doctrine</h4>
+            </div>
+            <p class="text-xs text-brand-ink/80 leading-relaxed italic bg-white p-3 rounded border border-brand-ivoryBorder">
+              "Privacy is a constitutionally protected right emerging primarily from the guarantee of life and personal liberty under Article 21..."
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-brand-ivoryBorder flex items-center justify-between text-xs">
+            <span class="text-brand-slate">Ratio Decidendi</span>
+            <span class="text-brand-saffron font-semibold hover:underline cursor-pointer">Read Ruling &rarr;</span>
+          </div>
+        </div>
+
+        <!-- Card C: Commencement Notification -->
+        <div class="bg-brand-ivory/60 border border-brand-ivoryBorder rounded-xl p-6 flex flex-col justify-between hover:border-brand-forest transition-colors shadow-sm">
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-brand-forest text-white">NOTIFICATION</span>
+              <span class="text-[11px] font-mono text-brand-slate">Official Gazette</span>
+            </div>
+            <div>
+              <div class="text-xs text-brand-slate">Ministry of Home Affairs &bull; S.O. 850(E)</div>
+              <h4 class="font-heading font-bold text-lg text-brand-navy mt-1">Commencement of BNS &amp; BNSS</h4>
+            </div>
+            <p class="text-xs text-brand-ink/80 leading-relaxed italic bg-white p-3 rounded border border-brand-ivoryBorder">
+              "Appointing the 1st day of July, 2024 as the date on which the provisions of the Bharatiya Nyaya Sanhita, 2023 come into force..."
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-brand-ivoryBorder flex items-center justify-between text-xs">
+            <span class="text-brand-slate">Published 23 Feb 2024</span>
+            <span class="text-brand-forest font-semibold hover:underline cursor-pointer">Inspect Gazette &rarr;</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Trust Assurance Note -->
+      <div class="mt-10 bg-brand-ivory p-4 rounded-lg border border-brand-ivoryBorder flex items-center justify-between text-xs text-brand-slate">
+        <span class="flex items-center space-x-2">
+          <svg class="w-4 h-4 text-brand-ashokaBlue" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
+          <span>Legal citations are indexed from the Official Gazette of India and established court registries. Always confirm SCC pagination with case transcripts.</span>
+        </span>
+        <span class="font-medium text-brand-navy underline cursor-pointer">Verification Methodology</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 8: INDIAN LAW, MULTIPLE DOMAINS ================= -->
+  <section id="domains" class="py-24 bg-brand-ivory border-b border-brand-ivoryBorder">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+        <span class="text-xs font-bold tracking-widest text-brand-saffron uppercase">Comprehensive Coverage</span>
+        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-brand-navy tracking-tight">
+          Explore the legal questions that matter.
+        </h2>
+        <p class="text-base text-brand-slate leading-relaxed">
+          From constitutional safeguards to newly notified criminal codes and emerging digital regulations, LegalMitra supports inquiries across key disciplines of Indian jurisprudence.
+        </p>
+      </div>
+
+      <!-- 8 Domain Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Domain 1: Constitution of India -->
+        <div class="bg-white p-6 rounded-xl border border-brand-ivoryBorder shadow-sm hover:border-brand-ashokaBlue hover:shadow-md transition-all group cursor-pointer">
+          <div class="w-10 h-10 rounded-lg bg-brand-ashokaLight text-brand-ashokaBlue flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          </div>
+          <h3 class="font-heading font-bold text-base text-brand-navy group-hover:text-brand-ashokaBlue">Constitution of India</h3>
+          <p class="text-xs text-brand-slate mt-2 leading-relaxed">
+            Fundamental rights (Articles 14, 19, 21), writ jurisdiction, and constitutional bench principles.
+          </p>
+          <div class="mt-4 flex items-center text-xs font-semibold text-brand-ashokaBlue group-hover:translate-x-1 transition-transform">
+            <span>Explore Articles &rarr;</span>
+          </div>
+        </div>
+
+        <!-- Domain 2: Criminal Law (BNS, BNSS, BSA) -->
+        <div class="bg-white p-6 rounded-xl border border-brand-ivoryBorder shadow-sm hover:border-brand-navy hover:shadow-md transition-all group cursor-pointer">
+          <div class="w-10 h-10 rounded-lg bg-brand-navy text-white flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+            <svg class="w-5 h-5 text-brand-saffron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/></svg>
+          </div>
+          <h3 class="font-heading font-bold text-base text-brand-navy group-hover:text-brand-ashokaBlue">Criminal Law &amp; Bail</h3>
+          <p class="text-xs text-brand-slate mt-2 leading-relaxed">
+            Bharatiya Nyaya Sanhita, BNSS procedure, bail jurisprudence, and quashing mechanisms.
+          </p>
+          <div class="mt-4 flex items-center text-xs font-semibold text-brand-navy group-hover:translate-x-1 transition-transform">
+            <span>Explore Sanhitas &rarr;</span>
+          </div>
+        </div>
+
+        <!-- Domain 3: Cyber Law & IT -->
+        <div class="bg-white p-6 rounded-xl border border-brand-ivoryBorder shadow-sm hover:border-brand-ashokaBlue hover:shadow-md transition-all group cursor-pointer">
+          <div class="w-10 h-10 rounded-lg bg-brand-ashokaLight text-brand-ashokaBlue flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h3 class="font-heading font-bold text-base text-brand-navy group-hover:text-brand-ashokaBlue">Cyber Law &amp; IT Act</h3>
+          <p class="text-xs text-brand-slate mt-2 leading-relaxed">
+            Information Technology Act 2000, intermediary guidelines, electronic evidence under BSA.
+          </p>
+          <div class="mt-4 flex items-center text-xs font-semibold text-brand-ashokaBlue group-hover:translate-x-1 transition-transform">
+            <span>Explore IT Act &rarr;</span>
+          </div>
+        </div>
+
+        <!-- Domain 4: Data Protection & Privacy -->
+        <div class="bg-white p-6 rounded-xl border border-brand-ivoryBorder shadow-sm hover:border-brand-forest hover:shadow-md transition-all group cursor-pointer">
+          <div class="w-10 h-10 rounded-lg bg-brand-forestLight text-brand-forest flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          </div>
+          <h3 class="font-heading font-bold text-base text-brand-navy group-hover:text-brand-forest">Data Protection &amp; Privacy</h3>
+          <p class="text-xs text-brand-slate mt-2 leading-relaxed">
+            Digital Personal Data Protection (DPDP) Act 2023, data fiduciary liabilities, and rights.
+          </p>
+          <div class="mt-4 flex items-center text-xs font-semibold text-brand-forest group-hover:translate-x-1 transition-transform">
+            <span>Explore DPDP &rarr;</span>
+          </div>
+        </div>
+
+        <!-- Domain 5: Consumer Rights -->
+        <div class="bg-white p-6 rounded-xl border border-brand-ivoryBorder shadow-sm hover:border-brand-saffron hover:shadow-md transition-all group cursor-pointer">
+          <div class="w-10 h-10 rounded-lg bg-brand-saffronLight text-brand-saffron flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+          </div>
+          <h3 class="font-heading font-bold text-base text-brand-navy group-hover:text-brand-saffron">Consumer Protection</h3>
+          <p class="text-xs text-brand-slate mt-2 leading-relaxed">
+            Consumer Protection Act 2019, e-commerce dispute redresses, and district commission appeals.
+          </p>
+          <div class="mt-4 flex items-center text-xs font-semibold text-brand-saffron group-hover:translate-x-1 transition-transform">
+            <span>Explore Consumer Law &rarr;</span>
+          </div>
+        </div>
+
+        <!-- Domain 6: Property & Civil Disputes -->
+        <div class="bg-white p-6 rounded-xl border border-brand-ivoryBorder shadow-sm hover:border-brand-navy hover:shadow-md transition-all group cursor-pointer">
+          <div class="w-10 h-10 rounded-lg bg-brand-ivoryDim text-brand-navy flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+          </div>
+          <h3 class="font-heading font-bold text-base text-brand-navy group-hover:text-brand-ashokaBlue">Property &amp; Civil Disputes</h3>
+          <p class="text-xs text-brand-slate mt-2 leading-relaxed">
+            Transfer of Property Act, injunction suits, tenancy law, and Civil Procedure Code (CPC).
+          </p>
+          <div class="mt-4 flex items-center text-xs font-semibold text-brand-navy group-hover:translate-x-1 transition-transform">
+            <span>Explore Civil Law &rarr;</span>
+          </div>
+        </div>
+
+        <!-- Domain 7: Family & Succession Law -->
+        <div class="bg-white p-6 rounded-xl border border-brand-ivoryBorder shadow-sm hover:border-brand-ashokaBlue hover:shadow-md transition-all group cursor-pointer">
+          <div class="w-10 h-10 rounded-lg bg-brand-ashokaLight text-brand-ashokaBlue flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          </div>
+          <h3 class="font-heading font-bold text-base text-brand-navy group-hover:text-brand-ashokaBlue">Family &amp; Succession</h3>
+          <p class="text-xs text-brand-slate mt-2 leading-relaxed">
+            Hindu Marriage Act, Special Marriage Act, Indian Succession Act, and maintenance provisions.
+          </p>
+          <div class="mt-4 flex items-center text-xs font-semibold text-brand-ashokaBlue group-hover:translate-x-1 transition-transform">
+            <span>Explore Family Law &rarr;</span>
+          </div>
+        </div>
+
+        <!-- Domain 8: Contracts & Commercial Law -->
+        <div class="bg-white p-6 rounded-xl border border-brand-ivoryBorder shadow-sm hover:border-brand-forest hover:shadow-md transition-all group cursor-pointer">
+          <div class="w-10 h-10 rounded-lg bg-brand-forestLight text-brand-forest flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          </div>
+          <h3 class="font-heading font-bold text-base text-brand-navy group-hover:text-brand-forest">Contracts &amp; Commerce</h3>
+          <p class="text-xs text-brand-slate mt-2 leading-relaxed">
+            Indian Contract Act 1872, Negotiable Instruments Sec 138, and arbitration frameworks.
+          </p>
+          <div class="mt-4 flex items-center text-xs font-semibold text-brand-forest group-hover:translate-x-1 transition-transform">
+            <span>Explore Commercial Law &rarr;</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 9: HOW LEGALMITRA WORKS ================= -->
+  <section id="how-it-works" class="py-24 bg-white border-b border-brand-ivoryBorder">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-4 mb-20">
+        <span class="text-xs font-bold tracking-widest text-brand-ashokaBlue uppercase">Three-Stage Pathway</span>
+        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-brand-navy tracking-tight">
+          From a question to a clearer understanding.
+        </h2>
+        <p class="text-base text-brand-slate leading-relaxed">
+          How raw conversational queries resolve into structured statutory context, judicial tests, and verified source documents.
+        </p>
+      </div>
+
+      <!-- Connected 3-Step Visual Layout -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+        
+        <!-- Step 1 -->
+        <div class="space-y-4">
+          <div class="flex items-center space-x-3">
+            <span class="w-8 h-8 rounded-full bg-brand-navy text-brand-saffron font-bold text-xs flex items-center justify-center">01</span>
+            <span class="font-heading font-bold text-lg text-brand-navy">Ask Your Question</span>
+          </div>
+          <p class="text-sm text-brand-slate">
+            Describe your situation in natural language without worrying about legal formalisms or Latin maxims.
+          </p>
+          <!-- Mockup Element -->
+          <div class="bg-brand-ivory p-4 rounded-xl border border-brand-ivoryBorder text-xs space-y-2">
+            <div class="font-mono text-[10px] text-brand-slate">QUERY INPUT</div>
+            <div class="bg-white p-2.5 rounded border border-brand-ivoryBorder text-brand-ink">
+              "What is the notice period before lodging a case for unpaid business invoices?"
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="space-y-4">
+          <div class="flex items-center space-x-3">
+            <span class="w-8 h-8 rounded-full bg-brand-navy text-brand-saffron font-bold text-xs flex items-center justify-center">02</span>
+            <span class="font-heading font-bold text-lg text-brand-navy">Understand Structure</span>
+          </div>
+          <p class="text-sm text-brand-slate">
+            Receive structured summaries highlighting applicable statutory sections, exceptions, and limitations.
+          </p>
+          <!-- Mockup Element -->
+          <div class="bg-brand-ivory p-4 rounded-xl border border-brand-ivoryBorder text-xs space-y-2">
+            <div class="font-mono text-[10px] text-brand-slate">STRUCTURED ANSWER</div>
+            <div class="bg-white p-2.5 rounded border border-brand-ivoryBorder text-brand-ink space-y-1">
+              <div class="font-bold text-brand-navy">Commercial Notice &bull; Sec 138 / CPC</div>
+              <p class="text-[11px] text-brand-slate">15 days statutory cure period if cheque involved; 3-year limitation under Article 18 Limitation Act.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="space-y-4">
+          <div class="flex items-center space-x-3">
+            <span class="w-8 h-8 rounded-full bg-brand-navy text-brand-saffron font-bold text-xs flex items-center justify-center">03</span>
+            <span class="font-heading font-bold text-lg text-brand-navy">Verify the Source</span>
+          </div>
+          <p class="text-sm text-brand-slate">
+            Open available primary source materials to inspect the exact legislative text or Supreme Court judgment.
+          </p>
+          <!-- Mockup Element -->
+          <div class="bg-brand-ivory p-4 rounded-xl border border-brand-ivoryBorder text-xs space-y-2">
+            <div class="font-mono text-[10px] text-brand-slate">PRIMARY GROUNDING</div>
+            <div class="bg-white p-2.5 rounded border border-brand-ivoryBorder flex items-center justify-between">
+              <div class="space-y-0.5">
+                <div class="font-bold text-brand-ashokaBlue text-[11px]">Negotiable Instruments Act</div>
+                <div class="text-[10px] text-brand-slate">Section 138(c) Proviso</div>
+              </div>
+              <span class="text-[10px] font-bold text-brand-forest bg-brand-forestLight px-1.5 py-0.5 rounded">&check; Gazette Linked</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 10: DESIGNED FOR LEGAL CLARITY ================= -->
+  <section class="py-24 bg-brand-ivory border-b border-brand-ivoryBorder">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+        <span class="text-xs font-bold tracking-widest text-brand-forest uppercase">Engineered Rigour</span>
+        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-brand-navy tracking-tight">
+          Designed for Legal Clarity
+        </h2>
+        <p class="text-base text-brand-slate leading-relaxed">
+          Built to respect the gravity of legal research with architectural features tailored specifically for statutory nuances.
+        </p>
+      </div>
+
+      <!-- 2x2 Grid with Time-Aware Highlight -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Card 1: Structured Explanations -->
+        <div class="bg-white p-8 rounded-xl border border-brand-ivoryBorder shadow-sm space-y-3">
+          <div class="w-10 h-10 rounded-lg bg-brand-ashokaLight text-brand-ashokaBlue flex items-center justify-center">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-brand-navy">Structured Explanations</h3>
+          <p class="text-sm text-brand-slate leading-relaxed">
+            Legal information organized into clear executive summaries, verbatim legislative provisions, practical applications, and judicial qualifications without overwhelming jargon.
+          </p>
+        </div>
+
+        <!-- Card 2: Source References -->
+        <div class="bg-white p-8 rounded-xl border border-brand-ivoryBorder shadow-sm space-y-3">
+          <div class="w-10 h-10 rounded-lg bg-brand-forestLight text-brand-forest flex items-center justify-center">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-brand-navy">Source References</h3>
+          <p class="text-sm text-brand-slate leading-relaxed">
+            Direct citations linking back to original Ministry gazette texts, Supreme Court judgments, and Central legislation so you never rely on unverified generation.
+          </p>
+        </div>
+
+        <!-- Card 3: HIGHLIGHTED CARD — Time-Aware Legal Context -->
+        <div class="bg-white p-8 rounded-xl border-2 border-brand-saffron shadow-md space-y-3 relative overflow-hidden">
+          <div class="absolute top-0 right-0 bg-brand-saffron text-white text-[10px] font-bold px-3 py-1 rounded-bl">
+            UNIQUE CAPABILITY
+          </div>
+          <div class="w-10 h-10 rounded-lg bg-brand-saffronLight text-brand-saffron flex items-center justify-center">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-brand-navy">Time-Aware Legal Context</h3>
+          <p class="text-sm text-brand-slate leading-relaxed">
+            Commencement dates and statutory transitions matter critically in India. The interface distinguishes current law from enacted provisions that have not yet commenced (e.g. BNS vs IPC applicability based on the date of offence).
+          </p>
+        </div>
+
+        <!-- Card 4: Transparent Limitations -->
+        <div class="bg-white p-8 rounded-xl border border-brand-ivoryBorder shadow-sm space-y-3">
+          <div class="w-10 h-10 rounded-lg bg-brand-ivoryDim text-brand-slate flex items-center justify-center">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-brand-navy">Transparent Limitations</h3>
+          <p class="text-sm text-brand-slate leading-relaxed">
+            When evidence is incomplete, case facts are missing, or a statutory question demands advocate representation, LegalMitra communicates uncertainty rather than manufacturing confidence.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 11: A FAMILIAR AI EXPERIENCE WITH A LEGAL IDENTITY ================= -->
+  <section class="py-24 bg-white border-b border-brand-ivoryBorder">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+        <span class="text-xs font-bold tracking-widest text-brand-ashokaBlue uppercase">Balanced Design</span>
+        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-brand-navy tracking-tight">
+          Simple to use. Designed for the seriousness of law.
+        </h2>
+        <p class="text-base text-brand-slate leading-relaxed">
+          Bridging the approachable fluency of modern conversational interfaces with the dignity, precision, and evidential hierarchy demanded by Indian jurisprudence.
+        </p>
+      </div>
+
+      <!-- Split Screen Comparison -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+        
+        <!-- Left Side: Familiar Conversational Interface -->
+        <div class="bg-brand-ivory/50 p-8 rounded-2xl border border-brand-ivoryBorder space-y-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center space-x-2 text-xs font-bold text-brand-ashokaBlue uppercase tracking-wider mb-2">
+              <span class="w-2 h-2 rounded-full bg-brand-ashokaBlue"></span>
+              <span>Conversational Fluency</span>
+            </div>
+            <h3 class="font-heading font-bold text-2xl text-brand-navy mb-4">Intuitive AI Experience</h3>
+            <ul class="space-y-3.5 text-sm text-brand-slate">
+              <li class="flex items-start space-x-2.5">
+                <svg class="w-5 h-5 text-brand-forest flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Natural conversational inputs in everyday English and regional idioms.</span>
+              </li>
+              <li class="flex items-start space-x-2.5">
+                <svg class="w-5 h-5 text-brand-forest flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Familiar chat history, multi-turn dialogue, and instant follow-ups.</span>
+              </li>
+              <li class="flex items-start space-x-2.5">
+                <svg class="w-5 h-5 text-brand-forest flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Clean whitespace, fast loading, and comfortable mobile responsiveness.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-brand-ivoryBorder shadow-sm text-xs text-brand-slate">
+            "Designed so anyone can ask about their fundamental rights without feeling intimidated."
+          </div>
+        </div>
+
+        <!-- Right Side: Rigorous Legal Identity -->
+        <div class="bg-brand-navy p-8 rounded-2xl text-white space-y-6 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center space-x-2 text-xs font-bold text-brand-saffron uppercase tracking-wider mb-2">
+              <span class="w-2 h-2 rounded-full bg-brand-saffron"></span>
+              <span>Judicial Precision</span>
+            </div>
+            <h3 class="font-heading font-bold text-2xl text-white mb-4">Constitutional Rigour</h3>
+            <ul class="space-y-3.5 text-sm text-white/80">
+              <li class="flex items-start space-x-2.5">
+                <svg class="w-5 h-5 text-brand-saffron flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Act and Section references pinned directly to Official Gazette notifications.</span>
+              </li>
+              <li class="flex items-start space-x-2.5">
+                <svg class="w-5 h-5 text-brand-saffron flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Real-time enforcement timelines (applicable law as of specific date).</span>
+              </li>
+              <li class="flex items-start space-x-2.5">
+                <svg class="w-5 h-5 text-brand-saffron flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                <span>Explicit recognition of exceptions, limitations, and advocate necessity.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-white/10 p-4 rounded-xl border border-white/10 text-xs text-white/70">
+            "Every output carries the evidential weight of documented statutory authority."
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 12: SAMPLE QUESTIONS ================= -->
+  <section class="py-24 bg-brand-ivory border-b border-brand-ivoryBorder">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
+        <span class="text-xs font-bold tracking-widest text-brand-saffron uppercase">Interactive Question Explorer</span>
+        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-brand-navy tracking-tight">
+          Start with a question.
+        </h2>
+        <p class="text-base text-brand-slate leading-relaxed">
+          Select any question below to see how LegalMitra dissects legislative provisions and establishes source-grounded answers.
+        </p>
+      </div>
+
+      <!-- 6 Sample Question Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <a href="#showcase" class="bg-white p-6 rounded-xl border border-brand-ivoryBorder hover:border-brand-ashokaBlue hover:shadow-md transition-all group flex flex-col justify-between">
+          <div class="space-y-3">
+            <span class="text-[10px] font-bold text-brand-ashokaBlue uppercase tracking-wider">Statutory Interpretation</span>
+            <p class="font-heading font-semibold text-base text-brand-navy group-hover:text-brand-ashokaBlue">
+              "Explain this section of an Indian Act in simple, straightforward language."
+            </p>
+          </div>
+          <div class="mt-6 flex items-center justify-between text-xs text-brand-slate">
+            <span>e.g., Section 528 BNSS</span>
+            <span class="text-brand-ashokaBlue font-bold group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </div>
+        </a>
+
+        <a href="#showcase" class="bg-white p-6 rounded-xl border border-brand-ivoryBorder hover:border-brand-ashokaBlue hover:shadow-md transition-all group flex flex-col justify-between">
+          <div class="space-y-3">
+            <span class="text-[10px] font-bold text-brand-saffron uppercase tracking-wider">Legal Definitions</span>
+            <p class="font-heading font-semibold text-base text-brand-navy group-hover:text-brand-ashokaBlue">
+              "What does the term 'Mens Rea' mean in commercial fraud allegations?"
+            </p>
+          </div>
+          <div class="mt-6 flex items-center justify-between text-xs text-brand-slate">
+            <span>Essential Ingredients</span>
+            <span class="text-brand-ashokaBlue font-bold group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </div>
+        </a>
+
+        <a href="#showcase" class="bg-white p-6 rounded-xl border border-brand-ivoryBorder hover:border-brand-ashokaBlue hover:shadow-md transition-all group flex flex-col justify-between">
+          <div class="space-y-3">
+            <span class="text-[10px] font-bold text-brand-forest uppercase tracking-wider">Issue Mapping</span>
+            <p class="font-heading font-semibold text-base text-brand-navy group-hover:text-brand-ashokaBlue">
+              "Which legal provisions may be relevant to an employer withholding relieving letters?"
+            </p>
+          </div>
+          <div class="mt-6 flex items-center justify-between text-xs text-brand-slate">
+            <span>Civil &amp; Contractual</span>
+            <span class="text-brand-ashokaBlue font-bold group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </div>
+        </a>
+
+        <a href="#showcase" class="bg-white p-6 rounded-xl border border-brand-ivoryBorder hover:border-brand-ashokaBlue hover:shadow-md transition-all group flex flex-col justify-between">
+          <div class="space-y-3">
+            <span class="text-[10px] font-bold text-brand-ashokaBlue uppercase tracking-wider">Comparative Analysis</span>
+            <p class="font-heading font-semibold text-base text-brand-navy group-hover:text-brand-ashokaBlue">
+              "Help me understand the key differences between Section 482 CrPC and Section 528 BNSS."
+            </p>
+          </div>
+          <div class="mt-6 flex items-center justify-between text-xs text-brand-slate">
+            <span>Criminal Transition</span>
+            <span class="text-brand-ashokaBlue font-bold group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </div>
+        </a>
+
+        <a href="#showcase" class="bg-white p-6 rounded-xl border border-brand-ivoryBorder hover:border-brand-ashokaBlue hover:shadow-md transition-all group flex flex-col justify-between">
+          <div class="space-y-3">
+            <span class="text-[10px] font-bold text-brand-forest uppercase tracking-wider">Source Discovery</span>
+            <p class="font-heading font-semibold text-base text-brand-navy group-hover:text-brand-ashokaBlue">
+              "How can I find the original Gazette notification for DPDP Act enforcement dates?"
+            </p>
+          </div>
+          <div class="mt-6 flex items-center justify-between text-xs text-brand-slate">
+            <span>Primary Gazette</span>
+            <span class="text-brand-ashokaBlue font-bold group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </div>
+        </a>
+
+        <a href="#showcase" class="bg-white p-6 rounded-xl border border-brand-ivoryBorder hover:border-brand-ashokaBlue hover:shadow-md transition-all group flex flex-col justify-between">
+          <div class="space-y-3">
+            <span class="text-[10px] font-bold text-brand-saffron uppercase tracking-wider">Commencement Timeline</span>
+            <p class="font-heading font-semibold text-base text-brand-navy group-hover:text-brand-ashokaBlue">
+              "Has Section 106(2) of BNS regarding hit-and-run penalties come into force yet?"
+            </p>
+          </div>
+          <div class="mt-6 flex items-center justify-between text-xs text-brand-slate">
+            <span>Commencement Status</span>
+            <span class="text-brand-ashokaBlue font-bold group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </div>
+        </a>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 13: RESPONSIBLE LEGAL AI ================= -->
+  <section class="py-20 bg-white border-b border-brand-ivoryBorder">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="max-w-3xl space-y-4 mb-14">
+        <span class="text-xs font-bold tracking-widest text-brand-slate uppercase">Ethical Governance</span>
+        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-brand-navy tracking-tight">
+          Useful legal information begins with clear boundaries.
+        </h2>
+        <p class="text-base text-brand-slate leading-relaxed">
+          LegalMitra is designed to empower understanding, not circumvent legal counsel. We operate with strict transparency regarding AI capabilities and jurisdictional limits.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <div class="p-6 rounded-xl bg-brand-ivory border border-brand-ivoryBorder space-y-3">
+          <div class="w-8 h-8 rounded-full bg-brand-navy text-white flex items-center justify-center text-xs font-bold">1</div>
+          <h3 class="font-heading font-bold text-lg text-brand-navy">Information, Not Counsel</h3>
+          <p class="text-xs text-brand-slate leading-relaxed">
+            LegalMitra provides general statutory explanations and research syntheses. It does not replace individualized counsel from a certified advocate enrolled with the Bar Council.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl bg-brand-ivory border border-brand-ivoryBorder space-y-3">
+          <div class="w-8 h-8 rounded-full bg-brand-navy text-white flex items-center justify-center text-xs font-bold">2</div>
+          <h3 class="font-heading font-bold text-lg text-brand-navy">Sources Over Assumptions</h3>
+          <p class="text-xs text-brand-slate leading-relaxed">
+            Users are continuously encouraged to inspect cited primary source documents. When authoritative evidence is absent or ambiguous, the engine states its limits plainly.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-xl bg-brand-ivory border border-brand-ivoryBorder space-y-3">
+          <div class="w-8 h-8 rounded-full bg-brand-navy text-white flex items-center justify-center text-xs font-bold">3</div>
+          <h3 class="font-heading font-bold text-lg text-brand-navy">Context Matters</h3>
+          <p class="text-xs text-brand-slate leading-relaxed">
+            A single differing fact, limitation date, or State amendment can fundamentally transform legal outcomes. General intelligence is the start of research, not the verdict.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 14: FREQUENTLY ASKED QUESTIONS ================= -->
+  <section id="faq" class="py-24 bg-brand-ivory border-b border-brand-ivoryBorder">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center space-y-4 mb-16">
+        <span class="text-xs font-bold tracking-widest text-brand-ashokaBlue uppercase">Answers to Inquiries</span>
+        <h2 class="font-heading font-extrabold text-3xl sm:text-4xl text-brand-navy tracking-tight">
+          Frequently Asked Questions
+        </h2>
+        <p class="text-base text-brand-slate">
+          Understand how LegalMitra indexes Indian statutes, maintains primary sources, and formats research.
+        </p>
+      </div>
+
+      <!-- FAQ Accordions -->
+      <div class="space-y-4">
+        
+        <!-- FAQ 1 -->
+        <details class="bg-white rounded-xl border border-brand-ivoryBorder p-5 group open:border-brand-ashokaBlue shadow-sm transition-all" open>
+          <summary class="font-heading font-bold text-base text-brand-navy cursor-pointer flex items-center justify-between list-none">
+            <span>What is LegalMitra?</span>
+            <span class="text-brand-slate group-open:rotate-180 transition-transform">&darr;</span>
+          </summary>
+          <p class="text-sm text-brand-slate mt-3 leading-relaxed border-t border-brand-ivoryBorder pt-3">
+            LegalMitra is an AI-powered legal intelligence platform specifically engineered around Indian law. It assists citizens, legal researchers, corporate teams, and advocates by synthesizing complex statutes, court judgments, and procedural guidelines into structured, source-linked explanations.
+          </p>
+        </details>
+
+        <!-- FAQ 2 -->
+        <details class="bg-white rounded-xl border border-brand-ivoryBorder p-5 group open:border-brand-ashokaBlue shadow-sm transition-all">
+          <summary class="font-heading font-bold text-base text-brand-navy cursor-pointer flex items-center justify-between list-none">
+            <span>Which country's laws does LegalMitra focus on?</span>
+            <span class="text-brand-slate group-open:rotate-180 transition-transform">&darr;</span>
+          </summary>
+          <p class="text-sm text-brand-slate mt-3 leading-relaxed border-t border-brand-ivoryBorder pt-3">
+            LegalMitra is exclusively focused on the legal framework of the Republic of India — including Central Acts, State amendments, Supreme Court and High Court precedents, and official Ministry gazette notifications.
+          </p>
+        </details>
+
+        <!-- FAQ 3 -->
+        <details class="bg-white rounded-xl border border-brand-ivoryBorder p-5 group open:border-brand-ashokaBlue shadow-sm transition-all">
+          <summary class="font-heading font-bold text-base text-brand-navy cursor-pointer flex items-center justify-between list-none">
+            <span>Can I ask questions in everyday language?</span>
+            <span class="text-brand-slate group-open:rotate-180 transition-transform">&darr;</span>
+          </summary>
+          <p class="text-sm text-brand-slate mt-3 leading-relaxed border-t border-brand-ivoryBorder pt-3">
+            Yes. You do not need to memorize section numbers or Latin legal terms. You can describe your situation in plain English, and LegalMitra maps your facts to relevant statutory provisions and case precedents.
+          </p>
+        </details>
+
+        <!-- FAQ 4 -->
+        <details class="bg-white rounded-xl border border-brand-ivoryBorder p-5 group open:border-brand-ashokaBlue shadow-sm transition-all">
+          <summary class="font-heading font-bold text-base text-brand-navy cursor-pointer flex items-center justify-between list-none">
+            <span>Does LegalMitra provide links to primary legal sources?</span>
+            <span class="text-brand-slate group-open:rotate-180 transition-transform">&darr;</span>
+          </summary>
+          <p class="text-sm text-brand-slate mt-3 leading-relaxed border-t border-brand-ivoryBorder pt-3">
+            Yes. Every substantive legal response includes a dedicated source panel displaying the governing Act, section number, official Gazette reference, or Supreme Court citation, with links to inspect primary texts whenever indexed.
+          </p>
+        </details>
+
+        <!-- FAQ 5 -->
+        <details class="bg-white rounded-xl border border-brand-ivoryBorder p-5 group open:border-brand-ashokaBlue shadow-sm transition-all">
+          <summary class="font-heading font-bold text-base text-brand-navy cursor-pointer flex items-center justify-between list-none">
+            <span>Can I rely on LegalMitra as legal advice?</span>
+            <span class="text-brand-slate group-open:rotate-180 transition-transform">&darr;</span>
+          </summary>
+          <p class="text-sm text-brand-slate mt-3 leading-relaxed border-t border-brand-ivoryBorder pt-3">
+            No. LegalMitra provides legal information and research assistance, not advocate-client representation or formal legal advice. If you have an active litigation matter or contentious dispute, you should consult an enrolled advocate.
+          </p>
+        </details>
+
+        <!-- FAQ 6 -->
+        <details class="bg-white rounded-xl border border-brand-ivoryBorder p-5 group open:border-brand-ashokaBlue shadow-sm transition-all">
+          <summary class="font-heading font-bold text-base text-brand-navy cursor-pointer flex items-center justify-between list-none">
+            <span>Does the commencement date of an Indian law matter?</span>
+            <span class="text-brand-slate group-open:rotate-180 transition-transform">&darr;</span>
+          </summary>
+          <p class="text-sm text-brand-slate mt-3 leading-relaxed border-t border-brand-ivoryBorder pt-3">
+            Critically so. In India, Parliament often passes an Act that comes into force only when appointed by subsequent Ministry Gazette notifications. LegalMitra tracks these commencement dates so users don't mistakenly cite provisions that are not yet active.
+          </p>
+        </details>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 15: FINAL CTA ================= -->
+  <section class="py-28 bg-brand-navy text-white relative overflow-hidden ashoka-pattern-dark">
+    <!-- Concentric Decorative Geometry -->
+    <div class="absolute inset-0 pointer-events-none flex items-center justify-center opacity-10">
+      <svg class="w-[900px] h-[900px] text-white" viewBox="0 0 100 100" fill="none">
+        <circle cx="50" cy="50" r="48" stroke="currentColor" stroke-width="0.5"/>
+        <circle cx="50" cy="50" r="32" stroke="currentColor" stroke-width="0.5"/>
+        <circle cx="50" cy="50" r="16" stroke="currentColor" stroke-width="0.5"/>
+      </svg>
+    </div>
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-8">
+      
+      <!-- Small Emblem -->
+      <div class="w-12 h-12 rounded-xl bg-white/10 mx-auto flex items-center justify-center text-brand-saffron border border-white/20 shadow-lg">
+        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 3v18M3 12h18"/>
+          <circle cx="12" cy="12" r="2" fill="#D99A35"/>
+        </svg>
+      </div>
+
+      <div class="space-y-4">
+        <h2 class="font-heading font-extrabold text-3xl sm:text-5xl tracking-tight text-white max-w-2xl mx-auto leading-tight">
+          A better understanding of Indian law starts with a question.
+        </h2>
+        <p class="text-base sm:text-lg text-white/70 max-w-xl mx-auto leading-relaxed">
+          Explore legal provisions, understand important judicial doctrines, and examine primary sources with dignity and confidence.
+        </p>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-5 pt-4">
+        <a href="#showcase" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-brand-saffron hover:bg-brand-saffron/90 text-brand-navyDark font-extrabold px-8 py-4 rounded-xl shadow-lg transition-transform transform active:scale-95 text-base">
+          <span>Start a Conversation</span>
+          <svg class="w-5 h-5 text-brand-navyDark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+        <a href="#domains" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold px-8 py-4 rounded-xl shadow-sm transition-all text-base">
+          <span>Explore Legal Topics</span>
+        </a>
+      </div>
+
+      <div class="text-xs text-white/50 pt-6">
+        No credit card required &bull; Free public access to core Indian statutory intelligence
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= SECTION 16: FOOTER ================= -->
+  <footer class="bg-brand-navyDark text-white border-t border-white/10 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
+        
+        <!-- Brand Column (2 cols) -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center space-x-3">
+            <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-white">
+              <span class="text-xs font-bold text-brand-saffron">LM</span>
+            </div>
+            <span class="font-heading font-extrabold text-xl tracking-tight text-white">LegalMitra</span>
+          </div>
+          <p class="text-xs text-white/70 max-w-sm leading-relaxed">
+            Indian Legal Intelligence platform. Making Indian legal information easier to understand through source-grounded artificial intelligence and constitutional modernism.
+          </p>
+          <div class="text-[11px] text-white/40">
+            Jurisdiction: Union &amp; State Laws of the Republic of India &bull; 2024–2025
+          </div>
+        </div>
+
+        <!-- Product Links -->
+        <div class="space-y-3">
+          <div class="text-xs font-bold uppercase tracking-wider text-brand-saffron">Product</div>
+          <ul class="space-y-2 text-xs text-white/70">
+            <li><a href="#showcase" class="hover:text-white transition-colors">Chatbot Assistant</a></li>
+            <li><a href="#showcase" class="hover:text-white transition-colors">Capabilities</a></li>
+            <li><a href="#domains" class="hover:text-white transition-colors">Legal Topics</a></li>
+            <li><a href="#sources" class="hover:text-white transition-colors">Primary Sources</a></li>
+            <li><a href="#how-it-works" class="hover:text-white transition-colors">How It Works</a></li>
+          </ul>
+        </div>
+
+        <!-- Information Links -->
+        <div class="space-y-3">
+          <div class="text-xs font-bold uppercase tracking-wider text-brand-saffron">Information</div>
+          <ul class="space-y-2 text-xs text-white/70">
+            <li><a href="#" class="hover:text-white transition-colors">About LegalMitra</a></li>
+            <li><a href="#faq" class="hover:text-white transition-colors">FAQs</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Methodology</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Contact Support</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Research Partners</a></li>
+          </ul>
+        </div>
+
+        <!-- Policy & Governance -->
+        <div class="space-y-3">
+          <div class="text-xs font-bold uppercase tracking-wider text-brand-saffron">Governance</div>
+          <ul class="space-y-2 text-xs text-white/70">
+            <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Terms of Use</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Legal Disclaimer</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Responsible AI</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar with Explicit Advocate Disclaimer -->
+      <div class="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-white/50 space-y-4 md:space-y-0">
+        <div>
+          &copy; 2025 LegalMitra. All rights reserved. Original Brand Identity.
+        </div>
+        <div class="max-w-xl text-center md:text-right text-[11px] text-white/40">
+          LegalMitra provides general statutory information and research syntheses. It is not an automated judicial pronouncement nor a substitute for counsel from a qualified advocate enrolled with the Bar Council of India.
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+</html>

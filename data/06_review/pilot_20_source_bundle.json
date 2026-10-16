@@ -1,0 +1,912 @@
+{
+  "bundle_version": "1.0.0",
+  "generated_at": "2026-10-16",
+  "audit_phase": "Phase 7.2 Advocate Review Package",
+  "total_records": 20,
+  "review_status_summary": {
+    "pending_legal_review": 20,
+    "approved": 0,
+    "rejected": 0,
+    "revision_required": 0
+  },
+  "records": [
+    {
+      "record_id": "QA-PILOT-DPDP-001",
+      "category": "DPDP & IT Act Statutory QA",
+      "question": "Under the enacted statutory text of Section 11 of the Digital Personal Data Protection Act, 2023 (scheduled to commence on 13 May 2027 under G.S.R. 843(E)), what specific information will a Data Principal be entitled to obtain from a Data Fiduciary?",
+      "proposed_answer": "Under the enacted statutory scheme of Section 11(1) of the Digital Personal Data Protection Act, 2023 (which is scheduled to commence on 13 May 2027 pursuant to Notification G.S.R. 843(E) and is not yet in force as of 16 October 2026), a Data Principal who has previously given consent will have the right to obtain from the Data Fiduciary upon request: (a) a summary of personal data which is being processed by such Data Fiduciary and the processing activities undertaken with respect to such personal data; (b) the identities of all other Data Fiduciaries and Data Processors with whom the personal data has been shared, along with a description of the personal data so shared; and (c) any other information related to the personal data and its processing as may be prescribed.",
+      "legal_as_of_date": "2026-10-16",
+      "temporal_metadata": {
+        "law_status_label": "enacted_not_yet_in_force",
+        "provision_commencement_status": "uncommenced",
+        "commencement_source_id": "IND-NOTIF-MEITY-GSR-843E-2025",
+        "commencement_date": "2027-05-13",
+        "temporal_validation_status": "verified_future_commencement",
+        "repealed_statute_context": null,
+        "repealed_statute_status": null
+      },
+      "statutory_citations": [
+        "Section 11, Digital Personal Data Protection Act, 2023"
+      ],
+      "evidence_passages": [
+        {
+          "source_id": "IND-STAT-DPDP-2023",
+          "section_or_para_ref": "Section 11(1)",
+          "verbatim_text": "11. Right to access information about personal data.-(1) The Data Principal shall have the right to obtain from the Data Fiduciary to whom she has previously given consent, including consent as referred to in clause (a) of section 7 (hereinafter referred to as the said Data Fiduciary), for processing of personal data, upon making to it a request in such manner as may be prescribed,-\n\n(a) a summary of personal data which is being processed by such Data Fiduciary and the processing activities undertaken by that Data Fiduciary with respect to such personal data;\n\n(b) the identities of all other Data Fiduciaries and Data Processors with whom the personal data has been shared by such Data Fiduciary, along with a description of the personal data so shared; and\n\n(c) any other information related to the personal data of such Data Principal and its processing, as may be prescribed.",
+          "page_number": 6
+        }
+      ],
+      "supporting_sources": [
+        {
+          "document_id": "IND-STAT-DPDP-2023",
+          "title": "The Digital Personal Data Protection Act, 2023 (Act No. 22 of 2023)",
+          "source_url": "https://indiacode.gov.in/handle/123456789/496508",
+          "source_type": "statute",
+          "document_date": "2023-08-11",
+          "effective_date": null,
+          "licence_or_terms": "Government of India Open Data License (GODL-India) / Official Gazette",
+          "checksum": "dda561b9fd6420e1b99157b60f92bb0470a6154c6d559bbee3482ac255ac2c24"
+        }
+      ],
+      "specific_advocate_question": "Does the answer accurately reflect the scope of information a Data Principal may request under s. 11(1), and is the distinction between 'summary of personal data' and raw data clear?",
+      "review_status": "pending_legal_review",
+      "decision": null
+    },
+    {
+      "record_id": "QA-PILOT-DPDP-002",
+      "category": "DPDP & IT Act Statutory QA",
+      "question": "What statutory duties are established for a Data Fiduciary regarding correction, completion, updating, and erasure under the enacted text of Section 12 of the DPDP Act, 2023 once it comes into force?",
+      "proposed_answer": "Under the enacted text of Section 12 of the Digital Personal Data Protection Act, 2023 (appointed to commence on 13 May 2027 under G.S.R. 843(E) and not yet in force as of 16 October 2026), a Data Principal will possess statutory rights under Section 12(1) to correction, completion, updating, and erasure of personal data. Upon receiving such a request, under Section 12(2) the Data Fiduciary shall: (a) correct inaccurate or misleading personal data; (b) complete incomplete personal data; and (c) update the personal data. Furthermore, under Section 12(3), upon receiving an erasure request, the Data Fiduciary shall erase the personal data unless retention is necessary for the specified purpose or legal compliance.",
+      "legal_as_of_date": "2026-10-16",
+      "temporal_metadata": {
+        "law_status_label": "enacted_not_yet_in_force",
+        "provision_commencement_status": "uncommenced",
+        "commencement_source_id": "IND-NOTIF-MEITY-GSR-843E-2025",
+        "commencement_date": "2027-05-13",
+        "temporal_validation_status": "verified_future_commencement",
+        "repealed_statute_context": null,
+        "repealed_statute_status": null
+      },
+      "statutory_citations": [
+        "Section 12, Digital Personal Data Protection Act, 2023"
+      ],
+      "evidence_passages": [
+        {
+          "source_id": "IND-STAT-DPDP-2023",
+          "section_or_para_ref": "Section 12",
+          "verbatim_text": "12. Right to correction and erasure of personal data.-(1) A Data Principal shall have the right to correction, completion, updating and erasure of her personal data for the processing of which she has previously given consent, including consent as referred to in clause (a) of section 7, in accordance with any requirement or procedure under any law for the time being in force.\n\n(2) A Data Fiduciary shall, upon receiving a request for correction, completion or updating from a Data Principal,-\n\n(a) correct the inaccurate or misleading personal data;\n\n- (b) complete the incomplete personal data; and\n- (c) update the personal data.\n\n(3) A Data Principal shall make a request in such manner as may be prescribed to the Data Fiduciary for erasure of her personal data, and upon receipt of such a request, the Data Fiduciary shall erase her personal data unless retention of the same is necessary for the specified purpose or for compliance with any law for the time being in force.",
+          "page_number": 6
+        }
+      ],
+      "supporting_sources": [
+        {
+          "document_id": "IND-STAT-DPDP-2023",
+          "title": "The Digital Personal Data Protection Act, 2023 (Act No. 22 of 2023)",
+          "source_url": "https://indiacode.gov.in/handle/123456789/496508",
+          "source_type": "statute",
+          "document_date": "2023-08-11",
+          "effective_date": null,
+          "licence_or_terms": "Government of India Open Data License (GODL-India) / Official Gazette",
+          "checksum": "dda561b9fd6420e1b99157b60f92bb0470a6154c6d559bbee3482ac255ac2c24"
+        }
+      ],
+      "specific_advocate_question": "Under s. 12(3), does the exception ('unless retention of the same is necessary for the specified purpose or for compliance with any law') warrant additional qualification regarding pending tax/regulatory audits?",
+      "review_status": "pending_legal_review",
+      "decision": null
+    },
+    {
+      "record_id": "QA-PILOT-DPDP-003",
+      "category": "DPDP & IT Act Statutory QA",
+      "question": "Under the enacted scheme of Section 13 of the Digital Personal Data Protection Act, 2023, must a Data Principal exhaust internal grievance redressal mechanisms before approaching the Data Protection Board of India?",
+      "proposed_answer": "Yes. Under the enacted statutory provisions of Section 13 of the Digital Personal Data Protection Act, 2023 (scheduled to commence on 13 May 2027 pursuant to Notification G.S.R. 843(E) and not yet in force as of 16 October 2026), a Data Principal will have readily available means of grievance redressal under Section 13(1). Section 13(3) explicitly dictates that the Data Principal shall exhaust the opportunity of redressing her grievance under Section 13 before approaching the Data Protection Board.",
+      "legal_as_of_date": "2026-10-16",
+      "temporal_metadata": {
+        "law_status_label": "enacted_not_yet_in_force",
+        "provision_commencement_status": "uncommenced",
+        "commencement_source_id": "IND-NOTIF-MEITY-GSR-843E-2025",
+        "commencement_date": "2027-05-13",
+        "temporal_validation_status": "verified_future_commencement",
+        "repealed_statute_context": null,
+        "repealed_statute_status": null
+      },
+      "statutory_citations": [
+        "Section 13, Digital Personal Data Protection Act, 2023"
+      ],
+      "evidence_passages": [
+        {
+          "source_id": "IND-STAT-DPDP-2023",
+          "section_or_para_ref": "Section 13",
+          "verbatim_text": "13. Right of grievance redressal.-(1) A Data Principal shall have the right to have readily available means of grievance redressal provided by a Data Fiduciary or Consent Manager in respect of any act or omission of such Data Fiduciary or Consent Manager regarding the performance of its obligations in relation to the personal data of such Data Principal or the exercise of her rights under the provisions of this Act and the rules made thereunder.\n\n(2) The Data Fiduciary or Consent Manager shall respond to any grievances referred to in sub-section (1) within such period as may be prescribed from the date of its receipt for all or any class of Data Fiduciaries.\n\n(3) The Data Principal shall exhaust the opportunity of redressing her grievance under this section before approaching the Board.",
+          "page_number": 7
+        }
+      ],
+      "supporting_sources": [
+        {
+          "document_id": "IND-STAT-DPDP-2023",
+          "title": "The Digital Personal Data Protection Act, 2023 (Act No. 22 of 2023)",
+          "source_url": "https://indiacode.gov.in/handle/123456789/496508",
+          "source_type": "statute",
+          "document_date": "2023-08-11",
+          "effective_date": null,
+          "licence_or_terms": "Government of India Open Data License (GODL-India) / Official Gazette",
+          "checksum": "dda561b9fd6420e1b99157b60f92bb0470a6154c6d559bbee3482ac255ac2c24"
+        }
+      ],
+      "specific_advocate_question": "Is the requirement under s. 13(3) to 'exhaust the opportunity of redressing her grievance' an absolute statutory bar to directly filing a complaint before the Data Protection Board under s. 27(1)(a)?",
+      "review_status": "pending_legal_review",
+      "decision": null
+    },
+    {
+      "record_id": "QA-PILOT-DPDP-004",
+      "category": "DPDP & IT Act Statutory QA",
+      "question": "What statutory obligation will be placed upon a Data Fiduciary to protect personal data by taking security safeguards under the enacted Section 8(5) of the DPDP Act, 2023, and what is its commencement status?",
+      "proposed_answer": "Under the enacted text of Section 8(5) of the Digital Personal Data Protection Act, 2023 (which commences on 13 May 2027 under Notification G.S.R. 843(E) and is uncommenced as of 16 October 2026), a Data Fiduciary is mandated to protect personal data in its possession or under its control, including in respect of any processing undertaken by it or on its behalf by a Data Processor, by taking reasonable security safeguards to prevent personal data breach. (Note: As of October 2026 prior to the 13 May 2027 commencement, data protection security requirements under existing law remain governed under the Information Technology Act, 2000).",
+      "legal_as_of_date": "2026-10-16",
+      "temporal_metadata": {
+        "law_status_label": "enacted_not_yet_in_force",
+        "provision_commencement_status": "uncommenced",
+        "commencement_source_id": "IND-NOTIF-MEITY-GSR-843E-2025",
+        "commencement_date": "2027-05-13",
+        "temporal_validation_status": "verified_future_commencement",
+        "repealed_statute_context": null,
+        "repealed_statute_status": null
+      },
+      "statutory_citations": [
+        "Section 8(5), Digital Personal Data Protection Act, 2023"
+      ],
+      "evidence_passages": [
+        {
+          "source_id": "IND-STAT-DPDP-2023",
+          "section_or_para_ref": "Section 8(5)",
+          "verbatim_text": "(5) A Data Fiduciary shall protect personal data in its possession or under its control, including in respect of any processing undertaken by it or on its behalf by a Data Processor, by taking reasonable security safeguards to prevent personal data breach.",
+          "page_number": 4
+        }
+      ],
+      "supporting_sources": [
+        {
+          "document_id": "IND-STAT-DPDP-2023",
+          "title": "The Digital Personal Data Protection Act, 2023 (Act No. 22 of 2023)",
+          "source_url": "https://indiacode.gov.in/handle/123456789/496508",
+          "source_type": "statute",
+          "document_date": "2023-08-11",
+          "effective_date": null,
+          "licence_or_terms": "Government of India Open Data License (GODL-India) / Official Gazette",
+          "checksum": "dda561b9fd6420e1b99157b60f92bb0470a6154c6d559bbee3482ac255ac2c24"
+        }
+      ],
+      "specific_advocate_question": "Under s. 8(5), does the standard of 'reasonable security safeguards' leave liability open under common law/IT Act until 13 May 2027, and does the note on existing law sufficiently guide counsel?",
+      "review_status": "pending_legal_review",
+      "decision": null
+    },
+    {
+      "record_id": "QA-PILOT-DPDP-005",
+      "category": "DPDP & IT Act Statutory QA",
+      "question": "What legal requirements must be fulfilled for consent given by a Data Principal under the enacted provisions of Section 6(1) of the DPDP Act, 2023, and when do they take effect?",
+      "proposed_answer": "Under the enacted text of Section 6(1) of the Digital Personal Data Protection Act, 2023 (scheduled for commencement on 13 May 2027 under Notification G.S.R. 843(E) and not yet in force as of 16 October 2026), consent given by the Data Principal shall be free, specific, informed, unconditional, and unambiguous with a clear affirmative action. It must signify an agreement to the processing of her personal data for the specified purpose and be limited to such personal data as is necessary for such specified purpose.",
+      "legal_as_of_date": "2026-10-16",
+      "temporal_metadata": {
+        "law_status_label": "enacted_not_yet_in_force",
+        "provision_commencement_status": "uncommenced",
+        "commencement_source_id": "IND-NOTIF-MEITY-GSR-843E-2025",
+        "commencement_date": "2027-05-13",
+        "temporal_validation_status": "verified_future_commencement",
+        "repealed_statute_context": null,
+        "repealed_statute_status": null
+      },
+      "statutory_citations": [
+        "Section 6(1), Digital Personal Data Protection Act, 2023"
+      ],
+      "evidence_passages": [
+        {
+          "source_id": "IND-STAT-DPDP-2023",
+          "section_or_para_ref": "Section 6(1)",
+          "verbatim_text": "6. Consent.--(1) The consent given by the Data Principal shall be free, specific, informed, unconditional and unambiguous with a clear affirmative action, and shall signify an agreement to the processing of her personal data for the specified purpose and be limited to such personal data as is necessary for such specified purpose.",
+          "page_number": 3
+        }
+      ],
+      "supporting_sources": [
+        {
+          "document_id": "IND-STAT-DPDP-2023",
+          "title": "The Digital Personal Data Protection Act, 2023 (Act No. 22 of 2023)",
+          "source_url": "https://indiacode.gov.in/handle/123456789/496508",
+          "source_type": "statute",
+          "document_date": "2023-08-11",
+          "effective_date": null,
+          "licence_or_terms": "Government of India Open Data License (GODL-India) / Official Gazette",
+          "checksum": "dda561b9fd6420e1b99157b60f92bb0470a6154c6d559bbee3482ac255ac2c24"
+        }
+      ],
+      "specific_advocate_question": "Regarding s. 6(1), is the interaction between Section 6 consent and Section 7 'legitimate uses' adequately distinguished?",
+      "review_status": "pending_legal_review",
+      "decision": null
+    },
+    {
+      "record_id": "QA-PILOT-DPDP-006",
+      "category": "DPDP & IT Act Statutory QA",
+      "question": "Under the enacted provisions of Section 8(6) of the DPDP Act, 2023, who must be notified by the Data Fiduciary in the event of a personal data breach once the section commences?",
+      "proposed_answer": "Under Section 8(6) of the Digital Personal Data Protection Act, 2023 (enacted and appointed to commence on 13 May 2027 under Notification G.S.R. 843(E), hence uncommenced as of 16 October 2026), in the event of a personal data breach, the Data Fiduciary shall give intimation of such breach to both the Data Protection Board of India and each affected Data Principal, in such form and manner as may be prescribed.",
+      "legal_as_of_date": "2026-10-16",
+      "temporal_metadata": {
+        "law_status_label": "enacted_not_yet_in_force",
+        "provision_commencement_status": "uncommenced",
+        "commencement_source_id": "IND-NOTIF-MEITY-GSR-843E-2025",
+        "commencement_date": "2027-05-13",
+        "temporal_validation_status": "verified_future_commencement",
+        "repealed_statute_context": null,
+        "repealed_statute_status": null
+      },
+      "statutory_citations": [
+        "Section 8(6), Digital Personal Data Protection Act, 2023"
+      ],
+      "evidence_passages": [
+        {
+          "source_id": "IND-STAT-DPDP-2023",
+          "section_or_para_ref": "Section 8(6)",
+          "verbatim_text": "(6) In the event of a personal data breach, the Data Fiduciary shall give the Board and each affected Data Principal, intimation of such breach in such form and manner as may be prescribed.",
+          "page_number": 4
+        }
+      ],
+      "supporting_sources": [
+        {
+          "document_id": "IND-STAT-DPDP-2023",
+          "title": "The Digital Personal Data Protection Act, 2023 (Act No. 22 of 2023)",
+          "source_url": "https://indiacode.gov.in/handle/123456789/496508",
+          "source_type": "statute",
+          "document_date": "2023-08-11",
+          "effective_date": null,
+          "licence_or_terms": "Government of India Open Data License (GODL-India) / Official Gazette",
+          "checksum": "dda561b9fd6420e1b99157b60f92bb0470a6154c6d559bbee3482ac255ac2c24"
+        }
+      ],
+      "specific_advocate_question": "In s. 8(6), does 'each affected Data Principal' impose a strict obligation to notify without a materiality/risk threshold, and will this require subordinate rules clarification?",
+      "review_status": "pending_legal_review",
+      "decision": null
+    },
+    {
+      "record_id": "QA-PILOT-DPDP-007",
+      "category": "DPDP & IT Act Statutory QA",
+      "question": "Under the enacted statutory text of Section 33(1) of the DPDP Act, 2023, what prerequisites govern the imposition of monetary penalties by the Board once the penal provisions commence?",
+      "proposed_answer": "Under the enacted provisions of Section 33(1) of the Digital Personal Data Protection Act, 2023 (scheduled to commence on 13 May 2027 under G.S.R. 843(E) and uncommenced as of 16 October 2026), if the Board determines on conclusion of an inquiry that breach of the provisions of the Act or rules by a person is significant, it may, after giving the person an opportunity of being heard, impose such monetary penalty specified in the Schedule.",
+      "legal_as_of_date": "2026-10-16",
+      "temporal_metadata": {
+        "law_status_label": "enacted_not_yet_in_force",
+        "provision_commencement_status": "uncommenced",
+        "commencement_source_id": "IND-NOTIF-MEITY-GSR-843E-2025",
+        "commencement_date": "2027-05-13",
+        "temporal_validation_status": "verified_future_commencement",
+        "repealed_statute_context": null,
+        "repealed_statute_status": null
+      },
+      "statutory_citations": [
+        "Section 33(1), Digital Personal Data Protection Act, 2023"
+      ],
+      "evidence_passages": [
+        {
+          "source_id": "IND-STAT-DPDP-2023",
+          "section_or_para_ref": "Section 33(1)",
+          "verbatim_text": "33. Penalties.-(1) If the Board determines on conclusion of an inquiry that breach of the provisions of this Act or the rules made thereunder by a person is significant, it may, after giving the person an opportunity of being heard, impose such monetary penalty specified in the Schedule.",
+          "page_number": 13
+        }
+      ],
+      "supporting_sources": [
+        {
+          "document_id": "IND-STAT-DPDP-2023",
+          "title": "The Digital Personal Data Protection Act, 2023 (Act No. 22 of 2023)",
+          "source_url": "https://indiacode.gov.in/handle/123456789/496508",
+          "source_type": "statute",
+          "document_date": "2023-08-11",
+          "effective_date": null,
+          "licence_or_terms": "Government of India Open Data License (GODL-India) / Official Gazette",
+          "checksum": "dda561b9fd6420e1b99157b60f92bb0470a6154c6d559bbee3482ac255ac2c24"
+        }
+      ],
+      "specific_advocate_question": "Does the phrase 'determines on conclusion of an inquiry that breach... is significant' in s. 33(1) create a statutory jurisdictional prerequisite before penalties can be imposed?",
+      "review_status": "pending_legal_review",
+      "decision": null
+    },
+    {
+      "record_id": "QA-PILOT-DPDP-008",
+      "category": "DPDP & IT Act Statutory QA",
+      "question": "What maximum monetary penalty is prescribed under Item 1 of the Schedule to the DPDP Act, 2023 for failure by a Data Fiduciary to observe reasonable security safeguards under Section 8(5) upon commencement?",
+      "proposed_answer": "Under the enacted text of Item 1 of the Schedule to the Digital Personal Data Protection Act, 2023 (read with Section 33(1), scheduled to commence on 13 May 2027 pursuant to Notification G.S.R. 843(E) and not yet in force as of 16 October 2026), for a breach in observing the obligation of a Data Fiduciary to take reasonable security safeguards to prevent personal data breach under Section 8(5), the monetary penalty may extend to two hundred and fifty crore rupees.",
+      "legal_as_of_date": "2026-10-16",
+      "temporal_metadata": {
+        "law_status_label": "enacted_not_yet_in_force",
+        "provision_commencement_status": "uncommenced",
+        "commencement_source_id": "IND-NOTIF-MEITY-GSR-843E-2025",
+        "commencement_date": "2027-05-13",
+        "temporal_validation_status": "verified_future_commencement",
+        "repealed_statute_context": null,
+        "repealed_statute_status": null
+      },
+      "statutory_citations": [
+        "Section 8(5), Digital Personal Data Protection Act, 2023",
+        "Section 33, Digital Personal Data Protection Act, 2023"
+      ],
+      "evidence_passages": [
+        {
+          "source_id": "IND-STAT-DPDP-2023",
+          "section_or_para_ref": "Section 33(1)",
+          "verbatim_text": "33. Penalties.-(1) If the Board determines on conclusion of an inquiry that breach of the provisions of this Act or the rules made thereunder by a person is significant, it may, after giving the person an opportunity of being heard, impose such monetary penalty specified in the Schedule.",
+          "page_number": 13
+        },
+        {
+          "source_id": "IND-STAT-DPDP-2023",
+          "section_or_para_ref": "Schedule Item 1 and Section 8(5)",
+          "verbatim_text": "| 1.        | Breach in observing the obligation of Data Fiduciary to take reasonable security safeguards to prevent personal data breach under sub-section (5) of section 8. | May extend to two hundred and fifty crore rupees",
+          "page_number": 17
+        }
+      ],
+      "supporting_sources": [
+        {
+          "document_id": "IND-STAT-DPDP-2023",
+          "title": "The Digital Personal Data Protection Act, 2023 (Act No. 22 of 2023)",
+          "source_url": "https://indiacode.gov.in/handle/123456789/496508",
+          "source_type": "statute",
+          "document_date": "2023-08-11",
+          "effective_date": null,
+          "licence_or_terms": "Government of India Open Data License (GODL-India) / Official Gazette",
+          "checksum": "dda561b9fd6420e1b99157b60f92bb0470a6154c6d559bbee3482ac255ac2c24"
+        }
+      ],
+      "specific_advocate_question": "Under Schedule Item 1 read with s. 33(1), is the 250 crore INR maximum penalty correctly cited, and should the guidance mention mitigating factors under s. 33(2)?",
+      "review_status": "pending_legal_review",
+      "decision": null
+    },
+    {
+      "record_id": "QA-PILOT-DPDP-009",
+      "category": "DPDP & IT Act Statutory QA",
+      "question": "What is the operational status of Section 43A of the Information Technology Act, 2000 as of 16 October 2026, and on what exact date does its omission under Section 44(2) of the DPDP Act, 2023 take legal effect?",
+      "proposed_answer": "As of 16 October 2026, Section 43A of the Information Technology Act, 2000 remains operative law and legally enforceable. While Section 44(2)(a) of the Digital Personal Data Protection Act, 2023 provides for the omission of Section 43A, Notification G.S.R. 843(E) (published 13 November 2025) specifies that Section 44(2) commences on the expiry of eighteen months from publication. Computing eighteen calendar months from 13 November 2025 under Section 9 of the General Clauses Act, 1897 establishes that Section 44(2) commences on 13 May 2027. Therefore, prior to 13 May 2027, Section 43A IT Act remains in force.",
+      "legal_as_of_date": "2026-10-16",
+      "temporal_metadata": {
+        "law_status_label": "partially_commenced",
+        "provision_commencement_status": "partial",
+        "commencement_source_id": "IND-NOTIF-MEITY-GSR-843E-2025",
+        "commencement_date": "2027-05-13",
+        "temporal_validation_status": "verified_current",
+        "repealed_statute_context": null,
+        "repealed_statute_status": null
+      },
+      "statutory_citations": [
+        "Section 44(2), Digital Personal Data Protection Act, 2023",
+        "Section 43A, Information Technology Act, 2000"
+      ],
+      "evidence_passages": [
+        {
+          "source_id": "IND-STAT-DPDP-2023",
+          "section_or_para_ref": "Section 44(2) and Section 9 GC Act computation",
+          "verbatim_text": "(2) The Information Technology Act, 2000 (21 of 2000) shall be amended in the following manner, namely:-\n\n(a) section 43A shall be omitted;",
+          "page_number": 16
+        },
+        {
+          "source_id": "IND-STAT-IT-2000",
+          "section_or_para_ref": "Section 43A heading",
+          "verbatim_text": "43A. Compensation for failure to protect data.",
+          "page_number": 28
+        }
+      ],
+      "supporting_sources": [
+        {
+          "document_id": "IND-STAT-DPDP-2023",
+          "title": "The Digital Personal Data Protection Act, 2023 (Act No. 22 of 2023)",
+          "source_url": "https://indiacode.gov.in/handle/123456789/496508",
+          "source_type": "statute",
+          "document_date": "2023-08-11",
+          "effective_date": null,
+          "licence_or_terms": "Government of India Open Data License (GODL-India) / Official Gazette",
+          "checksum": "dda561b9fd6420e1b99157b60f92bb0470a6154c6d559bbee3482ac255ac2c24"
+        },
+        {
+          "document_id": "IND-STAT-IT-2000",
+          "title": "The Information Technology Act, 2000 (Act No. 21 of 2000, as amended)",
+          "source_url": "https://indiacode.gov.in/handle/123456789/496511",
+          "source_type": "statute",
+          "document_date": "2000-06-09",
+          "effective_date": "2000-10-17",
+          "licence_or_terms": "Government of India Open Data License (GODL-India) / India Code",
+          "checksum": "003b3218fe399b293c73f6aef9ca52e5c1d080388c43fb0523572c1dc5f3d529"
+        }
+      ],
+      "specific_advocate_question": "PRIORITY ISSUE 2: Is the computation of 18 calendar months under General Clauses Act s. 9 from 13 Nov 2025 to 13 May 2027 correct, and is s. 43A IT Act without dispute the governing statutory remedy until 13 May 2027?",
+      "review_status": "pending_legal_review",
+      "decision": null
+    },
+    {
+      "record_id": "QA-PILOT-DPDP-010",
+      "category": "DPDP & IT Act Statutory QA",
+      "question": "What consequential amendments does Section 44(2) of the DPDP Act, 2023 make to Section 81 and Section 87 of the Information Technology Act, 2000, and when do they take effect?",
+      "proposed_answer": "Under Section 44(2) of the Digital Personal Data Protection Act, 2023 (scheduled to commence on 13 May 2027 under G.S.R. 843(E) and uncommenced as of 16 October 2026), the Information Technology Act, 2000 is amended as follows: in addition to omitting Section 43A, (b) in Section 81, in the proviso, after the words and figures 'the Patents Act, 1970 (39 of 1970)', the words and figures 'or the Digital Personal Data Protection Act, 2023' shall be inserted; and (c) in Section 87, in sub-section (2), clause (ob) shall be omitted. (Note: By contrast, Section 44(1) and 44(3) commenced on 13 November 2025).",
+      "legal_as_of_date": "2026-10-16",
+      "temporal_metadata": {
+        "law_status_label": "enacted_not_yet_in_force",
+        "provision_commencement_status": "uncommenced",
+        "commencement_source_id": "IND-NOTIF-MEITY-GSR-843E-2025",
+        "commencement_date": "2027-05-13",
+        "temporal_validation_status": "verified_future_commencement",
+        "repealed_statute_context": null,
+        "repealed_statute_status": null
+      },
+      "statutory_citations": [
+        "Section 44(2), Digital Personal Data Protection Act, 2023",
+        "Section 81, Information Technology Act, 2000",
+        "Section 87, Information Technology Act, 2000"
+      ],
+      "evidence_passages": [
+        {
+          "source_id": "IND-STAT-DPDP-2023",
+          "section_or_para_ref": "Section 44(2)",
+          "verbatim_text": "(2) The Information Technology Act, 2000 (21 of 2000) shall be amended in the following manner, namely:-\n\n(a) section 43A shall be omitted;\n\n(b) in section 81, in the proviso, after the words and figures \"the Patents Act, 1970 (39 of 1970)\", the words and figures \"or the Digital Personal Data Protection Act, 2023\" shall be inserted; and\n\n(c) in section 87, in sub-section (2), clause (ob) shall be omitted.",
+          "page_number": 16
+        }
+      ],
+      "supporting_sources": [
+        {
+          "document_id": "IND-STAT-DPDP-2023",
+          "title": "The Digital Personal Data Protection Act, 2023 (Act No. 22 of 2023)",
+          "source_url": "https://indiacode.gov.in/handle/123456789/496508",
+          "source_type": "statute",
+          "document_date": "2023-08-11",
+          "effective_date": null,
+          "licence_or_terms": "Government of India Open Data License (GODL-India) / Official Gazette",
+          "checksum": "dda561b9fd6420e1b99157b60f92bb0470a6154c6d559bbee3482ac255ac2c24"
+        }
+      ],
+      "specific_advocate_question": "Does the answer correctly capture the consequential amendments to s. 81 and s. 87 of the IT Act, and does the contrast with ss. 44(1) and 44(3) (commenced 13 Nov 2025) avoid confusion?",
+      "review_status": "pending_legal_review",
+      "decision": null
+    },
+    {
+      "record_id": "QA-PILOT-CROSS-001",
+      "category": "Cross-Statute Evidence & Cybercrime",
+      "question": "Under current law, how does Section 61 of the Bharatiya Sakshya Adhiniyam, 2023 establish the admissibility of an electronic record as defined under Section 2(1)(t) of the Information Technology Act, 2000, and what statutory proviso applies?",
+      "proposed_answer": "Under Section 61 of the Bharatiya Sakshya Adhiniyam, 2023 (in force since 1 July 2024 under S.O. 849(E)), nothing in the Adhiniyam shall apply to deny the admissibility of an electronic or digital record in evidence solely on the ground that it is an electronic or digital record. Such record has the same legal effect, validity, and enforceability as other documents, but is expressly subject to Section 63. The Explanation incorporates the definition in clause (t) of Section 2(1) of the Information Technology Act, 2000, and the proviso mandates that any electronic record produced in evidence must be accompanied by a certificate under Section 63(4).",
+      "legal_as_of_date": "2026-10-16",
+      "temporal_metadata": {
+        "law_status_label": "in_force",
+        "provision_commencement_status": "commenced",
+        "commencement_source_id": "IND-NOTIF-MHA-SO-849E-2024",
+        "commencement_date": "2024-07-01",
+        "temporal_validation_status": "verified_current",
+        "repealed_statute_context": null,
+        "repealed_statute_status": null
+      },
+      "statutory_citations": [
+        "Section 61, Bharatiya Sakshya Adhiniyam, 2023",
+        "Section 63, Bharatiya Sakshya Adhiniyam, 2023",
+        "Section 2(1)(t), Information Technology Act, 2000"
+      ],
+      "evidence_passages": [
+        {
+          "source_id": "IND-STAT-BSA-2023-SEC61",
+          "section_or_para_ref": "Section 61",
+          "verbatim_text": "Nothing in this Adhiniyam shall apply to deny the admissibility of an electronic or digital record in the evidence on the ground that it is an electronic or digital record, and such record shall have the same legal effect, validity and enforceability as other document, subject to the provisions of section 63.",
+          "page_number": 1
+        },
+        {
+          "source_id": "IND-STAT-BSA-2023-SEC61",
+          "section_or_para_ref": "Explanation to Section 61",
+          "verbatim_text": "For the purposes of this section, an electronic or digital record includes records stored, generated, received or sent in an electronic form or micro-films, computer-generated fiche and any other form as defined in clause (t) of sub-section (1) of section 2 of the Information Technology Act, 2000.",
+          "page_number": 1
+        },
+        {
+          "source_id": "IND-STAT-IT-2000",
+          "section_or_para_ref": "Section 2(1)(t)",
+          "verbatim_text": "(t) \"electronic record\" means data, record or data generated, image or sound stored, received or sent in an electronic form or micro film or computer generated micro fiche;",
+          "page_number": 2
+        }
+      ],
+      "supporting_sources": [
+        {
+          "document_id": "IND-STAT-BSA-2023-SEC61",
+          "title": "Bharatiya Sakshya Adhiniyam, 2023 - Section 61",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/20000",
+          "source_type": "statute",
+          "document_date": "2023-12-25",
+          "effective_date": "2024-07-01",
+          "licence_or_terms": "Government of India Open Data License (GODL-India)",
+          "checksum": "b997706bd4cf6436650776bf18146bea4f9c5bdede926d0813c99a4b95671d78"
+        },
+        {
+          "document_id": "IND-STAT-IT-2000",
+          "title": "The Information Technology Act, 2000 (Act No. 21 of 2000, as amended)",
+          "source_url": "https://indiacode.gov.in/handle/123456789/496511",
+          "source_type": "statute",
+          "document_date": "2000-06-09",
+          "effective_date": "2000-10-17",
+          "licence_or_terms": "Government of India Open Data License (GODL-India) / India Code",
+          "checksum": "003b3218fe399b293c73f6aef9ca52e5c1d080388c43fb0523572c1dc5f3d529"
+        }
+      ],
+      "specific_advocate_question": "PRIORITY ISSUE 5: Under BSA Section 61, does the clause 'subject to the provisions of section 63' and its proviso render s. 61 purely declaratory of electronic evidence admissibility, leaving s. 63 as the exclusive gateway?",
+      "review_status": "pending_legal_review",
+      "decision": null
+    },
+    {
+      "record_id": "QA-PILOT-CROSS-002",
+      "category": "Cross-Statute Evidence & Cybercrime",
+      "question": "What mandatory requirement is set forth in the proviso to Section 61 of the Bharatiya Sakshya Adhiniyam, 2023 when producing electronic records in evidence?",
+      "proposed_answer": "Under the proviso to Section 61 of the Bharatiya Sakshya Adhiniyam, 2023 (in force since 1 July 2024 under Notification S.O. 849(E)), where any electronic record is produced in evidence, it shall mandatorily be accompanied by a certificate referred to in sub-section (4) of Section 63.",
+      "legal_as_of_date": "2026-10-16",
+      "temporal_metadata": {
+        "law_status_label": "in_force",
+        "provision_commencement_status": "commenced",
+        "commencement_source_id": "IND-NOTIF-MHA-SO-849E-2024",
+        "commencement_date": "2024-07-01",
+        "temporal_validation_status": "verified_current",
+        "repealed_statute_context": null,
+        "repealed_statute_status": null
+      },
+      "statutory_citations": [
+        "Section 61, Bharatiya Sakshya Adhiniyam, 2023",
+        "Section 63, Bharatiya Sakshya Adhiniyam, 2023"
+      ],
+      "evidence_passages": [
+        {
+          "source_id": "IND-STAT-BSA-2023-SEC61",
+          "section_or_para_ref": "Proviso to Section 61",
+          "verbatim_text": "Provided that where any electronic record is produced in evidence, it shall be accompanied by a certificate referred to in sub-section (4) of section 63.",
+          "page_number": 1
+        }
+      ],
+      "supporting_sources": [
+        {
+          "document_id": "IND-STAT-BSA-2023-SEC61",
+          "title": "Bharatiya Sakshya Adhiniyam, 2023 - Section 61",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/20000",
+          "source_type": "statute",
+          "document_date": "2023-12-25",
+          "effective_date": "2024-07-01",
+          "licence_or_terms": "Government of India Open Data License (GODL-India)",
+          "checksum": "b997706bd4cf6436650776bf18146bea4f9c5bdede926d0813c99a4b95671d78"
+        }
+      ],
+      "specific_advocate_question": "Under the proviso to s. 61, does failure to produce a section 63(4) certificate at the time of producing evidence constitute an incurable defect, or can it be cured later under emerging judicial precedent?",
+      "review_status": "pending_legal_review",
+      "decision": null
+    },
+    {
+      "record_id": "QA-PILOT-CROSS-003",
+      "category": "Cross-Statute Evidence & Cybercrime",
+      "question": "Under Section 63 of the Bharatiya Sakshya Adhiniyam, 2023, when is electronic information deemed to be a document and who must sign the accompanying certificate?",
+      "proposed_answer": "Under Section 63(1) of the Bharatiya Sakshya Adhiniyam, 2023 (in force since 1 July 2024 under S.O. 849(E)), any information contained in an electronic record which is printed on paper, stored, recorded, or copied in optical or magnetic media shall be deemed to be also a document. Under Section 63(2), the computer output must be produced during a period of regular use with regular input of information, provided that the certificate signed by a person in official charge shall be produced in evidence.",
+      "legal_as_of_date": "2026-10-16",
+      "temporal_metadata": {
+        "law_status_label": "in_force",
+        "provision_commencement_status": "commenced",
+        "commencement_source_id": "IND-NOTIF-MHA-SO-849E-2024",
+        "commencement_date": "2024-07-01",
+        "temporal_validation_status": "verified_current",
+        "repealed_statute_context": null,
+        "repealed_statute_status": null
+      },
+      "statutory_citations": [
+        "Section 63, Bharatiya Sakshya Adhiniyam, 2023"
+      ],
+      "evidence_passages": [
+        {
+          "source_id": "IND-STAT-BSA-2023-SEC63",
+          "section_or_para_ref": "Section 63(1) and (2)",
+          "verbatim_text": "**63.** (1) Notwithstanding anything contained in this Adhiniyam, any information contained in an electronic record which is printed on a paper, stored, recorded or copied in optical or magnetic media shall be deemed to be also a document.\n\n(2) The conditions referred to in sub-section (1) in respect of a computer output shall be the following, namely:-\n\n- (a) the computer output containing the information was produced by the computer during the period over which the computer was used regularly;\n- (b) during the said period, information of the kind contained in the electronic record was regularly fed into the computer;\n\n**Provided that** the certificate signed by a person in official charge shall be produced in evidence.",
+          "page_number": 1
+        }
+      ],
+      "supporting_sources": [
+        {
+          "document_id": "IND-STAT-BSA-2023-SEC63",
+          "title": "Bharatiya Sakshya Adhiniyam, 2023 - Section 63",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/20000",
+          "source_type": "statute",
+          "document_date": "2023-12-25",
+          "effective_date": "2024-07-01",
+          "licence_or_terms": "Government of India Open Data License (GODL-India)",
+          "checksum": "2d752b258ddc06f981eef259d43a61d01049cb30f02edfeab62b8a724de7f58f"
+        }
+      ],
+      "specific_advocate_question": "PRIORITY ISSUE 5: Does the proviso to s. 63(2) requiring a certificate 'signed by a person in official charge' reconcile with s. 63(4) Part A and Part B options for electronic certificate execution?",
+      "review_status": "pending_legal_review",
+      "decision": null
+    },
+    {
+      "record_id": "QA-PILOT-CROSS-004",
+      "category": "Cross-Statute Evidence & Cybercrime",
+      "question": "Can an electronic record be admitted in evidence under Section 61 of the Bharatiya Sakshya Adhiniyam, 2023 without complying with Section 63?",
+      "proposed_answer": "No. Section 61 of the Bharatiya Sakshya Adhiniyam, 2023 (in force since 1 July 2024 under S.O. 849(E)) explicitly states that the legal effect, validity, and enforceability of an electronic or digital record is 'subject to the provisions of section 63'. Furthermore, the proviso to Section 61 specifies that where any electronic record is produced in evidence, it shall be accompanied by a certificate referred to in sub-section (4) of Section 63.",
+      "legal_as_of_date": "2026-10-16",
+      "temporal_metadata": {
+        "law_status_label": "in_force",
+        "provision_commencement_status": "commenced",
+        "commencement_source_id": "IND-NOTIF-MHA-SO-849E-2024",
+        "commencement_date": "2024-07-01",
+        "temporal_validation_status": "verified_current",
+        "repealed_statute_context": null,
+        "repealed_statute_status": null
+      },
+      "statutory_citations": [
+        "Section 61, Bharatiya Sakshya Adhiniyam, 2023",
+        "Section 63, Bharatiya Sakshya Adhiniyam, 2023"
+      ],
+      "evidence_passages": [
+        {
+          "source_id": "IND-STAT-BSA-2023-SEC61",
+          "section_or_para_ref": "Section 61",
+          "verbatim_text": "Nothing in this Adhiniyam shall apply to deny the admissibility of an electronic or digital record in the evidence on the ground that it is an electronic or digital record, and such record shall have the same legal effect, validity and enforceability as other document, subject to the provisions of section 63.\n\nProvided that where any electronic record is produced in evidence, it shall be accompanied by a certificate referred to in sub-section (4) of section 63.",
+          "page_number": 1
+        }
+      ],
+      "supporting_sources": [
+        {
+          "document_id": "IND-STAT-BSA-2023-SEC61",
+          "title": "Bharatiya Sakshya Adhiniyam, 2023 - Section 61",
+          "source_url": "https://www.indiacode.nic.in/handle/123456789/20000",
+          "source_type": "statute",
+          "document_date": "2023-12-25",
+          "effective_date": "2024-07-01",
+          "licence_or_terms": "Government of India Open Data License (GODL-India)",
+          "checksum": "b997706bd4cf6436650776bf18146bea4f9c5bdede926d0813c99a4b95671d78"
+        }
+      ],
+      "specific_advocate_question": "Can an electronic record ever be admitted as primary evidence under BSA 2023 without complying with s. 63, or has the Supreme Court ruling in Arjun Panditrao Khotkar survived into the new Adhiniyam?",
+      "review_status": "pending_legal_review",
+      "decision": null
+    },
+    {
+      "record_id": "QA-PILOT-CROSS-005",
+      "category": "Cross-Statute Evidence & Cybercrime",
+      "question": "What elements constitute a computer related offence under Section 66 of the Information Technology Act, 2000 and what punishment is prescribed?",
+      "proposed_answer": "Under Section 66 of the Information Technology Act, 2000 (in force w.e.f. 27 October 2009 pursuant to Act 10 of 2009), if any person, dishonestly or fraudulently, does any act referred to in Section 43, he commits a computer related offence and shall be punishable with imprisonment for a term which may extend to three years or with fine which may extend to five lakh rupees or with both. The Explanation clarifies that 'dishonestly' and 'fraudulently' carry the meanings assigned to them in Section 24 and Section 25 of the Indian Penal Code.",
+      "legal_as_of_date": "2026-10-16",
+      "temporal_metadata": {
+        "law_status_label": "in_force",
+        "provision_commencement_status": "commenced",
+        "commencement_source_id": "IND-STAT-IT-2000",
+        "commencement_date": "2009-10-27",
+        "temporal_validation_status": "verified_current",
+        "repealed_statute_context": null,
+        "repealed_statute_status": null
+      },
+      "statutory_citations": [
+        "Section 66, Information Technology Act, 2000",
+        "Section 43, Information Technology Act, 2000",
+        "Section 24, Indian Penal Code, 1860",
+        "Section 25, Indian Penal Code, 1860"
+      ],
+      "evidence_passages": [
+        {
+          "source_id": "IND-STAT-IT-2000",
+          "section_or_para_ref": "Section 66 and Explanation",
+          "verbatim_text": "1 [66. Computer related offences.-If any person, dishonestly or fraudulently, does any act referred to in section 43, he shall be punishable with imprisonment for a term which may extend to three years or with fine which may extend to five lakh rupees or with both.\n\nExplanation.-For the purposes of this section,-\n\n(a) the word \"dishonestly\" shall have the meaning assigned to it in section 24 of the Indian Penal Code (45 of 1860);\n\n(b) the word \"fraudulently\" shall have the meaning assigned to it in section 25 of the Indian Penal Code (45 of 1860).",
+          "page_number": 35
+        }
+      ],
+      "supporting_sources": [
+        {
+          "document_id": "IND-STAT-IT-2000",
+          "title": "The Information Technology Act, 2000 (Act No. 21 of 2000, as amended)",
+          "source_url": "https://indiacode.gov.in/handle/123456789/496511",
+          "source_type": "statute",
+          "document_date": "2000-06-09",
+          "effective_date": "2000-10-17",
+          "licence_or_terms": "Government of India Open Data License (GODL-India) / India Code",
+          "checksum": "003b3218fe399b293c73f6aef9ca52e5c1d080388c43fb0523572c1dc5f3d529"
+        }
+      ],
+      "specific_advocate_question": "Under IT Act s. 66, does the incorporation of IPC ss. 24 and 25 for 'dishonestly' and 'fraudulently' now transpose to Bharatiya Nyaya Sanhita (BNS) ss. 2(8) and 2(10) since 1 July 2024?",
+      "review_status": "pending_legal_review",
+      "decision": null
+    },
+    {
+      "record_id": "QA-PILOT-CROSS-006",
+      "category": "Cross-Statute Evidence & Cybercrime",
+      "question": "What ingredients constitute the offence of identity theft under Section 66C of the Information Technology Act, 2000 and what is the penalty?",
+      "proposed_answer": "Under Section 66C of the Information Technology Act, 2000 (in force w.e.f. 27 October 2009 under Act 10 of 2009), whoever fraudulently or dishonestly makes use of the electronic signature, password, or any other unique identification feature of any other person commits identity theft. The offender shall be punished with imprisonment of either description for a term which may extend to three years and shall also be liable to fine which may extend to one lakh rupees.",
+      "legal_as_of_date": "2026-10-16",
+      "temporal_metadata": {
+        "law_status_label": "in_force",
+        "provision_commencement_status": "commenced",
+        "commencement_source_id": "IND-STAT-IT-2000",
+        "commencement_date": "2009-10-27",
+        "temporal_validation_status": "verified_current",
+        "repealed_statute_context": null,
+        "repealed_statute_status": null
+      },
+      "statutory_citations": [
+        "Section 66C, Information Technology Act, 2000"
+      ],
+      "evidence_passages": [
+        {
+          "source_id": "IND-STAT-IT-2000",
+          "section_or_para_ref": "Section 66C",
+          "verbatim_text": "66C. Punishment for identity theft.-Whoever, fraudulently or dishonestly make use of the electronic signature, password or any other unique identification feature of any other person, shall be punished with imprisonment of either description for a term which may extend to three years and shall also be liable to fine which may extend to rupees one lakh.",
+          "page_number": 37
+        }
+      ],
+      "supporting_sources": [
+        {
+          "document_id": "IND-STAT-IT-2000",
+          "title": "The Information Technology Act, 2000 (Act No. 21 of 2000, as amended)",
+          "source_url": "https://indiacode.gov.in/handle/123456789/496511",
+          "source_type": "statute",
+          "document_date": "2000-06-09",
+          "effective_date": "2000-10-17",
+          "licence_or_terms": "Government of India Open Data License (GODL-India) / India Code",
+          "checksum": "003b3218fe399b293c73f6aef9ca52e5c1d080388c43fb0523572c1dc5f3d529"
+        }
+      ],
+      "specific_advocate_question": "Under IT Act s. 66C, is 'unique identification feature' sufficiently broad under statutory interpretation to encompass biometrics, Aadhaar OTP, and cryptographic private keys?",
+      "review_status": "pending_legal_review",
+      "decision": null
+    },
+    {
+      "record_id": "QA-PILOT-CROSS-007",
+      "category": "Cross-Statute Evidence & Cybercrime",
+      "question": "What acts constitute cheating by personation using a computer resource under Section 66D of the Information Technology Act, 2000 and what is the sentence?",
+      "proposed_answer": "Under Section 66D of the Information Technology Act, 2000 (in force w.e.f. 27 October 2009 under Act 10 of 2009), whoever, by means of any communication device or computer resource cheats by personating, shall be punished with imprisonment of either description for a term which may extend to three years and shall also be liable to fine which may extend to one lakh rupees.",
+      "legal_as_of_date": "2026-10-16",
+      "temporal_metadata": {
+        "law_status_label": "in_force",
+        "provision_commencement_status": "commenced",
+        "commencement_source_id": "IND-STAT-IT-2000",
+        "commencement_date": "2009-10-27",
+        "temporal_validation_status": "verified_current",
+        "repealed_statute_context": null,
+        "repealed_statute_status": null
+      },
+      "statutory_citations": [
+        "Section 66D, Information Technology Act, 2000"
+      ],
+      "evidence_passages": [
+        {
+          "source_id": "IND-STAT-IT-2000",
+          "section_or_para_ref": "Section 66D",
+          "verbatim_text": "66D. Punishment for cheating by personation by using computer resource.-Whoever, by means of any communication device or computer resource cheats by personating, shall be punished with imprisonment of either description for a term which may extend to three years and shall also be liable to fine which may extend to one lakh rupees.",
+          "page_number": 37
+        }
+      ],
+      "supporting_sources": [
+        {
+          "document_id": "IND-STAT-IT-2000",
+          "title": "The Information Technology Act, 2000 (Act No. 21 of 2000, as amended)",
+          "source_url": "https://indiacode.gov.in/handle/123456789/496511",
+          "source_type": "statute",
+          "document_date": "2000-06-09",
+          "effective_date": "2000-10-17",
+          "licence_or_terms": "Government of India Open Data License (GODL-India) / India Code",
+          "checksum": "003b3218fe399b293c73f6aef9ca52e5c1d080388c43fb0523572c1dc5f3d529"
+        }
+      ],
+      "specific_advocate_question": "Under IT Act s. 66D, does cheating by personation apply where an automated AI agent or bot personates an individual, or is human agency required?",
+      "review_status": "pending_legal_review",
+      "decision": null
+    },
+    {
+      "record_id": "QA-PILOT-CROSS-008",
+      "category": "Cross-Statute Evidence & Cybercrime",
+      "question": "Which judicial forums possess jurisdiction to grant anticipatory bail under Section 482(1) of the Bharatiya Nagarik Suraksha Sanhita, 2023?",
+      "proposed_answer": "Under Section 482(1) of the Bharatiya Nagarik Suraksha Sanhita, 2023 (in force since 1 July 2024 under Notification S.O. 848(E)), when any person has reason to believe that he may be arrested on an accusation of having committed a non-bailable offence, he may apply to either the High Court or the Court of Session for a direction under Section 482, and that Court may, if it thinks fit, direct that in the event of such arrest, he shall be released on bail.",
+      "legal_as_of_date": "2026-10-16",
+      "temporal_metadata": {
+        "law_status_label": "in_force",
+        "provision_commencement_status": "commenced",
+        "commencement_source_id": "IND-NOTIF-MHA-SO-848E-2024",
+        "commencement_date": "2024-07-01",
+        "temporal_validation_status": "verified_current",
+        "repealed_statute_context": null,
+        "repealed_statute_status": null
+      },
+      "statutory_citations": [
+        "Section 482(1), Bharatiya Nagarik Suraksha Sanhita, 2023"
+      ],
+      "evidence_passages": [
+        {
+          "source_id": "IND-STAT-BNSS-2023",
+          "section_or_para_ref": "Section 482(1)",
+          "verbatim_text": "When any person has reason to believe that he may be arrested on an accusation of having committed a non-bailable offence, he may apply to the High Court or the Court of Session for a direction under this section; and that Court may, if it thinks fit, direct that in the event of such arrest, he shall be released on bail.",
+          "page_number": 198
+        }
+      ],
+      "supporting_sources": [
+        {
+          "document_id": "IND-STAT-BNSS-2023",
+          "title": "The Bharatiya Nagarik Suraksha Sanhita, 2023 (Act No. 46 of 2023)",
+          "source_url": "https://indiacode.gov.in/handle/123456789/601739",
+          "source_type": "statute",
+          "document_date": "2023-12-25",
+          "effective_date": "2024-07-01",
+          "licence_or_terms": "Government of India Open Data License (GODL-India) / Copyright Act s.52(1)(q)",
+          "checksum": "9812b7a5a2f27ec11ab2a99e88e8f363353c84843b7130e558f92ae4f10ed5fe"
+        }
+      ],
+      "specific_advocate_question": "Under BNSS s. 482(1), is the concurrent jurisdiction of High Court and Court of Session identical to CrPC s. 438, and does the applicant have an unfettered choice of forum?",
+      "review_status": "pending_legal_review",
+      "decision": null
+    },
+    {
+      "record_id": "QA-PILOT-CROSS-009",
+      "category": "Cross-Statute Evidence & Cybercrime",
+      "question": "Which offences are strictly barred from the grant of anticipatory bail under Section 482(4) of the Bharatiya Nagarik Suraksha Sanhita, 2023?",
+      "proposed_answer": "Under Section 482(4) of the Bharatiya Nagarik Suraksha Sanhita, 2023 (in force since 1 July 2024 under S.O. 848(E)), the provisions of Section 482 for anticipatory bail shall not apply to any case involving the arrest of any person on an accusation of having committed an offence under Section 65 and sub-section (2) of Section 70 of the Bharatiya Nyaya Sanhita, 2023 (relating to aggravated rape of minors/gang rape).",
+      "legal_as_of_date": "2026-10-16",
+      "temporal_metadata": {
+        "law_status_label": "in_force",
+        "provision_commencement_status": "commenced",
+        "commencement_source_id": "IND-NOTIF-MHA-SO-848E-2024",
+        "commencement_date": "2024-07-01",
+        "temporal_validation_status": "verified_current",
+        "repealed_statute_context": null,
+        "repealed_statute_status": null
+      },
+      "statutory_citations": [
+        "Section 482(4), Bharatiya Nagarik Suraksha Sanhita, 2023",
+        "Section 65, Bharatiya Nyaya Sanhita, 2023",
+        "Section 70(2), Bharatiya Nyaya Sanhita, 2023"
+      ],
+      "evidence_passages": [
+        {
+          "source_id": "IND-STAT-BNSS-2023",
+          "section_or_para_ref": "Section 482(4)",
+          "verbatim_text": "(4) Nothing in this section shall apply to any case involving the arrest of any person on accusation of having committed an offence under section 65 and sub-section \n(2)\n of section 70 of the Bharatiya Nyaya Sanhita, 2023.",
+          "page_number": 198
+        }
+      ],
+      "supporting_sources": [
+        {
+          "document_id": "IND-STAT-BNSS-2023",
+          "title": "The Bharatiya Nagarik Suraksha Sanhita, 2023 (Act No. 46 of 2023)",
+          "source_url": "https://indiacode.gov.in/handle/123456789/601739",
+          "source_type": "statute",
+          "document_date": "2023-12-25",
+          "effective_date": "2024-07-01",
+          "licence_or_terms": "Government of India Open Data License (GODL-India) / Copyright Act s.52(1)(q)",
+          "checksum": "9812b7a5a2f27ec11ab2a99e88e8f363353c84843b7130e558f92ae4f10ed5fe"
+        }
+      ],
+      "specific_advocate_question": "PRIORITY ISSUE 1: In BNSS s. 482(4), does the bar on anticipatory bail for BNS s. 65 and s. 70(2) extend to abetment (BNS s. 45), attempt (BNS s. 62), or criminal conspiracy (BNS s. 61) to commit those offences?",
+      "review_status": "pending_legal_review",
+      "decision": null
+    },
+    {
+      "record_id": "QA-PILOT-CROSS-010",
+      "category": "Cross-Statute Evidence & Cybercrime",
+      "question": "How are criminal appeals, applications, trials, and investigations pending immediately before 1 July 2024 governed under Section 531(2)(a) of the Bharatiya Nagarik Suraksha Sanhita, 2023?",
+      "proposed_answer": "Under Section 531(1) of the Bharatiya Nagarik Suraksha Sanhita, 2023 (in force since 1 July 2024 under S.O. 848(E)), the Code of Criminal Procedure, 1973 is repealed. However, under Section 531(2)(a), if immediately before 1 July 2024 there was any appeal, application, trial, inquiry, or investigation pending, such proceeding shall be disposed of, continued, held, or made in accordance with the provisions of the Code of Criminal Procedure, 1973 as if the BNSS had not come into force.",
+      "legal_as_of_date": "2026-10-16",
+      "temporal_metadata": {
+        "law_status_label": "in_force",
+        "provision_commencement_status": "commenced",
+        "commencement_source_id": "IND-NOTIF-MHA-SO-848E-2024",
+        "commencement_date": "2024-07-01",
+        "temporal_validation_status": "verified_historical_savings",
+        "repealed_statute_context": "Code of Criminal Procedure, 1973 (Act No. 2 of 1974) is repealed with savings under BNSS s. 531(2)(a)",
+        "repealed_statute_status": "repealed_with_savings"
+      },
+      "statutory_citations": [
+        "Section 531, Bharatiya Nagarik Suraksha Sanhita, 2023",
+        "Code of Criminal Procedure, 1973"
+      ],
+      "evidence_passages": [
+        {
+          "source_id": "IND-STAT-BNSS-2023",
+          "section_or_para_ref": "Section 531(1) and (2)(a)",
+          "verbatim_text": "(1) The Code of Criminal Procedure, 1973 (2 of 1974) is hereby repealed.\n \n(2) Notwithstanding such repeal---\n \n(a) if, immediately before the date on which this Sanhita comes into force, there is any appeal, application, trial, inquiry or investigation pending, then, such appeal, application, trial, inquiry or investigation shall be disposed of, continued, held or made, as the case may be, in accordance with the provisions of the Code of Criminal Procedure, 1973 (2 of 1974), as in force immediately before such commencement (hereinafter referred to as the said Code), as if this Sanhita had not come into force;",
+          "page_number": 218
+        }
+      ],
+      "supporting_sources": [
+        {
+          "document_id": "IND-STAT-BNSS-2023",
+          "title": "The Bharatiya Nagarik Suraksha Sanhita, 2023 (Act No. 46 of 2023)",
+          "source_url": "https://indiacode.gov.in/handle/123456789/601739",
+          "source_type": "statute",
+          "document_date": "2023-12-25",
+          "effective_date": "2024-07-01",
+          "licence_or_terms": "Government of India Open Data License (GODL-India) / Copyright Act s.52(1)(q)",
+          "checksum": "9812b7a5a2f27ec11ab2a99e88e8f363353c84843b7130e558f92ae4f10ed5fe"
+        }
+      ],
+      "specific_advocate_question": "PRIORITY ISSUE 4: Under BNSS s. 531(2)(a), does the savings protection strictly apply to investigations pending prior to 1 July 2024, and is the schema representation (BNSS s. 531 in force; CrPC 1973 repealed with savings) legally sound?",
+      "review_status": "pending_legal_review",
+      "decision": null
+    }
+  ]
+}

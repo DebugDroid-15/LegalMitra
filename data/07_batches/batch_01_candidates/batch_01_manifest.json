@@ -1,0 +1,25 @@
+{
+  "batch_id": "BATCH-01",
+  "description": "Controlled expansion candidate dataset (Batch 1) covering BNSS, BSA, DPDP, POCSO, IT Act, and Puttaswamy.",
+  "created_at": "2026-10-16T23:19:09.826388",
+  "total_records": 20,
+  "source_coverage": {
+    "IND-STAT-DPDP-2023": 5,
+    "IND-STAT-BNSS-2023": 5,
+    "IND-STAT-BSA-2023-SEC61": 2,
+    "IND-STAT-BSA-2023-SEC63": 1,
+    "IND-STAT-POCSO-2012-SEC4": 3,
+    "IND-STAT-IT-2000": 2,
+    "IND-JUD-SC-2017-PUTTASWAMY": 2
+  },
+  "legal_review_status_summary": {
+    "pending_legal_review": 20,
+    "approved": 0,
+    "rejected": 0
+  },
+  "quarantine_compliance": {
+    "IND-JUD-DEL-2024-BAIL_excluded": true,
+    "synthetic_scaffolds_excluded": true
+  },
+  "sha256": "5798192ea12e818bd66ae51cc3d467d7d0bafceaa3788fcda3c2d39f5c49aa22"
+}

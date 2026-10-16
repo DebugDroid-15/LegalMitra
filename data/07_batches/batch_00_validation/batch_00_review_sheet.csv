@@ -1,0 +1,4 @@
+record_id,question,review_decision,legal_accuracy_score_1_to_5,temporal_accuracy_score_1_to_5,grounding_accuracy_score_1_to_5,reviewer_comments,reviewer_name_initials,review_date
+QA-BATCH0-001,"Under the enacted statutory text of Section 8(6) of the Digital Personal Data Protection Act, 2023 (scheduled to commence on 13 May 2027 under G.S.R. 843(E)), who must be notified by the Data Fiduciary in the event of a personal data breach?",,,,,,,
+QA-BATCH0-002,"Can electronic records be admitted in evidence under Section 61 of the Bharatiya Sakshya Adhiniyam, 2023?",,,,,,,
+QA-BATCH0-003,"What is the inherent power of the High Court preserved under Section 528 of the Bharatiya Nagarik Suraksha Sanhita, 2023?",,,,,,,

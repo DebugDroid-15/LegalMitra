@@ -2,17 +2,26 @@
 LegalMitra Corpus Pipeline Runner
 Executes ingestion, Docling/Text extraction, normalization, and generates
 sample JSONL dataset outputs and diagnostic failure reports.
+
+Phase 2: Adds source-grounded dataset generation engine with LLM integration.
 """
 
+import argparse
+import sys
 from datetime import date
 from pathlib import Path
 import json
+from typing import Optional
 
 from legalmitra.core.enums import CourtType, Jurisdiction, LegalReviewStatus, SourceType, SplitType
 from legalmitra.core.logging import get_logger
 from legalmitra.dataset.jsonl_exporter import JSONLExporter
 from legalmitra.dataset.partitioner import DatasetPartitioner
 from legalmitra.dataset.pipeline import LegalDataPipeline
+from legalmitra.generation.orchestrator import run_generation_pipeline
+from legalmitra.generation.schemas import GenerationConfig
+from legalmitra.generation.exporter import create_generation_report
+from legalmitra.llm.nemotron import NemotronLLMProvider
 from legalmitra.schemas.case_analysis import CaseAnalysisDocument
 from legalmitra.schemas.drafting_example import DraftingClause, DraftingExampleDocument
 from legalmitra.schemas.evaluation import EvaluationQuestionDocument, EvaluationRubric
@@ -25,6 +34,7 @@ logger = get_logger("run_pipeline")
 
 
 def run_milestone_pipeline():
+    """Run the Phase 1 milestone pipeline (ingestion, extraction, normalization)."""
     logger.info("Initializing LegalMitra Data Engineering Pipeline...")
     pipeline = LegalDataPipeline(
         registry_file="registry/source_registry.jsonl",
@@ -121,7 +131,7 @@ def run_milestone_pipeline():
     failure_report_path.write_text(failure_report_md, encoding="utf-8")
     logger.info(f"Wrote failure diagnostic report to {failure_report_path}")
 
-    # 2. Generate grounded synthetic examples
+    # 2. Generate grounded synthetic examples (static samples for Phase 1 compatibility)
     logger.info("Generating grounded example datasets across all 7 schemas...")
 
     # (a) Legal Q&A Document
@@ -291,5 +301,429 @@ def run_milestone_pipeline():
     logger.info("Pipeline run complete! All outputs successfully generated and verified.")
 
 
+def run_connectivity_test() -> bool:
+    """Test Nemotron LLM provider connectivity."""
+    logger.info("Testing Nemotron LLM provider connectivity...")
+    
+    provider = NemotronLLMProvider()
+    
+    if not provider.is_available():
+        logger.error("Nemotron provider not configured. Set NEMOTRON_API_KEY environment variable.")
+        logger.info("See .env.example for required configuration.")
+        return False
+    
+    logger.info(f"Provider configured: {provider.model_name} at {provider.base_url}")
+    
+    try:
+        from legalmitra.llm.interface import LLMMessage
+        messages = [
+            LLMMessage(role="system", content="You are a legal assistant."),
+            LLMMessage(role="user", content="Reply with 'OK' if you receive this."),
+        ]
+        response = provider.generate(messages, temperature=0.1, max_tokens=10)
+        logger.info(f"Connectivity test successful. Response: {response.content[:50]}")
+        logger.info(f"Model: {response.model_name}, Tokens: {response.usage}")
+        return True
+    except Exception as e:
+        logger.error(f"Connectivity test failed: {e}")
+        return False
+
+
+def run_generation(
+    source_ids: Optional[list] = None,
+    source_type: Optional[str] = None,
+    dry_run: bool = False,
+    pilot: bool = False,
+    max_sources: int = 10,
+    max_examples: int = 50,
+    task_types: Optional[list] = None,
+) -> dict:
+    """Run the Phase 2 generation pipeline."""
+    logger.info("Starting Phase 2: Source-Grounded Dataset Generation")
+    
+    # Parse source_type filter
+    stype = None
+    if source_type:
+        try:
+            stype = SourceType(source_type)
+        except ValueError:
+            logger.error(f"Invalid source_type: {source_type}. Valid: {[s.value for s in SourceType]}")
+            return {"success": False, "error": f"Invalid source_type: {source_type}"}
+    
+    # Build config
+    config = GenerationConfig(
+        dry_run=dry_run,
+        pilot_mode=pilot,
+        pilot_max_sources=max_sources,
+        pilot_max_examples=max_examples,
+    )
+    
+    if task_types:
+        from legalmitra.generation.prompts import TaskType
+        config.task_types = [TaskType(t) for t in task_types]
+    
+    # Run generation
+    summary = run_generation_pipeline(
+        config=config,
+        registry_file="registry/source_registry.jsonl",
+        source_ids=source_ids,
+        source_type=stype,
+        dry_run=dry_run,
+        pilot_mode=pilot,
+    )
+    
+    # Create reports
+    # Note: We need to collect results from orchestrator for detailed reports
+    # For now, export summary
+    from legalmitra.generation.exporter import GenerationExporter
+    exporter = GenerationExporter("data/03_generated")
+    exporter.export_summary(summary)
+    exporter.export_markdown_report(summary)
+    exporter.export_generation_quality_report(summary, [])
+    
+    logger.info(f"Generation complete: {summary.tasks_completed}/{summary.total_tasks} tasks, "
+                f"{summary.total_examples_generated} examples generated")
+    
+    return {
+        "success": True,
+        "summary": summary.model_dump(),
+        "report_dir": "data/03_generated/reports",
+    }
+
+
+def validate_sources() -> dict:
+    """Validate registered sources for generation readiness."""
+    from legalmitra.ingestion.registry import SourceRegistryManager
+    
+    registry = SourceRegistryManager("registry/source_registry.jsonl")
+    records = registry.list_all()
+    
+    normalized = [r for r in records if r.processing_status.value == "normalized"]
+    failed = [r for r in records if r.processing_status.value == "failed"]
+    registered = [r for r in records if r.processing_status.value == "registered"]
+    
+    by_type = {}
+    for r in normalized:
+        by_type.setdefault(r.source_type.value, 0)
+        by_type[r.source_type.value] += 1
+    
+    logger.info(f"Source validation: {len(normalized)} normalized, {len(failed)} failed, {len(registered)} pending")
+    
+    return {
+        "total": len(records),
+        "normalized": len(normalized),
+        "failed": len(failed),
+        "registered_pending": len(registered),
+        "by_type": by_type,
+        "normalized_ids": [r.document_id for r in normalized],
+    }
+
+
+def acquire_sources() -> dict:
+    """Acquire official Indian legal sources from permitted repositories."""
+    from legalmitra.ingestion.acquisition import SourceAcquisitionEngine
+    from legalmitra.ingestion.registry import SourceRegistryManager
+    from pathlib import Path
+    
+    registry = SourceRegistryManager("registry/source_registry.jsonl")
+    engine = SourceAcquisitionEngine(registry, Path("data/01_raw"))
+    res = engine.acquire_all()
+    logger.info(f"Source acquisition finished: {res['successfully_acquired']} acquired, "
+                f"{res['existing_verified']} existing, {res['failed_acquisitions']} failed")
+    return {
+        "successfully_acquired": res["successfully_acquired"],
+        "existing_verified": res["existing_verified"],
+        "failed_acquisitions": res["failed_acquisitions"],
+        "total_catalog": res["total_catalog"],
+        "records": [r.document_id for r in res["records"]],
+    }
+
+
+def export_splits() -> dict:
+    """Re-export dataset splits from normalized documents."""
+    from legalmitra.ingestion.registry import SourceRegistryManager
+    from legalmitra.normalization.normalizer import DocumentNormalizer
+    
+    registry = SourceRegistryManager("registry/source_registry.jsonl")
+    normalizer = DocumentNormalizer("data/02_normalized", registry)
+    
+    # Load all normalized models
+    normalized_models = []
+    norm_dir = Path("data/02_normalized")
+    for json_file in norm_dir.glob("*.json"):
+        with open(json_file, "r") as f:
+            data = json.load(f)
+        # Determine type and parse
+        if "sections" in data:
+            model = StatuteDocument.model_validate(data)
+        elif "paragraphs" in data:
+            model = JudgmentDocument.model_validate(data)
+        else:
+            continue
+        normalized_models.append(model)
+    
+    partitioner = DatasetPartitioner(train_ratio=0.6, val_ratio=0.2, test_ratio=0.2, seed=42)
+    splits = partitioner.partition_by_source(normalized_models)
+    
+    JSONLExporter.export(splits[SplitType.TRAIN], "data/splits/train.jsonl")
+    JSONLExporter.export(splits[SplitType.VALIDATION], "data/splits/val.jsonl")
+    JSONLExporter.export(splits[SplitType.TEST], "data/splits/test.jsonl")
+    
+    return {
+        "train": len(splits[SplitType.TRAIN]),
+        "validation": len(splits[SplitType.VALIDATION]),
+        "test": len(splits[SplitType.TEST]),
+    }
+
+
+def run_index_kb(db_path: str = "data/legalmitra_kb.db") -> dict:
+    """Index normalized legal documents into the SQLite/FTS5 knowledge base."""
+    from legalmitra.knowledge.knowledge_base import LegalKnowledgeBase
+    from legalmitra.schemas.registry import SourceRegistryRecord
+    from legalmitra.schemas.statute import StatuteDocument
+    from legalmitra.schemas.judgment import JudgmentDocument
+
+    kb = LegalKnowledgeBase(db_path)
+    records = {}
+    with open("registry/source_registry.jsonl", "r", encoding="utf-8") as f:
+        for line in f:
+            if line.strip():
+                r = SourceRegistryRecord.model_validate_json(line)
+                records[r.document_id] = r
+                kb.index_source_record(r)
+
+    norm_dir = Path("data/02_normalized")
+    total_statutes = 0
+    total_judgments = 0
+    for json_file in norm_dir.glob("*.json"):
+        data = json.loads(json_file.read_text(encoding="utf-8"))
+        s_id = data.get("source_id")
+        rec = records.get(s_id)
+        if "sections" in data:
+            doc = StatuteDocument.model_validate(data)
+            kb.index_statute_document(doc, rec)
+            total_statutes += 1
+        elif "paragraphs" in data:
+            doc = JudgmentDocument.model_validate(data)
+            is_scaffold = (s_id == "IND-JUD-DEL-2024-BAIL")
+            kb.index_judgment_document(doc, rec, is_synthetic_scaffold=is_scaffold)
+            total_judgments += 1
+
+    return {
+        "status": "success",
+        "sources_indexed": kb.count_sources(),
+        "chunks_indexed": kb.count_chunks(),
+        "statutes_indexed": total_statutes,
+        "judgments_indexed": total_judgments,
+        "db_path": str(db_path),
+    }
+
+
+def run_search_kb(
+    query: str,
+    jurisdiction: Optional[str] = None,
+    court: Optional[str] = None,
+    as_of_date: Optional[str] = None,
+    include_synthetic: bool = False,
+    limit: int = 5,
+) -> list:
+    """Search the Legal Knowledge Base with metadata filters."""
+    from legalmitra.knowledge.knowledge_base import LegalKnowledgeBase
+    from legalmitra.knowledge.models import SearchFilters
+    kb = LegalKnowledgeBase("data/legalmitra_kb.db")
+    eff_date = date.fromisoformat(as_of_date) if as_of_date else None
+    filters = SearchFilters(
+        jurisdiction=jurisdiction,
+        court=court,
+        as_of_date=eff_date,
+        include_synthetic=include_synthetic,
+    )
+    results = kb.search(query, filters=filters, limit=limit)
+    return [r.model_dump(mode="json") for r in results]
+
+
+def run_rag_query(
+    query: str,
+    jurisdiction: Optional[str] = None,
+    as_of_date: Optional[str] = None,
+    include_synthetic: bool = False,
+    limit: int = 4,
+) -> dict:
+    """Run source-grounded RAG answering on a legal query."""
+    from legalmitra.knowledge.knowledge_base import LegalKnowledgeBase
+    from legalmitra.knowledge.models import SearchFilters
+    from legalmitra.rag.engine import LegalRAGEngine
+    kb = LegalKnowledgeBase("data/legalmitra_kb.db")
+    engine = LegalRAGEngine(knowledge_base=kb)
+    eff_date = date.fromisoformat(as_of_date) if as_of_date else None
+    filters = SearchFilters(
+        jurisdiction=jurisdiction,
+        as_of_date=eff_date,
+        include_synthetic=include_synthetic,
+    )
+    resp = engine.answer(query, filters=filters, limit=limit)
+    return resp.model_dump(mode="json")
+
+
+def run_rag_evaluation(
+    eval_path: str = "data/05_evaluation/held_out_eval.jsonl",
+    top_k: int = 4,
+) -> dict:
+    """Run automated RAG evaluation over the held-out benchmark."""
+    from legalmitra.knowledge.knowledge_base import LegalKnowledgeBase
+    from legalmitra.rag.engine import LegalRAGEngine
+    from legalmitra.rag.evaluator import RAGEvaluator
+    kb = LegalKnowledgeBase("data/legalmitra_kb.db")
+    engine = LegalRAGEngine(knowledge_base=kb)
+    evaluator = RAGEvaluator(engine)
+    summary = evaluator.evaluate_benchmark(Path(eval_path), top_k=top_k)
+    dumped = summary.model_dump(mode="json")
+    out_file = Path("data/05_evaluation/rag_eval_results.json")
+    out_file.parent.mkdir(parents=True, exist_ok=True)
+    with open(out_file, "w", encoding="utf-8") as f:
+        json.dump(dumped, f, indent=2, default=str)
+    logger.info(f"RAG evaluation results saved to {out_file}")
+    return dumped
+
+
+def main():
+    """Main CLI entry point with subcommands."""
+    parser = argparse.ArgumentParser(
+        description="LegalMitra Pipeline Runner",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Commands:
+  pipeline          Run Phase 1 ingestion/extraction/normalization pipeline
+  generate          Run Phase 2 source-grounded dataset generation
+  connectivity      Test Nemotron LLM provider connectivity
+  validate-sources  Validate registered sources for generation
+  export-splits     Re-export train/val/test splits
+        """
+    )
+    
+    subparsers = parser.add_subparsers(dest="command", help="Available commands")
+    
+    # pipeline command
+    subparsers.add_parser("pipeline", help="Run Phase 1 milestone pipeline")
+    
+    # generate command
+    gen_parser = subparsers.add_parser("generate", help="Run Phase 2 dataset generation")
+    gen_parser.add_argument("--source-ids", nargs="+", help="Specific source IDs to process")
+    gen_parser.add_argument("--source-type", choices=[s.value for s in SourceType], help="Filter by source type")
+    gen_parser.add_argument("--dry-run", action="store_true", help="Use mock provider (no API calls)")
+    gen_parser.add_argument("--pilot", action="store_true", help="Pilot mode: limited sources/examples")
+    gen_parser.add_argument("--max-sources", type=int, default=10, help="Max sources in pilot mode")
+    gen_parser.add_argument("--max-examples", type=int, default=50, help="Max examples in pilot mode")
+    gen_parser.add_argument("--task-types", nargs="+", 
+                           choices=[t.value for t in __import__('legalmitra.generation.prompts', fromlist=['TaskType']).TaskType],
+                           help="Specific task types to generate")
+    
+    # acquire-sources command
+    subparsers.add_parser("acquire-sources", help="Acquire official Indian legal sources")
+    
+    # connectivity command
+    subparsers.add_parser("connectivity", help="Test Nemotron LLM connectivity")
+    
+    # validate-sources command
+    subparsers.add_parser("validate-sources", help="Validate registered sources")
+    
+    # export-splits command
+    subparsers.add_parser("export-splits", help="Re-export train/val/test splits")
+
+    # index-kb command
+    index_kb_p = subparsers.add_parser("index-kb", help="Index normalized legal documents into SQLite/FTS5 knowledge base")
+    index_kb_p.add_argument("--db-path", default="data/legalmitra_kb.db", help="Path to SQLite database")
+
+    # search-kb command
+    search_kb_p = subparsers.add_parser("search-kb", help="Search the Legal Knowledge Base")
+    search_kb_p.add_argument("--query", "-q", required=True, help="Search query")
+    search_kb_p.add_argument("--jurisdiction", help="Jurisdiction filter (e.g. IN, IN-DL)")
+    search_kb_p.add_argument("--court", help="Court filter")
+    search_kb_p.add_argument("--as-of-date", help="Applicable date filter (YYYY-MM-DD)")
+    search_kb_p.add_argument("--include-synthetic", action="store_true", help="Include synthetic test scaffolds")
+    search_kb_p.add_argument("--limit", type=int, default=5, help="Max results")
+
+    # rag command
+    rag_p = subparsers.add_parser("rag", help="Query the Source-Grounded Legal RAG Engine")
+    rag_p.add_argument("--query", "-q", required=True, help="Legal question to answer")
+    rag_p.add_argument("--jurisdiction", help="Jurisdiction filter")
+    rag_p.add_argument("--as-of-date", help="Applicable date filter (YYYY-MM-DD)")
+    rag_p.add_argument("--include-synthetic", action="store_true", help="Include synthetic test scaffolds")
+    rag_p.add_argument("--limit", type=int, default=4, help="Max retrieved passages")
+
+    # eval-rag command
+    eval_rag_p = subparsers.add_parser("eval-rag", help="Run RAG benchmark evaluation")
+    eval_rag_p.add_argument("--eval-path", default="data/05_evaluation/held_out_eval.jsonl", help="Evaluation JSONL path")
+    eval_rag_p.add_argument("--top-k", type=int, default=4, help="Top-K retrieval limit")
+    
+    args = parser.parse_args()
+    
+    if not args.command:
+        parser.print_help()
+        sys.exit(1)
+    
+    try:
+        if args.command == "pipeline":
+            run_milestone_pipeline()
+        elif args.command == "generate":
+            result = run_generation(
+                source_ids=args.source_ids,
+                source_type=args.source_type,
+                dry_run=args.dry_run,
+                pilot=args.pilot,
+                max_sources=args.max_sources,
+                max_examples=args.max_examples,
+                task_types=args.task_types,
+            )
+            if not result.get("success"):
+                sys.exit(1)
+        elif args.command == "acquire-sources":
+            result = acquire_sources()
+            print(json.dumps(result, indent=2))
+        elif args.command == "connectivity":
+            success = run_connectivity_test()
+            sys.exit(0 if success else 1)
+        elif args.command == "validate-sources":
+            result = validate_sources()
+            print(json.dumps(result, indent=2, default=str))
+        elif args.command == "export-splits":
+            result = export_splits()
+            print(json.dumps(result, indent=2))
+        elif args.command == "index-kb":
+            result = run_index_kb(db_path=args.db_path)
+            print(json.dumps(result, indent=2))
+        elif args.command == "search-kb":
+            results = run_search_kb(
+                query=args.query,
+                jurisdiction=args.jurisdiction,
+                court=args.court,
+                as_of_date=args.as_of_date,
+                include_synthetic=args.include_synthetic,
+                limit=args.limit,
+            )
+            print(json.dumps(results, indent=2, default=str))
+        elif args.command == "rag":
+            resp = run_rag_query(
+                query=args.query,
+                jurisdiction=args.jurisdiction,
+                as_of_date=args.as_of_date,
+                include_synthetic=args.include_synthetic,
+                limit=args.limit,
+            )
+            print(json.dumps(resp, indent=2, default=str))
+        elif args.command == "eval-rag":
+            summary = run_rag_evaluation(eval_path=args.eval_path, top_k=args.top_k)
+            print(json.dumps(summary, indent=2, default=str))
+        else:
+            parser.print_help()
+            sys.exit(1)
+    except KeyboardInterrupt:
+        logger.info("Interrupted by user")
+        sys.exit(130)
+    except Exception as e:
+        logger.error(f"Command failed: {e}")
+        sys.exit(1)
+
+
 if __name__ == "__main__":
-    run_milestone_pipeline()
+    main()

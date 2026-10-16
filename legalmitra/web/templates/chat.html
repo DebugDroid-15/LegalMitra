@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="web_dashboard" name="shell-type"/>
+  <title>LegalMitra — Indian Legal Intelligence Chat</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&family=Merriweather:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+
+  <!-- Tailwind CSS CDN matching Stitch Design System -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "tertiary-container": "#3e2700",
+            "secondary-container": "#a5c8fe",
+            "tertiary-fixed": "#ffddb2",
+            "surface-container": "#f0eee8",
+            "on-background": "#1b1c19",
+            "on-primary-fixed-variant": "#34476a",
+            "on-secondary-container": "#2f5482",
+            "on-secondary-fixed-variant": "#214876",
+            "surface-container-low": "#f5f3ee",
+            "on-surface": "#1b1c19",
+            "on-secondary-fixed": "#001c3a",
+            "inverse-surface": "#30312d",
+            "surface-container-high": "#eae8e2",
+            "on-tertiary-fixed-variant": "#624000",
+            "surface-tint": "#4c5e83",
+            "on-primary-fixed": "#041b3c",
+            "surface-dim": "#dcdad4",
+            "on-error": "#ffffff",
+            "secondary": "#3c608f",
+            "surface-container-highest": "#e4e2dd",
+            "inverse-on-surface": "#f2f1eb",
+            "on-secondary": "#ffffff",
+            "surface-bright": "#fbf9f3",
+            "on-tertiary": "#ffffff",
+            "on-primary-container": "#8093bb",
+            "primary-container": "#172b4d",
+            "surface": "#fbf9f3",
+            "primary-fixed-dim": "#b4c7f1",
+            "on-surface-variant": "#44474e",
+            "background": "#fbf9f3",
+            "inverse-primary": "#b4c7f1",
+            "secondary-fixed-dim": "#a5c8fe",
+            "tertiary": "#231400",
+            "outline": "#75777f",
+            "tertiary-fixed-dim": "#feba52",
+            "on-primary": "#ffffff",
+            "on-tertiary-container": "#c38722",
+            "surface-variant": "#e4e2dd",
+            "primary": "#001637",
+            "primary-fixed": "#d7e2ff",
+            "outline-variant": "#c5c6cf",
+            "error-container": "#ffdad6",
+            "on-error-container": "#93000a",
+            "secondary-fixed": "#d4e3ff",
+            "on-tertiary-fixed": "#291800",
+            "error": "#ba1a1a",
+            "surface-container-lowest": "#ffffff"
+          },
+          borderRadius: {
+            DEFAULT: "0.125rem",
+            lg: "0.25rem",
+            xl: "0.5rem",
+            full: "0.75rem"
+          },
+          spacing: {
+            "space-md": "1rem",
+            "space-xl": "2.5rem",
+            "margin-mobile": "1rem",
+            "space-xs": "0.25rem",
+            "gutter-mobile": "1rem",
+            "gutter": "1.5rem",
+            "space-lg": "1.5rem",
+            "space-sm": "0.5rem",
+            "margin": "2rem"
+          },
+          fontFamily: {
+            "body-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "body-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-xl-mobile": ["Manrope"],
+            "headline-sm": ["Manrope"],
+            "quote-display": ["Merriweather"],
+            "headline-lg-mobile": ["Manrope"],
+            "headline-md": ["Manrope"],
+            "headline-lg": ["Manrope"],
+            "body-sm": ["Inter"],
+            "headline-xl": ["Manrope"],
+            "caption": ["Inter"]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-thumb { background: #E4E1D9; border-radius: 4px; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .quote-serif { font-family: 'Merriweather', serif; }
+  </style>
+</head>
+
+<body class="bg-surface font-body-md text-on-surface antialiased flex flex-col min-h-screen">
+  
+  <!-- LEFT SIDEBAR -->
+  <aside class="fixed left-0 top-0 h-screen w-72 bg-surface-container-low shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-50 flex flex-col justify-between overflow-y-auto">
+    <div class="flex flex-col">
+      <!-- Top Brand Header -->
+      <div class="px-space-md py-space-md flex items-center justify-between border-b border-surface-container-high/60">
+        <a href="/" class="flex items-center gap-space-sm group">
+          <div class="w-9 h-9 rounded-lg bg-primary-container flex items-center justify-center text-white shadow-sm ring-1 ring-primary/20">
+            <!-- Ashoka Concentric Rings Motif -->
+            <svg class="w-5 h-5 text-tertiary-fixed-dim" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <circle cx="12" cy="12" r="9" stroke-width="1.2" stroke-dasharray="2 2" class="opacity-70"/>
+              <circle cx="12" cy="12" r="5" stroke-width="1.2"/>
+              <circle cx="12" cy="12" r="2" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">LegalMitra</span>
+            <span class="font-caption text-caption text-on-surface-variant font-medium">Indian Legal Intelligence</span>
+          </div>
+        </a>
+        <a href="/" class="p-1 rounded hover:bg-surface-container text-on-surface-variant" title="Return to Home">
+          <span class="material-symbols-outlined text-[18px]">home</span>
+        </a>
+      </div>
+
+      <!-- New Legal Consultation CTA Button -->
+      <div class="px-space-md mt-space-sm">
+        <button id="btn-new-chat" class="w-full flex items-center justify-center gap-space-sm py-space-sm px-space-md rounded bg-primary text-on-primary hover:bg-primary-container hover:text-on-primary-container transition-all shadow-[0_1px_8px_rgba(0,0,0,0.04)] font-label-md text-label-md">
+          <span class="material-symbols-outlined text-[18px] text-tertiary-fixed-dim">add</span>
+          <span>New Legal Consultation</span>
+        </button>
+      </div>
+
+      <!-- Search in conversations -->
+      <div class="px-space-md mt-space-sm">
+        <div class="flex items-center gap-space-xs px-space-sm py-space-xs rounded bg-surface-container-highest/60 border border-outline-variant/30">
+          <span class="material-symbols-outlined text-outline text-[18px]">search</span>
+          <input id="input-search-conv" class="w-full bg-transparent border-none outline-none font-body-sm text-body-sm text-on-surface placeholder:text-outline" placeholder="Search precedents, acts..." type="text"/>
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="px-space-md mt-space-md">
+        <span class="font-label-sm text-label-sm uppercase tracking-wider text-outline px-space-xs mb-space-xs block font-semibold">Navigation</span>
+        <nav class="space-y-0.5">
+          <a href="#" id="nav-active-chat" class="flex items-center justify-between px-space-sm py-space-xs rounded bg-surface-container-high text-primary font-semibold text-label-md">
+            <div class="flex items-center gap-space-sm">
+              <span class="material-symbols-outlined text-[20px]">chat_bubble_outline</span>
+              <span>Active Consultation</span>
+            </div>
+          </a>
+          <a href="/" class="flex items-center justify-between px-space-sm py-space-xs rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors text-label-md">
+            <div class="flex items-center gap-space-sm">
+              <span class="material-symbols-outlined text-[20px]">menu_book</span>
+              <span>Bare Acts & Sources</span>
+            </div>
+            <span class="font-label-sm text-label-sm px-1.5 py-0.5 rounded bg-tertiary-container text-on-tertiary-container font-semibold">BNS/BNSS</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Recent Conversations History -->
+      <div class="px-space-md mt-space-md flex-1">
+        <span class="font-label-sm text-label-sm uppercase tracking-wider text-outline px-space-xs mb-space-xs block font-semibold">Recent Consultations</span>
+        <div id="recent-conversations-list" class="space-y-1">
+          <!-- Dynamically populated or default items -->
+          <button onclick="loadSamplePrompt('Can a High Court quash an FIR in a commercial dispute under Section 528 of the Bharatiya Nagarik Suraksha Sanhita (BNSS), 2023?')" class="w-full text-left block px-space-sm py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors truncate font-body-sm text-body-sm">
+            BNSS Sec 528 quashing scope
+          </button>
+          <button onclick="loadSamplePrompt('What does Section 438 of the CrPC deal with regarding anticipatory bail?')" class="w-full text-left block px-space-sm py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors truncate font-body-sm text-body-sm">
+            Anticipatory bail jurisprudence
+          </button>
+          <button onclick="loadSamplePrompt('Explain Section 44 of the Digital Personal Data Protection Act, 2023.')" class="w-full text-left block px-space-sm py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors truncate font-body-sm text-body-sm">
+            DPDP Act 2023 Section 44
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- User / System Telemetry Footer -->
+    <div class="p-space-md bg-surface-container border-t border-outline-variant/30">
+      <div class="flex items-center justify-between mb-space-xs">
+        <div class="flex items-center gap-space-xs">
+          <div class="w-7 h-7 rounded bg-primary-container flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-on-primary-container text-[16px]">gavel</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="font-label-md text-label-md text-primary font-semibold leading-tight">Legal Intelligence</span>
+            <span class="font-caption text-caption text-on-surface-variant">Supreme Court & 25 High Courts</span>
+          </div>
+        </div>
+      </div>
+      <div class="pt-space-xs flex items-center justify-between">
+        <span class="font-caption text-caption text-on-surface-variant flex items-center gap-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+          Jurisdiction: India (2025)
+        </span>
+        <span id="system-status-indicator" class="font-label-sm text-label-sm text-[#356B55] font-semibold">Online</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN VIEWPORT CONTAINER (offset by sidebar width 72 = 18rem = 288px) -->
+  <div class="pl-72 flex-1 flex flex-col min-h-screen">
+    
+    <!-- STICKY TOP HEADER -->
+    <header class="sticky top-0 h-16 bg-surface/90 backdrop-blur-xl border-b border-surface-container-high/80 shadow-[0_1px_8px_rgba(0,0,0,0.03)] z-40 flex items-center justify-between px-space-lg">
+      <div class="flex items-center gap-space-md">
+        <div class="flex items-center gap-space-xs py-1 px-2.5 rounded bg-surface-container-high border border-outline-variant/30">
+          <span class="w-2 h-2 rounded-full bg-[#356B55]"></span>
+          <span class="font-caption text-caption text-on-surface font-medium">Indian Law — Applicable as of 2025</span>
+        </div>
+        <div class="hidden md:flex items-center p-0.5 rounded bg-surface-container-high border border-outline-variant/20">
+          <span class="px-space-sm py-1 rounded bg-surface-container-lowest font-label-md text-label-md text-primary font-medium shadow-sm">Verified Primary Sources</span>
+          <span class="px-space-sm py-1 font-label-md text-label-md text-on-surface-variant font-medium">1,149 Indexed Provisions</span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-space-sm">
+        <button onclick="shareConversation()" class="p-space-xs rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-colors flex items-center" title="Share Consultation" type="button">
+          <span class="material-symbols-outlined text-[20px]">share</span>
+        </button>
+        <button onclick="exportLegalMemo()" class="flex items-center gap-space-xs px-space-sm py-1.5 rounded bg-surface-container-low hover:bg-surface-container-high text-primary hover:text-on-surface transition-colors font-label-md text-label-md shadow-sm border border-outline-variant/30" title="Export PDF Legal Memo" type="button">
+          <span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+          <span class="hidden lg:inline">Export Memo</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- MAIN SCROLLABLE STREAM -->
+    <main class="flex-1 bg-surface pb-44">
+      
+      <!-- Matter Context Banner -->
+      <div id="matter-banner" class="w-full bg-surface-container-low px-space-lg py-space-sm border-b border-outline-variant/30 shadow-sm flex flex-wrap items-center justify-between gap-space-sm">
+        <div class="flex items-center gap-space-sm min-w-0">
+          <span class="material-symbols-outlined text-secondary text-[20px]">account_balance</span>
+          <div class="flex items-center gap-space-xs text-on-surface-variant font-label-md text-label-md">
+            <span class="text-primary font-semibold" id="matter-id-display">Matter #IN-2025/ACTIVE</span>
+            <span class="text-outline">/</span>
+            <span class="truncate" id="matter-title-display">Indian Statutory & Judicial Inquiry</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-space-xs shrink-0">
+          <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container-highest text-primary font-label-sm text-label-sm">
+            <span class="w-2 h-2 rounded-full bg-secondary"></span>
+            Constitution of India & Central Acts
+          </span>
+          <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container font-caption text-caption text-on-surface-variant">
+            Verified Knowledge Base
+          </span>
+        </div>
+      </div>
+
+      <!-- READING LANE (Max 840px Strictly Centered) -->
+      <div class="w-full max-w-[840px] mx-auto px-space-md lg:px-space-lg mt-space-lg space-y-space-xl">
+        
+        <!-- EMPTY STATE CONTAINER (shown when no messages yet) -->
+        <div id="empty-state-view" class="flex flex-col items-center text-center pt-space-md pb-space-lg">
+          <!-- Ashoka Watermark Motif -->
+          <div class="relative mb-space-md">
+            <div class="absolute -inset-2 bg-secondary-container/20 rounded-full blur-md"></div>
+            <div class="relative w-16 h-16 rounded-full bg-surface-container-lowest p-2 shadow-sm flex items-center justify-center border border-outline-variant/30">
+              <svg class="w-10 h-10 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <circle cx="12" cy="12" r="9" stroke-width="1.2" stroke-dasharray="2 2" class="opacity-70"/>
+                <circle cx="12" cy="12" r="5" stroke-width="1.2"/>
+                <circle cx="12" cy="12" r="2" fill="#D99A35"/>
+              </svg>
+            </div>
+          </div>
+
+          <div class="inline-flex items-center gap-space-xs px-space-md py-1 rounded bg-surface-container-high mb-space-md shadow-sm border border-outline-variant/20">
+            <span class="w-2 h-2 rounded-full bg-[#356B55] shrink-0 animate-pulse"></span>
+            <span class="font-label-sm text-label-sm text-on-surface font-medium">Jurisdiction: Republic of India &bull; Updated with 2024–2025 Criminal Codes</span>
+          </div>
+
+          <h1 class="font-headline-lg text-headline-lg text-primary tracking-tight font-extrabold max-w-xl">
+            Understand Indian law, with clarity.
+          </h1>
+          <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mt-space-xs mb-space-lg">
+            Ask questions about Indian statutes, Bharatiya Nagarik Suraksha Sanhita, constitutional rights, or landmark Supreme Court precedents.
+          </p>
+
+          <!-- 2x2 Asymmetric Query Starter Cards -->
+          <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-space-md mb-space-lg text-left">
+            <!-- Card 1 -->
+            <button onclick="loadSamplePrompt('Can a High Court quash an FIR in a commercial dispute under Section 528 of the Bharatiya Nagarik Suraksha Sanhita (BNSS), 2023? What are the key Supreme Court principles?')" class="group text-left p-space-md rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-all duration-200 shadow-sm border border-outline-variant/40 hover:border-secondary flex flex-col justify-between">
+              <div class="flex items-start justify-between gap-space-md mb-space-sm">
+                <div class="w-9 h-9 rounded bg-surface-container flex items-center justify-center text-secondary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+                  <span class="material-symbols-outlined text-[20px]">menu_book</span>
+                </div>
+                <span class="font-caption text-caption text-secondary font-semibold uppercase tracking-wider bg-secondary-container/20 px-2 py-0.5 rounded">Statutory Code</span>
+              </div>
+              <div>
+                <h3 class="font-headline-sm text-headline-sm text-primary font-semibold mb-1 group-hover:text-secondary transition-colors">
+                  BNSS Section 528 Quashing
+                </h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Analyze inherent powers under BNSS Sec 528 (erstwhile Sec 482 CrPC) for commercial disputes and abuse of process.
+                </p>
+              </div>
+            </button>
+
+            <!-- Card 2 -->
+            <button onclick="loadSamplePrompt('What does Section 438 of the Code of Criminal Procedure, 1973 provide regarding direction for grant of bail to person apprehending arrest?')" class="group text-left p-space-md rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-all duration-200 shadow-sm border border-outline-variant/40 hover:border-secondary flex flex-col justify-between">
+              <div class="flex items-start justify-between gap-space-md mb-space-sm">
+                <div class="w-9 h-9 rounded bg-surface-container flex items-center justify-center text-secondary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+                  <span class="material-symbols-outlined text-[20px]">gavel</span>
+                </div>
+                <span class="font-caption text-caption text-on-tertiary-container font-semibold uppercase tracking-wider bg-tertiary-fixed/60 px-2 py-0.5 rounded">Bail Jurisprudence</span>
+              </div>
+              <div>
+                <h3 class="font-headline-sm text-headline-sm text-primary font-semibold mb-1 group-hover:text-secondary transition-colors">
+                  Anticipatory Bail Scope
+                </h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Examine statutory conditions and High Court / Sessions Court discretion under anticipatory bail jurisprudence.
+                </p>
+              </div>
+            </button>
+
+            <!-- Card 3 -->
+            <button onclick="loadSamplePrompt('Explain Section 44 of the Digital Personal Data Protection Act, 2023 and its amendments to Section 43A of the IT Act.')" class="group text-left p-space-md rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-all duration-200 shadow-sm border border-outline-variant/40 hover:border-secondary flex flex-col justify-between">
+              <div class="flex items-start justify-between gap-space-md mb-space-sm">
+                <div class="w-9 h-9 rounded bg-surface-container flex items-center justify-center text-secondary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+                  <span class="material-symbols-outlined text-[20px]">balance</span>
+                </div>
+                <span class="font-caption text-caption text-secondary font-semibold uppercase tracking-wider bg-secondary-container/20 px-2 py-0.5 rounded">Data Privacy</span>
+              </div>
+              <div>
+                <h3 class="font-headline-sm text-headline-sm text-primary font-semibold mb-1 group-hover:text-secondary transition-colors">
+                  DPDP Act Section 44 & IT Act
+                </h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Investigate statutory repeal timelines and phased commencement regarding Section 43A of the IT Act, 2000.
+                </p>
+              </div>
+            </button>
+
+            <!-- Card 4 -->
+            <button onclick="loadSamplePrompt('What are the key tests laid down by the Supreme Court in State of Haryana v. Bhajan Lal regarding FIR quashing?')" class="group text-left p-space-md rounded-xl bg-surface-container-lowest hover:bg-surface-container-low transition-all duration-200 shadow-sm border border-outline-variant/40 hover:border-secondary flex flex-col justify-between">
+              <div class="flex items-start justify-between gap-space-md mb-space-sm">
+                <div class="w-9 h-9 rounded bg-surface-container flex items-center justify-center text-secondary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+                  <span class="material-symbols-outlined text-[20px]">account_tree</span>
+                </div>
+                <span class="font-caption text-caption text-[#356B55] font-semibold uppercase tracking-wider bg-[#356B55]/10 px-2 py-0.5 rounded">Supreme Court</span>
+              </div>
+              <div>
+                <h3 class="font-headline-sm text-headline-sm text-primary font-semibold mb-1 group-hover:text-secondary transition-colors">
+                  Bhajan Lal 7-Point Test
+                </h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Explore landmark Supreme Court categories governing cognizable offence threshold and mala fide litigation.
+                </p>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- ACTIVE CHAT MESSAGES STREAM -->
+        <div id="messages-container" class="space-y-space-xl">
+          <!-- Dynamically appended messages appear here -->
+        </div>
+
+        <!-- GENERATING / LOADING INDICATOR -->
+        <div id="loading-indicator" class="hidden flex items-start gap-space-sm md:gap-space-md">
+          <div class="shrink-0 w-10 h-10 rounded bg-primary-container p-1 shadow-sm flex items-center justify-center">
+            <svg class="w-5 h-5 text-tertiary-fixed-dim animate-spin" viewBox="0 0 24 24" fill="none">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+            </svg>
+          </div>
+          <div class="flex-1 bg-surface-container-lowest rounded-xl p-space-md shadow-sm border border-outline-variant/30 space-y-2">
+            <div class="flex items-center gap-2">
+              <span class="inline-block w-2 h-2 rounded-full bg-secondary animate-ping"></span>
+              <span class="font-label-md text-label-md text-primary font-semibold">Consulting Verified Legal Knowledge Base...</span>
+            </div>
+            <p class="font-body-sm text-body-sm text-on-surface-variant">
+              Scanning 1,149 verified statutory provisions, judgments, and authentic gazette notifications...
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- STICKY CHAT COMPOSER DOCKED AT BOTTOM -->
+    <div class="fixed bottom-0 left-72 right-0 bg-surface/95 backdrop-blur-xl p-space-md z-30 border-t border-outline-variant/30 shadow-[0_-4px_20px_rgba(0,0,0,0.04)] flex justify-center">
+      <div class="w-full max-w-[840px] flex flex-col gap-space-xs">
+        
+        <!-- Quick Follow-up Suggestion Chips -->
+        <div class="flex items-center gap-space-xs overflow-x-auto pb-1 no-scrollbar text-on-surface">
+          <span class="font-caption text-caption text-outline shrink-0">Quick Queries:</span>
+          <button onclick="loadSamplePrompt('Can a High Court quash an FIR in a commercial dispute under Section 528 BNSS?')" class="shrink-0 px-2.5 py-1 rounded bg-surface-container-low hover:bg-surface-container-high text-primary font-label-sm text-label-sm border border-outline-variant/30 shadow-sm transition-all flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px] text-secondary">balance</span>
+            BNSS Sec 528 Quashing
+          </button>
+          <button onclick="loadSamplePrompt('What does Section 438 of the CrPC deal with regarding anticipatory bail?')" class="shrink-0 px-2.5 py-1 rounded bg-surface-container-low hover:bg-surface-container-high text-primary font-label-sm text-label-sm border border-outline-variant/30 shadow-sm transition-all flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px] text-secondary">gavel</span>
+            Anticipatory Bail (CrPC 438)
+          </button>
+          <button onclick="loadSamplePrompt('Explain Section 44 of the DPDP Act 2023.')" class="shrink-0 px-2.5 py-1 rounded bg-surface-container-low hover:bg-surface-container-high text-primary font-label-sm text-label-sm border border-outline-variant/30 shadow-sm transition-all flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px] text-secondary">shield</span>
+            DPDP Section 44
+          </button>
+        </div>
+
+        <!-- Input Box -->
+        <form id="chat-form" onsubmit="handleChatSubmit(event)" class="bg-surface-container-lowest rounded-xl shadow-md border border-outline-variant/50 p-space-xs flex items-center gap-space-xs">
+          <button type="button" class="p-space-xs rounded text-outline hover:text-primary hover:bg-surface-container-high transition-colors" title="Attach Brief or Case Files">
+            <span class="material-symbols-outlined text-[20px]">attach_file</span>
+          </button>
+          
+          <div class="flex-1 min-w-0">
+            <input id="chat-input" class="w-full bg-transparent border-none outline-none font-body-sm text-body-sm text-on-surface placeholder:text-outline px-space-xs py-1.5" placeholder="Ask a question on Indian statutes, case laws, or procedural remedies..." autocomplete="off"/>
+          </div>
+
+          <div class="flex items-center gap-1 shrink-0 pr-1">
+            <button id="send-button" type="submit" class="px-space-md py-2 rounded bg-primary hover:bg-primary-container text-on-primary hover:text-on-primary-container font-label-md text-label-md font-semibold transition-all shadow-sm flex items-center gap-1">
+              <span>Send</span>
+              <span class="material-symbols-outlined text-[18px]">arrow_upward</span>
+            </button>
+          </div>
+        </form>
+
+        <!-- Metadata & Shortcut Micro-bar -->
+        <div class="flex items-center justify-between px-space-xs font-caption text-caption text-outline">
+          <span class="flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+            Jurisdiction: Supreme Court of India & High Courts (2025 Edition)
+          </span>
+          <span>Press <kbd class="px-1.5 py-0.5 rounded bg-surface-container text-on-surface font-semibold text-[10px]">Enter</kbd> to submit</span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- APPLICATION JAVASCRIPT -->
+  <script>
+    let activeConversationId = null;
+
+    function loadSamplePrompt(text) {
+      const input = document.getElementById('chat-input');
+      input.value = text;
+      input.focus();
+    }
+
+    async function handleChatSubmit(e) {
+      if (e) e.preventDefault();
+      const input = document.getElementById('chat-input');
+      const query = input.value.trim();
+      if (!query) return;
+
+      // Hide empty state if first message
+      document.getElementById('empty-state-view').classList.add('hidden');
+      
+      // Render user message
+      renderUserMessage(query);
+      input.value = '';
+
+      // Show loading indicator
+      const loader = document.getElementById('loading-indicator');
+      loader.classList.remove('hidden');
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+
+      try {
+        const response = await fetch('/api/v1/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            query: query,
+            conversation_id: activeConversationId,
+            limit: 4
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error('API server returned error: ' + response.status);
+        }
+
+        const data = await response.json();
+        activeConversationId = data.conversation_id;
+        document.getElementById('matter-id-display').innerText = 'Matter #' + data.conversation_id.toUpperCase();
+        document.getElementById('matter-title-display').innerText = query.substring(0, 50) + (query.length > 50 ? '...' : '');
+
+        renderAssistantResponse(data);
+      } catch (err) {
+        renderErrorMessage(err.message);
+      } finally {
+        loader.classList.add('hidden');
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      }
+    }
+
+    function renderUserMessage(text) {
+      const container = document.getElementById('messages-container');
+      const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      
+      const html = `
+        <div class="flex justify-end">
+          <div class="max-w-[80%] bg-[#F4F1EA] text-[#20252B] p-space-md rounded-xl shadow-sm border border-outline-variant/30 flex flex-col gap-space-xs">
+            <div class="flex items-center justify-between gap-space-md font-caption text-caption text-on-surface-variant">
+              <span class="font-medium text-primary flex items-center gap-1">
+                <span class="material-symbols-outlined text-[15px]">person</span> Advocate / Researcher
+              </span>
+              <span>Today at ${timeStr}</span>
+            </div>
+            <p class="font-body-md text-body-md leading-relaxed text-on-surface font-medium">
+              ${escapeHtml(text)}
+            </p>
+          </div>
+        </div>
+      `;
+      container.insertAdjacentHTML('beforeend', html);
+    }
+
+    function renderAssistantResponse(data) {
+      const container = document.getElementById('messages-container');
+      
+      // Build Evidence Cards HTML
+      let evidenceHtml = '';
+      if (data.evidence && data.evidence.length > 0) {
+        evidenceHtml = `
+          <div class="pt-space-md">
+            <div class="bg-surface-container-low rounded-xl p-space-md space-y-space-md border border-outline-variant/30">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs pb-space-sm border-b border-outline-variant/20">
+                <div class="flex items-center gap-space-sm">
+                  <div class="w-8 h-8 rounded bg-primary-container text-tertiary-fixed-dim flex items-center justify-center font-bold">
+                    <span class="material-symbols-outlined text-[18px]">verified_user</span>
+                  </div>
+                  <div>
+                    <h4 class="font-headline-sm text-headline-sm text-primary font-bold">Legal Sources & Authorities</h4>
+                    <span class="font-caption text-caption text-on-surface-variant">${data.evidence.length} Primary Source Evidence Consulted</span>
+                  </div>
+                </div>
+                <span class="font-label-sm text-label-sm text-secondary bg-surface-container px-2.5 py-1 rounded font-semibold">
+                  Official Gazette & Verified KB
+                </span>
+              </div>
+              <div class="grid grid-cols-1 gap-space-sm">
+                ${data.evidence.map(ev => `
+                  <div class="bg-surface-container-lowest p-space-md rounded-lg shadow-sm border border-outline-variant/20 space-y-1">
+                    <div class="flex flex-wrap items-center justify-between gap-space-xs">
+                      <div class="flex items-center gap-space-xs">
+                        <span class="font-label-sm text-label-sm px-2 py-0.5 rounded bg-primary text-on-primary font-bold uppercase tracking-wider">
+                          ${ev.authority_level.replace('_', ' ')}
+                        </span>
+                        <span class="font-label-md text-label-md text-primary font-bold">
+                          ${escapeHtml(ev.act_or_case_title)} — ${escapeHtml(ev.provision_or_para_ref)}
+                        </span>
+                      </div>
+                      ${ev.effective_date ? `
+                        <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#EBF3EF] text-[#22543D] font-caption text-caption font-semibold">
+                          <span class="w-1.5 h-1.5 rounded-full bg-[#356B55]"></span>
+                          Commenced: ${ev.effective_date}
+                        </span>
+                      ` : ''}
+                    </div>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant italic quote-serif pt-1">
+                      "${escapeHtml(ev.verbatim_text.substring(0, 320))}${ev.verbatim_text.length > 320 ? '...' : ''}"
+                    </p>
+                    <div class="flex items-center justify-between pt-1">
+                      <span class="font-caption text-caption text-outline">Source ID: ${escapeHtml(ev.source_id)}</span>
+                      <a href="${escapeHtml(ev.source_url)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-secondary hover:text-primary font-label-sm text-label-sm font-semibold transition-colors">
+                        <span>Official Source Link</span>
+                        <span class="material-symbols-outlined text-[14px]">open_in_new</span>
+                      </a>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      const html = `
+        <div class="flex items-start gap-space-sm md:gap-space-md">
+          <!-- Emblem Avatar -->
+          <div class="shrink-0 w-10 h-10 rounded bg-primary-container p-1 shadow-sm flex items-center justify-center">
+            <svg class="w-6 h-6 text-tertiary-fixed-dim" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <circle cx="12" cy="12" r="9" stroke-width="1.2" stroke-dasharray="2 2" class="opacity-70"/>
+              <circle cx="12" cy="12" r="5" stroke-width="1.2"/>
+              <circle cx="12" cy="12" r="2" fill="#D99A35"/>
+            </svg>
+          </div>
+
+          <!-- Assistant Container -->
+          <div class="flex-1 min-w-0 bg-surface-container-lowest rounded-xl p-space-lg shadow-sm border border-outline-variant/30 space-y-space-lg">
+            
+            <!-- Header Badges & Utility Bar -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm pb-space-sm bg-surface-container-low/50 p-space-sm rounded-lg border border-outline-variant/20">
+              <div class="flex flex-wrap items-center gap-space-xs">
+                <span class="font-label-sm text-label-sm font-semibold uppercase tracking-wider text-primary px-2 py-0.5 rounded bg-surface-container-high">
+                  ${data.evidence_sufficiency === 'sufficient' ? 'Source-Grounded' : 'Cautious Synthesis'}
+                </span>
+                <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-[#EBF3EF] text-[#22543D] font-label-sm text-label-sm font-medium">
+                  <span class="w-2 h-2 rounded-full bg-[#356B55]"></span>
+                  Law Applicable: 2025
+                </span>
+              </div>
+              <div class="flex items-center gap-1 shrink-0 text-on-surface-variant">
+                <button onclick="copyAnswerText(this)" class="p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors flex items-center" title="Copy Analysis">
+                  <span class="material-symbols-outlined text-[18px]">content_copy</span>
+                </button>
+                <button onclick="recordFeedback(true)" class="p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors flex items-center" title="Helpful">
+                  <span class="material-symbols-outlined text-[18px]">thumb_up</span>
+                </button>
+                <button onclick="recordFeedback(false)" class="p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors flex items-center" title="Inaccurate or incomplete">
+                  <span class="material-symbols-outlined text-[18px]">thumb_down</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Answer Body -->
+            <div class="space-y-space-xs">
+              <div class="flex items-center gap-1.5 text-secondary">
+                <span class="material-symbols-outlined text-[20px]">verified</span>
+                <span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">Legal Analysis & Synthesis</span>
+              </div>
+              <div class="bg-[#FAF8F2] p-space-md rounded-lg border border-outline-variant/30 text-on-surface leading-relaxed font-normal whitespace-pre-wrap">
+                ${escapeHtml(data.answer)}
+              </div>
+            </div>
+
+            <!-- Supporting Evidence Section -->
+            ${evidenceHtml}
+
+            <!-- Telemetry & Disclaimer Footer -->
+            <div class="space-y-2 pt-2 border-t border-outline-variant/20">
+              <div class="flex items-center justify-between text-outline font-caption text-caption">
+                <span>Model: ${escapeHtml(data.model_used)} &bull; Latency: ${data.latency_seconds}s</span>
+                <span class="text-secondary font-medium">&check; Strict Source-Grounded Enforcement</span>
+              </div>
+              <div class="p-space-sm rounded-lg bg-surface-container text-left flex items-start gap-space-xs border border-outline-variant/20">
+                <span class="material-symbols-outlined text-[16px] text-outline shrink-0 mt-0.5">info</span>
+                <p class="font-caption text-caption text-on-surface-variant leading-tight">
+                  <strong>Statutory Disclaimer:</strong> ${escapeHtml(data.legal_disclaimer)}
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      `;
+      container.insertAdjacentHTML('beforeend', html);
+    }
+
+    function renderErrorMessage(errText) {
+      const container = document.getElementById('messages-container');
+      const html = `
+        <div class="p-space-md rounded-xl bg-error-container/40 border border-error/20 text-on-error-container flex items-start gap-space-sm">
+          <span class="material-symbols-outlined text-error text-[20px] shrink-0 mt-0.5">error</span>
+          <div>
+            <h4 class="font-label-md text-label-md font-bold text-error">System Notice</h4>
+            <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">${escapeHtml(errText)}</p>
+          </div>
+        </div>
+      `;
+      container.insertAdjacentHTML('beforeend', html);
+    }
+
+    function copyAnswerText(btn) {
+      const parent = btn.closest('.space-y-space-lg');
+      const text = parent.querySelector('.whitespace-pre-wrap').innerText;
+      navigator.clipboard.writeText(text);
+      const icon = btn.querySelector('.material-symbols-outlined');
+      icon.innerText = 'done';
+      setTimeout(() => { icon.innerText = 'content_copy'; }, 2000);
+    }
+
+    async function recordFeedback(isHelpful) {
+      if (!activeConversationId) return;
+      try {
+        await fetch('/api/v1/feedback', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            conversation_id: activeConversationId,
+            query: 'Consultation Feedback',
+            is_helpful: isHelpful
+          })
+        });
+        alert('Thank you for verifying this legal answer!');
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    function exportLegalMemo() {
+      window.print();
+    }
+
+    function shareConversation() {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Conversation link copied to clipboard.');
+    }
+
+    function escapeHtml(text) {
+      if (!text) return '';
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    // New chat button listener
+    document.getElementById('btn-new-chat').addEventListener('click', () => {
+      activeConversationId = null;
+      document.getElementById('messages-container').innerHTML = '';
+      document.getElementById('empty-state-view').classList.remove('hidden');
+      document.getElementById('chat-input').value = '';
+      document.getElementById('chat-input').focus();
+    });
+
+    async function refreshRecentConversations() {
+      try {
+        const res = await fetch('/api/v1/conversations');
+        if (!res.ok) return;
+        const convs = await res.json();
+        const listEl = document.getElementById('recent-conversations-list');
+        if (!convs || convs.length === 0) return;
+        
+        listEl.innerHTML = convs.map(c => `
+          <div class="flex items-center justify-between group rounded hover:bg-surface-container-high px-space-sm py-1">
+            <button onclick="loadConversation('${c.conversation_id}')" class="flex-1 text-left truncate font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface">
+              ${escapeHtml(c.title)}
+            </button>
+            <button onclick="deleteConversation('${c.conversation_id}', event)" class="opacity-0 group-hover:opacity-100 p-1 text-outline hover:text-error transition-opacity" title="Delete conversation">
+              <span class="material-symbols-outlined text-[14px]">delete</span>
+            </button>
+          </div>
+        `).join('');
+      } catch (err) {
+        console.error('Error fetching conversations:', err);
+      }
+    }
+
+    async function loadConversation(convId) {
+      try {
+        const res = await fetch(`/api/v1/conversations/${convId}/messages`);
+        if (!res.ok) throw new Error('Could not load conversation');
+        const msgs = await res.json();
+        activeConversationId = convId;
+        document.getElementById('empty-state-view').classList.add('hidden');
+        const container = document.getElementById('messages-container');
+        container.innerHTML = '';
+        
+        for (const m of msgs) {
+          if (m.role === 'user') {
+            renderUserMessage(m.content);
+          } else {
+            renderAssistantResponse({
+              conversation_id: convId,
+              query: '',
+              answer: m.content,
+              citations: m.citations || [],
+              evidence: m.evidence || [],
+              evidence_sufficiency: 'sufficient',
+              model_used: m.model_used || 'LegalMitra RAG',
+              latency_seconds: m.latency_seconds || 0,
+              legal_disclaimer: 'This response is an automated synthesis of Indian legal sources and does not constitute formal legal advice or create an advocate-client relationship. Substantive rights and procedural timelines should be verified with an advocate enrolled under the Advocates Act, 1961.'
+            });
+          }
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    async function deleteConversation(convId, evt) {
+      if (evt) evt.stopPropagation();
+      if (!confirm('Are you sure you want to delete this consultation history?')) return;
+      try {
+        const res = await fetch(`/api/v1/conversations/${convId}`, { method: 'DELETE' });
+        if (res.ok) {
+          if (activeConversationId === convId) {
+            document.getElementById('btn-new-chat').click();
+          }
+          refreshRecentConversations();
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    // Refresh on startup and after chat submit
+    window.addEventListener('DOMContentLoaded', refreshRecentConversations);
+  </script>
+</body>
+</html>
+

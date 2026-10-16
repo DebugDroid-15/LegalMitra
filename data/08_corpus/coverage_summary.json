@@ -1,0 +1,48 @@
+{
+  "audit_version": "1.0.0",
+  "timestamp": "2026-10-16T23:54:00+05:30",
+  "total_sources_identified": 37,
+  "indexed_sources_count": 16,
+  "total_indexed_chunks": 1227,
+  "quarantined_chunks_count": 6,
+  "status_distribution": {
+    "current": 30,
+    "quarantined": 1,
+    "inaccessible": 1,
+    "unverified": 1,
+    "historical": 4
+  },
+  "document_class_distribution": {
+    "Act": 22,
+    "Judgment": 12,
+    "Practice Direction": 1,
+    "Other": 1,
+    "Constitution": 1
+  },
+  "jurisdiction_distribution": {
+    "IN": 36,
+    "IN-DL": 1
+  },
+  "domain_distribution": {
+    "Criminal Law & Evidence": 3,
+    "Criminal Law & Child Protection": 1,
+    "Criminal Law & Procedure": 5,
+    "Technology & Emerging Regulation": 3,
+    "Constitutional & Public Law": 9,
+    "Civil Justice & Judicial Procedure": 1,
+    "Test Fixtures": 1,
+    "Civil Justice": 2,
+    "Civil Justice & Commercial Law": 3,
+    "Business & Economic Law": 3,
+    "Criminal Law & Financial Regulation": 1,
+    "Environment, Land & Infrastructure": 2,
+    "Employment & Social Protection": 1,
+    "Constitutional & Employment Law": 1,
+    "Constitutional & Criminal Justice": 1
+  },
+  "gap_summary": {
+    "pending_ingestion_count": 19,
+    "inaccessible_count": 2,
+    "quarantined_count": 1
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "source_id": "IND-STAT-BSA-2023-SEC63",
+  "act_title": "Bharatiya Sakshya Adhiniyam, 2023 - Section 63",
+  "act_number": null,
+  "jurisdiction": "IN",
+  "enactment_date": "2023-12-25",
+  "effective_date": "2024-07-01",
+  "preamble": null,
+  "sections": [
+    {
+      "section_id": "IND-STAT-BSA-2023-SEC63-SEC-63",
+      "source_id": "IND-STAT-BSA-2023-SEC63",
+      "act_title": "Bharatiya Sakshya Adhiniyam, 2023 - Section 63",
+      "act_number": null,
+      "chapter_number": null,
+      "chapter_title": null,
+      "section_number": "63",
+      "section_title": "Admissibility of electronic records",
+      "full_verbatim_text": "### Section 63. Admissibility of electronic records\n\n**63.** (1) Notwithstanding anything contained in this Adhiniyam, any information contained in an electronic record which is printed on a paper, stored, recorded or copied in optical or magnetic media shall be deemed to be also a document.\n\n(2) The conditions referred to in sub-section (1) in respect of a computer output shall be the following, namely:-\n\n- (a) the computer output containing the information was produced by the computer during the period over which the computer was used regularly;\n- (b) during the said period, information of the kind contained in the electronic record was regularly fed into the computer;\n\n**Provided that** the certificate signed by a person in official charge shall be produced in evidence.",
+      "subsections": [
+        {
+          "sub_section_number": "(2)",
+          "text": "(2) The conditions referred to in sub-section (1) in respect of a computer output shall be the following, namely:-\n\n- (a) the computer output containing the information was produced by the computer during the period over which the computer was used regularly;\n- (b) during the said period, information of the kind contained in the electronic record was regularly fed into the computer;\n\n**Provided that** the certificate signed by a person in official charge shall be produced in evidence.",
+          "clauses": []
+        }
+      ],
+      "provisos": [
+        {
+          "proviso_index": 1,
+          "text": "Provided that** the certificate signed by a person in official charge shall be produced in evidence."
+        }
+      ],
+      "explanations": [],
+      "illustrations": [],
+      "source_page_start": null,
+      "source_page_end": null,
+      "legal_review_status": "unverified_automated"
+    }
+  ],
+  "legal_review_status": "unverified_automated"
+}

@@ -1,0 +1,36 @@
+{
+  "manifest_id": "MANIFEST-2026-BATCH01-HANDOFF-001",
+  "package_title": "LegalMitra Controlled Expansion Batch 1 \u2014 Advocate Review Package",
+  "timestamp_utc": "2026-10-16T18:01:09.507451Z",
+  "batch_id": "BATCH-01",
+  "total_records": 20,
+  "review_status_summary": {
+    "pending_legal_review": 20,
+    "legal_expert_approved": 0,
+    "legal_expert_rejected": 0,
+    "revision_required": 0,
+    "needs_more_evidence": 0,
+    "deferred": 0
+  },
+  "quarantine_compliance": {
+    "IND-JUD-DEL-2024-BAIL_excluded": true,
+    "synthetic_scaffolds_excluded": true
+  },
+  "artifacts": {
+    "batch_01_review_sheet": {
+      "path": "data\\07_batches\\review\\batch_01_review_sheet.csv",
+      "record_count": 20,
+      "sha256": "19a3b214867b4eb4127fd0c0596950dbe243d8e02f073e2b4c6bf134c803737a"
+    },
+    "batch_01_source_bundle": {
+      "path": "data\\07_batches\\review\\batch_01_source_bundle.json",
+      "record_count": 20,
+      "sha256": "2d2d1b9902653e35d11d07d32400d47d1c83c361915da714356d2b203d31fc97"
+    },
+    "batch_01_examples": {
+      "path": "data\\07_batches\\batch_01_candidates\\batch_01_examples.jsonl",
+      "record_count": 20,
+      "sha256": "5798192ea12e818bd66ae51cc3d467d7d0bafceaa3788fcda3c2d39f5c49aa22"
+    }
+  }
+}

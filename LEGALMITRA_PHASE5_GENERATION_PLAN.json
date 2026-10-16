@@ -1,0 +1,165 @@
+{
+  "plan_metadata": {
+    "version": "1.0.0",
+    "phase": "Phase 5 Controlled Generation Plan",
+    "date": "2026-10-16",
+    "total_proposed_examples": 150,
+    "cost_control_policy": "Strict budget caps: 0 live API tokens consumed during planning; deterministic offline verification; Nemotron decoupled",
+    "legal_review_policy": "All newly generated items assigned status 'unverified_automated' and appended to data/ADVOCATE_REVIEW_LIST.md prior to graduation"
+  },
+  "source_eligibility_filter": {
+    "eligible_sources": [
+      {
+        "source_id": "IND-STAT-DPDP-2023",
+        "title": "The Digital Personal Data Protection Act, 2023",
+        "status": "normalized",
+        "chunks_count": 129,
+        "permitted_tasks": ["statutory_qa", "case_reasoning", "procedural_guidance", "drafting"]
+      },
+      {
+        "source_id": "IND-STAT-IT-2000",
+        "title": "The Information Technology Act, 2000 (as amended)",
+        "status": "normalized",
+        "chunks_count": 230,
+        "permitted_tasks": ["statutory_qa", "case_reasoning", "procedural_guidance", "drafting"]
+      },
+      {
+        "source_id": "IND-JUD-SC-2017-PUTTASWAMY",
+        "title": "Justice K.S. Puttaswamy (Retd.) v. Union of India (2017) 10 SCC 1",
+        "status": "normalized",
+        "chunks_count": 7,
+        "permitted_tasks": ["case_analysis", "case_reasoning", "statutory_qa"]
+      },
+      {
+        "source_id": "IND-STAT-POCSO-2012-SEC4",
+        "title": "Protection of Children from Sexual Offences Act, 2012 - Section 4",
+        "status": "normalized",
+        "chunks_count": 4,
+        "permitted_tasks": ["statutory_qa", "case_reasoning"]
+      },
+      {
+        "source_id": "IND-STAT-BSA-2023-SEC61",
+        "title": "Bharatiya Sakshya Adhiniyam, 2023 - Section 61",
+        "status": "normalized",
+        "chunks_count": 3,
+        "permitted_tasks": ["statutory_qa", "drafting"]
+      },
+      {
+        "source_id": "IND-STAT-BSA-2023-SEC63",
+        "title": "Bharatiya Sakshya Adhiniyam, 2023 - Section 63",
+        "status": "normalized",
+        "chunks_count": 3,
+        "permitted_tasks": ["statutory_qa", "procedural_guidance", "drafting"]
+      }
+    ],
+    "quarantined_sources": [
+      {
+        "source_id": "IND-JUD-DEL-2024-BAIL",
+        "reason": "Unverified synthetic scaffold with inverted party roles (State petitioning for anticipatory bail under BNSS s.482). Zero examples permitted."
+      },
+      {
+        "source_id": "IND-GUIDE-SCI-PROC-2025",
+        "reason": "Extraction failed due to 15-page Docling limit (278 pages). Zero examples permitted until multi-part chapter ingestion is executed."
+      },
+      {
+        "source_id": "IND-UNSUPPORTED-001",
+        "reason": "Negative failure control. Zero positive examples permitted."
+      }
+    ]
+  },
+  "batches": [
+    {
+      "batch_id": "BATCH-01-DPDP-STATUTORY",
+      "legal_domain": "Information Technology and Data Protection",
+      "task_type": "statutory_qa",
+      "source_ids": ["IND-STAT-DPDP-2023"],
+      "proposed_count": 35,
+      "difficulty": "medium",
+      "target_focus": "Data Principal rights (ss. 11-14), Data Fiduciary obligations (ss. 4-10), Significant Data Fiduciaries (s. 10), and penalties under Schedule",
+      "evidence_requirements": "Exact verbatim passage from indexed DPDP chunks; section and subsection references; explicit mention of Section 1(2) phased commencement",
+      "validation_rules": "Strict verbatim substring check against source text; check that penalty amounts match Schedule exactly (e.g. up to 250 crore rupees)",
+      "legal_review_requirements": "Advocate must verify whether cited rule-making provisions (ss. 40-42) rely on notified rules",
+      "estimated_tokens_input": 28000,
+      "estimated_tokens_output": 10500
+    },
+    {
+      "batch_id": "BATCH-02-IT-CYBERCRIME-INTERMEDIARY",
+      "legal_domain": "Information Technology and Data Protection",
+      "task_type": "statutory_qa",
+      "source_ids": ["IND-STAT-IT-2000"],
+      "proposed_count": 30,
+      "difficulty": "medium",
+      "target_focus": "Civil penalties (ss. 43, 44), criminal cyber offences (ss. 65, 66, 66C, 66D, 67, 67A), and intermediary safe harbour (s. 79)",
+      "evidence_requirements": "Exact verbatim passage from IT Act 2000; correct compound subsections (e.g. s.66E privacy violation, s.67B child sexual abuse material)",
+      "validation_rules": "Verify that s.66A is noted as struck down by Supreme Court in Shreya Singhal (2015); verify that s.43A is noted as pending omission under DPDP s.44(2)",
+      "legal_review_requirements": "Advocate must certify that no unconstitutional or repealed provisions are presented as active law",
+      "estimated_tokens_input": 24000,
+      "estimated_tokens_output": 9000
+    },
+    {
+      "batch_id": "BATCH-03-CROSS-STATUTE-EVIDENCE-IT",
+      "legal_domain": "Evidence Law & Cyber Law",
+      "task_type": "case_reasoning",
+      "source_ids": ["IND-STAT-BSA-2023-SEC61", "IND-STAT-BSA-2023-SEC63", "IND-STAT-IT-2000"],
+      "proposed_count": 25,
+      "difficulty": "hard",
+      "target_focus": "Admissibility of electronic messages, emails, server logs, and hash algorithms across BSA ss. 61-63 and IT Act definitions",
+      "evidence_requirements": "Dual-source citation: BSA Section 61 Explanation and IT Act Section 2(1)(t) / Section 2(1)(r)",
+      "validation_rules": "Multi-source citation validator: both source IDs must exist in supporting_source_ids and both must have verified passages",
+      "legal_review_requirements": "Advocate review of certificate compliance under Section 63(4) BSA vs former Section 65B(4) Evidence Act",
+      "estimated_tokens_input": 32000,
+      "estimated_tokens_output": 11000
+    },
+    {
+      "batch_id": "BATCH-04-PUTTASWAMY-CONSTITUTIONAL-ANALYSIS",
+      "legal_domain": "Constitutional Law",
+      "task_type": "case_analysis",
+      "source_ids": ["IND-JUD-SC-2017-PUTTASWAMY"],
+      "proposed_count": 20,
+      "difficulty": "hard",
+      "target_focus": "Three-fold proportionality test (legitimate aim, suitability/rational nexus, necessity/least restrictive means, balance/proportionality stricto sensu)",
+      "evidence_requirements": "Exact verbatim extracts from Paras 1-6 and Ratio Decidendi of Puttaswamy judgment",
+      "validation_rules": "Negative constraint check: must not assert that privacy is an absolute or unregulated right; must reflect that it is subject to reasonable restrictions under Art 21",
+      "legal_review_requirements": "Constitutional law advocate must verify proportionality formulation against Chandrachud J. and Kaul J. separate opinions",
+      "estimated_tokens_input": 20000,
+      "estimated_tokens_output": 8500
+    },
+    {
+      "batch_id": "BATCH-05-BSA-SECTION63-PROCEDURAL-DRAFTING",
+      "legal_domain": "Law of Evidence & Criminal/Civil Procedure",
+      "task_type": "drafting",
+      "source_ids": ["IND-STAT-BSA-2023-SEC63"],
+      "proposed_count": 15,
+      "difficulty": "hard",
+      "target_focus": "Mandatory Section 63(4) Certificate drafting templates for electronic evidence produced from laptops, mobile devices, CCTV servers, and cloud databases",
+      "evidence_requirements": "Verbatim reflection of all conditions in Section 63(2) and signatory categories under Section 63(4)(a)-(c)",
+      "validation_rules": "Title validation: must strictly be titled 'Bharatiya Sakshya Adhiniyam, 2023' (zero tolerance for previously observed hallucinated title); must include standard jurat and affidavit clauses",
+      "legal_review_requirements": "Trial advocate review for admissibility before Sessions Court and High Court criminal benches",
+      "estimated_tokens_input": 18000,
+      "estimated_tokens_output": 7500
+    },
+    {
+      "batch_id": "BATCH-06-SAFE-REFUSALS-OUT-OF-CORPUS",
+      "legal_domain": "Multi-Domain Negative Controls",
+      "task_type": "statutory_qa",
+      "source_ids": ["IND-UNSUPPORTED-001"],
+      "proposed_count": 25,
+      "difficulty": "medium",
+      "target_focus": "Safe refusal and out-of-corpus queries across Civil Procedure (CPC Order 7 R 11), Limitation Act, Arbitration Act, Insolvency & Bankruptcy Code (IBC s.7/9), and Indian Contract Act",
+      "evidence_requirements": "Explicit refusal declaration indicating that the topic is outside the verified LegalMitra Knowledge Base",
+      "validation_rules": "Negative constraint: zero hallucinated sections, zero fabricated deadlines, output must contain phrase 'insufficient evidence in corpus'",
+      "legal_review_requirements": "Verify that refusal reasons are legally sound and do not accidentally disclaim indexed law",
+      "estimated_tokens_input": 15000,
+      "estimated_tokens_output": 5000
+    }
+  ],
+  "resource_budget_summary": {
+    "total_examples": 150,
+    "total_estimated_prompt_tokens": 137000,
+    "total_estimated_completion_tokens": 51500,
+    "total_estimated_tokens": 188500,
+    "estimated_cost_usd": 0.00,
+    "execution_gate": "Phase 5 creates plan and schema specifications; bulk execution will be run in controlled batches with human-in-the-loop review"
+  }
+}
+

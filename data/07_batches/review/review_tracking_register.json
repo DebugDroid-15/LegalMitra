@@ -1,0 +1,912 @@
+{
+  "version": "1.0.0",
+  "last_updated_utc": "2026-10-16T18:02:21.267502Z",
+  "total_tracked_records": 40,
+  "summary": {
+    "total_records": 40,
+    "packages": {
+      "PACKAGE_A_PILOT_20": 20,
+      "PACKAGE_B_BATCH_01": 20
+    },
+    "status_distribution": {
+      "pending_legal_review": 40
+    },
+    "dispatch_metrics": {
+      "sent_count": 0,
+      "unsent_count": 40
+    },
+    "response_metrics": {
+      "received_count": 0,
+      "pending_receipt_count": 40
+    },
+    "import_metrics": {
+      "imported_count": 0,
+      "unimported_count": 40
+    }
+  },
+  "entries": [
+    {
+      "example_id": "QA-BATCH1-001",
+      "dataset_version": "batch_01_candidates_v1.0",
+      "batch_id": "BATCH-01",
+      "package_identifier": "PACKAGE_B_BATCH_01",
+      "legal_domain": "Data Protection",
+      "statutory_citations": [
+        "Section 4(1), Digital Personal Data Protection Act, 2023"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-BATCH1-002",
+      "dataset_version": "batch_01_candidates_v1.0",
+      "batch_id": "BATCH-01",
+      "package_identifier": "PACKAGE_B_BATCH_01",
+      "legal_domain": "Data Protection",
+      "statutory_citations": [
+        "Section 5(1), Digital Personal Data Protection Act, 2023"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-BATCH1-003",
+      "dataset_version": "batch_01_candidates_v1.0",
+      "batch_id": "BATCH-01",
+      "package_identifier": "PACKAGE_B_BATCH_01",
+      "legal_domain": "Data Protection",
+      "statutory_citations": [
+        "Section 7(a), Digital Personal Data Protection Act, 2023"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-BATCH1-004",
+      "dataset_version": "batch_01_candidates_v1.0",
+      "batch_id": "BATCH-01",
+      "package_identifier": "PACKAGE_B_BATCH_01",
+      "legal_domain": "Data Protection",
+      "statutory_citations": [
+        "Section 9(1), Digital Personal Data Protection Act, 2023"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-BATCH1-005",
+      "dataset_version": "batch_01_candidates_v1.0",
+      "batch_id": "BATCH-01",
+      "package_identifier": "PACKAGE_B_BATCH_01",
+      "legal_domain": "Data Protection",
+      "statutory_citations": [
+        "Section 10(1), Digital Personal Data Protection Act, 2023"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-BATCH1-006",
+      "dataset_version": "batch_01_candidates_v1.0",
+      "batch_id": "BATCH-01",
+      "package_identifier": "PACKAGE_B_BATCH_01",
+      "legal_domain": "Criminal Procedure",
+      "statutory_citations": [
+        "Section 35(1)(a), Bharatiya Nagarik Suraksha Sanhita, 2023"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-BATCH1-007",
+      "dataset_version": "batch_01_candidates_v1.0",
+      "batch_id": "BATCH-01",
+      "package_identifier": "PACKAGE_B_BATCH_01",
+      "legal_domain": "Criminal Procedure",
+      "statutory_citations": [
+        "Section 173(1), Bharatiya Nagarik Suraksha Sanhita, 2023"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-BATCH1-008",
+      "dataset_version": "batch_01_candidates_v1.0",
+      "batch_id": "BATCH-01",
+      "package_identifier": "PACKAGE_B_BATCH_01",
+      "legal_domain": "Criminal Procedure",
+      "statutory_citations": [
+        "Section 479(1), Bharatiya Nagarik Suraksha Sanhita, 2023"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-BATCH1-009",
+      "dataset_version": "batch_01_candidates_v1.0",
+      "batch_id": "BATCH-01",
+      "package_identifier": "PACKAGE_B_BATCH_01",
+      "legal_domain": "Criminal Procedure",
+      "statutory_citations": [
+        "Section 528, Bharatiya Nagarik Suraksha Sanhita, 2023"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-BATCH1-010",
+      "dataset_version": "batch_01_candidates_v1.0",
+      "batch_id": "BATCH-01",
+      "package_identifier": "PACKAGE_B_BATCH_01",
+      "legal_domain": "Criminal Procedure",
+      "statutory_citations": [
+        "Section 531, Bharatiya Nagarik Suraksha Sanhita, 2023",
+        "Code of Criminal Procedure, 1973"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-BATCH1-011",
+      "dataset_version": "batch_01_candidates_v1.0",
+      "batch_id": "BATCH-01",
+      "package_identifier": "PACKAGE_B_BATCH_01",
+      "legal_domain": "Evidence Law",
+      "statutory_citations": [
+        "Section 61, Bharatiya Sakshya Adhiniyam, 2023",
+        "Section 63, Bharatiya Sakshya Adhiniyam, 2023"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-BATCH1-012",
+      "dataset_version": "batch_01_candidates_v1.0",
+      "batch_id": "BATCH-01",
+      "package_identifier": "PACKAGE_B_BATCH_01",
+      "legal_domain": "Evidence Law",
+      "statutory_citations": [
+        "Section 61, Bharatiya Sakshya Adhiniyam, 2023",
+        "Section 2(1)(t), Information Technology Act, 2000"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-BATCH1-013",
+      "dataset_version": "batch_01_candidates_v1.0",
+      "batch_id": "BATCH-01",
+      "package_identifier": "PACKAGE_B_BATCH_01",
+      "legal_domain": "Evidence Law",
+      "statutory_citations": [
+        "Section 63(1), Bharatiya Sakshya Adhiniyam, 2023"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-BATCH1-014",
+      "dataset_version": "batch_01_candidates_v1.0",
+      "batch_id": "BATCH-01",
+      "package_identifier": "PACKAGE_B_BATCH_01",
+      "legal_domain": "Child Protection Law",
+      "statutory_citations": [
+        "Section 4(1), Protection of Children from Sexual Offences Act, 2012"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-BATCH1-015",
+      "dataset_version": "batch_01_candidates_v1.0",
+      "batch_id": "BATCH-01",
+      "package_identifier": "PACKAGE_B_BATCH_01",
+      "legal_domain": "Child Protection Law",
+      "statutory_citations": [
+        "Section 4, Protection of Children from Sexual Offences Act, 2012"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-BATCH1-016",
+      "dataset_version": "batch_01_candidates_v1.0",
+      "batch_id": "BATCH-01",
+      "package_identifier": "PACKAGE_B_BATCH_01",
+      "legal_domain": "Child Protection Law",
+      "statutory_citations": [
+        "Section 4, Protection of Children from Sexual Offences Act, 2012"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-BATCH1-017",
+      "dataset_version": "batch_01_candidates_v1.0",
+      "batch_id": "BATCH-01",
+      "package_identifier": "PACKAGE_B_BATCH_01",
+      "legal_domain": "Cyber Law",
+      "statutory_citations": [
+        "Section 43(a), Information Technology Act, 2000"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-BATCH1-018",
+      "dataset_version": "batch_01_candidates_v1.0",
+      "batch_id": "BATCH-01",
+      "package_identifier": "PACKAGE_B_BATCH_01",
+      "legal_domain": "Cyber Law",
+      "statutory_citations": [
+        "Section 66E, Information Technology Act, 2000"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-BATCH1-019",
+      "dataset_version": "batch_01_candidates_v1.0",
+      "batch_id": "BATCH-01",
+      "package_identifier": "PACKAGE_B_BATCH_01",
+      "legal_domain": "Constitutional Law",
+      "statutory_citations": [
+        "Article 21, Constitution of India"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-BATCH1-020",
+      "dataset_version": "batch_01_candidates_v1.0",
+      "batch_id": "BATCH-01",
+      "package_identifier": "PACKAGE_B_BATCH_01",
+      "legal_domain": "Constitutional Law",
+      "statutory_citations": [
+        "Article 21, Constitution of India"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-PILOT-CROSS-001",
+      "dataset_version": "pilot_20_frozen_v1.2",
+      "batch_id": "PILOT-20",
+      "package_identifier": "PACKAGE_A_PILOT_20",
+      "legal_domain": "Criminal Law - Electronic Evidence",
+      "statutory_citations": [
+        "Section 61, Bharatiya Sakshya Adhiniyam, 2023",
+        "Section 63, Bharatiya Sakshya Adhiniyam, 2023",
+        "Section 2(1)(t), Information Technology Act, 2000"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": [
+        "BSA Section 61 admissibility subject to Section 63 certificate"
+      ]
+    },
+    {
+      "example_id": "QA-PILOT-CROSS-002",
+      "dataset_version": "pilot_20_frozen_v1.2",
+      "batch_id": "PILOT-20",
+      "package_identifier": "PACKAGE_A_PILOT_20",
+      "legal_domain": "Criminal Law - Electronic Evidence",
+      "statutory_citations": [
+        "Section 61, Bharatiya Sakshya Adhiniyam, 2023",
+        "Section 63, Bharatiya Sakshya Adhiniyam, 2023"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": [
+        "BSA Section 61 admissibility subject to Section 63 certificate"
+      ]
+    },
+    {
+      "example_id": "QA-PILOT-CROSS-003",
+      "dataset_version": "pilot_20_frozen_v1.2",
+      "batch_id": "PILOT-20",
+      "package_identifier": "PACKAGE_A_PILOT_20",
+      "legal_domain": "Criminal Law - Electronic Evidence",
+      "statutory_citations": [
+        "Section 63, Bharatiya Sakshya Adhiniyam, 2023"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-PILOT-CROSS-004",
+      "dataset_version": "pilot_20_frozen_v1.2",
+      "batch_id": "PILOT-20",
+      "package_identifier": "PACKAGE_A_PILOT_20",
+      "legal_domain": "Criminal Law - Electronic Evidence",
+      "statutory_citations": [
+        "Section 61, Bharatiya Sakshya Adhiniyam, 2023",
+        "Section 63, Bharatiya Sakshya Adhiniyam, 2023"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-PILOT-CROSS-005",
+      "dataset_version": "pilot_20_frozen_v1.2",
+      "batch_id": "PILOT-20",
+      "package_identifier": "PACKAGE_A_PILOT_20",
+      "legal_domain": "Cyber Law - Information Technology Offences",
+      "statutory_citations": [
+        "Section 66, Information Technology Act, 2000",
+        "Section 43, Information Technology Act, 2000",
+        "Section 24, Indian Penal Code, 1860",
+        "Section 25, Indian Penal Code, 1860"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-PILOT-CROSS-006",
+      "dataset_version": "pilot_20_frozen_v1.2",
+      "batch_id": "PILOT-20",
+      "package_identifier": "PACKAGE_A_PILOT_20",
+      "legal_domain": "Cyber Law - Information Technology Offences",
+      "statutory_citations": [
+        "Section 66C, Information Technology Act, 2000"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-PILOT-CROSS-007",
+      "dataset_version": "pilot_20_frozen_v1.2",
+      "batch_id": "PILOT-20",
+      "package_identifier": "PACKAGE_A_PILOT_20",
+      "legal_domain": "Cyber Law - Information Technology Offences",
+      "statutory_citations": [
+        "Section 66D, Information Technology Act, 2000"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-PILOT-CROSS-008",
+      "dataset_version": "pilot_20_frozen_v1.2",
+      "batch_id": "PILOT-20",
+      "package_identifier": "PACKAGE_A_PILOT_20",
+      "legal_domain": "Criminal Procedure - Anticipatory Bail",
+      "statutory_citations": [
+        "Section 482(1), Bharatiya Nagarik Suraksha Sanhita, 2023"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-PILOT-CROSS-009",
+      "dataset_version": "pilot_20_frozen_v1.2",
+      "batch_id": "PILOT-20",
+      "package_identifier": "PACKAGE_A_PILOT_20",
+      "legal_domain": "Criminal Procedure - Statutory Exclusions from Anticipatory Bail",
+      "statutory_citations": [
+        "Section 482(4), Bharatiya Nagarik Suraksha Sanhita, 2023",
+        "Section 65, Bharatiya Nyaya Sanhita, 2023",
+        "Section 70(2), Bharatiya Nyaya Sanhita, 2023"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": []
+    },
+    {
+      "example_id": "QA-PILOT-CROSS-010",
+      "dataset_version": "pilot_20_frozen_v1.2",
+      "batch_id": "PILOT-20",
+      "package_identifier": "PACKAGE_A_PILOT_20",
+      "legal_domain": "Criminal Procedure - Repeal and Savings",
+      "statutory_citations": [
+        "Section 531, Bharatiya Nagarik Suraksha Sanhita, 2023",
+        "Code of Criminal Procedure, 1973"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": [
+        "BNSS Section 531(2)(a) CrPC 1973 repeal and savings distinction"
+      ]
+    },
+    {
+      "example_id": "QA-PILOT-DPDP-001",
+      "dataset_version": "pilot_20_frozen_v1.2",
+      "batch_id": "PILOT-20",
+      "package_identifier": "PACKAGE_A_PILOT_20",
+      "legal_domain": "Data Protection Law - Digital Privacy",
+      "statutory_citations": [
+        "Section 11, Digital Personal Data Protection Act, 2023"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": [
+        "DPDP Act 2023 uncommenced text vs in-force notice requirement"
+      ]
+    },
+    {
+      "example_id": "QA-PILOT-DPDP-002",
+      "dataset_version": "pilot_20_frozen_v1.2",
+      "batch_id": "PILOT-20",
+      "package_identifier": "PACKAGE_A_PILOT_20",
+      "legal_domain": "Data Protection Law - Digital Privacy",
+      "statutory_citations": [
+        "Section 12, Digital Personal Data Protection Act, 2023"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": [
+        "DPDP Act 2023 uncommenced text vs in-force notice requirement"
+      ]
+    },
+    {
+      "example_id": "QA-PILOT-DPDP-003",
+      "dataset_version": "pilot_20_frozen_v1.2",
+      "batch_id": "PILOT-20",
+      "package_identifier": "PACKAGE_A_PILOT_20",
+      "legal_domain": "Data Protection Law - Digital Privacy",
+      "statutory_citations": [
+        "Section 13, Digital Personal Data Protection Act, 2023"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": [
+        "DPDP Act 2023 uncommenced text vs in-force notice requirement"
+      ]
+    },
+    {
+      "example_id": "QA-PILOT-DPDP-004",
+      "dataset_version": "pilot_20_frozen_v1.2",
+      "batch_id": "PILOT-20",
+      "package_identifier": "PACKAGE_A_PILOT_20",
+      "legal_domain": "Data Protection Law - Digital Privacy",
+      "statutory_citations": [
+        "Section 8(5), Digital Personal Data Protection Act, 2023"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": [
+        "DPDP Act 2023 uncommenced text vs in-force notice requirement"
+      ]
+    },
+    {
+      "example_id": "QA-PILOT-DPDP-005",
+      "dataset_version": "pilot_20_frozen_v1.2",
+      "batch_id": "PILOT-20",
+      "package_identifier": "PACKAGE_A_PILOT_20",
+      "legal_domain": "Data Protection Law - Digital Privacy",
+      "statutory_citations": [
+        "Section 6(1), Digital Personal Data Protection Act, 2023"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": [
+        "DPDP Act 2023 uncommenced text vs in-force notice requirement"
+      ]
+    },
+    {
+      "example_id": "QA-PILOT-DPDP-006",
+      "dataset_version": "pilot_20_frozen_v1.2",
+      "batch_id": "PILOT-20",
+      "package_identifier": "PACKAGE_A_PILOT_20",
+      "legal_domain": "Data Protection Law - Digital Privacy",
+      "statutory_citations": [
+        "Section 8(6), Digital Personal Data Protection Act, 2023"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": [
+        "DPDP Act 2023 uncommenced text vs in-force notice requirement"
+      ]
+    },
+    {
+      "example_id": "QA-PILOT-DPDP-007",
+      "dataset_version": "pilot_20_frozen_v1.2",
+      "batch_id": "PILOT-20",
+      "package_identifier": "PACKAGE_A_PILOT_20",
+      "legal_domain": "Data Protection Law - Digital Privacy",
+      "statutory_citations": [
+        "Section 33(1), Digital Personal Data Protection Act, 2023"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": [
+        "DPDP Act 2023 uncommenced text vs in-force notice requirement"
+      ]
+    },
+    {
+      "example_id": "QA-PILOT-DPDP-008",
+      "dataset_version": "pilot_20_frozen_v1.2",
+      "batch_id": "PILOT-20",
+      "package_identifier": "PACKAGE_A_PILOT_20",
+      "legal_domain": "Data Protection Law - Digital Privacy",
+      "statutory_citations": [
+        "Section 8(5), Digital Personal Data Protection Act, 2023",
+        "Section 33, Digital Personal Data Protection Act, 2023"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": [
+        "DPDP Act 2023 uncommenced text vs in-force notice requirement"
+      ]
+    },
+    {
+      "example_id": "QA-PILOT-DPDP-009",
+      "dataset_version": "pilot_20_frozen_v1.2",
+      "batch_id": "PILOT-20",
+      "package_identifier": "PACKAGE_A_PILOT_20",
+      "legal_domain": "Data Protection Law - Temporal Statutory Status",
+      "statutory_citations": [
+        "Section 44(2), Digital Personal Data Protection Act, 2023",
+        "Section 43A, Information Technology Act, 2000"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": [
+        "DPDP Section 44(2) 18-month computation vs IT Act s.43A omission"
+      ]
+    },
+    {
+      "example_id": "QA-PILOT-DPDP-010",
+      "dataset_version": "pilot_20_frozen_v1.2",
+      "batch_id": "PILOT-20",
+      "package_identifier": "PACKAGE_A_PILOT_20",
+      "legal_domain": "Data Protection Law - Consequential Statutory Amendments",
+      "statutory_citations": [
+        "Section 44(2), Digital Personal Data Protection Act, 2023",
+        "Section 81, Information Technology Act, 2000",
+        "Section 87, Information Technology Act, 2000"
+      ],
+      "review_status": "pending_legal_review",
+      "sent_to_advocate": false,
+      "sent_date": null,
+      "advocate_recipient_tag": null,
+      "response_received": false,
+      "response_date": null,
+      "validation_passed": false,
+      "validation_report_ref": null,
+      "imported": false,
+      "import_audit_reference": null,
+      "outstanding_issues": [
+        "DPDP Act 2023 uncommenced text vs in-force notice requirement"
+      ]
+    }
+  ]
+}

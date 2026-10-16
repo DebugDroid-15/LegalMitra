@@ -54,6 +54,9 @@ class LegalReviewStatus(str, Enum):
     PENDING_LEGAL_REVIEW = "pending_legal_review"
     LEGAL_EXPERT_APPROVED = "legal_expert_approved"
     LEGAL_EXPERT_REJECTED = "legal_expert_rejected"
+    REVISION_REQUIRED = "revision_required"
+    NEEDS_MORE_EVIDENCE = "needs_more_evidence"
+    DEFERRED = "deferred"
     FLAGGED_UNSUPPORTED = "flagged_unsupported"
 
 
@@ -69,4 +72,29 @@ class SplitType(str, Enum):
     TRAIN = "train"
     VALIDATION = "validation"
     TEST = "test"
+
+
+class LawStatusLabel(str, Enum):
+    """Temporal status label of the cited law or provision."""
+    IN_FORCE = "in_force"
+    ENACTED_NOT_YET_IN_FORCE = "enacted_not_yet_in_force"
+    PARTIALLY_COMMENCED = "partially_commenced"
+    REPEALED_WITH_SAVINGS = "repealed_with_savings"
+    REPEALED = "repealed"
+
+
+class ProvisionCommencementStatus(str, Enum):
+    """Commencement status of a specific provision on the evaluation date."""
+    COMMENCED = "commenced"
+    UNCOMMENCED = "uncommenced"
+    PARTIAL = "partial"
+    REPEALED = "repealed"
+
+
+class TemporalValidationStatus(str, Enum):
+    """Audit result for temporal validity against statutory commencement rules."""
+    VERIFIED_CURRENT = "verified_current"
+    VERIFIED_FUTURE_COMMENCEMENT = "verified_future_commencement"
+    VERIFIED_HISTORICAL_SAVINGS = "verified_historical_savings"
+    TEMPORAL_MISMATCH_DETECTED = "temporal_mismatch_detected"
 

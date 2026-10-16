@@ -32,10 +32,16 @@ class GroundingValidator:
     ) -> bool:
         """
         Verifies that the verbatim passage text exists in the source text
-        (normalized for whitespace differences).
+        (normalized for whitespace and punctuation differences).
         """
-        norm_passage = re.sub(r"\s+", " ", passage.verbatim_text).strip().lower()
-        norm_source = re.sub(r"\s+", " ", source_text).strip().lower()
+        def _clean(t: str) -> str:
+            t = re.sub(r"[\u2018\u2019`]", "'", t)
+            t = re.sub(r"[\u201c\u201d]", '"', t)
+            t = re.sub(r"[\u2013\u2014]", "-", t)
+            return re.sub(r"\s+", " ", t).strip().lower()
+
+        norm_passage = _clean(passage.verbatim_text)
+        norm_source = _clean(source_text)
         return norm_passage in norm_source
 
     def validate_grounding(

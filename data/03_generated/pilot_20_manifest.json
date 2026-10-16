@@ -1,0 +1,455 @@
+{
+  "manifest_version": "1.2",
+  "generated_at": "2026-10-16T16:10:54.394214Z",
+  "audit_phase": "Phase 7.2 Advocate Review Package & Data Quality Gates",
+  "total_examples": 20,
+  "source_breakdown": {
+    "IND-STAT-DPDP-2023": 10,
+    "IND-STAT-IT-2000": 6,
+    "IND-STAT-BSA-2023-SEC61": 3,
+    "IND-STAT-BSA-2023-SEC63": 2,
+    "IND-STAT-BNSS-2023": 3
+  },
+  "category_breakdown": {
+    "dpdp_it_statutory_qa": 10,
+    "cross_statute_evidence_and_cybercrime": 10
+  },
+  "temporal_law_distribution": {
+    "in_force": 10,
+    "enacted_not_yet_in_force": 9,
+    "partially_commenced": 1,
+    "repealed_prior_enactments_saved": 1
+  },
+  "temporal_validation_status": {
+    "bnss_commencement_notification": "S.O. 848(E) dated 24 February 2024 (effective 1 July 2024)",
+    "bsa_commencement_notification": "S.O. 849(E) dated 24 February 2024 (effective 1 July 2024)",
+    "dpdp_commencement_notification": "G.S.R. 843(E) dated 13 November 2025",
+    "dpdp_group_1_provisions": "Sections 2, 18-26, 35-43, 44(1), 44(3) commenced 13 Nov 2025",
+    "dpdp_group_2_provisions": "Section 6(9), Section 27(1)(d) commence 13 Nov 2026 (1 year)",
+    "dpdp_group_3_provisions": "Sections 3-5, 6(1)-(8), 6(10), 7-17, 27 except 27(1)(d), 28-34, 36, 37, 44(2) commence 13 May 2027 (18 months)",
+    "it_act_section_43a_status": "Legally operative and enforceable until 13 May 2027 under G.S.R. 843(E)",
+    "bnss_section_531_status": "BNSS Section 531 is in force since 1 July 2024; CrPC 1973 is repealed with savings"
+  },
+  "quarantine_compliance": {
+    "synthetic_scaffold_quarantined": "IND-JUD-DEL-2024-BAIL (is_synthetic_scaffold=1, excluded from pilot)",
+    "quarantined_generated_guide": "PROC-BNSS-482-BAIL-001 (excluded from training/RAG splits)"
+  },
+  "examples": [
+    {
+      "qa_id": "QA-PILOT-DPDP-001",
+      "question": "Under the enacted statutory text of Section 11 of the Digital Personal Data Protection Act, 2023 (scheduled to commence on 13 May 2027 under G.S.R. 843(E)), what specific information will a Data Principal be entitled to obtain from a Data Fiduciary?",
+      "supporting_source_ids": [
+        "IND-STAT-DPDP-2023"
+      ],
+      "legal_domain": "Data Protection Law - Digital Privacy",
+      "statutory_citations": [
+        "Section 11, Digital Personal Data Protection Act, 2023"
+      ],
+      "legal_review_status": "pending_legal_review",
+      "legal_as_of_date": "2026-10-16",
+      "commencement_source_id": "IND-NOTIF-MEITY-GSR-843E-2025",
+      "commencement_date": "2027-05-13",
+      "law_status_label": "enacted_not_yet_in_force",
+      "provision_commencement_status": "uncommenced",
+      "repealed_statute_context": null,
+      "repealed_statute_status": null,
+      "temporal_validation_status": "verified_future_commencement"
+    },
+    {
+      "qa_id": "QA-PILOT-DPDP-002",
+      "question": "What statutory duties are established for a Data Fiduciary regarding correction, completion, updating, and erasure under the enacted text of Section 12 of the DPDP Act, 2023 once it comes into force?",
+      "supporting_source_ids": [
+        "IND-STAT-DPDP-2023"
+      ],
+      "legal_domain": "Data Protection Law - Digital Privacy",
+      "statutory_citations": [
+        "Section 12, Digital Personal Data Protection Act, 2023"
+      ],
+      "legal_review_status": "pending_legal_review",
+      "legal_as_of_date": "2026-10-16",
+      "commencement_source_id": "IND-NOTIF-MEITY-GSR-843E-2025",
+      "commencement_date": "2027-05-13",
+      "law_status_label": "enacted_not_yet_in_force",
+      "provision_commencement_status": "uncommenced",
+      "repealed_statute_context": null,
+      "repealed_statute_status": null,
+      "temporal_validation_status": "verified_future_commencement"
+    },
+    {
+      "qa_id": "QA-PILOT-DPDP-003",
+      "question": "Under the enacted scheme of Section 13 of the Digital Personal Data Protection Act, 2023, must a Data Principal exhaust internal grievance redressal mechanisms before approaching the Data Protection Board of India?",
+      "supporting_source_ids": [
+        "IND-STAT-DPDP-2023"
+      ],
+      "legal_domain": "Data Protection Law - Digital Privacy",
+      "statutory_citations": [
+        "Section 13, Digital Personal Data Protection Act, 2023"
+      ],
+      "legal_review_status": "pending_legal_review",
+      "legal_as_of_date": "2026-10-16",
+      "commencement_source_id": "IND-NOTIF-MEITY-GSR-843E-2025",
+      "commencement_date": "2027-05-13",
+      "law_status_label": "enacted_not_yet_in_force",
+      "provision_commencement_status": "uncommenced",
+      "repealed_statute_context": null,
+      "repealed_statute_status": null,
+      "temporal_validation_status": "verified_future_commencement"
+    },
+    {
+      "qa_id": "QA-PILOT-DPDP-004",
+      "question": "What statutory obligation will be placed upon a Data Fiduciary to protect personal data by taking security safeguards under the enacted Section 8(5) of the DPDP Act, 2023, and what is its commencement status?",
+      "supporting_source_ids": [
+        "IND-STAT-DPDP-2023"
+      ],
+      "legal_domain": "Data Protection Law - Digital Privacy",
+      "statutory_citations": [
+        "Section 8(5), Digital Personal Data Protection Act, 2023"
+      ],
+      "legal_review_status": "pending_legal_review",
+      "legal_as_of_date": "2026-10-16",
+      "commencement_source_id": "IND-NOTIF-MEITY-GSR-843E-2025",
+      "commencement_date": "2027-05-13",
+      "law_status_label": "enacted_not_yet_in_force",
+      "provision_commencement_status": "uncommenced",
+      "repealed_statute_context": null,
+      "repealed_statute_status": null,
+      "temporal_validation_status": "verified_future_commencement"
+    },
+    {
+      "qa_id": "QA-PILOT-DPDP-005",
+      "question": "What legal requirements must be fulfilled for consent given by a Data Principal under the enacted provisions of Section 6(1) of the DPDP Act, 2023, and when do they take effect?",
+      "supporting_source_ids": [
+        "IND-STAT-DPDP-2023"
+      ],
+      "legal_domain": "Data Protection Law - Digital Privacy",
+      "statutory_citations": [
+        "Section 6(1), Digital Personal Data Protection Act, 2023"
+      ],
+      "legal_review_status": "pending_legal_review",
+      "legal_as_of_date": "2026-10-16",
+      "commencement_source_id": "IND-NOTIF-MEITY-GSR-843E-2025",
+      "commencement_date": "2027-05-13",
+      "law_status_label": "enacted_not_yet_in_force",
+      "provision_commencement_status": "uncommenced",
+      "repealed_statute_context": null,
+      "repealed_statute_status": null,
+      "temporal_validation_status": "verified_future_commencement"
+    },
+    {
+      "qa_id": "QA-PILOT-DPDP-006",
+      "question": "Under the enacted provisions of Section 8(6) of the DPDP Act, 2023, who must be notified by the Data Fiduciary in the event of a personal data breach once the section commences?",
+      "supporting_source_ids": [
+        "IND-STAT-DPDP-2023"
+      ],
+      "legal_domain": "Data Protection Law - Digital Privacy",
+      "statutory_citations": [
+        "Section 8(6), Digital Personal Data Protection Act, 2023"
+      ],
+      "legal_review_status": "pending_legal_review",
+      "legal_as_of_date": "2026-10-16",
+      "commencement_source_id": "IND-NOTIF-MEITY-GSR-843E-2025",
+      "commencement_date": "2027-05-13",
+      "law_status_label": "enacted_not_yet_in_force",
+      "provision_commencement_status": "uncommenced",
+      "repealed_statute_context": null,
+      "repealed_statute_status": null,
+      "temporal_validation_status": "verified_future_commencement"
+    },
+    {
+      "qa_id": "QA-PILOT-DPDP-007",
+      "question": "Under the enacted statutory text of Section 33(1) of the DPDP Act, 2023, what prerequisites govern the imposition of monetary penalties by the Board once the penal provisions commence?",
+      "supporting_source_ids": [
+        "IND-STAT-DPDP-2023"
+      ],
+      "legal_domain": "Data Protection Law - Digital Privacy",
+      "statutory_citations": [
+        "Section 33(1), Digital Personal Data Protection Act, 2023"
+      ],
+      "legal_review_status": "pending_legal_review",
+      "legal_as_of_date": "2026-10-16",
+      "commencement_source_id": "IND-NOTIF-MEITY-GSR-843E-2025",
+      "commencement_date": "2027-05-13",
+      "law_status_label": "enacted_not_yet_in_force",
+      "provision_commencement_status": "uncommenced",
+      "repealed_statute_context": null,
+      "repealed_statute_status": null,
+      "temporal_validation_status": "verified_future_commencement"
+    },
+    {
+      "qa_id": "QA-PILOT-DPDP-008",
+      "question": "What maximum monetary penalty is prescribed under Item 1 of the Schedule to the DPDP Act, 2023 for failure by a Data Fiduciary to observe reasonable security safeguards under Section 8(5) upon commencement?",
+      "supporting_source_ids": [
+        "IND-STAT-DPDP-2023"
+      ],
+      "legal_domain": "Data Protection Law - Digital Privacy",
+      "statutory_citations": [
+        "Section 8(5), Digital Personal Data Protection Act, 2023",
+        "Section 33, Digital Personal Data Protection Act, 2023"
+      ],
+      "legal_review_status": "pending_legal_review",
+      "legal_as_of_date": "2026-10-16",
+      "commencement_source_id": "IND-NOTIF-MEITY-GSR-843E-2025",
+      "commencement_date": "2027-05-13",
+      "law_status_label": "enacted_not_yet_in_force",
+      "provision_commencement_status": "uncommenced",
+      "repealed_statute_context": null,
+      "repealed_statute_status": null,
+      "temporal_validation_status": "verified_future_commencement"
+    },
+    {
+      "qa_id": "QA-PILOT-DPDP-009",
+      "question": "What is the operational status of Section 43A of the Information Technology Act, 2000 as of 16 October 2026, and on what exact date does its omission under Section 44(2) of the DPDP Act, 2023 take legal effect?",
+      "supporting_source_ids": [
+        "IND-STAT-DPDP-2023",
+        "IND-STAT-IT-2000"
+      ],
+      "legal_domain": "Data Protection Law - Temporal Statutory Status",
+      "statutory_citations": [
+        "Section 44(2), Digital Personal Data Protection Act, 2023",
+        "Section 43A, Information Technology Act, 2000"
+      ],
+      "legal_review_status": "pending_legal_review",
+      "legal_as_of_date": "2026-10-16",
+      "commencement_source_id": "IND-NOTIF-MEITY-GSR-843E-2025",
+      "commencement_date": "2027-05-13",
+      "law_status_label": "partially_commenced",
+      "provision_commencement_status": "partial",
+      "repealed_statute_context": null,
+      "repealed_statute_status": null,
+      "temporal_validation_status": "verified_current"
+    },
+    {
+      "qa_id": "QA-PILOT-DPDP-010",
+      "question": "What consequential amendments does Section 44(2) of the DPDP Act, 2023 make to Section 81 and Section 87 of the Information Technology Act, 2000, and when do they take effect?",
+      "supporting_source_ids": [
+        "IND-STAT-DPDP-2023"
+      ],
+      "legal_domain": "Data Protection Law - Consequential Statutory Amendments",
+      "statutory_citations": [
+        "Section 44(2), Digital Personal Data Protection Act, 2023",
+        "Section 81, Information Technology Act, 2000",
+        "Section 87, Information Technology Act, 2000"
+      ],
+      "legal_review_status": "pending_legal_review",
+      "legal_as_of_date": "2026-10-16",
+      "commencement_source_id": "IND-NOTIF-MEITY-GSR-843E-2025",
+      "commencement_date": "2027-05-13",
+      "law_status_label": "enacted_not_yet_in_force",
+      "provision_commencement_status": "uncommenced",
+      "repealed_statute_context": null,
+      "repealed_statute_status": null,
+      "temporal_validation_status": "verified_future_commencement"
+    },
+    {
+      "qa_id": "QA-PILOT-CROSS-001",
+      "question": "Under current law, how does Section 61 of the Bharatiya Sakshya Adhiniyam, 2023 establish the admissibility of an electronic record as defined under Section 2(1)(t) of the Information Technology Act, 2000, and what statutory proviso applies?",
+      "supporting_source_ids": [
+        "IND-STAT-BSA-2023-SEC61",
+        "IND-STAT-IT-2000"
+      ],
+      "legal_domain": "Criminal Law - Electronic Evidence",
+      "statutory_citations": [
+        "Section 61, Bharatiya Sakshya Adhiniyam, 2023",
+        "Section 63, Bharatiya Sakshya Adhiniyam, 2023",
+        "Section 2(1)(t), Information Technology Act, 2000"
+      ],
+      "legal_review_status": "pending_legal_review",
+      "legal_as_of_date": "2026-10-16",
+      "commencement_source_id": "IND-NOTIF-MHA-SO-849E-2024",
+      "commencement_date": "2024-07-01",
+      "law_status_label": "in_force",
+      "provision_commencement_status": "commenced",
+      "repealed_statute_context": null,
+      "repealed_statute_status": null,
+      "temporal_validation_status": "verified_current"
+    },
+    {
+      "qa_id": "QA-PILOT-CROSS-002",
+      "question": "What mandatory requirement is set forth in the proviso to Section 61 of the Bharatiya Sakshya Adhiniyam, 2023 when producing electronic records in evidence?",
+      "supporting_source_ids": [
+        "IND-STAT-BSA-2023-SEC61"
+      ],
+      "legal_domain": "Criminal Law - Electronic Evidence",
+      "statutory_citations": [
+        "Section 61, Bharatiya Sakshya Adhiniyam, 2023",
+        "Section 63, Bharatiya Sakshya Adhiniyam, 2023"
+      ],
+      "legal_review_status": "pending_legal_review",
+      "legal_as_of_date": "2026-10-16",
+      "commencement_source_id": "IND-NOTIF-MHA-SO-849E-2024",
+      "commencement_date": "2024-07-01",
+      "law_status_label": "in_force",
+      "provision_commencement_status": "commenced",
+      "repealed_statute_context": null,
+      "repealed_statute_status": null,
+      "temporal_validation_status": "verified_current"
+    },
+    {
+      "qa_id": "QA-PILOT-CROSS-003",
+      "question": "Under Section 63 of the Bharatiya Sakshya Adhiniyam, 2023, when is electronic information deemed to be a document and who must sign the accompanying certificate?",
+      "supporting_source_ids": [
+        "IND-STAT-BSA-2023-SEC63"
+      ],
+      "legal_domain": "Criminal Law - Electronic Evidence",
+      "statutory_citations": [
+        "Section 63, Bharatiya Sakshya Adhiniyam, 2023"
+      ],
+      "legal_review_status": "pending_legal_review",
+      "legal_as_of_date": "2026-10-16",
+      "commencement_source_id": "IND-NOTIF-MHA-SO-849E-2024",
+      "commencement_date": "2024-07-01",
+      "law_status_label": "in_force",
+      "provision_commencement_status": "commenced",
+      "repealed_statute_context": null,
+      "repealed_statute_status": null,
+      "temporal_validation_status": "verified_current"
+    },
+    {
+      "qa_id": "QA-PILOT-CROSS-004",
+      "question": "Can an electronic record be admitted in evidence under Section 61 of the Bharatiya Sakshya Adhiniyam, 2023 without complying with Section 63?",
+      "supporting_source_ids": [
+        "IND-STAT-BSA-2023-SEC61"
+      ],
+      "legal_domain": "Criminal Law - Electronic Evidence",
+      "statutory_citations": [
+        "Section 61, Bharatiya Sakshya Adhiniyam, 2023",
+        "Section 63, Bharatiya Sakshya Adhiniyam, 2023"
+      ],
+      "legal_review_status": "pending_legal_review",
+      "legal_as_of_date": "2026-10-16",
+      "commencement_source_id": "IND-NOTIF-MHA-SO-849E-2024",
+      "commencement_date": "2024-07-01",
+      "law_status_label": "in_force",
+      "provision_commencement_status": "commenced",
+      "repealed_statute_context": null,
+      "repealed_statute_status": null,
+      "temporal_validation_status": "verified_current"
+    },
+    {
+      "qa_id": "QA-PILOT-CROSS-005",
+      "question": "What elements constitute a computer related offence under Section 66 of the Information Technology Act, 2000 and what punishment is prescribed?",
+      "supporting_source_ids": [
+        "IND-STAT-IT-2000"
+      ],
+      "legal_domain": "Cyber Law - Information Technology Offences",
+      "statutory_citations": [
+        "Section 66, Information Technology Act, 2000",
+        "Section 43, Information Technology Act, 2000",
+        "Section 24, Indian Penal Code, 1860",
+        "Section 25, Indian Penal Code, 1860"
+      ],
+      "legal_review_status": "pending_legal_review",
+      "legal_as_of_date": "2026-10-16",
+      "commencement_source_id": "IND-STAT-IT-2000",
+      "commencement_date": "2009-10-27",
+      "law_status_label": "in_force",
+      "provision_commencement_status": "commenced",
+      "repealed_statute_context": null,
+      "repealed_statute_status": null,
+      "temporal_validation_status": "verified_current"
+    },
+    {
+      "qa_id": "QA-PILOT-CROSS-006",
+      "question": "What ingredients constitute the offence of identity theft under Section 66C of the Information Technology Act, 2000 and what is the penalty?",
+      "supporting_source_ids": [
+        "IND-STAT-IT-2000"
+      ],
+      "legal_domain": "Cyber Law - Information Technology Offences",
+      "statutory_citations": [
+        "Section 66C, Information Technology Act, 2000"
+      ],
+      "legal_review_status": "pending_legal_review",
+      "legal_as_of_date": "2026-10-16",
+      "commencement_source_id": "IND-STAT-IT-2000",
+      "commencement_date": "2009-10-27",
+      "law_status_label": "in_force",
+      "provision_commencement_status": "commenced",
+      "repealed_statute_context": null,
+      "repealed_statute_status": null,
+      "temporal_validation_status": "verified_current"
+    },
+    {
+      "qa_id": "QA-PILOT-CROSS-007",
+      "question": "What acts constitute cheating by personation using a computer resource under Section 66D of the Information Technology Act, 2000 and what is the sentence?",
+      "supporting_source_ids": [
+        "IND-STAT-IT-2000"
+      ],
+      "legal_domain": "Cyber Law - Information Technology Offences",
+      "statutory_citations": [
+        "Section 66D, Information Technology Act, 2000"
+      ],
+      "legal_review_status": "pending_legal_review",
+      "legal_as_of_date": "2026-10-16",
+      "commencement_source_id": "IND-STAT-IT-2000",
+      "commencement_date": "2009-10-27",
+      "law_status_label": "in_force",
+      "provision_commencement_status": "commenced",
+      "repealed_statute_context": null,
+      "repealed_statute_status": null,
+      "temporal_validation_status": "verified_current"
+    },
+    {
+      "qa_id": "QA-PILOT-CROSS-008",
+      "question": "Which judicial forums possess jurisdiction to grant anticipatory bail under Section 482(1) of the Bharatiya Nagarik Suraksha Sanhita, 2023?",
+      "supporting_source_ids": [
+        "IND-STAT-BNSS-2023"
+      ],
+      "legal_domain": "Criminal Procedure - Anticipatory Bail",
+      "statutory_citations": [
+        "Section 482(1), Bharatiya Nagarik Suraksha Sanhita, 2023"
+      ],
+      "legal_review_status": "pending_legal_review",
+      "legal_as_of_date": "2026-10-16",
+      "commencement_source_id": "IND-NOTIF-MHA-SO-848E-2024",
+      "commencement_date": "2024-07-01",
+      "law_status_label": "in_force",
+      "provision_commencement_status": "commenced",
+      "repealed_statute_context": null,
+      "repealed_statute_status": null,
+      "temporal_validation_status": "verified_current"
+    },
+    {
+      "qa_id": "QA-PILOT-CROSS-009",
+      "question": "Which offences are strictly barred from the grant of anticipatory bail under Section 482(4) of the Bharatiya Nagarik Suraksha Sanhita, 2023?",
+      "supporting_source_ids": [
+        "IND-STAT-BNSS-2023"
+      ],
+      "legal_domain": "Criminal Procedure - Statutory Exclusions from Anticipatory Bail",
+      "statutory_citations": [
+        "Section 482(4), Bharatiya Nagarik Suraksha Sanhita, 2023",
+        "Section 65, Bharatiya Nyaya Sanhita, 2023",
+        "Section 70(2), Bharatiya Nyaya Sanhita, 2023"
+      ],
+      "legal_review_status": "pending_legal_review",
+      "legal_as_of_date": "2026-10-16",
+      "commencement_source_id": "IND-NOTIF-MHA-SO-848E-2024",
+      "commencement_date": "2024-07-01",
+      "law_status_label": "in_force",
+      "provision_commencement_status": "commenced",
+      "repealed_statute_context": null,
+      "repealed_statute_status": null,
+      "temporal_validation_status": "verified_current"
+    },
+    {
+      "qa_id": "QA-PILOT-CROSS-010",
+      "question": "How are criminal appeals, applications, trials, and investigations pending immediately before 1 July 2024 governed under Section 531(2)(a) of the Bharatiya Nagarik Suraksha Sanhita, 2023?",
+      "supporting_source_ids": [
+        "IND-STAT-BNSS-2023"
+      ],
+      "legal_domain": "Criminal Procedure - Repeal and Savings",
+      "statutory_citations": [
+        "Section 531, Bharatiya Nagarik Suraksha Sanhita, 2023",
+        "Code of Criminal Procedure, 1973"
+      ],
+      "legal_review_status": "pending_legal_review",
+      "legal_as_of_date": "2026-10-16",
+      "commencement_source_id": "IND-NOTIF-MHA-SO-848E-2024",
+      "commencement_date": "2024-07-01",
+      "law_status_label": "in_force",
+      "provision_commencement_status": "commenced",
+      "repealed_statute_context": "Code of Criminal Procedure, 1973 (Act No. 2 of 1974) is repealed with savings under BNSS s. 531(2)(a)",
+      "repealed_statute_status": "repealed_with_savings",
+      "temporal_validation_status": "verified_historical_savings"
+    }
+  ]
+}

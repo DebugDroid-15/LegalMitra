@@ -22,8 +22,9 @@ class DoclingExtractor(BaseExtractor):
 
     SUPPORTED_EXTENSIONS = {".pdf", ".docx", ".pptx", ".html", ".htm", ".asciidoc", ".md"}
 
-    def __init__(self, enable_ocr: bool = False, lazy_init: bool = True):
+    def __init__(self, enable_ocr: bool = False, lazy_init: bool = True, max_num_pages: Optional[int] = None):
         self.enable_ocr = enable_ocr
+        self.max_num_pages = max_num_pages
         self._converter = None
         self.lazy_init = lazy_init
         if not lazy_init:
@@ -67,7 +68,10 @@ class DoclingExtractor(BaseExtractor):
         try:
             self._init_converter()
             logger.info(f"Extracting structured text from {path.name} using Docling...")
-            conv_res = self._converter.convert(str(path))
+            conv_kwargs = {}
+            if self.max_num_pages:
+                conv_kwargs["max_num_pages"] = self.max_num_pages
+            conv_res = self._converter.convert(str(path), **conv_kwargs)
             doc = conv_res.document
 
             # Export markdown

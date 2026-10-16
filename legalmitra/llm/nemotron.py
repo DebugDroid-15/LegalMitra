@@ -5,8 +5,12 @@ API credentials and endpoints are resolved dynamically from environment variable
 """
 
 import os
+import time
 from typing import Any, Dict, List, Optional
+from dotenv import load_dotenv
 import requests
+
+load_dotenv()
 
 from legalmitra.core.errors import LLMProviderError
 from legalmitra.core.logging import get_logger
@@ -71,37 +75,49 @@ class NemotronLLMProvider(BaseLLMProvider):
         }
         payload.update(kwargs)
 
-        try:
-            logger.info(f"Dispatching generation request to Nemotron endpoint ({self.model_name})...")
-            response = requests.post(endpoint, json=payload, headers=headers, timeout=self.timeout)
+        max_retries = 3
+        last_error = None
 
-            if response.status_code == 401:
-                raise LLMProviderError(f"NVIDIA API Authentication failed (401 Unauthorized): {response.text}")
-            elif response.status_code == 404:
-                raise LLMProviderError(f"Endpoint or model not found (404 Not Found) at {endpoint}: {response.text}")
-            elif response.status_code != 200:
-                raise LLMProviderError(f"NVIDIA API returned error status {response.status_code}: {response.text}")
+        for attempt in range(1, max_retries + 1):
+            try:
+                logger.info(f"Dispatching generation request to endpoint ({self.model_name}), attempt {attempt}/{max_retries}...")
+                response = requests.post(endpoint, json=payload, headers=headers, timeout=self.timeout)
 
-            res_json = response.json()
-            choices = res_json.get("choices", [])
-            if not choices:
-                raise LLMProviderError("Empty choices returned from Nemotron API.")
+                if response.status_code == 401:
+                    raise LLMProviderError(f"NVIDIA API Authentication failed (401 Unauthorized): {response.text}")
+                elif response.status_code == 404:
+                    raise LLMProviderError(f"Endpoint or model not found (404 Not Found) at {endpoint}: {response.text}")
+                elif response.status_code >= 500:
+                    logger.warning(f"NVIDIA API returned HTTP {response.status_code}. Retrying in 2s...")
+                    time.sleep(2.0)
+                    continue
+                elif response.status_code != 200:
+                    raise LLMProviderError(f"NVIDIA API returned error status {response.status_code}: {response.text}")
 
-            msg = choices[0].get("message", {})
-            content = msg.get("content", "")
-            finish_reason = choices[0].get("finish_reason", "stop")
-            usage = res_json.get("usage", {})
+                res_json = response.json()
+                choices = res_json.get("choices", [])
+                if not choices:
+                    raise LLMProviderError("Empty choices returned from API.")
 
-            return LLMResponse(
-                content=content,
-                model_name=self.model_name,
-                usage=usage,
-                finish_reason=finish_reason,
-                raw_response=res_json,
-            )
+                msg = choices[0].get("message", {})
+                content = msg.get("content", "")
+                finish_reason = choices[0].get("finish_reason", "stop")
+                usage = res_json.get("usage", {})
 
-        except requests.exceptions.Timeout as te:
-            raise LLMProviderError(f"Nemotron API request timed out after {self.timeout}s: {te}") from te
-        except requests.exceptions.RequestException as re:
-            raise LLMProviderError(f"Network error communicating with Nemotron API: {re}") from re
+                return LLMResponse(
+                    content=content,
+                    model_name=self.model_name,
+                    usage=usage,
+                    finish_reason=finish_reason,
+                    raw_response=res_json,
+                )
+
+            except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as te:
+                last_error = te
+                logger.warning(f"Inference request attempt {attempt} failed ({te}). Retrying...")
+                time.sleep(2.0)
+            except requests.exceptions.RequestException as re:
+                raise LLMProviderError(f"Network error communicating with API: {re}") from re
+
+        raise LLMProviderError(f"API request timed out after {max_retries} attempts: {last_error}")
 

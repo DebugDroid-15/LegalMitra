@@ -1,0 +1,40 @@
+{
+  "source_id": "IND-STAT-BSA-2023-SEC61",
+  "act_title": "Bharatiya Sakshya Adhiniyam, 2023 - Section 61",
+  "act_number": null,
+  "jurisdiction": "IN",
+  "enactment_date": "2023-12-25",
+  "effective_date": "2024-07-01",
+  "preamble": null,
+  "sections": [
+    {
+      "section_id": "IND-STAT-BSA-2023-SEC61-SEC-61",
+      "source_id": "IND-STAT-BSA-2023-SEC61",
+      "act_title": "Bharatiya Sakshya Adhiniyam, 2023 - Section 61",
+      "act_number": null,
+      "chapter_number": null,
+      "chapter_title": null,
+      "section_number": "61",
+      "section_title": "Admissibility of electronic records",
+      "full_verbatim_text": "61. Admissibility of electronic records.—Nothing in this Adhiniyam shall apply to deny the admissibility of an electronic or digital record in the evidence on the ground that it is an electronic or digital record, and such record shall have the same legal effect, validity and enforceability as other document, subject to the provisions of section 63.\n\nProvided that where any electronic record is produced in evidence, it shall be accompanied by a certificate referred to in sub-section (4) of section 63.\n\nExplanation.—For the purposes of this section, an electronic or digital record includes records stored, generated, received or sent in an electronic form or micro-films, computer-generated fiche and any other form as defined in clause (t) of sub-section (1) of section 2 of the Information Technology Act, 2000.",
+      "subsections": [],
+      "provisos": [
+        {
+          "proviso_index": 1,
+          "text": "Provided that where any electronic record is produced in evidence, it shall be accompanied by a certificate referred to in sub-section (4) of section 63."
+        }
+      ],
+      "explanations": [
+        {
+          "explanation_identifier": "Explanation",
+          "text": "Explanation.—For the purposes of this section, an electronic or digital record includes records stored, generated, received or sent in an electronic form or micro-films, computer-generated fiche and any other form as defined in clause (t) of sub-section (1) of section 2 of the Information Technology Act, 2000."
+        }
+      ],
+      "illustrations": [],
+      "source_page_start": null,
+      "source_page_end": null,
+      "legal_review_status": "unverified_automated"
+    }
+  ],
+  "legal_review_status": "unverified_automated"
+}

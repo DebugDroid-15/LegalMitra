@@ -1,0 +1,78 @@
+{
+  "manifest_id": "MANIFEST-2026-PHASE9-FREEZE-001",
+  "snapshot_title": "LegalMitra Controlled Pilot 20 — Frozen Review & Advocate Handoff Snapshot",
+  "snapshot_timestamp_utc": "2026-10-16T16:21:00Z",
+  "phase": "Phase 9 Review Snapshot Freeze & Advocate Handoff",
+  "total_records": 20,
+  "unique_record_count": 20,
+  "schema_specifications": {
+    "dataset_schema": "LegalQADocument (v1.2)",
+    "manifest_version": "1.2",
+    "source_bundle_version": "1.0.0",
+    "review_sheet_format": "CSV (UTF-8 with BOM, RFC 4180)"
+  },
+  "review_status_summary": {
+    "pending_legal_review": 20,
+    "legal_expert_approved": 0,
+    "legal_expert_rejected": 0,
+    "revision_required": 0,
+    "inferred_approvals": 0
+  },
+  "quarantine_compliance": {
+    "synthetic_scaffold_quarantined": "IND-JUD-DEL-2024-BAIL (excluded from training/RAG splits)",
+    "procedural_guide_quarantined": "PROC-BNSS-482-BAIL-001 (excluded from training/RAG splits)",
+    "quarantined_references_in_pilot": 0
+  },
+  "frozen_artifacts": {
+    "pilot_20_examples": {
+      "path": "data/03_generated/pilot_20_examples.jsonl",
+      "description": "Primary dataset file containing exactly 20 validated, source-grounded LegalQADocument objects",
+      "record_count": 20,
+      "size_bytes": 44542,
+      "sha256": "e01b22f50f36c3927b595ecd03e2258c6889f299e6394644b2cd4cb359ffa953"
+    },
+    "pilot_20_manifest": {
+      "path": "data/03_generated/pilot_20_manifest.json",
+      "description": "Machine-readable dataset manifest recording category and temporal law distributions",
+      "record_count": 20,
+      "size_bytes": 21705,
+      "sha256": "9da3801fdc79514987dcd91ffacc81372ab5412a93002ddfd3d9c1c7050369a4"
+    },
+    "pilot_20_review_sheet": {
+      "path": "data/06_review/pilot_20_review_sheet.csv",
+      "description": "Advocate review spreadsheet with full questions, answers, evidence spans, citations, and blank decision fields",
+      "record_count": 20,
+      "size_bytes": 35396,
+      "sha256": "6f519165d45bac465e2c25de20369b74d136543307a49ecb84559f68a7dadcab"
+    },
+    "pilot_20_source_bundle": {
+      "path": "data/06_review/pilot_20_source_bundle.json",
+      "description": "Machine-readable bundle linking every record directly to source metadata, canonical URLs, and checksums",
+      "record_count": 20,
+      "size_bytes": 62870,
+      "sha256": "3cf555e96743ece27b0e22d954d6535cea8a51cc9242c471416b9f46fb031f10"
+    },
+    "pilot_20_open_issues": {
+      "path": "data/06_review/pilot_20_open_issues.md",
+      "description": "Analytical briefing on the six prioritized legal and procedural ambiguities for advocate review",
+      "size_bytes": 7903,
+      "sha256": "0b82c4f6df0d9b6c755c6bf15ffb582c07cc6788a28d8ff610de4b645251f45e"
+    },
+    "phase8_open_legal_issues_register": {
+      "path": "PHASE8_OPEN_LEGAL_ISSUES_REGISTER.md",
+      "description": "Comprehensive institutional register analyzing statutory texts, uncertainty boundaries, and affected records",
+      "size_bytes": 15514,
+      "sha256": "e5966e245c15f6cb96e48d57ede8e81be8a89ebe3aa843098afc961e86c2c508"
+    }
+  },
+  "temporal_law_schedule": {
+    "dpdp_group_1": "Commenced 13 Nov 2025 under G.S.R. 843(E) (ss. 2, 18-26, 35, 38-43, 44(1), 44(3))",
+    "dpdp_group_2": "Commences 13 Nov 2026 under G.S.R. 843(E) (s. 6(9), s. 27(1)(d))",
+    "dpdp_group_3": "Commences 13 May 2027 under G.S.R. 843(E) (ss. 3-5, 6(1)-(8), 6(10), 7-17, 27 balance, 28-34, 36, 37, 44(2))",
+    "it_act_section_43a": "Operative and legally enforceable civil compensation until 13 May 2027",
+    "bnss_commencement": "Commenced 1 July 2024 under S.O. 848(E)",
+    "bsa_commencement": "Commenced 1 July 2024 under S.O. 849(E)"
+  },
+  "freeze_integrity_statement": "This manifest certifies that the 20-example pilot snapshot is cryptographically frozen, contains zero unreviewed synthetic answers, and is formally prepared for independent human review by a qualified Indian advocate."
+}
+
