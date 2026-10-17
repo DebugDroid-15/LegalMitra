@@ -1,0 +1,290 @@
+{
+  "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+  "started_at": "2026-10-17T16:15:48.342685+00:00",
+  "completed_at": "2026-10-17T16:15:48.868948+00:00",
+  "dry_run": false,
+  "documents_submitted": 11,
+  "documents_indexed": 11,
+  "chunks_created": 184,
+  "quarantined_count": 0,
+  "failures_count": 0,
+  "checkpoints": [
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "source_validated",
+      "document_id": "IND-CONST-1950",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:15:48.343684+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "hash_verified",
+      "document_id": "IND-CONST-1950",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:15:48.344684+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "indexed",
+      "document_id": "IND-CONST-1950",
+      "status": "SUCCESS",
+      "timestamp": "2026-10-17T16:15:48.438005+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "source_validated",
+      "document_id": "IND-STAT-BNS-2023",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:15:48.438005+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "hash_verified",
+      "document_id": "IND-STAT-BNS-2023",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:15:48.439026+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "indexed",
+      "document_id": "IND-STAT-BNS-2023",
+      "status": "SUCCESS",
+      "timestamp": "2026-10-17T16:15:48.503076+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "source_validated",
+      "document_id": "IND-STAT-CPC-1908",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:15:48.503076+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "hash_verified",
+      "document_id": "IND-STAT-CPC-1908",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:15:48.503076+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "indexed",
+      "document_id": "IND-STAT-CPC-1908",
+      "status": "SUCCESS",
+      "timestamp": "2026-10-17T16:15:48.551479+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "source_validated",
+      "document_id": "IND-STAT-LIMIT-1963",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:15:48.551479+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "hash_verified",
+      "document_id": "IND-STAT-LIMIT-1963",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:15:48.552646+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "indexed",
+      "document_id": "IND-STAT-LIMIT-1963",
+      "status": "SUCCESS",
+      "timestamp": "2026-10-17T16:15:48.589130+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "source_validated",
+      "document_id": "IND-STAT-ICA-1872",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:15:48.589130+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "hash_verified",
+      "document_id": "IND-STAT-ICA-1872",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:15:48.589130+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "indexed",
+      "document_id": "IND-STAT-ICA-1872",
+      "status": "SUCCESS",
+      "timestamp": "2026-10-17T16:15:48.653054+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "source_validated",
+      "document_id": "IND-STAT-SRA-1963",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:15:48.653054+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "hash_verified",
+      "document_id": "IND-STAT-SRA-1963",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:15:48.653054+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "indexed",
+      "document_id": "IND-STAT-SRA-1963",
+      "status": "SUCCESS",
+      "timestamp": "2026-10-17T16:15:48.697630+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "source_validated",
+      "document_id": "IND-STAT-ARB-1996",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:15:48.697630+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "hash_verified",
+      "document_id": "IND-STAT-ARB-1996",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:15:48.697630+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "indexed",
+      "document_id": "IND-STAT-ARB-1996",
+      "status": "SUCCESS",
+      "timestamp": "2026-10-17T16:15:48.739469+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "source_validated",
+      "document_id": "IND-STAT-CPA-2019",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:15:48.739469+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "hash_verified",
+      "document_id": "IND-STAT-CPA-2019",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:15:48.740499+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "indexed",
+      "document_id": "IND-STAT-CPA-2019",
+      "status": "SUCCESS",
+      "timestamp": "2026-10-17T16:15:48.784066+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "source_validated",
+      "document_id": "IND-STAT-NI-1881",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:15:48.784066+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "hash_verified",
+      "document_id": "IND-STAT-NI-1881",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:15:48.784066+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "indexed",
+      "document_id": "IND-STAT-NI-1881",
+      "status": "SUCCESS",
+      "timestamp": "2026-10-17T16:15:48.815682+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "source_validated",
+      "document_id": "IND-STAT-TPA-1882",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:15:48.816671+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "hash_verified",
+      "document_id": "IND-STAT-TPA-1882",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:15:48.816671+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "indexed",
+      "document_id": "IND-STAT-TPA-1882",
+      "status": "SUCCESS",
+      "timestamp": "2026-10-17T16:15:48.839367+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "source_validated",
+      "document_id": "IND-STAT-COMM-COURTS-2015",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:15:48.839367+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "hash_verified",
+      "document_id": "IND-STAT-COMM-COURTS-2015",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:15:48.839367+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE20-EXPANSION-STATUTES",
+      "stage": "indexed",
+      "document_id": "IND-STAT-COMM-COURTS-2015",
+      "status": "SUCCESS",
+      "timestamp": "2026-10-17T16:15:48.868948+00:00",
+      "error_message": null
+    }
+  ],
+  "document_hashes": {
+    "IND-CONST-1950": "76870e49cc76a53f26b893a66d22863c7cc4949e984cce6b7207eba673b3445b",
+    "IND-STAT-BNS-2023": "4d298ca6d48ee709a27f7062242bf209d1a02757cb6a44c53d4065963800b63b",
+    "IND-STAT-CPC-1908": "42fb5b7e459813e32a2a5daaf7dda917ae82bdbc1a2ff7f65a7af0a518600b93",
+    "IND-STAT-LIMIT-1963": "e0cb2e8abb8d6b13aad8c099f64c101fca386570b381d1e84c1ab70abbe85d2a",
+    "IND-STAT-ICA-1872": "71d396ce7f04d8a53bb570f86c7063cd069685e4dc9c8d3f63331139c12e0f74",
+    "IND-STAT-SRA-1963": "17635d11c62f15ee78d054f4c48a98f76ee9a1a45246f8a95c28b76912d4e096",
+    "IND-STAT-ARB-1996": "6cd0641f8263df85b65d33d47799fa5498ab24eb5e43eca5af16349203ea2cfb",
+    "IND-STAT-CPA-2019": "0a9b6a25dc5dda8a37a497e0e1c1e606d8685c0fd91b5c7388fea79a75a93e83",
+    "IND-STAT-NI-1881": "9c8cc5edb03e625b1983bf73fdbcf7fcfd4de929427fa701fb894685c4f20ebe",
+    "IND-STAT-TPA-1882": "49756b6a72d45814b42c9a6375c08fc972e9565fcd6eab09722315b4a2ed6675",
+    "IND-STAT-COMM-COURTS-2015": "e7fabc76e0e2f88a094cc32705802fd9f909f2f4fcfbd9b7a62d11370f4cd2d3"
+  }
+}

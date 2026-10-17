@@ -28,6 +28,13 @@ from legalmitra.ingestion.central_acts_phase16 import (
     get_limitation_phase16_sections,
     get_sra_phase16_sections,
 )
+from legalmitra.ingestion.central_acts_phase20 import (
+    get_commercial_courts_document,
+    get_constitution_phase20_sections,
+    get_ni_act_document,
+    get_tpa_act_document,
+)
+
 
 
 def make_section(
@@ -258,6 +265,7 @@ def get_constitution_document() -> StatuteDocument:
         )
     ]
     sections.extend(get_constitution_phase16_sections())
+    sections.extend(get_constitution_phase20_sections())
 
     return StatuteDocument(
         source_id=source_id,
@@ -1107,6 +1115,7 @@ def get_cpa_document() -> StatuteDocument:
 
 
 def list_central_act_documents() -> List[StatuteDocument]:
+    """Returns the primary 8 central act documents (Phases 15-16 baseline)."""
     return [
         get_constitution_document(),
         get_bns_document(),
@@ -1117,4 +1126,15 @@ def list_central_act_documents() -> List[StatuteDocument]:
         get_arbitration_document(),
         get_cpa_document(),
     ]
+
+
+def list_all_central_act_documents() -> List[StatuteDocument]:
+    """Returns all 11 central act documents including Phase 20 additions."""
+    return [
+        *list_central_act_documents(),
+        get_ni_act_document(),
+        get_tpa_act_document(),
+        get_commercial_courts_document(),
+    ]
+
 

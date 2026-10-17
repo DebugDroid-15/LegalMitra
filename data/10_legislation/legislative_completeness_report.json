@@ -1,0 +1,67 @@
+{
+  "phase": 20,
+  "database_path": "data/legalmitra_kb.db",
+  "total_registered_sources": 40,
+  "active_retrievable_sources": 37,
+  "active_retrievable_chunks": 1387,
+  "quarantined_scaffold_chunks": 6,
+  "doc_type_breakdown": {
+    "judgment": 39,
+    "notification": 5,
+    "rules_regulation": 8,
+    "statute": 1335
+  },
+  "central_statutes": {
+    "IND-STAT-BNSS-2023": 767,
+    "IND-STAT-IT-2000": 230,
+    "IND-STAT-DPDP-2023": 129,
+    "IND-CONST-1950": 41,
+    "IND-STAT-BNS-2023": 28,
+    "IND-STAT-ICA-1872": 21,
+    "IND-STAT-CPC-1908": 20,
+    "IND-STAT-LIMIT-1963": 14,
+    "IND-STAT-CPA-2019": 14,
+    "IND-STAT-SRA-1963": 13,
+    "IND-STAT-ARB-1996": 13,
+    "IND-STAT-NI-1881": 9,
+    "IND-JUD-SC-2020-ARJUN-KHOTKAR": 7,
+    "IND-JUD-SC-2017-PUTTASWAMY": 7,
+    "IND-STAT-COMM-COURTS-2015": 6,
+    "IND-STAT-TPA-1882": 5,
+    "IND-JUD-SC-2022-ANTIL": 5,
+    "IND-JUD-SC-2014-ANVAR-PV": 5,
+    "IND-STAT-POCSO-2012-SEC4": 4,
+    "IND-RULE-IT-SPDI-2011": 4,
+    "IND-JUD-SC-2020-PERKINS-EASTMAN": 4,
+    "IND-JUD-SC-1954-SATYABRATA": 4,
+    "IND-STAT-BSA-2023-SEC63": 3,
+    "IND-STAT-BSA-2023-SEC61": 3,
+    "IND-JUD-SC-2018-SHAFHI-MOHAMMAD": 3,
+    "IND-RULE-IT-INTERMEDIARY-2021": 2,
+    "IND-RULE-CPA-ECOMMERCE-2020": 2,
+    "IND-NOTIF-COMMENCE-SRA-2018": 1,
+    "IND-NOTIF-COMMENCE-CPA-2020": 1,
+    "IND-NOTIF-COMMENCE-BSA-2024": 1,
+    "IND-NOTIF-COMMENCE-BNSS-2024": 1,
+    "IND-NOTIF-COMMENCE-BNS-2024": 1
+  },
+  "state_breakdown": {
+    "IN-DL": {
+      "sources": 3,
+      "chunks": 11
+    },
+    "IN-MH": {
+      "sources": 2,
+      "chunks": 8
+    }
+  },
+  "metadata_completeness": {
+    "document_date_present": 1387,
+    "effective_date_present": 1344,
+    "act_or_case_title_present": 1387,
+    "provision_or_para_ref_present": 1387,
+    "completeness_pct": 100.0
+  },
+  "freeze_integrity_status": "VERIFIED_100_PERCENT_MATCH",
+  "review_status": "40_CANDIDATES_PENDING_ADVOCATE_REVIEW"
+}
