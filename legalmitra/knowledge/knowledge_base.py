@@ -241,6 +241,18 @@ class LegalKnowledgeBase:
         doc_date = doc.enactment_date.isoformat()
         eff_date = doc.effective_date.isoformat() if doc.effective_date else None
         
+        # Determine appropriate doc_type (e.g. statute, rules_regulation, notification)
+        if source_rec and hasattr(source_rec.source_type, 'value'):
+            doc_type_val = source_rec.source_type.value
+        elif source_rec and isinstance(source_rec.source_type, str):
+            doc_type_val = source_rec.source_type
+        elif "RULE" in doc.source_id:
+            doc_type_val = "rules_regulation"
+        elif "NOTIF" in doc.source_id:
+            doc_type_val = "notification"
+        else:
+            doc_type_val = "statute"
+
         chunks_indexed = 0
 
         for sec in doc.sections:
@@ -253,7 +265,7 @@ class LegalKnowledgeBase:
             self._insert_chunk(
                 chunk_id=sec_chunk_id,
                 source_id=doc.source_id,
-                doc_type="statute",
+                doc_type=doc_type_val,
                 act_or_case_title=doc.act_title,
                 title=sec_title,
                 provision_or_para_ref=ref_str,
@@ -285,7 +297,7 @@ class LegalKnowledgeBase:
                 self._insert_chunk(
                     chunk_id=sub_chunk_id,
                     source_id=doc.source_id,
-                    doc_type="statute",
+                    doc_type=doc_type_val,
                     act_or_case_title=doc.act_title,
                     title=f"{sec_title} {sub_num}",
                     provision_or_para_ref=sub_ref,
@@ -311,7 +323,7 @@ class LegalKnowledgeBase:
                 self._insert_chunk(
                     chunk_id=p_chunk_id,
                     source_id=doc.source_id,
-                    doc_type="statute",
+                    doc_type=doc_type_val,
                     act_or_case_title=doc.act_title,
                     title=f"{sec_title} Proviso {idx}",
                     provision_or_para_ref=p_ref,
@@ -337,7 +349,7 @@ class LegalKnowledgeBase:
                 self._insert_chunk(
                     chunk_id=exp_chunk_id,
                     source_id=doc.source_id,
-                    doc_type="statute",
+                    doc_type=doc_type_val,
                     act_or_case_title=doc.act_title,
                     title=f"{sec_title} {exp.explanation_identifier}",
                     provision_or_para_ref=exp_ref,
@@ -669,4 +681,14 @@ class LegalKnowledgeBase:
         cursor.execute("SELECT * FROM sources WHERE document_id = ?", (document_id,))
         row = cursor.fetchone()
         return dict(row) if row else None
+
+    def clear_source_chunks(self, source_id: str) -> int:
+        """Deletes all chunks and FTS index entries for a source to allow clean re-indexing."""
+        cursor = self.conn.cursor()
+        cursor.execute("DELETE FROM legal_chunks_fts WHERE chunk_id IN (SELECT chunk_id FROM legal_chunks WHERE source_id = ?)", (source_id,))
+        cursor.execute("DELETE FROM legal_chunks WHERE source_id = ?", (source_id,))
+        count = cursor.rowcount
+        self.conn.commit()
+        return count
+
 

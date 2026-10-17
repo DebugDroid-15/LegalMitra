@@ -1,0 +1,90 @@
+[
+  {
+    "source_id": "IND-RULE-IT-SPDI-2011",
+    "title": "Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011",
+    "gazette_number": "G.S.R. 313(E)",
+    "source_type": "rules_regulation",
+    "enactment_date": "2011-04-11",
+    "effective_date": "2011-04-11",
+    "sections_indexed": 4,
+    "chunks_indexed": 4,
+    "extraction_status": "partially_extracted"
+  },
+  {
+    "source_id": "IND-RULE-IT-INTERMEDIARY-2021",
+    "title": "Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021",
+    "gazette_number": "G.S.R. 139(E)",
+    "source_type": "rules_regulation",
+    "enactment_date": "2021-02-25",
+    "effective_date": "2021-02-25",
+    "sections_indexed": 2,
+    "chunks_indexed": 2,
+    "extraction_status": "partially_extracted"
+  },
+  {
+    "source_id": "IND-RULE-CPA-ECOMMERCE-2020",
+    "title": "Consumer Protection (E-Commerce) Rules, 2020",
+    "gazette_number": "G.S.R. 462(E)",
+    "source_type": "rules_regulation",
+    "enactment_date": "2020-07-23",
+    "effective_date": "2020-07-23",
+    "sections_indexed": 2,
+    "chunks_indexed": 2,
+    "extraction_status": "partially_extracted"
+  },
+  {
+    "source_id": "IND-NOTIF-COMMENCE-BNSS-2024",
+    "title": "Commencement Notification for Bharatiya Nagarik Suraksha Sanhita, 2023 (S.O. 848(E))",
+    "gazette_number": "S.O. 848(E)",
+    "source_type": "notification",
+    "enactment_date": "2024-02-23",
+    "effective_date": "2024-07-01",
+    "sections_indexed": 1,
+    "chunks_indexed": 1,
+    "extraction_status": "fully_extracted"
+  },
+  {
+    "source_id": "IND-NOTIF-COMMENCE-BNS-2024",
+    "title": "Commencement Notification for Bharatiya Nyaya Sanhita, 2023 (S.O. 849(E))",
+    "gazette_number": "S.O. 849(E)",
+    "source_type": "notification",
+    "enactment_date": "2024-02-23",
+    "effective_date": "2024-07-01",
+    "sections_indexed": 1,
+    "chunks_indexed": 1,
+    "extraction_status": "fully_extracted"
+  },
+  {
+    "source_id": "IND-NOTIF-COMMENCE-BSA-2024",
+    "title": "Commencement Notification for Bharatiya Sakshya Adhiniyam, 2023 (S.O. 850(E))",
+    "gazette_number": "S.O. 850(E)",
+    "source_type": "notification",
+    "enactment_date": "2024-02-23",
+    "effective_date": "2024-07-01",
+    "sections_indexed": 1,
+    "chunks_indexed": 1,
+    "extraction_status": "fully_extracted"
+  },
+  {
+    "source_id": "IND-NOTIF-COMMENCE-SRA-2018",
+    "title": "Commencement Notification for Specific Relief (Amendment) Act, 2018 (S.O. 4888(E))",
+    "gazette_number": "S.O. 4888(E)",
+    "source_type": "notification",
+    "enactment_date": "2018-09-19",
+    "effective_date": "2018-10-01",
+    "sections_indexed": 1,
+    "chunks_indexed": 1,
+    "extraction_status": "fully_extracted"
+  },
+  {
+    "source_id": "IND-NOTIF-COMMENCE-CPA-2020",
+    "title": "Commencement Notification for Consumer Protection Act, 2019 (S.O. 2351(E))",
+    "gazette_number": "S.O. 2351(E)",
+    "source_type": "notification",
+    "enactment_date": "2020-07-15",
+    "effective_date": "2020-07-20",
+    "sections_indexed": 1,
+    "chunks_indexed": 1,
+    "extraction_status": "fully_extracted"
+  }
+]

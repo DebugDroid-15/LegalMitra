@@ -1,0 +1,46 @@
+[
+  {
+    "source_id": "IND-DL-STAT-DRC-1958",
+    "title": "The Delhi Rent Control Act, 1958",
+    "act_number": "Act No. 59 of 1958",
+    "jurisdiction": "IN-DL",
+    "enactment_date": "1958-12-31",
+    "effective_date": "1959-02-09",
+    "sections_indexed": 4,
+    "chunks_indexed": 4,
+    "extraction_status": "partially_extracted"
+  },
+  {
+    "source_id": "IND-DL-STAT-DPA-1978",
+    "title": "The Delhi Police Act, 1978",
+    "act_number": "Act No. 34 of 1978",
+    "jurisdiction": "IN-DL",
+    "enactment_date": "1978-08-27",
+    "effective_date": "1978-09-01",
+    "sections_indexed": 3,
+    "chunks_indexed": 3,
+    "extraction_status": "partially_extracted"
+  },
+  {
+    "source_id": "IND-MH-STAT-MRC-1999",
+    "title": "The Maharashtra Rent Control Act, 1999",
+    "act_number": "Maharashtra Act No. XVIII of 2000",
+    "jurisdiction": "IN-MH",
+    "enactment_date": "2000-03-10",
+    "effective_date": "2000-03-31",
+    "sections_indexed": 5,
+    "chunks_indexed": 5,
+    "extraction_status": "partially_extracted"
+  },
+  {
+    "source_id": "IND-MH-STAT-MPA-1951",
+    "title": "The Maharashtra Police Act, 1951",
+    "act_number": "Bombay Act No. XXII of 1951",
+    "jurisdiction": "IN-MH",
+    "enactment_date": "1951-06-11",
+    "effective_date": "1951-08-01",
+    "sections_indexed": 3,
+    "chunks_indexed": 3,
+    "extraction_status": "partially_extracted"
+  }
+]

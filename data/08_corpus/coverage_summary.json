@@ -2,8 +2,8 @@
   "audit_version": "1.0.0",
   "timestamp": "2026-10-16T23:54:00+05:30",
   "total_sources_identified": 37,
-  "indexed_sources_count": 16,
-  "total_indexed_chunks": 1227,
+  "indexed_sources_count": 28,
+  "total_indexed_chunks": 1331,
   "quarantined_chunks_count": 6,
   "status_distribution": {
     "current": 30,

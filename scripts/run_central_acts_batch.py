@@ -6,6 +6,7 @@ Acquires, normalizes, registers, indexes, and logs batch metrics for 8 core Cent
 from __future__ import annotations
 
 import json
+import sys
 from datetime import datetime
 from pathlib import Path
 
@@ -21,7 +22,8 @@ from legalmitra.schemas.registry import SourceRegistryRecord
 
 
 def main() -> None:
-    print("=== LegalMitra Central Legislation Batch Ingestion (Phase 15C) ===")
+    force_reindex = "--force" in sys.argv or "-f" in sys.argv
+    print(f"=== LegalMitra Central Legislation Batch Ingestion (Phase 16B) [Force={force_reindex}] ===")
     start_time = datetime.utcnow().isoformat()
 
     kb = LegalKnowledgeBase(db_path="data/legalmitra_kb.db")
@@ -44,10 +46,12 @@ def main() -> None:
     print(f"Loaded {len(documents)} central act documents for batch ingestion.\n")
 
     batch_manifest = {
-        "batch_id": "BATCH_15C_CENTRAL_ACTS",
+        "batch_id": "BATCH_16B_EXPANDED_CENTRAL_ACTS",
         "start_time": start_time,
         "planned_count": len(documents),
+        "force_reindex": force_reindex,
         "acquired_count": 0,
+
         "indexed_count": 0,
         "new_chunks_indexed": 0,
         "skipped_count": 0,
@@ -106,7 +110,10 @@ def main() -> None:
             reg_rec = existing_reg
 
         # 4. Ingest into Knowledge Base
-        chunks_indexed = pipeline.ingest_statute_document(doc, reg_rec, force_reindex=False)
+        if force_reindex:
+            cleared = kb.clear_source_chunks(doc_id)
+            print(f"  [CLEAR] Cleared {cleared} prior chunks for {doc_id} to re-index expanded provisions.")
+        chunks_indexed = pipeline.ingest_statute_document(doc, reg_rec, force_reindex=force_reindex)
         if chunks_indexed > 0:
             batch_manifest["indexed_count"] += 1
             batch_manifest["new_chunks_indexed"] += chunks_indexed
@@ -114,6 +121,7 @@ def main() -> None:
         else:
             batch_manifest["skipped_count"] += 1
             print("  [IDEMPOTENT] Document already indexed in Knowledge Base. Skipped.")
+
 
         batch_manifest["documents"].append({
             "document_id": doc_id,

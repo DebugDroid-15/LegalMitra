@@ -427,7 +427,7 @@
     "corpus_status": "current",
     "coverage_gap_notes": "Full text scheduled for Phase 14 Batch 2 ingestion.",
     "review_requirements": "High-priority constitutional foundation.",
-    "indexed_chunk_count": 20
+    "indexed_chunk_count": 31
   },
   {
     "document_id": "IND-STAT-BNS-2023",
@@ -467,7 +467,7 @@
     "corpus_status": "current",
     "coverage_gap_notes": "Primary substantive criminal enactment in force from 2024-07-01.",
     "review_requirements": "Mandatory pairing with BNSS and BSA.",
-    "indexed_chunk_count": 16
+    "indexed_chunk_count": 28
   },
   {
     "document_id": "IND-STAT-IPC-1860",
@@ -621,7 +621,7 @@
     "corpus_status": "current",
     "coverage_gap_notes": "Foundational statute for civil dispute resolution and court jurisdiction.",
     "review_requirements": "Order 39 temporary injunction rules prioritized.",
-    "indexed_chunk_count": 11
+    "indexed_chunk_count": 20
   },
   {
     "document_id": "IND-STAT-LIMIT-1963",
@@ -658,7 +658,7 @@
     "corpus_status": "current",
     "coverage_gap_notes": "Critical for preventing statute-barred claims across civil, consumer, and writ jurisdiction.",
     "review_requirements": "Section 5 condonation rules and schedule periods.",
-    "indexed_chunk_count": 7
+    "indexed_chunk_count": 14
   },
   {
     "document_id": "IND-STAT-ICA-1872",
@@ -699,7 +699,7 @@
     "corpus_status": "current",
     "coverage_gap_notes": "Core commercial agreement framework; s.73/74 liquidated damages.",
     "review_requirements": "Essential commercial law foundation.",
-    "indexed_chunk_count": 8
+    "indexed_chunk_count": 21
   },
   {
     "document_id": "IND-STAT-SRA-1963",
@@ -739,7 +739,7 @@
     "corpus_status": "current",
     "coverage_gap_notes": "2018 Amendment transformed specific performance from discretionary to mandatory relief.",
     "review_requirements": "Section 10 and 20A infrastructure bar.",
-    "indexed_chunk_count": 7
+    "indexed_chunk_count": 13
   },
   {
     "document_id": "IND-STAT-ARB-1996",
@@ -779,7 +779,7 @@
     "corpus_status": "current",
     "coverage_gap_notes": "Key commercial dispute resolution statute in India.",
     "review_requirements": "Section 9 and Section 34 grounds.",
-    "indexed_chunk_count": 5
+    "indexed_chunk_count": 13
   },
   {
     "document_id": "IND-STAT-COMP-2013",
@@ -902,7 +902,7 @@
     "corpus_status": "current",
     "coverage_gap_notes": "Includes e-commerce liability and mediation provisions.",
     "review_requirements": "District, State, and National Commission pecuniary jurisdiction.",
-    "indexed_chunk_count": 4
+    "indexed_chunk_count": 14
   },
   {
     "document_id": "IND-STAT-PMLA-2002",

@@ -18,9 +18,20 @@ from legalmitra.schemas.statute import (
     StatuteSection,
     StatuteSubSection,
 )
+from legalmitra.ingestion.central_acts_phase16 import (
+    get_arbitration_phase16_sections,
+    get_bns_phase16_sections,
+    get_constitution_phase16_sections,
+    get_contract_phase16_sections,
+    get_cpa_phase16_sections,
+    get_cpc_phase16_sections,
+    get_limitation_phase16_sections,
+    get_sra_phase16_sections,
+)
 
 
 def make_section(
+
     source_id: str,
     act_title: str,
     section_number: str,
@@ -246,6 +257,7 @@ def get_constitution_document() -> StatuteDocument:
             ),
         )
     ]
+    sections.extend(get_constitution_phase16_sections())
 
     return StatuteDocument(
         source_id=source_id,
@@ -409,6 +421,7 @@ def get_bns_document() -> StatuteDocument:
             ]
         )
     ]
+    sections.extend(get_bns_phase16_sections())
 
     return StatuteDocument(
         source_id=source_id,
@@ -552,6 +565,7 @@ def get_cpc_document() -> StatuteDocument:
             ),
         )
     ]
+    sections.extend(get_cpc_phase16_sections())
 
     return StatuteDocument(
         source_id=source_id,
@@ -664,6 +678,7 @@ def get_limitation_document() -> StatuteDocument:
             ),
         )
     ]
+    sections.extend(get_limitation_phase16_sections())
 
     return StatuteDocument(
         source_id=source_id,
@@ -795,6 +810,7 @@ def get_contract_document() -> StatuteDocument:
             ),
         )
     ]
+    sections.extend(get_contract_phase16_sections())
 
     return StatuteDocument(
         source_id=source_id,
@@ -897,6 +913,7 @@ def get_sra_document() -> StatuteDocument:
             ),
         )
     ]
+    sections.extend(get_sra_phase16_sections())
 
     return StatuteDocument(
         source_id=source_id,
@@ -996,6 +1013,7 @@ def get_arbitration_document() -> StatuteDocument:
             ),
         )
     ]
+    sections.extend(get_arbitration_phase16_sections())
 
     return StatuteDocument(
         source_id=source_id,
@@ -1074,6 +1092,7 @@ def get_cpa_document() -> StatuteDocument:
             ),
         )
     ]
+    sections.extend(get_cpa_phase16_sections())
 
     return StatuteDocument(
         source_id=source_id,

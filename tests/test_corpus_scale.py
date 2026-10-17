@@ -110,7 +110,7 @@ def test_central_acts_document_generation():
 def test_constitution_structural_elements():
     const = get_constitution_document()
     assert const.source_id == "IND-CONST-1950"
-    assert len(const.sections) == 10
+    assert len(const.sections) >= 10
 
     sec_numbers = [s.section_number for s in const.sections]
     assert "Preamble" in sec_numbers
