@@ -49,3 +49,4 @@ python -m pytest --ignore=tests/test_end_to_end_pipeline.py
    - All 6 review artifacts verified with 100% bitwise matching SHA-256 digests.
    - All 40 review candidates strictly remain `pending_legal_review` with blank decision and score fields.
 2. Synthetic scaffold `IND-JUD-DEL-2024-BAIL` verified strictly quarantined (`is_synthetic_scaffold=1`) and completely excluded from active case-law search.
+

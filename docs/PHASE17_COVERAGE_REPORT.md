@@ -39,3 +39,4 @@ In Phase 17, LegalMitra integrated an authoritative judicial corpus with passage
 - `OVERRULED`: 5 (*Arjun Khotkar* overrules *Shafhi Mohammad*; *Puttaswamy* overrules *M.P. Sharma*, *Kharak Singh*, *ADM Jabalpur*; *Navtej Johar* overrules *Suresh Koushal*)
 - Machine-readable manifest: `data/08_corpus/precedent_relationships.json`
 - Repeatable coverage command: `python scripts/corpus_coverage_report.py`
+
