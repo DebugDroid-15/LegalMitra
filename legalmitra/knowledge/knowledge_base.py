@@ -563,11 +563,6 @@ class LegalKnowledgeBase:
         logger.info(f"Indexed judgment '{doc.case_title}' ({doc.source_id}): {chunks_indexed} chunks.")
         return chunks_indexed
 
-    def _source_exists(self, document_id: str) -> bool:
-        cursor = self.conn.cursor()
-        res = cursor.execute("SELECT 1 FROM sources WHERE document_id = ?", (document_id,)).fetchone()
-        return res is not None
-
     def index_case(self, case_id: str, court_code: str, case_type: str, case_number: str,
                    filing_year: int, petitioner: str, respondent: str,
                    neutral_citation: Optional[str] = None, institution_date: Optional[str] = None,
@@ -781,6 +776,42 @@ class LegalKnowledgeBase:
                 res = self._row_to_result(row, score=-120.0)
                 results_dict[res.chunk_id] = res
 
+        # 2b. Case Number and Procedural Lookup from query string (e.g. "Civil Appeal No. 2082 of 2018")
+        case_num_match = re.search(r"\b(?:civil appeal|slp|wp|criminal appeal|fao)\s*(?:no\.?)?\s*(\d+)\s*(?:of|\/)\s*(\d{4})\b", query, re.IGNORECASE)
+        if case_num_match:
+            c_num, c_year = case_num_match.group(1), case_num_match.group(2)
+            c_row = cursor.execute("SELECT case_id, petitioner_or_appellant, respondent FROM cases WHERE (case_number = ? OR case_number LIKE ? OR case_id LIKE ?) AND filing_year = ?", (c_num, f"{c_num}%", f"%{c_num}%", int(c_year))).fetchone()
+            if c_row:
+                cid = c_row["case_id"]
+                # Retrieve procedural documents for this case
+                doc_rows = cursor.execute("SELECT * FROM judicial_documents WHERE case_id = ? AND is_synthetic_scaffold = 0", (cid,)).fetchall()
+
+                for d in doc_rows:
+                    did = d["document_id"]
+                    doc_res = SearchResult(
+                        chunk_id=f"{did}:ORDER",
+                        source_id=did,
+                        doc_type="judgment",
+                        act_or_case_title=f"{c_row['petitioner_or_appellant']} v. {c_row['respondent']}",
+                        provision_or_para_ref=f"Order dated {d['order_or_judgment_date']} ({d['procedural_effect']})",
+                        hierarchy_level="order",
+                        section_number=None,
+                        paragraph_number=None,
+                        jurisdiction="IN",
+                        court="Supreme Court of India" if "SC" in cid else "High Court",
+                        document_date=date.fromisoformat(d["order_or_judgment_date"]),
+                        effective_date=date.fromisoformat(d["order_or_judgment_date"]),
+                        is_historical=False,
+                        is_synthetic_scaffold=False,
+                        authority_level=AuthorityLevel.BINDING_PRECEDENT,
+                        content=f"Case ID: {cid}. Procedural Order dated {d['order_or_judgment_date']}: {d['verbatim_text']} Procedural effect: {d['procedural_effect']}.",
+                        source_url=d["source_url"],
+                        score=-150.0,
+                        metadata={"case_id": cid, "procedural_effect": d["procedural_effect"]},
+                    )
+                    results_dict[doc_res.chunk_id] = doc_res
+
+
         # 3. Full-Text Search Query using FTS5
         if fts_query:
             fts_sql = """
@@ -898,5 +929,12 @@ class LegalKnowledgeBase:
         count = cursor.rowcount
         self.conn.commit()
         return count
+
+    def _source_exists(self, source_id: str) -> bool:
+        """Check if a source record exists in the sources table."""
+        cursor = self.conn.cursor()
+        cursor.execute("SELECT 1 FROM sources WHERE document_id = ?", (source_id,))
+        return cursor.fetchone() is not None
+
 
 

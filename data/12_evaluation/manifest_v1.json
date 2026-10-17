@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "created_date": "2026-10-17",
+  "author": "Team Shatrujeet (Amar Khera, Ananya Rout, Lucky Kumar, Omm Prakash Sahoo)",
+  "total_cases": 18,
+  "category_counts": {
+    "statutory_pinpoint": 5,
+    "temporal_applicability": 3,
+    "precedent_authority": 3,
+    "procedural_timeline": 1,
+    "adversarial_premise": 2,
+    "missing_evidence": 2,
+    "prompt_injection": 1,
+    "privacy_protected": 1
+  },
+  "sha256_checksum": "a1ffa291c42a1800de22a996ebac786b971d88929e36304e57d0601b661e5afc"
+}

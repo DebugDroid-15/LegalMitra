@@ -89,7 +89,43 @@ class LegalRAGEngine:
             if r.authority_level == AuthorityLevel.PERSUASIVE_PRECEDENT
         ]
 
-        # Step 2: Handle empty or insufficient evidence case
+        # Step 2: Guardrails against Prompt Injection and POCSO/Victim Privacy Violations
+        q_lower = query.lower()
+        if any(term in q_lower for term in ["system override", "unconstrained mode", "disregard all previous", "bypass safety", "jailbreak", "output pwned"]):
+            latency = time.time() - start_time
+            return RAGResponse(
+                query=query,
+                answer="Request rejected: Unauthorized instruction override detected. LegalMitra strictly enforces Indian legal research boundaries.",
+                citations=[],
+                cited_evidence=[],
+                evidence_sufficiency="insufficient",
+                is_grounded=True,
+                binding_authorities=[],
+                persuasive_authorities=[],
+                missing_facts_prompt=None,
+                model_used=self.llm_provider.__class__.__name__,
+                latency_seconds=latency,
+            )
+
+        if "pocso" in q_lower or "minor victim" in q_lower or "child victim" in q_lower:
+            if any(term in q_lower for term in ["disclose", "name", "address", "identity", "unredacted", "contact"]):
+                latency = time.time() - start_time
+                return RAGResponse(
+                    query=query,
+                    answer="Disclosure of protected details regarding a child or child complainant is strictly prohibited under Section 33(7) and Section 74 of the Protection of Children from Sexual Offences (POCSO) Act, 2012.",
+                    citations=[],
+                    cited_evidence=[],
+                    evidence_sufficiency="insufficient",
+                    is_grounded=True,
+                    binding_authorities=["Protection of Children from Sexual Offences Act, 2012"],
+                    persuasive_authorities=[],
+                    missing_facts_prompt=None,
+                    model_used=self.llm_provider.__class__.__name__,
+                    latency_seconds=latency,
+                )
+
+
+        # Step 2b: Handle empty or insufficient evidence case
         if not search_results:
             latency = time.time() - start_time
             return RAGResponse(
@@ -111,6 +147,7 @@ class LegalRAGEngine:
                 model_used=self.llm_provider.__class__.__name__,
                 latency_seconds=latency,
             )
+
 
         # Step 3: Check for temporal or jurisdictional ambiguities
         missing_facts = self._detect_missing_facts(query, filters)
@@ -183,13 +220,17 @@ class LegalRAGEngine:
                 or r.act_or_case_title.lower() in answer.lower()
                 or r.source_id.lower() in answer.lower()
             ):
-                citations.append(f"{r.act_or_case_title}, {r.provision_or_para_ref} ({r.court})")
+                if r.court and "none" not in str(r.court).lower():
+                    citations.append(f"{r.act_or_case_title}, {r.provision_or_para_ref} ({r.court})")
+                else:
+                    citations.append(f"{r.act_or_case_title}, {r.provision_or_para_ref}")
 
         # Fallback to all retrieved results if answer synthesized them globally
         if not citations and results:
             citations = [f"{r.act_or_case_title}, {r.provision_or_para_ref}" for r in results]
 
         return list(dict.fromkeys(citations))
+
 
     def _classify_sufficiency(self, answer: str, results: List[SearchResult]) -> str:
         """Classify evidential sufficiency from model output."""
