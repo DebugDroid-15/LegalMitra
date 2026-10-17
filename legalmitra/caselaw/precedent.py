@@ -26,11 +26,19 @@ class BenchStrength(str, Enum):
 class PrecedentTreatment(str, Enum):
     CITED = "cited"
     FOLLOWED = "followed"
-    DISTINGUISHED = "distinguished"
-    OVERRULED = "overruled"
+    APPLIED = "applied"
+    APPROVED = "approved"
     AFFIRMED = "affirmed"
-    REVERSED = "reversed"
+    DISTINGUISHED = "distinguished"
     DOUBTED = "doubted"
+    REFERRED_LARGER_BENCH = "referred_to_larger_bench"
+    OVERRULED = "overruled"
+    PARTIALLY_OVERRULED = "partially_overruled"
+    REVERSED = "reversed"
+    SET_ASIDE = "set_aside"
+    REMANDED = "remanded"
+    MODIFIED = "modified"
+    RECONSIDERED = "reconsidered_or_clarified"
 
 
 @dataclass
@@ -347,6 +355,141 @@ def build_default_precedent_manager() -> PrecedentHierarchyManager:
         statutes_considered=["The Constitution of India"],
         provisions_considered=["Article 21"],
         ratio_summary="Expressly overruled the majority opinion in ADM Jabalpur, affirming Justice HR Khanna's dissent.",
+        is_human_reviewed=True,
+    ))
+
+    # 8. Arjun Panditrao Khotkar v. Kailash Kushanrao Gorantyal (2020) 7 SCC 1 (3-Judge Bench)
+    mgr.register_case(CaseLawMetadata(
+        case_id="IND-JUD-SC-2020-ARJUN-KHOTKAR",
+        case_title="Arjun Panditrao Khotkar v. Kailash Kushanrao Gorantyal (2020) 7 SCC 1",
+        official_citation="(2020) 7 SCC 1",
+        neutral_citation="2020 INSC 452",
+        court="Supreme Court of India",
+        bench_strength=BenchStrength.FULL_BENCH,
+        judge_count=3,
+        decision_date="2020-07-14",
+        statutes_considered=["Bharatiya Sakshya Adhiniyam, 2023", "Indian Evidence Act, 1872"],
+        provisions_considered=["Section 63 BSA", "Section 65B IEA", "Section 91 CrPC"],
+        ratio_decidendi="Certificate under Section 65B(4) IEA / Section 63(4) BSA is an absolute condition precedent to the admissibility of electronic records as secondary evidence.",
+        is_human_verified=True,
+    ))
+
+    # 9. Anvar P.V. v. P.K. Basheer (2014) 10 SCC 473 (3-Judge Bench)
+    mgr.register_case(CaseLawMetadata(
+        case_id="IND-JUD-SC-2014-ANVAR-PV",
+        case_title="Anvar P.V. v. P.K. Basheer (2014) 10 SCC 473",
+        official_citation="(2014) 10 SCC 473",
+        neutral_citation="2014 INSC 650",
+        court="Supreme Court of India",
+        bench_strength=BenchStrength.FULL_BENCH,
+        judge_count=3,
+        decision_date="2014-09-18",
+        statutes_considered=["Indian Evidence Act, 1872"],
+        provisions_considered=["Section 65B IEA", "Sections 63 & 65 IEA"],
+        ratio_decidendi="Electronic records are governed exclusively by Section 65B; oral evidence cannot substitute the required statutory certificate.",
+        is_human_verified=True,
+    ))
+
+    # 10. Shafhi Mohammad v. State of H.P. (2018) 2 SCC 801 (2-Judge Bench, overruled)
+    mgr.register_case(CaseLawMetadata(
+        case_id="IND-JUD-SC-2018-SHAFHI-MOHAMMAD",
+        case_title="Shafhi Mohammad v. State of H.P. (2018) 2 SCC 801",
+        official_citation="(2018) 2 SCC 801",
+        neutral_citation="2018 INSC 92",
+        court="Supreme Court of India",
+        bench_strength=BenchStrength.DIVISION_BENCH,
+        judge_count=2,
+        decision_date="2018-01-30",
+        ratio_decidendi="Held certificate can be relaxed if party not in possession of device. (Overruled)",
+        is_overruled=True,
+        overruled_by_case_id="IND-JUD-SC-2020-ARJUN-KHOTKAR",
+        is_human_verified=True,
+    ))
+
+    # 11. Satender Kumar Antil v. CBI (2022) 10 SCC 51 (2-Judge Bench)
+    mgr.register_case(CaseLawMetadata(
+        case_id="IND-JUD-SC-2022-ANTIL",
+        case_title="Satender Kumar Antil v. Central Bureau of Investigation (2022) 10 SCC 51",
+        official_citation="(2022) 10 SCC 51",
+        neutral_citation="2022 INSC 690",
+        court="Supreme Court of India",
+        bench_strength=BenchStrength.DIVISION_BENCH,
+        judge_count=2,
+        decision_date="2022-07-11",
+        statutes_considered=["Bharatiya Nagarik Suraksha Sanhita, 2023", "Code of Criminal Procedure, 1973"],
+        provisions_considered=["Section 35 BNSS", "Section 479 BNSS", "Section 41 CrPC", "Section 437 CrPC"],
+        ratio_decidendi="Bail is the rule, jail is the exception. Arrest is not mandatory where accused cooperates with notice under Section 41A / 35 BNSS.",
+        is_human_verified=True,
+    ))
+
+    # 12. Perkins Eastman Architects DPC v. HSCC (2020) 20 SCC 760 (2-Judge Bench)
+    mgr.register_case(CaseLawMetadata(
+        case_id="IND-JUD-SC-2020-PERKINS-EASTMAN",
+        case_title="Perkins Eastman Architects DPC v. HSCC (India) Ltd (2020) 20 SCC 760",
+        official_citation="(2020) 20 SCC 760",
+        neutral_citation="2019 INSC 1289",
+        court="Supreme Court of India",
+        bench_strength=BenchStrength.DIVISION_BENCH,
+        judge_count=2,
+        decision_date="2019-11-26",
+        statutes_considered=["Arbitration and Conciliation Act, 1996"],
+        provisions_considered=["Section 11(6)", "Section 12(5)", "Seventh Schedule"],
+        ratio_decidendi="A person who is ineligible to act as an arbitrator under Section 12(5) is equally disqualified from unilaterally appointing a sole arbitrator.",
+        is_human_verified=True,
+    ))
+
+    # 13. Satyabrata Ghose v. Mugneeram Bangur & Co. (1954) SCR 310 (3-Judge Bench)
+    mgr.register_case(CaseLawMetadata(
+        case_id="IND-JUD-SC-1954-SATYABRATA",
+        case_title="Satyabrata Ghose v. Mugneeram Bangur & Co. (1954) SCR 310",
+        official_citation="(1954) SCR 310",
+        court="Supreme Court of India",
+        bench_strength=BenchStrength.FULL_BENCH,
+        judge_count=3,
+        decision_date="1953-09-16",
+        statutes_considered=["Indian Contract Act, 1872"],
+        provisions_considered=["Section 56"],
+        ratio_decidendi="Section 56 of the Contract Act is exhaustive on frustration in India; frustration occurs when an untoward event upsets the foundation of the bargain.",
+        is_human_verified=True,
+    ))
+
+    # 14. Satyawati Sharma v. Union of India (2008) 5 SCC 287 (2-Judge Bench)
+    mgr.register_case(CaseLawMetadata(
+        case_id="IND-JUD-SC-2008-SATYAWATI",
+        case_title="Satyawati Sharma v. Union of India (2008) 5 SCC 287",
+        official_citation="(2008) 5 SCC 287",
+        court="Supreme Court of India",
+        bench_strength=BenchStrength.DIVISION_BENCH,
+        judge_count=2,
+        decision_date="2008-04-16",
+        statutes_considered=["The Delhi Rent Control Act, 1958", "The Constitution of India"],
+        provisions_considered=["Section 14(1)(e) DRC Act", "Article 14"],
+        ratio_decidendi="Severed 'let for residential purposes' in Section 14(1)(e) DRC Act, permitting bona fide eviction for commercial premises under Article 14 equality.",
+        is_human_verified=True,
+    ))
+
+    # Phase 17 Additional Relationships
+    mgr.add_relationship(PrecedentRelationship(
+        relationship_id="REL-ARJUN-AFFIRMS-ANVAR",
+        citing_case_id="IND-JUD-SC-2020-ARJUN-KHOTKAR",
+        cited_case_id="IND-JUD-SC-2014-ANVAR-PV",
+        treatment=PrecedentTreatment.AFFIRMED,
+        statutes_considered=["Indian Evidence Act, 1872", "Bharatiya Sakshya Adhiniyam, 2023"],
+        provisions_considered=["Section 65B IEA", "Section 63 BSA"],
+        ratio_summary="Reaffirmed the law declared in Anvar P.V. that Section 65B certificate is mandatory.",
+        treatment_passage_ref="Paragraph 51 & 72",
+        is_human_reviewed=True,
+    ))
+
+    mgr.add_relationship(PrecedentRelationship(
+        relationship_id="REL-ARJUN-OVERRULES-SHAFHI",
+        citing_case_id="IND-JUD-SC-2020-ARJUN-KHOTKAR",
+        cited_case_id="IND-JUD-SC-2018-SHAFHI-MOHAMMAD",
+        treatment=PrecedentTreatment.OVERRULED,
+        statutes_considered=["Indian Evidence Act, 1872"],
+        provisions_considered=["Section 65B(4)"],
+        ratio_summary="Overruled Shafhi Mohammad for relaxing Section 65B(4) certificate requirement without statutory authority.",
+        treatment_passage_ref="Paragraph 72",
         is_human_reviewed=True,
     ))
 

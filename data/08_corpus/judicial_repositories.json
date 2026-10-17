@@ -1,0 +1,133 @@
+[
+  {
+    "repository_id": "REPO-SCI-DIGITAL-SCR",
+    "court_or_authority": "Supreme Court of India",
+    "jurisdiction": "IN",
+    "supported_document_types": [
+      "Judgment",
+      "Order",
+      "Constitution Bench Ruling"
+    ],
+    "access_method": "direct_http",
+    "source_url": "https://digiscr.sci.gov.in/",
+    "retrieval_limitations": "Rate limited to 20 requests/minute. Neutral citations (e.g. 2024 INSC ...) systematically assigned.",
+    "available_historical_coverage": "1950 to present (Complete Supreme Court Reports - SCR)",
+    "last_successful_check": "2026-10-17",
+    "source_verification_status": "primary_official",
+    "known_completeness_gaps": "Pre-1970 decisions have scanned typewritten layouts requiring dual-engine OCR verification.",
+    "licensing_and_reuse": "Public domain pursuant to Section 52(1)(q)(iv) of the Copyright Act, 1957 (reproduction or publication of any judgment or order of a court).",
+    "status": "active"
+  },
+  {
+    "repository_id": "REPO-SCI-PORTAL",
+    "court_or_authority": "Supreme Court of India",
+    "jurisdiction": "IN",
+    "supported_document_types": [
+      "Daily Order",
+      "Reportable Judgment",
+      "Signed Order"
+    ],
+    "access_method": "portal_search",
+    "source_url": "https://main.sci.gov.in/judgments",
+    "retrieval_limitations": "Requires dynamic search query parameters (diary number, case type/number, party name).",
+    "available_historical_coverage": "1990 to present",
+    "last_successful_check": "2026-10-17",
+    "source_verification_status": "primary_official",
+    "known_completeness_gaps": "Interlocutory orders may lack full headnotes or ratio statements.",
+    "licensing_and_reuse": "Government / Judicial public record under Section 52(1)(q)(iv) Copyright Act, 1957.",
+    "status": "active"
+  },
+  {
+    "repository_id": "REPO-DHC-JUDGMENTS",
+    "court_or_authority": "High Court of Delhi",
+    "jurisdiction": "IN-DL",
+    "supported_document_types": [
+      "Reportable Judgment",
+      "Neutral Citation Order",
+      "Practice Direction"
+    ],
+    "access_method": "direct_http",
+    "source_url": "https://delhihighcourt.nic.in/judgments",
+    "retrieval_limitations": "30 requests/minute. Neutral citations (e.g. 2023:DHC:1234) introduced in 2022.",
+    "available_historical_coverage": "1966 to present",
+    "last_successful_check": "2026-10-17",
+    "source_verification_status": "primary_official",
+    "known_completeness_gaps": "Older criminal appeals (pre-2000) have variable OCR fidelity.",
+    "licensing_and_reuse": "Public domain under Section 52(1)(q)(iv) Copyright Act, 1957.",
+    "status": "active"
+  },
+  {
+    "repository_id": "REPO-BOM-JUDGMENTS",
+    "court_or_authority": "High Court of Judicature at Bombay",
+    "jurisdiction": "IN-MH",
+    "supported_document_types": [
+      "Reportable Judgment",
+      "Unreportable Judgment",
+      "Full Bench Decision"
+    ],
+    "access_method": "portal_search",
+    "source_url": "https://bombayhighcourt.nic.in/",
+    "retrieval_limitations": "Benches across Mumbai, Nagpur, Aurangabad, and Goa maintain indexed judgment records.",
+    "available_historical_coverage": "1980 to present",
+    "last_successful_check": "2026-10-17",
+    "source_verification_status": "primary_official",
+    "known_completeness_gaps": "Appellate side and original side decrees maintained in distinct registries.",
+    "licensing_and_reuse": "Public domain under Section 52(1)(q)(iv) Copyright Act, 1957.",
+    "status": "active"
+  },
+  {
+    "repository_id": "REPO-ECOURTS-NJDG",
+    "court_or_authority": "e-Courts Mission Mode Project / Supreme Court e-Committee",
+    "jurisdiction": "IN",
+    "supported_document_types": [
+      "High Court Judgment",
+      "District Court Judgment",
+      "Case Status Order"
+    ],
+    "access_method": "portal_search",
+    "source_url": "https://judgments.ecourts.gov.in/",
+    "retrieval_limitations": "Session-based search token; requires rate-pacing (max 15 requests/minute).",
+    "available_historical_coverage": "2010 to present across 25 High Courts and subordinate district courts",
+    "last_successful_check": "2026-10-17",
+    "source_verification_status": "primary_official",
+    "known_completeness_gaps": "Disposal summaries occasionally lack full signed PDF text.",
+    "licensing_and_reuse": "National open judicial data portal under e-Courts Open Data framework.",
+    "status": "active"
+  },
+  {
+    "repository_id": "REPO-KAR-JUDGMENTS",
+    "court_or_authority": "High Court of Karnataka",
+    "jurisdiction": "IN-KA",
+    "supported_document_types": [
+      "Reportable Judgment",
+      "Daily Order"
+    ],
+    "access_method": "portal_search",
+    "source_url": "https://karnatakahi.courtnic.in/",
+    "retrieval_limitations": "25 requests/minute limit; benches at Bengaluru, Dharwad, and Kalaburagi.",
+    "available_historical_coverage": "1995 to present",
+    "last_successful_check": "2026-10-17",
+    "source_verification_status": "primary_official",
+    "known_completeness_gaps": "Bilingual orders in Kannada and English.",
+    "licensing_and_reuse": "Public domain under Section 52(1)(q)(iv) Copyright Act, 1957.",
+    "status": "active"
+  },
+  {
+    "repository_id": "REPO-ALL-JUDGMENTS",
+    "court_or_authority": "High Court of Judicature at Allahabad",
+    "jurisdiction": "IN-UP",
+    "supported_document_types": [
+      "Reportable Judgment",
+      "Full Bench Decision"
+    ],
+    "access_method": "portal_search",
+    "source_url": "http://www.allahabadhighcourt.in/judgments/",
+    "retrieval_limitations": "High traffic server; intermittent connection timeouts; max 20 requests/minute.",
+    "available_historical_coverage": "1975 to present (Lucknow and Prayagraj benches)",
+    "last_successful_check": "2026-10-17",
+    "source_verification_status": "primary_official",
+    "known_completeness_gaps": "Extensive case inventory with periodic indexing maintenance.",
+    "licensing_and_reuse": "Public domain under Section 52(1)(q)(iv) Copyright Act, 1957.",
+    "status": "active"
+  }
+]

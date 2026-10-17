@@ -422,6 +422,9 @@ class LegalKnowledgeBase:
         doc_date = doc.judgment_date.isoformat()
         chunks_indexed = 0
 
+        # Prepare citations string for metadata and indexing
+        citations_str = " | ".join(c.citation_text for c in doc.citations) if doc.citations else ""
+
         # 1. Ratio Decidendi
         if doc.ratio_decidendi:
             ratio_chunk_id = f"{doc.source_id}:RATIO"
@@ -442,8 +445,8 @@ class LegalKnowledgeBase:
                 is_historical=0,
                 is_synthetic_scaffold=is_scaffold,
                 authority_level=authority,
-                content=doc.ratio_decidendi,
-                metadata={"coram": doc.bench_coram, "case_number": doc.case_number}
+                content=f"{doc.ratio_decidendi}\n[Citations: {citations_str}]" if citations_str else doc.ratio_decidendi,
+                metadata={"coram": doc.bench_coram, "case_number": doc.case_number, "citations": citations_str}
             )
             chunks_indexed += 1
 
@@ -470,7 +473,8 @@ class LegalKnowledgeBase:
                 content=f"Issue: {holding.issue_text}\nHolding: {holding.holding_summary}",
                 metadata={
                     "issue_number": holding.issue_number,
-                    "supporting_paras": holding.supporting_paragraph_numbers
+                    "supporting_paras": holding.supporting_paragraph_numbers,
+                    "citations": citations_str
                 }
             )
             chunks_indexed += 1
@@ -497,7 +501,7 @@ class LegalKnowledgeBase:
                 is_synthetic_scaffold=is_scaffold,
                 authority_level=authority,
                 content=para.verbatim_text,
-                metadata={"page_number": para.page_number}
+                metadata={"page_number": para.page_number, "citations": citations_str}
             )
             chunks_indexed += 1
 
@@ -577,7 +581,34 @@ class LegalKnowledgeBase:
                 res = self._row_to_result(row, score=match_score)
                 results_dict[res.chunk_id] = res
 
-        # 2. Full-Text Search Query using FTS5
+        # 2. Exact Citation or Case Lookup (if citation provided)
+        if filters.case_citation:
+            cit_sql = """
+                SELECT c.*, s.source_url
+                FROM legal_chunks c
+                JOIN sources s ON c.source_id = s.document_id
+                WHERE (c.act_or_case_title LIKE :cit_like OR c.content LIKE :cit_like)
+                  AND (:jurisdiction IS NULL OR c.jurisdiction = :jurisdiction)
+                  AND (:court IS NULL OR c.court = :court)
+                  AND (:doc_type IS NULL OR c.doc_type = :doc_type)
+                  AND (:include_synthetic = 1 OR c.is_synthetic_scaffold = 0)
+                  AND (:hierarchy_level IS NULL OR c.hierarchy_level = :hierarchy_level)
+                LIMIT :limit;
+            """
+            cit_params = {
+                "cit_like": f"%{filters.case_citation}%",
+                "jurisdiction": filters.jurisdiction,
+                "court": filters.court,
+                "doc_type": filters.doc_type,
+                "include_synthetic": 1 if filters.include_synthetic else 0,
+                "hierarchy_level": filters.hierarchy_level,
+                "limit": limit * 2,
+            }
+            for row in cursor.execute(cit_sql, cit_params).fetchall():
+                res = self._row_to_result(row, score=-120.0)
+                results_dict[res.chunk_id] = res
+
+        # 3. Full-Text Search Query using FTS5
         if fts_query:
             fts_sql = """
                 SELECT c.*, s.source_url, fts.rank
@@ -592,6 +623,8 @@ class LegalKnowledgeBase:
                   AND (:include_synthetic = 1 OR c.is_synthetic_scaffold = 0)
                   AND (:is_historical IS NULL OR c.is_historical = :is_historical)
                   AND (:as_of_date IS NULL OR (c.effective_date IS NOT NULL AND c.effective_date <= :as_of_date))
+                  AND (:hierarchy_level IS NULL OR c.hierarchy_level = :hierarchy_level)
+                  AND (:para_num IS NULL OR c.paragraph_number = :para_num)
                 ORDER BY fts.rank
                 LIMIT :limit;
             """
@@ -604,6 +637,8 @@ class LegalKnowledgeBase:
                 "include_synthetic": 1 if filters.include_synthetic else 0,
                 "is_historical": 1 if filters.is_historical else (0 if filters.is_historical is False else None),
                 "as_of_date": filters.as_of_date.isoformat() if filters.as_of_date else None,
+                "hierarchy_level": filters.hierarchy_level,
+                "para_num": filters.paragraph_number,
                 "limit": limit * 2,
             }
 

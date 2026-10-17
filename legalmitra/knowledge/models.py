@@ -60,11 +60,23 @@ class SearchFilters(BaseModel):
     )
     act_title: Optional[str] = Field(
         default=None,
-        description="Filter by specific Act title"
+        description="Filter by specific Act title or Case title"
     )
     section_number: Optional[str] = Field(
         default=None,
         description="Filter by specific section number (e.g. '61', '63', '43A')"
+    )
+    paragraph_number: Optional[int] = Field(
+        default=None,
+        description="Filter by specific judgment paragraph number"
+    )
+    hierarchy_level: Optional[str] = Field(
+        default=None,
+        description="Filter by hierarchy level: 'section', 'subsection', 'ratio', 'holding', 'paragraph'"
+    )
+    case_citation: Optional[str] = Field(
+        default=None,
+        description="Filter or lookup by official or neutral citation (e.g. '(2020) 7 SCC 1', '2020 INSC 452')"
     )
 
 

@@ -1,0 +1,110 @@
+[
+  {
+    "source_id": "IND-JUD-SC-2020-ARJUN-KHOTKAR",
+    "case_title": "Arjun Panditrao Khotkar v. Kailash Kushanrao Gorantyal and Others",
+    "court": "Supreme Court of India",
+    "decision_date": "2020-07-14",
+    "bench_coram": [
+      "R.F. Nariman, J.",
+      "S. Ravindra Bhat, J.",
+      "V. Ramasubramanian, J."
+    ],
+    "paragraphs_indexed": 4,
+    "holdings_count": 2,
+    "chunks_indexed": 7,
+    "extraction_status": "partially_extracted",
+    "is_synthetic_scaffold": false
+  },
+  {
+    "source_id": "IND-JUD-SC-2014-ANVAR-PV",
+    "case_title": "Anvar P.V. v. P.K. Basheer and Others",
+    "court": "Supreme Court of India",
+    "decision_date": "2014-09-18",
+    "bench_coram": [
+      "R.M. Lodha, CJI",
+      "Kurian Joseph, J.",
+      "R.F. Nariman, J."
+    ],
+    "paragraphs_indexed": 3,
+    "holdings_count": 1,
+    "chunks_indexed": 5,
+    "extraction_status": "partially_extracted",
+    "is_synthetic_scaffold": false
+  },
+  {
+    "source_id": "IND-JUD-SC-2018-SHAFHI-MOHAMMAD",
+    "case_title": "Shafhi Mohammad v. State of Himachal Pradesh",
+    "court": "Supreme Court of India",
+    "decision_date": "2018-01-30",
+    "bench_coram": [
+      "Adarsh Kumar Goel, J.",
+      "U.U. Lalit, J."
+    ],
+    "paragraphs_indexed": 1,
+    "holdings_count": 1,
+    "chunks_indexed": 3,
+    "extraction_status": "partially_extracted",
+    "is_synthetic_scaffold": false
+  },
+  {
+    "source_id": "IND-JUD-SC-2022-ANTIL",
+    "case_title": "Satender Kumar Antil v. Central Bureau of Investigation and Another",
+    "court": "Supreme Court of India",
+    "decision_date": "2022-07-11",
+    "bench_coram": [
+      "Sanjay Kishan Kaul, J.",
+      "M.M. Sundresh, J."
+    ],
+    "paragraphs_indexed": 3,
+    "holdings_count": 1,
+    "chunks_indexed": 5,
+    "extraction_status": "partially_extracted",
+    "is_synthetic_scaffold": false
+  },
+  {
+    "source_id": "IND-JUD-SC-2020-PERKINS-EASTMAN",
+    "case_title": "Perkins Eastman Architects DPC and Another v. HSCC (India) Ltd.",
+    "court": "Supreme Court of India",
+    "decision_date": "2019-11-26",
+    "bench_coram": [
+      "U.U. Lalit, J.",
+      "Indu Malhotra, J."
+    ],
+    "paragraphs_indexed": 2,
+    "holdings_count": 1,
+    "chunks_indexed": 4,
+    "extraction_status": "partially_extracted",
+    "is_synthetic_scaffold": false
+  },
+  {
+    "source_id": "IND-JUD-SC-1954-SATYABRATA",
+    "case_title": "Satyabrata Ghose v. Mugneeram Bangur & Co. and Another",
+    "court": "Supreme Court of India",
+    "decision_date": "1953-09-16",
+    "bench_coram": [
+      "B.K. Mukherjea, J.",
+      "Vivian Bose, J.",
+      "Natwarlal H. Bhagwati, J."
+    ],
+    "paragraphs_indexed": 2,
+    "holdings_count": 1,
+    "chunks_indexed": 4,
+    "extraction_status": "partially_extracted",
+    "is_synthetic_scaffold": false
+  },
+  {
+    "source_id": "IND-JUD-SC-2008-SATYAWATI",
+    "case_title": "Satyawati Sharma (Dead) by LRs v. Union of India and Another",
+    "court": "Supreme Court of India",
+    "decision_date": "2008-04-16",
+    "bench_coram": [
+      "B.N. Agrawal, J.",
+      "G.S. Singhvi, J."
+    ],
+    "paragraphs_indexed": 2,
+    "holdings_count": 1,
+    "chunks_indexed": 4,
+    "extraction_status": "partially_extracted",
+    "is_synthetic_scaffold": false
+  }
+]
