@@ -1,0 +1,686 @@
+[
+  {
+    "source_id": "IND-SRC-COURT-SCI",
+    "body_name": "Supreme Court of India",
+    "tier": "supreme_court",
+    "jurisdiction_code": "IN",
+    "official_domain": "sci.gov.in",
+    "search_portal_url": "https://main.sci.gov.in/judgments",
+    "available_record_types": [
+      "final_judgment",
+      "final_order",
+      "interim_order",
+      "daily_order",
+      "cause_list",
+      "case_status"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Full digital reports from 1950 onwards via e-SCR (Electronic Supreme Court Reports).",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-COURT-ESCR",
+    "body_name": "Electronic Supreme Court Reports (e-SCR)",
+    "tier": "supreme_court",
+    "jurisdiction_code": "IN",
+    "official_domain": "escr.sci.gov.in",
+    "search_portal_url": "https://escr.sci.gov.in/",
+    "available_record_types": [
+      "final_judgment",
+      "final_order"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Official open-access digital reports of Supreme Court judgments from 1950 to current date.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-HC-DEL",
+    "body_name": "High Court of Delhi",
+    "tier": "high_court",
+    "jurisdiction_code": "IN-DL",
+    "official_domain": "delhihighcourt.nic.in",
+    "search_portal_url": "https://delhihighcourt.nic.in/app/judgments-orders",
+    "available_record_types": [
+      "final_judgment",
+      "final_order",
+      "interim_order",
+      "daily_order",
+      "cause_list",
+      "case_status"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Comprehensive digitized judgments and daily orders from 1966 onwards.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-HC-BOM",
+    "body_name": "High Court of Judicature at Bombay",
+    "tier": "high_court",
+    "jurisdiction_code": "IN-MH",
+    "official_domain": "bombayhighcourt.nic.in",
+    "search_portal_url": "https://bombayhighcourt.nic.in/judgment.php",
+    "available_record_types": [
+      "final_judgment",
+      "final_order",
+      "interim_order",
+      "daily_order",
+      "cause_list"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Jurisdiction over Maharashtra, Goa, and UT of Dadra and Nagar Haveli and Daman and Diu.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-HC-CAL",
+    "body_name": "High Court at Calcutta",
+    "tier": "high_court",
+    "jurisdiction_code": "IN-WB",
+    "official_domain": "calcuttahighcourt.gov.in",
+    "search_portal_url": "https://calcuttahighcourt.gov.in/Judgments-Orders",
+    "available_record_types": [
+      "final_judgment",
+      "final_order",
+      "interim_order",
+      "daily_order"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Jurisdiction over West Bengal and Andaman & Nicobar Islands. Oldest High Court in India (1862).",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-HC-MAD",
+    "body_name": "High Court of Judicature at Madras",
+    "tier": "high_court",
+    "jurisdiction_code": "IN-TN",
+    "official_domain": "hcmadras.tn.gov.in",
+    "search_portal_url": "https://hcmadras.tn.gov.in/judgments.php",
+    "available_record_types": [
+      "final_judgment",
+      "final_order",
+      "daily_order"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Jurisdiction over Tamil Nadu and UT of Puducherry.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-HC-ALL",
+    "body_name": "High Court of Judicature at Allahabad",
+    "tier": "high_court",
+    "jurisdiction_code": "IN-UP",
+    "official_domain": "allahabadhighcourt.in",
+    "search_portal_url": "http://www.allahabadhighcourt.in/judgments.html",
+    "available_record_types": [
+      "final_judgment",
+      "final_order",
+      "interim_order",
+      "daily_order"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Principal seat at Prayagraj (Allahabad) and bench at Lucknow.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-HC-KAR",
+    "body_name": "High Court of Karnataka",
+    "tier": "high_court",
+    "jurisdiction_code": "IN-KA",
+    "official_domain": "karnatakahiighcourt.kar.nic.in",
+    "search_portal_url": "https://karnatakahiighcourt.kar.nic.in/judgments.php",
+    "available_record_types": [
+      "final_judgment",
+      "final_order",
+      "interim_order"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Principal seat Bengaluru; circuit benches at Dharwad and Kalaburagi.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-HC-KER",
+    "body_name": "High Court of Kerala",
+    "tier": "high_court",
+    "jurisdiction_code": "IN-KL",
+    "official_domain": "hckerala.gov.in",
+    "search_portal_url": "https://hckerala.gov.in/judgments",
+    "available_record_types": [
+      "final_judgment",
+      "final_order",
+      "interim_order",
+      "daily_order"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Jurisdiction over Kerala and UT of Lakshadweep. Pioneer in paperless digital courts.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-HC-GUJ",
+    "body_name": "High Court of Gujarat",
+    "tier": "high_court",
+    "jurisdiction_code": "IN-GJ",
+    "official_domain": "gujarathighcourt.nic.in",
+    "search_portal_url": "https://gujarathighcourt.nic.in/orders",
+    "available_record_types": [
+      "final_judgment",
+      "final_order",
+      "interim_order"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Jurisdiction over State of Gujarat. Live streaming pioneer.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-HC-PUN",
+    "body_name": "High Court of Punjab and Haryana",
+    "tier": "high_court",
+    "jurisdiction_code": "IN-PB",
+    "official_domain": "highcourtchd.gov.in",
+    "search_portal_url": "https://highcourtchd.gov.in/judgments",
+    "available_record_types": [
+      "final_judgment",
+      "final_order",
+      "interim_order"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Common High Court for Punjab, Haryana, and UT of Chandigarh.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-HC-RAJ",
+    "body_name": "High Court of Rajasthan",
+    "tier": "high_court",
+    "jurisdiction_code": "IN-RJ",
+    "official_domain": "hcraj.nic.in",
+    "search_portal_url": "https://hcraj.nic.in/casedata/",
+    "available_record_types": [
+      "final_judgment",
+      "final_order",
+      "daily_order"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Principal seat Jodhpur; bench at Jaipur.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-HC-MP",
+    "body_name": "High Court of Madhya Pradesh",
+    "tier": "high_court",
+    "jurisdiction_code": "IN-MP",
+    "official_domain": "mphc.gov.in",
+    "search_portal_url": "https://mphc.gov.in/judgment",
+    "available_record_types": [
+      "final_judgment",
+      "final_order",
+      "interim_order"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Principal seat Jabalpur; benches at Gwalior and Indore.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-HC-PAT",
+    "body_name": "High Court of Judicature at Patna",
+    "tier": "high_court",
+    "jurisdiction_code": "IN-BR",
+    "official_domain": "patnahighcourt.gov.in",
+    "search_portal_url": "http://patnahighcourt.gov.in/judgments.aspx",
+    "available_record_types": [
+      "final_judgment",
+      "final_order",
+      "interim_order"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Jurisdiction over State of Bihar.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-HC-ORI",
+    "body_name": "High Court of Orissa",
+    "tier": "high_court",
+    "jurisdiction_code": "IN-OD",
+    "official_domain": "orissahighcourt.nic.in",
+    "search_portal_url": "https://orissahighcourt.nic.in/judgments",
+    "available_record_types": [
+      "final_judgment",
+      "final_order",
+      "interim_order"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Seat at Cuttack. Comprehensive archival digitization.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-HC-TEL",
+    "body_name": "High Court for the State of Telangana",
+    "tier": "high_court",
+    "jurisdiction_code": "IN-TS",
+    "official_domain": "tshc.gov.in",
+    "search_portal_url": "https://tshc.gov.in/judgments",
+    "available_record_types": [
+      "final_judgment",
+      "final_order",
+      "daily_order"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Seat at Hyderabad.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-HC-AP",
+    "body_name": "High Court of Andhra Pradesh",
+    "tier": "high_court",
+    "jurisdiction_code": "IN-AP",
+    "official_domain": "aphc.gov.in",
+    "search_portal_url": "https://aphc.gov.in/judgments",
+    "available_record_types": [
+      "final_judgment",
+      "final_order",
+      "interim_order"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Established 2019 at Amaravati.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-HC-GAU",
+    "body_name": "Gauhati High Court",
+    "tier": "high_court",
+    "jurisdiction_code": "IN-AS",
+    "official_domain": "ghconline.gov.in",
+    "search_portal_url": "https://ghconline.gov.in/Judgments.html",
+    "available_record_types": [
+      "final_judgment",
+      "final_order"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Jurisdiction over Assam, Nagaland, Mizoram, and Arunachal Pradesh.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-HC-JK",
+    "body_name": "High Court of Jammu & Kashmir and Ladakh",
+    "tier": "high_court",
+    "jurisdiction_code": "IN-JK",
+    "official_domain": "jkhighcourt.nic.in",
+    "search_portal_url": "https://jkhighcourt.nic.in/judgments",
+    "available_record_types": [
+      "final_judgment",
+      "final_order"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Common High Court for UT of J&K and UT of Ladakh.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-HC-JHR",
+    "body_name": "High Court of Jharkhand",
+    "tier": "high_court",
+    "jurisdiction_code": "IN-JH",
+    "official_domain": "jharkhandhighcourt.nic.in",
+    "search_portal_url": "https://jharkhandhighcourt.nic.in/judgments",
+    "available_record_types": [
+      "final_judgment",
+      "final_order"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Seat at Ranchi.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-HC-CHG",
+    "body_name": "High Court of Chhattisgarh",
+    "tier": "high_court",
+    "jurisdiction_code": "IN-CG",
+    "official_domain": "highcourt.cg.gov.in",
+    "search_portal_url": "https://highcourt.cg.gov.in/judgements.html",
+    "available_record_types": [
+      "final_judgment",
+      "final_order"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Seat at Bilaspur.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-HC-UTK",
+    "body_name": "High Court of Uttarakhand",
+    "tier": "high_court",
+    "jurisdiction_code": "IN-UK",
+    "official_domain": "highcourtofuttarakhand.gov.in",
+    "search_portal_url": "https://highcourtofuttarakhand.gov.in/judgements",
+    "available_record_types": [
+      "final_judgment",
+      "final_order"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Seat at Nainital.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-HC-HIM",
+    "body_name": "High Court of Himachal Pradesh",
+    "tier": "high_court",
+    "jurisdiction_code": "IN-HP",
+    "official_domain": "hphighcourt.nic.in",
+    "search_portal_url": "https://hphighcourt.nic.in/judgments",
+    "available_record_types": [
+      "final_judgment",
+      "final_order"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Seat at Shimla.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-HC-MAN",
+    "body_name": "High Court of Manipur",
+    "tier": "high_court",
+    "jurisdiction_code": "IN-MN",
+    "official_domain": "hcmimphal.nic.in",
+    "search_portal_url": "https://hcmimphal.nic.in/judgments",
+    "available_record_types": [
+      "final_judgment",
+      "final_order"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Established 2013 at Imphal.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-HC-MEG",
+    "body_name": "High Court of Meghalaya",
+    "tier": "high_court",
+    "jurisdiction_code": "IN-ML",
+    "official_domain": "meghalayahighcourt.nic.in",
+    "search_portal_url": "https://meghalayahighcourt.nic.in/judgments",
+    "available_record_types": [
+      "final_judgment",
+      "final_order"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Established 2013 at Shillong.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-HC-TRI",
+    "body_name": "High Court of Tripura",
+    "tier": "high_court",
+    "jurisdiction_code": "IN-TR",
+    "official_domain": "thc.nic.in",
+    "search_portal_url": "https://thc.nic.in/judgments",
+    "available_record_types": [
+      "final_judgment",
+      "final_order"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Established 2013 at Agartala.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-HC-SIK",
+    "body_name": "High Court of Sikkim",
+    "tier": "high_court",
+    "jurisdiction_code": "IN-SK",
+    "official_domain": "highcourtofsikkim.nic.in",
+    "search_portal_url": "https://highcourtofsikkim.nic.in/judgments",
+    "available_record_types": [
+      "final_judgment",
+      "final_order"
+    ],
+    "neutral_citation_system": true,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Seat at Gangtok.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-ECOURTS-SERVICES",
+    "body_name": "eCourts Services National Portal",
+    "tier": "district_subordinate_court",
+    "jurisdiction_code": "IN",
+    "official_domain": "services.ecourts.gov.in",
+    "search_portal_url": "https://services.ecourts.gov.in/ecourtindia_v6/",
+    "available_record_types": [
+      "case_status",
+      "daily_order",
+      "final_order",
+      "cause_list"
+    ],
+    "neutral_citation_system": false,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Unified national interface for over 3,000 district and subordinate court complexes in India.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-NJDG",
+    "body_name": "National Judicial Data Grid (NJDG)",
+    "tier": "district_subordinate_court",
+    "jurisdiction_code": "IN",
+    "official_domain": "njdg.ecourts.gov.in",
+    "search_portal_url": "https://njdg.ecourts.gov.in/njdgnew/",
+    "available_record_types": [
+      "case_status",
+      "final_judgment",
+      "daily_order"
+    ],
+    "neutral_citation_system": false,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "National judicial data repository providing case pendency and disposal analytics.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-TRIB-NCLAT",
+    "body_name": "National Company Law Appellate Tribunal (NCLAT)",
+    "tier": "appellate_tribunal",
+    "jurisdiction_code": "IN",
+    "official_domain": "nclat.nic.in",
+    "search_portal_url": "https://nclat.nic.in/orders",
+    "available_record_types": [
+      "final_judgment",
+      "final_order",
+      "daily_order"
+    ],
+    "neutral_citation_system": false,
+    "ecourts_integrated": false,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Appellate body for corporate insolvency (IBC 2016), company law, and competition appeals.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-TRIB-NCLT",
+    "body_name": "National Company Law Tribunal (NCLT)",
+    "tier": "tribunal",
+    "jurisdiction_code": "IN",
+    "official_domain": "nclt.gov.in",
+    "search_portal_url": "https://nclt.gov.in/order",
+    "available_record_types": [
+      "final_order",
+      "interim_order",
+      "daily_order",
+      "cause_list"
+    ],
+    "neutral_citation_system": false,
+    "ecourts_integrated": false,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Principal bench New Delhi and regional benches across India.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-TRIB-NGT",
+    "body_name": "National Green Tribunal (NGT)",
+    "tier": "tribunal",
+    "jurisdiction_code": "IN",
+    "official_domain": "greentribunal.gov.in",
+    "search_portal_url": "https://greentribunal.gov.in/judgments",
+    "available_record_types": [
+      "final_judgment",
+      "final_order",
+      "interim_order",
+      "daily_order"
+    ],
+    "neutral_citation_system": false,
+    "ecourts_integrated": false,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Principal bench New Delhi; zonal benches at Bhopal, Pune, Kolkata, and Chennai.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-TRIB-CAT",
+    "body_name": "Central Administrative Tribunal (CAT)",
+    "tier": "tribunal",
+    "jurisdiction_code": "IN",
+    "official_domain": "cgat.gov.in",
+    "search_portal_url": "https://cgat.gov.in/judgments",
+    "available_record_types": [
+      "final_order",
+      "interim_order",
+      "daily_order"
+    ],
+    "neutral_citation_system": false,
+    "ecourts_integrated": false,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Adjudicates service matters of public servants under Article 323A.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-TRIB-DRAT",
+    "body_name": "Debts Recovery Appellate Tribunal (DRAT)",
+    "tier": "appellate_tribunal",
+    "jurisdiction_code": "IN",
+    "official_domain": "drat.gov.in",
+    "search_portal_url": "https://drat.gov.in/",
+    "available_record_types": [
+      "final_order",
+      "interim_order"
+    ],
+    "neutral_citation_system": false,
+    "ecourts_integrated": false,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Appellate bodies at Delhi, Mumbai, Kolkata, Chennai, and Allahabad under SARFAESI & RDDBFI Acts.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-TRIB-ITAT",
+    "body_name": "Income Tax Appellate Tribunal (ITAT)",
+    "tier": "tribunal",
+    "jurisdiction_code": "IN",
+    "official_domain": "itat.gov.in",
+    "search_portal_url": "https://itat.gov.in/page/orders",
+    "available_record_types": [
+      "final_order"
+    ],
+    "neutral_citation_system": false,
+    "ecourts_integrated": false,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "Final fact-finding authority under the Income Tax Act, 1961.",
+    "is_active": true
+  },
+  {
+    "source_id": "IND-SRC-TRIB-NCDRC",
+    "body_name": "National Consumer Disputes Redressal Commission (NCDRC)",
+    "tier": "commission",
+    "jurisdiction_code": "IN",
+    "official_domain": "ncdrc.nic.in",
+    "search_portal_url": "http://cms.nic.in/ncdrc/judgment.html",
+    "available_record_types": [
+      "final_order",
+      "interim_order",
+      "daily_order"
+    ],
+    "neutral_citation_system": false,
+    "ecourts_integrated": true,
+    "public_access_policy": "public_verified",
+    "rate_limit_policy": "Standard 1 req/sec with backoff",
+    "historical_coverage_notes": "National consumer dispute adjudicatory body under Consumer Protection Act, 2019 / 1986.",
+    "is_active": true
+  }
+]

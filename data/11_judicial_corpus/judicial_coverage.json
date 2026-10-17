@@ -1,0 +1,435 @@
+{
+  "phase": 21,
+  "database_path": "data/legalmitra_kb.db",
+  "registered_judicial_repositories": 36,
+  "active_judgment_sources": 10,
+  "active_judgment_chunks": 51,
+  "total_unified_cases": 4,
+  "total_judicial_orders_and_docs": 3,
+  "total_hearing_events": 2,
+  "quarantined_synthetic_scaffolds": 6,
+  "ingested_judgments": [
+    {
+      "source_id": "IND-JUD-SC-2017-PUTTASWAMY",
+      "act_or_case_title": "Justice K.S. Puttaswamy (Retd.) v. Union of India (2017) 10 SCC 1",
+      "court": "Supreme Court of India",
+      "chunk_cnt": 7
+    },
+    {
+      "source_id": "IND-JUD-SC-2020-ARJUN-KHOTKAR",
+      "act_or_case_title": "Arjun Panditrao Khotkar v. Kailash Kushanrao Gorantyal and Others",
+      "court": "Supreme Court of India",
+      "chunk_cnt": 7
+    },
+    {
+      "source_id": "IND-JUD-SC-2010-RANGAPPA",
+      "act_or_case_title": "Rangappa v. Sri Mohan",
+      "court": "Supreme Court of India",
+      "chunk_cnt": 6
+    },
+    {
+      "source_id": "IND-JUD-SC-2023-ARBITRATION-STAMP",
+      "act_or_case_title": "In Re: Interplay Between Arbitration Agreements under the Arbitration and Conciliation Act, 1996 and the Indian Stamp Act, 1899",
+      "court": "Supreme Court of India",
+      "chunk_cnt": 6
+    },
+    {
+      "source_id": "IND-JUD-SC-2014-ANVAR-PV",
+      "act_or_case_title": "Anvar P.V. v. P.K. Basheer and Others",
+      "court": "Supreme Court of India",
+      "chunk_cnt": 5
+    },
+    {
+      "source_id": "IND-JUD-SC-2022-ANTIL",
+      "act_or_case_title": "Satender Kumar Antil v. Central Bureau of Investigation and Another",
+      "court": "Supreme Court of India",
+      "chunk_cnt": 5
+    },
+    {
+      "source_id": "IND-JUD-SC-1954-SATYABRATA",
+      "act_or_case_title": "Satyabrata Ghose v. Mugneeram Bangur & Co. and Another",
+      "court": "Supreme Court of India",
+      "chunk_cnt": 4
+    },
+    {
+      "source_id": "IND-JUD-SC-2008-SATYAWATI",
+      "act_or_case_title": "Satyawati Sharma (Dead) by LRs v. Union of India and Another",
+      "court": "Supreme Court of India",
+      "chunk_cnt": 4
+    },
+    {
+      "source_id": "IND-JUD-SC-2020-PERKINS-EASTMAN",
+      "act_or_case_title": "Perkins Eastman Architects DPC and Another v. HSCC (India) Ltd.",
+      "court": "Supreme Court of India",
+      "chunk_cnt": 4
+    },
+    {
+      "source_id": "IND-JUD-SC-2018-SHAFHI-MOHAMMAD",
+      "act_or_case_title": "Shafhi Mohammad v. State of Himachal Pradesh",
+      "court": "Supreme Court of India",
+      "chunk_cnt": 3
+    }
+  ],
+  "repositories": [
+    {
+      "source_id": "IND-SRC-COURT-SCI",
+      "body_name": "Supreme Court of India",
+      "tier": "supreme_court",
+      "jurisdiction_code": "IN",
+      "official_domain": "sci.gov.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-COURT-ESCR",
+      "body_name": "Electronic Supreme Court Reports (e-SCR)",
+      "tier": "supreme_court",
+      "jurisdiction_code": "IN",
+      "official_domain": "escr.sci.gov.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-HC-DEL",
+      "body_name": "High Court of Delhi",
+      "tier": "high_court",
+      "jurisdiction_code": "IN-DL",
+      "official_domain": "delhihighcourt.nic.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-HC-BOM",
+      "body_name": "High Court of Judicature at Bombay",
+      "tier": "high_court",
+      "jurisdiction_code": "IN-MH",
+      "official_domain": "bombayhighcourt.nic.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-HC-CAL",
+      "body_name": "High Court at Calcutta",
+      "tier": "high_court",
+      "jurisdiction_code": "IN-WB",
+      "official_domain": "calcuttahighcourt.gov.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-HC-MAD",
+      "body_name": "High Court of Judicature at Madras",
+      "tier": "high_court",
+      "jurisdiction_code": "IN-TN",
+      "official_domain": "hcmadras.tn.gov.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-HC-ALL",
+      "body_name": "High Court of Judicature at Allahabad",
+      "tier": "high_court",
+      "jurisdiction_code": "IN-UP",
+      "official_domain": "allahabadhighcourt.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-HC-KAR",
+      "body_name": "High Court of Karnataka",
+      "tier": "high_court",
+      "jurisdiction_code": "IN-KA",
+      "official_domain": "karnatakahiighcourt.kar.nic.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-HC-KER",
+      "body_name": "High Court of Kerala",
+      "tier": "high_court",
+      "jurisdiction_code": "IN-KL",
+      "official_domain": "hckerala.gov.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-HC-GUJ",
+      "body_name": "High Court of Gujarat",
+      "tier": "high_court",
+      "jurisdiction_code": "IN-GJ",
+      "official_domain": "gujarathighcourt.nic.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-HC-PUN",
+      "body_name": "High Court of Punjab and Haryana",
+      "tier": "high_court",
+      "jurisdiction_code": "IN-PB",
+      "official_domain": "highcourtchd.gov.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-HC-RAJ",
+      "body_name": "High Court of Rajasthan",
+      "tier": "high_court",
+      "jurisdiction_code": "IN-RJ",
+      "official_domain": "hcraj.nic.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-HC-MP",
+      "body_name": "High Court of Madhya Pradesh",
+      "tier": "high_court",
+      "jurisdiction_code": "IN-MP",
+      "official_domain": "mphc.gov.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-HC-PAT",
+      "body_name": "High Court of Judicature at Patna",
+      "tier": "high_court",
+      "jurisdiction_code": "IN-BR",
+      "official_domain": "patnahighcourt.gov.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-HC-ORI",
+      "body_name": "High Court of Orissa",
+      "tier": "high_court",
+      "jurisdiction_code": "IN-OD",
+      "official_domain": "orissahighcourt.nic.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-HC-TEL",
+      "body_name": "High Court for the State of Telangana",
+      "tier": "high_court",
+      "jurisdiction_code": "IN-TS",
+      "official_domain": "tshc.gov.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-HC-AP",
+      "body_name": "High Court of Andhra Pradesh",
+      "tier": "high_court",
+      "jurisdiction_code": "IN-AP",
+      "official_domain": "aphc.gov.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-HC-GAU",
+      "body_name": "Gauhati High Court",
+      "tier": "high_court",
+      "jurisdiction_code": "IN-AS",
+      "official_domain": "ghconline.gov.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-HC-JK",
+      "body_name": "High Court of Jammu & Kashmir and Ladakh",
+      "tier": "high_court",
+      "jurisdiction_code": "IN-JK",
+      "official_domain": "jkhighcourt.nic.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-HC-JHR",
+      "body_name": "High Court of Jharkhand",
+      "tier": "high_court",
+      "jurisdiction_code": "IN-JH",
+      "official_domain": "jharkhandhighcourt.nic.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-HC-CHG",
+      "body_name": "High Court of Chhattisgarh",
+      "tier": "high_court",
+      "jurisdiction_code": "IN-CG",
+      "official_domain": "highcourt.cg.gov.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-HC-UTK",
+      "body_name": "High Court of Uttarakhand",
+      "tier": "high_court",
+      "jurisdiction_code": "IN-UK",
+      "official_domain": "highcourtofuttarakhand.gov.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-HC-HIM",
+      "body_name": "High Court of Himachal Pradesh",
+      "tier": "high_court",
+      "jurisdiction_code": "IN-HP",
+      "official_domain": "hphighcourt.nic.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-HC-MAN",
+      "body_name": "High Court of Manipur",
+      "tier": "high_court",
+      "jurisdiction_code": "IN-MN",
+      "official_domain": "hcmimphal.nic.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-HC-MEG",
+      "body_name": "High Court of Meghalaya",
+      "tier": "high_court",
+      "jurisdiction_code": "IN-ML",
+      "official_domain": "meghalayahighcourt.nic.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-HC-TRI",
+      "body_name": "High Court of Tripura",
+      "tier": "high_court",
+      "jurisdiction_code": "IN-TR",
+      "official_domain": "thc.nic.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-HC-SIK",
+      "body_name": "High Court of Sikkim",
+      "tier": "high_court",
+      "jurisdiction_code": "IN-SK",
+      "official_domain": "highcourtofsikkim.nic.in",
+      "has_neutral_citation": true,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-ECOURTS-SERVICES",
+      "body_name": "eCourts Services National Portal",
+      "tier": "district_subordinate_court",
+      "jurisdiction_code": "IN",
+      "official_domain": "services.ecourts.gov.in",
+      "has_neutral_citation": false,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-NJDG",
+      "body_name": "National Judicial Data Grid (NJDG)",
+      "tier": "district_subordinate_court",
+      "jurisdiction_code": "IN",
+      "official_domain": "njdg.ecourts.gov.in",
+      "has_neutral_citation": false,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-TRIB-NCLAT",
+      "body_name": "National Company Law Appellate Tribunal (NCLAT)",
+      "tier": "appellate_tribunal",
+      "jurisdiction_code": "IN",
+      "official_domain": "nclat.nic.in",
+      "has_neutral_citation": false,
+      "ecourts_integrated": false,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-TRIB-NCLT",
+      "body_name": "National Company Law Tribunal (NCLT)",
+      "tier": "tribunal",
+      "jurisdiction_code": "IN",
+      "official_domain": "nclt.gov.in",
+      "has_neutral_citation": false,
+      "ecourts_integrated": false,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-TRIB-NGT",
+      "body_name": "National Green Tribunal (NGT)",
+      "tier": "tribunal",
+      "jurisdiction_code": "IN",
+      "official_domain": "greentribunal.gov.in",
+      "has_neutral_citation": false,
+      "ecourts_integrated": false,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-TRIB-CAT",
+      "body_name": "Central Administrative Tribunal (CAT)",
+      "tier": "tribunal",
+      "jurisdiction_code": "IN",
+      "official_domain": "cgat.gov.in",
+      "has_neutral_citation": false,
+      "ecourts_integrated": false,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-TRIB-DRAT",
+      "body_name": "Debts Recovery Appellate Tribunal (DRAT)",
+      "tier": "appellate_tribunal",
+      "jurisdiction_code": "IN",
+      "official_domain": "drat.gov.in",
+      "has_neutral_citation": false,
+      "ecourts_integrated": false,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-TRIB-ITAT",
+      "body_name": "Income Tax Appellate Tribunal (ITAT)",
+      "tier": "tribunal",
+      "jurisdiction_code": "IN",
+      "official_domain": "itat.gov.in",
+      "has_neutral_citation": false,
+      "ecourts_integrated": false,
+      "public_access_policy": "public_verified"
+    },
+    {
+      "source_id": "IND-SRC-TRIB-NCDRC",
+      "body_name": "National Consumer Disputes Redressal Commission (NCDRC)",
+      "tier": "commission",
+      "jurisdiction_code": "IN",
+      "official_domain": "ncdrc.nic.in",
+      "has_neutral_citation": false,
+      "ecourts_integrated": true,
+      "public_access_policy": "public_verified"
+    }
+  ]
+}

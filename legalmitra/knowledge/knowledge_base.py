@@ -99,6 +99,60 @@ class LegalKnowledgeBase:
         cursor.execute("CREATE INDEX IF NOT EXISTS idx_chunks_scaffold ON legal_chunks(is_synthetic_scaffold);")
 
         cursor.execute("""
+            CREATE TABLE IF NOT EXISTS cases (
+                case_id TEXT PRIMARY KEY,
+                court_code TEXT NOT NULL,
+                case_type TEXT NOT NULL,
+                case_number TEXT NOT NULL,
+                filing_year INTEGER NOT NULL,
+                petitioner_or_appellant TEXT NOT NULL,
+                respondent TEXT NOT NULL,
+                neutral_citation TEXT,
+                institution_date TEXT,
+                disposal_date TEXT,
+                status TEXT NOT NULL,
+                metadata_json TEXT NOT NULL
+            );
+        """)
+
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS judicial_documents (
+                document_id TEXT PRIMARY KEY,
+                case_id TEXT NOT NULL REFERENCES cases(case_id),
+                classification TEXT NOT NULL,
+                procedural_effect TEXT NOT NULL,
+                order_or_judgment_date TEXT NOT NULL,
+                bench_coram_json TEXT NOT NULL,
+                verbatim_text TEXT NOT NULL,
+                source_url TEXT NOT NULL,
+                sha256_hash TEXT NOT NULL,
+                is_synthetic_scaffold INTEGER NOT NULL DEFAULT 0,
+                verification_status TEXT NOT NULL DEFAULT 'verified_authoritative',
+                metadata_json TEXT NOT NULL
+            );
+        """)
+
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS hearing_events (
+                event_id TEXT PRIMARY KEY,
+                case_id TEXT NOT NULL REFERENCES cases(case_id),
+                listing_date TEXT NOT NULL,
+                hearing_type TEXT NOT NULL,
+                presiding_bench TEXT NOT NULL,
+                procedural_outcome TEXT NOT NULL,
+                daily_order_id TEXT,
+                next_listing_date TEXT,
+                is_cause_list_verified INTEGER NOT NULL DEFAULT 1,
+                metadata_json TEXT NOT NULL
+            );
+        """)
+
+        cursor.execute("CREATE INDEX IF NOT EXISTS idx_cases_court ON cases(court_code);")
+        cursor.execute("CREATE INDEX IF NOT EXISTS idx_cases_year ON cases(filing_year);")
+        cursor.execute("CREATE INDEX IF NOT EXISTS idx_jud_docs_case ON judicial_documents(case_id);")
+        cursor.execute("CREATE INDEX IF NOT EXISTS idx_hearing_events_case ON hearing_events(case_id);")
+
+        cursor.execute("""
             CREATE VIRTUAL TABLE IF NOT EXISTS legal_chunks_fts USING fts5(
                 chunk_id UNINDEXED,
                 content,
@@ -513,6 +567,125 @@ class LegalKnowledgeBase:
         cursor = self.conn.cursor()
         res = cursor.execute("SELECT 1 FROM sources WHERE document_id = ?", (document_id,)).fetchone()
         return res is not None
+
+    def index_case(self, case_id: str, court_code: str, case_type: str, case_number: str,
+                   filing_year: int, petitioner: str, respondent: str,
+                   neutral_citation: Optional[str] = None, institution_date: Optional[str] = None,
+                   disposal_date: Optional[str] = None, status: str = "status_unknown",
+                   metadata: Optional[Dict[str, Any]] = None) -> None:
+        """Store or update unified case identity."""
+        cursor = self.conn.cursor()
+        cursor.execute("""
+            INSERT OR REPLACE INTO cases (
+                case_id, court_code, case_type, case_number, filing_year,
+                petitioner_or_appellant, respondent, neutral_citation,
+                institution_date, disposal_date, status, metadata_json
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """, (
+            case_id, court_code, case_type, case_number, filing_year,
+            petitioner, respondent, neutral_citation, institution_date,
+            disposal_date, status, json.dumps(metadata or {})
+        ))
+        self.conn.commit()
+
+    def index_judicial_document_record(self, document_id: str, case_id: str, classification: str,
+                                       procedural_effect: str, order_date: str, bench_coram: List[str],
+                                       verbatim_text: str, source_url: str, sha256_hash: str,
+                                       is_synthetic: int = 0, verification_status: str = "verified_authoritative",
+                                       metadata: Optional[Dict[str, Any]] = None) -> None:
+        """Store or update a specific order/judgment document under a case."""
+        cursor = self.conn.cursor()
+        cursor.execute("""
+            INSERT OR REPLACE INTO judicial_documents (
+                document_id, case_id, classification, procedural_effect,
+                order_or_judgment_date, bench_coram_json, verbatim_text,
+                source_url, sha256_hash, is_synthetic_scaffold,
+                verification_status, metadata_json
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """, (
+            document_id, case_id, classification, procedural_effect,
+            order_date, json.dumps(bench_coram), verbatim_text,
+            source_url, sha256_hash, is_synthetic, verification_status,
+            json.dumps(metadata or {})
+        ))
+        self.conn.commit()
+
+    def index_hearing_event_record(self, event_id: str, case_id: str, listing_date: str,
+                                  hearing_type: str, presiding_bench: str, procedural_outcome: str,
+                                  daily_order_id: Optional[str] = None, next_listing_date: Optional[str] = None,
+                                  is_cause_list_verified: int = 1, metadata: Optional[Dict[str, Any]] = None) -> None:
+        """Store or update a verified hearing or cause-list event."""
+        cursor = self.conn.cursor()
+        cursor.execute("""
+            INSERT OR REPLACE INTO hearing_events (
+                event_id, case_id, listing_date, hearing_type, presiding_bench,
+                procedural_outcome, daily_order_id, next_listing_date,
+                is_cause_list_verified, metadata_json
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        """, (
+            event_id, case_id, listing_date, hearing_type, presiding_bench,
+            procedural_outcome, daily_order_id, next_listing_date,
+            is_cause_list_verified, json.dumps(metadata or {})
+        ))
+        self.conn.commit()
+
+    def get_case_procedural_timeline(self, case_id: str) -> Dict[str, Any]:
+        """Reconstruct the dated procedural timeline and order history of a case."""
+        cursor = self.conn.cursor()
+        case_row = cursor.execute("SELECT * FROM cases WHERE case_id = ?", (case_id,)).fetchone()
+        if not case_row:
+            return {"found": False, "case_id": case_id, "timeline": []}
+
+        docs = cursor.execute("""
+            SELECT document_id, classification, procedural_effect, order_or_judgment_date,
+                   bench_coram_json, verbatim_text, source_url
+            FROM judicial_documents
+            WHERE case_id = ? AND is_synthetic_scaffold = 0
+            ORDER BY order_or_judgment_date ASC
+        """, (case_id,)).fetchall()
+
+        events = cursor.execute("""
+            SELECT event_id, listing_date, hearing_type, presiding_bench,
+                   procedural_outcome, daily_order_id, next_listing_date
+            FROM hearing_events
+            WHERE case_id = ?
+            ORDER BY listing_date ASC
+        """, (case_id,)).fetchall()
+
+        timeline = []
+        for d in docs:
+            timeline.append({
+                "type": "document_order",
+                "date": d["order_or_judgment_date"],
+                "id": d["document_id"],
+                "classification": d["classification"],
+                "procedural_effect": d["procedural_effect"],
+                "bench": json.loads(d["bench_coram_json"]),
+                "summary": d["verbatim_text"][:200]
+            })
+        for e in events:
+            timeline.append({
+                "type": "hearing_event",
+                "date": e["listing_date"],
+                "id": e["event_id"],
+                "hearing_type": e["hearing_type"],
+                "bench": e["presiding_bench"],
+                "outcome": e["procedural_outcome"],
+                "next_date": e["next_listing_date"]
+            })
+
+        timeline.sort(key=lambda x: x["date"])
+
+        return {
+            "found": True,
+            "case_id": case_id,
+            "case_type": case_row["case_type"],
+            "case_number": case_row["case_number"],
+            "parties": f"{case_row['petitioner_or_appellant']} v. {case_row['respondent']}",
+            "status": case_row["status"],
+            "timeline": timeline
+        }
+
 
     def search(
         self,

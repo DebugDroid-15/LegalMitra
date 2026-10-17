@@ -38,10 +38,24 @@ class RelationType(str, Enum):
     INTERPRETS = "interprets"                    # Case -> Section / Article
     FOLLOWS = "follows"                          # Case -> Case
     APPLIES = "applies"                          # Case -> Case
+    APPROVES = "approves"                        # Case -> Case
+    AFFIRMS = "affirms"                          # Case -> Case
     DISTINGUISHES = "distinguishes"              # Case -> Case
+    DOUBTS = "doubts"                            # Case -> Case
+    REFERS_TO_LARGER_BENCH = "refers_to_larger_bench"  # Case -> Case
     OVERRULES = "overrules"                      # Case -> Case
+    PARTIALLY_OVERRULES = "partially_overrules"  # Case -> Case
+    REVERSES = "reverses"                        # Case -> Case
+    SETS_ASIDE = "sets_aside"                    # Case -> Case
+    MODIFIES = "modifies"                        # Case -> Case
+    REMANDS = "remands"                          # Case -> Case
+    RECONSIDERS = "reconsiders"                  # Case -> Case
+    DECLINES_TO_FOLLOW = "declines_to_follow"    # Case -> Case
+    RELIES_ON = "relies_on"                      # Case -> Case
+    CONSIDERS_CONSTITUTIONALITY = "considers_constitutionality"  # Case -> Section
     DECIDED_BY = "decided_by"                    # Case -> Court
     HEARD_BY = "heard_by"                        # Case -> Judge
+
     
     # Procedural & Practice Relations
     GOVERNS_STAGE = "governs_stage"              # Section -> Procedural Stage
@@ -147,6 +161,7 @@ class LegalKnowledgeGraph:
         Returns: (is_overruled, reason_str)
         """
         incoming = self.get_incoming_edges(case_node_id, RelationType.OVERRULES)
+        incoming.extend(self.get_incoming_edges(case_node_id, RelationType.PARTIALLY_OVERRULES))
         if not incoming:
             return False, None
 
@@ -178,6 +193,7 @@ class LegalKnowledgeGraph:
         Includes scope, partial overruling, and affected propositions.
         """
         incoming = self.get_incoming_edges(case_node_id, RelationType.OVERRULES)
+        incoming.extend(self.get_incoming_edges(case_node_id, RelationType.PARTIALLY_OVERRULES))
         if not incoming:
             return {"is_overruled": False, "status": "active_precedent", "overruling_cases": []}
 
@@ -186,13 +202,15 @@ class LegalKnowledgeGraph:
             props = edge.properties or {}
             overruling_case = self.get_node(edge.source_id)
             name = overruling_case.name if overruling_case else edge.source_id
+            is_partial = props.get("is_partial", edge.relation == RelationType.PARTIALLY_OVERRULES)
             overruling_details.append({
                 "overruling_case_id": edge.source_id,
                 "overruling_case_name": name,
-                "is_partial": props.get("is_partial", False),
-                "scope": props.get("scope", "Entire judgment"),
+                "is_partial": is_partial,
+                "scope": props.get("scope", "Entire judgment" if not is_partial else "Specific proposition"),
                 "affected_proposition": props.get("affected_proposition")
             })
+
 
         return {
             "is_overruled": True,
@@ -230,4 +248,56 @@ class LegalKnowledgeGraph:
         nodes_data = [self._nodes[nid].to_dict() for nid in visited_nodes if nid in self._nodes]
         edges_data = [e.to_dict() for e in collected_edges]
         return {"nodes": nodes_data, "edges": edges_data}
+
+
+def build_national_judicial_knowledge_graph() -> LegalKnowledgeGraph:
+    """Builds and returns the connected national litigation and statutory knowledge graph."""
+    graph = LegalKnowledgeGraph()
+
+    # 1. Statutory Provisions
+    graph.add_node(GraphNode("SEC-BSA-63", EntityType.SECTION, "Section 63 BSA 2023", "BSA s.63"))
+    graph.add_node(GraphNode("SEC-IEA-65B", EntityType.SECTION, "Section 65B IEA 1872", "IEA s.65B"))
+    graph.add_node(GraphNode("SEC-NI-138", EntityType.SECTION, "Section 138 NI Act 1881", "NI Act s.138"))
+    graph.add_node(GraphNode("SEC-NI-139", EntityType.SECTION, "Section 139 NI Act 1881", "NI Act s.139"))
+    graph.add_node(GraphNode("SEC-ARB-11", EntityType.SECTION, "Section 11 Arb Act 1996", "Arbitration Act s.11"))
+    graph.add_node(GraphNode("SEC-ARB-16", EntityType.SECTION, "Section 16 Arb Act 1996", "Arbitration Act s.16"))
+    graph.add_node(GraphNode("ART-CONST-21", EntityType.ARTICLE, "Article 21 Constitution of India", "Art. 21"))
+
+    # 2. Case Nodes
+    graph.add_node(GraphNode("CASE-ARJUN-KHOTKAR", EntityType.CASE, "Arjun Khotkar v. Kailash Gorantyal", "(2020) 7 SCC 1"))
+    graph.add_node(GraphNode("CASE-ANVAR-PV", EntityType.CASE, "Anvar P.V. v. P.K. Basheer", "(2014) 10 SCC 473"))
+    graph.add_node(GraphNode("CASE-SHAFHI-MOHD", EntityType.CASE, "Shafhi Mohammad v. State of H.P.", "(2018) 2 SCC 801"))
+    graph.add_node(GraphNode("CASE-RANGAPPA", EntityType.CASE, "Rangappa v. Sri Mohan", "(2010) 11 SCC 441"))
+    graph.add_node(GraphNode("CASE-KRISHNA-BHAT", EntityType.CASE, "Krishna Janardhan Bhat", "(2008) 4 SCC 54"))
+    graph.add_node(GraphNode("CASE-STAMP-ARBITRATION", EntityType.CASE, "In Re: Arbitration Agreements & Stamp Act", "(2024) 6 SCC 1"))
+    graph.add_node(GraphNode("CASE-NN-GLOBAL", EntityType.CASE, "NN Global Mercantile v. Indo Unique Flame", "(2023) 7 SCC 1"))
+    graph.add_node(GraphNode("CASE-PUTTASWAMY", EntityType.CASE, "Justice K.S. Puttaswamy v. UOI", "(2017) 10 SCC 1"))
+
+    # 3. Successor / Statutory Edges
+    graph.add_edge(GraphEdge("E-SUCC-BSA63", "SEC-BSA-63", "SEC-IEA-65B", RelationType.SUCCESSOR_TO))
+
+    # 4. Judicial Interpretation Edges
+    graph.add_edge(GraphEdge("E-INT-ARJUN-65B", "CASE-ARJUN-KHOTKAR", "SEC-IEA-65B", RelationType.INTERPRETS))
+    graph.add_edge(GraphEdge("E-INT-ARJUN-BSA63", "CASE-ARJUN-KHOTKAR", "SEC-BSA-63", RelationType.INTERPRETS))
+    graph.add_edge(GraphEdge("E-INT-RANGAPPA-139", "CASE-RANGAPPA", "SEC-NI-139", RelationType.INTERPRETS))
+    graph.add_edge(GraphEdge("E-INT-STAMP-11", "CASE-STAMP-ARBITRATION", "SEC-ARB-11", RelationType.INTERPRETS))
+    graph.add_edge(GraphEdge("E-INT-PUTTA-21", "CASE-PUTTASWAMY", "ART-CONST-21", RelationType.INTERPRETS))
+
+    # 5. Precedent & Overruling Edges
+    graph.add_edge(GraphEdge("E-FOLLOW-ARJUN-ANVAR", "CASE-ARJUN-KHOTKAR", "CASE-ANVAR-PV", RelationType.FOLLOWS))
+    graph.add_edge(GraphEdge(
+        "E-OVERRULE-ARJUN-SHAFHI", "CASE-ARJUN-KHOTKAR", "CASE-SHAFHI-MOHD", RelationType.PARTIALLY_OVERRULES,
+        properties={"is_partial": True, "scope": "Electronic evidence certificate waiver", "affected_proposition": "Certificate waiver"}
+    ))
+    graph.add_edge(GraphEdge(
+        "E-OVERRULE-RANGAPPA-BHAT", "CASE-RANGAPPA", "CASE-KRISHNA-BHAT", RelationType.OVERRULES,
+        properties={"is_partial": False, "scope": "Entire dictum on Section 139 presumption not extending to debt"}
+    ))
+    graph.add_edge(GraphEdge(
+        "E-OVERRULE-STAMP-NNGLOBAL", "CASE-STAMP-ARBITRATION", "CASE-NN-GLOBAL", RelationType.OVERRULES,
+        properties={"is_partial": False, "scope": "Unstamped arbitration clause voidness at referral stage"}
+    ))
+
+    return graph
+
 

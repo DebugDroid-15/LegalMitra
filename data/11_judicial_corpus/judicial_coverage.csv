@@ -1,0 +1,47 @@
+Source ID,Case / Body Name,Court / Tier,Jurisdiction,Total Chunks / Status
+IND-JUD-SC-2017-PUTTASWAMY,Justice K.S. Puttaswamy (Retd.) v. Union of India (2017) 10 SCC 1,Supreme Court of India,IN,7
+IND-JUD-SC-2020-ARJUN-KHOTKAR,Arjun Panditrao Khotkar v. Kailash Kushanrao Gorantyal and Others,Supreme Court of India,IN,7
+IND-JUD-SC-2010-RANGAPPA,Rangappa v. Sri Mohan,Supreme Court of India,IN,6
+IND-JUD-SC-2023-ARBITRATION-STAMP,"In Re: Interplay Between Arbitration Agreements under the Arbitration and Conciliation Act, 1996 and the Indian Stamp Act, 1899",Supreme Court of India,IN,6
+IND-JUD-SC-2014-ANVAR-PV,Anvar P.V. v. P.K. Basheer and Others,Supreme Court of India,IN,5
+IND-JUD-SC-2022-ANTIL,Satender Kumar Antil v. Central Bureau of Investigation and Another,Supreme Court of India,IN,5
+IND-JUD-SC-1954-SATYABRATA,Satyabrata Ghose v. Mugneeram Bangur & Co. and Another,Supreme Court of India,IN,4
+IND-JUD-SC-2008-SATYAWATI,Satyawati Sharma (Dead) by LRs v. Union of India and Another,Supreme Court of India,IN,4
+IND-JUD-SC-2020-PERKINS-EASTMAN,Perkins Eastman Architects DPC and Another v. HSCC (India) Ltd.,Supreme Court of India,IN,4
+IND-JUD-SC-2018-SHAFHI-MOHAMMAD,Shafhi Mohammad v. State of Himachal Pradesh,Supreme Court of India,IN,3
+IND-SRC-COURT-SCI,Supreme Court of India,supreme_court,IN,Catalogued Repository
+IND-SRC-COURT-ESCR,Electronic Supreme Court Reports (e-SCR),supreme_court,IN,Catalogued Repository
+IND-SRC-HC-DEL,High Court of Delhi,high_court,IN-DL,Catalogued Repository
+IND-SRC-HC-BOM,High Court of Judicature at Bombay,high_court,IN-MH,Catalogued Repository
+IND-SRC-HC-CAL,High Court at Calcutta,high_court,IN-WB,Catalogued Repository
+IND-SRC-HC-MAD,High Court of Judicature at Madras,high_court,IN-TN,Catalogued Repository
+IND-SRC-HC-ALL,High Court of Judicature at Allahabad,high_court,IN-UP,Catalogued Repository
+IND-SRC-HC-KAR,High Court of Karnataka,high_court,IN-KA,Catalogued Repository
+IND-SRC-HC-KER,High Court of Kerala,high_court,IN-KL,Catalogued Repository
+IND-SRC-HC-GUJ,High Court of Gujarat,high_court,IN-GJ,Catalogued Repository
+IND-SRC-HC-PUN,High Court of Punjab and Haryana,high_court,IN-PB,Catalogued Repository
+IND-SRC-HC-RAJ,High Court of Rajasthan,high_court,IN-RJ,Catalogued Repository
+IND-SRC-HC-MP,High Court of Madhya Pradesh,high_court,IN-MP,Catalogued Repository
+IND-SRC-HC-PAT,High Court of Judicature at Patna,high_court,IN-BR,Catalogued Repository
+IND-SRC-HC-ORI,High Court of Orissa,high_court,IN-OD,Catalogued Repository
+IND-SRC-HC-TEL,High Court for the State of Telangana,high_court,IN-TS,Catalogued Repository
+IND-SRC-HC-AP,High Court of Andhra Pradesh,high_court,IN-AP,Catalogued Repository
+IND-SRC-HC-GAU,Gauhati High Court,high_court,IN-AS,Catalogued Repository
+IND-SRC-HC-JK,High Court of Jammu & Kashmir and Ladakh,high_court,IN-JK,Catalogued Repository
+IND-SRC-HC-JHR,High Court of Jharkhand,high_court,IN-JH,Catalogued Repository
+IND-SRC-HC-CHG,High Court of Chhattisgarh,high_court,IN-CG,Catalogued Repository
+IND-SRC-HC-UTK,High Court of Uttarakhand,high_court,IN-UK,Catalogued Repository
+IND-SRC-HC-HIM,High Court of Himachal Pradesh,high_court,IN-HP,Catalogued Repository
+IND-SRC-HC-MAN,High Court of Manipur,high_court,IN-MN,Catalogued Repository
+IND-SRC-HC-MEG,High Court of Meghalaya,high_court,IN-ML,Catalogued Repository
+IND-SRC-HC-TRI,High Court of Tripura,high_court,IN-TR,Catalogued Repository
+IND-SRC-HC-SIK,High Court of Sikkim,high_court,IN-SK,Catalogued Repository
+IND-SRC-ECOURTS-SERVICES,eCourts Services National Portal,district_subordinate_court,IN,Catalogued Repository
+IND-SRC-NJDG,National Judicial Data Grid (NJDG),district_subordinate_court,IN,Catalogued Repository
+IND-SRC-TRIB-NCLAT,National Company Law Appellate Tribunal (NCLAT),appellate_tribunal,IN,Catalogued Repository
+IND-SRC-TRIB-NCLT,National Company Law Tribunal (NCLT),tribunal,IN,Catalogued Repository
+IND-SRC-TRIB-NGT,National Green Tribunal (NGT),tribunal,IN,Catalogued Repository
+IND-SRC-TRIB-CAT,Central Administrative Tribunal (CAT),tribunal,IN,Catalogued Repository
+IND-SRC-TRIB-DRAT,Debts Recovery Appellate Tribunal (DRAT),appellate_tribunal,IN,Catalogued Repository
+IND-SRC-TRIB-ITAT,Income Tax Appellate Tribunal (ITAT),tribunal,IN,Catalogued Repository
+IND-SRC-TRIB-NCDRC,National Consumer Disputes Redressal Commission (NCDRC),commission,IN,Catalogued Repository

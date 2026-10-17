@@ -460,6 +460,18 @@ def get_landmark_judgment_documents() -> List[JudgmentDocument]:
         ]
     )
     judgments.append(satyawati_doc)
-
     return judgments
+
+
+def get_all_landmark_judgment_documents() -> List[JudgmentDocument]:
+    """Returns all landmark judgment documents including Phase 21 expansion."""
+    docs = get_landmark_judgment_documents()
+    try:
+        from legalmitra.ingestion.landmark_judgments_phase21 import get_phase21_judgment_documents
+        docs.extend(get_phase21_judgment_documents())
+    except ImportError:
+        pass
+    return docs
+
+
 

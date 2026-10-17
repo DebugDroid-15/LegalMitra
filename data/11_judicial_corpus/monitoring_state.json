@@ -1,0 +1,33 @@
+{
+  "last_monitored_timestamp": "2026-10-17T22:10:00Z",
+  "monitored_sources_count": 36,
+  "monitored_repositories": {
+    "IND-SRC-COURT-SCI": {
+      "status": "UP_TO_DATE",
+      "last_checked": "2026-10-17T22:10:00Z",
+      "latest_discovered_case": "2024 INSC 812",
+      "change_type": "NO_CHANGE"
+    },
+    "IND-SRC-COURT-ESCR": {
+      "status": "UP_TO_DATE",
+      "last_checked": "2026-10-17T22:10:00Z",
+      "latest_discovered_case": "2024 e-SCR Vol 8",
+      "change_type": "NO_CHANGE"
+    },
+    "IND-SRC-HC-DEL": {
+      "status": "UP_TO_DATE",
+      "last_checked": "2026-10-17T22:10:00Z",
+      "latest_discovered_case": "2024:DHC:5910",
+      "change_type": "NO_CHANGE"
+    },
+    "IND-SRC-HC-BOM": {
+      "status": "UP_TO_DATE",
+      "last_checked": "2026-10-17T22:10:00Z",
+      "latest_discovered_case": "2024:BHC-OS:11204",
+      "change_type": "NO_CHANGE"
+    }
+  },
+  "privacy_redaction_enforced": true,
+  "quarantine_verified": true
+}
+
