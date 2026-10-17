@@ -1,0 +1,157 @@
+{
+  "report_name": "LegalMitra National Corpus Coverage Matrix",
+  "generated_at_utc": "2026-10-17T23:55:00Z",
+  "author": "Team Shatrujeet (Amar Khera, Ananya Rout, Lucky Kumar, Omm Prakash Sahoo)",
+  "summary": {
+    "registered_universe_entities": 101,
+    "registered_db_sources": 42,
+    "active_indexed_sources": 39,
+    "total_indexed_chunks": 1405,
+    "retrievable_active_chunks": 1399,
+    "quarantined_scaffold_chunks": 6,
+    "retrievability_ratio": 0.9957
+  },
+  "four_tier_readiness": {
+    "tier_1_registered": {
+      "total_entities": 101,
+      "description": "Catalogued in national legal universe inventory and source registry",
+      "breakdown_by_family": {
+        "constitution": 1,
+        "constitutional_amendment": 6,
+        "central_act": 30,
+        "state_act": 38,
+        "subordinate_rule": 3,
+        "court_rule": 2,
+        "commencement_order": 5,
+        "judgment_supreme_court": 15,
+        "judgment_high_court": 1
+      }
+    },
+    "tier_2_acquired": {
+      "total_sources": 42,
+      "description": "Statutory gazettes, court judgments, and delegated instruments downloaded/ingested"
+    },
+    "tier_3_indexed": {
+      "total_chunks": 1405,
+      "description": "Segmented into provision-level chunks and stored in legal_chunks",
+      "chunks_by_type": {
+        "judgment": 51,
+        "notification": 5,
+        "rules_regulation": 8,
+        "statute": 1335
+      }
+    },
+    "tier_4_retrievable": {
+      "total_chunks": 1399,
+      "active_sources": 39,
+      "description": "Indexed chunks with is_synthetic_scaffold=0 available for RAG search",
+      "jurisdiction_breakdown": {
+        "IN": 1380,
+        "IN-DL": 11,
+        "IN-MH": 8
+      }
+    }
+  },
+  "litigation_graph_census": {
+    "cases": 4,
+    "judicial_documents": 3,
+    "hearing_events": 2
+  },
+  "advocate_review_queue": {
+    "tracked_candidates": 40,
+    "status": "pending_legal_review",
+    "human_approval_rate": "0.0% (strictly zero synthetic approvals)"
+  },
+  "registered_sources_sample": [
+    {
+      "document_id": "IND-UNSUPPORTED-001",
+      "title": "Corrupt or Unsupported Document Format (.xyz)",
+      "jurisdiction": "IN",
+      "source_type": "other"
+    },
+    {
+      "document_id": "IND-GUIDE-SCI-PROC-2025",
+      "title": "Supreme Court of India Handbook on Practice and Procedure and Office Procedure (2017, updated to 06.10.2025)",
+      "jurisdiction": "IN",
+      "source_type": "rules_regulation"
+    },
+    {
+      "document_id": "IND-JUD-DEL-2024-BAIL",
+      "title": "State (NCT of Delhi) v. Rahul Kumar - Anticipatory Bail under BNSS",
+      "jurisdiction": "IN-DL",
+      "source_type": "judgment"
+    },
+    {
+      "document_id": "IND-JUD-SC-2017-PUTTASWAMY",
+      "title": "Justice K.S. Puttaswamy (Retd.) v. Union of India (2017) 10 SCC 1",
+      "jurisdiction": "IN",
+      "source_type": "judgment"
+    },
+    {
+      "document_id": "IND-STAT-BNSS-2023",
+      "title": "The Bharatiya Nagarik Suraksha Sanhita, 2023 (Act No. 46 of 2023)",
+      "jurisdiction": "IN",
+      "source_type": "statute"
+    },
+    {
+      "document_id": "IND-STAT-BSA-2023-SEC61",
+      "title": "Bharatiya Sakshya Adhiniyam, 2023 - Section 61",
+      "jurisdiction": "IN",
+      "source_type": "statute"
+    },
+    {
+      "document_id": "IND-STAT-BSA-2023-SEC63",
+      "title": "Bharatiya Sakshya Adhiniyam, 2023 - Section 63",
+      "jurisdiction": "IN",
+      "source_type": "statute"
+    },
+    {
+      "document_id": "IND-STAT-DPDP-2023",
+      "title": "The Digital Personal Data Protection Act, 2023 (Act No. 22 of 2023)",
+      "jurisdiction": "IN",
+      "source_type": "statute"
+    },
+    {
+      "document_id": "IND-STAT-IT-2000",
+      "title": "The Information Technology Act, 2000 (Act No. 21 of 2000, as amended)",
+      "jurisdiction": "IN",
+      "source_type": "statute"
+    },
+    {
+      "document_id": "IND-STAT-POCSO-2012-SEC4",
+      "title": "Protection of Children from Sexual Offences Act, 2012 - Section 4",
+      "jurisdiction": "IN",
+      "source_type": "statute"
+    },
+    {
+      "document_id": "IND-DL-STAT-DRC-1958",
+      "title": "The Delhi Rent Control Act, 1958",
+      "jurisdiction": "IN-DL",
+      "source_type": "statute"
+    },
+    {
+      "document_id": "IND-DL-STAT-DPA-1978",
+      "title": "The Delhi Police Act, 1978",
+      "jurisdiction": "IN-DL",
+      "source_type": "statute"
+    },
+    {
+      "document_id": "IND-MH-STAT-MRC-1999",
+      "title": "The Maharashtra Rent Control Act, 1999",
+      "jurisdiction": "IN-MH",
+      "source_type": "statute"
+    },
+    {
+      "document_id": "IND-MH-STAT-MPA-1951",
+      "title": "The Maharashtra Police Act, 1951",
+      "jurisdiction": "IN-MH",
+      "source_type": "statute"
+    },
+    {
+      "document_id": "IND-RULE-IT-SPDI-2011",
+      "title": "Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011",
+      "jurisdiction": "IN",
+      "source_type": "rules_regulation"
+    }
+  ]
+}

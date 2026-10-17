@@ -1,0 +1,23 @@
+{
+  "manifest_version": "2.0.0",
+  "dataset_name": "LegalMitra National Legal Evaluation Benchmark Suite v2",
+  "generated_date_utc": "2026-10-17T23:50:00Z",
+  "dataset_path": "data/13_evaluation/evaluation_cases_v2.json",
+  "sha256": "339b7a6108c02b6b5ba756971d3c879408ff7cc30cc223b40c3122e5ece41343",
+  "byte_size": 13328,
+  "total_cases": 26,
+  "category_breakdown": {
+    "statutory_pinpoint": 9,
+    "precedent_authority": 4,
+    "temporal_applicability": 3,
+    "adversarial_premise": 2,
+    "missing_evidence": 2,
+    "prompt_injection": 2,
+    "privacy_protected": 2,
+    "procedural_timeline": 1,
+    "conflicting_source": 1
+  },
+  "attribution": "Team Shatrujeet (Amar Khera, Ananya Rout, Lucky Kumar, Omm Prakash Sahoo)",
+  "classification": "Proprietary and Confidential"
+}
+

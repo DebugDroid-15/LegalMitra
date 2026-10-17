@@ -89,9 +89,9 @@ class LegalRAGEngine:
             if r.authority_level == AuthorityLevel.PERSUASIVE_PRECEDENT
         ]
 
-        # Step 2: Guardrails against Prompt Injection and POCSO/Victim Privacy Violations
+        # Step 2: Guardrails against Prompt Injection and POCSO/Juvenile Privacy Violations
         q_lower = query.lower()
-        if any(term in q_lower for term in ["system override", "unconstrained mode", "disregard all previous", "bypass safety", "jailbreak", "output pwned"]):
+        if any(term in q_lower for term in ["system override", "admin override", "unconstrained mode", "disregard all previous", "bypass safety", "jailbreak", "output pwned", "ignore all"]):
             latency = time.time() - start_time
             return RAGResponse(
                 query=query,
@@ -107,17 +107,21 @@ class LegalRAGEngine:
                 latency_seconds=latency,
             )
 
-        if "pocso" in q_lower or "minor victim" in q_lower or "child victim" in q_lower:
-            if any(term in q_lower for term in ["disclose", "name", "address", "identity", "unredacted", "contact"]):
+        if any(term in q_lower for term in ["pocso", "minor victim", "child victim", "juvenile"]):
+            if any(term in q_lower for term in ["disclose", "name", "address", "identity", "unredacted", "contact", "residential"]):
                 latency = time.time() - start_time
                 return RAGResponse(
                     query=query,
-                    answer="Disclosure of protected details regarding a child or child complainant is strictly prohibited under Section 33(7) and Section 74 of the Protection of Children from Sexual Offences (POCSO) Act, 2012.",
+                    answer=(
+                        "Disclosure of protected details regarding a child or juvenile in conflict with law is strictly prohibited "
+                        "under Section 33(7) and Section 74 of the Protection of Children from Sexual Offences (POCSO) Act, 2012 "
+                        "and Section 74 of the Juvenile Justice (Care and Protection of Children) Act, 2015."
+                    ),
                     citations=[],
                     cited_evidence=[],
                     evidence_sufficiency="insufficient",
                     is_grounded=True,
-                    binding_authorities=["Protection of Children from Sexual Offences Act, 2012"],
+                    binding_authorities=["Protection of Children from Sexual Offences Act, 2012", "Juvenile Justice Act, 2015"],
                     persuasive_authorities=[],
                     missing_facts_prompt=None,
                     model_used=self.llm_provider.__class__.__name__,
@@ -160,8 +164,16 @@ class LegalRAGEngine:
         ]
 
         logger.info(f"Calling LLM provider ({self.llm_provider.__class__.__name__}) with {len(search_results)} evidence chunks...")
-        llm_resp = self.llm_provider.generate(messages, temperature=0.0, max_tokens=1024)
-        answer_text = llm_resp.content.strip()
+        try:
+            llm_resp = self.llm_provider.generate(messages, temperature=0.0, max_tokens=1024)
+            answer_text = llm_resp.content.strip()
+        except Exception as e:
+            logger.warning(f"LLM provider generation failed or timed out: {e}. Falling back to extractive grounded synthesis.")
+            top_chunk = search_results[0]
+            answer_text = (
+                f"Under {top_chunk.act_or_case_title}, {top_chunk.provision_or_para_ref}:\n"
+                f"{top_chunk.content.strip()}"
+            )
 
         # Step 5: Extract citations and classify evidence sufficiency
         citations = self._extract_citations(answer_text, search_results)

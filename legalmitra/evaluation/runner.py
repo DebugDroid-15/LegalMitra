@@ -157,8 +157,26 @@ class LegalEvaluationRunner:
                 severity = SeverityLevel.CRITICAL
 
         # 6. Golden Citations Check
+        abbrev_map = {
+            "crpc": "code of criminal procedure",
+            "ipc": "indian penal code",
+            "iea": "indian evidence act",
+            "bnss": "bharatiya nagarik suraksha sanhita",
+            "bns": "bharatiya nyaya sanhita",
+            "bsa": "bharatiya sakshya adhiniyam",
+            "pocso": "protection of children from sexual offences",
+        }
         for golden in case.golden_citations:
-            if golden.lower() not in ans_lower and not any(golden.lower() in c.lower() for c in extracted_citations):
+            g_lower = golden.lower()
+            found = (
+                g_lower in ans_lower
+                or any(g_lower in c.lower() for c in extracted_citations)
+            )
+            if not found:
+                synonym = abbrev_map.get(g_lower)
+                if synonym and (synonym in ans_lower or any(synonym in c.lower() for c in extracted_citations)):
+                    found = True
+            if not found:
                 failure_reasons.append(f"Missing required golden citation: '{golden}'")
                 if not severity:
                     severity = SeverityLevel.HIGH
