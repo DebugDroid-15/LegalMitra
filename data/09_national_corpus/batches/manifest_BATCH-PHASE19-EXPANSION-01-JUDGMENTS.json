@@ -1,0 +1,21 @@
+{
+  "batch_id": "BATCH-PHASE19-EXPANSION-01-JUDGMENTS",
+  "started_at": "2026-10-17T16:01:02.004466+00:00",
+  "completed_at": "2026-10-17T16:01:02.005104+00:00",
+  "dry_run": true,
+  "documents_submitted": 7,
+  "documents_indexed": 7,
+  "chunks_created": 24,
+  "quarantined_count": 0,
+  "failures_count": 0,
+  "checkpoints": [],
+  "document_hashes": {
+    "IND-JUD-SC-2020-ARJUN-KHOTKAR": "22a4c7c1bc863b99b6910943a6d74433381554783a4674b85e5a7d55628eadb3",
+    "IND-JUD-SC-2014-ANVAR-PV": "dcdf6ca5fa3506d8ad44d66961742e22ee42ddff70843570ec18bf96ae25ebff",
+    "IND-JUD-SC-2018-SHAFHI-MOHAMMAD": "a053c828c3a401eaa3109b85326b3bd8d9b0cd5c238e8512a205ce179c44223b",
+    "IND-JUD-SC-2022-ANTIL": "e18532ba92c741c53be43162330504438ae327d7c84fe60d7c778a4907e67f6f",
+    "IND-JUD-SC-2020-PERKINS-EASTMAN": "fc69faee9e7555ae80bae6385e1a929c3a447787e645803b4b113df5ed606a5a",
+    "IND-JUD-SC-1954-SATYABRATA": "54ea5df5b134b5af8585c77e2c68abb246f83f449c6798d64e355c846763dc4e",
+    "IND-JUD-SC-2008-SATYAWATI": "32d6e8f8e589b5b7b857baf3a7b4d107322f06104ee377248f4b452db4e0ce27"
+  }
+}

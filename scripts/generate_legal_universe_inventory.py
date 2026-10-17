@@ -1,5 +1,7 @@
 """
-Populate and export the Comprehensive National Legal Universe Inventory (Phase 18).
+Populate and export the Comprehensive National Legal Universe Inventory (Phase 19).
+Expands the national legal universe to cover all 28 States and 8 Union Territories,
+major national regulatory codes, appellate tribunals, court rules, and landmark judgments.
 Generates:
 - data/09_national_corpus/legal_universe_inventory.json
 - data/09_national_corpus/legal_universe_inventory.csv
@@ -18,6 +20,7 @@ from legalmitra.corpus.legal_universe import (
     LegalAuthorityLevel,
     LegalUniverseItem,
 )
+from legalmitra.corpus.state_registry import STATE_UT_REGISTRY
 
 
 def build_national_legal_universe() -> List[LegalUniverseItem]:
@@ -60,7 +63,7 @@ def build_national_legal_universe() -> List[LegalUniverseItem]:
             authority_level=LegalAuthorityLevel.SUPREME_CONSTITUTIONAL,
             jurisdiction="IN",
             issuing_authority_or_court="Parliament of India",
-            enactment_or_decision_date=date(yr, 1, 1),
+            enactment_or_decision_date=dt,
             commencement_date=dt,
             source_url=f"https://www.indiacode.nic.in/handle/123456789/{15000+num}",
             lifecycle_state=IngestionLifecycleState.EXPECTED,
@@ -92,6 +95,19 @@ def build_national_legal_universe() -> List[LegalUniverseItem]:
         ("UNIV-ACT-RERA-2016", "The Real Estate (Regulation and Development) Act, 2016", "Act No. 16 of 2016", date(2016, 3, 25), date(2016, 5, 1), IngestionLifecycleState.EXPECTED, 0, "Housing & Tenancy", "Identified in legal universe; pending ingestion batch."),
         ("UNIV-ACT-MV-1988", "The Motor Vehicles Act, 1988", "Act No. 59 of 1988", date(1988, 10, 14), date(1989, 7, 1), IngestionLifecycleState.EXPECTED, 0, "Transport & Insurance", "Identified in legal universe; pending ingestion batch."),
         ("UNIV-ACT-RTI-2005", "The Right to Information Act, 2005", "Act No. 22 of 2005", date(2005, 6, 15), date(2005, 10, 12), IngestionLifecycleState.EXPECTED, 0, "Administrative Law", "Identified in legal universe; pending ingestion batch."),
+        # Expanded Central Acts for Phase 19 National Scale
+        ("UNIV-ACT-NI-1881", "The Negotiable Instruments Act, 1881", "Act No. 26 of 1881", date(1881, 12, 9), date(1882, 3, 1), IngestionLifecycleState.EXPECTED, 0, "Commercial & Banking Law", "Cheque dishonour s.138-142 foundational. Identified in universe."),
+        ("UNIV-ACT-TPA-1882", "The Transfer of Property Act, 1882", "Act No. 4 of 1882", date(1882, 2, 17), date(1882, 7, 1), IngestionLifecycleState.EXPECTED, 0, "Property Law", "Sale, mortgage, lease, gift provisions. Identified in universe."),
+        ("UNIV-ACT-COMPETITION-2002", "The Competition Act, 2002", "Act No. 12 of 2003", date(2003, 1, 13), date(2003, 3, 31), IngestionLifecycleState.EXPECTED, 0, "Commercial & Anti-Trust", "Anti-competitive agreements, abuse of dominance. Identified in universe."),
+        ("UNIV-ACT-SEBI-1992", "The Securities and Exchange Board of India Act, 1992", "Act No. 15 of 1992", date(1992, 4, 4), date(1992, 1, 30), IngestionLifecycleState.EXPECTED, 0, "Financial Regulation", "Securities market regulation & appellate framework. Identified in universe."),
+        ("UNIV-ACT-EPF-1952", "The Employees' Provident Funds and Miscellaneous Provisions Act, 1952", "Act No. 19 of 1952", date(1952, 3, 4), date(1952, 3, 14), IngestionLifecycleState.EXPECTED, 0, "Labour & Employment", "Social security & retirement benefits. Identified in universe."),
+        ("UNIV-ACT-ENV-1986", "The Environment (Protection) Act, 1986", "Act No. 29 of 1986", date(1986, 5, 23), date(1986, 11, 19), IngestionLifecycleState.EXPECTED, 0, "Environmental Law", "General environmental protection umbrella statute. Identified in universe."),
+        ("UNIV-ACT-NGT-2010", "The National Green Tribunal Act, 2010", "Act No. 19 of 2010", date(2010, 6, 2), date(2010, 10, 18), IngestionLifecycleState.EXPECTED, 0, "Environmental & Tribunal Law", "Specialized environmental appellate forum. Identified in universe."),
+        ("UNIV-ACT-SARFAESI-2002", "The Securitisation and Reconstruction of Financial Assets and Enforcement of Security Interest Act, 2002", "Act No. 54 of 2002", date(2002, 12, 17), date(2002, 6, 21), IngestionLifecycleState.EXPECTED, 0, "Banking & Debt Recovery", "Securitisation & debt recovery enforcement. Identified in universe."),
+        ("UNIV-ACT-DV-2005", "The Protection of Women from Domestic Violence Act, 2005", "Act No. 43 of 2005", date(2005, 9, 13), date(2006, 10, 26), IngestionLifecycleState.EXPECTED, 0, "Family & Social Welfare", "Civil protections, residence orders, maintenance. Identified in universe."),
+        ("UNIV-ACT-HMA-1955", "The Hindu Marriage Act, 1955", "Act No. 25 of 1955", date(1955, 5, 18), date(1955, 5, 18), IngestionLifecycleState.EXPECTED, 0, "Family & Personal Law", "Marriage, restitution, divorce, maintenance. Identified in universe."),
+        ("UNIV-ACT-SMA-1954", "The Special Marriage Act, 1954", "Act No. 43 of 1954", date(1954, 10, 9), date(1955, 1, 1), IngestionLifecycleState.EXPECTED, 0, "Family & Personal Law", "Civil marriage registration & dissolution. Identified in universe."),
+        ("UNIV-ACT-COMM-COURTS-2015", "The Commercial Courts Act, 2015", "Act No. 4 of 2016", date(2015, 12, 31), date(2015, 10, 23), IngestionLifecycleState.EXPECTED, 0, "Commercial Litigation", "Commercial divisions, strict 120-day WS timeline. Identified in universe."),
     ]
 
     for rid, title, ev, en_dt, comm_dt, state, chunks, domain, gap in central_acts:
@@ -113,73 +129,52 @@ def build_national_legal_universe() -> List[LegalUniverseItem]:
         ))
 
     # =========================================================================
-    # 3. State & UT Legislation (Delhi, Maharashtra, + Unindexed States)
+    # 3. State & UT Legislation (Covering all 28 States and 8 UTs)
     # =========================================================================
-    items.append(LegalUniverseItem(
-        record_id="UNIV-STATE-DRC-1958",
-        official_title="The Delhi Rent Control Act, 1958",
-        document_family=DocumentFamily.STATE_ACT,
-        authority_level=LegalAuthorityLevel.BINDING_STATE_STATUTE,
-        jurisdiction="IN-DL",
-        issuing_authority_or_court="Parliament of India (for NCT of Delhi)",
-        enactment_or_decision_date=date(1958, 12, 31),
-        commencement_date=date(1959, 2, 9),
-        source_url="https://www.indiacode.nic.in/handle/123456789/2317",
-        lifecycle_state=IngestionLifecycleState.INDEXED,
-        chunks_indexed=4,
-        legal_domain="Housing & Tenancy",
-        known_coverage_gap="Partially extracted (Secs 2, 3, 14, 25B indexed). Full 57 sections in backlog.",
-        evidence_reference="Act No. 59 of 1958"
-    ))
-    items.append(LegalUniverseItem(
-        record_id="UNIV-STATE-DPA-1978",
-        official_title="The Delhi Police Act, 1978",
-        document_family=DocumentFamily.STATE_ACT,
-        authority_level=LegalAuthorityLevel.BINDING_STATE_STATUTE,
-        jurisdiction="IN-DL",
-        issuing_authority_or_court="Parliament of India (for NCT of Delhi)",
-        enactment_or_decision_date=date(1978, 8, 27),
-        commencement_date=date(1978, 9, 1),
-        source_url="https://www.indiacode.nic.in/handle/123456789/2317",
-        lifecycle_state=IngestionLifecycleState.INDEXED,
-        chunks_indexed=3,
-        legal_domain="Police & Public Order",
-        known_coverage_gap="Partially extracted (Secs 28, 53, 65 indexed). Full 153 sections in backlog.",
-        evidence_reference="Act No. 34 of 1978"
-    ))
-    items.append(LegalUniverseItem(
-        record_id="UNIV-STATE-MRC-1999",
-        official_title="The Maharashtra Rent Control Act, 1999",
-        document_family=DocumentFamily.STATE_ACT,
-        authority_level=LegalAuthorityLevel.BINDING_STATE_STATUTE,
-        jurisdiction="IN-MH",
-        issuing_authority_or_court="Maharashtra State Legislature",
-        enactment_or_decision_date=date(2000, 3, 10),
-        commencement_date=date(2000, 3, 31),
-        source_url="https://www.indiacode.nic.in/handle/123456789/2302",
-        lifecycle_state=IngestionLifecycleState.INDEXED,
-        chunks_indexed=5,
-        legal_domain="Housing & Tenancy",
-        known_coverage_gap="Partially extracted (Secs 3, 7, 15, 16, 24 indexed). Full 60 sections in backlog.",
-        evidence_reference="Maharashtra Act No. XVIII of 2000"
-    ))
-    items.append(LegalUniverseItem(
-        record_id="UNIV-STATE-MPA-1951",
-        official_title="The Maharashtra Police Act, 1951",
-        alternate_title="Bombay Police Act, 1951",
-        document_family=DocumentFamily.STATE_ACT,
-        authority_level=LegalAuthorityLevel.BINDING_STATE_STATUTE,
-        jurisdiction="IN-MH",
-        issuing_authority_or_court="Bombay / Maharashtra State Legislature",
-        enactment_or_decision_date=date(1951, 6, 11),
-        commencement_date=date(1951, 8, 1),
-        source_url="https://www.indiacode.nic.in/handle/123456789/2302",
-        lifecycle_state=IngestionLifecycleState.INDEXED,
-        chunks_indexed=3,
-        legal_domain="Police & Public Order",
-        known_coverage_gap="Partially extracted (Secs 33, 56, 57 indexed). Full 168 sections in backlog.",
-        evidence_reference="Bombay Act No. XXII of 1951"
-    ))
+    # Indexed Delhi and Maharashtra baseline Acts
+    indexed_state_acts = [
+        ("UNIV-STATE-DRC-1958", "The Delhi Rent Control Act, 1958", "IN-DL", "Parliament of India (for NCT of Delhi)", date(1958, 12, 31), date(1959, 2, 9), IngestionLifecycleState.INDEXED, 4, "Housing & Tenancy", "Partially extracted (Secs 2, 3, 14, 25B indexed). Full 57 sections in backlog.", "Act No. 59 of 1958"),
+        ("UNIV-STATE-DPA-1978", "The Delhi Police Act, 1978", "IN-DL", "Parliament of India (for NCT of Delhi)", date(1978, 8, 27), date(1978, 9, 1), IngestionLifecycleState.INDEXED, 3, "Police & Public Order", "Partially extracted (Secs 28, 53, 65 indexed). Full 153 sections in backlog.", "Act No. 34 of 1978"),
+        ("UNIV-STATE-MRC-1999", "The Maharashtra Rent Control Act, 1999", "IN-MH", "Maharashtra State Legislature", date(2000, 3, 10), date(2000, 3, 31), IngestionLifecycleState.INDEXED, 5, "Housing & Tenancy", "Partially extracted (Secs 3, 7, 15, 16, 24 indexed). Full 60 sections in backlog.", "Maharashtra Act No. XVIII of 2000"),
+        ("UNIV-STATE-MPA-1951", "The Maharashtra Police Act, 1951", "IN-MH", "Bombay / Maharashtra State Legislature", date(1951, 6, 11), date(1951, 8, 1), IngestionLifecycleState.INDEXED, 3, "Police & Public Order", "Partially extracted (Secs 33, 56, 57 indexed). Full 168 sections in backlog.", "Bombay Act No. XXII of 1951"),
+    ]
+    for rid, title, jur, auth, en_dt, comm_dt, state, chunks, domain, gap, ev in indexed_state_acts:
+        items.append(LegalUniverseItem(
+            record_id=rid,
+            official_title=title,
+            document_family=DocumentFamily.STATE_ACT,
+            authority_level=LegalAuthorityLevel.BINDING_STATE_STATUTE,
+            jurisdiction=jur,
+            issuing_authority_or_court=auth,
+            enactment_or_decision_date=en_dt,
+            commencement_date=comm_dt,
+            source_url="https://www.indiacode.nic.in/",
+            lifecycle_state=state,
+            chunks_indexed=chunks,
+            legal_domain=domain,
+            known_coverage_gap=gap,
+            evidence_reference=ev
+        ))
+
+    # All remaining States and Union Territories from STATE_UT_REGISTRY
+    for st in STATE_UT_REGISTRY:
+        if st.jurisdiction_code in ["IN-DL", "IN-MH"]:
+            continue  # Already represented by specific Acts
+        items.append(LegalUniverseItem(
+            record_id=f"UNIV-STATE-CORPUS-{st.jurisdiction_code}",
+            official_title=f"{st.name} State & UT Legislative Corpus",
+            alternate_title=f"{st.name} Code",
+            document_family=DocumentFamily.STATE_ACT,
+            authority_level=LegalAuthorityLevel.BINDING_STATE_STATUTE,
+            jurisdiction=st.jurisdiction_code,
+            issuing_authority_or_court=st.responsible_authority,
+            source_url=st.official_portal_url,
+            lifecycle_state=IngestionLifecycleState.DISCOVERED,
+            chunks_indexed=0,
+            legal_domain=f"State Legislation ({st.category})",
+            known_coverage_gap=f"Catalogued in National Legal Universe. Portal {st.official_portal_url} mapped for ingestion.",
+            evidence_reference=f"Official Gazette / Legislative Portal of {st.name} ({st.jurisdiction_code})"
+        ))
 
     # =========================================================================
     # 4. Delegated Rules & Regulations
@@ -235,6 +230,35 @@ def build_national_legal_universe() -> List[LegalUniverseItem]:
         known_coverage_gap="Rules 4 and 5 indexed. Direct selling rules in backlog.",
         evidence_reference="G.S.R. 462(E), Gazette of India"
     ))
+    # Subordinate and Practice Rules
+    items.append(LegalUniverseItem(
+        record_id="UNIV-RULE-DHC-ORIGINAL-2018",
+        official_title="Delhi High Court (Original Side) Rules, 2018",
+        document_family=DocumentFamily.COURT_RULE,
+        authority_level=LegalAuthorityLevel.TERRITORIALLY_BINDING_HIGH_COURT,
+        jurisdiction="IN-DL",
+        issuing_authority_or_court="High Court of Delhi",
+        source_url="https://delhihighcourt.nic.in/rules",
+        lifecycle_state=IngestionLifecycleState.LOCATED,
+        chunks_indexed=0,
+        legal_domain="Court Procedure & Rules",
+        known_coverage_gap="Full original side procedure, summons, e-filing. Ingestion scheduled.",
+        evidence_reference="Delhi Gazette Notification No. 12/Rules/DHC/2018"
+    ))
+    items.append(LegalUniverseItem(
+        record_id="UNIV-RULE-SCI-RULES-2013",
+        official_title="Supreme Court Rules, 2013",
+        document_family=DocumentFamily.COURT_RULE,
+        authority_level=LegalAuthorityLevel.BINDING_SUPREME_COURT_ART141,
+        jurisdiction="IN",
+        issuing_authority_or_court="Supreme Court of India",
+        source_url="https://main.sci.gov.in/rules-and-circulars",
+        lifecycle_state=IngestionLifecycleState.LOCATED,
+        chunks_indexed=0,
+        legal_domain="Apex Court Practice",
+        known_coverage_gap="Order XVI, Order XXI SLP rules, curative petitions. Ingestion scheduled.",
+        evidence_reference="G.S.R. 368(E), Gazette of India"
+    ))
 
     # =========================================================================
     # 5. Commencement Orders & Gazette Instruments
@@ -280,6 +304,9 @@ def build_national_legal_universe() -> List[LegalUniverseItem]:
         ("UNIV-JUD-SC-2018-NAVTEJ", "Navtej Singh Johar v. Union of India", DocumentFamily.JUDGMENT_SUPREME_COURT, LegalAuthorityLevel.BINDING_SUPREME_COURT_ART141, "IN", "Supreme Court of India (5-Judge Bench)", date(2018, 9, 6), IngestionLifecycleState.EXPECTED, 0, "Constitutional & Criminal Law", "(2018) 10 SCC 1 (Section 377 Decriminalization)"),
         ("UNIV-JUD-SC-1994-BOMMAI", "S.R. Bommai v. Union of India", DocumentFamily.JUDGMENT_SUPREME_COURT, LegalAuthorityLevel.BINDING_SUPREME_COURT_ART141, "IN", "Supreme Court of India (9-Judge Bench)", date(1994, 3, 11), IngestionLifecycleState.EXPECTED, 0, "Constitutional Law", "(1994) 3 SCC 1 (Article 356 Federalism)"),
         ("UNIV-JUD-SC-1992-INDRA-SAWHNEY", "Indra Sawhney v. Union of India", DocumentFamily.JUDGMENT_SUPREME_COURT, LegalAuthorityLevel.BINDING_SUPREME_COURT_ART141, "IN", "Supreme Court of India (9-Judge Bench)", date(1992, 11, 16), IngestionLifecycleState.EXPECTED, 0, "Constitutional Law", "1992 Supp (3) SCC 217 (50% Reservation Ceiling)"),
+        ("UNIV-JUD-SC-2014-LALITA-KUMARI", "Lalita Kumari v. Govt. of U.P.", DocumentFamily.JUDGMENT_SUPREME_COURT, LegalAuthorityLevel.BINDING_SUPREME_COURT_ART141, "IN", "Supreme Court of India (5-Judge Bench)", date(2013, 11, 12), IngestionLifecycleState.EXPECTED, 0, "Criminal Procedure", "(2014) 2 SCC 1 (Mandatory FIR Registration)"),
+        ("UNIV-JUD-SC-2014-ARNESH-KUMAR", "Arnesh Kumar v. State of Bihar", DocumentFamily.JUDGMENT_SUPREME_COURT, LegalAuthorityLevel.BINDING_SUPREME_COURT_ART141, "IN", "Supreme Court of India", date(2014, 7, 2), IngestionLifecycleState.EXPECTED, 0, "Criminal Law & Arrest", "(2014) 8 SCC 273 (Section 41A Notice Guidelines)"),
+        ("UNIV-JUD-SC-1978-MANEKA", "Maneka Gandhi v. Union of India", DocumentFamily.JUDGMENT_SUPREME_COURT, LegalAuthorityLevel.BINDING_SUPREME_COURT_ART141, "IN", "Supreme Court of India (7-Judge Bench)", date(1978, 1, 25), IngestionLifecycleState.EXPECTED, 0, "Constitutional Law", "(1978) 1 SCC 248 (Article 21 Due Process)"),
     ]
 
     for rid, title, fam, auth, jur, court, dt, state, chunks, domain, ev in judgments:
@@ -345,10 +372,10 @@ def export_inventory_files():
     # 3. Export Source Registry JSON
     src_reg_path = out_dir / "source_registry.json"
     registry_data = {
-        "version": "18.0.0",
+        "version": "19.0.0",
         "total_universe_records": len(items),
         "indexed_records_count": sum(1 for i in items if i.lifecycle_state == IngestionLifecycleState.INDEXED),
-        "expected_records_count": sum(1 for i in items if i.lifecycle_state == IngestionLifecycleState.EXPECTED),
+        "expected_records_count": sum(1 for i in items if i.lifecycle_state in [IngestionLifecycleState.EXPECTED, IngestionLifecycleState.DISCOVERED, IngestionLifecycleState.LOCATED]),
         "quarantined_records_count": sum(1 for i in items if i.lifecycle_state == IngestionLifecycleState.QUARANTINED),
         "records": [item.model_dump(mode="json") for item in items]
     }
@@ -360,4 +387,3 @@ def export_inventory_files():
 
 if __name__ == "__main__":
     export_inventory_files()
-

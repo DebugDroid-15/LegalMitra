@@ -137,14 +137,70 @@ class LegalKnowledgeGraph:
             return self.get_node(incoming[0].source_id)
         return None
 
-    def is_case_overruled(self, case_node_id: str) -> Tuple[bool, Optional[str]]:
-        """Checks if a case has been overruled by an incoming OVERRULES edge."""
+    def is_case_overruled(
+        self,
+        case_node_id: str,
+        target_proposition: Optional[str] = None
+    ) -> Tuple[bool, Optional[str]]:
+        """
+        Checks if a case has been overruled.
+        Returns: (is_overruled, reason_str)
+        """
         incoming = self.get_incoming_edges(case_node_id, RelationType.OVERRULES)
-        if incoming:
-            overruling_case = self.get_node(incoming[0].source_id)
-            name = overruling_case.name if overruling_case else incoming[0].source_id
-            return True, f"Overruled by {name}"
+        if not incoming:
+            return False, None
+
+        for edge in incoming:
+            props = edge.properties or {}
+            edge_prop = props.get("affected_proposition")
+            is_partial = props.get("is_partial", False)
+            scope = props.get("scope", "Entire judgment" if not is_partial else "Specific proposition")
+
+            if target_proposition and edge_prop:
+                if target_proposition.lower() not in edge_prop.lower() and edge_prop.lower() not in target_proposition.lower():
+                    continue
+
+            overruling_case = self.get_node(edge.source_id)
+            name = overruling_case.name if overruling_case else edge.source_id
+            
+            status_desc = f"Partially overruled by {name} ({scope})" if is_partial else f"Overruled by {name}"
+            return True, status_desc
+
         return False, None
+
+    def evaluate_precedent_status(
+        self,
+        case_node_id: str,
+        target_proposition: Optional[str] = None
+    ) -> Dict[str, Any]:
+        """
+        Comprehensive doctrinal evaluation of precedent status.
+        Includes scope, partial overruling, and affected propositions.
+        """
+        incoming = self.get_incoming_edges(case_node_id, RelationType.OVERRULES)
+        if not incoming:
+            return {"is_overruled": False, "status": "active_precedent", "overruling_cases": []}
+
+        overruling_details = []
+        for edge in incoming:
+            props = edge.properties or {}
+            overruling_case = self.get_node(edge.source_id)
+            name = overruling_case.name if overruling_case else edge.source_id
+            overruling_details.append({
+                "overruling_case_id": edge.source_id,
+                "overruling_case_name": name,
+                "is_partial": props.get("is_partial", False),
+                "scope": props.get("scope", "Entire judgment"),
+                "affected_proposition": props.get("affected_proposition")
+            })
+
+        return {
+            "is_overruled": True,
+            "status": "overruled" if not any(d["is_partial"] for d in overruling_details) else "partially_overruled",
+            "overruling_details": overruling_details
+        }
+
+
 
     def find_connected_subgraph(self, root_node_id: str, max_depth: int = 2) -> Dict[str, Any]:
         """Extracts an ego-network subgraph around a focal entity."""

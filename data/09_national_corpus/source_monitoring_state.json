@@ -1,0 +1,62 @@
+[
+  {
+    "source_id": "MON-INDIA-CODE",
+    "portal_name": "India Code Portal",
+    "target_url": "https://www.indiacode.nic.in/",
+    "monitoring_method": "portal_check",
+    "poll_interval_hours": 24,
+    "rate_limit_per_minute": 20,
+    "last_check_time": "2026-10-17T16:04:29.698683+00:00",
+    "last_detected_change": null,
+    "last_known_hash": "a37a097fdac7d5cbb6817aa78e2563b8431cd195da118ea072e2d4b499c989c0",
+    "status": "up_to_date",
+    "consecutive_errors": 0,
+    "error_message": null,
+    "terms_of_access": "Authorized public portal; respectful automated polling"
+  },
+  {
+    "source_id": "MON-EGAZETTE",
+    "portal_name": "e-Gazette of India",
+    "target_url": "https://egazette.gov.in/",
+    "monitoring_method": "portal_check",
+    "poll_interval_hours": 24,
+    "rate_limit_per_minute": 10,
+    "last_check_time": "2026-10-17T16:04:29.701830+00:00",
+    "last_detected_change": null,
+    "last_known_hash": "a37a097fdac7d5cbb6817aa78e2563b8431cd195da118ea072e2d4b499c989c0",
+    "status": "up_to_date",
+    "consecutive_errors": 0,
+    "error_message": null,
+    "terms_of_access": "Authorized public portal; respectful automated polling"
+  },
+  {
+    "source_id": "MON-SCI-DIGISCR",
+    "portal_name": "Supreme Court Digital SCR",
+    "target_url": "https://digiscr.sci.gov.in/",
+    "monitoring_method": "portal_check",
+    "poll_interval_hours": 24,
+    "rate_limit_per_minute": 20,
+    "last_check_time": "2026-10-17T16:04:29.704833+00:00",
+    "last_detected_change": null,
+    "last_known_hash": "a37a097fdac7d5cbb6817aa78e2563b8431cd195da118ea072e2d4b499c989c0",
+    "status": "up_to_date",
+    "consecutive_errors": 0,
+    "error_message": null,
+    "terms_of_access": "Authorized public portal; respectful automated polling"
+  },
+  {
+    "source_id": "TEST-SOURCE-01",
+    "portal_name": "Test Legal Portal",
+    "target_url": "https://portal.gov.in",
+    "monitoring_method": "portal_check",
+    "poll_interval_hours": 24,
+    "rate_limit_per_minute": 20,
+    "last_check_time": "2026-10-17T16:06:17.037359+00:00",
+    "last_detected_change": "2026-10-17T16:06:17.037359+00:00",
+    "last_known_hash": "c78b92e784e407ee21c50bf7558a2f82b7566274edfc1787af8a8357a856afe0",
+    "status": "change_detected",
+    "consecutive_errors": 0,
+    "error_message": null,
+    "terms_of_access": "Authorized public portal; respectful automated polling"
+  }
+]

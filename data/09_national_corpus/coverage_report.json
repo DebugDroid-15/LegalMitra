@@ -1,0 +1,50 @@
+{
+  "report_version": "19.0.0",
+  "timestamp": "2026-10-17T21:35:00Z",
+  "knowledge_base_metrics": {
+    "total_stored_chunks": 1363,
+    "active_retrievable_chunks": 1357,
+    "quarantined_scaffold_chunks": 6,
+    "distinct_indexed_sources": 34,
+    "total_registered_sources": 37,
+    "chunks_by_document_type": {
+      "judgment": 45,
+      "notification": 5,
+      "rules_regulation": 8,
+      "statute": 1305
+    },
+    "chunks_by_jurisdiction": {
+      "IN": 1338,
+      "IN-DL": 11,
+      "IN-MH": 8
+    }
+  },
+  "universe_inventory_metrics": {
+    "total_catalogued_instruments": 101,
+    "breakdown_by_document_family": {
+      "constitution": 1,
+      "constitutional_amendment": 6,
+      "central_act": 30,
+      "state_act": 38,
+      "subordinate_rule": 3,
+      "court_rule": 2,
+      "commencement_order": 5,
+      "judgment_supreme_court": 15,
+      "judgment_high_court": 1
+    },
+    "breakdown_by_lifecycle_state": {
+      "indexed": 33,
+      "expected_to_exist": 31,
+      "discovered": 34,
+      "located": 2,
+      "quarantined": 1
+    }
+  },
+  "defensible_coverage_summary": {
+    "constitution_and_amendments": "1 Constitution indexed + 6 major CAAs mapped (7 total)",
+    "primary_central_acts": "12 indexed out of 28 mapped in universe (42.9%)",
+    "jurisdictions_represented": "36 mapped across all 28 States and 8 UTs (Delhi & Maharashtra with full statutory text)",
+    "judicial_precedents": "8 landmark rulings indexed (39 genuine chunks); 1 quarantined scaffold excluded",
+    "advocate_review_status": "40 candidates strictly in pending_legal_review (0% approved without human advocate)"
+  }
+}

@@ -49,16 +49,34 @@ class LegalAuthorityLevel(str, Enum):
 
 
 class IngestionLifecycleState(str, Enum):
+    # Discovery and locating
+    DISCOVERED = "discovered"
     EXPECTED = "expected_to_exist"
     LOCATED = "located"
     ACCESSIBLE = "accessible"
+    ACCESS_RESTRICTED = "access_restricted"
+    AWAITING_ACQUISITION = "awaiting_acquisition"
+    
+    # Acquisition and extraction
     ACQUIRED = "acquired"
-    PARSED = "parsed"
     INTEGRITY_CHECKED = "integrity_checked"
+    PARSED = "parsed"
+    EXTRACTION_FAILED = "extraction_failed"
+    METADATA_VALIDATED = "metadata_validated"
+    
+    # Indexing and verification
     INDEXED = "indexed"
+    SOURCE_VERIFIED = "source_verified"
+    CURRENTNESS_CHECKED = "currentness_checked"
+    PENDING_LEGAL_REVIEW = "pending_legal_review"
     LEGALLY_REVIEWED = "legally_reviewed"
-    INACCESSIBLE = "inaccessible"
+    
+    # Terminal and exceptional states
     QUARANTINED = "quarantined"
+    SUPERSEDED = "superseded"
+    REPEALED = "repealed"
+    INACCESSIBLE = "inaccessible"
+    RETRY_REQUIRED = "retry_required"
 
 
 class LegalUniverseItem(BaseModel):

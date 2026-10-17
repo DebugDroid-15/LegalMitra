@@ -1,0 +1,215 @@
+{
+  "batch_id": "BATCH-PHASE19-EXPANSION-01-STATUTES",
+  "started_at": "2026-10-17T16:01:01.996954+00:00",
+  "completed_at": "2026-10-17T16:01:02.000135+00:00",
+  "dry_run": true,
+  "documents_submitted": 8,
+  "documents_indexed": 8,
+  "chunks_created": 154,
+  "quarantined_count": 0,
+  "failures_count": 0,
+  "checkpoints": [
+    {
+      "batch_id": "BATCH-PHASE19-EXPANSION-01-STATUTES",
+      "stage": "source_validated",
+      "document_id": "IND-CONST-1950",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:01:01.996954+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE19-EXPANSION-01-STATUTES",
+      "stage": "hash_verified",
+      "document_id": "IND-CONST-1950",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:01:01.999012+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE19-EXPANSION-01-STATUTES",
+      "stage": "parsed",
+      "document_id": "IND-CONST-1950",
+      "status": "DRY_RUN",
+      "timestamp": "2026-10-17T16:01:01.999012+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE19-EXPANSION-01-STATUTES",
+      "stage": "source_validated",
+      "document_id": "IND-STAT-BNS-2023",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:01:01.999012+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE19-EXPANSION-01-STATUTES",
+      "stage": "hash_verified",
+      "document_id": "IND-STAT-BNS-2023",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:01:01.999012+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE19-EXPANSION-01-STATUTES",
+      "stage": "parsed",
+      "document_id": "IND-STAT-BNS-2023",
+      "status": "DRY_RUN",
+      "timestamp": "2026-10-17T16:01:01.999012+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE19-EXPANSION-01-STATUTES",
+      "stage": "source_validated",
+      "document_id": "IND-STAT-CPC-1908",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:01:01.999012+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE19-EXPANSION-01-STATUTES",
+      "stage": "hash_verified",
+      "document_id": "IND-STAT-CPC-1908",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:01:01.999585+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE19-EXPANSION-01-STATUTES",
+      "stage": "parsed",
+      "document_id": "IND-STAT-CPC-1908",
+      "status": "DRY_RUN",
+      "timestamp": "2026-10-17T16:01:01.999585+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE19-EXPANSION-01-STATUTES",
+      "stage": "source_validated",
+      "document_id": "IND-STAT-LIMIT-1963",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:01:01.999585+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE19-EXPANSION-01-STATUTES",
+      "stage": "hash_verified",
+      "document_id": "IND-STAT-LIMIT-1963",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:01:01.999585+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE19-EXPANSION-01-STATUTES",
+      "stage": "parsed",
+      "document_id": "IND-STAT-LIMIT-1963",
+      "status": "DRY_RUN",
+      "timestamp": "2026-10-17T16:01:01.999585+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE19-EXPANSION-01-STATUTES",
+      "stage": "source_validated",
+      "document_id": "IND-STAT-ICA-1872",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:01:01.999585+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE19-EXPANSION-01-STATUTES",
+      "stage": "hash_verified",
+      "document_id": "IND-STAT-ICA-1872",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:01:01.999585+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE19-EXPANSION-01-STATUTES",
+      "stage": "parsed",
+      "document_id": "IND-STAT-ICA-1872",
+      "status": "DRY_RUN",
+      "timestamp": "2026-10-17T16:01:01.999585+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE19-EXPANSION-01-STATUTES",
+      "stage": "source_validated",
+      "document_id": "IND-STAT-SRA-1963",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:01:01.999585+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE19-EXPANSION-01-STATUTES",
+      "stage": "hash_verified",
+      "document_id": "IND-STAT-SRA-1963",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:01:02.000135+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE19-EXPANSION-01-STATUTES",
+      "stage": "parsed",
+      "document_id": "IND-STAT-SRA-1963",
+      "status": "DRY_RUN",
+      "timestamp": "2026-10-17T16:01:02.000135+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE19-EXPANSION-01-STATUTES",
+      "stage": "source_validated",
+      "document_id": "IND-STAT-ARB-1996",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:01:02.000135+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE19-EXPANSION-01-STATUTES",
+      "stage": "hash_verified",
+      "document_id": "IND-STAT-ARB-1996",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:01:02.000135+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE19-EXPANSION-01-STATUTES",
+      "stage": "parsed",
+      "document_id": "IND-STAT-ARB-1996",
+      "status": "DRY_RUN",
+      "timestamp": "2026-10-17T16:01:02.000135+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE19-EXPANSION-01-STATUTES",
+      "stage": "source_validated",
+      "document_id": "IND-STAT-CPA-2019",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:01:02.000135+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE19-EXPANSION-01-STATUTES",
+      "stage": "hash_verified",
+      "document_id": "IND-STAT-CPA-2019",
+      "status": "OK",
+      "timestamp": "2026-10-17T16:01:02.000135+00:00",
+      "error_message": null
+    },
+    {
+      "batch_id": "BATCH-PHASE19-EXPANSION-01-STATUTES",
+      "stage": "parsed",
+      "document_id": "IND-STAT-CPA-2019",
+      "status": "DRY_RUN",
+      "timestamp": "2026-10-17T16:01:02.000135+00:00",
+      "error_message": null
+    }
+  ],
+  "document_hashes": {
+    "IND-CONST-1950": "cf590cf64969cb64bb67419730edd1ab7410f0b8613291f66896569a36414c23",
+    "IND-STAT-BNS-2023": "4d298ca6d48ee709a27f7062242bf209d1a02757cb6a44c53d4065963800b63b",
+    "IND-STAT-CPC-1908": "42fb5b7e459813e32a2a5daaf7dda917ae82bdbc1a2ff7f65a7af0a518600b93",
+    "IND-STAT-LIMIT-1963": "e0cb2e8abb8d6b13aad8c099f64c101fca386570b381d1e84c1ab70abbe85d2a",
+    "IND-STAT-ICA-1872": "71d396ce7f04d8a53bb570f86c7063cd069685e4dc9c8d3f63331139c12e0f74",
+    "IND-STAT-SRA-1963": "17635d11c62f15ee78d054f4c48a98f76ee9a1a45246f8a95c28b76912d4e096",
+    "IND-STAT-ARB-1996": "6cd0641f8263df85b65d33d47799fa5498ab24eb5e43eca5af16349203ea2cfb",
+    "IND-STAT-CPA-2019": "0a9b6a25dc5dda8a37a497e0e1c1e606d8685c0fd91b5c7388fea79a75a93e83"
+  }
+}
