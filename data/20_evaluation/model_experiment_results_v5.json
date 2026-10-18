@@ -1,0 +1,21 @@
+{
+  "report_version": "v5.0.0",
+  "phase": 37,
+  "model_name": "LegalDecoderTransformer-1.07M",
+  "parameters": 1069824,
+  "seed": 42,
+  "steps": 50,
+  "initial_train_loss": 7.6451,
+  "final_train_loss": 5.075,
+  "initial_val_loss": 7.644,
+  "final_val_loss": 5.8831,
+  "train_loss_delta": -2.5701,
+  "val_loss_delta": -1.7609,
+  "tokens_per_second": 87225.4,
+  "total_time_seconds": 2.35,
+  "peak_vram_mb": 365.68,
+  "checkpoint_file": "research\\original_model\\checkpoints\\phase37_1m_baseline_regression.pt",
+  "checkpoint_sha256": "1d01457fe0b81c8439759e9d70423fcc1c8e82466e680435dc560fbb9948500d",
+  "device": "cuda",
+  "manifest_ref": "research\\original_model\\manifests\\dataset_manifest_v5.json"
+}

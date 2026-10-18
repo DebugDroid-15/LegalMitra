@@ -1,0 +1,393 @@
+{
+  "split": "val",
+  "sha256": "1de2c18ca940173235bc91f4b385226f35eae83ac6a27da75bc5144ba04a6cac",
+  "items": [
+    {
+      "id": "IND-STAT-NI-1881:SEC:138",
+      "source_id": "IND-STAT-NI-1881",
+      "title": "The Negotiable Instruments Act, 1881",
+      "ref": "Section 138",
+      "language": "en",
+      "text": "The Negotiable Instruments Act, 1881 - Section 138: Where any cheque drawn by a person on an account maintained by him with a banker for payment of any amount of money to another person from out of that account for the discharge, in whole or in part, of any debt or other liability, is returned by the bank unpaid, either because of the amount of money standing to the credit of that account is insufficient to honour the cheque or that it exceeds the amount arranged to be paid from that account by an agreement made with that bank, such person shall be deemed to have committed an offence and shall, without prejudice to any other provisions of this Act, be punished with imprisonment for a term which may be extended to two years, or with fine which may extend to twice the amount of the cheque, or with both: Provided that nothing contained in this section shall apply unless— (a) the cheque has been presented to the bank within a period of three months from the date on which it is drawn or within the period of its validity, whichever is earlier; (b) the payee or the holder in due course of the cheque, as the case may be, makes a demand for the payment of the said amount of money by giving a notice; in writing, to the drawer of the cheque, within thirty days of the receipt of information by him from the bank regarding the return of the cheque as unpaid; and (c) the drawer of such cheque fails to make the payment of the said amount of money to the payee or, as the case may be, to the holder in due course of the cheque, within fifteen days of the receipt of the said notice.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-NI-1881:SEC:138:EXP:Explanation",
+      "source_id": "IND-STAT-NI-1881",
+      "title": "The Negotiable Instruments Act, 1881",
+      "ref": "Section 138 Explanation",
+      "language": "en",
+      "text": "The Negotiable Instruments Act, 1881 - Section 138 Explanation: For the purposes of this section, 'debt or other liability' means a legally enforceable debt or other liability.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-NI-1881:SEC:138:PROVISO:1",
+      "source_id": "IND-STAT-NI-1881",
+      "title": "The Negotiable Instruments Act, 1881",
+      "ref": "Section 138 Proviso 1",
+      "language": "en",
+      "text": "The Negotiable Instruments Act, 1881 - Section 138 Proviso 1: the cheque has been presented to the bank within a period of three months from the date on which it is drawn or within the period of its validity, whichever is earlier;",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-NI-1881:SEC:138:PROVISO:2",
+      "source_id": "IND-STAT-NI-1881",
+      "title": "The Negotiable Instruments Act, 1881",
+      "ref": "Section 138 Proviso 2",
+      "language": "en",
+      "text": "The Negotiable Instruments Act, 1881 - Section 138 Proviso 2: the payee or holder in due course makes a demand for payment by giving notice in writing within thirty days of receipt of information from the bank;",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-NI-1881:SEC:138:PROVISO:3",
+      "source_id": "IND-STAT-NI-1881",
+      "title": "The Negotiable Instruments Act, 1881",
+      "ref": "Section 138 Proviso 3",
+      "language": "en",
+      "text": "The Negotiable Instruments Act, 1881 - Section 138 Proviso 3: the drawer of such cheque fails to make payment of the said amount within fifteen days of receipt of the said notice.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-NI-1881:SEC:139",
+      "source_id": "IND-STAT-NI-1881",
+      "title": "The Negotiable Instruments Act, 1881",
+      "ref": "Section 139",
+      "language": "en",
+      "text": "The Negotiable Instruments Act, 1881 - Section 139: It shall be presumed, unless the contrary is proved, that the holder of a cheque received the cheque of the nature referred to in section 138 for the discharge, in whole or in part, of any debt or other liability.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-NI-1881:SEC:140",
+      "source_id": "IND-STAT-NI-1881",
+      "title": "The Negotiable Instruments Act, 1881",
+      "ref": "Section 140",
+      "language": "en",
+      "text": "The Negotiable Instruments Act, 1881 - Section 140: It shall not be a defence in a prosecution for an offence under section 138 that the drawer had no reason to believe when he issued the cheque that the cheque may be dishonoured on presentment for the reasons stated in that section.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-NI-1881:SEC:141",
+      "source_id": "IND-STAT-NI-1881",
+      "title": "The Negotiable Instruments Act, 1881",
+      "ref": "Section 141",
+      "language": "en",
+      "text": "The Negotiable Instruments Act, 1881 - Section 141: (1) If the person committing an offence under section 138 is a company, every person who, at the time the offence was committed, was in charge of, and was responsible to the company for the conduct of the business of the company, as well as the company, shall be deemed to be guilty of the offence and shall be liable to be proceeded against and punished accordingly: Provided that nothing contained in this sub-section shall render any person liable to punishment if he proves that the offence was committed without his knowledge, or that he had exercised all due diligence to prevent the commission of such offence.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-NI-1881:SEC:142",
+      "source_id": "IND-STAT-NI-1881",
+      "title": "The Negotiable Instruments Act, 1881",
+      "ref": "Section 142",
+      "language": "en",
+      "text": "The Negotiable Instruments Act, 1881 - Section 142: (1) Notwithstanding anything contained in the Code of Criminal Procedure, 1973— (a) no court shall take cognizance of any offence punishable under section 138 except upon a complaint, in writing, made by the payee or, as the case may be, the holder in due course of the cheque; (b) such complaint is made within one month of the date on which the cause of action arises under clause (c) of the proviso to section 138: Provided that the cognizance of a complaint may be taken by the court after the prescribed period, if the complainant satisfies the court that he had sufficient cause for not making the complaint within such period.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-SRA-1963:SEC:10",
+      "source_id": "IND-STAT-SRA-1963",
+      "title": "The Specific Relief Act, 1963",
+      "ref": "Section 10",
+      "language": "en",
+      "text": "The Specific Relief Act, 1963 - Section 10: The specific performance of a contract shall be enforced by the court subject to the provisions contained in sub-section (2) of section 11, section 14 and section 16. [Substituted by Act 18 of 2018, s. 3 (w.e.f. 1-10-2018)].",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-SRA-1963:SEC:14",
+      "source_id": "IND-STAT-SRA-1963",
+      "title": "The Specific Relief Act, 1963",
+      "ref": "Section 14",
+      "language": "en",
+      "text": "The Specific Relief Act, 1963 - Section 14: The following contracts cannot be specifically enforced, namely:— (a) where a party to the contract has obtained substituted performance of contract in accordance with the provisions of section 20; (b) a contract, the performance of which involves the performance of a continuous duty which the court cannot supervise; (c) a contract which is so dependent on the personal qualifications of the parties that the court cannot enforce specific performance of its material terms; and (d) a contract which is in its nature determinable.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-SRA-1963:SEC:16",
+      "source_id": "IND-STAT-SRA-1963",
+      "title": "The Specific Relief Act, 1963",
+      "ref": "Section 16",
+      "language": "en",
+      "text": "The Specific Relief Act, 1963 - Section 16: Specific performance of a contract cannot be enforced in favour of a person— (a) who has obtained substituted performance of contract under section 20; or (b) who has become incapable of performing, or violates any essential term of, the contract that on his part remains to be performed, or acts in fraud of the contract, or wilfully acts at variance with, or in subversion of, the relation intended to be established by the contract; or (c) who fails to prove that he has performed or has always been ready and willing to perform the essential terms of the contract which are to be performed by him.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-SRA-1963:SEC:20",
+      "source_id": "IND-STAT-SRA-1963",
+      "title": "The Specific Relief Act, 1963",
+      "ref": "Section 20",
+      "language": "en",
+      "text": "The Specific Relief Act, 1963 - Section 20: (1) Where the contract is broken due to non-performance of promise by any party, the party who suffers by such breach shall have the option of substituted performance through a third party or by his own agency, and, recover the expenses and other costs actually incurred, spent or suffered by him, from the party committing such breach. [Substituted by Act 18 of 2018, s. 10 (w.e.f. 1-10-2018)].",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-SRA-1963:SEC:20A",
+      "source_id": "IND-STAT-SRA-1963",
+      "title": "The Specific Relief Act, 1963",
+      "ref": "Section 20A",
+      "language": "en",
+      "text": "The Specific Relief Act, 1963 - Section 20A: (1) No injunction shall be granted by court in a suit under this Act involving a contract relating to an infrastructure project specified in the Schedule, where granting injunction would cause impediment or delay in the progress or completion of such infrastructure project. [Inserted by Act 18 of 2018, s. 10 (w.e.f. 1-10-2018)].",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-SRA-1963:SEC:20A:SUB:1",
+      "source_id": "IND-STAT-SRA-1963",
+      "title": "The Specific Relief Act, 1963",
+      "ref": "Section 20A(1)",
+      "language": "en",
+      "text": "The Specific Relief Act, 1963 - Section 20A(1): No injunction shall be granted by court in a suit under this Act involving a contract relating to an infrastructure project specified in the Schedule, where granting injunction would cause impediment or delay in the progress or completion of such infrastructure project.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-SRA-1963:SEC:20A:SUB:2",
+      "source_id": "IND-STAT-SRA-1963",
+      "title": "The Specific Relief Act, 1963",
+      "ref": "Section 20A(2)",
+      "language": "en",
+      "text": "The Specific Relief Act, 1963 - Section 20A(2): The Central Government may, depending upon the requirement for development of infrastructure projects, and if it considers necessary or expedient to do so, by notification in the Official Gazette, amend the Schedule.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-SRA-1963:SEC:34",
+      "source_id": "IND-STAT-SRA-1963",
+      "title": "The Specific Relief Act, 1963",
+      "ref": "Section 34",
+      "language": "en",
+      "text": "The Specific Relief Act, 1963 - Section 34: Any person entitled to any legal character, or to any right as to any property, may institute a suit against any person denying, or interested to deny, his title to such character or right, and the court may in its discretion make therein a declaration that he is so entitled, and the plaintiff need not in such suit ask for any further relief: Provided that no court shall make any such declaration where the plaintiff, being able to seek further relief than a mere declaration of title, omits to do so.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-SRA-1963:SEC:38",
+      "source_id": "IND-STAT-SRA-1963",
+      "title": "The Specific Relief Act, 1963",
+      "ref": "Section 38",
+      "language": "en",
+      "text": "The Specific Relief Act, 1963 - Section 38: (1) Subject to the other provisions contained in or referred to by this Chapter, a perpetual injunction may be granted to the plaintiff to prevent the breach of an obligation existing in his favour, whether expressly or by implication. (2) When any such obligation arises from contract, the court shall be guided by the rules and provisions contained in Chapter II. (3) When the defendant invades or threatens to invade the plaintiff's right to, or enjoyment of, property, the court may grant a perpetual injunction in the following cases: (a) where the defendant is trustee of the property for the plaintiff; (b) where there exists no standard for ascertaining the actual damage caused; (c) where the invasion is such that compensation in money would not afford adequate relief; (d) where the injunction is necessary to prevent a multiplicity of judicial proceedings.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-SRA-1963:SEC:41",
+      "source_id": "IND-STAT-SRA-1963",
+      "title": "The Specific Relief Act, 1963",
+      "ref": "Section 41",
+      "language": "en",
+      "text": "The Specific Relief Act, 1963 - Section 41: An injunction cannot be granted— (ha) if it would impede or delay the progress or completion of any infrastructure project or interfere with the continued provision of relevant facility related thereto or services being the subject matter of such project.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-SRA-1963:SEC:5",
+      "source_id": "IND-STAT-SRA-1963",
+      "title": "The Specific Relief Act, 1963",
+      "ref": "Section 5",
+      "language": "en",
+      "text": "The Specific Relief Act, 1963 - Section 5: A person entitled to the possession of specific immovable property may recover it in the manner provided by the Code of Civil Procedure, 1908.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-SRA-1963:SEC:6",
+      "source_id": "IND-STAT-SRA-1963",
+      "title": "The Specific Relief Act, 1963",
+      "ref": "Section 6",
+      "language": "en",
+      "text": "The Specific Relief Act, 1963 - Section 6: (1) If any person is dispossessed without his consent of immovable property otherwise than in due course of law, he or any person through whom he has been in possession or any person claiming through him may, by suit, recover possession thereof, notwithstanding any other title that may be set up in such suit. (2) No suit under this section shall be brought— (a) after the expiry of six months from the date of dispossession; or (b) against the Government.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-SRA-1963:SEC:Schedule",
+      "source_id": "IND-STAT-SRA-1963",
+      "title": "The Specific Relief Act, 1963",
+      "ref": "Section Schedule",
+      "language": "en",
+      "text": "The Specific Relief Act, 1963 - Section Schedule: Schedule referred to in section 20A: 1. Transport (Roads and bridges, Ports, Shipyards, Inland Waterways, Airports, Railway track, tunnels, viaducts, bridges, Urban Public Transport). 2. Energy (Electricity Generation, Electricity Transmission, Electricity Distribution, Oil pipelines, Oil and gas storage, Gas pipelines). 3. Water and Sanitation (Solid Waste Management, Water supply pipelines, Sewage treatment plants, Irrigation). 4. Communication (Telecommunication, Telecommunication towers). 5. Social and Commercial Infrastructure (Affordable Housing, Hospitals, Tourism infrastructure).",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "HI-STAT-IND-STAT-BSA-2023-HI-019",
+      "source_id": "IND-STAT-BSA-2023-HI",
+      "title": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023)",
+      "ref": "धारा 22 (Section 22 - Admission)",
+      "language": "hi",
+      "text": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023) - धारा 22 (Section 22 - Admission): धारा 22. स्वीकृति की परिभाषा — स्वीकृति वह मौखिक या दस्तावेजी या इलेक्ट्रॉनिक रूप में अंतर्विष्ट कथन है, जो किसी विवादक तथ्य या सुसंगत तथ्य के बारे में कोई अनुमान इंगित करता है, और जो ऐसे व्यक्तियों में से किसी के द्वारा और ऐसी परिस्थितियों में किया गया है, जो इसमें इसके पश्चात् उल्लिखित हैं।",
+      "provenance": "data/09_national_corpus/hindi_statutory_corpus.json"
+    },
+    {
+      "id": "HI-STAT-IND-STAT-BSA-2023-HI-020",
+      "source_id": "IND-STAT-BSA-2023-HI",
+      "title": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023)",
+      "ref": "धारा 61 (Section 61 - Admissibility of Electronic Records)",
+      "language": "hi",
+      "text": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023) - धारा 61 (Section 61 - Admissibility of Electronic Records): धारा 61. इलेक्ट्रॉनिक या डिजिटल अभिलेखों की ग्राह्यता — किसी इलेक्ट्रॉनिक या डिजिटल अभिलेख की ग्राह्यता के संबंध में, उसकी अंतर्वस्तु को साक्ष्य में साबित करने के लिए धारा 63 के उपबंध लागू होंगे। इलेक्ट्रॉनिक या डिजिटल अभिलेख की वही विधिक प्रास्थिति, प्रभाव और प्रवर्तनीयता होगी जो किसी दस्तावेज की होती है।",
+      "provenance": "data/09_national_corpus/hindi_statutory_corpus.json"
+    },
+    {
+      "id": "HI-STAT-IND-STAT-BSA-2023-HI-021",
+      "source_id": "IND-STAT-BSA-2023-HI",
+      "title": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023)",
+      "ref": "धारा 63 (Section 63 - Electronic Record Conditions)",
+      "language": "hi",
+      "text": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023) - धारा 63 (Section 63 - Electronic Record Conditions): धारा 63. इलेक्ट्रॉनिक अभिलेखों की ग्राह्यता के संबंध में विशेष उपबंध — (1) इस अधिनियम में किसी बात के होते हुए भी, कंप्यूटर आउटपुट में अंतर्विष्ट कोई सूचना, जो इलेक्ट्रॉनिक अभिलेख के रूप में किसी कंप्यूटर द्वारा उत्पादित की गई हो, दस्तावेज मानी जाएगी यदि उसमें विनिर्दिष्ट शर्तें पूरी की जाती हैं। (4) किसी कार्यवाही में जहां इस धारा के अधीन साक्ष्य में कोई कथन देना चाहा जाता है, वहां एक प्रमाणपत्र प्रस्तुत किया जाएगा जिस पर कंप्यूटर के उचित संचालन के लिए उत्तरदायी किसी अधिकृत व्यक्ति द्वारा हस्ताक्षर किए जाएंगे।",
+      "provenance": "data/09_national_corpus/hindi_statutory_corpus.json"
+    },
+    {
+      "id": "HI-STAT-IND-STAT-CPC-1908-HI-025",
+      "source_id": "IND-STAT-CPC-1908-HI",
+      "title": "सिविल प्रक्रिया संहिता, 1908 (Code of Civil Procedure, 1908)",
+      "ref": "धारा 11 (Section 11 - Res Judicata)",
+      "language": "hi",
+      "text": "सिविल प्रक्रिया संहिता, 1908 (Code of Civil Procedure, 1908) - धारा 11 (Section 11 - Res Judicata): धारा 11. प्राङ्न्याय — कोई भी न्यायालय किसी ऐसे वाद या विवादक का विचारण नहीं करेगा जिसमें प्रत्यक्षत: और सारतः विवादक विषय उसी हक के अधीन मुकदमा करने वाले उन्हीं पक्षकारों के बीच या उन पक्षकारों के बीच, जिनसे वे या उनमें से कोई दावा करते हैं, किसी पूर्ववर्ती वाद में ऐसे सक्षम न्यायालय में प्रत्यक्षत: और सारतः विवादक विषय रहा है, और ऐसे न्यायालय द्वारा सुना जा चुका है और अंतिम रूप से विनिश्चित किया जा चुका है।",
+      "provenance": "data/09_national_corpus/hindi_statutory_corpus.json"
+    },
+    {
+      "id": "HI-STAT-IND-STAT-CPC-1908-HI-026",
+      "source_id": "IND-STAT-CPC-1908-HI",
+      "title": "सिविल प्रक्रिया संहिता, 1908 (Code of Civil Procedure, 1908)",
+      "ref": "धारा 151 (Section 151 - Inherent Powers)",
+      "language": "hi",
+      "text": "सिविल प्रक्रिया संहिता, 1908 (Code of Civil Procedure, 1908) - धारा 151 (Section 151 - Inherent Powers): धारा 151. न्यायालय की अंतर्निहित शक्तियों की व्यावृत्ति — इस संहिता की कोई बात न्यायालय की ऐसी अंतर्निहित शक्ति को सीमित या अन्यथा प्रभावित करने वाली नहीं समझी जाएगी जो न्याय के उद्देश्यों की प्राप्ति के लिए या न्यायालय की प्रक्रिया के दुरुपयोग के निवारण के लिए आवश्यक आदेश करने के लिए न्यायालय में निहित है।",
+      "provenance": "data/09_national_corpus/hindi_statutory_corpus.json"
+    },
+    {
+      "id": "P34-IND-KA-STAT-KLRA-1961-028",
+      "source_id": "IND-KA-STAT-KLRA-1961",
+      "title": "Karnataka Land Reforms Act, 1961",
+      "ref": "Section 79A - Restriction on acquisition of agricultural land",
+      "language": "en",
+      "text": "Karnataka Land Reforms Act, 1961 - Section 79A - Restriction on acquisition of agricultural land: Section 79A. Acquisition of land by certain persons prohibited: No person or family or joint family who has an assured annual income from sources other than agricultural lands shall be entitled to acquire any agricultural land in the State of Karnataka, ensuring that agricultural lands remain preserved for bona fide cultivators and preventing speculative non-agricultural accumulation.",
+      "provenance": "data/09_national_corpus/phase34_expanded_corpus.json"
+    },
+    {
+      "id": "PASSAGE-P37-IND-STAT-BSA-2023-HI-050",
+      "source_id": "IND-STAT-BSA-2023-HI",
+      "title": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023)",
+      "ref": "धारा 1 (Section 1)",
+      "language": "hi",
+      "text": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023) - धारा 1 (Section 1): धारा 1. संक्षिप्त नाम, विस्तार और प्रारंभ — (1) इस अधिनियम का संक्षिप्त नाम भारतीय साक्ष्य अधिनियम, 2023 है। (2) यह संपूर्ण भारत पर लागू है और न्यायालयों में या उनके समक्ष की सब न्यायिक कार्यवाहियों को, जिनके अंतर्गत सेना न्यायालय भी हैं, लागू है, किंतु शपथपत्रों या मध्यस्थ के समक्ष कार्यवाहियों को लागू नहीं है। (3) यह उस तारीख को प्रवृत्त होगा जो केंद्रीय सरकार राजपत्र में अधिसूचना द्वारा नियत करे।",
+      "provenance": "भारत का राजपत्र (असाधारण), भाग II, खंड 1, संख्या 47 (25 दिसंबर, 2023)"
+    },
+    {
+      "id": "PASSAGE-P37-IND-STAT-BSA-2023-HI-051",
+      "source_id": "IND-STAT-BSA-2023-HI",
+      "title": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023)",
+      "ref": "धारा 2 (Section 2 - Definitions)",
+      "language": "hi",
+      "text": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023) - धारा 2 (Section 2 - Definitions): धारा 2. परिभाषाएं — इस अधिनियम में, जब तक कि संदर्भ से अन्यथा अपेक्षित न हो,— (क) 'न्यायालय' के अंतर्गत सब न्यायाधीश और मजिस्ट्रेट तथा मध्यस्थों के सिवाय साक्ष्य लेने के लिए वैध रूप से प्राधिकृत सब व्यक्ति हैं; (ख) 'दस्तावेज' से कोई ऐसा विषय अभिप्रेत है जो किसी पदार्थ पर अक्षरों, अंकों या चिह्नों द्वारा या इलेक्ट्रॉनिक और डिजिटल साधनों द्वारा अभिव्यक्त या वर्णित किया गया हो; (ग) 'साक्ष्य' से मौखिक साक्ष्य और दस्तावेजी साक्ष्य, जिसमें इलेक्ट्रॉनिक या डिजिटल अभिलेख सम्मिलित हैं, अभिप्रेत हैं; (घ) कोई तथ्य 'साबित' हुआ कहा जाता है जब न्यायालय अपने समक्ष के विषयों पर विचार करने के पश्चात यह विश्वास करे कि उसका अस्तित्व है।",
+      "provenance": "भारत का राजपत्र (असाधारण), भाग II, खंड 1, संख्या 47 (25 दिसंबर, 2023)"
+    },
+    {
+      "id": "PASSAGE-P37-IND-STAT-BSA-2023-HI-052",
+      "source_id": "IND-STAT-BSA-2023-HI",
+      "title": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023)",
+      "ref": "धारा 4 (Section 4 - Relevancy of Facts forming part of same transaction / Res Gestae)",
+      "language": "hi",
+      "text": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023) - धारा 4 (Section 4 - Relevancy of Facts forming part of same transaction / Res Gestae): धारा 4. एक ही संव्यवहार के भाग होने वाले तथ्यों की सुसंगति — जो तथ्य विवादग्रस्त न होते हुए भी किसी विवादक तथ्य से इस प्रकार संसक्त हैं कि वे एक ही संव्यवहार के भाग हैं, वे तथ्य सुसंगत हैं, चाहे वे उसी समय और स्थान पर या विभिन्न समयों और स्थानों पर घटित हुए हों।",
+      "provenance": "भारत का राजपत्र (असाधारण), भाग II, खंड 1, संख्या 47 (25 दिसंबर, 2023)"
+    },
+    {
+      "id": "PASSAGE-P37-IND-STAT-BSA-2023-HI-053",
+      "source_id": "IND-STAT-BSA-2023-HI",
+      "title": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023)",
+      "ref": "धारा 22 (Section 22 - Confession caused by inducement, threat or promise)",
+      "language": "hi",
+      "text": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023) - धारा 22 (Section 22 - Confession caused by inducement, threat or promise): धारा 22. उत्प्रेरणा, धमकी या वचन द्वारा कराई गई संस्वीकृति का दांडिक कार्यवाही में विसंगत होना — अभियुक्त व्यक्ति द्वारा की गई संस्वीकृति दांडिक कार्यवाही में विसंगत होती है, यदि उसके कराए जाने के बारे में न्यायालय को प्रतीत होता है कि वह प्राधिकारवान व्यक्ति की ओर से दी गई किसी उत्प्रेरणा, धमकी या वचन द्वारा कराई गई है।",
+      "provenance": "भारत का राजपत्र (असाधारण), भाग II, खंड 1, संख्या 47 (25 दिसंबर, 2023)"
+    },
+    {
+      "id": "PASSAGE-P37-IND-STAT-BSA-2023-HI-054",
+      "source_id": "IND-STAT-BSA-2023-HI",
+      "title": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023)",
+      "ref": "धारा 23 (Section 23 - Confession to Police Officer not to be proved)",
+      "language": "hi",
+      "text": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023) - धारा 23 (Section 23 - Confession to Police Officer not to be proved): धारा 23. पुलिस अधिकारी को की गई संस्वीकृति का साबित न किया जाना — किसी पुलिस अधिकारी से की गई कोई भी संस्वीकृति किसी अपराध के अभियुक्त व्यक्ति के विरुद्ध साबित नहीं की जाएगी।",
+      "provenance": "भारत का राजपत्र (असाधारण), भाग II, खंड 1, संख्या 47 (25 दिसंबर, 2023)"
+    },
+    {
+      "id": "PASSAGE-P37-IND-STAT-BSA-2023-HI-055",
+      "source_id": "IND-STAT-BSA-2023-HI",
+      "title": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023)",
+      "ref": "धारा 26 (Section 26 - Dying Declaration)",
+      "language": "hi",
+      "text": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023) - धारा 26 (Section 26 - Dying Declaration): धारा 26. उन दशाओं का उल्लेख जिनमें उस व्यक्ति द्वारा किया गया सुसंगत तथ्य का कथन सुसंगत है जो मर गया है या मिल नहीं सकता — किसी ऐसे व्यक्ति द्वारा किए गए लिखित या मौखिक कथन, जो मर गया है या मिल नहीं सकता, तब सुसंगत तथ्य होते हैं जब वह कथन उस व्यक्ति द्वारा अपनी मृत्यु के कारण के बारे में या उस संव्यवहार की किसी परिस्थिति के बारे में किया गया है जिसके फलस्वरूप उसकी मृत्यु हुई (मृत्युकालिक कथन)।",
+      "provenance": "भारत का राजपत्र (असाधारण), भाग II, खंड 1, संख्या 47 (25 दिसंबर, 2023)"
+    },
+    {
+      "id": "PASSAGE-P37-IND-STAT-BSA-2023-HI-056",
+      "source_id": "IND-STAT-BSA-2023-HI",
+      "title": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023)",
+      "ref": "धारा 39 (Section 39 - Opinions of Experts)",
+      "language": "hi",
+      "text": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023) - धारा 39 (Section 39 - Opinions of Experts): धारा 39. विशेषज्ञों की राय — जब न्यायालय को विदेशी विधि या विज्ञान या कला के किसी विषय पर, या हस्तलेख या उंगली चिह्नों या इलेक्ट्रॉनिक साक्ष्य की पहचान के बारे में राय बनानी हो, तब उस विषय पर ऐसे व्यक्तियों की राय, जो विशेष रूप से कुशल हैं, सुसंगत तथ्य हैं और ऐसे व्यक्ति विशेषज्ञ कहलाते हैं।",
+      "provenance": "भारत का राजपत्र (असाधारण), भाग II, खंड 1, संख्या 47 (25 दिसंबर, 2023)"
+    },
+    {
+      "id": "PASSAGE-P37-IND-STAT-BSA-2023-HI-057",
+      "source_id": "IND-STAT-BSA-2023-HI",
+      "title": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023)",
+      "ref": "धारा 61 (Section 61 - Admissibility of Electronic Records)",
+      "language": "hi",
+      "text": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023) - धारा 61 (Section 61 - Admissibility of Electronic Records): धारा 61. इलेक्ट्रॉनिक या डिजिटल अभिलेखों की ग्राह्यता — इस अधिनियम में किसी बात के होते हुए भी, इलेक्ट्रॉनिक या डिजिटल रूप में अंतर्विष्ट कोई सूचना, जो किसी कंप्यूटर या इलेक्ट्रॉनिक युक्ति द्वारा मुद्रित, भंडारित या उद्धृत की गई है, दस्तावेज समझी जाएगी और किसी कार्यवाही में मूल दस्तावेज के साक्ष्य के रूप में ग्राह्य होगी।",
+      "provenance": "भारत का राजपत्र (असाधारण), भाग II, खंड 1, संख्या 47 (25 दिसंबर, 2023)"
+    },
+    {
+      "id": "PASSAGE-P37-IND-STAT-BSA-2023-HI-058",
+      "source_id": "IND-STAT-BSA-2023-HI",
+      "title": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023)",
+      "ref": "धारा 63 (Section 63 - Certificate for Electronic Evidence)",
+      "language": "hi",
+      "text": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023) - धारा 63 (Section 63 - Certificate for Electronic Evidence): धारा 63. इलेक्ट्रॉनिक साक्ष्य के संबंध में प्रमाण पत्र — धारा 61 के अधीन किसी इलेक्ट्रॉनिक अभिलेख को साक्ष्य में पेश किए जाने पर उसके साथ एक प्रमाण पत्र संलग्न किया जाएगा, जिस पर उस युक्ति का प्रबंधन करने वाले भारसाधक व्यक्ति या किसी सक्षम विशेषज्ञ द्वारा हस्ताक्षर किए जाएंगे, जिसमें युक्ति के उचित कार्यकरण और अखंडता की पुष्टि की जाएगी।",
+      "provenance": "भारत का राजपत्र (असाधारण), भाग II, खंड 1, संख्या 47 (25 दिसंबर, 2023)"
+    },
+    {
+      "id": "PASSAGE-P37-IND-STAT-BSA-2023-HI-059",
+      "source_id": "IND-STAT-BSA-2023-HI",
+      "title": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023)",
+      "ref": "धारा 104 (Section 104 - Burden of Proof)",
+      "language": "hi",
+      "text": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023) - धारा 104 (Section 104 - Burden of Proof): धारा 104. सबूत का भार — जो कोई न्यायालय से चाहता है कि वह किसी विधिक अधिकार या दायित्व के बारे में निर्णय दे, जो उन तथ्यों के अस्तित्व पर निर्भर है जिन्हें वह प्रख्यान करता है, उसे साबित करना होगा कि उन तथ्यों का अस्तित्व है। जब कोई व्यक्ति किसी तथ्य का अस्तित्व साबित करने के लिए आबद्ध है, तब यह कहा जाता है कि सबूत का भार उस व्यक्ति पर है।",
+      "provenance": "भारत का राजपत्र (असाधारण), भाग II, खंड 1, संख्या 47 (25 दिसंबर, 2023)"
+    },
+    {
+      "id": "PASSAGE-P37-IND-STAT-BSA-2023-HI-060",
+      "source_id": "IND-STAT-BSA-2023-HI",
+      "title": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023)",
+      "ref": "धारा 121 (Section 121 - Estoppel)",
+      "language": "hi",
+      "text": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023) - धारा 121 (Section 121 - Estoppel): धारा 121. विबंध — जब कि एक व्यक्ति ने अपनी घोषणा, कार्य या लोप द्वारा अन्य व्यक्ति को साशय विश्वास कराया है कि कोई बात सत्य है और ऐसे विश्वास पर कार्य कराया है, तब न तो उसे और न उसके प्रतिनिधि को किसी वाद या कार्यवाही में उस बात की सत्यता का प्रत्याख्यान करने दिया जाएगा।",
+      "provenance": "भारत का राजपत्र (असाधारण), भाग II, खंड 1, संख्या 47 (25 दिसंबर, 2023)"
+    },
+    {
+      "id": "PASSAGE-P37-IND-STAT-BSA-2023-HI-061",
+      "source_id": "IND-STAT-BSA-2023-HI",
+      "title": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023)",
+      "ref": "धारा 138 (Section 138 - Examination of Witnesses)",
+      "language": "hi",
+      "text": "भारतीय साक्ष्य अधिनियम, 2023 (Bharatiya Sakshya Adhiniyam, 2023) - धारा 138 (Section 138 - Examination of Witnesses): धारा 138. साक्षियों की परीक्षा का क्रम — (1) साक्षियों की पहले मुख्य परीक्षा होगी, फिर यदि विरोधी पक्षकार चाहे तो प्रतिपरीक्षा होगी, फिर यदि बुलाने वाला पक्षकार चाहे तो पुनःपरीक्षा होगी। (2) मुख्य परीक्षा और प्रतिपरीक्षा सुसंगत तथ्यों से संबंधित होनी चाहिए, किंतु प्रतिपरीक्षा उन तथ्यों तक सीमित रहना आवश्यक नहीं है जिनकी साक्षी ने अपनी मुख्य परीक्षा में गवाही दी थी।",
+      "provenance": "भारत का राजपत्र (असाधारण), भाग II, खंड 1, संख्या 47 (25 दिसंबर, 2023)"
+    },
+    {
+      "id": "PASSAGE-P37-IND-GAZ-COMMENCE-BSA-2024-064",
+      "source_id": "IND-GAZ-COMMENCE-BSA-2024",
+      "title": "Notification S.O. 851(E) - Commencement of Bharatiya Sakshya Adhiniyam, 2023",
+      "ref": "S.O. 851(E)",
+      "language": "en",
+      "text": "Notification S.O. 851(E) - Commencement of Bharatiya Sakshya Adhiniyam, 2023 - S.O. 851(E): Notification S.O. 851(E). In exercise of the powers conferred by sub-section (3) of section 1 of the Bharatiya Sakshya Adhiniyam, 2023 (47 of 2023), the Central Government hereby appoints the 1st day of July, 2024 as the date on which the provisions of the said Adhiniyam, shall come into force.",
+      "provenance": "Gazette of India, Extraordinary, Part II, Section 3, Sub-section (ii), dated 23rd February, 2024"
+    },
+    {
+      "id": "PASSAGE-P37-IND-DEL-RULE-DHC-ORIG-2018-071",
+      "source_id": "IND-DEL-RULE-DHC-ORIG-2018",
+      "title": "Delhi High Court (Original Side) Rules, 2018",
+      "ref": "Chapter II, Rule 1 (Exercise of Original Civil Jurisdiction)",
+      "language": "en",
+      "text": "Delhi High Court (Original Side) Rules, 2018 - Chapter II, Rule 1 (Exercise of Original Civil Jurisdiction): Chapter II, Rule 1. Exercise of Original Civil Jurisdiction — Every suit coming before the Court in its ordinary original civil jurisdiction shall be heard and disposed of by a Single Judge. The pecuniary jurisdiction of the High Court of Delhi shall be governed by the Delhi High Court Act, 1966 as amended by the Commercial Courts Act, 2015, exceeding two crore rupees for ordinary suits and three lakh rupees for specified commercial disputes.",
+      "provenance": "High Court of Delhi Notification No. 70/Rules/DHC (24 October, 2018)"
+    },
+    {
+      "id": "PASSAGE-P37-IND-DEL-RULE-DHC-ORIG-2018-072",
+      "source_id": "IND-DEL-RULE-DHC-ORIG-2018",
+      "title": "Delhi High Court (Original Side) Rules, 2018",
+      "ref": "Chapter VII, Rule 2 (Summary Disposal under Commercial Courts Act)",
+      "language": "en",
+      "text": "Delhi High Court (Original Side) Rules, 2018 - Chapter VII, Rule 2 (Summary Disposal under Commercial Courts Act): Chapter VII, Rule 2. Summary Judgment in Commercial Disputes — The Court may, on application of either party, pronounce summary judgment under Order XIII-A of the Code of Civil Procedure, 1908 without recording oral evidence, where the plaintiff has no real prospect of succeeding on the claim or the defendant has no real prospect of successfully defending the claim, and there is no other compelling reason why the claim should be disposed of before a full trial.",
+      "provenance": "High Court of Delhi Notification No. 70/Rules/DHC (24 October, 2018)"
+    }
+  ]
+}

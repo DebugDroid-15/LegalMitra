@@ -1,0 +1,27 @@
+{
+  "manifest_version": "v5.0.0",
+  "created_at": "2026-10-18T17:57:12.030045",
+  "tokenizer": "IndianLegalTokenizerV2 (vocab 2,048)",
+  "total_passages": 1633,
+  "total_usable_tokens": 357358,
+  "en_tokens": 337487,
+  "hi_tokens": 19871,
+  "dataset_sha256": "ecc7fa69ab3ba5269e295e87e25bacfe6645054266fd59e631886a15cd845c6a",
+  "train_sha256": "1382f8ab217bb62f7de779e6955208848a8a575aeef2244bc890913a6c242879",
+  "val_sha256": "1de2c18ca940173235bc91f4b385226f35eae83ac6a27da75bc5144ba04a6cac",
+  "test_sha256": "90be57b5df25329331553a6b9a4d7e0135be79e7eaabf0d50cba7144139daacd",
+  "splits": {
+    "train": {
+      "passages": 1408,
+      "tokens": 310605
+    },
+    "val": {
+      "passages": 43,
+      "tokens": 6961
+    },
+    "test": {
+      "passages": 182,
+      "tokens": 39792
+    }
+  }
+}

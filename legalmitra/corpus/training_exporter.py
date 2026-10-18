@@ -68,6 +68,7 @@ class TrainingCorpusExporter:
         db_path: str = "data/legalmitra_kb.db",
         p33_hindi_path: str = "data/09_national_corpus/hindi_statutory_corpus.json",
         p34_expansion_path: str = "data/09_national_corpus/phase34_expanded_corpus.json",
+        p37_acquired_path: str = "data/09_national_corpus/phase37_acquired_corpus.json",
         tokenizer_path: str = "research/original_model/tokenizer_v2.json",
         manifest_dir: str = "research/original_model/manifests",
         registry_path: str = "data/09_national_corpus/unified_source_registry.json",
@@ -75,12 +76,13 @@ class TrainingCorpusExporter:
         self.db_path = Path(db_path)
         self.p33_hindi_path = Path(p33_hindi_path)
         self.p34_expansion_path = Path(p34_expansion_path)
+        self.p37_acquired_path = Path(p37_acquired_path)
         self.tokenizer_path = Path(tokenizer_path)
         self.manifest_dir = Path(manifest_dir)
         self.registry = UnifiedSourceRegistry(registry_path)
         self.tokenizer = IndianLegalTokenizerV2.load(str(self.tokenizer_path))
 
-    def collect_eligible_passages(self) -> Tuple[List[Dict[str, Any]], int, int]:
+    def collect_eligible_passages(self, include_phase37: bool = False) -> Tuple[List[Dict[str, Any]], int, int]:
         """
         Gathers only authenticated, rights-cleared, non-scaffold passages.
         Returns (passages, scaffold_quarantined_count, pending_review_excluded_count).
@@ -146,6 +148,21 @@ class TrainingCorpusExporter:
                     "provenance": "data/09_national_corpus/phase34_expanded_corpus.json",
                 })
 
+        # 4. Phase 37 National Legal Corpus Passages (Hindi Criminal Codes & Priority Acts)
+        if include_phase37 and self.p37_acquired_path.exists():
+            with open(self.p37_acquired_path, "r", encoding="utf-8") as f:
+                p37_acq = json.load(f)
+            for p in p37_acq.get("passages", []):
+                passages.append({
+                    "id": p["passage_id"],
+                    "source_id": p["source_id"],
+                    "title": p["official_title"],
+                    "ref": p["provision_ref"],
+                    "language": p["language"],
+                    "text": f"{p['official_title']} - {p['provision_ref']}: {p['normalized_content']}",
+                    "provenance": p.get("source_provenance", "data/09_national_corpus/phase37_acquired_corpus.json"),
+                })
+
         # Pending review packages check: 40 candidates are tracked in review register and strictly excluded
         pending_review_count = 40  # Invariant
 
@@ -200,7 +217,8 @@ class TrainingCorpusExporter:
                 "Use a new version tag (e.g. v5) or explicitly pass overwrite=True."
             )
 
-        passages, scaffold_count, pending_review_count = self.collect_eligible_passages()
+        include_phase37 = version.startswith("v5")
+        passages, scaffold_count, pending_review_count = self.collect_eligible_passages(include_phase37=include_phase37)
 
         # Fixed, source-grouped splits (zero cross-split source overlap)
         test_sources = {
@@ -209,12 +227,18 @@ class TrainingCorpusExporter:
             "IND-JUD-SC-2020-ARJUN-KHOTKAR",
             "IND-STAT-IT-2000-HI",
             "IND-JUD-BHC-2008-ROCHE-CIPLA",
+            "IND-STAT-BNSS-2023-HI",
+            "IND-WB-STAT-WBLR-1955",
+            "IND-GAZ-COMMENCE-BNSS-2024",
         }
         val_sources = {
             "IND-STAT-NI-1881",
             "IND-STAT-SRA-1963",
             "IND-STAT-CPC-1908-HI",
             "IND-KA-STAT-KLRA-1961",
+            "IND-STAT-BSA-2023-HI",
+            "IND-DEL-RULE-DHC-ORIG-2018",
+            "IND-GAZ-COMMENCE-BSA-2024",
         }
 
         train_items = []

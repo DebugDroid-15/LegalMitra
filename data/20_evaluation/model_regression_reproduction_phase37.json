@@ -1,0 +1,15 @@
+{
+  "report_version": "v1.0.0",
+  "audit_phase": 37,
+  "evaluated_at": "2026-10-18T17:58:56.940744",
+  "checkpoint_file": "research\\original_model\\checkpoints\\phase37_1m_baseline_regression.pt",
+  "checkpoint_sha256": "1d01457fe0b81c8439759e9d70423fcc1c8e82466e680435dc560fbb9948500d",
+  "model_parameters": 1069824,
+  "validation_manifest": "research\\original_model\\manifests\\val_manifest_v5.json",
+  "validation_samples": 76,
+  "validation_batches": 3,
+  "phase37_measured_val_loss": 5.8831,
+  "evaluation_time_seconds": 2.348,
+  "fidelity_status": "EXACT_MATCH",
+  "device": "cuda"
+}
