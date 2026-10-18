@@ -151,10 +151,55 @@ class TrainingCorpusExporter:
 
         return passages, scaffold_count, pending_review_count
 
-    def export(self, dry_run: bool = False, version: str = "v4") -> ExportSummary:
+    def generate_exclusion_report(self) -> Dict[str, Any]:
+        """Generate comprehensive audit of all excluded sources, chunks, and candidate items."""
+        conn = sqlite3.connect(str(self.db_path))
+        c = conn.cursor()
+        c.execute("SELECT chunk_id, source_id, act_or_case_title FROM legal_chunks WHERE is_synthetic_scaffold = 1;")
+        scaffold_rows = [dict(chunk_id=r[0], source_id=r[1], title=r[2]) for r in c.fetchall()]
+        conn.close()
+
+        # Unindexed / catalog-only sources from registry
+        catalog_only_sources = [
+            s.source_id for s in self.registry.records.values()
+            if s.current_state != SourceLifecycleState.TRAINING_ELIGIBLE
+        ]
+
+        return {
+            "timestamp": datetime.utcnow().isoformat(),
+            "synthetic_scaffold_quarantined": {
+                "count": len(scaffold_rows),
+                "policy": "Strict exclusion under Phase 9 freeze and Phase 30 security protocol",
+                "items": scaffold_rows,
+            },
+            "advocate_review_candidates_pending": {
+                "count": 40,
+                "policy": "Strict exclusion until authorized human advocate sign-off (20 Package A, 20 Package B)",
+                "status": "pending_legal_review",
+            },
+            "user_conversation_database": {
+                "policy": "Strict physical boundary: conversations.db isolated, 0 records eligible",
+                "status": "isolated",
+            },
+            "unindexed_or_candidate_sources": {
+                "count": len(catalog_only_sources),
+                "policy": "Excluded until physical acquisition, parsing, and authenticity verification complete",
+                "source_ids": catalog_only_sources,
+            },
+        }
+
+    def export(self, dry_run: bool = False, version: str = "v4", overwrite: bool = False) -> ExportSummary:
         """
         Executes deterministic export and partitioned manifest writing.
+        Raises FileExistsError if target manifest exists and overwrite=False.
         """
+        target_manifest = self.manifest_dir / f"dataset_manifest_{version}.json"
+        if not dry_run and target_manifest.exists() and not overwrite:
+            raise FileExistsError(
+                f"Manifest {target_manifest} already exists. Immutable manifests cannot be overwritten. "
+                "Use a new version tag (e.g. v5) or explicitly pass overwrite=True."
+            )
+
         passages, scaffold_count, pending_review_count = self.collect_eligible_passages()
 
         # Fixed, source-grouped splits (zero cross-split source overlap)

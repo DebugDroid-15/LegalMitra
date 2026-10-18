@@ -1,0 +1,16 @@
+{
+  "report_version": "v1.0.0",
+  "audit_phase": 36,
+  "evaluated_at": "2026-10-18T16:38:29.670370",
+  "checkpoint_file": "research\\original_model\\checkpoints\\phase35_1m_baseline_regression.pt",
+  "checkpoint_sha256": "984dc882c92bd7960f1af98e2e1c76cf03e00f675c5e9c65ffa5fcabe5256711",
+  "checkpoint_sha256_matches_phase35": true,
+  "model_parameters": 1069824,
+  "device": "cuda",
+  "tokenizer": "IndianLegalTokenizerV2 (vocab 2,048)",
+  "validation_samples": 42,
+  "phase35_recorded_val_loss": 5.6607,
+  "phase36_reproduced_val_loss": 5.6607,
+  "val_loss_delta_vs_phase35": -0.0,
+  "fidelity_status": "EXACT_MATCH"
+}
