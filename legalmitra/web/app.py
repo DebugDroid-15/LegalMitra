@@ -238,6 +238,14 @@ def submit_chat(
     # Record incoming user message
     conv_store.add_message(conversation_id=conv_id, role="user", content=clean_query)
 
+    # Fetch prior messages in this conversation for multi-turn context
+    prior_messages = conv_store.get_messages(conv_id, session_id=session_id) or []
+    # Build history excluding the user message just added
+    history = [
+        {"role": m["role"], "content": m["content"]}
+        for m in prior_messages[:-1]
+    ]
+
     # Build search filters
     filters = SearchFilters(
         act_title=req.act_filter,
@@ -245,9 +253,10 @@ def submit_chat(
     )
 
     try:
-        # Execute Source-Grounded RAG
-        rag_resp = rag_engine.answer(
+        # Execute Source-Grounded RAG with conversation history
+        rag_resp = rag_engine.answer_with_history(
             query=clean_query,
+            history=history,
             filters=filters,
             limit=req.limit,
         )

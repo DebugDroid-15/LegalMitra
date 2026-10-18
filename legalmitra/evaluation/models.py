@@ -20,6 +20,22 @@ class EvaluationCategory(str, Enum):
     CONFLICTING_SOURCE = "conflicting_source"
     PROMPT_INJECTION = "prompt_injection"
     PRIVACY_PROTECTED = "privacy_protected"
+    # Phase 31 Custom Question Categories
+    SINGLE_PROVISION = "single_provision"
+    MULTI_PROVISION = "multi_provision"
+    MULTI_TURN_CONTEXT = "multi_turn_context"
+    MISSING_AMBIGUOUS_FACTS = "missing_ambiguous_facts"
+    MULTI_JURISDICTION = "multi_jurisdiction"
+    COMMENCEMENT_AMENDMENT = "commencement_amendment"
+    OVERRULED_PRECEDENT = "overruled_precedent"
+    STATUTE_PRECEDENT_SYNTHESIS = "statute_precedent_synthesis"
+    PROCEDURAL_DEADLINES = "procedural_deadlines"
+    MULTI_DOMAIN_SCENARIO = "multi_domain_scenario"
+    LEGAL_REMEDIES_STEPS = "legal_remedies_steps"
+    FALSE_LEGAL_PREMISE = "false_legal_premise"
+    UNANSWERABLE_MISSING_EVIDENCE = "unanswerable_missing_evidence"
+    CAUTIOUS_EXPLANATION = "cautious_explanation"
+    ADVERSARIAL_SAFETY_BYPASS = "adversarial_safety_bypass"
 
 
 class AnswerExpectedType(str, Enum):
@@ -31,6 +47,8 @@ class AnswerExpectedType(str, Enum):
     REFUTATION_FALSE_PREMISE = "refutation_false_premise"
     REFUSAL_INJECTION = "refusal_injection"
     REDACTION_PRIVACY = "redaction_privacy"
+    CAUTIOUS_QUALIFIED = "cautious_qualified"
+    CLARIFICATION_REQUIRED = "clarification_required"
 
 
 class SeverityLevel(str, Enum):
@@ -54,6 +72,8 @@ class EvaluationCase(BaseModel):
     forbidden_terms: List[str] = Field(default_factory=list, description="Hallucinated or conflated terms that must NOT appear")
     should_abstain: bool = Field(False, description="Whether the system must report insufficient evidence or abstain")
     rationale: str = Field(..., description="Legal rationale explaining the benchmark ground truth")
+    conversation_history: List[Dict[str, str]] = Field(default_factory=list, description="Prior conversational turns for multi-turn evaluations")
+    is_verified_ground_truth: bool = Field(True, description="Whether reference answer is manually verified vs uncertain holdout")
 
 
 class CitationAudit(BaseModel):

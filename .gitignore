@@ -43,6 +43,9 @@ data/splits/*
 data/conversations.db
 backups/
 logs/
+*.pt
+*.bin
+*.safetensors
 
 # IDE & OS
 .vscode/

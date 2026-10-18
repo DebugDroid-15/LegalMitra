@@ -1,0 +1,12 @@
+{
+  "corpus_sha256": "209583a1d789c5e00b93b5641468ea563ebc52dca60630fabc621241c63fd664",
+  "total_verified_chunks": 1499,
+  "total_tokens_extracted": 294835,
+  "train_chunks_count": 1349,
+  "val_chunks_count": 150,
+  "train_samples_count": 2751,
+  "val_samples_count": 276,
+  "seq_len": 128,
+  "vocab_size": 1024,
+  "synthetic_scaffold_quarantined": true
+}

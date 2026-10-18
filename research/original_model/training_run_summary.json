@@ -1,0 +1,228 @@
+{
+  "device": "cuda",
+  "total_parameters": 938752,
+  "training_steps": 50,
+  "batch_size": 8,
+  "learning_rate": 0.0003,
+  "initial_loss": 6.8835,
+  "final_loss": 5.7128,
+  "loss_reduction": 1.1707,
+  "loss_reduction_pct": 17.01,
+  "training_time_seconds": 2.19,
+  "checkpoint_path": "research\\original_model\\checkpoints\\prototype_step_50.pt",
+  "checkpoint_size_bytes": 11594203,
+  "loss_history": [
+    {
+      "step": 1,
+      "loss": 6.8835
+    },
+    {
+      "step": 2,
+      "loss": 6.6346
+    },
+    {
+      "step": 3,
+      "loss": 6.2918
+    },
+    {
+      "step": 4,
+      "loss": 6.4657
+    },
+    {
+      "step": 5,
+      "loss": 6.6545
+    },
+    {
+      "step": 6,
+      "loss": 6.3111
+    },
+    {
+      "step": 7,
+      "loss": 6.297
+    },
+    {
+      "step": 8,
+      "loss": 6.0268
+    },
+    {
+      "step": 9,
+      "loss": 6.0626
+    },
+    {
+      "step": 10,
+      "loss": 5.9265
+    },
+    {
+      "step": 11,
+      "loss": 6.4391
+    },
+    {
+      "step": 12,
+      "loss": 5.8049
+    },
+    {
+      "step": 13,
+      "loss": 5.5913
+    },
+    {
+      "step": 14,
+      "loss": 6.0827
+    },
+    {
+      "step": 15,
+      "loss": 6.1438
+    },
+    {
+      "step": 16,
+      "loss": 5.8879
+    },
+    {
+      "step": 17,
+      "loss": 6.0623
+    },
+    {
+      "step": 18,
+      "loss": 6.2541
+    },
+    {
+      "step": 19,
+      "loss": 5.881
+    },
+    {
+      "step": 20,
+      "loss": 5.4165
+    },
+    {
+      "step": 21,
+      "loss": 6.2181
+    },
+    {
+      "step": 22,
+      "loss": 5.2826
+    },
+    {
+      "step": 23,
+      "loss": 6.1079
+    },
+    {
+      "step": 24,
+      "loss": 5.1573
+    },
+    {
+      "step": 25,
+      "loss": 5.9203
+    },
+    {
+      "step": 26,
+      "loss": 5.7984
+    },
+    {
+      "step": 27,
+      "loss": 5.3516
+    },
+    {
+      "step": 28,
+      "loss": 5.5667
+    },
+    {
+      "step": 29,
+      "loss": 5.482
+    },
+    {
+      "step": 30,
+      "loss": 5.503
+    },
+    {
+      "step": 31,
+      "loss": 5.7197
+    },
+    {
+      "step": 32,
+      "loss": 5.6322
+    },
+    {
+      "step": 33,
+      "loss": 5.2472
+    },
+    {
+      "step": 34,
+      "loss": 5.5384
+    },
+    {
+      "step": 35,
+      "loss": 5.157
+    },
+    {
+      "step": 36,
+      "loss": 4.7474
+    },
+    {
+      "step": 37,
+      "loss": 5.1444
+    },
+    {
+      "step": 38,
+      "loss": 4.7455
+    },
+    {
+      "step": 39,
+      "loss": 5.3785
+    },
+    {
+      "step": 40,
+      "loss": 5.2528
+    },
+    {
+      "step": 41,
+      "loss": 6.086
+    },
+    {
+      "step": 42,
+      "loss": 5.4406
+    },
+    {
+      "step": 43,
+      "loss": 4.8362
+    },
+    {
+      "step": 44,
+      "loss": 5.8159
+    },
+    {
+      "step": 45,
+      "loss": 5.3848
+    },
+    {
+      "step": 46,
+      "loss": 4.9181
+    },
+    {
+      "step": 47,
+      "loss": 5.632
+    },
+    {
+      "step": 48,
+      "loss": 5.7254
+    },
+    {
+      "step": 49,
+      "loss": 5.2389
+    },
+    {
+      "step": 50,
+      "loss": 5.7128
+    }
+  ],
+  "dataset_manifest": {
+    "corpus_sha256": "209583a1d789c5e00b93b5641468ea563ebc52dca60630fabc621241c63fd664",
+    "total_verified_chunks": 1499,
+    "total_tokens_extracted": 294835,
+    "train_chunks_count": 1349,
+    "val_chunks_count": 150,
+    "train_samples_count": 2751,
+    "val_samples_count": 276,
+    "seq_len": 128,
+    "vocab_size": 1024,
+    "synthetic_scaffold_quarantined": true
+  }
+}

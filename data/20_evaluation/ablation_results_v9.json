@@ -1,0 +1,25 @@
+{
+  "experiment_1_retrieval": {
+    "total_eval_cases": 70,
+    "recall_at_1": 0.7429,
+    "recall_at_3": 0.8,
+    "recall_at_5": 0.8143,
+    "mrr": 0.7702
+  },
+  "experiment_2_multi_turn": {
+    "multi_turn_cases": 7,
+    "recall_without_history_resolution": 0.4286,
+    "recall_with_history_resolution": 1.0,
+    "absolute_delta": 0.5714
+  },
+  "experiment_3_gold_vs_retrieved": {
+    "sample_size": 15,
+    "retrieved_evidence_grounded_rate": 1.0,
+    "gold_evidence_grounded_rate": 1.0
+  },
+  "experiment_4_abstention": {
+    "abstention_cases": 26,
+    "proper_abstention_rate": 0.7692,
+    "hallucination_leakage_rate": 0.2308
+  }
+}

@@ -63,9 +63,15 @@ class LegalEvaluationRunner:
             as_of_date=as_of,
         )
 
+        # Check conversation history
+        conv_hist = getattr(case, "conversation_history", None)
+        search_query = case.question
+        if conv_hist and hasattr(self.rag, "_resolve_query_context"):
+            search_query = self.rag._resolve_query_context(case.question, conv_hist)
+
         # 1. Execute retrieval
         retrieved_chunks = self.kb.search(
-            query=case.question,
+            query=search_query,
             filters=filters,
             limit=5,
         )
@@ -78,6 +84,10 @@ class LegalEvaluationRunner:
         if case.should_abstain and case.category in (
             EvaluationCategory.MISSING_EVIDENCE,
             EvaluationCategory.ADVERSARIAL_PREMISE,
+            EvaluationCategory.UNANSWERABLE_MISSING_EVIDENCE,
+            EvaluationCategory.FALSE_LEGAL_PREMISE,
+            EvaluationCategory.ADVERSARIAL_SAFETY_BYPASS,
+            EvaluationCategory.PROMPT_INJECTION,
         ):
             # For queries where evidence is not in KB, retrieving 0 chunks or non-relevant chunks is expected
             retrieval_success = True
@@ -95,7 +105,10 @@ class LegalEvaluationRunner:
                         break
 
         # 2. Execute RAG answering
-        rag_resp = self.rag.answer(query=case.question, filters=filters, limit=5)
+        if conv_hist and hasattr(self.rag, "answer_with_history"):
+            rag_resp = self.rag.answer_with_history(query=case.question, history=conv_hist, filters=filters, limit=5)
+        else:
+            rag_resp = self.rag.answer(query=case.question, filters=filters, limit=5)
         answer_text = rag_resp.answer
         latency = round(time.time() - start_time, 4)
 

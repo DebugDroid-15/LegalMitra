@@ -1,0 +1,24 @@
+{
+  "version": "v9.0.0",
+  "created_date": "2026-10-18",
+  "author": "Team Shatrujeet (Amar Khera, Ananya Rout, Lucky Kumar, Omm Prakash Sahoo)",
+  "total_cases": 96,
+  "category_counts": {
+    "single_provision": 6,
+    "multi_provision": 7,
+    "multi_turn_context": 7,
+    "missing_ambiguous_facts": 7,
+    "multi_jurisdiction": 6,
+    "commencement_amendment": 7,
+    "overruled_precedent": 6,
+    "statute_precedent_synthesis": 7,
+    "procedural_deadlines": 6,
+    "multi_domain_scenario": 7,
+    "legal_remedies_steps": 6,
+    "false_legal_premise": 6,
+    "unanswerable_missing_evidence": 6,
+    "cautious_explanation": 6,
+    "adversarial_safety_bypass": 6
+  },
+  "sha256_checksum": "eef9935e310959b3b83de129d9c9142c7e1459b590cdfb96304d564040b19d2a"
+}

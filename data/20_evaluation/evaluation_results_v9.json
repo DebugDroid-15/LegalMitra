@@ -1,0 +1,24 @@
+{
+  "total_cases": 96,
+  "passed_cases": 62,
+  "failed_cases": 34,
+  "pass_rate": 0.6458,
+  "failure_counts": {
+    "QUESTION_UNDERSTANDING_FAILURE": 0,
+    "MISSING_FACTS_NOT_CLARIFIED": 0,
+    "JURISDICTION_SELECTION_FAILURE": 0,
+    "TEMPORAL_LAW_FAILURE": 0,
+    "RETRIEVAL_MISS": 8,
+    "RETRIEVAL_RANKING_FAILURE": 3,
+    "SOURCE_QUALITY_FAILURE": 0,
+    "PROMPT_CONSTRUCTION_FAILURE": 0,
+    "MODEL_REASONING_FAILURE": 1,
+    "ANSWER_FORMAT_FAILURE": 0,
+    "UNSUPPORTED_CLAIM": 1,
+    "CITATION_ENTAILMENT_FAILURE": 0,
+    "ABSTENTION_FAILURE": 5,
+    "PRIVACY_OR_SECURITY_FAILURE": 0,
+    "EVALUATION_ORACLE_UNCERTAIN": 0
+  },
+  "trace_file": "data\\20_evaluation\\evaluation_traces_v9.json"
+}
