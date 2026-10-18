@@ -724,56 +724,85 @@ class LegalKnowledgeBase:
         # Sanitize query for FTS5
         fts_query = self._sanitize_fts_query(query)
 
-        # Detect statutory section mention in query (e.g. "Section 61", "Section 63", "s. 482")
-        explicit_sec = filters.section_number
-        if not explicit_sec:
-            sec_match = re.search(r"\b(?:section|sec\.?|s\.)\s*(\d+[A-Z]?)\b", query, re.IGNORECASE)
-            if sec_match:
-                explicit_sec = sec_match.group(1).upper()
+        # Detect all statutory section mentions in query (e.g. "Section 61 and Section 63", "s. 482")
+        explicit_secs = []
+        if filters.section_number:
+            explicit_secs.append(filters.section_number.upper())
+        else:
+            sec_matches = re.findall(r"\b(?:section|sec\.?|s\.)\s*(\d+[A-Z]?)\b", query, re.IGNORECASE)
+            for sm in sec_matches:
+                s_up = sm.upper()
+                if s_up not in explicit_secs:
+                    explicit_secs.append(s_up)
 
         results_dict: Dict[str, SearchResult] = {}
+        stop_words = {
+            'what', 'is', 'the', 'under', 'and', 'for', 'to', 'in', 'of', 'a', 'an', 'or', 'where',
+            'how', 'does', 'can', 'did', 'which', 'occurred', 'supreme', 'court', 'apply', 'determine',
+            'bench', 'there', 'their', 'with', 'from', 'about', 'concerning', 'regarding', 'enactment',
+            'penal', 'provision', 'provisions', 'applies', 'applicable', 'offence', 'act', 'code'
+        }
+        q_tokens = {t.lower() for t in re.findall(r'\w+', query) if t.lower() not in stop_words and len(t) > 2}
 
-        # 1. Exact Section Boost Query (if section number is present)
-        if explicit_sec:
-            sec_sql = """
+        # 1. Exact Section Boost Query (if one or more section numbers are present)
+        if explicit_secs:
+            sec_placeholders = ",".join("?" for _ in explicit_secs)
+            exact_refs = [f"Section {s}" for s in explicit_secs]
+            ref_placeholders = ",".join("?" for _ in exact_refs)
+
+            sec_sql = f"""
                 SELECT c.*, s.source_url
                 FROM legal_chunks c
                 JOIN sources s ON c.source_id = s.document_id
-                WHERE (c.section_number = :sec_num OR c.provision_or_para_ref = :sec_exact OR c.provision_or_para_ref LIKE :sec_like)
-                  AND (:act_title_like IS NULL OR c.act_or_case_title LIKE :act_title_like)
-                  AND (:jurisdiction IS NULL OR c.jurisdiction = :jurisdiction)
-                  AND (:court IS NULL OR c.court = :court)
-                  AND (:doc_type IS NULL OR c.doc_type = :doc_type)
-                  AND (:include_synthetic = 1 OR c.is_synthetic_scaffold = 0)
-                  AND (:is_historical IS NULL OR c.is_historical = :is_historical)
-                  AND (:as_of_date IS NULL OR (c.effective_date IS NOT NULL AND c.effective_date <= :as_of_date))
-                ORDER BY CASE 
-                    WHEN c.section_number = :sec_num AND c.hierarchy_level = 'section' THEN 0 
-                    WHEN c.section_number = :sec_num THEN 1
-                    ELSE 2 
-                END
-                LIMIT :limit;
+                WHERE (c.section_number IN ({sec_placeholders}) OR c.provision_or_para_ref IN ({ref_placeholders}))
+                  AND (? IS NULL OR c.act_or_case_title LIKE ?)
+                  AND (? IS NULL OR c.jurisdiction = ?)
+                  AND (? IS NULL OR c.court = ?)
+                  AND (? IS NULL OR c.doc_type = ?)
+                  AND (? = 1 OR c.is_synthetic_scaffold = 0)
+                  AND (? IS NULL OR c.is_historical = ?)
+                  AND (? IS NULL OR (c.effective_date IS NOT NULL AND c.effective_date <= ?))
+                LIMIT ?;
             """
-            params = {
-                "sec_num": explicit_sec,
-                "sec_exact": f"Section {explicit_sec}",
-                "sec_like": f"Section {explicit_sec} (%",
-                "act_title_like": f"%{filters.act_title}%" if filters.act_title else None,
-                "jurisdiction": filters.jurisdiction,
-                "court": filters.court,
-                "doc_type": filters.doc_type,
-                "include_synthetic": 1 if filters.include_synthetic else 0,
-                "is_historical": 1 if filters.is_historical else (0 if filters.is_historical is False else None),
-                "as_of_date": filters.as_of_date.isoformat() if filters.as_of_date else None,
-                "limit": limit * 2,
-            }
-            q_tokens = {t.lower() for t in re.findall(r'\w+', query)}
-            for row in cursor.execute(sec_sql, params).fetchall():
+            act_like = f"%{filters.act_title}%" if filters.act_title else None
+            hist_flag = 1 if filters.is_historical else (0 if filters.is_historical is False else None)
+            as_of = filters.as_of_date.isoformat() if filters.as_of_date else None
+            pos_params = [
+                *explicit_secs,
+                *exact_refs,
+                act_like, act_like,
+                filters.jurisdiction, filters.jurisdiction,
+                filters.court, filters.court,
+                filters.doc_type, filters.doc_type,
+                1 if filters.include_synthetic else 0,
+                hist_flag, hist_flag,
+                as_of, as_of,
+                limit * 10,
+            ]
+            sec_rows = cursor.execute(sec_sql, pos_params).fetchall()
+            scored_sec_rows = []
+            for row in sec_rows:
                 title_tokens = {t.lower() for t in re.findall(r'\w+', row["act_or_case_title"])}
-                overlap = len(q_tokens.intersection(title_tokens))
-                match_score = -100.0 - (overlap * 10.0)
-                res = self._row_to_result(row, score=match_score)
-                results_dict[res.chunk_id] = res
+                ref_tokens = {t.lower() for t in re.findall(r'\w+', row["provision_or_para_ref"])}
+                content_sample = row["content"][:500].lower() if row["content"] else ""
+                content_overlap = sum(1 for t in q_tokens if t in content_sample)
+                overlap = (len(q_tokens.intersection(title_tokens)) * 25.0 +
+                           len(q_tokens.intersection(ref_tokens)) * 10.0 +
+                           content_overlap * 15.0)
+                scored_sec_rows.append((overlap, row))
+
+            scored_sec_rows.sort(key=lambda x: x[0], reverse=True)
+
+            source_counts: Dict[str, int] = {}
+            total_sec_kept = 0
+            for overlap, row in scored_sec_rows:
+                sid = row["source_id"]
+                if source_counts.get(sid, 0) < 2 and total_sec_kept < 3:
+                    source_counts[sid] = source_counts.get(sid, 0) + 1
+                    total_sec_kept += 1
+                    match_score = -100.0 - overlap if (overlap > 0 or not q_tokens) else -15.0
+                    res = self._row_to_result(row, score=match_score)
+                    results_dict[res.chunk_id] = res
 
         # 2. Exact Citation or Case Lookup (if citation provided)
         if filters.case_citation:
@@ -811,7 +840,6 @@ class LegalKnowledgeBase:
                 cid = c_row["case_id"]
                 # Retrieve procedural documents for this case
                 doc_rows = cursor.execute("SELECT * FROM judicial_documents WHERE case_id = ? AND is_synthetic_scaffold = 0", (cid,)).fetchall()
-
                 for d in doc_rows:
                     did = d["document_id"]
                     doc_res = SearchResult(
@@ -836,7 +864,6 @@ class LegalKnowledgeBase:
                         metadata={"case_id": cid, "procedural_effect": d["procedural_effect"]},
                     )
                     results_dict[doc_res.chunk_id] = doc_res
-
 
         # 3. Full-Text Search Query using FTS5
         if fts_query:
@@ -869,14 +896,18 @@ class LegalKnowledgeBase:
                 "as_of_date": filters.as_of_date.isoformat() if filters.as_of_date else None,
                 "hierarchy_level": filters.hierarchy_level,
                 "para_num": filters.paragraph_number,
-                "limit": limit * 2,
+                "limit": limit * 3,
             }
 
             try:
                 for row in cursor.execute(fts_sql, params).fetchall():
                     chunk_id = row["chunk_id"]
                     if chunk_id not in results_dict:
-                        results_dict[chunk_id] = self._row_to_result(row, score=float(row["rank"]))
+                        title_tokens = {t.lower() for t in re.findall(r'\w+', row["act_or_case_title"])}
+                        ref_tokens = {t.lower() for t in re.findall(r'\w+', row["provision_or_para_ref"])}
+                        overlap = len(q_tokens.intersection(title_tokens)) * 4.0 + len(q_tokens.intersection(ref_tokens)) * 2.0
+                        adjusted_rank = float(row["rank"]) - overlap
+                        results_dict[chunk_id] = self._row_to_result(row, score=adjusted_rank)
             except sqlite3.OperationalError as oe:
                 logger.warning(f"FTS search syntax error on query '{fts_query}': {oe}")
 
@@ -885,14 +916,22 @@ class LegalKnowledgeBase:
         return sorted_results[:limit]
 
     def _sanitize_fts_query(self, query: str) -> str:
-        """Sanitize query string into safe FTS5 query tokens."""
-        # Remove characters with special FTS syntax meaning
+        """Sanitize query string into safe, high-signal FTS5 query tokens."""
+        stop = {
+            'what', 'is', 'the', 'under', 'and', 'for', 'to', 'in', 'of', 'a', 'an', 'or', 'where',
+            'how', 'does', 'can', 'did', 'which', 'occurred', 'supreme', 'court', 'apply', 'determine',
+            'bench', 'there', 'their', 'with', 'from', 'about', 'concerning', 'regarding',
+            'criminal', 'enactment', 'penal', 'provision', 'provisions', 'applies', 'applicable', 'offence'
+        }
         cleaned = re.sub(r'[^\w\s]', ' ', query)
-        tokens = [t.strip() for t in cleaned.split() if len(t.strip()) > 1]
+        raw_tokens = [t.strip().lower() for t in cleaned.split() if len(t.strip()) > 1]
+        tokens = [t for t in raw_tokens if t not in stop and len(t) > 2]
+        if not tokens:
+            tokens = raw_tokens[:8]
         if not tokens:
             return ""
-        # Return boolean OR of all tokens for broad recall, BM25 handles ranking
-        return " OR ".join(f'"{t}"' for t in tokens[:12])
+        # Return boolean OR of filtered tokens (unquoted to allow FTS5 porter stemmer)
+        return " OR ".join(t for t in tokens[:12])
 
     def _row_to_result(self, row: sqlite3.Row, score: float) -> SearchResult:
         """Convert a database row into a structured SearchResult."""

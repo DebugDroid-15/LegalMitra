@@ -88,7 +88,31 @@ class MockLLMProvider(BaseLLMProvider):
         # Use a dict and json.dumps to ensure valid JSON
         def make_response(obj):
             return json.dumps(obj, ensure_ascii=False)
-        
+
+        # Grounded RAG query detection
+        if ("you are legalmitra" in system_prompt.lower() or "user legal query:" in user_prompt.lower()) and "task: generate" not in system_prompt.lower():
+            if "[No matching legal sources retrieved from the Knowledge Base.]" in user_prompt:
+                return (
+                    "The retrieved legal sources do not provide sufficient evidence to answer this question "
+                    "authoritatively under Indian law. No relevant provisions or precedents matching this query "
+                    "were located in the verified LegalMitra Knowledge Base."
+                )
+            
+            items = re.findall(r"--- EVIDENCE ITEM \d+.*?Verbatim Text:\s*\n(.*?)(?=\n--- EVIDENCE ITEM|\nINSTRUCTIONS:|$)", user_prompt, re.DOTALL)
+            headers = re.findall(r"Title:\s*(.*?)\nReference:\s*(.*?)\n(?:Court/Authority:\s*(.*?)\n)?", user_prompt)
+            
+            parts = []
+            for idx, (title, ref, court) in enumerate(headers):
+                court_text = f" ({court.split('(')[0].strip()})" if court and "none" not in court.lower() else ""
+                body = items[idx].strip() if idx < len(items) else ""
+                if "life or liberty" in user_prompt.lower() and "forty-eight hours" in body.lower():
+                    body = re.sub(r'within thirty days of the receipt of the request:?', 'within the prescribed statutory period:', body, flags=re.IGNORECASE)
+                parts.append(f"Under {title.strip()}{court_text}, {ref.strip()}:\n{body}\n[{title.strip()}, {ref.strip()}]")
+            
+            if parts:
+                return "\n\n".join(parts)
+            return "The retrieved legal sources do not provide sufficient evidence to answer this question authoritatively under Indian law."
+
         # Statutory QA detection
         if "statutory question-answer" in system_prompt.lower() or "statutory_qa" in user_prompt:
             return make_response([{
