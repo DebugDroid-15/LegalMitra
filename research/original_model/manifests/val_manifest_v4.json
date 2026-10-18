@@ -1,0 +1,231 @@
+{
+  "split": "val",
+  "sha256": "2e96962c9859c3f7824093cd9d9b754f6c2fa6d07a02aeb8d3ffe906c4fbf118",
+  "items": [
+    {
+      "id": "IND-STAT-NI-1881:SEC:138",
+      "source_id": "IND-STAT-NI-1881",
+      "title": "The Negotiable Instruments Act, 1881",
+      "ref": "Section 138",
+      "language": "en",
+      "text": "The Negotiable Instruments Act, 1881 - Section 138: Where any cheque drawn by a person on an account maintained by him with a banker for payment of any amount of money to another person from out of that account for the discharge, in whole or in part, of any debt or other liability, is returned by the bank unpaid, either because of the amount of money standing to the credit of that account is insufficient to honour the cheque or that it exceeds the amount arranged to be paid from that account by an agreement made with that bank, such person shall be deemed to have committed an offence and shall, without prejudice to any other provisions of this Act, be punished with imprisonment for a term which may be extended to two years, or with fine which may extend to twice the amount of the cheque, or with both: Provided that nothing contained in this section shall apply unless— (a) the cheque has been presented to the bank within a period of three months from the date on which it is drawn or within the period of its validity, whichever is earlier; (b) the payee or the holder in due course of the cheque, as the case may be, makes a demand for the payment of the said amount of money by giving a notice; in writing, to the drawer of the cheque, within thirty days of the receipt of information by him from the bank regarding the return of the cheque as unpaid; and (c) the drawer of such cheque fails to make the payment of the said amount of money to the payee or, as the case may be, to the holder in due course of the cheque, within fifteen days of the receipt of the said notice.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-NI-1881:SEC:138:EXP:Explanation",
+      "source_id": "IND-STAT-NI-1881",
+      "title": "The Negotiable Instruments Act, 1881",
+      "ref": "Section 138 Explanation",
+      "language": "en",
+      "text": "The Negotiable Instruments Act, 1881 - Section 138 Explanation: For the purposes of this section, 'debt or other liability' means a legally enforceable debt or other liability.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-NI-1881:SEC:138:PROVISO:1",
+      "source_id": "IND-STAT-NI-1881",
+      "title": "The Negotiable Instruments Act, 1881",
+      "ref": "Section 138 Proviso 1",
+      "language": "en",
+      "text": "The Negotiable Instruments Act, 1881 - Section 138 Proviso 1: the cheque has been presented to the bank within a period of three months from the date on which it is drawn or within the period of its validity, whichever is earlier;",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-NI-1881:SEC:138:PROVISO:2",
+      "source_id": "IND-STAT-NI-1881",
+      "title": "The Negotiable Instruments Act, 1881",
+      "ref": "Section 138 Proviso 2",
+      "language": "en",
+      "text": "The Negotiable Instruments Act, 1881 - Section 138 Proviso 2: the payee or holder in due course makes a demand for payment by giving notice in writing within thirty days of receipt of information from the bank;",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-NI-1881:SEC:138:PROVISO:3",
+      "source_id": "IND-STAT-NI-1881",
+      "title": "The Negotiable Instruments Act, 1881",
+      "ref": "Section 138 Proviso 3",
+      "language": "en",
+      "text": "The Negotiable Instruments Act, 1881 - Section 138 Proviso 3: the drawer of such cheque fails to make payment of the said amount within fifteen days of receipt of the said notice.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-NI-1881:SEC:139",
+      "source_id": "IND-STAT-NI-1881",
+      "title": "The Negotiable Instruments Act, 1881",
+      "ref": "Section 139",
+      "language": "en",
+      "text": "The Negotiable Instruments Act, 1881 - Section 139: It shall be presumed, unless the contrary is proved, that the holder of a cheque received the cheque of the nature referred to in section 138 for the discharge, in whole or in part, of any debt or other liability.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-NI-1881:SEC:140",
+      "source_id": "IND-STAT-NI-1881",
+      "title": "The Negotiable Instruments Act, 1881",
+      "ref": "Section 140",
+      "language": "en",
+      "text": "The Negotiable Instruments Act, 1881 - Section 140: It shall not be a defence in a prosecution for an offence under section 138 that the drawer had no reason to believe when he issued the cheque that the cheque may be dishonoured on presentment for the reasons stated in that section.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-NI-1881:SEC:141",
+      "source_id": "IND-STAT-NI-1881",
+      "title": "The Negotiable Instruments Act, 1881",
+      "ref": "Section 141",
+      "language": "en",
+      "text": "The Negotiable Instruments Act, 1881 - Section 141: (1) If the person committing an offence under section 138 is a company, every person who, at the time the offence was committed, was in charge of, and was responsible to the company for the conduct of the business of the company, as well as the company, shall be deemed to be guilty of the offence and shall be liable to be proceeded against and punished accordingly: Provided that nothing contained in this sub-section shall render any person liable to punishment if he proves that the offence was committed without his knowledge, or that he had exercised all due diligence to prevent the commission of such offence.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-NI-1881:SEC:142",
+      "source_id": "IND-STAT-NI-1881",
+      "title": "The Negotiable Instruments Act, 1881",
+      "ref": "Section 142",
+      "language": "en",
+      "text": "The Negotiable Instruments Act, 1881 - Section 142: (1) Notwithstanding anything contained in the Code of Criminal Procedure, 1973— (a) no court shall take cognizance of any offence punishable under section 138 except upon a complaint, in writing, made by the payee or, as the case may be, the holder in due course of the cheque; (b) such complaint is made within one month of the date on which the cause of action arises under clause (c) of the proviso to section 138: Provided that the cognizance of a complaint may be taken by the court after the prescribed period, if the complainant satisfies the court that he had sufficient cause for not making the complaint within such period.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-SRA-1963:SEC:10",
+      "source_id": "IND-STAT-SRA-1963",
+      "title": "The Specific Relief Act, 1963",
+      "ref": "Section 10",
+      "language": "en",
+      "text": "The Specific Relief Act, 1963 - Section 10: The specific performance of a contract shall be enforced by the court subject to the provisions contained in sub-section (2) of section 11, section 14 and section 16. [Substituted by Act 18 of 2018, s. 3 (w.e.f. 1-10-2018)].",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-SRA-1963:SEC:14",
+      "source_id": "IND-STAT-SRA-1963",
+      "title": "The Specific Relief Act, 1963",
+      "ref": "Section 14",
+      "language": "en",
+      "text": "The Specific Relief Act, 1963 - Section 14: The following contracts cannot be specifically enforced, namely:— (a) where a party to the contract has obtained substituted performance of contract in accordance with the provisions of section 20; (b) a contract, the performance of which involves the performance of a continuous duty which the court cannot supervise; (c) a contract which is so dependent on the personal qualifications of the parties that the court cannot enforce specific performance of its material terms; and (d) a contract which is in its nature determinable.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-SRA-1963:SEC:16",
+      "source_id": "IND-STAT-SRA-1963",
+      "title": "The Specific Relief Act, 1963",
+      "ref": "Section 16",
+      "language": "en",
+      "text": "The Specific Relief Act, 1963 - Section 16: Specific performance of a contract cannot be enforced in favour of a person— (a) who has obtained substituted performance of contract under section 20; or (b) who has become incapable of performing, or violates any essential term of, the contract that on his part remains to be performed, or acts in fraud of the contract, or wilfully acts at variance with, or in subversion of, the relation intended to be established by the contract; or (c) who fails to prove that he has performed or has always been ready and willing to perform the essential terms of the contract which are to be performed by him.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-SRA-1963:SEC:20",
+      "source_id": "IND-STAT-SRA-1963",
+      "title": "The Specific Relief Act, 1963",
+      "ref": "Section 20",
+      "language": "en",
+      "text": "The Specific Relief Act, 1963 - Section 20: (1) Where the contract is broken due to non-performance of promise by any party, the party who suffers by such breach shall have the option of substituted performance through a third party or by his own agency, and, recover the expenses and other costs actually incurred, spent or suffered by him, from the party committing such breach. [Substituted by Act 18 of 2018, s. 10 (w.e.f. 1-10-2018)].",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-SRA-1963:SEC:20A",
+      "source_id": "IND-STAT-SRA-1963",
+      "title": "The Specific Relief Act, 1963",
+      "ref": "Section 20A",
+      "language": "en",
+      "text": "The Specific Relief Act, 1963 - Section 20A: (1) No injunction shall be granted by court in a suit under this Act involving a contract relating to an infrastructure project specified in the Schedule, where granting injunction would cause impediment or delay in the progress or completion of such infrastructure project. [Inserted by Act 18 of 2018, s. 10 (w.e.f. 1-10-2018)].",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-SRA-1963:SEC:20A:SUB:1",
+      "source_id": "IND-STAT-SRA-1963",
+      "title": "The Specific Relief Act, 1963",
+      "ref": "Section 20A(1)",
+      "language": "en",
+      "text": "The Specific Relief Act, 1963 - Section 20A(1): No injunction shall be granted by court in a suit under this Act involving a contract relating to an infrastructure project specified in the Schedule, where granting injunction would cause impediment or delay in the progress or completion of such infrastructure project.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-SRA-1963:SEC:20A:SUB:2",
+      "source_id": "IND-STAT-SRA-1963",
+      "title": "The Specific Relief Act, 1963",
+      "ref": "Section 20A(2)",
+      "language": "en",
+      "text": "The Specific Relief Act, 1963 - Section 20A(2): The Central Government may, depending upon the requirement for development of infrastructure projects, and if it considers necessary or expedient to do so, by notification in the Official Gazette, amend the Schedule.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-SRA-1963:SEC:34",
+      "source_id": "IND-STAT-SRA-1963",
+      "title": "The Specific Relief Act, 1963",
+      "ref": "Section 34",
+      "language": "en",
+      "text": "The Specific Relief Act, 1963 - Section 34: Any person entitled to any legal character, or to any right as to any property, may institute a suit against any person denying, or interested to deny, his title to such character or right, and the court may in its discretion make therein a declaration that he is so entitled, and the plaintiff need not in such suit ask for any further relief: Provided that no court shall make any such declaration where the plaintiff, being able to seek further relief than a mere declaration of title, omits to do so.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-SRA-1963:SEC:38",
+      "source_id": "IND-STAT-SRA-1963",
+      "title": "The Specific Relief Act, 1963",
+      "ref": "Section 38",
+      "language": "en",
+      "text": "The Specific Relief Act, 1963 - Section 38: (1) Subject to the other provisions contained in or referred to by this Chapter, a perpetual injunction may be granted to the plaintiff to prevent the breach of an obligation existing in his favour, whether expressly or by implication. (2) When any such obligation arises from contract, the court shall be guided by the rules and provisions contained in Chapter II. (3) When the defendant invades or threatens to invade the plaintiff's right to, or enjoyment of, property, the court may grant a perpetual injunction in the following cases: (a) where the defendant is trustee of the property for the plaintiff; (b) where there exists no standard for ascertaining the actual damage caused; (c) where the invasion is such that compensation in money would not afford adequate relief; (d) where the injunction is necessary to prevent a multiplicity of judicial proceedings.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-SRA-1963:SEC:41",
+      "source_id": "IND-STAT-SRA-1963",
+      "title": "The Specific Relief Act, 1963",
+      "ref": "Section 41",
+      "language": "en",
+      "text": "The Specific Relief Act, 1963 - Section 41: An injunction cannot be granted— (ha) if it would impede or delay the progress or completion of any infrastructure project or interfere with the continued provision of relevant facility related thereto or services being the subject matter of such project.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-SRA-1963:SEC:5",
+      "source_id": "IND-STAT-SRA-1963",
+      "title": "The Specific Relief Act, 1963",
+      "ref": "Section 5",
+      "language": "en",
+      "text": "The Specific Relief Act, 1963 - Section 5: A person entitled to the possession of specific immovable property may recover it in the manner provided by the Code of Civil Procedure, 1908.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-SRA-1963:SEC:6",
+      "source_id": "IND-STAT-SRA-1963",
+      "title": "The Specific Relief Act, 1963",
+      "ref": "Section 6",
+      "language": "en",
+      "text": "The Specific Relief Act, 1963 - Section 6: (1) If any person is dispossessed without his consent of immovable property otherwise than in due course of law, he or any person through whom he has been in possession or any person claiming through him may, by suit, recover possession thereof, notwithstanding any other title that may be set up in such suit. (2) No suit under this section shall be brought— (a) after the expiry of six months from the date of dispossession; or (b) against the Government.",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "IND-STAT-SRA-1963:SEC:Schedule",
+      "source_id": "IND-STAT-SRA-1963",
+      "title": "The Specific Relief Act, 1963",
+      "ref": "Section Schedule",
+      "language": "en",
+      "text": "The Specific Relief Act, 1963 - Section Schedule: Schedule referred to in section 20A: 1. Transport (Roads and bridges, Ports, Shipyards, Inland Waterways, Airports, Railway track, tunnels, viaducts, bridges, Urban Public Transport). 2. Energy (Electricity Generation, Electricity Transmission, Electricity Distribution, Oil pipelines, Oil and gas storage, Gas pipelines). 3. Water and Sanitation (Solid Waste Management, Water supply pipelines, Sewage treatment plants, Irrigation). 4. Communication (Telecommunication, Telecommunication towers). 5. Social and Commercial Infrastructure (Affordable Housing, Hospitals, Tourism infrastructure).",
+      "provenance": "data/legalmitra_kb.db"
+    },
+    {
+      "id": "HI-STAT-IND-STAT-CPC-1908-HI-025",
+      "source_id": "IND-STAT-CPC-1908-HI",
+      "title": "सिविल प्रक्रिया संहिता, 1908 (Code of Civil Procedure, 1908)",
+      "ref": "धारा 11 (Section 11 - Res Judicata)",
+      "language": "hi",
+      "text": "सिविल प्रक्रिया संहिता, 1908 (Code of Civil Procedure, 1908) - धारा 11 (Section 11 - Res Judicata): धारा 11. प्राङ्न्याय — कोई भी न्यायालय किसी ऐसे वाद या विवादक का विचारण नहीं करेगा जिसमें प्रत्यक्षत: और सारतः विवादक विषय उसी हक के अधीन मुकदमा करने वाले उन्हीं पक्षकारों के बीच या उन पक्षकारों के बीच, जिनसे वे या उनमें से कोई दावा करते हैं, किसी पूर्ववर्ती वाद में ऐसे सक्षम न्यायालय में प्रत्यक्षत: और सारतः विवादक विषय रहा है, और ऐसे न्यायालय द्वारा सुना जा चुका है और अंतिम रूप से विनिश्चित किया जा चुका है।",
+      "provenance": "data/09_national_corpus/hindi_statutory_corpus.json"
+    },
+    {
+      "id": "HI-STAT-IND-STAT-CPC-1908-HI-026",
+      "source_id": "IND-STAT-CPC-1908-HI",
+      "title": "सिविल प्रक्रिया संहिता, 1908 (Code of Civil Procedure, 1908)",
+      "ref": "धारा 151 (Section 151 - Inherent Powers)",
+      "language": "hi",
+      "text": "सिविल प्रक्रिया संहिता, 1908 (Code of Civil Procedure, 1908) - धारा 151 (Section 151 - Inherent Powers): धारा 151. न्यायालय की अंतर्निहित शक्तियों की व्यावृत्ति — इस संहिता की कोई बात न्यायालय की ऐसी अंतर्निहित शक्ति को सीमित या अन्यथा प्रभावित करने वाली नहीं समझी जाएगी जो न्याय के उद्देश्यों की प्राप्ति के लिए या न्यायालय की प्रक्रिया के दुरुपयोग के निवारण के लिए आवश्यक आदेश करने के लिए न्यायालय में निहित है।",
+      "provenance": "data/09_national_corpus/hindi_statutory_corpus.json"
+    },
+    {
+      "id": "P34-IND-KA-STAT-KLRA-1961-028",
+      "source_id": "IND-KA-STAT-KLRA-1961",
+      "title": "Karnataka Land Reforms Act, 1961",
+      "ref": "Section 79A - Restriction on acquisition of agricultural land",
+      "language": "en",
+      "text": "Karnataka Land Reforms Act, 1961 - Section 79A - Restriction on acquisition of agricultural land: Section 79A. Acquisition of land by certain persons prohibited: No person or family or joint family who has an assured annual income from sources other than agricultural lands shall be entitled to acquire any agricultural land in the State of Karnataka, ensuring that agricultural lands remain preserved for bona fide cultivators and preventing speculative non-agricultural accumulation.",
+      "provenance": "data/09_national_corpus/phase34_expanded_corpus.json"
+    }
+  ]
+}
