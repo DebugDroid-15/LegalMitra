@@ -1,0 +1,151 @@
+{
+  "summary": {
+    "total_institutions_tracked": 7,
+    "total_ingested_records": 398,
+    "total_verified_records": 398,
+    "tier_distribution": {
+      "TIER_0_UNMAPPED": 0,
+      "TIER_1_CATALOGUED": 1,
+      "TIER_2_SOURCE_IDENTIFIED": 3,
+      "TIER_3_PIPELINE_DESIGNED": 1,
+      "TIER_4_PIPELINE_TESTED": 0,
+      "TIER_5_SAMPLING_VALIDATED": 2,
+      "TIER_6_SUBSTANTIAL_HOLDINGS": 0,
+      "TIER_7_COMPREHENSIVE_ERA": 0,
+      "TIER_8_PRECEDENT_INTEGRATED": 0,
+      "TIER_9_MULTILINGUAL_EXPANDED": 0,
+      "TIER_10_INDEPENDENTLY_EVALUATED": 0
+    }
+  },
+  "assessments": {
+    "IND-SC": {
+      "court_id": "IND-SC",
+      "court_name": "Supreme Court of India",
+      "institutional_tier": "APEX",
+      "current_tier": 5,
+      "tier_label": "TIER_5_SAMPLING_VALIDATED",
+      "total_estimated_historical_cases": 75000,
+      "ingested_record_count": 185,
+      "verified_record_count": 185,
+      "ocr_average_confidence": 0.985,
+      "vernacular_languages_supported": [
+        "en",
+        "hi"
+      ],
+      "precedent_graph_linked_nodes": 62,
+      "known_coverage_gaps": [
+        "Full retrospective archive 1950-1990 pending systematic batch acquisition"
+      ]
+    },
+    "IND-HC-DEL": {
+      "court_id": "IND-HC-DEL",
+      "court_name": "High Court of Delhi",
+      "institutional_tier": "HIGH_COURT",
+      "current_tier": 5,
+      "tier_label": "TIER_5_SAMPLING_VALIDATED",
+      "total_estimated_historical_cases": 120000,
+      "ingested_record_count": 112,
+      "verified_record_count": 112,
+      "ocr_average_confidence": 0.978,
+      "vernacular_languages_supported": [
+        "en"
+      ],
+      "precedent_graph_linked_nodes": 24,
+      "known_coverage_gaps": [
+        "Pre-2000 digital unreported decisions unavailable on public portal"
+      ]
+    },
+    "IND-HC-BOM": {
+      "court_id": "IND-HC-BOM",
+      "court_name": "High Court of Judicature at Bombay",
+      "institutional_tier": "HIGH_COURT",
+      "current_tier": 2,
+      "tier_label": "TIER_2_SOURCE_IDENTIFIED",
+      "total_estimated_historical_cases": 250000,
+      "ingested_record_count": 22,
+      "verified_record_count": 22,
+      "ocr_average_confidence": 0.962,
+      "vernacular_languages_supported": [
+        "en",
+        "mr"
+      ],
+      "precedent_graph_linked_nodes": 8,
+      "known_coverage_gaps": [
+        "Nagpur, Aurangabad, and Goa benches require dedicated crawler adaptation"
+      ]
+    },
+    "IND-MIL-AFT": {
+      "court_id": "IND-MIL-AFT",
+      "court_name": "Armed Forces Tribunal",
+      "institutional_tier": "MILITARY_JUSTICE",
+      "current_tier": 2,
+      "tier_label": "TIER_2_SOURCE_IDENTIFIED",
+      "total_estimated_historical_cases": 35000,
+      "ingested_record_count": 14,
+      "verified_record_count": 14,
+      "ocr_average_confidence": 0.954,
+      "vernacular_languages_supported": [
+        "en"
+      ],
+      "precedent_graph_linked_nodes": 4,
+      "known_coverage_gaps": [
+        "Regional bench orders (Lucknow, Jaipur, Kochi) maintained in separate registries"
+      ]
+    },
+    "IND-TR-NCLAT": {
+      "court_id": "IND-TR-NCLAT",
+      "court_name": "National Company Law Appellate Tribunal",
+      "institutional_tier": "TRIBUNAL",
+      "current_tier": 3,
+      "tier_label": "TIER_3_PIPELINE_DESIGNED",
+      "total_estimated_historical_cases": 15000,
+      "ingested_record_count": 18,
+      "verified_record_count": 18,
+      "ocr_average_confidence": 0.981,
+      "vernacular_languages_supported": [
+        "en"
+      ],
+      "precedent_graph_linked_nodes": 6,
+      "known_coverage_gaps": [
+        "Chennai Bench orders require distinct pagination handler"
+      ]
+    },
+    "IND-TR-NGT": {
+      "court_id": "IND-TR-NGT",
+      "court_name": "National Green Tribunal",
+      "institutional_tier": "TRIBUNAL",
+      "current_tier": 2,
+      "tier_label": "TIER_2_SOURCE_IDENTIFIED",
+      "total_estimated_historical_cases": 28000,
+      "ingested_record_count": 12,
+      "verified_record_count": 12,
+      "ocr_average_confidence": 0.974,
+      "vernacular_languages_supported": [
+        "en"
+      ],
+      "precedent_graph_linked_nodes": 4,
+      "known_coverage_gaps": [
+        "Zonal bench orders (Western, Eastern, Southern, Central) to be integrated"
+      ]
+    },
+    "IND-DIST-GENERIC": {
+      "court_id": "IND-DIST-GENERIC",
+      "court_name": "Subordinate Judiciary Hierarchy (District & Sessions Level)",
+      "institutional_tier": "DISTRICT_COURT",
+      "current_tier": 1,
+      "tier_label": "TIER_1_CATALOGUED",
+      "total_estimated_historical_cases": 15000000,
+      "ingested_record_count": 35,
+      "verified_record_count": 35,
+      "ocr_average_confidence": 0.941,
+      "vernacular_languages_supported": [
+        "en",
+        "hi"
+      ],
+      "precedent_graph_linked_nodes": 2,
+      "known_coverage_gaps": [
+        "680+ District Court establishments via eCourts require large-scale distributed architecture"
+      ]
+    }
+  }
+}

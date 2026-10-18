@@ -1,0 +1,376 @@
+{
+  "total_domains": 14,
+  "domains": {
+    "CONSTITUTIONAL_ADMINISTRATIVE": {
+      "name": "Constitutional & Administrative Law",
+      "description": "Fundamental rights, judicial review, separation of powers, executive actions, doctrine of basic structure.",
+      "primary_statutes": [
+        "Constitution of India"
+      ],
+      "characteristic_keywords": [
+        "fundamental rights",
+        "article 14",
+        "article 19",
+        "article 21",
+        "article 32",
+        "article 226",
+        "basic structure",
+        "ultra vires",
+        "mandamus",
+        "certiorari",
+        "habeas corpus"
+      ],
+      "typical_postures": [
+        "WRIT_PETITION_ARTICLE_32",
+        "WRIT_PETITION_ARTICLE_226",
+        "CIVIL_APPEAL"
+      ]
+    },
+    "CRIMINAL": {
+      "name": "Criminal Law & Procedure",
+      "description": "Substantive offences, investigations, trials, evidence, sentencing, and bail jurisprudence.",
+      "primary_statutes": [
+        "Indian Penal Code 1860",
+        "Bharatiya Nyaya Sanhita 2023",
+        "Code of Criminal Procedure 1973",
+        "Bharatiya Nagarik Suraksha Sanhita 2023",
+        "Indian Evidence Act 1872",
+        "Bharatiya Sakshya Adhiniyam 2023",
+        "POCSO Act 2012",
+        "NDPS Act 1985"
+      ],
+      "characteristic_keywords": [
+        "bail",
+        "charge sheet",
+        "fir",
+        "cognizable",
+        "murder",
+        "theft",
+        "section 302",
+        "section 376",
+        "section 420",
+        "mens rea",
+        "acquittal",
+        "conviction",
+        "sentence"
+      ],
+      "typical_postures": [
+        "BAIL_APPLICATION",
+        "ANTICIPATORY_BAIL",
+        "CRIMINAL_APPEAL",
+        "SPECIAL_LEAVE_PETITION_CRIMINAL",
+        "SECTION_482_QUASHING"
+      ]
+    },
+    "CIVIL_PROPERTY_CONTRACT": {
+      "name": "Civil Law, Property, Equity & Contract",
+      "description": "Contracts, specific performance, property transfer, torts, injunctions, and declaratory relief.",
+      "primary_statutes": [
+        "Code of Civil Procedure 1908",
+        "Indian Contract Act 1872",
+        "Transfer of Property Act 1882",
+        "Specific Relief Act 1963",
+        "Limitation Act 1963"
+      ],
+      "characteristic_keywords": [
+        "breach of contract",
+        "damages",
+        "title suit",
+        "injunction",
+        "partition suit",
+        "conveyance",
+        "easement",
+        "specific performance"
+      ],
+      "typical_postures": [
+        "ORIGINAL_SUIT",
+        "CIVIL_APPEAL",
+        "SPECIAL_LEAVE_PETITION_CIVIL",
+        "REVISION_PETITION"
+      ]
+    },
+    "FAMILY_SUCCESSION": {
+      "name": "Family, Succession & Matrimonial Law",
+      "description": "Marriage, divorce, maintenance, custody, adoption, and testamentary and intestate succession.",
+      "primary_statutes": [
+        "Hindu Marriage Act 1955",
+        "Hindu Succession Act 1956",
+        "Special Marriage Act 1954",
+        "Muslim Personal Law (Shariat) Application Act 1937",
+        "Guardians and Wards Act 1890",
+        "Indian Succession Act 1925"
+      ],
+      "characteristic_keywords": [
+        "divorce",
+        "alimony",
+        "maintenance",
+        "custody of child",
+        "restitution of conjugal rights",
+        "coparcenary",
+        "ancestral property",
+        "will",
+        "probate"
+      ],
+      "typical_postures": [
+        "CIVIL_APPEAL",
+        "SPECIAL_LEAVE_PETITION_CIVIL",
+        "WRIT_PETITION_ARTICLE_226"
+      ]
+    },
+    "COMMERCIAL_CORPORATE_INSOLVENCY": {
+      "name": "Commercial, Corporate, Insolvency & Arbitration",
+      "description": "Company law, corporate governance, corporate insolvency resolution, domestic and international arbitration, negotiable instruments.",
+      "primary_statutes": [
+        "Companies Act 2013",
+        "Insolvency and Bankruptcy Code 2016",
+        "Arbitration and Conciliation Act 1996",
+        "Commercial Courts Act 2015",
+        "Negotiable Instruments Act 1881"
+      ],
+      "characteristic_keywords": [
+        "cirp",
+        "resolution plan",
+        "operational creditor",
+        "financial creditor",
+        "arbitral tribunal",
+        "section 138",
+        "cheque bounce",
+        "corporate debtor",
+        "winding up"
+      ],
+      "typical_postures": [
+        "COMPANY_PETITION_IBC",
+        "ARBITRATION_PETITION",
+        "CIVIL_APPEAL",
+        "STATUTORY_APPEAL_TRIBUNAL"
+      ]
+    },
+    "LABOUR_SERVICE": {
+      "name": "Labour, Employment & Service Jurisprudence",
+      "description": "Industrial disputes, retrenchment, disciplinary proceedings, government service rules, pensions, and promotions.",
+      "primary_statutes": [
+        "Industrial Disputes Act 1947",
+        "Administrative Tribunals Act 1985",
+        "Payment of Gratuity Act 1972",
+        "Employees Provident Funds Act 1952",
+        "Industrial Relations Code 2020"
+      ],
+      "characteristic_keywords": [
+        "reinstatement",
+        "retrenchment",
+        "back wages",
+        "departmental inquiry",
+        "disciplinary proceedings",
+        "seniority",
+        "promotion",
+        "pension",
+        "charge memo"
+      ],
+      "typical_postures": [
+        "WRIT_PETITION_ARTICLE_226",
+        "STATUTORY_APPEAL_TRIBUNAL",
+        "CIVIL_APPEAL"
+      ]
+    },
+    "LAND_TENANCY_AGRARIAN": {
+      "name": "Land Acquisition, Tenancy & Agrarian Reforms",
+      "description": "Compulsory land acquisition, rehabilitation and resettlement, agricultural land ceiling, rent control and eviction.",
+      "primary_statutes": [
+        "Right to Fair Compensation and Transparency in Land Acquisition, Rehabilitation and Resettlement Act 2013",
+        "Land Acquisition Act 1894",
+        "State Rent Control Acts"
+      ],
+      "characteristic_keywords": [
+        "land acquisition",
+        "compensation",
+        "rehabilitation",
+        "solatium",
+        "fair market value",
+        "eviction",
+        "standard rent",
+        "tenant"
+      ],
+      "typical_postures": [
+        "CIVIL_APPEAL",
+        "WRIT_PETITION_ARTICLE_226",
+        "SPECIAL_LEAVE_PETITION_CIVIL"
+      ]
+    },
+    "ENVIRONMENTAL_FOREST": {
+      "name": "Environmental, Forest & Wildlife Protection",
+      "description": "Pollution control, forest conservation, wildlife protection, precautionary principle, polluter pays doctrine, sustainable development.",
+      "primary_statutes": [
+        "Environment (Protection) Act 1986",
+        "National Green Tribunal Act 2010",
+        "Forest (Conservation) Act 1980",
+        "Wildlife (Protection) Act 1972",
+        "Water (Prevention and Control of Pollution) Act 1974",
+        "Air Act 1981"
+      ],
+      "characteristic_keywords": [
+        "environmental clearance",
+        "ngt",
+        "polluter pays",
+        "precautionary principle",
+        "forest land",
+        "air pollution",
+        "water pollution",
+        "ecological damage",
+        "crz"
+      ],
+      "typical_postures": [
+        "STATUTORY_APPEAL_TRIBUNAL",
+        "WRIT_PETITION_ARTICLE_32",
+        "CIVIL_APPEAL"
+      ]
+    },
+    "TECHNOLOGY_IP_PRIVACY": {
+      "name": "Technology, Intellectual Property, Cyber Law & Privacy",
+      "description": "Patents, trademarks, copyright, trade secrets, data privacy, intermediary liability, cybercrimes.",
+      "primary_statutes": [
+        "Information Technology Act 2000",
+        "Digital Personal Data Protection Act 2023",
+        "Trade Marks Act 1999",
+        "Copyright Act 1957",
+        "Patents Act 1970"
+      ],
+      "characteristic_keywords": [
+        "trademark infringement",
+        "patent revocation",
+        "copyright infringement",
+        "passing off",
+        "data protection",
+        "privacy",
+        "intermediary liability",
+        "section 66a",
+        "cybercrime"
+      ],
+      "typical_postures": [
+        "ORIGINAL_SUIT",
+        "CIVIL_APPEAL",
+        "WRIT_PETITION_ARTICLE_226"
+      ]
+    },
+    "TAXATION_CUSTOMS_GST": {
+      "name": "Direct & Indirect Taxation, Customs & GST",
+      "description": "Income tax, corporate tax, transfer pricing, goods and services tax, customs duties, excise.",
+      "primary_statutes": [
+        "Income Tax Act 1961",
+        "Central Goods and Services Tax Act 2017",
+        "Customs Act 1962",
+        "Central Excise Act 1944"
+      ],
+      "characteristic_keywords": [
+        "assessment order",
+        "reassessment",
+        "search and seizure",
+        "itc",
+        "input tax credit",
+        "customs duty",
+        "classification",
+        "transfer pricing",
+        "escaped assessment"
+      ],
+      "typical_postures": [
+        "STATUTORY_APPEAL_TRIBUNAL",
+        "CIVIL_APPEAL",
+        "WRIT_PETITION_ARTICLE_226"
+      ]
+    },
+    "EDUCATION_HEALTH": {
+      "name": "Education, Public Health & Utilities",
+      "description": "Admissions, university governance, affirmative action in education, medical negligence, healthcare regulations, public utilities.",
+      "primary_statutes": [
+        "Right of Children to Free and Compulsory Education Act 2009",
+        "National Medical Commission Act 2019",
+        "University Grants Commission Act 1956",
+        "Consumer Protection Act 2019 (Medical Negligence)"
+      ],
+      "characteristic_keywords": [
+        "neet",
+        "admission quota",
+        "capitation fee",
+        "medical negligence",
+        "affiliation",
+        "examination cancellation",
+        "consumer forum medical",
+        "public utility"
+      ],
+      "typical_postures": [
+        "WRIT_PETITION_ARTICLE_226",
+        "WRIT_PETITION_ARTICLE_32",
+        "CIVIL_APPEAL"
+      ]
+    },
+    "ELECTION_GOVERNANCE": {
+      "name": "Election Law & Democratic Governance",
+      "description": "Representation of the People, corrupt practices, disqualification, delimitation, municipal and panchayat elections.",
+      "primary_statutes": [
+        "Representation of the People Act 1951",
+        "Conduct of Elections Rules 1961",
+        "Delimitation Act 2002"
+      ],
+      "characteristic_keywords": [
+        "election petition",
+        "corrupt practice",
+        "disqualification of mla",
+        "disqualification of mp",
+        "model code of conduct",
+        "nomination rejection",
+        "voter verification"
+      ],
+      "typical_postures": [
+        "CIVIL_APPEAL",
+        "WRIT_PETITION_ARTICLE_226",
+        "WRIT_PETITION_ARTICLE_32"
+      ]
+    },
+    "HUMAN_RIGHTS_CUSTODIAL": {
+      "name": "Human Rights & Custodial Justice",
+      "description": "Custodial death, encounter killings, illegal detention, prisoners' rights, compensation for state atrocities, NHRC/SHRC proceedings.",
+      "primary_statutes": [
+        "Protection of Human Rights Act 1993",
+        "Constitution of India (Articles 20, 21, 22)"
+      ],
+      "characteristic_keywords": [
+        "custodial violence",
+        "custodial death",
+        "encounter",
+        "illegal detention",
+        "handcuffing",
+        "compensation under public law",
+        "prisoners rights",
+        "solitary confinement"
+      ],
+      "typical_postures": [
+        "WRIT_PETITION_ARTICLE_32",
+        "WRIT_PETITION_ARTICLE_226",
+        "CIVIL_APPEAL"
+      ]
+    },
+    "TRANSNATIONAL_ADMIRALTY": {
+      "name": "Transnational, Admiralty & International Law",
+      "description": "Admiralty jurisdiction, ship arrest, extradition, sovereign immunity, cross-border insolvencies, enforcement of foreign judgments.",
+      "primary_statutes": [
+        "Admiralty (Jurisdiction and Settlement of Maritime Claims) Act 2017",
+        "Extradition Act 1962",
+        "Code of Civil Procedure 1908 (Section 44A)"
+      ],
+      "characteristic_keywords": [
+        "admiralty suit",
+        "ship arrest",
+        "maritime lien",
+        "extradition",
+        "foreign decree",
+        "letters of request",
+        "sovereign immunity",
+        "cross-border"
+      ],
+      "typical_postures": [
+        "ORIGINAL_SUIT",
+        "CIVIL_APPEAL",
+        "WRIT_PETITION_ARTICLE_226"
+      ]
+    }
+  }
+}

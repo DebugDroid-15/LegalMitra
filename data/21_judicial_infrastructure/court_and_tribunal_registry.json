@@ -1,0 +1,1111 @@
+{
+  "total_entities": 45,
+  "entities": {
+    "IND-SC": {
+      "court_id": "IND-SC",
+      "official_name": "Supreme Court of India",
+      "tier": "APEX",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "WRIT_CONSTITUTIONAL",
+        "ADVISORY",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "National Capital Territory of Delhi",
+      "seat_city": "New Delhi",
+      "benches_and_circuits": [],
+      "predecessor_court_ids": [
+        "HIST-FED-COURT",
+        "HIST-PRIVY-COUNCIL"
+      ],
+      "successor_court_id": null,
+      "established_year": 1950,
+      "dissolved_year": null,
+      "authoritative_reporter": "Supreme Court Reports (SCR)",
+      "neutral_citation_supported": true,
+      "is_active": true,
+      "notes": "Established on January 28, 1950 under Part V, Chapter IV of the Constitution."
+    },
+    "HIST-FED-COURT": {
+      "court_id": "HIST-FED-COURT",
+      "official_name": "Federal Court of India",
+      "tier": "HISTORICAL_ARCHIVE",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "ADVISORY"
+      ],
+      "state_or_ut": null,
+      "seat_city": "New Delhi",
+      "benches_and_circuits": [],
+      "predecessor_court_ids": [],
+      "successor_court_id": "IND-SC",
+      "established_year": 1937,
+      "dissolved_year": 1950,
+      "authoritative_reporter": "Federal Court Reports (FCR)",
+      "neutral_citation_supported": false,
+      "is_active": false,
+      "notes": "Established under Government of India Act 1935. Functioned from 1937 until Supreme Court inauguration in 1950."
+    },
+    "HIST-PRIVY-COUNCIL": {
+      "court_id": "HIST-PRIVY-COUNCIL",
+      "official_name": "Judicial Committee of the Privy Council (Indian Appeals)",
+      "tier": "HISTORICAL_ARCHIVE",
+      "jurisdiction_type": [
+        "APPELLATE",
+        "HISTORICAL_IMPERIAL"
+      ],
+      "state_or_ut": null,
+      "seat_city": "London",
+      "benches_and_circuits": [],
+      "predecessor_court_ids": [],
+      "successor_court_id": "IND-SC",
+      "established_year": 1833,
+      "dissolved_year": 1949,
+      "authoritative_reporter": "Indian Appeals (L.R. I.A.) / Moore's Indian Appeals",
+      "neutral_citation_supported": false,
+      "is_active": false,
+      "notes": "Highest court of appeal for British India until Abolition of Privy Council Jurisdiction Act 1949."
+    },
+    "IND-HC-ALL": {
+      "court_id": "IND-HC-ALL",
+      "official_name": "High Court of Judicature at Allahabad",
+      "tier": "HIGH_COURT",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "WRIT_CONSTITUTIONAL",
+        "SUPERVISORY",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "Uttar Pradesh",
+      "seat_city": "Prayagraj",
+      "benches_and_circuits": [
+        "Lucknow Bench"
+      ],
+      "predecessor_court_ids": [
+        "HIST-HC-AGRA"
+      ],
+      "successor_court_id": null,
+      "established_year": 1866,
+      "dissolved_year": null,
+      "authoritative_reporter": "ILR Allahabad / Allahabad Law Journal",
+      "neutral_citation_supported": true,
+      "is_active": true,
+      "notes": ""
+    },
+    "IND-HC-AND": {
+      "court_id": "IND-HC-AND",
+      "official_name": "High Court of Andhra Pradesh",
+      "tier": "HIGH_COURT",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "WRIT_CONSTITUTIONAL",
+        "SUPERVISORY",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "Andhra Pradesh",
+      "seat_city": "Amaravati",
+      "benches_and_circuits": [],
+      "predecessor_court_ids": [
+        "HIST-HC-HYD"
+      ],
+      "successor_court_id": null,
+      "established_year": 2019,
+      "dissolved_year": null,
+      "authoritative_reporter": "Andhra Pradesh Law Journal",
+      "neutral_citation_supported": true,
+      "is_active": true,
+      "notes": ""
+    },
+    "IND-HC-BOM": {
+      "court_id": "IND-HC-BOM",
+      "official_name": "High Court of Judicature at Bombay",
+      "tier": "HIGH_COURT",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "WRIT_CONSTITUTIONAL",
+        "SUPERVISORY",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "Maharashtra",
+      "seat_city": "Mumbai",
+      "benches_and_circuits": [
+        "Nagpur",
+        "Aurangabad",
+        "Panaji (Goa)"
+      ],
+      "predecessor_court_ids": [
+        "HIST-SC-BOMBAY",
+        "HIST-SADAR-BOM"
+      ],
+      "successor_court_id": null,
+      "established_year": 1862,
+      "dissolved_year": null,
+      "authoritative_reporter": "ILR Bombay / Bombay Law Reporter",
+      "neutral_citation_supported": true,
+      "is_active": true,
+      "notes": ""
+    },
+    "IND-HC-CAL": {
+      "court_id": "IND-HC-CAL",
+      "official_name": "High Court of Judicature at Fort William in Bengal (Calcutta High Court)",
+      "tier": "HIGH_COURT",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "WRIT_CONSTITUTIONAL",
+        "SUPERVISORY",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "West Bengal",
+      "seat_city": "Kolkata",
+      "benches_and_circuits": [
+        "Circuit Bench at Jalpaiguri",
+        "Circuit Bench at Port Blair (A&N Islands)"
+      ],
+      "predecessor_court_ids": [
+        "HIST-SC-CALCUTTA",
+        "HIST-SADAR-CAL"
+      ],
+      "successor_court_id": null,
+      "established_year": 1862,
+      "dissolved_year": null,
+      "authoritative_reporter": "ILR Calcutta / Calcutta Weekly Notes",
+      "neutral_citation_supported": true,
+      "is_active": true,
+      "notes": ""
+    },
+    "IND-HC-CHH": {
+      "court_id": "IND-HC-CHH",
+      "official_name": "High Court of Chhattisgarh",
+      "tier": "HIGH_COURT",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "WRIT_CONSTITUTIONAL",
+        "SUPERVISORY",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "Chhattisgarh",
+      "seat_city": "Bilaspur",
+      "benches_and_circuits": [],
+      "predecessor_court_ids": [
+        "HIST-HC-MP-JAB"
+      ],
+      "successor_court_id": null,
+      "established_year": 2000,
+      "dissolved_year": null,
+      "authoritative_reporter": "Chhattisgarh Law Journal",
+      "neutral_citation_supported": true,
+      "is_active": true,
+      "notes": ""
+    },
+    "IND-HC-DEL": {
+      "court_id": "IND-HC-DEL",
+      "official_name": "High Court of Delhi",
+      "tier": "HIGH_COURT",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "WRIT_CONSTITUTIONAL",
+        "SUPERVISORY",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "NCT of Delhi",
+      "seat_city": "New Delhi",
+      "benches_and_circuits": [],
+      "predecessor_court_ids": [
+        "HIST-HC-PUNJAB-CIRCUIT"
+      ],
+      "successor_court_id": null,
+      "established_year": 1966,
+      "dissolved_year": null,
+      "authoritative_reporter": "Delhi Law Times / ILR Delhi",
+      "neutral_citation_supported": true,
+      "is_active": true,
+      "notes": ""
+    },
+    "IND-HC-GAU": {
+      "court_id": "IND-HC-GAU",
+      "official_name": "Gauhati High Court",
+      "tier": "HIGH_COURT",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "WRIT_CONSTITUTIONAL",
+        "SUPERVISORY",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "Assam",
+      "seat_city": "Guwahati",
+      "benches_and_circuits": [
+        "Kohima (Nagaland)",
+        "Aizawl (Mizoram)",
+        "Itanagar (Arunachal Pradesh)"
+      ],
+      "predecessor_court_ids": [],
+      "successor_court_id": null,
+      "established_year": 1948,
+      "dissolved_year": null,
+      "authoritative_reporter": "Gauhati Law Reports",
+      "neutral_citation_supported": true,
+      "is_active": true,
+      "notes": ""
+    },
+    "IND-HC-GUJ": {
+      "court_id": "IND-HC-GUJ",
+      "official_name": "High Court of Gujarat",
+      "tier": "HIGH_COURT",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "WRIT_CONSTITUTIONAL",
+        "SUPERVISORY",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "Gujarat",
+      "seat_city": "Ahmedabad",
+      "benches_and_circuits": [],
+      "predecessor_court_ids": [
+        "IND-HC-BOM"
+      ],
+      "successor_court_id": null,
+      "established_year": 1960,
+      "dissolved_year": null,
+      "authoritative_reporter": "Gujarat Law Reporter",
+      "neutral_citation_supported": true,
+      "is_active": true,
+      "notes": ""
+    },
+    "IND-HC-HP": {
+      "court_id": "IND-HC-HP",
+      "official_name": "High Court of Himachal Pradesh",
+      "tier": "HIGH_COURT",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "WRIT_CONSTITUTIONAL",
+        "SUPERVISORY",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "Himachal Pradesh",
+      "seat_city": "Shimla",
+      "benches_and_circuits": [],
+      "predecessor_court_ids": [
+        "HIST-HC-DELHI-HP-BENCH"
+      ],
+      "successor_court_id": null,
+      "established_year": 1971,
+      "dissolved_year": null,
+      "authoritative_reporter": "Himachal Law Reporter",
+      "neutral_citation_supported": true,
+      "is_active": true,
+      "notes": ""
+    },
+    "IND-HC-JK": {
+      "court_id": "IND-HC-JK",
+      "official_name": "High Court of Jammu & Kashmir and Ladakh",
+      "tier": "HIGH_COURT",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "WRIT_CONSTITUTIONAL",
+        "SUPERVISORY",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "Jammu & Kashmir",
+      "seat_city": "Srinagar & Jammu",
+      "benches_and_circuits": [],
+      "predecessor_court_ids": [],
+      "successor_court_id": null,
+      "established_year": 1928,
+      "dissolved_year": null,
+      "authoritative_reporter": "JK Law Reporter",
+      "neutral_citation_supported": true,
+      "is_active": true,
+      "notes": ""
+    },
+    "IND-HC-JHK": {
+      "court_id": "IND-HC-JHK",
+      "official_name": "High Court of Jharkhand",
+      "tier": "HIGH_COURT",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "WRIT_CONSTITUTIONAL",
+        "SUPERVISORY",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "Jharkhand",
+      "seat_city": "Ranchi",
+      "benches_and_circuits": [],
+      "predecessor_court_ids": [
+        "IND-HC-PAT"
+      ],
+      "successor_court_id": null,
+      "established_year": 2000,
+      "dissolved_year": null,
+      "authoritative_reporter": "Jharkhand Cases Digest",
+      "neutral_citation_supported": true,
+      "is_active": true,
+      "notes": ""
+    },
+    "IND-HC-KAR": {
+      "court_id": "IND-HC-KAR",
+      "official_name": "High Court of Karnataka",
+      "tier": "HIGH_COURT",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "WRIT_CONSTITUTIONAL",
+        "SUPERVISORY",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "Karnataka",
+      "seat_city": "Bengaluru",
+      "benches_and_circuits": [
+        "Dharwad",
+        "Kalaburagi"
+      ],
+      "predecessor_court_ids": [
+        "HIST-CHIEF-COURT-MYSORE"
+      ],
+      "successor_court_id": null,
+      "established_year": 1884,
+      "dissolved_year": null,
+      "authoritative_reporter": "Karnataka Law Journal / ILR Karnataka",
+      "neutral_citation_supported": true,
+      "is_active": true,
+      "notes": ""
+    },
+    "IND-HC-KER": {
+      "court_id": "IND-HC-KER",
+      "official_name": "High Court of Kerala",
+      "tier": "HIGH_COURT",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "WRIT_CONSTITUTIONAL",
+        "SUPERVISORY",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "Kerala",
+      "seat_city": "Kochi",
+      "benches_and_circuits": [],
+      "predecessor_court_ids": [
+        "HIST-HC-TRAVANCORE-COCHIN"
+      ],
+      "successor_court_id": null,
+      "established_year": 1956,
+      "dissolved_year": null,
+      "authoritative_reporter": "Kerala Law Times / ILR Kerala",
+      "neutral_citation_supported": true,
+      "is_active": true,
+      "notes": ""
+    },
+    "IND-HC-MP": {
+      "court_id": "IND-HC-MP",
+      "official_name": "High Court of Madhya Pradesh",
+      "tier": "HIGH_COURT",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "WRIT_CONSTITUTIONAL",
+        "SUPERVISORY",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "Madhya Pradesh",
+      "seat_city": "Jabalpur",
+      "benches_and_circuits": [
+        "Gwalior",
+        "Indore"
+      ],
+      "predecessor_court_ids": [
+        "HIST-HC-NAGPUR"
+      ],
+      "successor_court_id": null,
+      "established_year": 1956,
+      "dissolved_year": null,
+      "authoritative_reporter": "Madhya Pradesh Law Journal",
+      "neutral_citation_supported": true,
+      "is_active": true,
+      "notes": ""
+    },
+    "IND-HC-MAD": {
+      "court_id": "IND-HC-MAD",
+      "official_name": "High Court of Judicature at Madras",
+      "tier": "HIGH_COURT",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "WRIT_CONSTITUTIONAL",
+        "SUPERVISORY",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "Tamil Nadu",
+      "seat_city": "Chennai",
+      "benches_and_circuits": [
+        "Madurai Bench"
+      ],
+      "predecessor_court_ids": [
+        "HIST-SC-MADRAS",
+        "HIST-SADAR-MADRAS"
+      ],
+      "successor_court_id": null,
+      "established_year": 1862,
+      "dissolved_year": null,
+      "authoritative_reporter": "Madras Law Journal / ILR Madras",
+      "neutral_citation_supported": true,
+      "is_active": true,
+      "notes": ""
+    },
+    "IND-HC-MAN": {
+      "court_id": "IND-HC-MAN",
+      "official_name": "High Court of Manipur",
+      "tier": "HIGH_COURT",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "WRIT_CONSTITUTIONAL",
+        "SUPERVISORY",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "Manipur",
+      "seat_city": "Imphal",
+      "benches_and_circuits": [],
+      "predecessor_court_ids": [
+        "IND-HC-GAU"
+      ],
+      "successor_court_id": null,
+      "established_year": 2013,
+      "dissolved_year": null,
+      "authoritative_reporter": "Manipur Law Journal",
+      "neutral_citation_supported": true,
+      "is_active": true,
+      "notes": ""
+    },
+    "IND-HC-MEG": {
+      "court_id": "IND-HC-MEG",
+      "official_name": "High Court of Meghalaya",
+      "tier": "HIGH_COURT",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "WRIT_CONSTITUTIONAL",
+        "SUPERVISORY",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "Meghalaya",
+      "seat_city": "Shillong",
+      "benches_and_circuits": [],
+      "predecessor_court_ids": [
+        "IND-HC-GAU"
+      ],
+      "successor_court_id": null,
+      "established_year": 2013,
+      "dissolved_year": null,
+      "authoritative_reporter": "Meghalaya Law Reporter",
+      "neutral_citation_supported": true,
+      "is_active": true,
+      "notes": ""
+    },
+    "IND-HC-ORI": {
+      "court_id": "IND-HC-ORI",
+      "official_name": "Orissa High Court",
+      "tier": "HIGH_COURT",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "WRIT_CONSTITUTIONAL",
+        "SUPERVISORY",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "Odisha",
+      "seat_city": "Cuttack",
+      "benches_and_circuits": [],
+      "predecessor_court_ids": [
+        "IND-HC-PAT"
+      ],
+      "successor_court_id": null,
+      "established_year": 1948,
+      "dissolved_year": null,
+      "authoritative_reporter": "Orissa Law Reviews / ILR Cuttack",
+      "neutral_citation_supported": true,
+      "is_active": true,
+      "notes": ""
+    },
+    "IND-HC-PAT": {
+      "court_id": "IND-HC-PAT",
+      "official_name": "High Court of Judicature at Patna",
+      "tier": "HIGH_COURT",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "WRIT_CONSTITUTIONAL",
+        "SUPERVISORY",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "Bihar",
+      "seat_city": "Patna",
+      "benches_and_circuits": [],
+      "predecessor_court_ids": [
+        "IND-HC-CAL"
+      ],
+      "successor_court_id": null,
+      "established_year": 1916,
+      "dissolved_year": null,
+      "authoritative_reporter": "Patna Law Journal / ILR Patna",
+      "neutral_citation_supported": true,
+      "is_active": true,
+      "notes": ""
+    },
+    "IND-HC-PNH": {
+      "court_id": "IND-HC-PNH",
+      "official_name": "High Court of Punjab and Haryana",
+      "tier": "HIGH_COURT",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "WRIT_CONSTITUTIONAL",
+        "SUPERVISORY",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "Punjab & Haryana",
+      "seat_city": "Chandigarh",
+      "benches_and_circuits": [],
+      "predecessor_court_ids": [
+        "HIST-CHIEF-COURT-PUNJAB",
+        "HIST-HC-LAHORE"
+      ],
+      "successor_court_id": null,
+      "established_year": 1947,
+      "dissolved_year": null,
+      "authoritative_reporter": "Punjab Law Reporter / ILR Punjab & Haryana",
+      "neutral_citation_supported": true,
+      "is_active": true,
+      "notes": ""
+    },
+    "IND-HC-RAJ": {
+      "court_id": "IND-HC-RAJ",
+      "official_name": "High Court of Judicature for Rajasthan",
+      "tier": "HIGH_COURT",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "WRIT_CONSTITUTIONAL",
+        "SUPERVISORY",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "Rajasthan",
+      "seat_city": "Jodhpur",
+      "benches_and_circuits": [
+        "Jaipur Bench"
+      ],
+      "predecessor_court_ids": [],
+      "successor_court_id": null,
+      "established_year": 1949,
+      "dissolved_year": null,
+      "authoritative_reporter": "Rajasthan Law Weekly / ILR Rajasthan",
+      "neutral_citation_supported": true,
+      "is_active": true,
+      "notes": ""
+    },
+    "IND-HC-SIK": {
+      "court_id": "IND-HC-SIK",
+      "official_name": "High Court of Sikkim",
+      "tier": "HIGH_COURT",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "WRIT_CONSTITUTIONAL",
+        "SUPERVISORY",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "Sikkim",
+      "seat_city": "Gangtok",
+      "benches_and_circuits": [],
+      "predecessor_court_ids": [],
+      "successor_court_id": null,
+      "established_year": 1975,
+      "dissolved_year": null,
+      "authoritative_reporter": "Sikkim Law Journal",
+      "neutral_citation_supported": true,
+      "is_active": true,
+      "notes": ""
+    },
+    "IND-HC-TEL": {
+      "court_id": "IND-HC-TEL",
+      "official_name": "High Court for the State of Telangana",
+      "tier": "HIGH_COURT",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "WRIT_CONSTITUTIONAL",
+        "SUPERVISORY",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "Telangana",
+      "seat_city": "Hyderabad",
+      "benches_and_circuits": [],
+      "predecessor_court_ids": [
+        "HIST-HC-HYD"
+      ],
+      "successor_court_id": null,
+      "established_year": 2019,
+      "dissolved_year": null,
+      "authoritative_reporter": "Telangana Law Journal",
+      "neutral_citation_supported": true,
+      "is_active": true,
+      "notes": ""
+    },
+    "IND-HC-TRI": {
+      "court_id": "IND-HC-TRI",
+      "official_name": "High Court of Tripura",
+      "tier": "HIGH_COURT",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "WRIT_CONSTITUTIONAL",
+        "SUPERVISORY",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "Tripura",
+      "seat_city": "Agartala",
+      "benches_and_circuits": [],
+      "predecessor_court_ids": [
+        "IND-HC-GAU"
+      ],
+      "successor_court_id": null,
+      "established_year": 2013,
+      "dissolved_year": null,
+      "authoritative_reporter": "Tripura Law Reports",
+      "neutral_citation_supported": true,
+      "is_active": true,
+      "notes": ""
+    },
+    "IND-HC-UTT": {
+      "court_id": "IND-HC-UTT",
+      "official_name": "High Court of Uttarakhand",
+      "tier": "HIGH_COURT",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "WRIT_CONSTITUTIONAL",
+        "SUPERVISORY",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "Uttarakhand",
+      "seat_city": "Nainital",
+      "benches_and_circuits": [],
+      "predecessor_court_ids": [
+        "IND-HC-ALL"
+      ],
+      "successor_court_id": null,
+      "established_year": 2000,
+      "dissolved_year": null,
+      "authoritative_reporter": "Uttarakhand Law Decisions",
+      "neutral_citation_supported": true,
+      "is_active": true,
+      "notes": ""
+    },
+    "IND-TR-CAT": {
+      "court_id": "IND-TR-CAT",
+      "official_name": "Central Administrative Tribunal",
+      "tier": "TRIBUNAL",
+      "jurisdiction_type": [
+        "STATUTORY_TRIBUNAL",
+        "APPELLATE"
+      ],
+      "state_or_ut": "National",
+      "seat_city": "New Delhi",
+      "benches_and_circuits": [
+        "19 Benches across India"
+      ],
+      "predecessor_court_ids": [],
+      "successor_court_id": null,
+      "established_year": 1985,
+      "dissolved_year": null,
+      "authoritative_reporter": null,
+      "neutral_citation_supported": false,
+      "is_active": true,
+      "notes": "Administrative Tribunals Act 1985 / Service Matters"
+    },
+    "IND-TR-NCLAT": {
+      "court_id": "IND-TR-NCLAT",
+      "official_name": "National Company Law Appellate Tribunal",
+      "tier": "TRIBUNAL",
+      "jurisdiction_type": [
+        "STATUTORY_TRIBUNAL",
+        "APPELLATE"
+      ],
+      "state_or_ut": "National",
+      "seat_city": "New Delhi",
+      "benches_and_circuits": [
+        "Chennai Bench"
+      ],
+      "predecessor_court_ids": [],
+      "successor_court_id": null,
+      "established_year": 2016,
+      "dissolved_year": null,
+      "authoritative_reporter": null,
+      "neutral_citation_supported": false,
+      "is_active": true,
+      "notes": "Companies Act 2013, IBC 2016 Appeals"
+    },
+    "IND-TR-NCLT": {
+      "court_id": "IND-TR-NCLT",
+      "official_name": "National Company Law Tribunal",
+      "tier": "TRIBUNAL",
+      "jurisdiction_type": [
+        "STATUTORY_TRIBUNAL",
+        "APPELLATE"
+      ],
+      "state_or_ut": "National",
+      "seat_city": "New Delhi",
+      "benches_and_circuits": [
+        "16 Benches across major cities"
+      ],
+      "predecessor_court_ids": [],
+      "successor_court_id": null,
+      "established_year": 2016,
+      "dissolved_year": null,
+      "authoritative_reporter": null,
+      "neutral_citation_supported": false,
+      "is_active": true,
+      "notes": "Insolvency, Bankruptcy & Corporate matters"
+    },
+    "IND-TR-NGT": {
+      "court_id": "IND-TR-NGT",
+      "official_name": "National Green Tribunal",
+      "tier": "TRIBUNAL",
+      "jurisdiction_type": [
+        "STATUTORY_TRIBUNAL",
+        "APPELLATE"
+      ],
+      "state_or_ut": "National",
+      "seat_city": "New Delhi",
+      "benches_and_circuits": [
+        "Bhopal",
+        "Pune",
+        "Kolkata",
+        "Chennai"
+      ],
+      "predecessor_court_ids": [],
+      "successor_court_id": null,
+      "established_year": 2010,
+      "dissolved_year": null,
+      "authoritative_reporter": null,
+      "neutral_citation_supported": false,
+      "is_active": true,
+      "notes": "National Green Tribunal Act 2010 / Environmental matters"
+    },
+    "IND-TR-ITAT": {
+      "court_id": "IND-TR-ITAT",
+      "official_name": "Income Tax Appellate Tribunal",
+      "tier": "TRIBUNAL",
+      "jurisdiction_type": [
+        "STATUTORY_TRIBUNAL",
+        "APPELLATE"
+      ],
+      "state_or_ut": "National",
+      "seat_city": "Mumbai / New Delhi",
+      "benches_and_circuits": [
+        "63 Benches across 27 stations"
+      ],
+      "predecessor_court_ids": [],
+      "successor_court_id": null,
+      "established_year": 1941,
+      "dissolved_year": null,
+      "authoritative_reporter": null,
+      "neutral_citation_supported": false,
+      "is_active": true,
+      "notes": "Income Tax Act 1961 matters"
+    },
+    "IND-TR-CESTAT": {
+      "court_id": "IND-TR-CESTAT",
+      "official_name": "Customs, Excise and Service Tax Appellate Tribunal",
+      "tier": "TRIBUNAL",
+      "jurisdiction_type": [
+        "STATUTORY_TRIBUNAL",
+        "APPELLATE"
+      ],
+      "state_or_ut": "National",
+      "seat_city": "New Delhi",
+      "benches_and_circuits": [
+        "Mumbai",
+        "Kolkata",
+        "Chennai",
+        "Bengaluru",
+        "Ahmedabad",
+        "Allahabad",
+        "Chandigarh",
+        "Hyderabad"
+      ],
+      "predecessor_court_ids": [],
+      "successor_court_id": null,
+      "established_year": 1982,
+      "dissolved_year": null,
+      "authoritative_reporter": null,
+      "neutral_citation_supported": false,
+      "is_active": true,
+      "notes": "Customs, Central Excise, Service Tax"
+    },
+    "IND-TR-TDSAT": {
+      "court_id": "IND-TR-TDSAT",
+      "official_name": "Telecom Disputes Settlement and Appellate Tribunal",
+      "tier": "TRIBUNAL",
+      "jurisdiction_type": [
+        "STATUTORY_TRIBUNAL",
+        "APPELLATE"
+      ],
+      "state_or_ut": "National",
+      "seat_city": "New Delhi",
+      "benches_and_circuits": [],
+      "predecessor_court_ids": [],
+      "successor_court_id": null,
+      "established_year": 2000,
+      "dissolved_year": null,
+      "authoritative_reporter": null,
+      "neutral_citation_supported": false,
+      "is_active": true,
+      "notes": "TRAI Act 1997 / Telecom & Broadcasting"
+    },
+    "IND-TR-APTEL": {
+      "court_id": "IND-TR-APTEL",
+      "official_name": "Appellate Tribunal for Electricity",
+      "tier": "TRIBUNAL",
+      "jurisdiction_type": [
+        "STATUTORY_TRIBUNAL",
+        "APPELLATE"
+      ],
+      "state_or_ut": "National",
+      "seat_city": "New Delhi",
+      "benches_and_circuits": [],
+      "predecessor_court_ids": [],
+      "successor_court_id": null,
+      "established_year": 2005,
+      "dissolved_year": null,
+      "authoritative_reporter": null,
+      "neutral_citation_supported": false,
+      "is_active": true,
+      "notes": "Electricity Act 2003 / Energy"
+    },
+    "IND-TR-DRAT": {
+      "court_id": "IND-TR-DRAT",
+      "official_name": "Debt Recovery Appellate Tribunal",
+      "tier": "TRIBUNAL",
+      "jurisdiction_type": [
+        "STATUTORY_TRIBUNAL",
+        "APPELLATE"
+      ],
+      "state_or_ut": "National",
+      "seat_city": "New Delhi",
+      "benches_and_circuits": [
+        "Mumbai",
+        "Kolkata",
+        "Chennai",
+        "Allahabad"
+      ],
+      "predecessor_court_ids": [],
+      "successor_court_id": null,
+      "established_year": 1993,
+      "dissolved_year": null,
+      "authoritative_reporter": null,
+      "neutral_citation_supported": false,
+      "is_active": true,
+      "notes": "RDDBFI Act 1993 & SARFAESI Act 2002"
+    },
+    "IND-TR-DRT": {
+      "court_id": "IND-TR-DRT",
+      "official_name": "Debts Recovery Tribunal",
+      "tier": "TRIBUNAL",
+      "jurisdiction_type": [
+        "STATUTORY_TRIBUNAL",
+        "APPELLATE"
+      ],
+      "state_or_ut": "National",
+      "seat_city": "Various",
+      "benches_and_circuits": [
+        "39 Tribunals nationwide"
+      ],
+      "predecessor_court_ids": [],
+      "successor_court_id": null,
+      "established_year": 1993,
+      "dissolved_year": null,
+      "authoritative_reporter": null,
+      "neutral_citation_supported": false,
+      "is_active": true,
+      "notes": "Recovery of debts due to banks and financial institutions"
+    },
+    "IND-TR-NCDRC": {
+      "court_id": "IND-TR-NCDRC",
+      "official_name": "National Consumer Disputes Redressal Commission",
+      "tier": "TRIBUNAL",
+      "jurisdiction_type": [
+        "STATUTORY_TRIBUNAL",
+        "APPELLATE"
+      ],
+      "state_or_ut": "National",
+      "seat_city": "New Delhi",
+      "benches_and_circuits": [],
+      "predecessor_court_ids": [],
+      "successor_court_id": null,
+      "established_year": 1988,
+      "dissolved_year": null,
+      "authoritative_reporter": null,
+      "neutral_citation_supported": false,
+      "is_active": true,
+      "notes": "Consumer Protection Act 1986 / 2019"
+    },
+    "IND-MIL-AFT": {
+      "court_id": "IND-MIL-AFT",
+      "official_name": "Armed Forces Tribunal",
+      "tier": "MILITARY_JUSTICE",
+      "jurisdiction_type": [
+        "STATUTORY_TRIBUNAL",
+        "APPELLATE"
+      ],
+      "state_or_ut": "National",
+      "seat_city": "New Delhi",
+      "benches_and_circuits": [
+        "Chandigarh",
+        "Lucknow",
+        "Kolkata",
+        "Guwahati",
+        "Chennai",
+        "Kochi",
+        "Mumbai",
+        "Jabalpur",
+        "Jaipur",
+        "Srinagar (Circuit)"
+      ],
+      "predecessor_court_ids": [],
+      "successor_court_id": null,
+      "established_year": 2009,
+      "dissolved_year": null,
+      "authoritative_reporter": "AFT Reporter / Selected Decisions",
+      "neutral_citation_supported": false,
+      "is_active": true,
+      "notes": "Established under Armed Forces Tribunal Act 2007. Adjudicates disputes regarding commission, appointments, enrollments, and conditions of service; appeals against courts-martial."
+    },
+    "IND-MIL-CM": {
+      "court_id": "IND-MIL-CM",
+      "official_name": "Courts-Martial System (Army, Navy, Air Force)",
+      "tier": "MILITARY_JUSTICE",
+      "jurisdiction_type": [
+        "MILITARY_SUMMARY",
+        "ORIGINAL"
+      ],
+      "state_or_ut": "National",
+      "seat_city": "Ad-hoc / Military Formations",
+      "benches_and_circuits": [
+        "General Court-Martial (GCM)",
+        "District Court-Martial (DCM)",
+        "Summary General Court-Martial (SGCM)",
+        "Summary Court-Martial (SCM)"
+      ],
+      "predecessor_court_ids": [],
+      "successor_court_id": null,
+      "established_year": 1950,
+      "dissolved_year": null,
+      "authoritative_reporter": null,
+      "neutral_citation_supported": false,
+      "is_active": true,
+      "notes": "Governed under Army Act 1950, Navy Act 1957, Air Force Act 1950. Subject to statutory appeals before the Armed Forces Tribunal."
+    },
+    "IND-DIST-GENERIC": {
+      "court_id": "IND-DIST-GENERIC",
+      "official_name": "Subordinate Judiciary Hierarchy (District & Sessions Level)",
+      "tier": "DISTRICT_COURT",
+      "jurisdiction_type": [
+        "ORIGINAL",
+        "APPELLATE",
+        "REVISIONAL"
+      ],
+      "state_or_ut": "All States and Union Territories",
+      "seat_city": "District Headquarters Nationwide",
+      "benches_and_circuits": [
+        "Principal District & Sessions Judge",
+        "Additional District & Sessions Judge",
+        "Chief Judicial Magistrate (CJM) / Chief Metropolitan Magistrate (CMM)",
+        "Civil Judge (Senior Division) / Subordinate Judge",
+        "Judicial Magistrate 1st Class (JMFC) / Metropolitan Magistrate (MM)",
+        "Civil Judge (Junior Division) / Munsif Court",
+        "Small Causes Court",
+        "Gram Nyayalaya"
+      ],
+      "predecessor_court_ids": [],
+      "successor_court_id": null,
+      "established_year": 1950,
+      "dissolved_year": null,
+      "authoritative_reporter": null,
+      "neutral_citation_supported": false,
+      "is_active": true,
+      "notes": "Governed by respective State Judicial Service Rules and High Court administrative superintendence (Art. 227). Case distribution handled via eCourts CIS."
+    },
+    "HIST-SC-CALCUTTA": {
+      "court_id": "HIST-SC-CALCUTTA",
+      "official_name": "Supreme Court of Judicature at Fort William in Bengal",
+      "tier": "HISTORICAL_ARCHIVE",
+      "jurisdiction_type": [
+        "HISTORICAL_IMPERIAL",
+        "ORIGINAL"
+      ],
+      "state_or_ut": null,
+      "seat_city": "Calcutta",
+      "benches_and_circuits": [],
+      "predecessor_court_ids": [],
+      "successor_court_id": "IND-HC-CAL",
+      "established_year": 1774,
+      "dissolved_year": 1862,
+      "authoritative_reporter": null,
+      "neutral_citation_supported": false,
+      "is_active": false,
+      "notes": "Established under Regulating Act 1773. Replaced by Calcutta High Court under Indian High Courts Act 1861."
+    },
+    "HIST-SC-MADRAS": {
+      "court_id": "HIST-SC-MADRAS",
+      "official_name": "Supreme Court of Judicature at Madras",
+      "tier": "HISTORICAL_ARCHIVE",
+      "jurisdiction_type": [
+        "HISTORICAL_IMPERIAL",
+        "ORIGINAL"
+      ],
+      "state_or_ut": null,
+      "seat_city": "Madras",
+      "benches_and_circuits": [],
+      "predecessor_court_ids": [],
+      "successor_court_id": "IND-HC-MAD",
+      "established_year": 1801,
+      "dissolved_year": 1862,
+      "authoritative_reporter": null,
+      "neutral_citation_supported": false,
+      "is_active": false,
+      "notes": "Replaced by Madras High Court under Indian High Courts Act 1861."
+    },
+    "HIST-SC-BOMBAY": {
+      "court_id": "HIST-SC-BOMBAY",
+      "official_name": "Supreme Court of Judicature at Bombay",
+      "tier": "HISTORICAL_ARCHIVE",
+      "jurisdiction_type": [
+        "HISTORICAL_IMPERIAL",
+        "ORIGINAL"
+      ],
+      "state_or_ut": null,
+      "seat_city": "Bombay",
+      "benches_and_circuits": [],
+      "predecessor_court_ids": [],
+      "successor_court_id": "IND-HC-BOM",
+      "established_year": 1824,
+      "dissolved_year": 1862,
+      "authoritative_reporter": null,
+      "neutral_citation_supported": false,
+      "is_active": false,
+      "notes": "Replaced by Bombay High Court under Indian High Courts Act 1861."
+    }
+  }
+}

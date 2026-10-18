@@ -1,0 +1,54 @@
+{
+  "framework_version": "Phase-38-V1",
+  "statutory_bases": [
+    {
+      "statute": "Protection of Children from Sexual Offences (POCSO) Act, 2012",
+      "provisions": [
+        "Section 33(7)",
+        "Section 74"
+      ],
+      "mandate": "Strict prohibition on publishing or revealing identity, address, school, or relatives of child victim in any media or database.",
+      "enforcement_action": "Mandatory redactive anonymization or ingestion block."
+    },
+    {
+      "statute": "Indian Penal Code 1860 / Bharatiya Nyaya Sanhita 2023",
+      "provisions": [
+        "Section 228A IPC",
+        "Section 72 BNS"
+      ],
+      "mandate": "Cognizable offence to print or publish the name or any matter making known identity of victim of rape or sexual assault.",
+      "enforcement_action": "Automatic name masking to [VICTIM_ANONYMIZED]."
+    },
+    {
+      "statute": "Juvenile Justice (Care and Protection of Children) Act, 2015",
+      "provisions": [
+        "Section 74"
+      ],
+      "mandate": "Prohibition of disclosure of name, address, school or particulars leading to identification of any child in conflict with law or child in need of care.",
+      "enforcement_action": "Automatic child masking to [CHILD_VICTIM_ANONYMIZED]."
+    },
+    {
+      "statute": "Family Courts Act, 1984",
+      "provisions": [
+        "Section 11"
+      ],
+      "mandate": "In-camera proceedings upon request of either party or court discretion; matrimonial disputes shielded from open publication.",
+      "enforcement_action": "Strict publication gating."
+    },
+    {
+      "statute": "Official Secrets Act, 1923 & National Security",
+      "provisions": [
+        "Sections 3, 5"
+      ],
+      "mandate": "Absolute bar on handling or publishing classified defence, strategic, or intelligence judicial proceedings.",
+      "enforcement_action": "Total ingestion block."
+    }
+  ],
+  "compliance_rules": {
+    "block_sealed_cover_materials": true,
+    "block_in_camera_matrimonial_disputes": true,
+    "block_classified_military_orders": true,
+    "require_masking_before_rag_embedding": true,
+    "require_masking_before_lm_training": true
+  }
+}

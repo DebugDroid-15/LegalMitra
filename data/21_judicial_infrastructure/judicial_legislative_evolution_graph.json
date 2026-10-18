@@ -1,0 +1,106 @@
+{
+  "total_judicial_actions": 6,
+  "total_legislative_responses": 4,
+  "judicial_actions": [
+    {
+      "case_id": "SHREYA-SINGHAL-2015",
+      "case_citation": "AIR 2015 SC 1523",
+      "statute_name": "Information Technology Act 2000",
+      "statute_section": "Section 66A",
+      "judicial_action": "STRUCK_DOWN_UNCONSTITUTIONAL",
+      "constitutional_ground": "Article 19(1)(a) & not saved under Article 19(2)",
+      "holding_summary": "Section 66A invalidated in entirety for being vague and overbroad, creating a chilling effect on speech."
+    },
+    {
+      "case_id": "VISHAKA-1997",
+      "case_citation": "AIR 1997 SC 3011",
+      "statute_name": "Gender Equality at Workplace",
+      "statute_section": null,
+      "judicial_action": "GAP_FILLED_BY_GUIDELINES",
+      "constitutional_ground": "Articles 14, 19(1)(g), 21 read with CEDAW under Article 51(c)",
+      "holding_summary": "Supreme Court formulated binding guidelines to operate as law under Article 141 until statutory enactment."
+    },
+    {
+      "case_id": "SHAH-BANO-1985",
+      "case_citation": "AIR 1985 SC 945",
+      "statute_name": "Code of Criminal Procedure 1973",
+      "statute_section": "Section 125",
+      "judicial_action": "INTERPRETED_EXPANSIVELY",
+      "constitutional_ground": "Article 44 / Secular application of Section 125 CrPC",
+      "holding_summary": "Section 125 CrPC applies universally to all divorced women irrespective of personal religion."
+    },
+    {
+      "case_id": "JOSEPH-SHINE-2018",
+      "case_citation": "AIR 2018 SC 4898",
+      "statute_name": "Indian Penal Code 1860",
+      "statute_section": "Section 497",
+      "judicial_action": "STRUCK_DOWN_UNCONSTITUTIONAL",
+      "constitutional_ground": "Articles 14, 15, and 21",
+      "holding_summary": "Struck down Section 497 IPC for violating dignity and autonomy of women, treating wife as chattel of husband."
+    },
+    {
+      "case_id": "NAVTEJ-JOHAR-2018",
+      "case_citation": "AIR 2018 SC 4321",
+      "statute_name": "Indian Penal Code 1860",
+      "statute_section": "Section 377",
+      "judicial_action": "READ_DOWN",
+      "constitutional_ground": "Articles 14, 15, 19(1)(a), 21",
+      "holding_summary": "Read down Section 377 IPC to exclude consensual sexual acts between consenting adults in private."
+    },
+    {
+      "case_id": "DK-BASU-1997",
+      "case_citation": "AIR 1997 SC 610",
+      "statute_name": "Code of Criminal Procedure 1973 (Arrest & Custodial Safeguards)",
+      "statute_section": "Sections 41, 46, 50, 54",
+      "judicial_action": "GAP_FILLED_BY_GUIDELINES",
+      "constitutional_ground": "Articles 21 and 22",
+      "holding_summary": "Formulated 11 mandatory procedural guidelines for arrest and detention to prevent custodial violence."
+    }
+  ],
+  "legislative_responses": [
+    {
+      "response_id": "RESP-VISHAKA-POSH-2013",
+      "prior_case_id": "VISHAKA-1997",
+      "prior_case_citation": "AIR 1997 SC 3011",
+      "enacted_statute_or_amendment": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+      "year_of_enactment": 2013,
+      "legislative_action": "CODIFIED_JUDICIAL_DOCTRINE",
+      "causation_level": "DIRECT_LEGISLATIVE_RESPONSE",
+      "official_evidentiary_citation": "Statement of Objects and Reasons, POSH Act 2013 (Bill No. 144 of 2010), citing Vishaka v. State of Rajasthan.",
+      "detailed_evolution_notes": "Parliament expressly cited the Vishaka guidelines and international commitments in the Statement of Objects and Reasons, codifying internal complaints committees and inquiries into comprehensive statute."
+    },
+    {
+      "response_id": "RESP-SHAH-BANO-1986",
+      "prior_case_id": "SHAH-BANO-1985",
+      "prior_case_citation": "AIR 1985 SC 945",
+      "enacted_statute_or_amendment": "Muslim Women (Protection of Rights on Divorce) Act, 1986",
+      "year_of_enactment": 1986,
+      "legislative_action": "SUPERSEDED_OR_NULLIFIED_EFFECT",
+      "causation_level": "DIRECT_LEGISLATIVE_RESPONSE",
+      "official_evidentiary_citation": "Statement of Objects and Reasons, Muslim Women Act 1986, specifically addressing the aftermath of Mohd. Ahmed Khan v. Shah Bano Begum.",
+      "detailed_evolution_notes": "Enacted to supersede the direct operation of Section 125 CrPC regarding Muslim divorced women, later harmoniously construed in Danial Latifi (2001)."
+    },
+    {
+      "response_id": "RESP-JOSEPH-SHINE-BNS-2023",
+      "prior_case_id": "JOSEPH-SHINE-2018",
+      "prior_case_citation": "AIR 2018 SC 4898",
+      "enacted_statute_or_amendment": "Bharatiya Nyaya Sanhita 2023",
+      "year_of_enactment": 2023,
+      "legislative_action": "REPLACED_HISTORIC_STATUTE",
+      "causation_level": "DIRECT_LEGISLATIVE_RESPONSE",
+      "official_evidentiary_citation": "Parliamentary Standing Committee on Home Affairs Report No. 246 (2023) on Bharatiya Nyaya Sanhita, affirming omission of adultery pursuant to Joseph Shine.",
+      "detailed_evolution_notes": "Adultery provision Section 497 was omitted completely from BNS 2023 in line with the Supreme Court constitutional bench decision in Joseph Shine."
+    },
+    {
+      "response_id": "RESP-DK-BASU-CRPC-2008",
+      "prior_case_id": "DK-BASU-1997",
+      "prior_case_citation": "AIR 1997 SC 610",
+      "enacted_statute_or_amendment": "Code of Criminal Procedure (Amendment) Act, 2008 (Act 5 of 2009)",
+      "year_of_enactment": 2009,
+      "legislative_action": "CODIFIED_JUDICIAL_DOCTRINE",
+      "causation_level": "DIRECT_LEGISLATIVE_RESPONSE",
+      "official_evidentiary_citation": "Law Commission of India 177th Report on Law Relating to Arrest (2001) and Statement of Objects & Reasons of CrPC Amendment Act 2008, citing D.K. Basu.",
+      "detailed_evolution_notes": "Insertion of Sections 41A, 41B, 41C, and 41D into CrPC directly codifying D.K. Basu arrest memo, notice of appearance, and right to meet advocate."
+    }
+  ]
+}
