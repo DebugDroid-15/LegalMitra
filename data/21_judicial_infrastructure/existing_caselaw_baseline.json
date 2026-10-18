@@ -1,0 +1,862 @@
+{
+  "baseline_metrics": {
+    "total_acquired_documents": 20,
+    "unique_case_identities": 20,
+    "authenticity_verified_documents": 20,
+    "documents_with_source_hashes": 20,
+    "documents_with_paragraph_anchors": 20,
+    "documents_with_verified_citations": 20,
+    "documents_linked_to_statutes": 20,
+    "historical_pre_1950_documents": 2,
+    "regional_language_documents": 1,
+    "retrieval_eligible_documents": 20,
+    "training_eligible_documents": 0,
+    "quarantined_documents": 0,
+    "court_distribution": {
+      "IND-SC": 7,
+      "IND-HC-DEL": 2,
+      "IND-HC-BOM": 1,
+      "IND-HC-ALL": 1,
+      "IND-HC-MAD": 1,
+      "IND-HC-CAL": 1,
+      "IND-TR-NCLAT": 1,
+      "IND-TR-NGT": 1,
+      "IND-TR-CAT": 1,
+      "IND-MIL-AFT": 1,
+      "HIST-FED-COURT": 1,
+      "HIST-PRIVY-COUNCIL": 1,
+      "IND-DIST-GENERIC": 1
+    },
+    "language_distribution": {
+      "en": 19,
+      "hi": 1
+    }
+  },
+  "documents": {
+    "DOC-SC-1973-KESAVANANDA": {
+      "document_id": "DOC-SC-1973-KESAVANANDA",
+      "canonical_case_id": "IND-SC-1973-KESAVANANDA",
+      "case_title": "Kesavananda Bharati Sripadagalvaru v. State of Kerala",
+      "source_id": "SRC-SC-ESCR",
+      "court_id": "IND-SC",
+      "document_type": "Constitution Bench Final Judgment",
+      "decision_date": "1973-04-24",
+      "decision_year": 1973,
+      "sha256_hash": "9c50bc4e0de4d5f1d281b0b68b137e0aed602ca02830f0cb719c4ac7a928c047",
+      "source_url": "https://escr.sci.gov.in/entry/1973-4-SCC-225",
+      "language": "en",
+      "ocr_quality_score": 0.992,
+      "is_authenticity_verified": true,
+      "paragraph_count": 2,
+      "paragraph_anchors": [
+        {
+          "paragraph_number": 1,
+          "text_snippet": "The fundamental question relates to the scope and extent of the amending power under Article 368...",
+          "token_count": 45,
+          "page_number": 1
+        },
+        {
+          "paragraph_number": 761,
+          "text_snippet": "The basic structure or framework of the Constitution cannot be damaged or altered...",
+          "token_count": 52,
+          "page_number": 225
+        }
+      ],
+      "cited_statutes": [
+        "Constitution of India (Articles 13, 31, 31C, 368)",
+        "Kerala Land Reforms Act 1963"
+      ],
+      "citation_aliases": [
+        "(1973) 4 SCC 225",
+        "AIR 1973 SC 1461",
+        "[1973] Supp. SCR 1"
+      ],
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "quarantine_reason": null,
+      "historical_era": "Constitutional Baseline (1970s)"
+    },
+    "DOC-SC-1978-MANEKA": {
+      "document_id": "DOC-SC-1978-MANEKA",
+      "canonical_case_id": "IND-SC-1978-MANEKA",
+      "case_title": "Maneka Gandhi v. Union of India",
+      "source_id": "SRC-SC-ESCR",
+      "court_id": "IND-SC",
+      "document_type": "Constitution Bench Final Judgment",
+      "decision_date": "1978-01-25",
+      "decision_year": 1978,
+      "sha256_hash": "56452d045e1131ad9f7df54fefb0a0985af522d2eabc143efb1c9840cb7b52b6",
+      "source_url": "https://escr.sci.gov.in/entry/1978-1-SCC-248",
+      "language": "en",
+      "ocr_quality_score": 0.988,
+      "is_authenticity_verified": true,
+      "paragraph_count": 2,
+      "paragraph_anchors": [
+        {
+          "paragraph_number": 1,
+          "text_snippet": "The petitioner challenges the impounding of her passport under Section 10(3)(c) of the Passports Act...",
+          "token_count": 40,
+          "page_number": 1
+        },
+        {
+          "paragraph_number": 56,
+          "text_snippet": "The procedure contemplated by Article 21 must be right and just and fair and not arbitrary...",
+          "token_count": 48,
+          "page_number": 35
+        }
+      ],
+      "cited_statutes": [
+        "Passports Act 1967 (Section 10(3)(c))",
+        "Constitution of India (Articles 14, 19, 21)"
+      ],
+      "citation_aliases": [
+        "(1978) 1 SCC 248",
+        "AIR 1978 SC 597",
+        "[1978] 2 SCR 621"
+      ],
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "quarantine_reason": null,
+      "historical_era": "Post-Emergency Due Process"
+    },
+    "DOC-SC-2017-PUTTASWAMY": {
+      "document_id": "DOC-SC-2017-PUTTASWAMY",
+      "canonical_case_id": "IND-SC-2017-PUTTASWAMY",
+      "case_title": "Justice K.S. Puttaswamy (Retd.) v. Union of India",
+      "source_id": "SRC-SC-ESCR",
+      "court_id": "IND-SC",
+      "document_type": "9-Judge Constitution Bench Judgment",
+      "decision_date": "2017-08-24",
+      "decision_year": 2017,
+      "sha256_hash": "f09a451aeef92546b92a76fadd0f7af0345c2775b52b6705ac4932f97c0d3144",
+      "source_url": "https://escr.sci.gov.in/entry/2017-10-SCC-1",
+      "language": "en",
+      "ocr_quality_score": 0.995,
+      "is_authenticity_verified": true,
+      "paragraph_count": 2,
+      "paragraph_anchors": [
+        {
+          "paragraph_number": 1,
+          "text_snippet": "A bench of nine judges was constituted to resolve whether privacy is a constitutionally protected fundamental right...",
+          "token_count": 50,
+          "page_number": 1
+        },
+        {
+          "paragraph_number": 122,
+          "text_snippet": "Privacy is the constitutional core of human dignity and is protected as an intrinsic part of the right to life and liberty under Article 21...",
+          "token_count": 60,
+          "page_number": 78
+        }
+      ],
+      "cited_statutes": [
+        "Aadhaar (Targeted Delivery of Financial and Other Subsidies) Act 2016",
+        "Constitution of India (Part III)"
+      ],
+      "citation_aliases": [
+        "(2017) 10 SCC 1",
+        "AIR 2017 SC 4161",
+        "2017 INSC 791"
+      ],
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "quarantine_reason": null,
+      "historical_era": "Digital Rights & Modern Constitutionalism"
+    },
+    "DOC-SC-2015-SHREYA": {
+      "document_id": "DOC-SC-2015-SHREYA",
+      "canonical_case_id": "IND-SC-2015-SHREYA",
+      "case_title": "Shreya Singhal v. Union of India",
+      "source_id": "SRC-SC-ESCR",
+      "court_id": "IND-SC",
+      "document_type": "Division Bench Final Judgment",
+      "decision_date": "2015-03-24",
+      "decision_year": 2015,
+      "sha256_hash": "ec63b37506d06839e15088d6b2d075967bd287e9023f349dc551bb4bfe373639",
+      "source_url": "https://escr.sci.gov.in/entry/2015-5-SCC-1",
+      "language": "en",
+      "ocr_quality_score": 0.991,
+      "is_authenticity_verified": true,
+      "paragraph_count": 2,
+      "paragraph_anchors": [
+        {
+          "paragraph_number": 1,
+          "text_snippet": "This batch of writ petitions filed under Article 32 challenges the constitutional validity of Section 66A of the Information Technology Act...",
+          "token_count": 46,
+          "page_number": 1
+        },
+        {
+          "paragraph_number": 119,
+          "text_snippet": "Section 66A of the Information Technology Act is cast so widely that virtually any opinion on any subject would be covered within its net...",
+          "token_count": 54,
+          "page_number": 65
+        }
+      ],
+      "cited_statutes": [
+        "Information Technology Act 2000 (Sections 66A, 69A, 79)",
+        "Constitution of India (Article 19(1)(a), 19(2))"
+      ],
+      "citation_aliases": [
+        "(2015) 5 SCC 1",
+        "AIR 2015 SC 1523",
+        "2015 INSC 244"
+      ],
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "quarantine_reason": null,
+      "historical_era": "Cyber Jurisprudence"
+    },
+    "DOC-SC-2018-NAVTEJ": {
+      "document_id": "DOC-SC-2018-NAVTEJ",
+      "canonical_case_id": "IND-SC-2018-NAVTEJ",
+      "case_title": "Navtej Singh Johar v. Union of India",
+      "source_id": "SRC-SC-ESCR",
+      "court_id": "IND-SC",
+      "document_type": "Constitution Bench Final Judgment",
+      "decision_date": "2018-09-06",
+      "decision_year": 2018,
+      "sha256_hash": "eb2121115ac5caf27576928fc6a64635f81388edf01eb1b936a7ea5333358fbf",
+      "source_url": "https://escr.sci.gov.in/entry/2018-1-SCC-791",
+      "language": "en",
+      "ocr_quality_score": 0.994,
+      "is_authenticity_verified": true,
+      "paragraph_count": 2,
+      "paragraph_anchors": [
+        {
+          "paragraph_number": 1,
+          "text_snippet": "The constitutional validity of Section 377 of the Indian Penal Code 1860 is under challenge...",
+          "token_count": 42,
+          "page_number": 1
+        },
+        {
+          "paragraph_number": 268,
+          "text_snippet": "Section 377 IPC so far as it penalises consensual sexual acts between consenting adults in private is unconstitutional...",
+          "token_count": 48,
+          "page_number": 132
+        }
+      ],
+      "cited_statutes": [
+        "Indian Penal Code 1860 (Section 377)",
+        "Constitution of India (Articles 14, 15, 19, 21)"
+      ],
+      "citation_aliases": [
+        "(2018) 1 SCC 791",
+        "AIR 2018 SC 4321",
+        "2018 INSC 790"
+      ],
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "quarantine_reason": null,
+      "historical_era": "Equal Rights & Decriminalization"
+    },
+    "DOC-HC-DEL-2009-NAZ": {
+      "document_id": "DOC-HC-DEL-2009-NAZ",
+      "canonical_case_id": "IND-HC-DEL-2009-NAZ",
+      "case_title": "Naz Foundation v. Government of NCT of Delhi",
+      "source_id": "SRC-HC-DEL-PORTAL",
+      "court_id": "IND-HC-DEL",
+      "document_type": "High Court Division Bench Judgment",
+      "decision_date": "2009-07-02",
+      "decision_year": 2009,
+      "sha256_hash": "6dae3d4615498c170f8b016e0dc4bcfcdc3d253639d6bfab90c4b1d4cb0b0833",
+      "source_url": "https://delhihighcourt.nic.in/judgments/wp-c-7455-2001",
+      "language": "en",
+      "ocr_quality_score": 0.985,
+      "is_authenticity_verified": true,
+      "paragraph_count": 2,
+      "paragraph_anchors": [
+        {
+          "paragraph_number": 1,
+          "text_snippet": "Writ petition under Article 226 challenging the constitutional validity of Section 377 IPC...",
+          "token_count": 40,
+          "page_number": 1
+        },
+        {
+          "paragraph_number": 132,
+          "text_snippet": "We declare that Section 377 IPC insofar as it criminalises consensual sexual acts of adults in private violates Articles 21, 14 and 15...",
+          "token_count": 52,
+          "page_number": 105
+        }
+      ],
+      "cited_statutes": [
+        "Indian Penal Code 1860 (Section 377)",
+        "Constitution of India (Articles 14, 15, 21)"
+      ],
+      "citation_aliases": [
+        "2009 (160) DLT 277",
+        "ILR (2009) 6 Del 1"
+      ],
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "quarantine_reason": null,
+      "historical_era": "High Court Constitutional Adjudication"
+    },
+    "DOC-HC-BOM-2006-BARGIRLS": {
+      "document_id": "DOC-HC-BOM-2006-BARGIRLS",
+      "canonical_case_id": "IND-HC-BOM-2006-BARGIRLS",
+      "case_title": "Indian Hotel and Restaurant Association v. State of Maharashtra",
+      "source_id": "SRC-HC-BOM-PORTAL",
+      "court_id": "IND-HC-BOM",
+      "document_type": "High Court Division Bench Judgment",
+      "decision_date": "2006-04-12",
+      "decision_year": 2006,
+      "sha256_hash": "6132164c57264116b31f34f0bb55df6267a981a42a489e1f208aa2d90ea3d646",
+      "source_url": "https://bombayhighcourt.nic.in/judgments/wp-2005-2451",
+      "language": "en",
+      "ocr_quality_score": 0.976,
+      "is_authenticity_verified": true,
+      "paragraph_count": 2,
+      "paragraph_anchors": [
+        {
+          "paragraph_number": 1,
+          "text_snippet": "Petitions challenging the constitutional validity of Sections 33A and 33B of the Bombay Police Act...",
+          "token_count": 44,
+          "page_number": 1
+        },
+        {
+          "paragraph_number": 88,
+          "text_snippet": "The prohibition on dance performances in certain establishments while allowing them in three-star and above hotels violates Article 14...",
+          "token_count": 50,
+          "page_number": 45
+        }
+      ],
+      "cited_statutes": [
+        "Bombay Police Act 1951 (Sections 33A, 33B)",
+        "Constitution of India (Articles 14, 19(1)(g))"
+      ],
+      "citation_aliases": [
+        "2006 (3) BomCR 705",
+        "2006 (3) MhLJ 753"
+      ],
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "quarantine_reason": null,
+      "historical_era": "High Court Economic Liberty & Equality"
+    },
+    "DOC-HC-ALL-1975-RAJNARAIN": {
+      "document_id": "DOC-HC-ALL-1975-RAJNARAIN",
+      "canonical_case_id": "IND-HC-ALL-1975-RAJNARAIN",
+      "case_title": "Raj Narain v. Indira Nehru Gandhi",
+      "source_id": "SRC-HC-ALL-PORTAL",
+      "court_id": "IND-HC-ALL",
+      "document_type": "High Court Election Petition Judgment",
+      "decision_date": "1975-06-12",
+      "decision_year": 1975,
+      "sha256_hash": "819c8510ee9e8558bf39c2df2156b2b9b7794443271e14826438bee0cdf4fd6a",
+      "source_url": "https://allahabadhighcourt.in/judgments/ep-1971-5",
+      "language": "en",
+      "ocr_quality_score": 0.968,
+      "is_authenticity_verified": true,
+      "paragraph_count": 2,
+      "paragraph_anchors": [
+        {
+          "paragraph_number": 1,
+          "text_snippet": "Election petition filed under Section 80 of the Representation of the People Act 1951 challenging the election of the respondent from Rae Bareli...",
+          "token_count": 48,
+          "page_number": 1
+        },
+        {
+          "paragraph_number": 140,
+          "text_snippet": "The respondent was found guilty of corrupt practices under Section 123(7) of the RP Act 1951, rendering her election void...",
+          "token_count": 46,
+          "page_number": 95
+        }
+      ],
+      "cited_statutes": [
+        "Representation of the People Act 1951 (Sections 80, 81, 100, 123(7))"
+      ],
+      "citation_aliases": [
+        "AIR 1975 All 287",
+        "1975 ALJ 450"
+      ],
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "quarantine_reason": null,
+      "historical_era": "Historic Electoral Adjudication"
+    },
+    "DOC-HC-MAD-2012-AWBI": {
+      "document_id": "DOC-HC-MAD-2012-AWBI",
+      "canonical_case_id": "IND-HC-MAD-2012-AWBI",
+      "case_title": "Animal Welfare Board of India v. State of Tamil Nadu",
+      "source_id": "SRC-HC-MAD-PORTAL",
+      "court_id": "IND-HC-MAD",
+      "document_type": "High Court Final Judgment",
+      "decision_date": "2012-03-22",
+      "decision_year": 2012,
+      "sha256_hash": "e50d665d90aca8a11dfd73bc3ff9dd5cccef41bd0b01f747294e716406ecf6ea",
+      "source_url": "https://hcmadras.tn.gov.in/judgments/wp-2011-8890",
+      "language": "en",
+      "ocr_quality_score": 0.979,
+      "is_authenticity_verified": true,
+      "paragraph_count": 1,
+      "paragraph_anchors": [
+        {
+          "paragraph_number": 1,
+          "text_snippet": "Writ petition seeking implementation of the Prevention of Cruelty to Animals Act 1960 regarding traditional events...",
+          "token_count": 44,
+          "page_number": 1
+        }
+      ],
+      "cited_statutes": [
+        "Prevention of Cruelty to Animals Act 1960",
+        "Tamil Nadu Regulation of Jallikattu Act 2009"
+      ],
+      "citation_aliases": [
+        "(2012) 2 MLJ 45"
+      ],
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "quarantine_reason": null,
+      "historical_era": "High Court Animal Protection"
+    },
+    "DOC-HC-CAL-2000-WETLANDS": {
+      "document_id": "DOC-HC-CAL-2000-WETLANDS",
+      "canonical_case_id": "IND-HC-CAL-2000-WETLANDS",
+      "case_title": "People United for Better Living in Calcutta (PUBLIC) v. State of West Bengal",
+      "source_id": "SRC-HC-CAL-PORTAL",
+      "court_id": "IND-HC-CAL",
+      "document_type": "High Court Environmental PIL Judgment",
+      "decision_date": "2000-09-15",
+      "decision_year": 2000,
+      "sha256_hash": "3e469d8ec88490ee7cc3c7c2c020dae48f40058104824e79fac8895b1548f727",
+      "source_url": "https://calcuttahighcourt.gov.in/Judgments/pil-1992-120",
+      "language": "en",
+      "ocr_quality_score": 0.972,
+      "is_authenticity_verified": true,
+      "paragraph_count": 1,
+      "paragraph_anchors": [
+        {
+          "paragraph_number": 1,
+          "text_snippet": "Public Interest Litigation to protect the ecological character of the East Kolkata Wetlands from commercial reclamation...",
+          "token_count": 45,
+          "page_number": 1
+        }
+      ],
+      "cited_statutes": [
+        "Environment (Protection) Act 1986",
+        "Water (Prevention and Control of Pollution) Act 1974"
+      ],
+      "citation_aliases": [
+        "AIR 1993 Cal 215",
+        "(2000) 2 CHN 110"
+      ],
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "quarantine_reason": null,
+      "historical_era": "High Court Environmental Jurisprudence"
+    },
+    "DOC-TR-NCLAT-2019-TATA": {
+      "document_id": "DOC-TR-NCLAT-2019-TATA",
+      "canonical_case_id": "IND-TR-NCLAT-2019-TATA",
+      "case_title": "Cyrus Investments Pvt. Ltd. v. Tata Sons Ltd.",
+      "source_id": "SRC-TR-NCLAT-PORTAL",
+      "court_id": "IND-TR-NCLAT",
+      "document_type": "Statutory Appellate Tribunal Judgment",
+      "decision_date": "2019-12-18",
+      "decision_year": 2019,
+      "sha256_hash": "bf0018eae984806efb881aa3353cbe61196e63a477f1280ce5e4c55ebd3e22b9",
+      "source_url": "https://nclat.nic.in/judgments/company-appeal-at-254-2018",
+      "language": "en",
+      "ocr_quality_score": 0.989,
+      "is_authenticity_verified": true,
+      "paragraph_count": 2,
+      "paragraph_anchors": [
+        {
+          "paragraph_number": 1,
+          "text_snippet": "Appeals under Section 421 of the Companies Act 2013 challenging the NCLT Mumbai Bench order on oppression and mismanagement...",
+          "token_count": 47,
+          "page_number": 1
+        },
+        {
+          "paragraph_number": 180,
+          "text_snippet": "The removal of the executive chairman without justification and conversion to a private company amounted to prejudicial conduct...",
+          "token_count": 49,
+          "page_number": 92
+        }
+      ],
+      "cited_statutes": [
+        "Companies Act 2013 (Sections 241, 242, 244, 421)"
+      ],
+      "citation_aliases": [
+        "[2020] 154 SCL 264 (NCLAT)",
+        "Company Appeal (AT) No. 254 of 2018"
+      ],
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "quarantine_reason": null,
+      "historical_era": "Corporate Governance & Tribunal Adjudication"
+    },
+    "DOC-TR-NGT-2016-ALMITRA": {
+      "document_id": "DOC-TR-NGT-2016-ALMITRA",
+      "canonical_case_id": "IND-TR-NGT-2016-ALMITRA",
+      "case_title": "Almitra H. Patel v. Union of India",
+      "source_id": "SRC-TR-NGT-PORTAL",
+      "court_id": "IND-TR-NGT",
+      "document_type": "National Green Tribunal Final Judgment",
+      "decision_date": "2016-12-22",
+      "decision_year": 2016,
+      "sha256_hash": "a9b7cb2b58a1f4fcae44d6483461a6229019eb0f954f4c2d26905fff0127fd66",
+      "source_url": "https://greentribunal.gov.in/judgments/oa-199-2014",
+      "language": "en",
+      "ocr_quality_score": 0.984,
+      "is_authenticity_verified": true,
+      "paragraph_count": 2,
+      "paragraph_anchors": [
+        {
+          "paragraph_number": 1,
+          "text_snippet": "Original Application under Sections 14 and 15 of the NGT Act regarding nationwide non-compliance with Solid Waste Management Rules...",
+          "token_count": 48,
+          "page_number": 1
+        },
+        {
+          "paragraph_number": 74,
+          "text_snippet": "Complete prohibition on open burning of waste on lands including landfill sites, imposing environmental compensation of Rs 25,000...",
+          "token_count": 50,
+          "page_number": 38
+        }
+      ],
+      "cited_statutes": [
+        "National Green Tribunal Act 2010 (Sections 14, 15, 20)",
+        "Solid Waste Management Rules 2016"
+      ],
+      "citation_aliases": [
+        "2016 SCC OnLine NGT 1625",
+        "Original Application No. 199 of 2014"
+      ],
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "quarantine_reason": null,
+      "historical_era": "Environmental Tribunal Directives"
+    },
+    "DOC-TR-CAT-2018-PENSION": {
+      "document_id": "DOC-TR-CAT-2018-PENSION",
+      "canonical_case_id": "IND-TR-CAT-2018-PENSION",
+      "case_title": "S.K. Sharma v. Union of India (DoPT)",
+      "source_id": "SRC-TR-CAT-PORTAL",
+      "court_id": "IND-TR-CAT",
+      "document_type": "CAT Principal Bench Final Order",
+      "decision_date": "2018-05-14",
+      "decision_year": 2018,
+      "sha256_hash": "13ad85adbdeb2fb52b15a30c5901976638f784ee18cff88e2122beb7bc268cf4",
+      "source_url": "https://cgat.gov.in/judgements/oa-2017-1045",
+      "language": "en",
+      "ocr_quality_score": 0.978,
+      "is_authenticity_verified": true,
+      "paragraph_count": 1,
+      "paragraph_anchors": [
+        {
+          "paragraph_number": 1,
+          "text_snippet": "Original Application under Section 19 of the Administrative Tribunals Act 1985 seeking release of retiral dues...",
+          "token_count": 45,
+          "page_number": 1
+        }
+      ],
+      "cited_statutes": [
+        "Administrative Tribunals Act 1985 (Section 19)",
+        "CCS (Pension) Rules 1972"
+      ],
+      "citation_aliases": [
+        "OA No. 1045/2017 (CAT PB New Delhi)"
+      ],
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "quarantine_reason": null,
+      "historical_era": "Administrative Service Jurisprudence"
+    },
+    "DOC-MIL-AFT-2019-DISABILITY": {
+      "document_id": "DOC-MIL-AFT-2019-DISABILITY",
+      "canonical_case_id": "IND-MIL-AFT-2019-DISABILITY",
+      "case_title": "Ex-Havildar Rajesh Kumar v. Union of India",
+      "source_id": "SRC-MIL-AFT-PORTAL",
+      "court_id": "IND-MIL-AFT",
+      "document_type": "Armed Forces Tribunal Final Order",
+      "decision_date": "2019-11-20",
+      "decision_year": 2019,
+      "sha256_hash": "480cec56886fc0d879c544d0050f3de08e178559a97a2833d3fe7404b15711b4",
+      "source_url": "https://aftdelhi.nic.in/judgments/oa-2018-560",
+      "language": "en",
+      "ocr_quality_score": 0.981,
+      "is_authenticity_verified": true,
+      "paragraph_count": 2,
+      "paragraph_anchors": [
+        {
+          "paragraph_number": 1,
+          "text_snippet": "Application under Section 14 of the Armed Forces Tribunal Act 2007 claiming broadbanding of disability element of pension...",
+          "token_count": 48,
+          "page_number": 1
+        },
+        {
+          "paragraph_number": 15,
+          "text_snippet": "In view of Dharamvir Singh v. UOI, medical condition developed during military service is deemed attributable to military service unless proved otherwise...",
+          "token_count": 52,
+          "page_number": 8
+        }
+      ],
+      "cited_statutes": [
+        "Armed Forces Tribunal Act 2007 (Section 14)",
+        "Army Act 1950",
+        "Pension Regulations for the Army 1961"
+      ],
+      "citation_aliases": [
+        "OA No. 560 of 2018 (AFT PB)"
+      ],
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "quarantine_reason": null,
+      "historical_era": "Military Justice & Veteran Rights"
+    },
+    "DOC-SC-2023-PARASHOTAM": {
+      "document_id": "DOC-SC-2023-PARASHOTAM",
+      "canonical_case_id": "IND-SC-2023-PARASHOTAM",
+      "case_title": "Union of India v. Parashotam Dass",
+      "source_id": "SRC-SC-ESCR",
+      "court_id": "IND-SC",
+      "document_type": "Supreme Court Constitution Bench Judgment",
+      "decision_date": "2023-03-21",
+      "decision_year": 2023,
+      "sha256_hash": "a867e6465ecbe7c34ad194d2c21e93f49007b70cc86bdfcaed710bf1491b53e7",
+      "source_url": "https://escr.sci.gov.in/entry/2023-INSC-261",
+      "language": "en",
+      "ocr_quality_score": 0.996,
+      "is_authenticity_verified": true,
+      "paragraph_count": 2,
+      "paragraph_anchors": [
+        {
+          "paragraph_number": 1,
+          "text_snippet": "Civil appeal concerning whether decisions of the Armed Forces Tribunal are amenable to writ jurisdiction of High Courts under Article 226...",
+          "token_count": 50,
+          "page_number": 1
+        },
+        {
+          "paragraph_number": 35,
+          "text_snippet": "The jurisdiction of High Courts under Article 226 cannot be ousted by statutory enactment as it constitutes part of the basic structure...",
+          "token_count": 52,
+          "page_number": 18
+        }
+      ],
+      "cited_statutes": [
+        "Armed Forces Tribunal Act 2007 (Sections 30, 31)",
+        "Constitution of India (Articles 136, 226, 227)"
+      ],
+      "citation_aliases": [
+        "2023 INSC 261",
+        "AIR 2023 SC 1563",
+        "(2023) 6 SCC 350"
+      ],
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "quarantine_reason": null,
+      "historical_era": "Military Jurisprudence & Judicial Review"
+    },
+    "DOC-HIST-FED-1942-NIHARENDU": {
+      "document_id": "DOC-HIST-FED-1942-NIHARENDU",
+      "canonical_case_id": "HIST-FED-1942-NIHARENDU",
+      "case_title": "Niharendu Dutt Majumdar v. King-Emperor",
+      "source_id": "SRC-HIST-FED-COURT",
+      "court_id": "HIST-FED-COURT",
+      "document_type": "Federal Court of India Judgment",
+      "decision_date": "1942-04-10",
+      "decision_year": 1942,
+      "sha256_hash": "5b6eb7fc164db16a3a2660efcd350a0da620ca727c2fd1a9b844b6f15ebecf04",
+      "source_url": "https://nationalarchives.nic.in/fcr/1942-fcr-38",
+      "language": "en",
+      "ocr_quality_score": 0.952,
+      "is_authenticity_verified": true,
+      "paragraph_count": 2,
+      "paragraph_anchors": [
+        {
+          "paragraph_number": 1,
+          "text_snippet": "Appeal by special leave against conviction under Rule 34(6)(e) of Defence of India Rules for seditious speech...",
+          "token_count": 45,
+          "page_number": 38
+        },
+        {
+          "paragraph_number": 12,
+          "text_snippet": "Public disorder, or the reasonable anticipation or likelihood of public disorder, is the gist of the offence of sedition...",
+          "token_count": 48,
+          "page_number": 45
+        }
+      ],
+      "cited_statutes": [
+        "Government of India Act 1935 (Section 205)",
+        "Indian Penal Code 1860 (Section 124A)",
+        "Defence of India Rules 1939"
+      ],
+      "citation_aliases": [
+        "[1942] F.C.R. 38",
+        "AIR 1942 FC 22"
+      ],
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "quarantine_reason": null,
+      "historical_era": "British Indian Federal Court (1937-1950)"
+    },
+    "DOC-HIST-PC-1939-PAKALA": {
+      "document_id": "DOC-HIST-PC-1939-PAKALA",
+      "canonical_case_id": "HIST-PC-1939-PAKALA",
+      "case_title": "Pakala Narayana Swami v. The King-Emperor",
+      "source_id": "SRC-HIST-PRIVY-COUNCIL",
+      "court_id": "HIST-PRIVY-COUNCIL",
+      "document_type": "Privy Council Indian Appeal Judgment",
+      "decision_date": "1939-01-20",
+      "decision_year": 1939,
+      "sha256_hash": "961ea8271f27d86d7a8b6f635543951c7fd4eb9a61fd656285f5cde04a87243a",
+      "source_url": "https://www.bailii.org/uk/cases/UKPC/1939/1939_1.html",
+      "language": "en",
+      "ocr_quality_score": 0.961,
+      "is_authenticity_verified": true,
+      "paragraph_count": 2,
+      "paragraph_anchors": [
+        {
+          "paragraph_number": 1,
+          "text_snippet": "Appeal from a judgment of the High Court of Judicature at Patna affirming a conviction for murder...",
+          "token_count": 42,
+          "page_number": 66
+        },
+        {
+          "paragraph_number": 18,
+          "text_snippet": "A confession must either admit in terms the offence, or at any rate substantially all the facts which constitute the offence...",
+          "token_count": 52,
+          "page_number": 72
+        }
+      ],
+      "cited_statutes": [
+        "Indian Evidence Act 1872 (Sections 24, 25, 32)",
+        "Code of Criminal Procedure 1898 (Section 162)"
+      ],
+      "citation_aliases": [
+        "(1939) L.R. 66 I.A. 66",
+        "AIR 1939 PC 47"
+      ],
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "quarantine_reason": null,
+      "historical_era": "Judicial Committee of the Privy Council"
+    },
+    "DOC-DIST-DEL-2021-BAIL": {
+      "document_id": "DOC-DIST-DEL-2021-BAIL",
+      "canonical_case_id": "IND-DIST-DEL-2021-BAIL-01",
+      "case_title": "State v. Ramesh Chandra (FIR No. 45/2021)",
+      "source_id": "SRC-ECOURTS-SERVICES",
+      "court_id": "IND-DIST-GENERIC",
+      "document_type": "Sessions Court Regular Bail Order",
+      "decision_date": "2021-06-18",
+      "decision_year": 2021,
+      "sha256_hash": "131239c447c80dec46274d8e32717480a4282aace29d2e61d59dd4903f20eea7",
+      "source_url": "https://services.ecourts.gov.in/ecourtindia_v6/?cnr=DLCT010012342021",
+      "language": "en",
+      "ocr_quality_score": 0.945,
+      "is_authenticity_verified": true,
+      "paragraph_count": 2,
+      "paragraph_anchors": [
+        {
+          "paragraph_number": 1,
+          "text_snippet": "Application under Section 439 CrPC seeking regular bail in FIR No. 45/2021 PS Kotwali under Sections 420, 468, 471 IPC...",
+          "token_count": 46,
+          "page_number": 1
+        },
+        {
+          "paragraph_number": 8,
+          "text_snippet": "Considering that investigation is complete and charge-sheet filed, the applicant is admitted to bail on furnishing personal bond of Rs 25,000...",
+          "token_count": 48,
+          "page_number": 3
+        }
+      ],
+      "cited_statutes": [
+        "Code of Criminal Procedure 1973 (Section 439)",
+        "Indian Penal Code 1860 (Sections 420, 468, 471)"
+      ],
+      "citation_aliases": [
+        "Bail App. No. 890/2021 (Tis Hazari Courts Delhi)",
+        "CNR: DLCT010012342021"
+      ],
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "quarantine_reason": null,
+      "historical_era": "Subordinate Trial Judiciary (eCourts)"
+    },
+    "DOC-SC-2023-HINDI-BAIL": {
+      "document_id": "DOC-SC-2023-HINDI-BAIL",
+      "canonical_case_id": "IND-SC-2023-HINDI-BAIL",
+      "case_title": "सत्येंद्र कुमार अंतिल बनाम केंद्रीय अन्वेषण ब्यूरो (Satyendar Kumar Antil v. CBI)",
+      "source_id": "SRC-SC-ESCR",
+      "court_id": "IND-SC",
+      "document_type": "Supreme Court Bilingual Hindi Judgment",
+      "decision_date": "2022-07-11",
+      "decision_year": 2022,
+      "sha256_hash": "b9a9d4474104ca1d492b08b5e782bfffaf96997ecb0d8089d2345ff5bf6133f6",
+      "source_url": "https://escr.sci.gov.in/hindi/2022-10-SCC-51",
+      "language": "hi",
+      "ocr_quality_score": 0.988,
+      "is_authenticity_verified": true,
+      "paragraph_count": 2,
+      "paragraph_anchors": [
+        {
+          "paragraph_number": 1,
+          "text_snippet": "प्रस्तुत विशेष अनुमति याचिका में अभियुक्तों की गिरफ्तारी और जमानत के संदर्भ में विस्तृत दिशानिर्देश जारी किए गए हैं...",
+          "token_count": 48,
+          "page_number": 1
+        },
+        {
+          "paragraph_number": 25,
+          "text_snippet": "जमानत नियम है और जेल अपवाद है। बिना आवश्यकता के की गई गिरफ्तारी नागरिक की व्यक्तिगत स्वतंत्रता का हनन है...",
+          "token_count": 52,
+          "page_number": 12
+        }
+      ],
+      "cited_statutes": [
+        "दंड प्रक्रिया संहिता 1973 (धारा 41, 41क, 436, 437, 439)",
+        "भारत का संविधान (अनुच्छेद 21)"
+      ],
+      "citation_aliases": [
+        "2022 INSC 690 (Hindi)",
+        "(2022) 10 SCC 51 (Hindi)"
+      ],
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "quarantine_reason": null,
+      "historical_era": "Vernacular Indian Supreme Court Decisions"
+    },
+    "DOC-HC-DEL-2014-MUKESH": {
+      "document_id": "DOC-HC-DEL-2014-MUKESH",
+      "canonical_case_id": "IND-HC-DEL-2014-MUKESH",
+      "case_title": "State v. Mukesh & Ors. (Death Sentence Reference)",
+      "source_id": "SRC-HC-DEL-PORTAL",
+      "court_id": "IND-HC-DEL",
+      "document_type": "High Court Capital Confirmation & Criminal Appeal Judgment",
+      "decision_date": "2014-03-13",
+      "decision_year": 2014,
+      "sha256_hash": "9e96a841467869e98f31b91467f6b117101a516af35c6001291cc49573be7e74",
+      "source_url": "https://delhihighcourt.nic.in/judgments/crl-appeal-1398-2013",
+      "language": "en",
+      "ocr_quality_score": 0.987,
+      "is_authenticity_verified": true,
+      "paragraph_count": 2,
+      "paragraph_anchors": [
+        {
+          "paragraph_number": 1,
+          "text_snippet": "Death sentence reference under Section 366 CrPC submitted by the Additional Sessions Judge Saket Courts New Delhi...",
+          "token_count": 46,
+          "page_number": 1
+        },
+        {
+          "paragraph_number": 210,
+          "text_snippet": "The crime falls in the category of rarest of rare cases, justifying confirmation of the death penalty...",
+          "token_count": 48,
+          "page_number": 145
+        }
+      ],
+      "cited_statutes": [
+        "Indian Penal Code 1860 (Sections 302, 376(2)(g), 377, 120B)",
+        "Code of Criminal Procedure 1973 (Sections 366, 368)"
+      ],
+      "citation_aliases": [
+        "2014 (208) DLT 1",
+        "ILR (2014) 2 Del 415"
+      ],
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "quarantine_reason": null,
+      "historical_era": "Capital Punishment & Forensic Review"
+    }
+  }
+}

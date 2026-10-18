@@ -2,7 +2,8 @@
 
 Provides ontology, classification, citation parsing, precedent graphs,
 legislative evolution tracking, privacy & restricted records policy,
-and national judicial coverage analytics.
+coverage analytics, source inventory, identity resolution, corpus indexing,
+and procedural history tracking.
 """
 
 from legalmitra.judicial.judicial_ontology import (
@@ -47,6 +48,31 @@ from legalmitra.judicial.coverage_analytics import (
     CoverageTier,
     JudicialCoverageRegistry,
 )
+from legalmitra.judicial.source_inventory import (
+    AccessRestriction,
+    AcquisitionMethod,
+    AcquisitionPriority,
+    JudicialSourceDefinition,
+    NationalJudicialSourceRegistry,
+    ReuseStatus,
+    SourceHealth,
+    SourceType,
+)
+from legalmitra.judicial.identity_resolver import (
+    CanonicalCaseIdentity,
+    CaseIdentityResolver,
+)
+from legalmitra.judicial.corpus_indexer import (
+    IndexedJudicialDocument,
+    JudicialCorpusIndexer,
+    ParagraphAnchor,
+)
+from legalmitra.judicial.procedural_history import (
+    DisposalNature,
+    ProceduralEvent,
+    ProceduralHistoryGraph,
+    ProceduralStage,
+)
 
 __all__ = [
     "CourtEntity",
@@ -77,4 +103,21 @@ __all__ = [
     "CourtCoverageAssessment",
     "CoverageTier",
     "JudicialCoverageRegistry",
+    "AccessRestriction",
+    "AcquisitionMethod",
+    "AcquisitionPriority",
+    "JudicialSourceDefinition",
+    "NationalJudicialSourceRegistry",
+    "ReuseStatus",
+    "SourceHealth",
+    "SourceType",
+    "CanonicalCaseIdentity",
+    "CaseIdentityResolver",
+    "IndexedJudicialDocument",
+    "JudicialCorpusIndexer",
+    "ParagraphAnchor",
+    "DisposalNature",
+    "ProceduralEvent",
+    "ProceduralHistoryGraph",
+    "ProceduralStage",
 ]

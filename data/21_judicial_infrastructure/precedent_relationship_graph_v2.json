@@ -1,0 +1,266 @@
+{
+  "total_nodes": 15,
+  "total_edges": 9,
+  "nodes": {
+    "AK-GOPALAN-1950": {
+      "case_id": "AK-GOPALAN-1950",
+      "canonical_citation": "AIR 1950 SC 27",
+      "case_title": "A.K. Gopalan v. State of Madras",
+      "court_id": "IND-SC",
+      "decision_year": 1950,
+      "bench_judge_count": 6,
+      "bench_category": "LARGER_BENCH",
+      "ratio_summary": "Fundamental rights mutually exclusive; formal procedure.",
+      "is_overruled": true,
+      "overruled_by_case_id": "MANEKA-GANDHI-1978",
+      "substantive_domains": []
+    },
+    "SANKARI-PRASAD-1951": {
+      "case_id": "SANKARI-PRASAD-1951",
+      "canonical_citation": "AIR 1951 SC 458",
+      "case_title": "Sankari Prasad v. Union of India",
+      "court_id": "IND-SC",
+      "decision_year": 1951,
+      "bench_judge_count": 5,
+      "bench_category": "CONSTITUTION_BENCH",
+      "ratio_summary": "Article 368 amending power constituent not ordinary law.",
+      "is_overruled": true,
+      "overruled_by_case_id": "GOLAKNATH-1967",
+      "substantive_domains": []
+    },
+    "SAJJAN-SINGH-1965": {
+      "case_id": "SAJJAN-SINGH-1965",
+      "canonical_citation": "[1965] 1 SCR 933",
+      "case_title": "Sajjan Singh v. State of Rajasthan",
+      "court_id": "IND-SC",
+      "decision_year": 1965,
+      "bench_judge_count": 5,
+      "bench_category": "CONSTITUTION_BENCH",
+      "ratio_summary": "Affirmed Sankari Prasad on amending power.",
+      "is_overruled": true,
+      "overruled_by_case_id": "GOLAKNATH-1967",
+      "substantive_domains": []
+    },
+    "GOLAKNATH-1967": {
+      "case_id": "GOLAKNATH-1967",
+      "canonical_citation": "AIR 1967 SC 1643",
+      "case_title": "I.C. Golaknath v. State of Punjab",
+      "court_id": "IND-SC",
+      "decision_year": 1967,
+      "bench_judge_count": 11,
+      "bench_category": "SPECIAL_LARGEST_BENCH",
+      "ratio_summary": "Fundamental rights cannot be abridged by amendment.",
+      "is_overruled": true,
+      "overruled_by_case_id": "KESAVANANDA-1973",
+      "substantive_domains": []
+    },
+    "RC-COOPER-1970": {
+      "case_id": "RC-COOPER-1970",
+      "canonical_citation": "AIR 1970 SC 564",
+      "case_title": "R.C. Cooper v. Union of India",
+      "court_id": "IND-SC",
+      "decision_year": 1970,
+      "bench_judge_count": 11,
+      "bench_category": "SPECIAL_LARGEST_BENCH",
+      "ratio_summary": "Rejected mutual exclusivity doctrine in Gopalan.",
+      "is_overruled": false,
+      "overruled_by_case_id": null,
+      "substantive_domains": []
+    },
+    "KESAVANANDA-1973": {
+      "case_id": "KESAVANANDA-1973",
+      "canonical_citation": "AIR 1973 SC 1461",
+      "case_title": "Kesavananda Bharati v. State of Kerala",
+      "court_id": "IND-SC",
+      "decision_year": 1973,
+      "bench_judge_count": 13,
+      "bench_category": "SPECIAL_LARGEST_BENCH",
+      "ratio_summary": "Basic Structure Doctrine limits Article 368 amending power.",
+      "is_overruled": false,
+      "overruled_by_case_id": null,
+      "substantive_domains": []
+    },
+    "ADM-JABALPUR-1976": {
+      "case_id": "ADM-JABALPUR-1976",
+      "canonical_citation": "AIR 1976 SC 1207",
+      "case_title": "ADM Jabalpur v. Shivkant Shukla",
+      "court_id": "IND-SC",
+      "decision_year": 1976,
+      "bench_judge_count": 5,
+      "bench_category": "CONSTITUTION_BENCH",
+      "ratio_summary": "Habeas corpus locus suspended during emergency.",
+      "is_overruled": true,
+      "overruled_by_case_id": "PUTTASWAMY-2017",
+      "substantive_domains": []
+    },
+    "MANEKA-GANDHI-1978": {
+      "case_id": "MANEKA-GANDHI-1978",
+      "canonical_citation": "AIR 1978 SC 597",
+      "case_title": "Maneka Gandhi v. Union of India",
+      "court_id": "IND-SC",
+      "decision_year": 1978,
+      "bench_judge_count": 7,
+      "bench_category": "LARGER_BENCH",
+      "ratio_summary": "Substantive due process; procedure must be just, fair, reasonable.",
+      "is_overruled": false,
+      "overruled_by_case_id": null,
+      "substantive_domains": []
+    },
+    "MINERVA-MILLS-1980": {
+      "case_id": "MINERVA-MILLS-1980",
+      "canonical_citation": "(1980) 3 SCC 625",
+      "case_title": "Minerva Mills v. Union of India",
+      "court_id": "IND-SC",
+      "decision_year": 1980,
+      "bench_judge_count": 5,
+      "bench_category": "CONSTITUTION_BENCH",
+      "ratio_summary": "Harmony between Fundamental Rights and Directive Principles is basic structure.",
+      "is_overruled": false,
+      "overruled_by_case_id": null,
+      "substantive_domains": []
+    },
+    "SHAH-BANO-1985": {
+      "case_id": "SHAH-BANO-1985",
+      "canonical_citation": "AIR 1985 SC 945",
+      "case_title": "Mohd. Ahmed Khan v. Shah Bano Begum",
+      "court_id": "IND-SC",
+      "decision_year": 1985,
+      "bench_judge_count": 5,
+      "bench_category": "CONSTITUTION_BENCH",
+      "ratio_summary": "Section 125 CrPC applies universally regardless of religion.",
+      "is_overruled": false,
+      "overruled_by_case_id": null,
+      "substantive_domains": []
+    },
+    "SOWMITHRI-VISHNU-1985": {
+      "case_id": "SOWMITHRI-VISHNU-1985",
+      "canonical_citation": "AIR 1985 SC 1618",
+      "case_title": "Sowmithri Vishnu v. Union of India",
+      "court_id": "IND-SC",
+      "decision_year": 1985,
+      "bench_judge_count": 3,
+      "bench_category": "FULL_BENCH",
+      "ratio_summary": "Upheld constitutionality of Section 497 IPC.",
+      "is_overruled": true,
+      "overruled_by_case_id": "JOSEPH-SHINE-2018",
+      "substantive_domains": []
+    },
+    "SURESH-KOUSHAL-2014": {
+      "case_id": "SURESH-KOUSHAL-2014",
+      "canonical_citation": "AIR 2014 SC 563",
+      "case_title": "Suresh Kumar Koushal v. Naz Foundation",
+      "court_id": "IND-SC",
+      "decision_year": 2014,
+      "bench_judge_count": 2,
+      "bench_category": "DIVISION_BENCH",
+      "ratio_summary": "Reversed Delhi HC Naz Foundation; upheld Section 377 IPC.",
+      "is_overruled": true,
+      "overruled_by_case_id": "NAVTEJ-JOHAR-2018",
+      "substantive_domains": []
+    },
+    "PUTTASWAMY-2017": {
+      "case_id": "PUTTASWAMY-2017",
+      "canonical_citation": "AIR 2017 SC 4161",
+      "case_title": "Justice K.S. Puttaswamy (Retd.) v. Union of India",
+      "court_id": "IND-SC",
+      "decision_year": 2017,
+      "bench_judge_count": 9,
+      "bench_category": "LARGER_BENCH",
+      "ratio_summary": "Right to privacy is a Part III fundamental right; overruled ADM Jabalpur.",
+      "is_overruled": false,
+      "overruled_by_case_id": null,
+      "substantive_domains": []
+    },
+    "NAVTEJ-JOHAR-2018": {
+      "case_id": "NAVTEJ-JOHAR-2018",
+      "canonical_citation": "AIR 2018 SC 4321",
+      "case_title": "Navtej Singh Johar v. Union of India",
+      "court_id": "IND-SC",
+      "decision_year": 2018,
+      "bench_judge_count": 5,
+      "bench_category": "CONSTITUTION_BENCH",
+      "ratio_summary": "Decriminalized consensual homosexuality; overruled Suresh Koushal.",
+      "is_overruled": false,
+      "overruled_by_case_id": null,
+      "substantive_domains": []
+    },
+    "JOSEPH-SHINE-2018": {
+      "case_id": "JOSEPH-SHINE-2018",
+      "canonical_citation": "AIR 2018 SC 4898",
+      "case_title": "Joseph Shine v. Union of India",
+      "court_id": "IND-SC",
+      "decision_year": 2018,
+      "bench_judge_count": 5,
+      "bench_category": "CONSTITUTION_BENCH",
+      "ratio_summary": "Decriminalized adultery; overruled Sowmithri Vishnu.",
+      "is_overruled": false,
+      "overruled_by_case_id": null,
+      "substantive_domains": []
+    }
+  },
+  "edges": [
+    {
+      "citing_case_id": "GOLAKNATH-1967",
+      "cited_case_id": "SANKARI-PRASAD-1951",
+      "treatment": "OVERRULED",
+      "passage_anchor": "Para 53",
+      "treatment_context": "11-judge bench overruled 5-judge bench"
+    },
+    {
+      "citing_case_id": "GOLAKNATH-1967",
+      "cited_case_id": "SAJJAN-SINGH-1965",
+      "treatment": "OVERRULED",
+      "passage_anchor": "Para 53",
+      "treatment_context": "11-judge bench overruled 5-judge bench"
+    },
+    {
+      "citing_case_id": "RC-COOPER-1970",
+      "cited_case_id": "AK-GOPALAN-1950",
+      "treatment": "DISTINGUISHED",
+      "passage_anchor": "Para 48",
+      "treatment_context": "11-judge bench rejected mutual exclusivity"
+    },
+    {
+      "citing_case_id": "KESAVANANDA-1973",
+      "cited_case_id": "GOLAKNATH-1967",
+      "treatment": "OVERRULED",
+      "passage_anchor": "Para 761",
+      "treatment_context": "13-judge bench overruled 11-judge bench"
+    },
+    {
+      "citing_case_id": "MANEKA-GANDHI-1978",
+      "cited_case_id": "AK-GOPALAN-1950",
+      "treatment": "OVERRULED",
+      "passage_anchor": "Para 56",
+      "treatment_context": "7-judge bench overruled 6-judge bench"
+    },
+    {
+      "citing_case_id": "MINERVA-MILLS-1980",
+      "cited_case_id": "KESAVANANDA-1973",
+      "treatment": "FOLLOWED",
+      "passage_anchor": "Para 56",
+      "treatment_context": "Applied basic structure to strike down Art 368(4)-(5)"
+    },
+    {
+      "citing_case_id": "PUTTASWAMY-2017",
+      "cited_case_id": "ADM-JABALPUR-1976",
+      "treatment": "OVERRULED",
+      "passage_anchor": "Para 122",
+      "treatment_context": "9-judge bench overruled 5-judge bench"
+    },
+    {
+      "citing_case_id": "NAVTEJ-JOHAR-2018",
+      "cited_case_id": "SURESH-KOUSHAL-2014",
+      "treatment": "OVERRULED",
+      "passage_anchor": "Para 268",
+      "treatment_context": "5-judge bench overruled 2-judge bench"
+    },
+    {
+      "citing_case_id": "JOSEPH-SHINE-2018",
+      "cited_case_id": "SOWMITHRI-VISHNU-1985",
+      "treatment": "OVERRULED",
+      "passage_anchor": "Para 38",
+      "treatment_context": "5-judge bench overruled 3-judge bench"
+    }
+  ]
+}

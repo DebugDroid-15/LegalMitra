@@ -1,0 +1,161 @@
+{
+  "total_chains": 2,
+  "total_events": 8,
+  "chains": {
+    "CHAIN-SEC377-DECRIM": [
+      {
+        "event_id": "PROC-EVT-NAZ-01",
+        "case_chain_id": "CHAIN-SEC377-DECRIM",
+        "court_id": "IND-HC-DEL",
+        "court_name": "High Court of Delhi",
+        "stage": "HIGH_COURT_DIVISION_BENCH",
+        "filing_number": "WP (C) No. 7455 of 2001",
+        "order_date": "2009-07-02",
+        "coram_judge_names": [
+          "A.P. Shah C.J.",
+          "S. Muralidhar J."
+        ],
+        "disposal_nature": "ALLOWED_DECREED",
+        "summary_of_order": "Declared Section 377 IPC unconstitutional insofar as it penalised consensual adult intimacy in private.",
+        "supporting_document_id": "DOC-HC-DEL-2009-NAZ",
+        "preceding_event_id": null,
+        "is_verified": true
+      },
+      {
+        "event_id": "PROC-EVT-KOUSHAL-02",
+        "case_chain_id": "CHAIN-SEC377-DECRIM",
+        "court_id": "IND-SC",
+        "court_name": "Supreme Court of India",
+        "stage": "SUPREME_COURT_REGULAR_APPEAL",
+        "filing_number": "Civil Appeal No. 10972 of 2013",
+        "order_date": "2013-12-11",
+        "coram_judge_names": [
+          "G.S. Singhvi J.",
+          "S.J. Mukhopadhaya J."
+        ],
+        "disposal_nature": "SET_ASIDE_REVERSED",
+        "summary_of_order": "Reversed Delhi High Court judgment in Naz Foundation; upheld Section 377 IPC.",
+        "supporting_document_id": null,
+        "preceding_event_id": "PROC-EVT-NAZ-01",
+        "is_verified": true
+      },
+      {
+        "event_id": "PROC-EVT-NAVTEJ-03",
+        "case_chain_id": "CHAIN-SEC377-DECRIM",
+        "court_id": "IND-SC",
+        "court_name": "Supreme Court of India",
+        "stage": "SUPREME_COURT_REGULAR_APPEAL",
+        "filing_number": "Writ Petition (Criminal) No. 76 of 2016",
+        "order_date": "2018-09-06",
+        "coram_judge_names": [
+          "Dipak Misra C.J.",
+          "R.F. Nariman J.",
+          "A.M. Khanwilkar J.",
+          "D.Y. Chandrachud J.",
+          "Indu Malhotra J."
+        ],
+        "disposal_nature": "ALLOWED_DECREED",
+        "summary_of_order": "5-judge Constitution bench explicitly overruled Suresh Koushal; read down Section 377 IPC.",
+        "supporting_document_id": "DOC-SC-2018-NAVTEJ",
+        "preceding_event_id": "PROC-EVT-KOUSHAL-02",
+        "is_verified": true
+      }
+    ],
+    "CHAIN-NIRBHAYA-MURDER": [
+      {
+        "event_id": "PROC-EVT-NIRBHAYA-TRIAL",
+        "case_chain_id": "CHAIN-NIRBHAYA-MURDER",
+        "court_id": "IND-DIST-GENERIC",
+        "court_name": "Court of Additional Sessions Judge (Fast Track), Saket Courts, New Delhi",
+        "stage": "TRIAL_FINAL_JUDGMENT",
+        "filing_number": "Sessions Case No. 114/2013",
+        "order_date": "2013-09-13",
+        "coram_judge_names": [
+          "Yogesh Khanna ASJ"
+        ],
+        "disposal_nature": "ALLOWED_DECREED",
+        "summary_of_order": "Convicted accused under Sections 302, 376(2)(g), 377 IPC and sentenced to death.",
+        "supporting_document_id": null,
+        "preceding_event_id": null,
+        "is_verified": true
+      },
+      {
+        "event_id": "PROC-EVT-NIRBHAYA-HC",
+        "case_chain_id": "CHAIN-NIRBHAYA-MURDER",
+        "court_id": "IND-HC-DEL",
+        "court_name": "High Court of Delhi",
+        "stage": "HIGH_COURT_DIVISION_BENCH",
+        "filing_number": "Death Sentence Reference No. 6/2013 & Crl. Appeal 1398/2013",
+        "order_date": "2014-03-13",
+        "coram_judge_names": [
+          "Reva Khetrapal J.",
+          "Pratibha Rani J."
+        ],
+        "disposal_nature": "ALLOWED_DECREED",
+        "summary_of_order": "Confirmed death penalty under Section 368 CrPC and dismissed appeals.",
+        "supporting_document_id": "DOC-HC-DEL-2014-MUKESH",
+        "preceding_event_id": "PROC-EVT-NIRBHAYA-TRIAL",
+        "is_verified": true
+      },
+      {
+        "event_id": "PROC-EVT-NIRBHAYA-SC-APPEAL",
+        "case_chain_id": "CHAIN-NIRBHAYA-MURDER",
+        "court_id": "IND-SC",
+        "court_name": "Supreme Court of India",
+        "stage": "SUPREME_COURT_REGULAR_APPEAL",
+        "filing_number": "Criminal Appeal Nos. 607-608 of 2017",
+        "order_date": "2017-05-05",
+        "coram_judge_names": [
+          "Dipak Misra J.",
+          "R. Banumathi J.",
+          "Ashok Bhushan J."
+        ],
+        "disposal_nature": "DISMISSED",
+        "summary_of_order": "Dismissed criminal appeals and affirmed death sentence.",
+        "supporting_document_id": null,
+        "preceding_event_id": "PROC-EVT-NIRBHAYA-HC",
+        "is_verified": true
+      },
+      {
+        "event_id": "PROC-EVT-NIRBHAYA-SC-REVIEW",
+        "case_chain_id": "CHAIN-NIRBHAYA-MURDER",
+        "court_id": "IND-SC",
+        "court_name": "Supreme Court of India",
+        "stage": "REVIEW_PETITION",
+        "filing_number": "Review Petition (Crl.) Nos. 670-671 of 2017",
+        "order_date": "2018-07-09",
+        "coram_judge_names": [
+          "Dipak Misra C.J.",
+          "R. Banumathi J.",
+          "Ashok Bhushan J."
+        ],
+        "disposal_nature": "DISMISSED",
+        "summary_of_order": "Dismissed review petitions finding no error apparent on face of record.",
+        "supporting_document_id": null,
+        "preceding_event_id": "PROC-EVT-NIRBHAYA-SC-APPEAL",
+        "is_verified": true
+      },
+      {
+        "event_id": "PROC-EVT-NIRBHAYA-SC-CURATIVE",
+        "case_chain_id": "CHAIN-NIRBHAYA-MURDER",
+        "court_id": "IND-SC",
+        "court_name": "Supreme Court of India",
+        "stage": "CURATIVE_PETITION",
+        "filing_number": "Curative Petition (Crl.) Nos. 1-4 of 2020",
+        "order_date": "2020-01-14",
+        "coram_judge_names": [
+          "N.V. Ramana J.",
+          "Arun Mishra J.",
+          "R.F. Nariman J.",
+          "R. Banumathi J.",
+          "Ashok Bhushan J."
+        ],
+        "disposal_nature": "DISMISSED",
+        "summary_of_order": "Dismissed curative petitions holding no ground within Rupa Ashok Hurra parameters.",
+        "supporting_document_id": null,
+        "preceding_event_id": "PROC-EVT-NIRBHAYA-SC-REVIEW",
+        "is_verified": true
+      }
+    ]
+  }
+}

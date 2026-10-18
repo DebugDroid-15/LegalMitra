@@ -1,0 +1,111 @@
+{
+  "graph_version": "Phase-39-V2",
+  "total_relationships": 8,
+  "causation_standards": [
+    "DIRECT_LEGISLATIVE_RESPONSE",
+    "EXPRESS_STATUTORY_REFERENCE",
+    "OFFICIAL_REFORM_RECOMMENDATION",
+    "DOCUMENTED_POLICY_INFLUENCE",
+    "DOCTRINAL_INTERACTION",
+    "TEMPORAL_SEQUENCE_ONLY",
+    "HYPOTHESIZED_AWAITING_VERIFICATION"
+  ],
+  "relationships": [
+    {
+      "edge_id": "EVO-01-VISHAKA-POSH",
+      "source_case_id": "IND-SC-1997-VISHAKA",
+      "source_case_title": "Vishaka v. State of Rajasthan (AIR 1997 SC 3011)",
+      "target_statute": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+      "enacted_year": 2013,
+      "causation_level": "DIRECT_LEGISLATIVE_RESPONSE",
+      "primary_evidence_document": "Statement of Objects and Reasons, POSH Act 2013 (Bill No. 144 of 2010)",
+      "exact_anchor": "Paragraph 1, Statement of Objects and Reasons",
+      "verification_status": "VERIFIED_OFFICIAL_PRIMARY_RECORD",
+      "notes": "Parliament codified the 1997 Vishaka guidelines into a comprehensive statutory mechanism."
+    },
+    {
+      "edge_id": "EVO-02-SHAHBANO-MWACT",
+      "source_case_id": "IND-SC-1985-SHAHBANO",
+      "source_case_title": "Mohd. Ahmed Khan v. Shah Bano Begum (AIR 1985 SC 945)",
+      "target_statute": "Muslim Women (Protection of Rights on Divorce) Act, 1986",
+      "enacted_year": 1986,
+      "causation_level": "DIRECT_LEGISLATIVE_RESPONSE",
+      "primary_evidence_document": "Statement of Objects and Reasons, Act No. 25 of 1986; Lok Sabha Debates Feb-May 1986",
+      "exact_anchor": "Statement of Objects and Reasons, Gazette of India Extraordinary",
+      "verification_status": "VERIFIED_OFFICIAL_PRIMARY_RECORD",
+      "notes": "Enacted to supersede the immediate effect of Shah Bano regarding Section 125 CrPC; subsequently harmonized in Danial Latifi (2001)."
+    },
+    {
+      "edge_id": "EVO-03-DKBASU-CRPC2008",
+      "source_case_id": "IND-SC-1997-DKBASU",
+      "source_case_title": "D.K. Basu v. State of West Bengal (AIR 1997 SC 610)",
+      "target_statute": "Code of Criminal Procedure (Amendment) Act, 2008 (Act 5 of 2009)",
+      "enacted_year": 2009,
+      "causation_level": "DIRECT_LEGISLATIVE_RESPONSE",
+      "primary_evidence_document": "Law Commission of India 177th Report (2001) & Statement of Objects and Reasons of CrPC Amendment Act 2008",
+      "exact_anchor": "SOR Para 2; Insertion of Sections 41A, 41B, 41C, 41D CrPC",
+      "verification_status": "VERIFIED_OFFICIAL_PRIMARY_RECORD",
+      "notes": "Arrest memo, notice of appearance, and advocate right codified into CrPC from D.K. Basu guidelines."
+    },
+    {
+      "edge_id": "EVO-04-PUTTASWAMY-DPDPA",
+      "source_case_id": "IND-SC-2017-PUTTASWAMY",
+      "source_case_title": "Justice K.S. Puttaswamy (Retd.) v. Union of India ((2017) 10 SCC 1)",
+      "target_statute": "Digital Personal Data Protection Act, 2023 (Act 22 of 2023)",
+      "enacted_year": 2023,
+      "causation_level": "DIRECT_LEGISLATIVE_RESPONSE",
+      "primary_evidence_document": "Justice B.N. Srikrishna Committee Report on Data Protection (2018) & Statement of Objects and Reasons, DPDP Act 2023",
+      "exact_anchor": "Statement of Objects and Reasons, Paragraph 2",
+      "verification_status": "VERIFIED_OFFICIAL_PRIMARY_RECORD",
+      "notes": "Puttaswamy privacy mandate led to the formal formulation and parliamentary enactment of DPDP Act 2023."
+    },
+    {
+      "edge_id": "EVO-05-JOSEPHSHINE-BNS",
+      "source_case_id": "IND-SC-2018-JOSEPHSHINE",
+      "source_case_title": "Joseph Shine v. Union of India (AIR 2018 SC 4898)",
+      "target_statute": "Bharatiya Nyaya Sanhita 2023 (Act 45 of 2023)",
+      "enacted_year": 2023,
+      "causation_level": "DIRECT_LEGISLATIVE_RESPONSE",
+      "primary_evidence_document": "Parliamentary Standing Committee on Home Affairs Report No. 246 on BNS 2023",
+      "exact_anchor": "Report No. 246, Clause-by-Clause Analysis of Omitted Offences",
+      "verification_status": "VERIFIED_OFFICIAL_PRIMARY_RECORD",
+      "notes": "Adultery was omitted from BNS 2023 pursuant to the constitutional bench ruling in Joseph Shine."
+    },
+    {
+      "edge_id": "EVO-06-SHAYARA-TRIPLE-TALAQ",
+      "source_case_id": "IND-SC-2017-SHAYARABANO",
+      "source_case_title": "Shayara Bano v. Union of India ((2017) 9 SCC 1)",
+      "target_statute": "Muslim Women (Protection of Rights on Marriage) Act, 2019 (Act 20 of 2019)",
+      "enacted_year": 2019,
+      "causation_level": "DIRECT_LEGISLATIVE_RESPONSE",
+      "primary_evidence_document": "Statement of Objects and Reasons, Act 20 of 2019 citing Shayara Bano",
+      "exact_anchor": "Statement of Objects and Reasons, Paragraph 1-2",
+      "verification_status": "VERIFIED_OFFICIAL_PRIMARY_RECORD",
+      "notes": "Criminalization of triple talaq (talaq-e-biddat) following its declaration as unconstitutional in Shayara Bano."
+    },
+    {
+      "edge_id": "EVO-07-MCMEHTA-NGT",
+      "source_case_id": "IND-SC-1987-MCMEHTA",
+      "source_case_title": "M.C. Mehta v. Union of India (Oleum Gas Leak - (1987) 1 SCC 395)",
+      "target_statute": "National Green Tribunal Act, 2010 (Act 19 of 2010)",
+      "enacted_year": 2010,
+      "causation_level": "OFFICIAL_REFORM_RECOMMENDATION",
+      "primary_evidence_document": "Law Commission of India 186th Report on Proposal to Constitute Environment Courts (2003)",
+      "exact_anchor": "Chapter II & III citing Supreme Court environmental decisions",
+      "verification_status": "VERIFIED_OFFICIAL_PRIMARY_RECORD",
+      "notes": "Law Commission recommended dedicated environmental tribunals citing Supreme Court environmental jurisprudence."
+    },
+    {
+      "edge_id": "EVO-08-BANKNAT-TEMPORAL",
+      "source_case_id": "IND-SC-1970-RCCOOPER",
+      "source_case_title": "R.C. Cooper v. Union of India (AIR 1970 SC 564)",
+      "target_statute": "Banking Companies (Acquisition and Transfer of Undertakings) Act, 1970",
+      "enacted_year": 1970,
+      "causation_level": "DIRECT_LEGISLATIVE_RESPONSE",
+      "primary_evidence_document": "Statement of Objects and Reasons, Act 5 of 1970",
+      "exact_anchor": "Statement of Objects and Reasons",
+      "verification_status": "VERIFIED_OFFICIAL_PRIMARY_RECORD",
+      "notes": "Parliament enacted Act 5 of 1970 curing the compensation defects identified by the 11-judge bench in R.C. Cooper."
+    }
+  ]
+}

@@ -1,0 +1,143 @@
+{
+  "catalogue_version": "Phase-39-V1",
+  "total_landmark_cases": 20,
+  "domains_covered": 14,
+  "cases": [
+    {
+      "case_id": "IND-SC-1973-KESAVANANDA",
+      "title": "Kesavananda Bharati v. State of Kerala",
+      "court": "Supreme Court of India",
+      "bench": "13 Judges (S.M. Sikri C.J., J.M. Shelat, K.S. Hegde, A.N. Grover, A.N. Ray, P.J. Reddy, D.G. Palekar, H.R. Khanna, K.K. Mathew, M.H. Beg, S.N. Dwivedi, A.K. Mukherjea, Y.V. Chandrachud JJ.)",
+      "date": "1973-04-24",
+      "citations": [
+        "(1973) 4 SCC 225",
+        "AIR 1973 SC 1461",
+        "[1973] Supp. SCR 1"
+      ],
+      "substantive_domains": [
+        "CONSTITUTIONAL_ADMINISTRATIVE",
+        "LAND_TENANCY_AGRARIAN"
+      ],
+      "procedural_posture": "Writ Petition under Article 32",
+      "material_facts": "The religious head of Edneer Mutt challenged the Kerala Land Reforms Amendment Acts of 1969 and 1971 and the 24th, 25th, and 29th Constitutional Amendments.",
+      "constitutional_questions": "Whether Parliament's power to amend the Constitution under Article 368 is unlimited and whether fundamental rights can be abrogated.",
+      "holding_and_ratio": "Parliament has wide power to amend the Constitution under Article 368 but cannot alter the Basic Structure or framework of the Constitution.",
+      "ratio_anchors": [
+        "Paragraph 761",
+        "Paragraph 1426"
+      ],
+      "dissents_and_concurrences": "7:6 majority (Khanna J. holding the decisive vote on basic structure). Dissent by Ray, Palekar, Mathew, Beg, Dwivedi, Chandrachud JJ.",
+      "subsequent_treatment": "Followed in Indira Gandhi (1975), Minerva Mills (1980), Waman Rao (1981), S.R. Bommai (1994), I.R. Coelho (2007). Good law.",
+      "legislative_evolution_relationship": "DIRECT_LEGISLATIVE_RESPONSE: 42nd Amendment attempted to nullify basic structure (Art 368(4)-(5)), which was subsequently struck down in Minerva Mills."
+    },
+    {
+      "case_id": "IND-SC-1978-MANEKA",
+      "title": "Maneka Gandhi v. Union of India",
+      "court": "Supreme Court of India",
+      "bench": "7 Judges (M.H. Beg C.J., Y.V. Chandrachud, P.N. Bhagwati, V.R. Krishna Iyer, N.L. Untwalia, S. Murtaza Fazal Ali, P.S. Kailasam JJ.)",
+      "date": "1978-01-25",
+      "citations": [
+        "(1978) 1 SCC 248",
+        "AIR 1978 SC 597",
+        "[1978] 2 SCR 621"
+      ],
+      "substantive_domains": [
+        "CONSTITUTIONAL_ADMINISTRATIVE",
+        "HUMAN_RIGHTS_CUSTODIAL"
+      ],
+      "procedural_posture": "Writ Petition under Article 32",
+      "material_facts": "Petitioner's passport was impounded by the passport authorities under Section 10(3)(c) of the Passports Act in public interest without assigning reasons.",
+      "constitutional_questions": "Whether Section 10(3)(c) violates Articles 14, 19, and 21, and whether 'procedure established by law' requires natural justice.",
+      "holding_and_ratio": "Articles 14, 19, and 21 form a golden triangle; procedure under Article 21 must be fair, just, and reasonable, not arbitrary.",
+      "ratio_anchors": [
+        "Paragraph 56",
+        "Paragraph 82"
+      ],
+      "dissents_and_concurrences": "Unanimous on expanding Article 21 to incorporate substantive fairness.",
+      "subsequent_treatment": "Overruled A.K. Gopalan (1950); followed in hundreds of subsequent human rights and criminal justice decisions. Good law.",
+      "legislative_evolution_relationship": "DOCTRINAL_INTERACTION: Prompted administrative guidelines for passport impoundment and natural justice hearing procedures."
+    },
+    {
+      "case_id": "IND-SC-2017-PUTTASWAMY",
+      "title": "Justice K.S. Puttaswamy (Retd.) v. Union of India",
+      "court": "Supreme Court of India",
+      "bench": "9 Judges (J.S. Khehar C.J., J. Chelameswar, S.A. Bobde, R.K. Agrawal, R.F. Nariman, A.M. Sapre, D.Y. Chandrachud, S.K. Kaul, S. Abdul Nazeer JJ.)",
+      "date": "2017-08-24",
+      "citations": [
+        "(2017) 10 SCC 1",
+        "AIR 2017 SC 4161",
+        "2017 INSC 791"
+      ],
+      "substantive_domains": [
+        "CONSTITUTIONAL_ADMINISTRATIVE",
+        "TECHNOLOGY_IP_PRIVACY",
+        "HUMAN_RIGHTS_CUSTODIAL"
+      ],
+      "procedural_posture": "Writ Petition (Civil) No. 494 of 2012 Reference",
+      "material_facts": "Challenge to biometric data collection under the Aadhaar scheme leading to reference on whether privacy is a fundamental right.",
+      "constitutional_questions": "Whether the Constitution of India recognizes a fundamental right to privacy.",
+      "holding_and_ratio": "The right to privacy is a fundamental right protected under Articles 14, 19, and 21 and intrinsic to human dignity and autonomy.",
+      "ratio_anchors": [
+        "Paragraph 122",
+        "Paragraph 298"
+      ],
+      "dissents_and_concurrences": "Unanimous 9:0 decision declaring privacy a fundamental right. Expressly overruled M.P. Sharma (1954) and ADM Jabalpur (1976).",
+      "subsequent_treatment": "Applied in Navtej Johar (2018), Joseph Shine (2018), Anuradha Bhasin (2020), Pegasus (2021). Good law.",
+      "legislative_evolution_relationship": "DIRECT_LEGISLATIVE_RESPONSE: Srikrishna Committee Report and enactment of Digital Personal Data Protection Act, 2023."
+    },
+    {
+      "case_id": "IND-SC-2015-SHREYA",
+      "title": "Shreya Singhal v. Union of India",
+      "court": "Supreme Court of India",
+      "bench": "2 Judges (J. Chelameswar, R.F. Nariman JJ.)",
+      "date": "2015-03-24",
+      "citations": [
+        "(2015) 5 SCC 1",
+        "AIR 2015 SC 1523",
+        "2015 INSC 244"
+      ],
+      "substantive_domains": [
+        "CONSTITUTIONAL_ADMINISTRATIVE",
+        "TECHNOLOGY_IP_PRIVACY"
+      ],
+      "procedural_posture": "Writ Petition (Criminal) No. 167 of 2012",
+      "material_facts": "Arrest of citizens for posting political opinions on Facebook under Section 66A of the Information Technology Act 2000.",
+      "constitutional_questions": "Whether Section 66A of the IT Act violates freedom of speech under Article 19(1)(a).",
+      "holding_and_ratio": "Section 66A is unconstitutional, vague, and overbroad, failing the reasonable restrictions test of Article 19(2).",
+      "ratio_anchors": [
+        "Paragraph 119",
+        "Paragraph 121"
+      ],
+      "dissents_and_concurrences": "Unanimous 2-judge bench judgment.",
+      "subsequent_treatment": "Followed nationwide; Section 66A remains dead letter. Good law.",
+      "legislative_evolution_relationship": "JUDICIAL_INVALIDATION: Struck down Section 66A in its entirety."
+    },
+    {
+      "case_id": "IND-SC-2018-NAVTEJ",
+      "title": "Navtej Singh Johar v. Union of India",
+      "court": "Supreme Court of India",
+      "bench": "5 Judges (Dipak Misra C.J., R.F. Nariman, A.M. Khanwilkar, D.Y. Chandrachud, Indu Malhotra JJ.)",
+      "date": "2018-09-06",
+      "citations": [
+        "(2018) 1 SCC 791",
+        "AIR 2018 SC 4321",
+        "2018 INSC 790"
+      ],
+      "substantive_domains": [
+        "CONSTITUTIONAL_ADMINISTRATIVE",
+        "CRIMINAL",
+        "HUMAN_RIGHTS_CUSTODIAL"
+      ],
+      "procedural_posture": "Writ Petition (Criminal) No. 76 of 2016",
+      "material_facts": "Constitutional challenge to Section 377 IPC criminalizing consensual sexual acts between adults of same sex.",
+      "constitutional_questions": "Whether Section 377 IPC violates Articles 14, 15, 19(1)(a), and 21.",
+      "holding_and_ratio": "Section 377 read down to exclude consensual adult sexual intimacy in private. Suresh Koushal (2014) overruled.",
+      "ratio_anchors": [
+        "Paragraph 268"
+      ],
+      "dissents_and_concurrences": "Unanimous 5:0 bench with concurring opinions by Misra CJ, Nariman J, Chandrachud J, Malhotra J.",
+      "subsequent_treatment": "Followed in Supriyo (2023). Good law.",
+      "legislative_evolution_relationship": "DOCTRINAL_INTERACTION: Section 377 modified in judicial operation; BNS 2023 Section 63/64 restructures sexual offences."
+    }
+  ]
+}

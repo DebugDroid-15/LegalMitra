@@ -1,0 +1,752 @@
+{
+  "total_sources_registered": 25,
+  "sources": {
+    "SRC-SC-ESCR": {
+      "source_id": "SRC-SC-ESCR",
+      "institution_id": "IND-SC",
+      "institution_name": "Supreme Court of India (eSCR Project)",
+      "jurisdiction": "National (Apex)",
+      "source_url": "https://escr.sci.gov.in/",
+      "source_type": "ESCR_REPOSITORY",
+      "available_years": "1950-2024",
+      "document_types": [
+        "Reported Judgment",
+        "Neutral Citation Order",
+        "Constitution Bench Judgment"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "acquisition_method": "PUBLIC_PORTAL_CONNECTOR",
+      "access_restrictions": "RATE_LIMITED",
+      "reuse_status": "PUBLIC_DOMAIN_SEC_52_1_Q",
+      "source_health": "HEALTHY_ACTIVE",
+      "last_checked_timestamp": "2026-10-19T00:00:00Z",
+      "last_successful_acquisition": "2026-10-18T18:00:00Z",
+      "verification_method": "Official Digital Watermark & Cryptographic PDF Digest Verification",
+      "known_coverage_gaps": [
+        "Unreported interim chamber orders prior to 2010 not fully indexed"
+      ],
+      "acquisition_priority": "P0_IMMEDIATE",
+      "blocker_details": null
+    },
+    "SRC-SC-SCI-GOV": {
+      "source_id": "SRC-SC-SCI-GOV",
+      "institution_id": "IND-SC",
+      "institution_name": "Supreme Court of India Official Portal",
+      "jurisdiction": "National (Apex)",
+      "source_url": "https://main.sci.gov.in/judgments",
+      "source_type": "APEX_PORTAL",
+      "available_years": "1990-2024",
+      "document_types": [
+        "Daily Order",
+        "Case Status",
+        "Signed Final Judgment"
+      ],
+      "languages": [
+        "en"
+      ],
+      "acquisition_method": "PUBLIC_PORTAL_CONNECTOR",
+      "access_restrictions": "CAPTCHA_GATED",
+      "reuse_status": "PUBLIC_DOMAIN_SEC_52_1_Q",
+      "source_health": "HEALTHY_ACTIVE",
+      "last_checked_timestamp": "2026-10-19T00:00:00Z",
+      "last_successful_acquisition": "2026-10-18T18:00:00Z",
+      "verification_method": "Case Number & Registry Filing Audit",
+      "known_coverage_gaps": [
+        "Requires session state handling for pagination"
+      ],
+      "acquisition_priority": "P1_HIGH",
+      "blocker_details": null
+    },
+    "SRC-HC-DEL-PORTAL": {
+      "source_id": "SRC-HC-DEL-PORTAL",
+      "institution_id": "IND-HC-DEL",
+      "institution_name": "High Court of Delhi",
+      "jurisdiction": "Delhi",
+      "source_url": "https://delhihighcourt.nic.in/judgments",
+      "source_type": "HIGH_COURT_PORTAL",
+      "available_years": "1966-2024",
+      "document_types": [
+        "Final Judgment",
+        "Interlocutory Order",
+        "Neutral Citation Order"
+      ],
+      "languages": [
+        "en"
+      ],
+      "acquisition_method": "PUBLIC_PORTAL_CONNECTOR",
+      "access_restrictions": "RATE_LIMITED",
+      "reuse_status": "PUBLIC_DOMAIN_SEC_52_1_Q",
+      "source_health": "HEALTHY_ACTIVE",
+      "last_checked_timestamp": "2026-10-19T00:00:00Z",
+      "last_successful_acquisition": "2026-10-18T18:00:00Z",
+      "verification_method": "Neutral Citation and CNR Code Cross-Verification",
+      "known_coverage_gaps": [
+        "Pre-digitization archive (pre-1990) requires physical gazette scanning"
+      ],
+      "acquisition_priority": "P0_IMMEDIATE",
+      "blocker_details": null
+    },
+    "SRC-HC-BOM-PORTAL": {
+      "source_id": "SRC-HC-BOM-PORTAL",
+      "institution_id": "IND-HC-BOM",
+      "institution_name": "High Court of Judicature at Bombay",
+      "jurisdiction": "Maharashtra & Goa",
+      "source_url": "https://bombayhighcourt.nic.in/judgments.php",
+      "source_type": "HIGH_COURT_PORTAL",
+      "available_years": "1990-2024",
+      "document_types": [
+        "Final Judgment",
+        "Interlocutory Order",
+        "Neutral Citation Order"
+      ],
+      "languages": [
+        "en",
+        "mr"
+      ],
+      "acquisition_method": "PUBLIC_PORTAL_CONNECTOR",
+      "access_restrictions": "RATE_LIMITED",
+      "reuse_status": "PUBLIC_DOMAIN_SEC_52_1_Q",
+      "source_health": "HEALTHY_ACTIVE",
+      "last_checked_timestamp": "2026-10-19T00:00:00Z",
+      "last_successful_acquisition": "2026-10-18T18:00:00Z",
+      "verification_method": "Neutral Citation and CNR Code Cross-Verification",
+      "known_coverage_gaps": [
+        "Pre-digitization archive (pre-1990) requires physical gazette scanning"
+      ],
+      "acquisition_priority": "P1_HIGH",
+      "blocker_details": null
+    },
+    "SRC-HC-CAL-PORTAL": {
+      "source_id": "SRC-HC-CAL-PORTAL",
+      "institution_id": "IND-HC-CAL",
+      "institution_name": "Calcutta High Court",
+      "jurisdiction": "West Bengal & A&N",
+      "source_url": "https://calcuttahighcourt.gov.in/Judgments",
+      "source_type": "HIGH_COURT_PORTAL",
+      "available_years": "1995-2024",
+      "document_types": [
+        "Final Judgment",
+        "Interlocutory Order",
+        "Neutral Citation Order"
+      ],
+      "languages": [
+        "en"
+      ],
+      "acquisition_method": "PUBLIC_PORTAL_CONNECTOR",
+      "access_restrictions": "RATE_LIMITED",
+      "reuse_status": "PUBLIC_DOMAIN_SEC_52_1_Q",
+      "source_health": "HEALTHY_ACTIVE",
+      "last_checked_timestamp": "2026-10-19T00:00:00Z",
+      "last_successful_acquisition": "2026-10-18T18:00:00Z",
+      "verification_method": "Neutral Citation and CNR Code Cross-Verification",
+      "known_coverage_gaps": [
+        "Pre-digitization archive (pre-1990) requires physical gazette scanning"
+      ],
+      "acquisition_priority": "P1_HIGH",
+      "blocker_details": null
+    },
+    "SRC-HC-MAD-PORTAL": {
+      "source_id": "SRC-HC-MAD-PORTAL",
+      "institution_id": "IND-HC-MAD",
+      "institution_name": "Madras High Court",
+      "jurisdiction": "Tamil Nadu & Puducherry",
+      "source_url": "https://hcmadras.tn.gov.in/judgments.php",
+      "source_type": "HIGH_COURT_PORTAL",
+      "available_years": "1995-2024",
+      "document_types": [
+        "Final Judgment",
+        "Interlocutory Order",
+        "Neutral Citation Order"
+      ],
+      "languages": [
+        "en",
+        "ta"
+      ],
+      "acquisition_method": "PUBLIC_PORTAL_CONNECTOR",
+      "access_restrictions": "RATE_LIMITED",
+      "reuse_status": "PUBLIC_DOMAIN_SEC_52_1_Q",
+      "source_health": "HEALTHY_ACTIVE",
+      "last_checked_timestamp": "2026-10-19T00:00:00Z",
+      "last_successful_acquisition": "2026-10-18T18:00:00Z",
+      "verification_method": "Neutral Citation and CNR Code Cross-Verification",
+      "known_coverage_gaps": [
+        "Pre-digitization archive (pre-1990) requires physical gazette scanning"
+      ],
+      "acquisition_priority": "P1_HIGH",
+      "blocker_details": null
+    },
+    "SRC-HC-ALL-PORTAL": {
+      "source_id": "SRC-HC-ALL-PORTAL",
+      "institution_id": "IND-HC-ALL",
+      "institution_name": "High Court of Judicature at Allahabad",
+      "jurisdiction": "Uttar Pradesh",
+      "source_url": "https://www.allahabadhighcourt.in/judgments/judge.jsp",
+      "source_type": "HIGH_COURT_PORTAL",
+      "available_years": "1990-2024",
+      "document_types": [
+        "Final Judgment",
+        "Interlocutory Order",
+        "Neutral Citation Order"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "acquisition_method": "PUBLIC_PORTAL_CONNECTOR",
+      "access_restrictions": "RATE_LIMITED",
+      "reuse_status": "PUBLIC_DOMAIN_SEC_52_1_Q",
+      "source_health": "HEALTHY_ACTIVE",
+      "last_checked_timestamp": "2026-10-19T00:00:00Z",
+      "last_successful_acquisition": "2026-10-18T18:00:00Z",
+      "verification_method": "Neutral Citation and CNR Code Cross-Verification",
+      "known_coverage_gaps": [
+        "Pre-digitization archive (pre-1990) requires physical gazette scanning"
+      ],
+      "acquisition_priority": "P1_HIGH",
+      "blocker_details": null
+    },
+    "SRC-HC-KAR-PORTAL": {
+      "source_id": "SRC-HC-KAR-PORTAL",
+      "institution_id": "IND-HC-KAR",
+      "institution_name": "High Court of Karnataka",
+      "jurisdiction": "Karnataka",
+      "source_url": "https://karnatakahiqhcourt.kar.nic.in/judgments",
+      "source_type": "HIGH_COURT_PORTAL",
+      "available_years": "1998-2024",
+      "document_types": [
+        "Final Judgment",
+        "Interlocutory Order",
+        "Neutral Citation Order"
+      ],
+      "languages": [
+        "en",
+        "kn"
+      ],
+      "acquisition_method": "PUBLIC_PORTAL_CONNECTOR",
+      "access_restrictions": "RATE_LIMITED",
+      "reuse_status": "PUBLIC_DOMAIN_SEC_52_1_Q",
+      "source_health": "HEALTHY_ACTIVE",
+      "last_checked_timestamp": "2026-10-19T00:00:00Z",
+      "last_successful_acquisition": "2026-10-18T18:00:00Z",
+      "verification_method": "Neutral Citation and CNR Code Cross-Verification",
+      "known_coverage_gaps": [
+        "Pre-digitization archive (pre-1990) requires physical gazette scanning"
+      ],
+      "acquisition_priority": "P2_MEDIUM",
+      "blocker_details": null
+    },
+    "SRC-HC-KER-PORTAL": {
+      "source_id": "SRC-HC-KER-PORTAL",
+      "institution_id": "IND-HC-KER",
+      "institution_name": "High Court of Kerala",
+      "jurisdiction": "Kerala & Lakshadweep",
+      "source_url": "https://hckerala.gov.in/judgments",
+      "source_type": "HIGH_COURT_PORTAL",
+      "available_years": "2000-2024",
+      "document_types": [
+        "Final Judgment",
+        "Interlocutory Order",
+        "Neutral Citation Order"
+      ],
+      "languages": [
+        "en",
+        "ml"
+      ],
+      "acquisition_method": "PUBLIC_PORTAL_CONNECTOR",
+      "access_restrictions": "RATE_LIMITED",
+      "reuse_status": "PUBLIC_DOMAIN_SEC_52_1_Q",
+      "source_health": "HEALTHY_ACTIVE",
+      "last_checked_timestamp": "2026-10-19T00:00:00Z",
+      "last_successful_acquisition": "2026-10-18T18:00:00Z",
+      "verification_method": "Neutral Citation and CNR Code Cross-Verification",
+      "known_coverage_gaps": [
+        "Pre-digitization archive (pre-1990) requires physical gazette scanning"
+      ],
+      "acquisition_priority": "P2_MEDIUM",
+      "blocker_details": null
+    },
+    "SRC-HC-GUJ-PORTAL": {
+      "source_id": "SRC-HC-GUJ-PORTAL",
+      "institution_id": "IND-HC-GUJ",
+      "institution_name": "High Court of Gujarat",
+      "jurisdiction": "Gujarat",
+      "source_url": "https://gujarathighcourt.nic.in/judgments",
+      "source_type": "HIGH_COURT_PORTAL",
+      "available_years": "1999-2024",
+      "document_types": [
+        "Final Judgment",
+        "Interlocutory Order",
+        "Neutral Citation Order"
+      ],
+      "languages": [
+        "en",
+        "gu"
+      ],
+      "acquisition_method": "PUBLIC_PORTAL_CONNECTOR",
+      "access_restrictions": "RATE_LIMITED",
+      "reuse_status": "PUBLIC_DOMAIN_SEC_52_1_Q",
+      "source_health": "HEALTHY_ACTIVE",
+      "last_checked_timestamp": "2026-10-19T00:00:00Z",
+      "last_successful_acquisition": "2026-10-18T18:00:00Z",
+      "verification_method": "Neutral Citation and CNR Code Cross-Verification",
+      "known_coverage_gaps": [
+        "Pre-digitization archive (pre-1990) requires physical gazette scanning"
+      ],
+      "acquisition_priority": "P2_MEDIUM",
+      "blocker_details": null
+    },
+    "SRC-HC-PNH-PORTAL": {
+      "source_id": "SRC-HC-PNH-PORTAL",
+      "institution_id": "IND-HC-PNH",
+      "institution_name": "Punjab and Haryana High Court",
+      "jurisdiction": "Punjab, Haryana & Chandigarh",
+      "source_url": "https://highcourtchd.gov.in/judgments",
+      "source_type": "HIGH_COURT_PORTAL",
+      "available_years": "1998-2024",
+      "document_types": [
+        "Final Judgment",
+        "Interlocutory Order",
+        "Neutral Citation Order"
+      ],
+      "languages": [
+        "en",
+        "pa",
+        "hi"
+      ],
+      "acquisition_method": "PUBLIC_PORTAL_CONNECTOR",
+      "access_restrictions": "RATE_LIMITED",
+      "reuse_status": "PUBLIC_DOMAIN_SEC_52_1_Q",
+      "source_health": "HEALTHY_ACTIVE",
+      "last_checked_timestamp": "2026-10-19T00:00:00Z",
+      "last_successful_acquisition": "2026-10-18T18:00:00Z",
+      "verification_method": "Neutral Citation and CNR Code Cross-Verification",
+      "known_coverage_gaps": [
+        "Pre-digitization archive (pre-1990) requires physical gazette scanning"
+      ],
+      "acquisition_priority": "P2_MEDIUM",
+      "blocker_details": null
+    },
+    "SRC-HC-PAT-PORTAL": {
+      "source_id": "SRC-HC-PAT-PORTAL",
+      "institution_id": "IND-HC-PAT",
+      "institution_name": "Patna High Court",
+      "jurisdiction": "Bihar",
+      "source_url": "http://patnahighcourt.gov.in/judgments",
+      "source_type": "HIGH_COURT_PORTAL",
+      "available_years": "2000-2024",
+      "document_types": [
+        "Final Judgment",
+        "Interlocutory Order",
+        "Neutral Citation Order"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "acquisition_method": "PUBLIC_PORTAL_CONNECTOR",
+      "access_restrictions": "RATE_LIMITED",
+      "reuse_status": "PUBLIC_DOMAIN_SEC_52_1_Q",
+      "source_health": "HEALTHY_ACTIVE",
+      "last_checked_timestamp": "2026-10-19T00:00:00Z",
+      "last_successful_acquisition": "2026-10-18T18:00:00Z",
+      "verification_method": "Neutral Citation and CNR Code Cross-Verification",
+      "known_coverage_gaps": [
+        "Pre-digitization archive (pre-1990) requires physical gazette scanning"
+      ],
+      "acquisition_priority": "P2_MEDIUM",
+      "blocker_details": null
+    },
+    "SRC-HC-RAJ-PORTAL": {
+      "source_id": "SRC-HC-RAJ-PORTAL",
+      "institution_id": "IND-HC-RAJ",
+      "institution_name": "Rajasthan High Court",
+      "jurisdiction": "Rajasthan",
+      "source_url": "https://hcraj.nic.in/cishcraj/judgments",
+      "source_type": "HIGH_COURT_PORTAL",
+      "available_years": "2000-2024",
+      "document_types": [
+        "Final Judgment",
+        "Interlocutory Order",
+        "Neutral Citation Order"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "acquisition_method": "PUBLIC_PORTAL_CONNECTOR",
+      "access_restrictions": "RATE_LIMITED",
+      "reuse_status": "PUBLIC_DOMAIN_SEC_52_1_Q",
+      "source_health": "HEALTHY_ACTIVE",
+      "last_checked_timestamp": "2026-10-19T00:00:00Z",
+      "last_successful_acquisition": "2026-10-18T18:00:00Z",
+      "verification_method": "Neutral Citation and CNR Code Cross-Verification",
+      "known_coverage_gaps": [
+        "Pre-digitization archive (pre-1990) requires physical gazette scanning"
+      ],
+      "acquisition_priority": "P2_MEDIUM",
+      "blocker_details": null
+    },
+    "SRC-HC-TEL-PORTAL": {
+      "source_id": "SRC-HC-TEL-PORTAL",
+      "institution_id": "IND-HC-TEL",
+      "institution_name": "High Court for the State of Telangana",
+      "jurisdiction": "Telangana",
+      "source_url": "https://tshc.gov.in/judgments",
+      "source_type": "HIGH_COURT_PORTAL",
+      "available_years": "2019-2024",
+      "document_types": [
+        "Final Judgment",
+        "Interlocutory Order",
+        "Neutral Citation Order"
+      ],
+      "languages": [
+        "en",
+        "te"
+      ],
+      "acquisition_method": "PUBLIC_PORTAL_CONNECTOR",
+      "access_restrictions": "RATE_LIMITED",
+      "reuse_status": "PUBLIC_DOMAIN_SEC_52_1_Q",
+      "source_health": "HEALTHY_ACTIVE",
+      "last_checked_timestamp": "2026-10-19T00:00:00Z",
+      "last_successful_acquisition": "2026-10-18T18:00:00Z",
+      "verification_method": "Neutral Citation and CNR Code Cross-Verification",
+      "known_coverage_gaps": [
+        "Pre-digitization archive (pre-1990) requires physical gazette scanning"
+      ],
+      "acquisition_priority": "P2_MEDIUM",
+      "blocker_details": null
+    },
+    "SRC-ECOURTS-SERVICES": {
+      "source_id": "SRC-ECOURTS-SERVICES",
+      "institution_id": "IND-DIST-GENERIC",
+      "institution_name": "eCourts Services (National Portal for District Courts)",
+      "jurisdiction": "National (680+ District Courts)",
+      "source_url": "https://services.ecourts.gov.in/",
+      "source_type": "ECOURTS_SERVICES",
+      "available_years": "2013-2024",
+      "document_types": [
+        "Trial Court Judgment",
+        "Daily Order Sheet",
+        "Bail Order",
+        "Chargesheet Filing Order"
+      ],
+      "languages": [
+        "en",
+        "hi",
+        "mr",
+        "ta",
+        "te",
+        "bn",
+        "gu",
+        "kn",
+        "ml",
+        "pa",
+        "or"
+      ],
+      "acquisition_method": "PUBLIC_PORTAL_CONNECTOR",
+      "access_restrictions": "CAPTCHA_GATED",
+      "reuse_status": "PUBLIC_DOMAIN_SEC_52_1_Q",
+      "source_health": "HEALTHY_ACTIVE",
+      "last_checked_timestamp": "2026-10-19T00:00:00Z",
+      "last_successful_acquisition": "2026-10-18T18:00:00Z",
+      "verification_method": "16-character CNR Number Validation",
+      "known_coverage_gaps": [
+        "Strict CAPTCHA gating prevents high-throughput batch crawling; pilot sampling only"
+      ],
+      "acquisition_priority": "P1_HIGH",
+      "blocker_details": "High-volume acquisition requires authorized eCourts API key agreement with eCommittee"
+    },
+    "SRC-TR-NCLAT-PORTAL": {
+      "source_id": "SRC-TR-NCLAT-PORTAL",
+      "institution_id": "IND-TR-NCLAT",
+      "institution_name": "National Company Law Appellate Tribunal Portal",
+      "jurisdiction": "National",
+      "source_url": "https://nclat.nic.in/judgments",
+      "source_type": "TRIBUNAL_PORTAL",
+      "available_years": "2016-2024",
+      "document_types": [
+        "Statutory Tribunal Order",
+        "Final Decision",
+        "Interim Relief Order"
+      ],
+      "languages": [
+        "en"
+      ],
+      "acquisition_method": "PUBLIC_PORTAL_CONNECTOR",
+      "access_restrictions": "RATE_LIMITED",
+      "reuse_status": "PUBLIC_DOMAIN_SEC_52_1_Q",
+      "source_health": "HEALTHY_ACTIVE",
+      "last_checked_timestamp": "2026-10-19T00:00:00Z",
+      "last_successful_acquisition": "2026-10-18T18:00:00Z",
+      "verification_method": "Appeal Number and Tribunal Bench Registry Verification",
+      "known_coverage_gaps": [
+        "Regional bench orders subject to varying digital upload intervals"
+      ],
+      "acquisition_priority": "P0_IMMEDIATE",
+      "blocker_details": null
+    },
+    "SRC-TR-NCLT-PORTAL": {
+      "source_id": "SRC-TR-NCLT-PORTAL",
+      "institution_id": "IND-TR-NCLT",
+      "institution_name": "National Company Law Tribunal Portal",
+      "jurisdiction": "National",
+      "source_url": "https://nclt.gov.in/order",
+      "source_type": "TRIBUNAL_PORTAL",
+      "available_years": "2016-2024",
+      "document_types": [
+        "Statutory Tribunal Order",
+        "Final Decision",
+        "Interim Relief Order"
+      ],
+      "languages": [
+        "en"
+      ],
+      "acquisition_method": "PUBLIC_PORTAL_CONNECTOR",
+      "access_restrictions": "RATE_LIMITED",
+      "reuse_status": "PUBLIC_DOMAIN_SEC_52_1_Q",
+      "source_health": "HEALTHY_ACTIVE",
+      "last_checked_timestamp": "2026-10-19T00:00:00Z",
+      "last_successful_acquisition": "2026-10-18T18:00:00Z",
+      "verification_method": "Appeal Number and Tribunal Bench Registry Verification",
+      "known_coverage_gaps": [
+        "Regional bench orders subject to varying digital upload intervals"
+      ],
+      "acquisition_priority": "P1_HIGH",
+      "blocker_details": null
+    },
+    "SRC-TR-NGT-PORTAL": {
+      "source_id": "SRC-TR-NGT-PORTAL",
+      "institution_id": "IND-TR-NGT",
+      "institution_name": "National Green Tribunal Official Portal",
+      "jurisdiction": "National",
+      "source_url": "https://greentribunal.gov.in/judgments",
+      "source_type": "TRIBUNAL_PORTAL",
+      "available_years": "2011-2024",
+      "document_types": [
+        "Statutory Tribunal Order",
+        "Final Decision",
+        "Interim Relief Order"
+      ],
+      "languages": [
+        "en"
+      ],
+      "acquisition_method": "PUBLIC_PORTAL_CONNECTOR",
+      "access_restrictions": "RATE_LIMITED",
+      "reuse_status": "PUBLIC_DOMAIN_SEC_52_1_Q",
+      "source_health": "HEALTHY_ACTIVE",
+      "last_checked_timestamp": "2026-10-19T00:00:00Z",
+      "last_successful_acquisition": "2026-10-18T18:00:00Z",
+      "verification_method": "Appeal Number and Tribunal Bench Registry Verification",
+      "known_coverage_gaps": [
+        "Regional bench orders subject to varying digital upload intervals"
+      ],
+      "acquisition_priority": "P1_HIGH",
+      "blocker_details": null
+    },
+    "SRC-TR-CAT-PORTAL": {
+      "source_id": "SRC-TR-CAT-PORTAL",
+      "institution_id": "IND-TR-CAT",
+      "institution_name": "Central Administrative Tribunal Official Portal",
+      "jurisdiction": "National",
+      "source_url": "https://cgat.gov.in/judgements",
+      "source_type": "TRIBUNAL_PORTAL",
+      "available_years": "2005-2024",
+      "document_types": [
+        "Statutory Tribunal Order",
+        "Final Decision",
+        "Interim Relief Order"
+      ],
+      "languages": [
+        "en",
+        "hi"
+      ],
+      "acquisition_method": "PUBLIC_PORTAL_CONNECTOR",
+      "access_restrictions": "RATE_LIMITED",
+      "reuse_status": "PUBLIC_DOMAIN_SEC_52_1_Q",
+      "source_health": "HEALTHY_ACTIVE",
+      "last_checked_timestamp": "2026-10-19T00:00:00Z",
+      "last_successful_acquisition": "2026-10-18T18:00:00Z",
+      "verification_method": "Appeal Number and Tribunal Bench Registry Verification",
+      "known_coverage_gaps": [
+        "Regional bench orders subject to varying digital upload intervals"
+      ],
+      "acquisition_priority": "P1_HIGH",
+      "blocker_details": null
+    },
+    "SRC-TR-ITAT-PORTAL": {
+      "source_id": "SRC-TR-ITAT-PORTAL",
+      "institution_id": "IND-TR-ITAT",
+      "institution_name": "Income Tax Appellate Tribunal Portal",
+      "jurisdiction": "National",
+      "source_url": "https://itat.gov.in/orders",
+      "source_type": "TRIBUNAL_PORTAL",
+      "available_years": "2000-2024",
+      "document_types": [
+        "Statutory Tribunal Order",
+        "Final Decision",
+        "Interim Relief Order"
+      ],
+      "languages": [
+        "en"
+      ],
+      "acquisition_method": "PUBLIC_PORTAL_CONNECTOR",
+      "access_restrictions": "RATE_LIMITED",
+      "reuse_status": "PUBLIC_DOMAIN_SEC_52_1_Q",
+      "source_health": "HEALTHY_ACTIVE",
+      "last_checked_timestamp": "2026-10-19T00:00:00Z",
+      "last_successful_acquisition": "2026-10-18T18:00:00Z",
+      "verification_method": "Appeal Number and Tribunal Bench Registry Verification",
+      "known_coverage_gaps": [
+        "Regional bench orders subject to varying digital upload intervals"
+      ],
+      "acquisition_priority": "P1_HIGH",
+      "blocker_details": null
+    },
+    "SRC-TR-CESTAT-PORTAL": {
+      "source_id": "SRC-TR-CESTAT-PORTAL",
+      "institution_id": "IND-TR-CESTAT",
+      "institution_name": "CESTAT Official Orders Portal",
+      "jurisdiction": "National",
+      "source_url": "https://cestat.gov.in/orders",
+      "source_type": "TRIBUNAL_PORTAL",
+      "available_years": "2002-2024",
+      "document_types": [
+        "Statutory Tribunal Order",
+        "Final Decision",
+        "Interim Relief Order"
+      ],
+      "languages": [
+        "en"
+      ],
+      "acquisition_method": "PUBLIC_PORTAL_CONNECTOR",
+      "access_restrictions": "RATE_LIMITED",
+      "reuse_status": "PUBLIC_DOMAIN_SEC_52_1_Q",
+      "source_health": "HEALTHY_ACTIVE",
+      "last_checked_timestamp": "2026-10-19T00:00:00Z",
+      "last_successful_acquisition": "2026-10-18T18:00:00Z",
+      "verification_method": "Appeal Number and Tribunal Bench Registry Verification",
+      "known_coverage_gaps": [
+        "Regional bench orders subject to varying digital upload intervals"
+      ],
+      "acquisition_priority": "P2_MEDIUM",
+      "blocker_details": null
+    },
+    "SRC-TR-TDSAT-PORTAL": {
+      "source_id": "SRC-TR-TDSAT-PORTAL",
+      "institution_id": "IND-TR-TDSAT",
+      "institution_name": "TDSAT Official Decisions Portal",
+      "jurisdiction": "National",
+      "source_url": "https://tdsat.gov.in/orders",
+      "source_type": "TRIBUNAL_PORTAL",
+      "available_years": "2001-2024",
+      "document_types": [
+        "Statutory Tribunal Order",
+        "Final Decision",
+        "Interim Relief Order"
+      ],
+      "languages": [
+        "en"
+      ],
+      "acquisition_method": "PUBLIC_PORTAL_CONNECTOR",
+      "access_restrictions": "RATE_LIMITED",
+      "reuse_status": "PUBLIC_DOMAIN_SEC_52_1_Q",
+      "source_health": "HEALTHY_ACTIVE",
+      "last_checked_timestamp": "2026-10-19T00:00:00Z",
+      "last_successful_acquisition": "2026-10-18T18:00:00Z",
+      "verification_method": "Appeal Number and Tribunal Bench Registry Verification",
+      "known_coverage_gaps": [
+        "Regional bench orders subject to varying digital upload intervals"
+      ],
+      "acquisition_priority": "P2_MEDIUM",
+      "blocker_details": null
+    },
+    "SRC-MIL-AFT-PORTAL": {
+      "source_id": "SRC-MIL-AFT-PORTAL",
+      "institution_id": "IND-MIL-AFT",
+      "institution_name": "Armed Forces Tribunal Official Orders Portal",
+      "jurisdiction": "National (Military / Service Appeals)",
+      "source_url": "https://aftdelhi.nic.in/judgments.html",
+      "source_type": "MILITARY_PORTAL",
+      "available_years": "2009-2024",
+      "document_types": [
+        "AFT Judgment",
+        "Court-Martial Appeal Decision",
+        "Service & Pension Order"
+      ],
+      "languages": [
+        "en"
+      ],
+      "acquisition_method": "PUBLIC_PORTAL_CONNECTOR",
+      "access_restrictions": "RATE_LIMITED",
+      "reuse_status": "PUBLIC_DOMAIN_SEC_52_1_Q",
+      "source_health": "HEALTHY_ACTIVE",
+      "last_checked_timestamp": "2026-10-19T00:00:00Z",
+      "last_successful_acquisition": "2026-10-18T18:00:00Z",
+      "verification_method": "Original Application (OA) & Transferred Application (TA) Number Verification",
+      "known_coverage_gaps": [
+        "Regional bench decisions maintained in fragmented websites"
+      ],
+      "acquisition_priority": "P1_HIGH",
+      "blocker_details": null
+    },
+    "SRC-HIST-FED-COURT": {
+      "source_id": "SRC-HIST-FED-COURT",
+      "institution_id": "HIST-FED-COURT",
+      "institution_name": "Federal Court Reports Digital Repository (National Archives)",
+      "jurisdiction": "British India (1937-1950)",
+      "source_url": "https://nationalarchives.nic.in/fcr",
+      "source_type": "HISTORICAL_DIGITAL_ARCHIVE",
+      "available_years": "1937-1950",
+      "document_types": [
+        "Federal Court Judgment",
+        "Advisory Reference Opinion"
+      ],
+      "languages": [
+        "en"
+      ],
+      "acquisition_method": "ARCHIVAL_REPOSITORY_INGESTION",
+      "access_restrictions": "OPEN_PUBLIC",
+      "reuse_status": "PUBLIC_DOMAIN_SEC_52_1_Q",
+      "source_health": "HEALTHY_ACTIVE",
+      "last_checked_timestamp": "2026-10-19T00:00:00Z",
+      "last_successful_acquisition": "2026-10-18T18:00:00Z",
+      "verification_method": "Official Gazette of India & FCR Volume Numbering",
+      "known_coverage_gaps": [
+        "Scanned archival pages require specialized OCR preprocessing"
+      ],
+      "acquisition_priority": "P1_HIGH",
+      "blocker_details": null
+    },
+    "SRC-HIST-PRIVY-COUNCIL": {
+      "source_id": "SRC-HIST-PRIVY-COUNCIL",
+      "institution_id": "HIST-PRIVY-COUNCIL",
+      "institution_name": "Judicial Committee of the Privy Council (Indian Appeals Archive)",
+      "jurisdiction": "Imperial Appellate (British India)",
+      "source_url": "https://www.bailii.org/uk/cases/UKPC/",
+      "source_type": "HISTORICAL_DIGITAL_ARCHIVE",
+      "available_years": "1836-1949",
+      "document_types": [
+        "Privy Council Judgment",
+        "Order in Council"
+      ],
+      "languages": [
+        "en"
+      ],
+      "acquisition_method": "ARCHIVAL_REPOSITORY_INGESTION",
+      "access_restrictions": "OPEN_PUBLIC",
+      "reuse_status": "PUBLIC_DOMAIN_SEC_52_1_Q",
+      "source_health": "HEALTHY_ACTIVE",
+      "last_checked_timestamp": "2026-10-19T00:00:00Z",
+      "last_successful_acquisition": "2026-10-18T18:00:00Z",
+      "verification_method": "Moore's Indian Appeals & Law Reports Indian Appeals (L.R. I.A.) Volumes",
+      "known_coverage_gaps": [
+        "Pre-1836 Mayor's Court and early appeals not fully digitized"
+      ],
+      "acquisition_priority": "P2_MEDIUM",
+      "blocker_details": null
+    }
+  }
+}
