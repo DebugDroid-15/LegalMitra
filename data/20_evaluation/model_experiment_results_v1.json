@@ -1,0 +1,128 @@
+{
+  "exp1_baseline_reproduction": {
+    "experiment_id": "EXP-3201-BASELINE-REPRODUCTION",
+    "device": "cuda",
+    "parameters": 938752,
+    "steps": 50,
+    "batch_size": 8,
+    "seq_len": 128,
+    "tokens_processed": 51200,
+    "wall_time_seconds": 1.6,
+    "tokens_per_second": 32000.0,
+    "initial_train_loss": 6.9647,
+    "final_train_loss": 5.6504,
+    "train_loss_delta": 1.3143,
+    "initial_val_loss": 6.9328,
+    "final_val_loss": 5.8974,
+    "val_loss_delta": 1.0354,
+    "checkpoint_path": "research\\original_model\\checkpoints\\exp1_reproduced_step50.pt",
+    "checkpoint_sha256": "222ef57977ee8ca9ad1d424aeae6b308846a215856772ed57bae7155de783637"
+  },
+  "exp2_multi_seed_validation": {
+    "experiment_id": "EXP-3202-MULTI-SEED-VALIDATION",
+    "seeds_evaluated": [
+      42,
+      43,
+      44
+    ],
+    "runs": [
+      {
+        "seed": 42,
+        "initial_train_loss": 6.955,
+        "final_train_loss": 6.147,
+        "loss_reduction": 0.808,
+        "validation_loss": 6.1762
+      },
+      {
+        "seed": 43,
+        "initial_train_loss": 6.9741,
+        "final_train_loss": 6.1053,
+        "loss_reduction": 0.8688,
+        "validation_loss": 6.1654
+      },
+      {
+        "seed": 44,
+        "initial_train_loss": 6.9509,
+        "final_train_loss": 6.1629,
+        "loss_reduction": 0.788,
+        "validation_loss": 6.1841
+      }
+    ],
+    "mean_loss_reduction": 0.8216,
+    "reproducibility_verdict": "VERIFIED (consistent loss reduction across seeds)"
+  },
+  "exp3_overfitting_diagnostic": {
+    "experiment_id": "EXP-3203-OVERFITTING-DIAGNOSTIC",
+    "trajectory": [
+      {
+        "step": 10,
+        "train_loss": 6.5834,
+        "val_loss": 6.5666
+      },
+      {
+        "step": 25,
+        "train_loss": 6.2797,
+        "val_loss": 6.2507
+      },
+      {
+        "step": 50,
+        "train_loss": 5.8328,
+        "val_loss": 5.9291
+      },
+      {
+        "step": 75,
+        "train_loss": 5.6375,
+        "val_loss": 5.7554
+      },
+      {
+        "step": 100,
+        "train_loss": 5.4648,
+        "val_loss": 5.6117
+      }
+    ],
+    "initial_train_loss": 6.5834,
+    "final_train_loss": 5.4648,
+    "initial_val_loss": 6.5666,
+    "final_val_loss": 5.6117,
+    "overfitting_observed": false
+  },
+  "exp4_memorization_control": {
+    "experiment_id": "EXP-3204-MEMORIZATION-CONTROL",
+    "target": "Capacity to overfit small 5-chunk legal corpus",
+    "initial_loss": 6.9539,
+    "final_memorized_loss": 1.1184,
+    "held_out_generalization_loss": 6.6543,
+    "memorization_delta": 5.8355,
+    "conclusion": "Model successfully overfits small corpus to low loss, but held-out loss remains high, proving distinct memorization vs generalization behavior"
+  },
+  "exp5_split_ablation": {
+    "experiment_id": "EXP-3205-DATA-SPLIT-ABLATION",
+    "group_aware_val_loss": 5.8974,
+    "sequential_val_loss": 5.8523,
+    "loss_difference": 0.0451,
+    "interpretation": "Sequential split exhibits artificially lower validation loss due to intra-document (IT Act) leakage; group-aware split provides honest generalization metric."
+  },
+  "exp6_context_length_sizing": {
+    "experiment_id": "EXP-3206-CONTEXT-LENGTH-SIZING",
+    "results": [
+      {
+        "seq_len": 64,
+        "parameters": 930560,
+        "throughput_tokens_per_sec": 39912.5,
+        "peak_vram_mb": 124.63
+      },
+      {
+        "seq_len": 128,
+        "parameters": 938752,
+        "throughput_tokens_per_sec": 99049.8,
+        "peak_vram_mb": 142.64
+      },
+      {
+        "seq_len": 256,
+        "parameters": 955136,
+        "throughput_tokens_per_sec": 138681.5,
+        "peak_vram_mb": 243.82
+      }
+    ]
+  }
+}

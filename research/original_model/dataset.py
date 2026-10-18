@@ -58,7 +58,7 @@ def extract_verified_legal_texts(db_path: str = "data/legalmitra_kb.db") -> List
 
     # Quarantine synthetic scaffold strictly: is_synthetic_scaffold must be 0
     query = """
-        SELECT chunk_id, act_or_case_title, provision_or_para_ref, content
+        SELECT chunk_id, source_id, act_or_case_title, provision_or_para_ref, content
         FROM legal_chunks
         WHERE is_synthetic_scaffold = 0
         ORDER BY chunk_id ASC;
@@ -70,6 +70,7 @@ def extract_verified_legal_texts(db_path: str = "data/legalmitra_kb.db") -> List
     return [
         {
             "chunk_id": row["chunk_id"],
+            "source_id": row["source_id"],
             "title": row["act_or_case_title"],
             "ref": row["provision_or_para_ref"],
             "text": f"{row['act_or_case_title']} - {row['provision_or_para_ref']}: {row['content']}",
@@ -86,6 +87,7 @@ def build_train_val_datasets(
     train_ratio: float = 0.9,
     seq_len: int = 128,
     target_vocab_size: int = 1024,
+    split_strategy: str = "source_grouped",
 ) -> Tuple[LegalDataset, LegalDataset, IndianLegalTokenizer, Dict]:
     """Package database text into train/val datasets with deterministic split."""
     chunks = extract_verified_legal_texts(db_path)
@@ -103,10 +105,20 @@ def build_train_val_datasets(
             tokenizer.train_from_texts(sample_texts, target_vocab_size=target_vocab_size)
             tokenizer.save(tok_file)
 
-    # Deterministic split (deterministic ordering)
-    split_idx = int(len(texts) * train_ratio)
-    train_texts = texts[:split_idx]
-    val_texts = texts[split_idx:]
+    if split_strategy == "source_grouped":
+        # Group-aware split: keep complete documents/sources in either train or val to prevent leakage
+        val_sources_preferred = {"IND-STAT-DPDP-2023", "IND-STAT-LIMIT-1963", "IND-STAT-NI-1881"}
+        train_chunks = [c for c in chunks if c["source_id"] not in val_sources_preferred]
+        val_chunks = [c for c in chunks if c["source_id"] in val_sources_preferred]
+        train_texts = [c["text"] for c in train_chunks]
+        val_texts = [c["text"] for c in val_chunks]
+    else:
+        # Sequential baseline split
+        split_idx = int(len(texts) * train_ratio)
+        train_chunks = chunks[:split_idx]
+        val_chunks = chunks[split_idx:]
+        train_texts = [c["text"] for c in train_chunks]
+        val_texts = [c["text"] for c in val_chunks]
 
     train_tokens = [tokenizer.encode(t) for t in train_texts]
     val_tokens = [tokenizer.encode(t) for t in val_texts]
@@ -120,16 +132,64 @@ def build_train_val_datasets(
         hasher.update(t.encode("utf-8"))
     corpus_sha256 = hasher.hexdigest()
 
+    train_hasher = hashlib.sha256()
+    for t in train_texts:
+        train_hasher.update(t.encode("utf-8"))
+    train_sha256 = train_hasher.hexdigest()
+
+    val_hasher = hashlib.sha256()
+    for t in val_texts:
+        val_hasher.update(t.encode("utf-8"))
+    val_sha256 = val_hasher.hexdigest()
+
     total_tokens = sum(len(toks) for toks in train_tokens) + sum(len(toks) for toks in val_tokens)
+
+    # Export versioned train and val manifests
+    manifest_dir = Path("research/original_model/manifests")
+    manifest_dir.mkdir(parents=True, exist_ok=True)
+
+    train_filename = "train_manifest_v1.json" if split_strategy == "source_grouped" else f"train_manifest_{split_strategy}_v1.json"
+    val_filename = "val_manifest_v1.json" if split_strategy == "source_grouped" else f"val_manifest_{split_strategy}_v1.json"
+
+    train_manifest = {
+        "manifest_version": "v1.0.0",
+        "split_name": "train",
+        "split_strategy": split_strategy,
+        "chunk_count": len(train_chunks),
+        "sample_count": len(train_ds),
+        "token_count": sum(len(toks) for toks in train_tokens),
+        "source_ids": sorted(list(set(c["source_id"] for c in train_chunks))),
+        "sha256_hash": train_sha256,
+        "synthetic_scaffold_quarantined": True,
+    }
+    with open(manifest_dir / train_filename, "w", encoding="utf-8") as f:
+        json.dump(train_manifest, f, indent=2)
+
+    val_manifest = {
+        "manifest_version": "v1.0.0",
+        "split_name": "validation",
+        "split_strategy": split_strategy,
+        "chunk_count": len(val_chunks),
+        "sample_count": len(val_ds),
+        "token_count": sum(len(toks) for toks in val_tokens),
+        "source_ids": sorted(list(set(c["source_id"] for c in val_chunks))),
+        "sha256_hash": val_sha256,
+        "synthetic_scaffold_quarantined": True,
+    }
+    with open(manifest_dir / val_filename, "w", encoding="utf-8") as f:
+        json.dump(val_manifest, f, indent=2)
 
     manifest = {
         "corpus_sha256": corpus_sha256,
+        "split_strategy": split_strategy,
         "total_verified_chunks": len(chunks),
         "total_tokens_extracted": total_tokens,
         "train_chunks_count": len(train_texts),
         "val_chunks_count": len(val_texts),
         "train_samples_count": len(train_ds),
         "val_samples_count": len(val_ds),
+        "train_sha256": train_sha256,
+        "val_sha256": val_sha256,
         "seq_len": seq_len,
         "vocab_size": tokenizer.vocab_size,
         "synthetic_scaffold_quarantined": True,

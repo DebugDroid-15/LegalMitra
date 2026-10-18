@@ -90,7 +90,17 @@ class IndianLegalTokenizer:
                 for char in word:
                     char_counts[char] += 1
 
-        # Add single characters to vocabulary
+        # Pre-seed standard ASCII printable characters and Devanagari Unicode block (0x0900-0x097F)
+        for codepoint in range(32, 127):
+            ch = chr(codepoint)
+            if ch not in self.vocab:
+                self.vocab[ch] = len(self.vocab)
+        for codepoint in range(0x0900, 0x0980):
+            ch = chr(codepoint)
+            if ch not in self.vocab:
+                self.vocab[ch] = len(self.vocab)
+
+        # Add single characters from corpus text
         for char, _ in char_counts.most_common():
             if char not in self.vocab:
                 self.vocab[char] = len(self.vocab)

@@ -1,0 +1,53 @@
+{
+  "theoretical_baselines": {
+    "vocab_size": 1024,
+    "uniform_random_loss": 6.9315,
+    "uniform_random_perplexity": 1024,
+    "interpretation": "A completely untrained random guesser achieves loss ~6.9315 (PPL=1024). Any loss below 6.93 represents statistical structure learned."
+  },
+  "held_out_generalization": {
+    "held_out_statutes": {
+      "cross_entropy_loss": 6.0054,
+      "perplexity": 405.61,
+      "tokens_evaluated": 9546
+    },
+    "held_out_judgments": {
+      "cross_entropy_loss": 6.0776,
+      "perplexity": 435.98,
+      "tokens_evaluated": 6054
+    }
+  },
+  "multilingual_and_subdomain_generalization": {
+    "english_legal": {
+      "cross_entropy_loss": 6.1158,
+      "perplexity": 452.96,
+      "tokens_evaluated": 82
+    },
+    "devanagari_hindi_legal": {
+      "cross_entropy_loss": 7.8277,
+      "perplexity": 2509.15,
+      "tokens_evaluated": 155
+    },
+    "mixed_english_hindi_legal": {
+      "cross_entropy_loss": 6.3886,
+      "perplexity": 595.02,
+      "tokens_evaluated": 89
+    },
+    "rare_legal_terminology": {
+      "cross_entropy_loss": 6.2448,
+      "perplexity": 515.33,
+      "tokens_evaluated": 76
+    },
+    "malformed_ood_inputs": {
+      "cross_entropy_loss": 6.3003,
+      "perplexity": 544.74,
+      "tokens_evaluated": 107
+    }
+  },
+  "generalization_verdict": {
+    "learned_structure": true,
+    "statute_loss_vs_random": 0.9261,
+    "judgment_loss_vs_random": 0.8539,
+    "interpretation": "The model outperforms the theoretical random baseline on held-out statutory and judicial texts, confirming genuine statistical language acquisition. However, high perplexity on complex legal reasoning demonstrates that the 0.94M prototype is a language modeling prototype, NOT a production legal reasoning engine."
+  }
+}

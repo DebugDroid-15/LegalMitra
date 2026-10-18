@@ -1,0 +1,15 @@
+{
+  "manifest_version": "v1.0.0",
+  "split_name": "validation",
+  "split_strategy": "source_grouped",
+  "chunk_count": 152,
+  "sample_count": 304,
+  "token_count": 29903,
+  "source_ids": [
+    "IND-STAT-DPDP-2023",
+    "IND-STAT-LIMIT-1963",
+    "IND-STAT-NI-1881"
+  ],
+  "sha256_hash": "27ef8966589a53ffa345b43295eea8c6f32638c65448b174fd95ec2b6e8be388",
+  "synthetic_scaffold_quarantined": true
+}

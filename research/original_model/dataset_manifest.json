@@ -1,11 +1,14 @@
 {
   "corpus_sha256": "209583a1d789c5e00b93b5641468ea563ebc52dca60630fabc621241c63fd664",
+  "split_strategy": "source_grouped",
   "total_verified_chunks": 1499,
   "total_tokens_extracted": 294835,
-  "train_chunks_count": 1349,
-  "val_chunks_count": 150,
-  "train_samples_count": 2751,
-  "val_samples_count": 276,
+  "train_chunks_count": 1347,
+  "val_chunks_count": 152,
+  "train_samples_count": 2723,
+  "val_samples_count": 304,
+  "train_sha256": "1f0c70c48515966280f15ad9b553acfc04e50eb6b93229ec2d81c955ee2d5a7c",
+  "val_sha256": "27ef8966589a53ffa345b43295eea8c6f32638c65448b174fd95ec2b6e8be388",
   "seq_len": 128,
   "vocab_size": 1024,
   "synthetic_scaffold_quarantined": true

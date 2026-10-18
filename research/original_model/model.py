@@ -24,6 +24,7 @@ class LegalTransformerConfig:
     max_seq_len: int = 256
     dropout: float = 0.1
     tie_word_embeddings: bool = True
+    pad_token_id: int = 0
 
 
 class CausalSelfAttention(nn.Module):
@@ -175,6 +176,12 @@ class LegalDecoderTransformer(nn.Module):
             # Shift labels for next token prediction
             shift_logits = logits[..., :-1, :].contiguous()
             shift_labels = labels[..., 1:].contiguous()
-            loss = F.cross_entropy(shift_logits.view(-1, self.config.vocab_size), shift_labels.view(-1))
+            loss = F.cross_entropy(
+                shift_logits.view(-1, self.config.vocab_size),
+                shift_labels.view(-1),
+                ignore_index=self.config.pad_token_id,
+            )
+            if torch.isnan(loss) or torch.isinf(loss):
+                raise FloatingPointError("Loss diverged to NaN or Inf during forward pass")
 
         return logits, loss
