@@ -18,6 +18,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 from legalmitra.core.enums import LegalReviewStatus, ProcessingStatus, SourceType
 from legalmitra.core.hashing import compute_file_sha256
 from legalmitra.core.logging import get_logger
+from legalmitra.core.security import validate_outbound_legal_url
 
 logger = get_logger("acquisition")
 
@@ -147,6 +148,11 @@ class LegislationAcquisitionManager:
         if byte_size == 0:
             is_quarantined = True
             quarantine_reason = "Zero-byte file payload detected."
+
+        url_ok, url_err = validate_outbound_legal_url(source_url)
+        if not url_ok:
+            is_quarantined = True
+            quarantine_reason = f"Security quarantine: Prohibited or malformed source URL ({url_err})"
 
         rec = AcquisitionRecord(
             document_id=document_id,

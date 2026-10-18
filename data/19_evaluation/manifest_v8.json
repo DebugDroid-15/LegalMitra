@@ -1,0 +1,31 @@
+{
+  "manifest_version": "8.0.0",
+  "phase": "Phase 30",
+  "created_at": "2026-10-18T12:05:00Z",
+  "benchmark_name": "LegalMitra National Benchmark v8 (Security & Adversarial Resilience)",
+  "total_cases": 88,
+  "sha256": "0facdd1d84d9ce8cd30206a47c8e9d163e4e2476003dd2a12c2ee3ad35950943",
+  "predecessor_benchmark": "Benchmark v7 (80 cases)",
+  "new_cases_added": 8,
+  "new_case_ids": [
+    "EVAL-P30-SEC-001",
+    "EVAL-P30-SEC-002",
+    "EVAL-P30-SEC-003",
+    "EVAL-P30-SEC-004",
+    "EVAL-P30-SEC-005",
+    "EVAL-P30-SEC-006",
+    "EVAL-P30-SEC-007",
+    "EVAL-P30-SEC-008"
+  ],
+  "categories_breakdown": {
+    "statutory_pinpoint": 23,
+    "temporal_applicability": 8,
+    "precedent_authority": 20,
+    "procedural_timeline": 3,
+    "conflicting_source": 1,
+    "adversarial_premise": 11,
+    "missing_evidence": 11,
+    "prompt_injection": 3,
+    "privacy_protected": 8
+  }
+}
