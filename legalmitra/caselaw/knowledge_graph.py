@@ -299,6 +299,11 @@ def build_national_judicial_knowledge_graph() -> LegalKnowledgeGraph:
     graph.add_node(GraphNode("CASE-JACOB-MATHEW", EntityType.CASE, "Jacob Mathew v. State of Punjab", "(2005) 6 SCC 1"))
     graph.add_node(GraphNode("CASE-ENERGY-WATCHDOG", EntityType.CASE, "Energy Watchdog v. CERC", "(2017) 14 SCC 80"))
 
+    # Phase 26 High Court Additions
+    graph.add_node(GraphNode("SEC-IT-79", EntityType.SECTION, "Section 79 IT Act 2000", "IT Act s.79"))
+    graph.add_node(GraphNode("CASE-DHC-LOUBOUTIN", EntityType.CASE, "Christian Louboutin SAS v. Nakul Bajaj", "2018:DHC:7175", "IN-DL"))
+    graph.add_node(GraphNode("CASE-DHC-TATA-GREENPEACE", EntityType.CASE, "Tata Sons Ltd. v. Greenpeace International", "2011:DHC:452", "IN-DL"))
+
     # 3. Successor / Statutory Edges
     graph.add_edge(GraphEdge("E-SUCC-BSA63", "SEC-BSA-63", "SEC-IEA-65B", RelationType.SUCCESSOR_TO))
     graph.add_edge(GraphEdge("E-SUCC-BNSS173", "SEC-BNSS-173", "SEC-CRPC-154", RelationType.SUCCESSOR_TO))
@@ -327,6 +332,9 @@ def build_national_judicial_knowledge_graph() -> LegalKnowledgeGraph:
     graph.add_edge(GraphEdge("E-INT-VIDYA-11", "CASE-VIDYA-DROLIA", "SEC-ARB-11", RelationType.INTERPRETS))
     graph.add_edge(GraphEdge("E-INT-JACOB-304A", "CASE-JACOB-MATHEW", "SEC-IPC-304A", RelationType.INTERPRETS))
     graph.add_edge(GraphEdge("E-INT-ENERGY-56", "CASE-ENERGY-WATCHDOG", "SEC-ICA-56", RelationType.INTERPRETS))
+    # Phase 26 HC Interpretation Edges
+    graph.add_edge(GraphEdge("E-INT-LOUBOUTIN-79", "CASE-DHC-LOUBOUTIN", "SEC-IT-79", RelationType.INTERPRETS, properties={"holding": "E-commerce platform active participation negates Section 79 safe harbor"}))
+    graph.add_edge(GraphEdge("E-INT-GREENPEACE-19", "CASE-DHC-TATA-GREENPEACE", "ART-CONST-19", RelationType.INTERPRETS, properties={"holding": "Parody and fair public criticism protected under Article 19(1)(a)"}))
 
     # 5. Precedent & Overruling Edges
     graph.add_edge(GraphEdge("E-FOLLOW-ARJUN-ANVAR", "CASE-ARJUN-KHOTKAR", "CASE-ANVAR-PV", RelationType.FOLLOWS))

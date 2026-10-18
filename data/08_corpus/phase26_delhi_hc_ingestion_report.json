@@ -1,0 +1,29 @@
+{
+  "batch_id": "BATCH_26_DELHI_HIGH_COURT",
+  "new_judgments_count": 2,
+  "total_new_chunks": 8,
+  "database_summary": {
+    "sources": 59,
+    "total_chunks": 1503,
+    "active_retrievable_chunks": 1497,
+    "cases": 16,
+    "judicial_documents": 9,
+    "hearing_events": 8
+  },
+  "judgments": [
+    {
+      "source_id": "IND-JUD-DHC-2018-LOUBOUTIN",
+      "case_title": "Christian Louboutin SAS v. Nakul Bajaj and Others",
+      "chunks_indexed": 4,
+      "court": "CourtType.HIGH_COURT_DELHI",
+      "date": "2018-11-02"
+    },
+    {
+      "source_id": "IND-JUD-DHC-2011-TATA-GREENPEACE",
+      "case_title": "Tata Sons Ltd. v. Greenpeace International and Another",
+      "chunks_indexed": 4,
+      "court": "CourtType.HIGH_COURT_DELHI",
+      "date": "2011-01-28"
+    }
+  ]
+}

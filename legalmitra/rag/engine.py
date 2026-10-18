@@ -164,6 +164,7 @@ class LegalRAGEngine:
         ]
 
         logger.info(f"Calling LLM provider ({self.llm_provider.__class__.__name__}) with {len(search_results)} evidence chunks...")
+        llm_resp = None
         try:
             llm_resp = self.llm_provider.generate(messages, temperature=0.0, max_tokens=1024)
             answer_text = llm_resp.content.strip()

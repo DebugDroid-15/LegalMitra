@@ -422,6 +422,32 @@ class LegalKnowledgeBase:
                 )
                 chunks_indexed += 1
 
+            # 5. Illustrations
+            for ill in sec.illustrations:
+                ill_chunk_id = f"{doc.source_id}:SEC:{sec_num}:ILL:{ill.illustration_identifier.replace(' ', '_').replace('(', '').replace(')', '')}"
+                ill_ref = f"Section {sec_num} {ill.illustration_identifier}"
+                self._insert_chunk(
+                    chunk_id=ill_chunk_id,
+                    source_id=doc.source_id,
+                    doc_type=doc_type_val,
+                    act_or_case_title=doc.act_title,
+                    title=f"{sec_title} {ill.illustration_identifier}",
+                    provision_or_para_ref=ill_ref,
+                    hierarchy_level=ChunkHierarchy.ILLUSTRATION.value,
+                    section_number=sec_num,
+                    paragraph_number=None,
+                    jurisdiction=jurisdiction,
+                    court="None (Statutory / Executive)",
+                    document_date=doc_date,
+                    effective_date=eff_date,
+                    is_historical=0,
+                    is_synthetic_scaffold=0,
+                    authority_level=AuthorityLevel.BINDING_STATUTE.value,
+                    content=ill.text,
+                    metadata={"section_number": sec_num, "identifier": ill.illustration_identifier}
+                )
+                chunks_indexed += 1
+
         self.conn.commit()
         logger.info(f"Indexed statute '{doc.act_title}' ({doc.source_id}): {chunks_indexed} chunks.")
         return chunks_indexed

@@ -36,6 +36,7 @@ class ReviewStatus(str, Enum):
     REJECTED = "rejected"
     NEEDS_REVISION = "needs_revision"
     DISPUTED = "disputed"
+    ABSTAINED = "abstained"
 
 
 class ReviewDecision(str, Enum):
@@ -43,6 +44,7 @@ class ReviewDecision(str, Enum):
     REJECTED = "rejected"
     NEEDS_REVISION = "needs_revision"
     DISPUTED = "disputed"
+    ABSTAINED = "abstained"
 
 
 class ReviewAction(str, Enum):
@@ -52,6 +54,7 @@ class ReviewAction(str, Enum):
     REJECT = "reject"
     REQUEST_REVISION = "request_revision"
     DISPUTE = "dispute"
+    ABSTAIN = "abstain"
     EXPORT_PACKAGE = "export_package"
     IMPORT_PACKAGE = "import_package"
 
@@ -64,6 +67,7 @@ ROLE_PERMISSIONS: Dict[ReviewAction, Set[UserRole]] = {
     ReviewAction.REJECT: {UserRole.ADVOCATE_REVIEWER, UserRole.SENIOR_ADVOCATE},
     ReviewAction.REQUEST_REVISION: {UserRole.ADVOCATE_REVIEWER, UserRole.SENIOR_ADVOCATE},
     ReviewAction.DISPUTE: {UserRole.ADVOCATE_REVIEWER, UserRole.SENIOR_ADVOCATE, UserRole.AUDITOR},
+    ReviewAction.ABSTAIN: {UserRole.ADVOCATE_REVIEWER, UserRole.SENIOR_ADVOCATE},
     ReviewAction.EXPORT_PACKAGE: {UserRole.LEGAL_RESEARCHER, UserRole.AUDITOR, UserRole.SYSTEM_ADMIN},
     ReviewAction.IMPORT_PACKAGE: {UserRole.SYSTEM_ADMIN, UserRole.AUDITOR},
 }
@@ -76,11 +80,13 @@ VALID_STATE_TRANSITIONS: Dict[ReviewStatus, Set[ReviewStatus]] = {
         ReviewStatus.REJECTED,
         ReviewStatus.NEEDS_REVISION,
         ReviewStatus.DISPUTED,
+        ReviewStatus.ABSTAINED,
     },
     ReviewStatus.NEEDS_REVISION: {ReviewStatus.UNDER_REVIEW, ReviewStatus.DISPUTED},
     ReviewStatus.DISPUTED: {ReviewStatus.UNDER_REVIEW, ReviewStatus.REJECTED},
     ReviewStatus.APPROVED: {ReviewStatus.DISPUTED},  # Allowed to dispute an approval upon audit
     ReviewStatus.REJECTED: {ReviewStatus.DISPUTED},
+    ReviewStatus.ABSTAINED: {ReviewStatus.UNDER_REVIEW, ReviewStatus.DISPUTED},
 }
 
 
@@ -113,6 +119,11 @@ class ReviewSubmission:
     rationale: str
     score: Optional[float] = None
     suggested_amendments: Optional[str] = None
+    conflict_of_interest_declared: bool = False
+    legal_correctness_rating: Optional[int] = None
+    citation_support_rating: Optional[int] = None
+    jurisdiction_accuracy: bool = True
+    temporal_applicability_verified: bool = True
     submitted_at: str = field(default_factory=lambda: datetime.utcnow().isoformat() + "Z")
 
 
@@ -148,7 +159,7 @@ class AdvocateReviewWorkflow:
             )
 
         # Check credentials requirement for final decisions
-        if target_status in (ReviewStatus.APPROVED, ReviewStatus.REJECTED, ReviewStatus.NEEDS_REVISION):
+        if target_status in (ReviewStatus.APPROVED, ReviewStatus.REJECTED, ReviewStatus.NEEDS_REVISION, ReviewStatus.ABSTAINED):
             if not credentials:
                 errors.append(f"Advocate credentials required to transition to '{target_status.value}'.")
             else:
@@ -193,14 +204,14 @@ class AdvocateReviewWorkflow:
                     "errors": [f"Review score {submission.score} out of bounds [1.0, 5.0]."],
                 }
 
-        # 3. Mandatory rationale check for rejection or revision
-        if submission.target_status in (ReviewStatus.REJECTED, ReviewStatus.NEEDS_REVISION):
+        # 3. Mandatory rationale check for rejection, revision, or abstention
+        if submission.target_status in (ReviewStatus.REJECTED, ReviewStatus.NEEDS_REVISION, ReviewStatus.ABSTAINED):
             if not submission.rationale or len(submission.rationale.strip()) < 15:
                 return {
                     "success": False,
                     "example_id": submission.example_id,
                     "dry_run": dry_run,
-                    "errors": ["Non-empty legal rationale (min 15 chars) is mandatory for rejection or revision."],
+                    "errors": ["Non-empty legal rationale (min 15 chars) is mandatory for rejection, revision, or abstention."],
                 }
 
         audit_entry = {
@@ -211,6 +222,12 @@ class AdvocateReviewWorkflow:
             "bar_council_id": submission.reviewer.bar_council_id,
             "score": submission.score,
             "rationale": submission.rationale,
+            "suggested_amendments": submission.suggested_amendments,
+            "conflict_of_interest_declared": submission.conflict_of_interest_declared,
+            "legal_correctness_rating": submission.legal_correctness_rating,
+            "citation_support_rating": submission.citation_support_rating,
+            "jurisdiction_accuracy": submission.jurisdiction_accuracy,
+            "temporal_applicability_verified": submission.temporal_applicability_verified,
             "timestamp": submission.submitted_at,
             "dry_run": dry_run,
         }

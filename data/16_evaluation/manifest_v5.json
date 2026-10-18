@@ -1,0 +1,8 @@
+{
+  "manifest_version": "5.0.0",
+  "dataset_name": "legalmitra_evaluation_cases_v5",
+  "total_cases": 56,
+  "sha256": "ea2f470138ee2c3513f11449595e739ae6fa33986ddfb3c8d0ab0ca1a5ac1424",
+  "generated_date": "2026-10-18",
+  "phase": "Phase 26 Human Legal Review Operations, Structured Statutory Modeling & High Court Precedent Expansion"
+}
