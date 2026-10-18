@@ -1,0 +1,41 @@
+{
+  "report_version": "v3.0.0",
+  "phase": 34,
+  "model_evaluated": "phase34_exp1_proto_expanded.pt",
+  "random_baseline": {
+    "loss": 7.6246,
+    "perplexity": 2048.0
+  },
+  "domain_evaluations": [
+    {
+      "domain_name": "Held-Out English Precedents (Roche v Cipla / High Court)",
+      "sample_count": 1,
+      "token_count": 179,
+      "cross_entropy_loss": 6.124,
+      "perplexity": 456.68,
+      "random_baseline_loss": 7.6246,
+      "delta_vs_random": -1.5006,
+      "generalization_verdict": "LEARNED"
+    },
+    {
+      "domain_name": "Held-Out Hindi Statutes (IT Act 2000 HI)",
+      "sample_count": 3,
+      "token_count": 334,
+      "cross_entropy_loss": 7.593,
+      "perplexity": 1984.32,
+      "random_baseline_loss": 7.6246,
+      "delta_vs_random": -0.0316,
+      "generalization_verdict": "UNLEARNED_DATA_DEFICIT"
+    },
+    {
+      "domain_name": "Expanded Bilingual Legal Queries & Citations",
+      "sample_count": 6,
+      "token_count": 235,
+      "cross_entropy_loss": 6.6469,
+      "perplexity": 770.38,
+      "random_baseline_loss": 7.6246,
+      "delta_vs_random": -0.9777,
+      "generalization_verdict": "LEARNED"
+    }
+  ]
+}

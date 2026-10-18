@@ -1,0 +1,90 @@
+{
+  "report_version": "v3.0.0",
+  "phase": 34,
+  "dataset_manifest_ref": "research/original_model/manifests/dataset_manifest_v3.json",
+  "total_corpus_tokens": 342965,
+  "experiments": [
+    {
+      "experiment_name": "exp1_proto_expanded",
+      "seed": 42,
+      "steps": 50,
+      "model_parameters": 1069824,
+      "initial_train_loss": 7.6353,
+      "final_train_loss": 5.7543,
+      "initial_val_loss": 7.6571,
+      "final_val_loss": 5.9969,
+      "train_loss_delta": -1.881,
+      "val_loss_delta": -1.6602,
+      "tokens_per_second": 13141.5,
+      "total_time_seconds": 3.9,
+      "peak_vram_mb": 112.9,
+      "checkpoint_file": "research\\original_model\\checkpoints\\phase34_exp1_proto_expanded.pt",
+      "checkpoint_sha256": "4fea1cfa191c2f0705d0f2bae9b8bac45082c38db9d9eabddd84280cd0764832"
+    },
+    {
+      "experiment_name": "exp2_inter_expanded",
+      "seed": 42,
+      "steps": 50,
+      "model_parameters": 4501248,
+      "initial_train_loss": 7.6767,
+      "final_train_loss": 5.7379,
+      "initial_val_loss": 7.6612,
+      "final_val_loss": 6.0616,
+      "train_loss_delta": -1.9387,
+      "val_loss_delta": -1.5996,
+      "tokens_per_second": 14024.5,
+      "total_time_seconds": 3.65,
+      "peak_vram_mb": 215.8,
+      "checkpoint_file": "research\\original_model\\checkpoints\\phase34_exp2_inter_expanded.pt",
+      "checkpoint_sha256": "bd60295cd15269fd7ca6e08d4b08835974b540887dab60db1efde92f17f64f91"
+    },
+    {
+      "experiment_name": "exp3_10m_expanded",
+      "seed": 42,
+      "steps": 50,
+      "model_parameters": 10550400,
+      "initial_train_loss": 7.6913,
+      "final_train_loss": 5.819,
+      "initial_val_loss": 7.6687,
+      "final_val_loss": 6.0903,
+      "train_loss_delta": -1.8723,
+      "val_loss_delta": -1.5784,
+      "tokens_per_second": 10704.3,
+      "total_time_seconds": 4.78,
+      "peak_vram_mb": 470.68,
+      "checkpoint_file": "research\\original_model\\checkpoints\\phase34_exp3_10m_expanded.pt",
+      "checkpoint_sha256": "b7c1b7657362d71bb6222db4b0e25eed12c2cf296b5a35b39902ad312ade53f2"
+    },
+    {
+      "experiment_name": "exp4_multi_seed_stability",
+      "seeds_tested": [
+        42,
+        43,
+        44
+      ],
+      "results": [
+        {
+          "seed": 42,
+          "train_loss_delta": -2.1102,
+          "final_val_loss": 5.8497,
+          "checkpoint_sha256": "d320d2fcab07d92f8da78631abc81d518b97afbdc3f02e8af52251fa92dc0c83"
+        },
+        {
+          "seed": 43,
+          "train_loss_delta": -1.9924,
+          "final_val_loss": 5.8923,
+          "checkpoint_sha256": "9e3379fb284a9188c11d092b5f07b565c625e79cb771c0e77611d6120c892fbc"
+        },
+        {
+          "seed": 44,
+          "train_loss_delta": -1.8625,
+          "final_val_loss": 6.0119,
+          "checkpoint_sha256": "54bdda2d9a6454c668b71ce3011325ef4dda14c8203aa244de44b4344a867a84"
+        }
+      ],
+      "mean_loss_delta": -1.9884,
+      "loss_delta_variance": 0.010234,
+      "is_stable": true
+    }
+  ]
+}

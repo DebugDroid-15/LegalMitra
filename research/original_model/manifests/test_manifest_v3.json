@@ -1,0 +1,15 @@
+{
+  "passage_count": 154,
+  "sample_count": 337,
+  "token_count": 34746,
+  "english_tokens": 34279,
+  "hindi_tokens": 467,
+  "source_ids": [
+    "IND-JUD-BHC-2008-ROCHE-CIPLA",
+    "IND-JUD-SC-2020-ARJUN-KHOTKAR",
+    "IND-STAT-DPDP-2023",
+    "IND-STAT-IT-2000-HI",
+    "IND-STAT-LIMIT-1963"
+  ],
+  "sha256": "818962fecbb7efafeddbf8080a7c3e2853a47bd38d9f28389c64e55e4abc0d23"
+}

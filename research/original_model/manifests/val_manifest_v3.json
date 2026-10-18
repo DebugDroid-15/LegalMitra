@@ -1,0 +1,14 @@
+{
+  "passage_count": 25,
+  "sample_count": 42,
+  "token_count": 3928,
+  "english_tokens": 3670,
+  "hindi_tokens": 258,
+  "source_ids": [
+    "IND-KA-STAT-KLRA-1961",
+    "IND-STAT-CPC-1908-HI",
+    "IND-STAT-NI-1881",
+    "IND-STAT-SRA-1963"
+  ],
+  "sha256": "2e96962c9859c3f7824093cd9d9b754f6c2fa6d07a02aeb8d3ffe906c4fbf118"
+}
