@@ -1,0 +1,156 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "phase": "PHASE_40",
+    "total_samples": 5,
+    "average_cer": 0.0051,
+    "average_wer": 0.0121,
+    "normalization_mode": "UNICODE_NFC_CONSERVATIVE",
+    "legal_tokens_vocab_coverage": "20 statutory and judicial legal markers"
+  },
+  "samples": [
+    {
+      "sample_id": "OCR-HI-SC-01",
+      "court_id": "IND-SC",
+      "document_title": "Supreme Court Hindi Translation — Fundamental Rights & Dignity",
+      "language": "hi",
+      "reference_text": "उच्चतम न्यायालय ने यह अभिनिर्धारित किया है कि संविधान के अनुच्छेद 21 के तहत गरिमापूर्ण जीवन का अधिकार एक मौलिक अधिकार है। जमानत एक नियम है और जेल एक अपवाद है। अभियुक्त को निष्पक्ष विचारण का अधिकार प्राप्त है।",
+      "raw_ocr_text": "उच्चतम न्यायालय  ने यह अभिनिर्धारित किया है कि संविधान के अनुच्छेद 21 के तहत गरिमापूर्ण जीवन का अधिकार एक मौलिक अधिकार है।  जमानत एक नियम है और जेल एक अपवाद है। अभियुक्त को निष्पक्ष विचारण का अधिकार प्राप्त है।",
+      "normalized_text": "उच्चतम न्यायालय ने यह अभिनिर्धारित किया है कि संविधान के अनुच्छेद 21 के तहत गरिमापूर्ण जीवन का अधिकार एक मौलिक अधिकार है। जमानत एक नियम है और जेल एक अपवाद है। अभियुक्त को निष्पक्ष विचारण का अधिकार प्राप्त है।",
+      "metrics": {
+        "cer": 0.0,
+        "wer": 0.0,
+        "char_count": 208,
+        "word_count": 39,
+        "detected_anomalies_count": 0,
+        "detected_ligature_warnings_count": 0,
+        "has_replacement_characters": false,
+        "requires_human_review": false
+      },
+      "detected_anomalies": [],
+      "detected_ligature_warnings": [],
+      "legal_tokens_detected": [
+        "जमानत",
+        "अभियुक्त",
+        "उच्चतम न्यायालय",
+        "अनुच्छेद",
+        "संविधान"
+      ]
+    },
+    {
+      "sample_id": "OCR-HI-DEL-02",
+      "court_id": "IND-HC-DEL",
+      "document_title": "Delhi High Court Hindi Bail Order Excerpt",
+      "language": "hi",
+      "reference_text": "सत्र न्यायालय द्वारा पारित आदेश के विरुद्ध प्रस्तुत अपील में अभियुक्त को धारा 439 दण्ड प्रक्रिया संहिता के अंतर्गत नियमित जमानत प्रदान की जाती है। अभियोजन पक्ष साक्ष्य प्रस्तुत करने में विफल रहा।",
+      "raw_ocr_text": "सत्र न्यायालय द्वारा पारित आदेश के विरुद्ध प्रस्तुत अपील में अभियुक्त को धारा ४३९ दण्ड प्रक्रिया संहिता के अंतर्गत नियमित जमानत प्रदान की जाती है। अभियोजन पक्ष साक्ष्य प्रस्तुत करने में विफल रहा। �",
+      "normalized_text": "सत्र न्यायालय द्वारा पारित आदेश के विरुद्ध प्रस्तुत अपील में अभियुक्त को धारा ४३९ दण्ड प्रक्रिया संहिता के अंतर्गत नियमित जमानत प्रदान की जाती है। अभियोजन पक्ष साक्ष्य प्रस्तुत करने में विफल रहा। �",
+      "metrics": {
+        "cer": 0.0256,
+        "wer": 0.0606,
+        "char_count": 197,
+        "word_count": 34,
+        "detected_anomalies_count": 1,
+        "detected_ligature_warnings_count": 0,
+        "has_replacement_characters": true,
+        "requires_human_review": true
+      },
+      "detected_anomalies": [
+        "Unicode replacement character (�) detected, indicating lossy decoding"
+      ],
+      "detected_ligature_warnings": [],
+      "legal_tokens_detected": [
+        "जमानत",
+        "अपील",
+        "अभियुक्त",
+        "अभियोजन",
+        "सत्र न्यायालय",
+        "धारा",
+        "दण्ड प्रक्रिया संहिता",
+        "साक्ष्य",
+        "आदेश"
+      ]
+    },
+    {
+      "sample_id": "OCR-HI-BOM-03",
+      "court_id": "IND-HC-BOM",
+      "document_title": "Bombay High Court Multi-script Criminal Order",
+      "language": "hi",
+      "reference_text": "अभियुक्त पर भारतीय दण्ड संहिता की धारा 302 एवं 34 के अंतर्गत दोषसिद्धि का आरोप है। निर्णय में यह निष्कर्ष निकाला गया कि प्रत्यक्षदर्शी साक्ष्य विश्वसनीय नहीं है एवं अभियुक्त को संदेह का लाभ देकर बरी किया जाता है।",
+      "raw_ocr_text": "अभियुक्त पर भारतीय दण्ड संहिता की धारा 302 एवं 34 के अंतर्गत दोषसिद्धि का आरोप है । निर्णय में यह निष्कर्ष निकाला गया कि प्रत्यक्षदर्शी साक्ष्य विश्वसनीय नहीं है एवं अभियुक्त को संदेह का लाभ देकर बरी किया जाता है ।",
+      "normalized_text": "अभियुक्त पर भारतीय दण्ड संहिता की धारा 302 एवं 34 के अंतर्गत दोषसिद्धि का आरोप है। निर्णय में यह निष्कर्ष निकाला गया कि प्रत्यक्षदर्शी साक्ष्य विश्वसनीय नहीं है एवं अभियुक्त को संदेह का लाभ देकर बरी किया जाता है।",
+      "metrics": {
+        "cer": 0.0,
+        "wer": 0.0,
+        "char_count": 212,
+        "word_count": 39,
+        "detected_anomalies_count": 0,
+        "detected_ligature_warnings_count": 0,
+        "has_replacement_characters": false,
+        "requires_human_review": false
+      },
+      "detected_anomalies": [],
+      "detected_ligature_warnings": [],
+      "legal_tokens_detected": [
+        "दोषसिद्धि",
+        "बरी",
+        "अभियुक्त",
+        "धारा",
+        "भारतीय दण्ड संहिता",
+        "साक्ष्य",
+        "निर्णय"
+      ]
+    },
+    {
+      "sample_id": "OCR-HI-DC-04",
+      "court_id": "IND-DC-TIS-HAZARI",
+      "document_title": "Tis Hazari District Court Interim Bail Order",
+      "language": "hi",
+      "reference_text": "प्रकरण के तथ्यों एवं परिस्थितियों पर विचार करते हुए अभियुक्त को अंतरिम जमानत स्वीकृत की जाती है। आदेश की प्रति संबंधित जेल अधीक्षक को अनुपालनार्थ प्रेषित की जाए।",
+      "raw_ocr_text": "प्रकरण के तथ्यों एवं परिस्थितियों पर विचार करते हुए अभियुक्त को अंतरिम जमानत स्वीकृत की जाती है। आदेश की प्रति संबंधित जेल अधीक्षक को अनुपालनार्थ प्रेषित की जाए।",
+      "normalized_text": "प्रकरण के तथ्यों एवं परिस्थितियों पर विचार करते हुए अभियुक्त को अंतरिम जमानत स्वीकृत की जाती है। आदेश की प्रति संबंधित जेल अधीक्षक को अनुपालनार्थ प्रेषित की जाए।",
+      "metrics": {
+        "cer": 0.0,
+        "wer": 0.0,
+        "char_count": 161,
+        "word_count": 28,
+        "detected_anomalies_count": 0,
+        "detected_ligature_warnings_count": 0,
+        "has_replacement_characters": false,
+        "requires_human_review": false
+      },
+      "detected_anomalies": [],
+      "detected_ligature_warnings": [],
+      "legal_tokens_detected": [
+        "जमानत",
+        "अभियुक्त",
+        "तथ्य",
+        "आदेश"
+      ]
+    },
+    {
+      "sample_id": "OCR-HI-STAT-05",
+      "court_id": "IND-STATUTE-BNS",
+      "document_title": "Bharatiya Nyaya Sanhita 2023 Section 103 Hindi Excerpt",
+      "language": "hi",
+      "reference_text": "जो कोई हत्या करेगा वह मृत्यु या आजीवन कारावास से दण्डित किया जाएगा और जुर्माने से भी दण्डनीय होगा। यह प्रावधान भारतीय न्याय संहिता 2023 में विहित है।",
+      "raw_ocr_text": "जो कोई हत्या करेगा वह मृत्यु या आजीवन कारावास से दण्डित किया जाएगा और जुर्माने से भी दण्डनीय होगा। यह प्रावधान भारतीय न्याय संहिता 2023 में विहित है।",
+      "normalized_text": "जो कोई हत्या करेगा वह मृत्यु या आजीवन कारावास से दण्डित किया जाएगा और जुर्माने से भी दण्डनीय होगा। यह प्रावधान भारतीय न्याय संहिता 2023 में विहित है।",
+      "metrics": {
+        "cer": 0.0,
+        "wer": 0.0,
+        "char_count": 149,
+        "word_count": 28,
+        "detected_anomalies_count": 0,
+        "detected_ligature_warnings_count": 0,
+        "has_replacement_characters": false,
+        "requires_human_review": false
+      },
+      "detected_anomalies": [],
+      "detected_ligature_warnings": [],
+      "legal_tokens_detected": [
+        "प्रावधान"
+      ]
+    }
+  ]
+}

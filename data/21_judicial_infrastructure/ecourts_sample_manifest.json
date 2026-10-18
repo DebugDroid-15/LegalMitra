@@ -1,0 +1,334 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "phase": "PHASE_40",
+    "total_records": 6,
+    "cnr_regex_format": "^([A-Z]{2})([A-Z]{2})([A-Z0-9]{2})(\\d{6})(\\d{4})$",
+    "access_control_note": "Public automated scraping is blocked by visual CAPTCHA on eCourts Services. Records ingestion uses authorized local bulk data dumps and staging validation.",
+    "pretraining_gate": "Strict NO-GO: None of the eCourts district court records are approved for foundation model pretraining."
+  },
+  "records": [
+    {
+      "record_id": "ECOURTS-DLTH010012342023",
+      "cnr_number": "DLTH010012342023",
+      "state_name": "Delhi",
+      "district_name": "Central (Tis Hazari)",
+      "court_establishment": "Commercial Court 01",
+      "case_type": "Commercial Suit (CS COMM)",
+      "filing_number": "1234/2023",
+      "registration_date": "2023-03-15",
+      "petitioner": "Apex Logistics Private Limited",
+      "respondent": "Delta Infotech Solutions",
+      "governing_acts": [
+        "Commercial Courts Act 2015",
+        "Code of Civil Procedure 1908"
+      ],
+      "order_or_judgment_date": "2021-06-18",
+      "disposal_nature": "DECREED_WITH_COSTS",
+      "sha256_hash": "348e78a8e1b3d989fded5b7c4c6adf5960b41160e8a6b962528f4df5b626e5ae",
+      "stage": "ELIGIBLE_INDEXED",
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "privacy_classification": "UNRESTRICTED_PUBLIC",
+      "audit_log": [
+        [
+          "2026-10-18T19:13:58Z",
+          "METADATA_ACQUIRED",
+          "Metadata parsed and CNR validated"
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "DOCUMENT_ACQUIRED",
+          "Document payload acquired (160 chars)"
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "AUTHENTICITY_VALIDATED",
+          "Digest verified SHA-256=348e78a8e1b3d989..."
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "PROCEDURAL_EXTRACTED",
+          "Disposal: DECREED_WITH_COSTS"
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "PRIVACY_REVIEWED",
+          "Classification: UNRESTRICTED_PUBLIC"
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "ELIGIBLE_INDEXED",
+          "Approved for grounded RAG retrieval"
+        ]
+      ]
+    },
+    {
+      "record_id": "ECOURTS-MHCC020056782022",
+      "cnr_number": "MHCC020056782022",
+      "state_name": "Maharashtra",
+      "district_name": "Mumbai City Civil Court",
+      "court_establishment": "Court Room 14",
+      "case_type": "Summary Suit",
+      "filing_number": "5678/2022",
+      "registration_date": "2022-07-10",
+      "petitioner": "Standard Mercantile Bank Ltd",
+      "respondent": "Omkar Enterprises",
+      "governing_acts": [
+        "Negotiable Instruments Act 1881",
+        "Order XXXVII CPC 1908"
+      ],
+      "order_or_judgment_date": "2021-06-18",
+      "disposal_nature": "DISPOSED_OF",
+      "sha256_hash": "6d49883fa185096d5d9007076f2f159ee5c27ac8cbb461b04a34a5917a41b1f7",
+      "stage": "ELIGIBLE_INDEXED",
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "privacy_classification": "UNRESTRICTED_PUBLIC",
+      "audit_log": [
+        [
+          "2026-10-18T19:13:58Z",
+          "METADATA_ACQUIRED",
+          "Metadata parsed and CNR validated"
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "DOCUMENT_ACQUIRED",
+          "Document payload acquired (143 chars)"
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "AUTHENTICITY_VALIDATED",
+          "Digest verified SHA-256=6d49883fa185096d..."
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "PROCEDURAL_EXTRACTED",
+          "Disposal: DISPOSED_OF"
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "PRIVACY_REVIEWED",
+          "Classification: UNRESTRICTED_PUBLIC"
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "ELIGIBLE_INDEXED",
+          "Approved for grounded RAG retrieval"
+        ]
+      ]
+    },
+    {
+      "record_id": "ECOURTS-UPAL010098762024",
+      "cnr_number": "UPAL010098762024",
+      "state_name": "Uttar Pradesh",
+      "district_name": "Allahabad District Court",
+      "court_establishment": "Additional Sessions Judge Court 03",
+      "case_type": "Criminal Revision",
+      "filing_number": "9876/2024",
+      "registration_date": "2024-01-22",
+      "petitioner": "Ramchandra Verma",
+      "respondent": "State of Uttar Pradesh",
+      "governing_acts": [
+        "Code of Criminal Procedure 1973 (Section 397)"
+      ],
+      "order_or_judgment_date": "2021-06-18",
+      "disposal_nature": "ALLOWED",
+      "sha256_hash": "1f01630d97ff1c23f3de70e03733ca7bed4537754aa83a0b407d198b0c1be728",
+      "stage": "ELIGIBLE_INDEXED",
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "privacy_classification": "UNRESTRICTED_PUBLIC",
+      "audit_log": [
+        [
+          "2026-10-18T19:13:58Z",
+          "METADATA_ACQUIRED",
+          "Metadata parsed and CNR validated"
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "DOCUMENT_ACQUIRED",
+          "Document payload acquired (161 chars)"
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "AUTHENTICITY_VALIDATED",
+          "Digest verified SHA-256=1f01630d97ff1c23..."
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "PROCEDURAL_EXTRACTED",
+          "Disposal: ALLOWED"
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "PRIVACY_REVIEWED",
+          "Classification: UNRESTRICTED_PUBLIC"
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "ELIGIBLE_INDEXED",
+          "Approved for grounded RAG retrieval"
+        ]
+      ]
+    },
+    {
+      "record_id": "ECOURTS-KAEK010043212023",
+      "cnr_number": "KAEK010043212023",
+      "state_name": "Karnataka",
+      "district_name": "Bengaluru Urban",
+      "court_establishment": "Additional Chief Metropolitan Magistrate 28",
+      "case_type": "CC (Cheque Bounce)",
+      "filing_number": "4321/2023",
+      "registration_date": "2023-04-05",
+      "petitioner": "Bangalore Finlease Ltd",
+      "respondent": "Pradeep Kumar",
+      "governing_acts": [
+        "Negotiable Instruments Act 1881 (Section 138)"
+      ],
+      "order_or_judgment_date": "2021-06-18",
+      "disposal_nature": "CONVICTED",
+      "sha256_hash": "a978d98e3ea0b2fb1433558d56bc4c09e625a1a550e2c34d274da517d1e50bcd",
+      "stage": "ELIGIBLE_INDEXED",
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "privacy_classification": "UNRESTRICTED_PUBLIC",
+      "audit_log": [
+        [
+          "2026-10-18T19:13:58Z",
+          "METADATA_ACQUIRED",
+          "Metadata parsed and CNR validated"
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "DOCUMENT_ACQUIRED",
+          "Document payload acquired (150 chars)"
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "AUTHENTICITY_VALIDATED",
+          "Digest verified SHA-256=a978d98e3ea0b2fb..."
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "PROCEDURAL_EXTRACTED",
+          "Disposal: CONVICTED"
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "PRIVACY_REVIEWED",
+          "Classification: UNRESTRICTED_PUBLIC"
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "ELIGIBLE_INDEXED",
+          "Approved for grounded RAG retrieval"
+        ]
+      ]
+    },
+    {
+      "record_id": "ECOURTS-DLST010005552024",
+      "cnr_number": "DLST010005552024",
+      "state_name": "Delhi",
+      "district_name": "South (Saket District Court)",
+      "court_establishment": "Special POCSO Court 01",
+      "case_type": "Special Sessions Case",
+      "filing_number": "555/2024",
+      "registration_date": "2024-02-14",
+      "petitioner": "State (NCT of Delhi)",
+      "respondent": "Accused Identity Withheld",
+      "governing_acts": [
+        "Protection of Children from Sexual Offences Act 2012 (Section 6)",
+        "Indian Penal Code 1860 (Section 376DA)"
+      ],
+      "order_or_judgment_date": "2021-06-18",
+      "disposal_nature": "PENDING_TRIAL",
+      "sha256_hash": "179b5b7715847be7909ad3044f98effaa4bf28ad8b28e366c8a7c657674f676e",
+      "stage": "BLOCKED_RESTRICTED",
+      "is_retrieval_eligible": false,
+      "is_training_eligible": false,
+      "privacy_classification": "REDACTION_REQUIRED_CHILD_PROTECTION",
+      "audit_log": [
+        [
+          "2026-10-18T19:13:58Z",
+          "METADATA_ACQUIRED",
+          "Metadata parsed and CNR validated"
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "DOCUMENT_ACQUIRED",
+          "Document payload acquired (178 chars)"
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "AUTHENTICITY_VALIDATED",
+          "Digest verified SHA-256=179b5b7715847be7..."
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "PROCEDURAL_EXTRACTED",
+          "Disposal: PENDING_TRIAL"
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "BLOCKED_RESTRICTED",
+          "Privacy bar: REDACTION_REQUIRED_CHILD_PROTECTION"
+        ]
+      ]
+    },
+    {
+      "record_id": "ECOURTS-MHPU020008882023",
+      "cnr_number": "MHPU020008882023",
+      "state_name": "Maharashtra",
+      "district_name": "Pune District Court",
+      "court_establishment": "Motor Accident Claims Tribunal 02",
+      "case_type": "MACP",
+      "filing_number": "888/2023",
+      "registration_date": "2023-09-01",
+      "petitioner": "Shobha Patil & Ors",
+      "respondent": "National Insurance Co Ltd",
+      "governing_acts": [
+        "Motor Vehicles Act 1988 (Section 166)"
+      ],
+      "order_or_judgment_date": "2021-06-18",
+      "disposal_nature": "AWARD_PASSED",
+      "sha256_hash": "44c0b2f9b4db86448e4e8cdc08f0dd96c9e7a80da1a572c75e7af51dc1549779",
+      "stage": "ELIGIBLE_INDEXED",
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "privacy_classification": "UNRESTRICTED_PUBLIC",
+      "audit_log": [
+        [
+          "2026-10-18T19:13:58Z",
+          "METADATA_ACQUIRED",
+          "Metadata parsed and CNR validated"
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "DOCUMENT_ACQUIRED",
+          "Document payload acquired (167 chars)"
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "AUTHENTICITY_VALIDATED",
+          "Digest verified SHA-256=44c0b2f9b4db8644..."
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "PROCEDURAL_EXTRACTED",
+          "Disposal: AWARD_PASSED"
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "PRIVACY_REVIEWED",
+          "Classification: UNRESTRICTED_PUBLIC"
+        ],
+        [
+          "2026-10-18T19:13:58Z",
+          "ELIGIBLE_INDEXED",
+          "Approved for grounded RAG retrieval"
+        ]
+      ]
+    }
+  ]
+}

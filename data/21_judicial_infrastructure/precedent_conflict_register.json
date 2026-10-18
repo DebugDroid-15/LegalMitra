@@ -1,0 +1,182 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "phase": "PHASE_40",
+    "total_conflicts_registered": 6,
+    "authorized_reviewers": [
+      "ADV-REGULATORY-LEAD",
+      "ADV-SHATRUJEET-01"
+    ],
+    "governance_rule": "Resolutions without verified reviewer authorization are strictly prohibited."
+  },
+  "conflicts": [
+    {
+      "conflict_id": "CONF-2026-001",
+      "case_a": {
+        "case_id": "CASE-BOM-1999-NI",
+        "title": "K. Bhaskaran v. Sankaran Vaidhyan Balan (High Court Reference Interpretation)",
+        "court_id": "IND-HC-BOM",
+        "bench_count": 2,
+        "passage_anchor": "[1999] BHC 412, Para 14",
+        "proposition": "Territorial jurisdiction under Section 138 NI Act can be initiated at any of the five places where statutory acts were performed, including place of issue of notice."
+      },
+      "case_b": {
+        "case_id": "CASE-DEL-2008-NI",
+        "title": "Harman Electronics Pvt Ltd v. National Panasonic India Pvt Ltd",
+        "court_id": "IND-HC-DEL",
+        "bench_count": 2,
+        "passage_anchor": "[2008] DHC 1088, Para 21",
+        "proposition": "Issuance of statutory notice alone from a particular territory does not confer jurisdiction to initiate proceedings under Section 138 NI Act."
+      },
+      "governing_statute_section": "Section 138, Negotiable Instruments Act 1881",
+      "category": "CO_EQUAL_HIGH_COURT_CONFLICT",
+      "status": "RESOLVED_BY_APEX_COURT",
+      "priority_score": 4.5,
+      "priority_rationale": "National commercial uniformity in cheque dishonour prosecutions across financial capitals.",
+      "assigned_reviewer": "ADV-REGULATORY-LEAD",
+      "reviewer_authorized": true,
+      "reviewer_decision_rationale": "Resolved definitively by Supreme Court in Dashrath Rupsingh Rathod (2014) 9 SCC 129, and subsequent Parliament statutory amendment inserting Section 142(2) in 2015.",
+      "audit_trail": []
+    },
+    {
+      "conflict_id": "CONF-2026-002",
+      "case_a": {
+        "case_id": "CASE-BOM-2019-SCST",
+        "title": "Union of India v. State of Maharashtra (BHC Interlocutory Analysis)",
+        "court_id": "IND-HC-BOM",
+        "bench_count": 2,
+        "passage_anchor": "[2019] BHC-CRIM 305, Para 8",
+        "proposition": "Bar under Section 18 of SC/ST Act against anticipatory bail is absolute once prima facie allegations are made in FIR."
+      },
+      "case_b": {
+        "case_id": "CASE-RAJ-2019-SCST",
+        "title": "Virendra Singh v. State of Rajasthan",
+        "court_id": "IND-HC-RAJ",
+        "bench_count": 2,
+        "passage_anchor": "[2019] Raj HC 77, Para 16",
+        "proposition": "Pre-arrest bail can be granted notwithstanding Section 18 if allegations on face of record are patently false and motivated."
+      },
+      "governing_statute_section": "Section 18 & 18A, Scheduled Castes and Scheduled Tribes (Prevention of Atrocities) Act 1989",
+      "category": "CO_EQUAL_HIGH_COURT_CONFLICT",
+      "status": "RESOLVED_BY_APEX_COURT",
+      "priority_score": 4.8,
+      "priority_rationale": "Fundamental personal liberty under Article 21 balanced against statutory protection for vulnerable communities.",
+      "assigned_reviewer": "ADV-SHATRUJEET-01",
+      "reviewer_authorized": true,
+      "reviewer_decision_rationale": "Supreme Court in Prathvi Raj Chauhan v. Union of India (2020) 4 SCC 727 clarified that pre-arrest bail is maintainable only if no prima facie case is made out.",
+      "audit_trail": []
+    },
+    {
+      "conflict_id": "CONF-2026-003",
+      "case_a": {
+        "case_id": "CASE-DEL-2017-ARB",
+        "title": "National Highways Authority of India v. Bhubaneswar Expressway",
+        "court_id": "IND-HC-DEL",
+        "bench_count": 1,
+        "passage_anchor": "[2017] DHC 2841, Para 29",
+        "proposition": "Court can entertain Section 9 petition post-constitution of arbitral tribunal only if petitioner proves remedy under Section 17 is inefficacious."
+      },
+      "case_b": {
+        "case_id": "CASE-BOM-2013-ARB",
+        "title": "Dirk India Pvt Ltd v. Maharashtra State Electricity Transmission Co",
+        "court_id": "IND-HC-BOM",
+        "bench_count": 2,
+        "passage_anchor": "[2013] BHC-COMM 912, Para 13",
+        "proposition": "Section 9 remedy remains concurrently available post-award only for successful party to protect fruits of award."
+      },
+      "governing_statute_section": "Section 9 & 17, Arbitration and Conciliation Act 1996",
+      "category": "CO_EQUAL_HIGH_COURT_CONFLICT",
+      "status": "ROUTED_FOR_ADVOCATE_REVIEW",
+      "priority_score": 4.0,
+      "priority_rationale": "Divergent commercial arbitration enforcement practices across infrastructure contractors in Delhi and Mumbai.",
+      "assigned_reviewer": "ADV-SHATRUJEET-01",
+      "reviewer_authorized": true,
+      "reviewer_decision_rationale": "Currently under advocate triage to delineate pre-award vs post-award scope under 2015 Arbitration Amendment.",
+      "audit_trail": []
+    },
+    {
+      "conflict_id": "CONF-2026-004",
+      "case_a": {
+        "case_id": "CASE-DEL-2022-IBC",
+        "title": "Rajiv Chakraborty Resolution Professional v. Directorate of Enforcement",
+        "court_id": "IND-HC-DEL",
+        "bench_count": 1,
+        "passage_anchor": "[2022] DHC 4672, Para 45",
+        "proposition": "Section 14 IBC moratorium does not interdict criminal attachment proceedings under Section 5 of Prevention of Money Laundering Act."
+      },
+      "case_b": {
+        "case_id": "CASE-NCLAT-2021-IBC",
+        "title": "Directorate of Enforcement v. Manoj Kumar Agarwal",
+        "court_id": "IND-TRIB-NCLAT",
+        "bench_count": 2,
+        "passage_anchor": "[2021] NCLAT 182, Para 22",
+        "proposition": "IBC Section 238 non-obstante clause overrides PMLA attachment once Corporate Insolvency Resolution Process has commenced."
+      },
+      "governing_statute_section": "Section 14 & 238 IBC 2016 vs Section 5 PMLA 2002",
+      "category": "STATUTORY_VERSION_DIVERGENCE",
+      "status": "CONFIRMED_GENUINE_CONFLICT",
+      "priority_score": 4.9,
+      "priority_rationale": "Critical conflict between resolution of corporate debt and proceeds of crime confiscation affecting thousands of insolvency proceedings.",
+      "assigned_reviewer": "ADV-REGULATORY-LEAD",
+      "reviewer_authorized": true,
+      "reviewer_decision_rationale": "Confirmed genuine conflict between Delhi High Court writ interpretation and NCLAT statutory precedence; pending resolution before Supreme Court three-judge bench.",
+      "audit_trail": []
+    },
+    {
+      "conflict_id": "CONF-2026-005",
+      "case_a": {
+        "case_id": "CASE-ALL-2018-FAM",
+        "title": "Sunita Devi v. Ramesh Kumar",
+        "court_id": "IND-HC-ALL",
+        "bench_count": 1,
+        "passage_anchor": "[2018] All HC 1120, Para 11",
+        "proposition": "Maintenance awarded under Section 24 of Hindu Marriage Act must be strictly adjusted against maintenance claimed under Section 125 CrPC."
+      },
+      "case_b": {
+        "case_id": "CASE-MP-2019-FAM",
+        "title": "Kavita Bai v. Suresh Singh",
+        "court_id": "IND-HC-MP",
+        "bench_count": 1,
+        "passage_anchor": "[2019] MP HC 890, Para 9",
+        "proposition": "Section 125 CrPC is an independent social justice remedy and cannot be mechanically denied merely because nominal interim maintenance was granted in divorce proceeding."
+      },
+      "governing_statute_section": "Section 125 CrPC 1973 vs Section 24 Hindu Marriage Act 1955",
+      "category": "FACTUALLY_DISTINGUISHABLE",
+      "status": "RESOLVED_FACTUALLY_DISTINGUISHED",
+      "priority_score": 3.2,
+      "priority_rationale": "Family law maintenance overlap; factual quantum adequacy distinguishes individual orders.",
+      "assigned_reviewer": "ADV-SHATRUJEET-01",
+      "reviewer_authorized": true,
+      "reviewer_decision_rationale": "Supreme Court in Rajnesh v. Neha (2021) 2 SCC 324 formulated national uniform guidelines governing overlapping maintenance claims, requiring comprehensive disclosure affidavits.",
+      "audit_trail": []
+    },
+    {
+      "conflict_id": "CONF-2026-006",
+      "case_a": {
+        "case_id": "CASE-MAD-2021-GST",
+        "title": "D.Y. Beathel Enterprises v. State Tax Officer",
+        "court_id": "IND-HC-MAD",
+        "bench_count": 1,
+        "passage_anchor": "[2021] Mad HC 1845, Para 15",
+        "proposition": "Revenue must first exhaust recovery proceedings against defaulting supplier before reversing input tax credit from bona fide purchasing dealer under Section 16(2)(c) CGST Act."
+      },
+      "case_b": {
+        "case_id": "CASE-PAT-2023-GST",
+        "title": "Aastha Enterprises v. State of Bihar",
+        "court_id": "IND-HC-PAT",
+        "bench_count": 2,
+        "passage_anchor": "[2023] Pat HC 720, Para 24",
+        "proposition": "Payment of tax by supplier into government treasury is mandatory condition precedent under Section 16(2)(c); purchaser cannot claim ITC if supplier defaulted, irrespective of bona fides."
+      },
+      "governing_statute_section": "Section 16(2)(c), Central Goods and Services Tax Act 2017",
+      "category": "CO_EQUAL_HIGH_COURT_CONFLICT",
+      "status": "PENDING_TRIAGE",
+      "priority_score": 4.6,
+      "priority_rationale": "Direct contradiction on taxpayer liability across states under nationwide GST statutory framework.",
+      "assigned_reviewer": null,
+      "reviewer_authorized": false,
+      "reviewer_decision_rationale": null,
+      "audit_trail": []
+    }
+  ]
+}

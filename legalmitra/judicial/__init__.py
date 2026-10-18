@@ -73,6 +73,30 @@ from legalmitra.judicial.procedural_history import (
     ProceduralHistoryGraph,
     ProceduralStage,
 )
+from legalmitra.judicial.connectors import (
+    AcquiredPayload,
+    BaseJudicialConnector,
+    BombayHighCourtConnector,
+    DelhiHighCourtConnector,
+    RateLimiter,
+    SourceDocumentState,
+)
+from legalmitra.judicial.ecourts_protocol import (
+    CNRDecomposition,
+    ECourtsIngestionRecord,
+    ECourtsProtocolValidator,
+    ECourtsWorkflowStage,
+)
+from legalmitra.judicial.devanagari_ocr import (
+    DevanagariOCREngine,
+    DevanagariOCRResult,
+)
+from legalmitra.judicial.conflict_triage import (
+    ConflictCategory,
+    PrecedentConflictRecord,
+    PrecedentConflictTriageManager,
+    TriageStatus,
+)
 
 __all__ = [
     "CourtEntity",
@@ -120,4 +144,22 @@ __all__ = [
     "ProceduralEvent",
     "ProceduralHistoryGraph",
     "ProceduralStage",
+    # Phase 40 components
+    "BaseJudicialConnector",
+    "DelhiHighCourtConnector",
+    "BombayHighCourtConnector",
+    "SourceDocumentState",
+    "RateLimiter",
+    "AcquiredPayload",
+    "ECourtsProtocolValidator",
+    "CNRDecomposition",
+    "ECourtsWorkflowStage",
+    "ECourtsIngestionRecord",
+    "DevanagariOCREngine",
+    "DevanagariOCRResult",
+    "PrecedentConflictTriageManager",
+    "PrecedentConflictRecord",
+    "TriageStatus",
+    "ConflictCategory",
 ]
+

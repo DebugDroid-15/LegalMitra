@@ -1,0 +1,141 @@
+{
+  "summary": {
+    "version": "3.0.0",
+    "phase": "PHASE_40",
+    "total_institutions_tracked": 19,
+    "total_ingested_records": 615,
+    "total_verified_records": 615,
+    "operational_connectors_count": 2,
+    "ecourts_protocol_status": "OPERATIONAL_STAGED",
+    "devanagari_ocr_qa_status": "OPERATIONAL_VALIDATED",
+    "precedent_conflict_triage_status": "GATED_HUMAN_IN_THE_LOOP",
+    "tier_distribution": {
+      "TIER_0_UNMAPPED": 0,
+      "TIER_1_CATALOGUED": 0,
+      "TIER_2_SOURCE_IDENTIFIED": 11,
+      "TIER_3_PIPELINE_DESIGNED": 1,
+      "TIER_4_PIPELINE_TESTED": 1,
+      "TIER_5_SAMPLING_VALIDATED": 4,
+      "TIER_6_SUBSTANTIAL_HOLDINGS": 2,
+      "TIER_7_COMPREHENSIVE_ERA": 0,
+      "TIER_8_PRECEDENT_INTEGRATED": 0,
+      "TIER_9_MULTILINGUAL_EXPANDED": 0,
+      "TIER_10_INDEPENDENTLY_EVALUATED": 0
+    }
+  },
+  "connectors": {
+    "IND-HC-DEL": {
+      "connector_class": "DelhiHighCourtConnector",
+      "source_id": "SRC-HC-DEL-PORTAL",
+      "court_name": "High Court of Delhi",
+      "neutral_citation_scheme": "YYYY:DHC:NNNN",
+      "allowed_domains": [
+        "delhihighcourt.nic.in"
+      ],
+      "rate_limit_qps": 1.0,
+      "max_retry_attempts": 3,
+      "ssrf_protection_active": true,
+      "operational_status": "OPERATIONAL_FIXTURE_VERIFIED"
+    },
+    "IND-HC-BOM": {
+      "connector_class": "BombayHighCourtConnector",
+      "source_id": "SRC-HC-BOM-PORTAL",
+      "court_name": "High Court of Judicature at Bombay",
+      "neutral_citation_scheme": "YYYY:BHC-OS:NNNN / YYYY:BHC-AS:NNNN",
+      "benches_supported": [
+        "ORIGINAL_SIDE",
+        "APPELLATE_SIDE",
+        "NAGPUR",
+        "AURANGABAD",
+        "GOA"
+      ],
+      "allowed_domains": [
+        "bombayhighcourt.nic.in"
+      ],
+      "rate_limit_qps": 1.0,
+      "max_retry_attempts": 3,
+      "ssrf_protection_active": true,
+      "operational_status": "OPERATIONAL_FIXTURE_VERIFIED"
+    }
+  },
+  "assessments": {
+    "IND-SC": {
+      "court_id": "IND-SC",
+      "court_name": "Supreme Court of India",
+      "institutional_tier": "APEX",
+      "current_tier": 6,
+      "tier_label": "TIER_6_SUBSTANTIAL_HOLDINGS",
+      "total_estimated_historical_cases": 75000,
+      "ingested_record_count": 210,
+      "verified_record_count": 210,
+      "ocr_average_confidence": 0.988,
+      "vernacular_languages_supported": [
+        "en",
+        "hi"
+      ],
+      "precedent_graph_linked_nodes": 78,
+      "known_coverage_gaps": [
+        "Pre-1970 digital unreported orders requiring archival microfilm OCR scanning"
+      ]
+    },
+    "IND-HC-DEL": {
+      "court_id": "IND-HC-DEL",
+      "court_name": "High Court of Delhi",
+      "institutional_tier": "HIGH_COURT",
+      "current_tier": 6,
+      "tier_label": "TIER_6_SUBSTANTIAL_HOLDINGS",
+      "total_estimated_historical_cases": 120000,
+      "ingested_record_count": 145,
+      "verified_record_count": 145,
+      "ocr_average_confidence": 0.982,
+      "vernacular_languages_supported": [
+        "en",
+        "hi"
+      ],
+      "precedent_graph_linked_nodes": 36,
+      "known_coverage_gaps": [
+        "Pre-2000 unreported orders not indexed in public digital cause list"
+      ]
+    },
+    "IND-HC-BOM": {
+      "court_id": "IND-HC-BOM",
+      "court_name": "High Court of Judicature at Bombay",
+      "institutional_tier": "HIGH_COURT",
+      "current_tier": 5,
+      "tier_label": "TIER_5_SAMPLING_VALIDATED",
+      "total_estimated_historical_cases": 150000,
+      "ingested_record_count": 105,
+      "verified_record_count": 105,
+      "ocr_average_confidence": 0.976,
+      "vernacular_languages_supported": [
+        "en",
+        "mr"
+      ],
+      "precedent_graph_linked_nodes": 28,
+      "known_coverage_gaps": [
+        "Goa and Aurangabad circuit bench archival judgments 1980-1995"
+      ]
+    },
+    "IND-DC-ECOURTS": {
+      "court_id": "IND-DC-ECOURTS",
+      "court_name": "National District & Subordinate Courts (eCourts CIS Ingestion)",
+      "institutional_tier": "DISTRICT_COURT",
+      "current_tier": 4,
+      "tier_label": "TIER_4_PIPELINE_TESTED",
+      "total_estimated_historical_cases": 10000000,
+      "ingested_record_count": 30,
+      "verified_record_count": 30,
+      "ocr_average_confidence": 0.965,
+      "vernacular_languages_supported": [
+        "en",
+        "hi",
+        "mr",
+        "kn"
+      ],
+      "precedent_graph_linked_nodes": 0,
+      "known_coverage_gaps": [
+        "CAPTCHA access boundary restricts real-time automated ingestion; relies on authorized eCommittee API tokens and vetted local dumps."
+      ]
+    }
+  }
+}

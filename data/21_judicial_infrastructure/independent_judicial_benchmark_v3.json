@@ -1,0 +1,419 @@
+{
+  "benchmark_id": "LEGALMITRA-JUDICIAL-BENCHMARK-V3",
+  "benchmark_version": "3.0.0",
+  "phase": "PHASE_40",
+  "total_test_cases": 48,
+  "categories_covered": [
+    "JURISDICTION_AND_TIER",
+    "PRECEDENT_VALIDITY",
+    "BENCH_STRENGTH",
+    "LEGISLATIVE_EVOLUTION",
+    "RESTRICTED_RECORDS",
+    "CASE_TAXONOMY",
+    "CITATION_NORMALIZATION",
+    "IDENTITY_RESOLUTION",
+    "PROCEDURAL_HISTORY",
+    "PARAGRAPH_ANCHORS",
+    "SOURCE_GOVERNANCE",
+    "COVERAGE_METRICS",
+    "CONNECTOR_SSRF_PROTECTION",
+    "CONNECTOR_RATE_LIMITING",
+    "ECOURTS_CNR_VALIDATION",
+    "ECOURTS_STAGED_INGESTION",
+    "ECOURTS_PRIVACY_GATING",
+    "DEVANAGARI_OCR_NORMALIZATION",
+    "DEVANAGARI_LEGAL_TOKEN_PRESERVATION",
+    "DEVANAGARI_CER_WER_EVALUATION",
+    "PRECEDENT_CONFLICT_AUTHORIZATION_GATE",
+    "PRECEDENT_CONFLICT_ANCHOR_REQUIREMENT",
+    "CO_EQUAL_HIGH_COURT_CONFLICT",
+    "PRECEDENT_CONFLICT_PRIORITY_ORDER",
+    "OUT_OF_CORPUS_ABSTENTION"
+  ],
+  "cases": [
+    {
+      "id": "CASE-01",
+      "category": "JURISDICTION_AND_TIER",
+      "prompt": "Which court exercises appellate jurisdiction over court-martial convictions under the Army Act 1950?",
+      "expected_answer": "Armed Forces Tribunal (AFT)",
+      "statutory_authority": "Armed Forces Tribunal Act, 2007 (Section 15)",
+      "verified": true
+    },
+    {
+      "id": "CASE-02",
+      "category": "PRECEDENT_VALIDITY",
+      "prompt": "Is the judgment in ADM Jabalpur v. Shivkant Shukla (AIR 1976 SC 1207) currently good law in India?",
+      "expected_answer": "No, it was expressly overruled by a 9-judge Constitution bench in K.S. Puttaswamy v. Union of India (2017).",
+      "statutory_authority": "Articles 21 and 141; Puttaswamy (2017) 10 SCC 1",
+      "verified": true
+    },
+    {
+      "id": "CASE-03",
+      "category": "BENCH_STRENGTH",
+      "prompt": "Can a 2-judge Division Bench of the Supreme Court overrule a 5-judge Constitution Bench?",
+      "expected_answer": "No. Under Article 141 and established precedent hierarchy, a bench can only be overruled by a bench of larger numerical strength.",
+      "statutory_authority": "Union of India v. Raghubir Singh (1989) 2 SCC 754",
+      "verified": true
+    },
+    {
+      "id": "CASE-04",
+      "category": "LEGISLATIVE_EVOLUTION",
+      "prompt": "What official legislative enactment was directly formulated in response to the Supreme Court's guidelines in Vishaka v. State of Rajasthan (1997)?",
+      "expected_answer": "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013 (POSH Act)",
+      "statutory_authority": "Statement of Objects and Reasons, POSH Act 2013",
+      "verified": true
+    },
+    {
+      "id": "CASE-05",
+      "category": "RESTRICTED_RECORDS",
+      "prompt": "Under what statutory provisions is it prohibited to publish the name or identity of a rape survivor in India?",
+      "expected_answer": "Section 228A of the Indian Penal Code 1860 and Section 72 of the Bharatiya Nyaya Sanhita 2023.",
+      "statutory_authority": "Section 228A IPC / Section 72 BNS 2023; Nipun Saxena v. Union of India (2019)",
+      "verified": true
+    },
+    {
+      "id": "CASE-06",
+      "category": "PRECEDENT_VALIDITY",
+      "prompt": "What is the current status of Suresh Kumar Koushal v. Naz Foundation (2014)?",
+      "expected_answer": "Overruled by a 5-judge bench in Navtej Singh Johar v. Union of India (2018).",
+      "statutory_authority": "Navtej Singh Johar v. Union of India (2018) 1 SCC 791",
+      "verified": true
+    },
+    {
+      "id": "CASE-07",
+      "category": "PRECEDENT_VALIDITY",
+      "prompt": "What is the current status of Sowmithri Vishnu v. Union of India (1985)?",
+      "expected_answer": "Overruled by a 5-judge Constitution Bench in Joseph Shine v. Union of India (2018).",
+      "statutory_authority": "Joseph Shine v. Union of India (2018) 2 SCC 189",
+      "verified": true
+    },
+    {
+      "id": "CASE-08",
+      "category": "LEGISLATIVE_EVOLUTION",
+      "prompt": "What happened to Section 66A of the Information Technology Act 2000 after the Supreme Court decision in Shreya Singhal (2015)?",
+      "expected_answer": "Section 66A was struck down in its entirety as unconstitutional for violating Article 19(1)(a).",
+      "statutory_authority": "Shreya Singhal v. Union of India (2015) 5 SCC 1",
+      "verified": true
+    },
+    {
+      "id": "CASE-09",
+      "category": "HISTORICAL_ARCHIVES",
+      "prompt": "What was the highest judicial tribunal for British Indian appeals prior to 1949?",
+      "expected_answer": "Judicial Committee of the Privy Council (abolished by Abolition of Privy Council Jurisdiction Act, 1949).",
+      "statutory_authority": "Abolition of Privy Council Jurisdiction Act 1949",
+      "verified": true
+    },
+    {
+      "id": "CASE-10",
+      "category": "HISTORICAL_ARCHIVES",
+      "prompt": "Between 1937 and 1950, which court functioned as the predecessor to the Supreme Court of India?",
+      "expected_answer": "Federal Court of India",
+      "statutory_authority": "Government of India Act 1935, Part IX",
+      "verified": true
+    },
+    {
+      "id": "CASE-11",
+      "category": "CITATION_FORMAT",
+      "prompt": "What does the citation format '2023 INSC 101' represent?",
+      "expected_answer": "The official Neutral Citation for the Supreme Court of India, judgment number 101 of year 2023.",
+      "statutory_authority": "Supreme Court of India Neutral Citation System Circular (2023)",
+      "verified": true
+    },
+    {
+      "id": "CASE-12",
+      "category": "CITATION_FORMAT",
+      "prompt": "What does the citation format '2023:DHC:1234' represent?",
+      "expected_answer": "The official Neutral Citation for the High Court of Delhi, judgment number 1234 of year 2023.",
+      "statutory_authority": "High Court of Delhi Neutral Citation Guidelines",
+      "verified": true
+    },
+    {
+      "id": "CASE-13",
+      "category": "SUBORDINATE_JUDICIARY",
+      "prompt": "Under which constitutional article do High Courts exercise administrative superintendence over District Courts?",
+      "expected_answer": "Article 227 of the Constitution of India.",
+      "statutory_authority": "Article 227, Constitution of India",
+      "verified": true
+    },
+    {
+      "id": "CASE-14",
+      "category": "SPECIALIZED_TRIBUNALS",
+      "prompt": "Which tribunal hears statutory appeals from orders of the National Company Law Tribunal (NCLT)?",
+      "expected_answer": "National Company Law Appellate Tribunal (NCLAT)",
+      "statutory_authority": "Companies Act 2013 (Section 410) & IBC 2016 (Section 61)",
+      "verified": true
+    },
+    {
+      "id": "CASE-15",
+      "category": "SPECIALIZED_TRIBUNALS",
+      "prompt": "What is the principal forum for statutory disputes under the National Green Tribunal Act 2010?",
+      "expected_answer": "National Green Tribunal (NGT)",
+      "statutory_authority": "National Green Tribunal Act, 2010",
+      "verified": true
+    },
+    {
+      "id": "CASE-16",
+      "category": "LEGISLATIVE_EVOLUTION",
+      "prompt": "Which amendments to the CrPC codified the arrest guidelines issued in D.K. Basu v. State of West Bengal (1997)?",
+      "expected_answer": "Code of Criminal Procedure (Amendment) Act, 2008 (inserting Sections 41A, 41B, 41C, and 41D).",
+      "statutory_authority": "CrPC (Amendment) Act 2008 (Act 5 of 2009)",
+      "verified": true
+    },
+    {
+      "id": "CASE-17",
+      "category": "RESTRICTED_RECORDS",
+      "prompt": "Does the POCSO Act 2012 permit disclosing a child victim's school name or photograph in case reports?",
+      "expected_answer": "No, Section 74 of the POCSO Act strictly prohibits disclosing the child's school, address, or photograph.",
+      "statutory_authority": "POCSO Act 2012, Section 74",
+      "verified": true
+    },
+    {
+      "id": "CASE-18",
+      "category": "PRECEDENT_VALIDITY",
+      "prompt": "Was Kesavananda Bharati v. State of Kerala (1973) overruled by any subsequent bench?",
+      "expected_answer": "No, it remains good law and forms the bedrock of the Basic Structure Doctrine in Indian Constitutional Law.",
+      "statutory_authority": "Minerva Mills (1980) 3 SCC 625; I.R. Coelho (2007) 2 SCC 1",
+      "verified": true
+    },
+    {
+      "id": "CASE-19",
+      "category": "COVERAGE_METRICS",
+      "prompt": "In LegalMitra's 11-tier coverage framework, what does Tier 1 designate?",
+      "expected_answer": "Catalogued: The institution's identity, jurisdiction, and historical predecessor are catalogued, but records are not yet ingested.",
+      "statutory_authority": "LegalMitra Tier Framework (Tier 0 to Tier 10)",
+      "verified": true
+    },
+    {
+      "id": "CASE-20",
+      "category": "COVERAGE_METRICS",
+      "prompt": "In LegalMitra's 11-tier coverage framework, what does Tier 5 designate?",
+      "expected_answer": "Sampling Validated: A representative sample of judgments is ingested, OCR quality audited, and metadata verified.",
+      "statutory_authority": "LegalMitra Tier Framework",
+      "verified": true
+    },
+    {
+      "id": "CASE-21",
+      "category": "CASE_TAXONOMY",
+      "prompt": "Under which substantive domain does a petition challenging an environmental clearance under the NGT Act fall?",
+      "expected_answer": "ENVIRONMENTAL_FOREST",
+      "statutory_authority": "National Green Tribunal Act 2010",
+      "verified": true
+    },
+    {
+      "id": "CASE-22",
+      "category": "CASE_TAXONOMY",
+      "prompt": "Under which substantive domain does an application under Section 7 of the Insolvency and Bankruptcy Code 2016 fall?",
+      "expected_answer": "COMMERCIAL_CORPORATE_INSOLVENCY",
+      "statutory_authority": "Insolvency and Bankruptcy Code, 2016",
+      "verified": true
+    },
+    {
+      "id": "CASE-23",
+      "category": "HISTORICAL_ARCHIVES",
+      "prompt": "Which High Courts were the earliest established under the Indian High Courts Act 1861?",
+      "expected_answer": "Calcutta High Court (July 1862), Bombay High Court (August 1862), and Madras High Court (August 1862).",
+      "statutory_authority": "Indian High Courts Act 1861 (24 & 25 Vict. c. 104)",
+      "verified": true
+    },
+    {
+      "id": "CASE-24",
+      "category": "LEGISLATIVE_EVOLUTION",
+      "prompt": "Can a legislative change be classified as a direct response to a judgment if only temporal sequence is known?",
+      "expected_answer": "No. Under LegalMitra's evidentiary standard, it must be classified as MERE_TEMPORAL_SEQUENCE unless official documents (SOR, debates, Law Commission) establish causation.",
+      "statutory_authority": "LegalMitra Evidentiary Standards",
+      "verified": true
+    },
+    {
+      "id": "CASE-25",
+      "category": "MILITARY_JUSTICE",
+      "prompt": "Are decisions of the Armed Forces Tribunal subject to writ jurisdiction of High Courts under Article 226?",
+      "expected_answer": "Yes, a 5-judge bench in Union of India v. Parashotam Dass (2023) held that High Courts can exercise supervisory jurisdiction under Article 226 over AFT orders.",
+      "statutory_authority": "Union of India v. Parashotam Dass, 2023 INSC 261",
+      "verified": true
+    },
+    {
+      "id": "CASE-26",
+      "category": "DISSENTING_OPINIONS",
+      "prompt": "Which famous dissent in Indian constitutional history was subsequently affirmed by a 9-judge bench in Puttaswamy (2017) as the correct statement of law?",
+      "expected_answer": "Justice H.R. Khanna's dissent in ADM Jabalpur v. Shivkant Shukla (1976).",
+      "statutory_authority": "Puttaswamy (2017) 10 SCC 1, Para 122",
+      "verified": true
+    },
+    {
+      "id": "CASE-27",
+      "category": "PROCEDURAL_HISTORY",
+      "prompt": "In the Nirbhaya litigation (State v. Mukesh & Ors.), what was the final constitutional procedural remedy exhausted before the Supreme Court prior to execution?",
+      "expected_answer": "Curative Petition under the doctrine of Rupa Ashok Hurra v. Ashok Hurra (dismissed on January 14, 2020).",
+      "statutory_authority": "Curative Petition (Crl.) Nos. 1-4 of 2020 (Supreme Court of India)",
+      "verified": true
+    },
+    {
+      "id": "CASE-28",
+      "category": "HISTORICAL_ARCHIVES",
+      "prompt": "In the landmark Federal Court case Niharendu Dutt Majumdar (1942 FCR 38), what did Sir Maurice Gwyer C.J. define as the gist of the offence of sedition under Section 124A IPC?",
+      "expected_answer": "Public disorder or the reasonable anticipation or likelihood of public disorder.",
+      "statutory_authority": "Niharendu Dutt Majumdar v. King-Emperor, [1942] F.C.R. 38",
+      "verified": true
+    },
+    {
+      "id": "CASE-29",
+      "category": "HISTORICAL_ARCHIVES",
+      "prompt": "In Pakala Narayana Swami v. King-Emperor (1939 L.R. 66 I.A. 66), how did Lord Atkin define a confession under the Indian Evidence Act 1872?",
+      "expected_answer": "An admission in terms of the offence, or substantially all the facts which constitute the offence; a statement containing self-exculpatory matter cannot be a confession.",
+      "statutory_authority": "(1939) L.R. 66 I.A. 66 (Privy Council)",
+      "verified": true
+    },
+    {
+      "id": "CASE-30",
+      "category": "REGIONAL_LANGUAGES",
+      "prompt": "Under what initiative does the Supreme Court of India officially translate and publish reported judgments into Hindi and regional scheduled languages?",
+      "expected_answer": "The eSCR (electronic Supreme Court Reports) portal utilizing SUVAS (Supreme Court Vidhik Anuvaad Software) AI translation.",
+      "statutory_authority": "Supreme Court of India eSCR Vernacular Translation Initiative (2023)",
+      "verified": true
+    },
+    {
+      "id": "CASE-31",
+      "category": "MISSING_SOURCE_ABSTENTION",
+      "prompt": "If a user requests the unreported trial record of a 1920 district court civil suit where no official digitized record exists, what must the system do?",
+      "expected_answer": "Abstain from answering with fabricated facts, disclose that the physical record is unmapped or offline, and report the specific coverage gap.",
+      "statutory_authority": "LegalMitra Truthful Reporting & Abstention Policy",
+      "verified": true
+    },
+    {
+      "id": "CASE-32",
+      "category": "TRIBUNALS_JURISDICTION",
+      "prompt": "Which forum has original jurisdiction to adjudicate corporate insolvency applications under Section 7 of the Insolvency and Bankruptcy Code 2016?",
+      "expected_answer": "National Company Law Tribunal (NCLT) having territorial jurisdiction over the registered office of the corporate debtor.",
+      "statutory_authority": "Section 5(1) and Section 60(1) of the Insolvency and Bankruptcy Code, 2016",
+      "verified": true
+    },
+    {
+      "id": "CASE-33",
+      "category": "LEGISLATIVE_EVOLUTION",
+      "prompt": "What parliamentary statute resulted from the Supreme Court decision in Shayara Bano v. Union of India (2017) declaring triple talaq void?",
+      "expected_answer": "Muslim Women (Protection of Rights on Marriage) Act, 2019.",
+      "statutory_authority": "Statement of Objects and Reasons, Act 20 of 2019",
+      "verified": true
+    },
+    {
+      "id": "CASE-34",
+      "category": "IDENTITY_RESOLUTION",
+      "prompt": "How does LegalMitra resolve differences in party names between 'Union of India', 'UOI', and 'Govt. of India' across parallel citations?",
+      "expected_answer": "Through the CaseIdentityResolver's rule-based litigant alias mapping, canonicalizing them to 'Union of India' before cryptographic identity hashing.",
+      "statutory_authority": "legalmitra.judicial.identity_resolver.CaseIdentityResolver",
+      "verified": true
+    },
+    {
+      "id": "CASE-35",
+      "category": "MILITARY_JUSTICE",
+      "prompt": "What is the principal difference between a Summary Court-Martial (SCM) and a General Court-Martial (GCM) under the Army Act 1950?",
+      "expected_answer": "An SCM is constituted by a single officer (Commanding Officer alone) with limited sentencing power (up to 1 year imprisonment), whereas a GCM requires at least 5 officers and can award any sentence authorized by law including the death penalty.",
+      "statutory_authority": "Sections 113, 116, 118, and 120 of the Army Act, 1950",
+      "verified": true
+    },
+    {
+      "id": "CASE-36",
+      "category": "CONNECTOR_SSRF_PROTECTION",
+      "prompt": "How does the High Court connector handle requests targeting internal IP addresses (e.g., 169.254.169.254, 127.0.0.1, or 10.0.0.1)?",
+      "expected_answer": "It raises an SSRFProtectionError and halts the request immediately, ensuring zero egress to private or loopback networks.",
+      "statutory_authority": "LegalMitra SSRF Guard Policy & Judicial Connector Architecture",
+      "verified": true
+    },
+    {
+      "id": "CASE-37",
+      "category": "CONNECTOR_RATE_LIMITING",
+      "prompt": "What safeguard prevents High Court connector requests from overwhelming official judicial web portals?",
+      "expected_answer": "Token bucket rate limiter with a 1.0 QPS cap, bounded response size enforcement, and exponential backoff retry jitter.",
+      "statutory_authority": "Judicial Connector Architecture & Court Portal Etiquette Rules",
+      "verified": true
+    },
+    {
+      "id": "CASE-38",
+      "category": "ECOURTS_CNR_VALIDATION",
+      "prompt": "What is the official structure of a 16-character Case Number Record (CNR) in the Indian eCourts system?",
+      "expected_answer": "2 letters for state code, 2 letters for district code, 2 alphanumeric characters for court establishment, 6 digits for case number, and 4 digits for filing year.",
+      "statutory_authority": "eCourts Project Phase II Rules, eCommittee Supreme Court of India",
+      "verified": true
+    },
+    {
+      "id": "CASE-39",
+      "category": "ECOURTS_STAGED_INGESTION",
+      "prompt": "What are the sequential stages through which an eCourts district court record must pass before indexing?",
+      "expected_answer": "CATALOGUED -> METADATA_ACQUIRED -> DOCUMENT_ACQUIRED -> AUTHENTICITY_VALIDATED -> PROCEDURAL_EXTRACTED -> PRIVACY_REVIEWED -> ELIGIBLE_INDEXED.",
+      "statutory_authority": "eCourts CIS Ingestion Protocol v1.0",
+      "verified": true
+    },
+    {
+      "id": "CASE-40",
+      "category": "ECOURTS_PRIVACY_GATING",
+      "prompt": "If an eCourts record contains allegations under the POCSO Act 2012 or Section 228A IPC, what is its lifecycle classification?",
+      "expected_answer": "BLOCKED_RESTRICTED: It is quarantined from public retrieval until certified redaction occurs, and permanently excluded from ML training datasets.",
+      "statutory_authority": "Section 74 POCSO Act 2012, Section 228A IPC 1860, Nipun Saxena v. UOI (2019)",
+      "verified": true
+    },
+    {
+      "id": "CASE-41",
+      "category": "DEVANAGARI_OCR_NORMALIZATION",
+      "prompt": "How does the Devanagari OCR pipeline preserve textual fidelity while fixing OCR artifacts?",
+      "expected_answer": "It uses conservative Unicode NFC normalization, validates danda and double danda spacing, replaces Unicode replacement characters, and immutably preserves the raw OCR string.",
+      "statutory_authority": "Unicode Standard Version 15.0 & LegalMitra OCR Quality Architecture",
+      "verified": true
+    },
+    {
+      "id": "CASE-42",
+      "category": "DEVANAGARI_LEGAL_TOKEN_PRESERVATION",
+      "prompt": "Name key Hindi legal tokens that the Devanagari OCR QA engine monitors to detect corruption in judicial orders.",
+      "expected_answer": "जमानत (bail), दोषसिद्धि (conviction), बरी (acquittal), धारा (section), अनुच्छेद (article), उच्चतम न्यायालय (Supreme Court), and सत्र न्यायालय (Sessions Court).",
+      "statutory_authority": "Ministry of Law & Justice Hindi Legal Glossary & LegalMitra Devanagari Engine",
+      "verified": true
+    },
+    {
+      "id": "CASE-43",
+      "category": "DEVANAGARI_CER_WER_EVALUATION",
+      "prompt": "What metric is used by the Devanagari OCR engine to evaluate character-level transcription fidelity against reference judgments?",
+      "expected_answer": "Character Error Rate (CER), computed via dynamic programming Levenshtein distance normalized by reference character count.",
+      "statutory_authority": "LegalMitra OCR Evaluation Metric Specification",
+      "verified": true
+    },
+    {
+      "id": "CASE-44",
+      "category": "PRECEDENT_CONFLICT_AUTHORIZATION_GATE",
+      "prompt": "Can an automated machine learning algorithm or unauthorized user mark a precedent conflict as resolved in LegalMitra?",
+      "expected_answer": "No. The system raises a PermissionError. Resolving or distinguishing precedent conflicts requires verified human advocate review credentials.",
+      "statutory_authority": "LegalMitra Human-in-the-Loop Judicial Governance Protocol",
+      "verified": true
+    },
+    {
+      "id": "CASE-45",
+      "category": "PRECEDENT_CONFLICT_ANCHOR_REQUIREMENT",
+      "prompt": "What evidentiary requirement must be met before a conflict between two High Court rulings is accepted into the register?",
+      "expected_answer": "Both cases must have verified, pinpoint paragraph or page anchors referencing the exact contradictory proposition.",
+      "statutory_authority": "Precedent Conflict Triage Protocol (Evidentiary Anchoring Requirement)",
+      "verified": true
+    },
+    {
+      "id": "CASE-46",
+      "category": "CO_EQUAL_HIGH_COURT_CONFLICT",
+      "prompt": "When the Delhi High Court and Bombay High Court reach opposing conclusions on the interpretation of a central statute, what is the precedential effect?",
+      "expected_answer": "Neither decision overrules the other. Each is binding within its territorial jurisdiction and merely persuasive in the other, until resolved by the Supreme Court.",
+      "statutory_authority": "Article 227 and Article 141; V.M. Salgaocar & Bros v. CIT (2000) 5 SCC 373",
+      "verified": true
+    },
+    {
+      "id": "CASE-47",
+      "category": "PRECEDENT_CONFLICT_PRIORITY_ORDER",
+      "prompt": "How does the Precedent Conflict Triage Manager prioritize competing conflicts for review?",
+      "expected_answer": "Conflicts are ranked in descending order of priority score, with constitutional questions and national economic impact receiving highest priority.",
+      "statutory_authority": "LegalMitra Conflict Triage Priority Engine",
+      "verified": true
+    },
+    {
+      "id": "CASE-48",
+      "category": "OUT_OF_CORPUS_ABSTENTION",
+      "prompt": "What must the system do when asked for an unverified subordinate court decree not present in the verified corpus?",
+      "expected_answer": "It must explicitly state that the record is not in the verified corpus, refuse to hallucinate terms, and invite entry of an official 16-character CNR.",
+      "statutory_authority": "LegalMitra Verifiable Retrieval & Groundedness Invariant",
+      "verified": true
+    }
+  ]
+}
