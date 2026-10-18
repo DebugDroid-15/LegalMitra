@@ -1,0 +1,238 @@
+{
+  "total_judgments_audited": 10,
+  "judgments": [
+    {
+      "judgment_id": "IND-JUD-SC-1978-MANEKA-GANDHI",
+      "case_title": "Maneka Gandhi v. Union of India",
+      "case_number": "Writ Petition (Civil) No. 231 of 1977",
+      "court": "CourtType.SUPREME_COURT",
+      "judgment_date": "1978-01-25",
+      "bench_strength": 7,
+      "coram": [
+        "M.H. Beg, C.J.",
+        "Y.V. Chandrachud, J.",
+        "P.N. Bhagwati, J.",
+        "V.R. Krishna Iyer, J.",
+        "N.L. Untwalia, J.",
+        "S. Murtaza Fazal Ali, J.",
+        "P.S. Kailasam, J."
+      ],
+      "citations": [
+        "(1978) 1 SCC 248",
+        "1978 INSC 16",
+        "AIR 1978 SC 597"
+      ],
+      "has_ratio": true,
+      "holdings_count": 2,
+      "paragraphs_count": 2,
+      "verification_status": "verified_authoritative"
+    },
+    {
+      "judgment_id": "IND-JUD-SC-1973-KESAVANANDA",
+      "case_title": "Kesavananda Bharati Sripadagalvaru v. State of Kerala",
+      "case_number": "Writ Petition (Civil) No. 135 of 1970",
+      "court": "CourtType.SUPREME_COURT",
+      "judgment_date": "1973-04-24",
+      "bench_strength": 13,
+      "coram": [
+        "S.M. Sikri, C.J.",
+        "J.M. Shelat, J.",
+        "K.S. Hegde, J.",
+        "A.N. Grover, J.",
+        "A.N. Ray, J.",
+        "P.J. Reddy, J.",
+        "D.G. Palekar, J.",
+        "H.R. Khanna, J.",
+        "K.K. Mathew, J.",
+        "M.H. Beg, J.",
+        "S.N. Dwivedi, J.",
+        "A.K. Mukherjea, J.",
+        "Y.V. Chandrachud, J."
+      ],
+      "citations": [
+        "(1973) 4 SCC 225",
+        "1973 INSC 258",
+        "AIR 1973 SC 1461"
+      ],
+      "has_ratio": true,
+      "holdings_count": 1,
+      "paragraphs_count": 1,
+      "verification_status": "verified_authoritative"
+    },
+    {
+      "judgment_id": "IND-JUD-SC-1997-DK-BASU",
+      "case_title": "D.K. Basu v. State of West Bengal",
+      "case_number": "Writ Petition (Criminal) No. 592 of 1987",
+      "court": "CourtType.SUPREME_COURT",
+      "judgment_date": "1996-12-18",
+      "bench_strength": 2,
+      "coram": [
+        "Kuldip Singh, J.",
+        "A.S. Anand, J."
+      ],
+      "citations": [
+        "(1997) 1 SCC 416",
+        "1996 INSC 1579",
+        "AIR 1997 SC 610"
+      ],
+      "has_ratio": true,
+      "holdings_count": 1,
+      "paragraphs_count": 1,
+      "verification_status": "verified_authoritative"
+    },
+    {
+      "judgment_id": "IND-JUD-SC-2014-LALITA-KUMARI",
+      "case_title": "Lalita Kumari v. Government of Uttar Pradesh and Others",
+      "case_number": "Writ Petition (Criminal) No. 68 of 2008",
+      "court": "CourtType.SUPREME_COURT",
+      "judgment_date": "2013-11-12",
+      "bench_strength": 5,
+      "coram": [
+        "P. Sathasivam, C.J.",
+        "B.S. Chauhan, J.",
+        "Ranjana P. Desai, J.",
+        "Ranjan Gogoi, J.",
+        "S.A. Bobde, J."
+      ],
+      "citations": [
+        "(2014) 2 SCC 1",
+        "2013 INSC 792",
+        "AIR 2014 SC 187"
+      ],
+      "has_ratio": true,
+      "holdings_count": 1,
+      "paragraphs_count": 1,
+      "verification_status": "verified_authoritative"
+    },
+    {
+      "judgment_id": "IND-JUD-SC-2014-ARNESH-KUMAR",
+      "case_title": "Arnesh Kumar v. State of Bihar and Another",
+      "case_number": "Criminal Appeal No. 1277 of 2014",
+      "court": "CourtType.SUPREME_COURT",
+      "judgment_date": "2014-07-02",
+      "bench_strength": 2,
+      "coram": [
+        "Chandramauli Kr. Prasad, J.",
+        "Pinaki Chandra Ghose, J."
+      ],
+      "citations": [
+        "(2014) 8 SCC 273",
+        "2014 INSC 485",
+        "AIR 2014 SC 2756"
+      ],
+      "has_ratio": true,
+      "holdings_count": 1,
+      "paragraphs_count": 1,
+      "verification_status": "verified_authoritative"
+    },
+    {
+      "judgment_id": "IND-JUD-SC-2015-SHREYA-SINGHAL",
+      "case_title": "Shreya Singhal v. Union of India",
+      "case_number": "Writ Petition (Criminal) No. 167 of 2012",
+      "court": "CourtType.SUPREME_COURT",
+      "judgment_date": "2015-03-24",
+      "bench_strength": 2,
+      "coram": [
+        "J. Chelameswar, J.",
+        "R.F. Nariman, J."
+      ],
+      "citations": [
+        "(2015) 5 SCC 1",
+        "2015 INSC 249",
+        "AIR 2015 SC 1523"
+      ],
+      "has_ratio": true,
+      "holdings_count": 1,
+      "paragraphs_count": 1,
+      "verification_status": "verified_authoritative"
+    },
+    {
+      "judgment_id": "IND-JUD-SC-2020-SUSHILA-AGGARWAL",
+      "case_title": "Sushila Aggarwal and Others v. State (NCT of Delhi) and Another",
+      "case_number": "Special Leave Petition (Criminal) Nos. 7281-7282 of 2017",
+      "court": "CourtType.SUPREME_COURT",
+      "judgment_date": "2020-01-29",
+      "bench_strength": 5,
+      "coram": [
+        "Arun Mishra, J.",
+        "Indira Banerjee, J.",
+        "Vineet Saran, J.",
+        "M.R. Shah, J.",
+        "S. Ravindra Bhat, J."
+      ],
+      "citations": [
+        "(2020) 5 SCC 1",
+        "2020 INSC 106",
+        "AIR 2020 SC 831"
+      ],
+      "has_ratio": true,
+      "holdings_count": 1,
+      "paragraphs_count": 1,
+      "verification_status": "verified_authoritative"
+    },
+    {
+      "judgment_id": "IND-JUD-SC-2021-VIDYA-DROLIA",
+      "case_title": "Vidya Drolia and Others v. Durga Trading Corporation",
+      "case_number": "Civil Appeal No. 2402 of 2019",
+      "court": "CourtType.SUPREME_COURT",
+      "judgment_date": "2020-12-14",
+      "bench_strength": 3,
+      "coram": [
+        "N.V. Ramana, J.",
+        "Sanjiv Khanna, J.",
+        "Krishna Murari, J."
+      ],
+      "citations": [
+        "(2021) 2 SCC 1",
+        "2020 INSC 697",
+        "AIR 2021 SC 79"
+      ],
+      "has_ratio": true,
+      "holdings_count": 2,
+      "paragraphs_count": 1,
+      "verification_status": "verified_authoritative"
+    },
+    {
+      "judgment_id": "IND-JUD-SC-2005-JACOB-MATHEW",
+      "case_title": "Jacob Mathew v. State of Punjab and Another",
+      "case_number": "Criminal Appeal Nos. 144-145 of 2004",
+      "court": "CourtType.SUPREME_COURT",
+      "judgment_date": "2005-08-05",
+      "bench_strength": 3,
+      "coram": [
+        "R.C. Lahoti, C.J.",
+        "G.P. Mathur, J.",
+        "P.K. Balasubramanyan, J."
+      ],
+      "citations": [
+        "(2005) 6 SCC 1",
+        "2005 INSC 371",
+        "AIR 2005 SC 3180"
+      ],
+      "has_ratio": true,
+      "holdings_count": 1,
+      "paragraphs_count": 1,
+      "verification_status": "verified_authoritative"
+    },
+    {
+      "judgment_id": "IND-JUD-SC-2017-ENERGY-WATCHDOG",
+      "case_title": "Energy Watchdog v. Central Electricity Regulatory Commission and Others",
+      "case_number": "Civil Appeal Nos. 5399-5400 of 2016",
+      "court": "CourtType.SUPREME_COURT",
+      "judgment_date": "2017-04-11",
+      "bench_strength": 2,
+      "coram": [
+        "Pinaki Chandra Ghose, J.",
+        "R.F. Nariman, J."
+      ],
+      "citations": [
+        "(2017) 14 SCC 80",
+        "2017 INSC 338"
+      ],
+      "has_ratio": true,
+      "holdings_count": 1,
+      "paragraphs_count": 1,
+      "verification_status": "verified_authoritative"
+    }
+  ]
+}

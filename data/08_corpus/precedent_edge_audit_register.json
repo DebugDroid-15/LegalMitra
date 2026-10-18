@@ -1,0 +1,328 @@
+{
+  "total_edges_audited": 31,
+  "edges": [
+    {
+      "edge_id": "E-SUCC-BSA63",
+      "source_id": "SEC-BSA-63",
+      "source_name": "Section 63 BSA 2023",
+      "target_id": "SEC-IEA-65B",
+      "target_name": "Section 65B IEA 1872",
+      "relation": "successor_to",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-SUCC-BNSS173",
+      "source_id": "SEC-BNSS-173",
+      "source_name": "Section 173 BNSS 2023",
+      "target_id": "SEC-CRPC-154",
+      "target_name": "Section 154 CrPC 1973",
+      "relation": "successor_to",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-SUCC-BNSS35",
+      "source_id": "SEC-BNSS-35",
+      "source_name": "Section 35 BNSS 2023",
+      "target_id": "SEC-CRPC-41",
+      "target_name": "Section 41 CrPC 1973",
+      "relation": "successor_to",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-SUCC-BNSS482",
+      "source_id": "SEC-BNSS-482",
+      "source_name": "Section 482 BNSS 2023",
+      "target_id": "SEC-CRPC-438",
+      "target_name": "Section 438 CrPC 1973",
+      "relation": "successor_to",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-SUCC-BNS106",
+      "source_id": "SEC-BNS-106",
+      "source_name": "Section 106 BNS 2023",
+      "target_id": "SEC-IPC-304A",
+      "target_name": "Section 304A IPC 1860",
+      "relation": "successor_to",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-INT-ARJUN-65B",
+      "source_id": "CASE-ARJUN-KHOTKAR",
+      "source_name": "Arjun Khotkar v. Kailash Gorantyal",
+      "target_id": "SEC-IEA-65B",
+      "target_name": "Section 65B IEA 1872",
+      "relation": "interprets",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-INT-ARJUN-BSA63",
+      "source_id": "CASE-ARJUN-KHOTKAR",
+      "source_name": "Arjun Khotkar v. Kailash Gorantyal",
+      "target_id": "SEC-BSA-63",
+      "target_name": "Section 63 BSA 2023",
+      "relation": "interprets",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-INT-RANGAPPA-139",
+      "source_id": "CASE-RANGAPPA",
+      "source_name": "Rangappa v. Sri Mohan",
+      "target_id": "SEC-NI-139",
+      "target_name": "Section 139 NI Act 1881",
+      "relation": "interprets",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-INT-STAMP-11",
+      "source_id": "CASE-STAMP-ARBITRATION",
+      "source_name": "In Re: Arbitration Agreements & Stamp Act",
+      "target_id": "SEC-ARB-11",
+      "target_name": "Section 11 Arb Act 1996",
+      "relation": "interprets",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-INT-PUTTA-21",
+      "source_id": "CASE-PUTTASWAMY",
+      "source_name": "Justice K.S. Puttaswamy v. UOI",
+      "target_id": "ART-CONST-21",
+      "target_name": "Article 21 Constitution of India",
+      "relation": "interprets",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-INT-MANEKA-21",
+      "source_id": "CASE-MANEKA-GANDHI",
+      "source_name": "Maneka Gandhi v. Union of India",
+      "target_id": "ART-CONST-21",
+      "target_name": "Article 21 Constitution of India",
+      "relation": "interprets",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-INT-MANEKA-14",
+      "source_id": "CASE-MANEKA-GANDHI",
+      "source_name": "Maneka Gandhi v. Union of India",
+      "target_id": "ART-CONST-14",
+      "target_name": "Article 14 Constitution of India",
+      "relation": "interprets",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-INT-MANEKA-19",
+      "source_id": "CASE-MANEKA-GANDHI",
+      "source_name": "Maneka Gandhi v. Union of India",
+      "target_id": "ART-CONST-19",
+      "target_name": "Article 19 Constitution of India",
+      "relation": "interprets",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-INT-KESAV-368",
+      "source_id": "CASE-KESAVANANDA",
+      "source_name": "Kesavananda Bharati v. State of Kerala",
+      "target_id": "ART-CONST-368",
+      "target_name": "Article 368 Constitution of India",
+      "relation": "interprets",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-INT-DKBASU-21",
+      "source_id": "CASE-DK-BASU",
+      "source_name": "D.K. Basu v. State of West Bengal",
+      "target_id": "ART-CONST-21",
+      "target_name": "Article 21 Constitution of India",
+      "relation": "interprets",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-INT-LALITA-154",
+      "source_id": "CASE-LALITA-KUMARI",
+      "source_name": "Lalita Kumari v. Govt of UP",
+      "target_id": "SEC-CRPC-154",
+      "target_name": "Section 154 CrPC 1973",
+      "relation": "interprets",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-INT-LALITA-BNSS173",
+      "source_id": "CASE-LALITA-KUMARI",
+      "source_name": "Lalita Kumari v. Govt of UP",
+      "target_id": "SEC-BNSS-173",
+      "target_name": "Section 173 BNSS 2023",
+      "relation": "interprets",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-INT-ARNESH-41",
+      "source_id": "CASE-ARNESH-KUMAR",
+      "source_name": "Arnesh Kumar v. State of Bihar",
+      "target_id": "SEC-CRPC-41",
+      "target_name": "Section 41 CrPC 1973",
+      "relation": "interprets",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-INT-ARNESH-BNSS35",
+      "source_id": "CASE-ARNESH-KUMAR",
+      "source_name": "Arnesh Kumar v. State of Bihar",
+      "target_id": "SEC-BNSS-35",
+      "target_name": "Section 35 BNSS 2023",
+      "relation": "interprets",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-INT-SHREYA-66A",
+      "source_id": "CASE-SHREYA-SINGHAL",
+      "source_name": "Shreya Singhal v. Union of India",
+      "target_id": "SEC-IT-66A",
+      "target_name": "Section 66A IT Act 2000",
+      "relation": "interprets",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-INT-SUSHILA-438",
+      "source_id": "CASE-SUSHILA-AGGARWAL",
+      "source_name": "Sushila Aggarwal v. State (NCT of Delhi)",
+      "target_id": "SEC-CRPC-438",
+      "target_name": "Section 438 CrPC 1973",
+      "relation": "interprets",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-INT-SUSHILA-BNSS482",
+      "source_id": "CASE-SUSHILA-AGGARWAL",
+      "source_name": "Sushila Aggarwal v. State (NCT of Delhi)",
+      "target_id": "SEC-BNSS-482",
+      "target_name": "Section 482 BNSS 2023",
+      "relation": "interprets",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-INT-VIDYA-11",
+      "source_id": "CASE-VIDYA-DROLIA",
+      "source_name": "Vidya Drolia v. Durga Trading Corp.",
+      "target_id": "SEC-ARB-11",
+      "target_name": "Section 11 Arb Act 1996",
+      "relation": "interprets",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-INT-JACOB-304A",
+      "source_id": "CASE-JACOB-MATHEW",
+      "source_name": "Jacob Mathew v. State of Punjab",
+      "target_id": "SEC-IPC-304A",
+      "target_name": "Section 304A IPC 1860",
+      "relation": "interprets",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-INT-ENERGY-56",
+      "source_id": "CASE-ENERGY-WATCHDOG",
+      "source_name": "Energy Watchdog v. CERC",
+      "target_id": "SEC-ICA-56",
+      "target_name": "Section 56 Indian Contract Act 1872",
+      "relation": "interprets",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-FOLLOW-ARJUN-ANVAR",
+      "source_id": "CASE-ARJUN-KHOTKAR",
+      "source_name": "Arjun Khotkar v. Kailash Gorantyal",
+      "target_id": "CASE-ANVAR-PV",
+      "target_name": "Anvar P.V. v. P.K. Basheer",
+      "relation": "follows",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-OVERRULE-ARJUN-SHAFHI",
+      "source_id": "CASE-ARJUN-KHOTKAR",
+      "source_name": "Arjun Khotkar v. Kailash Gorantyal",
+      "target_id": "CASE-SHAFHI-MOHD",
+      "target_name": "Shafhi Mohammad v. State of H.P.",
+      "relation": "partially_overrules",
+      "properties": {
+        "is_partial": true,
+        "scope": "Electronic evidence certificate waiver",
+        "affected_proposition": "Certificate waiver"
+      },
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-OVERRULE-RANGAPPA-BHAT",
+      "source_id": "CASE-RANGAPPA",
+      "source_name": "Rangappa v. Sri Mohan",
+      "target_id": "CASE-KRISHNA-BHAT",
+      "target_name": "Krishna Janardhan Bhat",
+      "relation": "overrules",
+      "properties": {
+        "is_partial": false,
+        "scope": "Entire dictum on Section 139 presumption not extending to debt"
+      },
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-OVERRULE-STAMP-NNGLOBAL",
+      "source_id": "CASE-STAMP-ARBITRATION",
+      "source_name": "In Re: Arbitration Agreements & Stamp Act",
+      "target_id": "CASE-NN-GLOBAL",
+      "target_name": "NN Global Mercantile v. Indo Unique Flame",
+      "relation": "overrules",
+      "properties": {
+        "is_partial": false,
+        "scope": "Unstamped arbitration clause voidness at referral stage"
+      },
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-AFFIRM-SUSHILA-SIBBIA",
+      "source_id": "CASE-SUSHILA-AGGARWAL",
+      "source_name": "Sushila Aggarwal v. State (NCT of Delhi)",
+      "target_id": "CASE-SIBBIA",
+      "target_name": "Gurbaksh Singh Sibbia v. State of Punjab",
+      "relation": "affirms",
+      "properties": {},
+      "verified_status": "verified_authoritative"
+    },
+    {
+      "edge_id": "E-OVERRULE-VIDYA-HIMANGNI",
+      "source_id": "CASE-VIDYA-DROLIA",
+      "source_name": "Vidya Drolia v. Durga Trading Corp.",
+      "target_id": "CASE-HIMANGNI",
+      "target_name": "Himangni Enterprises v. Kamaljeet Singh Ahluwalia",
+      "relation": "overrules",
+      "properties": {
+        "is_partial": false,
+        "scope": "Non-arbitrability of landlord-tenant disputes governed by Transfer of Property Act"
+      },
+      "verified_status": "verified_authoritative"
+    }
+  ]
+}

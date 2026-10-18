@@ -1,0 +1,8 @@
+{
+  "manifest_version": "4.0.0",
+  "dataset_name": "legalmitra_evaluation_cases_v4",
+  "total_cases": 46,
+  "sha256": "99518dbb53b03a6912cc7a22dea59209b8e696664fa38e56f8c50750bbae6e35",
+  "generated_date": "2026-10-18",
+  "phase": "Phase 25 Independent Legal Authority Audit"
+}
