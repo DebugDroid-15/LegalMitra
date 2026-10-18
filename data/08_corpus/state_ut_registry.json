@@ -10,7 +10,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 2",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-AR",
@@ -23,7 +24,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 3",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-AS",
@@ -36,7 +38,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 2",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-BR",
@@ -49,7 +52,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 2",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-CT",
@@ -62,7 +66,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 3",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-GA",
@@ -75,7 +80,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 3",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-GJ",
@@ -88,7 +94,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 2",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-HR",
@@ -101,7 +108,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 2",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-HP",
@@ -114,7 +122,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 3",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-JH",
@@ -127,7 +136,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 3",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-KA",
@@ -140,7 +150,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 2",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-KL",
@@ -153,7 +164,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 2",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-MP",
@@ -166,7 +178,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 2",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-MH",
@@ -179,7 +192,8 @@
     "active_in_pilot": true,
     "ingested_acts_count": 2,
     "priority_level": "Phase 16 Core",
-    "notes": "High-priority state for commercial, tenancy, and municipal police jurisprudence."
+    "notes": "High-priority state for commercial, tenancy, and municipal police jurisprudence.",
+    "coverage_maturity_state": "temporally_verified"
   },
   {
     "jurisdiction_code": "IN-MN",
@@ -192,7 +206,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 3",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-ML",
@@ -205,7 +220,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 3",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-MZ",
@@ -218,7 +234,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 3",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-NL",
@@ -231,7 +248,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 3",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-OR",
@@ -244,7 +262,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 2",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-PB",
@@ -257,7 +276,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 2",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-RJ",
@@ -270,7 +290,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 2",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-SK",
@@ -283,7 +304,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 3",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-TN",
@@ -296,7 +318,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 2",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-TG",
@@ -309,7 +332,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 2",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-TR",
@@ -322,7 +346,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 3",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-UP",
@@ -335,7 +360,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 2",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-UT",
@@ -348,7 +374,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 3",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-WB",
@@ -361,7 +388,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 2",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-AN",
@@ -374,7 +402,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 3",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-CH",
@@ -387,7 +416,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 3",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-DH",
@@ -400,7 +430,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 3",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-DL",
@@ -413,7 +444,8 @@
     "active_in_pilot": true,
     "ingested_acts_count": 2,
     "priority_level": "Phase 16 Core",
-    "notes": "High-priority capital territory for civil tenancy, urban policing, and municipal disputes."
+    "notes": "High-priority capital territory for civil tenancy, urban policing, and municipal disputes.",
+    "coverage_maturity_state": "temporally_verified"
   },
   {
     "jurisdiction_code": "IN-JK",
@@ -426,7 +458,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 2",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-LA",
@@ -439,7 +472,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 3",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-LD",
@@ -452,7 +486,8 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 3",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   },
   {
     "jurisdiction_code": "IN-PY",
@@ -465,6 +500,7 @@
     "active_in_pilot": false,
     "ingested_acts_count": 0,
     "priority_level": "Tier 3",
-    "notes": null
+    "notes": null,
+    "coverage_maturity_state": "discovered"
   }
 ]

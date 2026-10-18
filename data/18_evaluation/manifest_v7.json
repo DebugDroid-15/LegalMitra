@@ -1,0 +1,35 @@
+{
+  "manifest_version": "7.0.0",
+  "phase": "Phase 29",
+  "created_at": "2026-10-18T11:45:00Z",
+  "benchmark_name": "LegalMitra National Benchmark v7",
+  "total_cases": 80,
+  "sha256": "fdeb9ac32325061948810121b7accbddb8dae52bde43ac2a20644cc7ccec02dc",
+  "predecessor_benchmark": "Benchmark v6 (68 cases)",
+  "new_cases_added": 12,
+  "new_case_ids": [
+    "EVAL-P29-STAT-001",
+    "EVAL-P29-STAT-002",
+    "EVAL-P29-STAT-003",
+    "EVAL-P29-STAT-004",
+    "EVAL-P29-PREC-001",
+    "EVAL-P29-PREC-002",
+    "EVAL-P29-PREC-003",
+    "EVAL-P29-PREC-004",
+    "EVAL-P29-PROC-001",
+    "EVAL-P29-MISS-001",
+    "EVAL-P29-MISS-002",
+    "EVAL-P29-MISS-003"
+  ],
+  "categories_breakdown": {
+    "statutory_pinpoint": 23,
+    "temporal_applicability": 8,
+    "precedent_authority": 20,
+    "procedural_timeline": 3,
+    "conflicting_source": 1,
+    "adversarial_premise": 7,
+    "missing_evidence": 10,
+    "prompt_injection": 2,
+    "privacy_protected": 6
+  }
+}
