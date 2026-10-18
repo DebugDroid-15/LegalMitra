@@ -1,0 +1,85 @@
+{
+  "batch_id": "BATCH_24_JUDICIAL_EXPANSION",
+  "new_judgments_count": 10,
+  "total_new_chunks": 33,
+  "database_summary": {
+    "sources": 57,
+    "total_chunks": 1495,
+    "active_retrievable_chunks": 1489,
+    "cases": 14,
+    "judicial_documents": 7,
+    "hearing_events": 6
+  },
+  "judgments": [
+    {
+      "source_id": "IND-JUD-SC-1978-MANEKA-GANDHI",
+      "case_title": "Maneka Gandhi v. Union of India",
+      "chunks_indexed": 5,
+      "court": "Supreme Court of India",
+      "date": "1978-01-25"
+    },
+    {
+      "source_id": "IND-JUD-SC-1973-KESAVANANDA",
+      "case_title": "Kesavananda Bharati Sripadagalvaru v. State of Kerala",
+      "chunks_indexed": 3,
+      "court": "Supreme Court of India",
+      "date": "1973-04-24"
+    },
+    {
+      "source_id": "IND-JUD-SC-1997-DK-BASU",
+      "case_title": "D.K. Basu v. State of West Bengal",
+      "chunks_indexed": 3,
+      "court": "Supreme Court of India",
+      "date": "1996-12-18"
+    },
+    {
+      "source_id": "IND-JUD-SC-2014-LALITA-KUMARI",
+      "case_title": "Lalita Kumari v. Government of Uttar Pradesh and Others",
+      "chunks_indexed": 3,
+      "court": "Supreme Court of India",
+      "date": "2013-11-12"
+    },
+    {
+      "source_id": "IND-JUD-SC-2014-ARNESH-KUMAR",
+      "case_title": "Arnesh Kumar v. State of Bihar and Another",
+      "chunks_indexed": 3,
+      "court": "Supreme Court of India",
+      "date": "2014-07-02"
+    },
+    {
+      "source_id": "IND-JUD-SC-2015-SHREYA-SINGHAL",
+      "case_title": "Shreya Singhal v. Union of India",
+      "chunks_indexed": 3,
+      "court": "Supreme Court of India",
+      "date": "2015-03-24"
+    },
+    {
+      "source_id": "IND-JUD-SC-2020-SUSHILA-AGGARWAL",
+      "case_title": "Sushila Aggarwal and Others v. State (NCT of Delhi) and Another",
+      "chunks_indexed": 3,
+      "court": "Supreme Court of India",
+      "date": "2020-01-29"
+    },
+    {
+      "source_id": "IND-JUD-SC-2021-VIDYA-DROLIA",
+      "case_title": "Vidya Drolia and Others v. Durga Trading Corporation",
+      "chunks_indexed": 4,
+      "court": "Supreme Court of India",
+      "date": "2020-12-14"
+    },
+    {
+      "source_id": "IND-JUD-SC-2005-JACOB-MATHEW",
+      "case_title": "Jacob Mathew v. State of Punjab and Another",
+      "chunks_indexed": 3,
+      "court": "Supreme Court of India",
+      "date": "2005-08-05"
+    },
+    {
+      "source_id": "IND-JUD-SC-2017-ENERGY-WATCHDOG",
+      "case_title": "Energy Watchdog v. Central Electricity Regulatory Commission and Others",
+      "chunks_indexed": 3,
+      "court": "Supreme Court of India",
+      "date": "2017-04-11"
+    }
+  ]
+}

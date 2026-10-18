@@ -1,0 +1,8 @@
+{
+  "manifest_version": "3.0.0",
+  "dataset_name": "legalmitra_evaluation_cases_v3",
+  "total_cases": 36,
+  "sha256": "a23d6e98227fa8da35afc11859cb3474df93bae59705b2facbf2dd86e21454e8",
+  "generated_date": "2026-10-18",
+  "phase": "Phase 24 Master Expansion"
+}

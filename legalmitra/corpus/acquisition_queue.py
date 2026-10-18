@@ -81,13 +81,28 @@ class AcquisitionPriorityScorer:
     }
 
     DOMAIN_MULTIPLIERS = {
+        # 14 Practical Legal Domains (Phase 24 Priority Queue)
+        "Constitutional rights and remedies": 1.30,
         "Constitutional Law": 1.25,
+        "Police procedure, FIRs, and criminal procedure": 1.25,
         "Criminal Law": 1.25,
         "Criminal Procedure": 1.25,
+        "Cybercrime and online fraud": 1.25,
+        "Information technology and data protection": 1.20,
+        "Data Protection": 1.20,
+        "Technology Law": 1.20,
+        "Women's rights and protective legislation": 1.20,
+        "Right to Information": 1.15,
+        "Consumer protection": 1.15,
+        "Arbitration and dispute resolution": 1.15,
+        "Contract and commercial law": 1.15,
         "Commercial Law": 1.15,
-        "Technology Law": 1.15,
-        "Data Protection": 1.15,
-        "Housing & Tenancy": 1.05,
+        "Civil procedure and limitation": 1.10,
+        "Property, rental, and tenancy": 1.10,
+        "Housing & Tenancy": 1.10,
+        "Traffic and motor vehicle law": 1.10,
+        "Employment and labour rights": 1.10,
+        "Family law": 1.10,
         "Synthetic Test Fixture": 0.0,
     }
 

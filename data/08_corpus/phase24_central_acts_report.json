@@ -1,0 +1,36 @@
+{
+  "batch_id": "BATCH_24_CENTRAL_ACTS_COMPLETION",
+  "total_new_chunks": 57,
+  "documents": [
+    {
+      "source_id": "IND-ACT-2023-BSA",
+      "title": "The Bharatiya Sakshya Adhiniyam, 2023",
+      "new_chunks_indexed": 15,
+      "total_sections": 15
+    },
+    {
+      "source_id": "IND-ACT-2023-BNS",
+      "title": "The Bharatiya Nyaya Sanhita, 2023",
+      "new_chunks_indexed": 20,
+      "total_sections": 20
+    },
+    {
+      "source_id": "IND-ACT-2012-POCSO",
+      "title": "Protection of Children from Sexual Offences Act, 2012",
+      "new_chunks_indexed": 9,
+      "total_sections": 9
+    },
+    {
+      "source_id": "IND-ACT-2005-RTI",
+      "title": "The Right to Information Act, 2005",
+      "new_chunks_indexed": 9,
+      "total_sections": 9
+    },
+    {
+      "source_id": "IND-ACT-1988-MVA",
+      "title": "The Motor Vehicles Act, 1988 (as amended)",
+      "new_chunks_indexed": 4,
+      "total_sections": 4
+    }
+  ]
+}

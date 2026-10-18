@@ -262,6 +262,19 @@ def build_national_judicial_knowledge_graph() -> LegalKnowledgeGraph:
     graph.add_node(GraphNode("SEC-ARB-11", EntityType.SECTION, "Section 11 Arb Act 1996", "Arbitration Act s.11"))
     graph.add_node(GraphNode("SEC-ARB-16", EntityType.SECTION, "Section 16 Arb Act 1996", "Arbitration Act s.16"))
     graph.add_node(GraphNode("ART-CONST-21", EntityType.ARTICLE, "Article 21 Constitution of India", "Art. 21"))
+    graph.add_node(GraphNode("ART-CONST-14", EntityType.ARTICLE, "Article 14 Constitution of India", "Art. 14"))
+    graph.add_node(GraphNode("ART-CONST-19", EntityType.ARTICLE, "Article 19 Constitution of India", "Art. 19"))
+    graph.add_node(GraphNode("ART-CONST-368", EntityType.ARTICLE, "Article 368 Constitution of India", "Art. 368"))
+    graph.add_node(GraphNode("SEC-CRPC-154", EntityType.SECTION, "Section 154 CrPC 1973", "CrPC s.154"))
+    graph.add_node(GraphNode("SEC-BNSS-173", EntityType.SECTION, "Section 173 BNSS 2023", "BNSS s.173"))
+    graph.add_node(GraphNode("SEC-CRPC-41", EntityType.SECTION, "Section 41 CrPC 1973", "CrPC s.41"))
+    graph.add_node(GraphNode("SEC-BNSS-35", EntityType.SECTION, "Section 35 BNSS 2023", "BNSS s.35"))
+    graph.add_node(GraphNode("SEC-CRPC-438", EntityType.SECTION, "Section 438 CrPC 1973", "CrPC s.438"))
+    graph.add_node(GraphNode("SEC-BNSS-482", EntityType.SECTION, "Section 482 BNSS 2023", "BNSS s.482"))
+    graph.add_node(GraphNode("SEC-IT-66A", EntityType.SECTION, "Section 66A IT Act 2000", "IT Act s.66A"))
+    graph.add_node(GraphNode("SEC-IPC-304A", EntityType.SECTION, "Section 304A IPC 1860", "IPC s.304A"))
+    graph.add_node(GraphNode("SEC-BNS-106", EntityType.SECTION, "Section 106 BNS 2023", "BNS s.106"))
+    graph.add_node(GraphNode("SEC-ICA-56", EntityType.SECTION, "Section 56 Indian Contract Act 1872", "ICA s.56"))
 
     # 2. Case Nodes
     graph.add_node(GraphNode("CASE-ARJUN-KHOTKAR", EntityType.CASE, "Arjun Khotkar v. Kailash Gorantyal", "(2020) 7 SCC 1"))
@@ -272,9 +285,26 @@ def build_national_judicial_knowledge_graph() -> LegalKnowledgeGraph:
     graph.add_node(GraphNode("CASE-STAMP-ARBITRATION", EntityType.CASE, "In Re: Arbitration Agreements & Stamp Act", "(2024) 6 SCC 1"))
     graph.add_node(GraphNode("CASE-NN-GLOBAL", EntityType.CASE, "NN Global Mercantile v. Indo Unique Flame", "(2023) 7 SCC 1"))
     graph.add_node(GraphNode("CASE-PUTTASWAMY", EntityType.CASE, "Justice K.S. Puttaswamy v. UOI", "(2017) 10 SCC 1"))
+    # Phase 24 Additions
+    graph.add_node(GraphNode("CASE-MANEKA-GANDHI", EntityType.CASE, "Maneka Gandhi v. Union of India", "(1978) 1 SCC 248"))
+    graph.add_node(GraphNode("CASE-KESAVANANDA", EntityType.CASE, "Kesavananda Bharati v. State of Kerala", "(1973) 4 SCC 225"))
+    graph.add_node(GraphNode("CASE-DK-BASU", EntityType.CASE, "D.K. Basu v. State of West Bengal", "(1997) 1 SCC 416"))
+    graph.add_node(GraphNode("CASE-LALITA-KUMARI", EntityType.CASE, "Lalita Kumari v. Govt of UP", "(2014) 2 SCC 1"))
+    graph.add_node(GraphNode("CASE-ARNESH-KUMAR", EntityType.CASE, "Arnesh Kumar v. State of Bihar", "(2014) 8 SCC 273"))
+    graph.add_node(GraphNode("CASE-SHREYA-SINGHAL", EntityType.CASE, "Shreya Singhal v. Union of India", "(2015) 5 SCC 1"))
+    graph.add_node(GraphNode("CASE-SUSHILA-AGGARWAL", EntityType.CASE, "Sushila Aggarwal v. State (NCT of Delhi)", "(2020) 5 SCC 1"))
+    graph.add_node(GraphNode("CASE-SIBBIA", EntityType.CASE, "Gurbaksh Singh Sibbia v. State of Punjab", "(1980) 2 SCC 565"))
+    graph.add_node(GraphNode("CASE-VIDYA-DROLIA", EntityType.CASE, "Vidya Drolia v. Durga Trading Corp.", "(2021) 2 SCC 1"))
+    graph.add_node(GraphNode("CASE-HIMANGNI", EntityType.CASE, "Himangni Enterprises v. Kamaljeet Singh Ahluwalia", "(2017) 10 SCC 706"))
+    graph.add_node(GraphNode("CASE-JACOB-MATHEW", EntityType.CASE, "Jacob Mathew v. State of Punjab", "(2005) 6 SCC 1"))
+    graph.add_node(GraphNode("CASE-ENERGY-WATCHDOG", EntityType.CASE, "Energy Watchdog v. CERC", "(2017) 14 SCC 80"))
 
     # 3. Successor / Statutory Edges
     graph.add_edge(GraphEdge("E-SUCC-BSA63", "SEC-BSA-63", "SEC-IEA-65B", RelationType.SUCCESSOR_TO))
+    graph.add_edge(GraphEdge("E-SUCC-BNSS173", "SEC-BNSS-173", "SEC-CRPC-154", RelationType.SUCCESSOR_TO))
+    graph.add_edge(GraphEdge("E-SUCC-BNSS35", "SEC-BNSS-35", "SEC-CRPC-41", RelationType.SUCCESSOR_TO))
+    graph.add_edge(GraphEdge("E-SUCC-BNSS482", "SEC-BNSS-482", "SEC-CRPC-438", RelationType.SUCCESSOR_TO))
+    graph.add_edge(GraphEdge("E-SUCC-BNS106", "SEC-BNS-106", "SEC-IPC-304A", RelationType.SUCCESSOR_TO))
 
     # 4. Judicial Interpretation Edges
     graph.add_edge(GraphEdge("E-INT-ARJUN-65B", "CASE-ARJUN-KHOTKAR", "SEC-IEA-65B", RelationType.INTERPRETS))
@@ -282,6 +312,21 @@ def build_national_judicial_knowledge_graph() -> LegalKnowledgeGraph:
     graph.add_edge(GraphEdge("E-INT-RANGAPPA-139", "CASE-RANGAPPA", "SEC-NI-139", RelationType.INTERPRETS))
     graph.add_edge(GraphEdge("E-INT-STAMP-11", "CASE-STAMP-ARBITRATION", "SEC-ARB-11", RelationType.INTERPRETS))
     graph.add_edge(GraphEdge("E-INT-PUTTA-21", "CASE-PUTTASWAMY", "ART-CONST-21", RelationType.INTERPRETS))
+    graph.add_edge(GraphEdge("E-INT-MANEKA-21", "CASE-MANEKA-GANDHI", "ART-CONST-21", RelationType.INTERPRETS))
+    graph.add_edge(GraphEdge("E-INT-MANEKA-14", "CASE-MANEKA-GANDHI", "ART-CONST-14", RelationType.INTERPRETS))
+    graph.add_edge(GraphEdge("E-INT-MANEKA-19", "CASE-MANEKA-GANDHI", "ART-CONST-19", RelationType.INTERPRETS))
+    graph.add_edge(GraphEdge("E-INT-KESAV-368", "CASE-KESAVANANDA", "ART-CONST-368", RelationType.INTERPRETS))
+    graph.add_edge(GraphEdge("E-INT-DKBASU-21", "CASE-DK-BASU", "ART-CONST-21", RelationType.INTERPRETS))
+    graph.add_edge(GraphEdge("E-INT-LALITA-154", "CASE-LALITA-KUMARI", "SEC-CRPC-154", RelationType.INTERPRETS))
+    graph.add_edge(GraphEdge("E-INT-LALITA-BNSS173", "CASE-LALITA-KUMARI", "SEC-BNSS-173", RelationType.INTERPRETS))
+    graph.add_edge(GraphEdge("E-INT-ARNESH-41", "CASE-ARNESH-KUMAR", "SEC-CRPC-41", RelationType.INTERPRETS))
+    graph.add_edge(GraphEdge("E-INT-ARNESH-BNSS35", "CASE-ARNESH-KUMAR", "SEC-BNSS-35", RelationType.INTERPRETS))
+    graph.add_edge(GraphEdge("E-INT-SHREYA-66A", "CASE-SHREYA-SINGHAL", "SEC-IT-66A", RelationType.INTERPRETS))
+    graph.add_edge(GraphEdge("E-INT-SUSHILA-438", "CASE-SUSHILA-AGGARWAL", "SEC-CRPC-438", RelationType.INTERPRETS))
+    graph.add_edge(GraphEdge("E-INT-SUSHILA-BNSS482", "CASE-SUSHILA-AGGARWAL", "SEC-BNSS-482", RelationType.INTERPRETS))
+    graph.add_edge(GraphEdge("E-INT-VIDYA-11", "CASE-VIDYA-DROLIA", "SEC-ARB-11", RelationType.INTERPRETS))
+    graph.add_edge(GraphEdge("E-INT-JACOB-304A", "CASE-JACOB-MATHEW", "SEC-IPC-304A", RelationType.INTERPRETS))
+    graph.add_edge(GraphEdge("E-INT-ENERGY-56", "CASE-ENERGY-WATCHDOG", "SEC-ICA-56", RelationType.INTERPRETS))
 
     # 5. Precedent & Overruling Edges
     graph.add_edge(GraphEdge("E-FOLLOW-ARJUN-ANVAR", "CASE-ARJUN-KHOTKAR", "CASE-ANVAR-PV", RelationType.FOLLOWS))
@@ -296,6 +341,11 @@ def build_national_judicial_knowledge_graph() -> LegalKnowledgeGraph:
     graph.add_edge(GraphEdge(
         "E-OVERRULE-STAMP-NNGLOBAL", "CASE-STAMP-ARBITRATION", "CASE-NN-GLOBAL", RelationType.OVERRULES,
         properties={"is_partial": False, "scope": "Unstamped arbitration clause voidness at referral stage"}
+    ))
+    graph.add_edge(GraphEdge("E-AFFIRM-SUSHILA-SIBBIA", "CASE-SUSHILA-AGGARWAL", "CASE-SIBBIA", RelationType.AFFIRMS))
+    graph.add_edge(GraphEdge(
+        "E-OVERRULE-VIDYA-HIMANGNI", "CASE-VIDYA-DROLIA", "CASE-HIMANGNI", RelationType.OVERRULES,
+        properties={"is_partial": False, "scope": "Non-arbitrability of landlord-tenant disputes governed by Transfer of Property Act"}
     ))
 
     return graph
