@@ -184,16 +184,8 @@
       <div class="px-space-md mt-space-md flex-1">
         <span class="font-label-sm text-label-sm uppercase tracking-wider text-outline px-space-xs mb-space-xs block font-semibold">Recent Consultations</span>
         <div id="recent-conversations-list" class="space-y-1">
-          <!-- Dynamically populated or default items -->
-          <button onclick="loadSamplePrompt('Can a High Court quash an FIR in a commercial dispute under Section 528 of the Bharatiya Nagarik Suraksha Sanhita (BNSS), 2023?')" class="w-full text-left block px-space-sm py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors truncate font-body-sm text-body-sm">
-            BNSS Sec 528 quashing scope
-          </button>
-          <button onclick="loadSamplePrompt('What does Section 438 of the CrPC deal with regarding anticipatory bail?')" class="w-full text-left block px-space-sm py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors truncate font-body-sm text-body-sm">
-            Anticipatory bail jurisprudence
-          </button>
-          <button onclick="loadSamplePrompt('Explain Section 44 of the Digital Personal Data Protection Act, 2023.')" class="w-full text-left block px-space-sm py-1.5 rounded text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors truncate font-body-sm text-body-sm">
-            DPDP Act 2023 Section 44
-          </button>
+          <!-- Clean empty placeholder for pristine first-chat experience -->
+          <div class="px-space-sm py-3 text-center text-outline font-caption text-caption italic">No prior consultations</div>
         </div>
       </div>
     </div>
@@ -233,7 +225,7 @@
         </div>
         <div class="hidden md:flex items-center p-0.5 rounded bg-surface-container-high border border-outline-variant/20">
           <span class="px-space-sm py-1 rounded bg-surface-container-lowest font-label-md text-label-md text-primary font-medium shadow-sm">Verified Primary Sources</span>
-          <span class="px-space-sm py-1 font-label-md text-label-md text-on-surface-variant font-medium">1,149 Indexed Provisions</span>
+          <span id="header-chunk-count" class="px-space-sm py-1 font-label-md text-label-md text-on-surface-variant font-medium">1,505 Indexed Provisions</span>
         </div>
       </div>
 
@@ -396,7 +388,7 @@
               <span class="font-label-md text-label-md text-primary font-semibold">Consulting Verified Legal Knowledge Base...</span>
             </div>
             <p class="font-body-sm text-body-sm text-on-surface-variant">
-              Scanning 1,149 verified statutory provisions, judgments, and authentic gazette notifications...
+              Scanning 1,505 verified statutory provisions, judgments, and authentic gazette notifications...
             </p>
           </div>
         </div>
@@ -470,6 +462,7 @@
     async function handleChatSubmit(e) {
       if (e) e.preventDefault();
       const input = document.getElementById('chat-input');
+      const sendBtn = document.getElementById('send-button');
       const query = input.value.trim();
       if (!query) return;
 
@@ -479,6 +472,8 @@
       // Render user message
       renderUserMessage(query);
       input.value = '';
+      if (sendBtn) sendBtn.disabled = true;
+      input.disabled = true;
 
       // Show loading indicator
       const loader = document.getElementById('loading-indicator');
@@ -497,7 +492,8 @@
         });
 
         if (!response.ok) {
-          throw new Error('API server returned error: ' + response.status);
+          const errData = await response.json().catch(() => ({ detail: response.statusText }));
+          throw new Error(errData.detail || 'API server returned error: ' + response.status);
         }
 
         const data = await response.json();
@@ -506,10 +502,14 @@
         document.getElementById('matter-title-display').innerText = query.substring(0, 50) + (query.length > 50 ? '...' : '');
 
         renderAssistantResponse(data);
+        await refreshRecentConversations();
       } catch (err) {
         renderErrorMessage(err.message);
       } finally {
         loader.classList.add('hidden');
+        if (sendBtn) sendBtn.disabled = false;
+        input.disabled = false;
+        input.focus();
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
       }
     }
@@ -730,6 +730,8 @@
       activeConversationId = null;
       document.getElementById('messages-container').innerHTML = '';
       document.getElementById('empty-state-view').classList.remove('hidden');
+      document.getElementById('matter-id-display').innerText = 'New Consultation';
+      document.getElementById('matter-title-display').innerText = 'Indian Statutory & Judicial Inquiry';
       document.getElementById('chat-input').value = '';
       document.getElementById('chat-input').focus();
     });
@@ -737,17 +739,24 @@
     async function refreshRecentConversations() {
       try {
         const res = await fetch('/api/v1/conversations');
-        if (!res.ok) return;
-        const convs = await res.json();
         const listEl = document.getElementById('recent-conversations-list');
-        if (!convs || convs.length === 0) return;
+        if (!listEl) return;
+        if (!res.ok) {
+          listEl.innerHTML = '<div class="px-space-sm py-3 text-center text-outline font-caption text-caption italic">No prior consultations</div>';
+          return;
+        }
+        const convs = await res.json();
+        if (!convs || convs.length === 0) {
+          listEl.innerHTML = '<div class="px-space-sm py-3 text-center text-outline font-caption text-caption italic">No prior consultations</div>';
+          return;
+        }
         
         listEl.innerHTML = convs.map(c => `
           <div class="flex items-center justify-between group rounded hover:bg-surface-container-high px-space-sm py-1">
             <button onclick="loadConversation('${c.conversation_id}')" class="flex-1 text-left truncate font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface">
               ${escapeHtml(c.title)}
             </button>
-            <button onclick="deleteConversation('${c.conversation_id}', event)" class="opacity-0 group-hover:opacity-100 p-1 text-outline hover:text-error transition-opacity" title="Delete conversation">
+            <button onclick="deleteConversation('${c.conversation_id}', event)" class="opacity-0 group-hover:opacity-100 p-1 text-outline hover:text-error transition-opacity" title="Delete consultation">
               <span class="material-symbols-outlined text-[14px]">delete</span>
             </button>
           </div>
@@ -805,8 +814,30 @@
       }
     }
 
+    async function loadSystemHealth() {
+      try {
+        const res = await fetch('/api/v1/health');
+        if (res.ok) {
+          const data = await res.json();
+          const chunkEl = document.getElementById('header-chunk-count');
+          if (chunkEl && data.knowledge_base_chunks) {
+            chunkEl.innerText = `${data.knowledge_base_chunks.toLocaleString()} Indexed Provisions`;
+          }
+          const sysStatus = document.getElementById('system-status-indicator');
+          if (sysStatus) {
+            sysStatus.innerText = data.status === 'healthy' ? 'Online' : 'Degraded';
+          }
+        }
+      } catch (e) {
+        console.warn('Health check fetch skipped:', e);
+      }
+    }
+
     // Refresh on startup and after chat submit
-    window.addEventListener('DOMContentLoaded', refreshRecentConversations);
+    window.addEventListener('DOMContentLoaded', () => {
+      loadSystemHealth();
+      refreshRecentConversations();
+    });
   </script>
 </body>
 </html>

@@ -43,8 +43,17 @@ def rag(kb):
 
 
 @pytest.fixture(scope="module")
-def api_client():
-    return TestClient(app)
+def api_client(tmp_path_factory):
+    import legalmitra.web.app as web_app
+    from legalmitra.web.store import ConversationStore
+    orig_conv_store = web_app.conv_store
+    orig_llm = web_app.rag_engine.llm_provider
+    web_app.rag_engine.llm_provider = MockLLMProvider()
+    td = tmp_path_factory.mktemp("conv_db")
+    web_app.conv_store = ConversationStore(db_path=str(td / "test_conv.db"))
+    yield TestClient(app)
+    web_app.conv_store = orig_conv_store
+    web_app.rag_engine.llm_provider = orig_llm
 
 
 def test_cross_user_session_isolation(api_client):

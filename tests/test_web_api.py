@@ -47,10 +47,16 @@ def mock_rag_engine(monkeypatch):
 
 
 @pytest.fixture
-def client(mock_rag_engine):
+def client(mock_rag_engine, tmp_path):
     # Reset rate limit cache before tests
     _rate_limit_cache.clear()
-    return TestClient(app)
+    import legalmitra.web.app as web_app
+    from legalmitra.web.store import ConversationStore
+    orig_conv_store = web_app.conv_store
+    test_db = tmp_path / "test_conversations.db"
+    web_app.conv_store = ConversationStore(db_path=str(test_db))
+    yield TestClient(app)
+    web_app.conv_store = orig_conv_store
 
 
 def test_health_check_endpoint(client):
