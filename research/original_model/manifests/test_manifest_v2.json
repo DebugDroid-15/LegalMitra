@@ -1,0 +1,14 @@
+{
+  "passage_count": 153,
+  "sample_count": 334,
+  "token_count": 34484,
+  "english_tokens": 34017,
+  "hindi_tokens": 467,
+  "source_ids": [
+    "IND-JUD-SC-2020-ARJUN-KHOTKAR",
+    "IND-STAT-DPDP-2023",
+    "IND-STAT-IT-2000-HI",
+    "IND-STAT-LIMIT-1963"
+  ],
+  "sha256": "f5664193c4577a15dc6b5a3872ffda0cdf6e539ef818b645f19f0184c9781da3"
+}

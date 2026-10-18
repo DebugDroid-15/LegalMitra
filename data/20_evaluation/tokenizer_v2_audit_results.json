@@ -1,0 +1,180 @@
+{
+  "audit_version": "v2.0.0",
+  "phase": 33,
+  "v1_spec": {
+    "path": "research/original_model/tokenizer.json",
+    "vocab_size": 1024,
+    "merges_count": 933
+  },
+  "v2_spec": {
+    "path": "research/original_model/tokenizer_v2.json",
+    "vocab_size": 2048,
+    "merges_count": 1811
+  },
+  "aggregate_comparison": {
+    "total_sample_characters": 736,
+    "total_sample_words": 113,
+    "v1_total_tokens": 402,
+    "v2_total_tokens": 238,
+    "v1_tokens_per_word": 3.56,
+    "v2_tokens_per_word": 2.11,
+    "overall_token_reduction_pct": 40.8
+  },
+  "vocabulary_utilization_held_out": {
+    "v1_english": {
+      "unique_tokens_activated": 337,
+      "vocabulary_activation_pct": 32.91,
+      "total_tokens_generated": 1490
+    },
+    "v1_hindi": {
+      "unique_tokens_activated": 14,
+      "vocabulary_activation_pct": 1.37,
+      "total_tokens_generated": 1278
+    },
+    "v2_english": {
+      "unique_tokens_activated": 370,
+      "vocabulary_activation_pct": 18.07,
+      "total_tokens_generated": 1612
+    },
+    "v2_hindi": {
+      "unique_tokens_activated": 190,
+      "vocabulary_activation_pct": 9.28,
+      "total_tokens_generated": 391
+    }
+  },
+  "test_cases": [
+    {
+      "category": "english_statutory_citation",
+      "text_sample": "Under Section 482(4) of the Bharatiya Nagarik Suraksha Sanhita, 2023, High Courts possess inherent jurisdiction.",
+      "char_count": 112,
+      "word_count": 15,
+      "v1_metrics": {
+        "token_count": 29,
+        "tokens_per_word": 1.93,
+        "unk_count": 0,
+        "decoded_preview": "UnderSection482(4)oftheBharatiyaNagarikSurakshaSanhita,2023,"
+      },
+      "v2_metrics": {
+        "token_count": 35,
+        "tokens_per_word": 2.33,
+        "unk_count": 0,
+        "decoded_preview": "Under Section 482(4) of the Bharatiya Nagarik Suraksha Sanhi",
+        "compression_improvement_pct": -20.69
+      }
+    },
+    {
+      "category": "english_evidence_clause",
+      "text_sample": "Section 63(4)(c) of Bharatiya Sakshya Adhiniyam, 2023 mandates certificate for electronic record admissibility.",
+      "char_count": 111,
+      "word_count": 13,
+      "v1_metrics": {
+        "token_count": 36,
+        "tokens_per_word": 2.77,
+        "unk_count": 0,
+        "decoded_preview": "Section63(4)(c)ofBharatiyaSakshyaAdhiniyam,2023mandatescerti"
+      },
+      "v2_metrics": {
+        "token_count": 42,
+        "tokens_per_word": 3.23,
+        "unk_count": 0,
+        "decoded_preview": "Section 63(4)(c) of Bharatiya Sakshya Adhiniyam, 2023 mandat",
+        "compression_improvement_pct": -16.67
+      }
+    },
+    {
+      "category": "english_constitutional_liberty",
+      "text_sample": "Article 21 of the Constitution of India guarantees protection of life and personal liberty.",
+      "char_count": 91,
+      "word_count": 14,
+      "v1_metrics": {
+        "token_count": 23,
+        "tokens_per_word": 1.64,
+        "unk_count": 0,
+        "decoded_preview": "Article21oftheConstitutionofIndiaguaranteesprotectionoflifea"
+      },
+      "v2_metrics": {
+        "token_count": 28,
+        "tokens_per_word": 2.0,
+        "unk_count": 0,
+        "decoded_preview": "Article 21 of the Constitution of India guarantees protectio",
+        "compression_improvement_pct": -21.74
+      }
+    },
+    {
+      "category": "hindi_constitutional_preamble",
+      "text_sample": "हम, भारत के लोग, भारत को एक संपूर्ण प्रभुत्व-संपन्न समाजवादी पंथनिरपेक्ष लोकतंत्रात्मक गणराज्य बनाने के लिए संकल्पित हैं।",
+      "char_count": 121,
+      "word_count": 18,
+      "v1_metrics": {
+        "token_count": 104,
+        "tokens_per_word": 5.78,
+        "unk_count": 101,
+        "decoded_preview": ",,-"
+      },
+      "v2_metrics": {
+        "token_count": 50,
+        "tokens_per_word": 2.78,
+        "unk_count": 0,
+        "decoded_preview": "हम, भारत के लोग, भारत को एक संपूर्ण प्रभुत्व-संपन्न समाजवादी",
+        "compression_improvement_pct": 51.92
+      }
+    },
+    {
+      "category": "hindi_statutory_inherent_powers",
+      "text_sample": "धारा 528. उच्च न्यायालय की अंतर्निहित शक्तियों की व्यावृत्ति न्याय के उद्देश्यों की प्राप्ति के लिए आवश्यक है।",
+      "char_count": 110,
+      "word_count": 18,
+      "v1_metrics": {
+        "token_count": 93,
+        "tokens_per_word": 5.17,
+        "unk_count": 89,
+        "decoded_preview": "528."
+      },
+      "v2_metrics": {
+        "token_count": 20,
+        "tokens_per_word": 1.11,
+        "unk_count": 0,
+        "decoded_preview": "धारा 528. उच्च न्यायालय की अंतर्निहित शक्तियों की व्यावृत्ति",
+        "compression_improvement_pct": 78.49
+      }
+    },
+    {
+      "category": "hindi_defamation_offence",
+      "text_sample": "धारा 356 के अनुसार किसी व्यक्ति की ख्याति की अपहानि करने वाला लांछन मानहानि का अपराध है।",
+      "char_count": 88,
+      "word_count": 17,
+      "v1_metrics": {
+        "token_count": 71,
+        "tokens_per_word": 4.18,
+        "unk_count": 69,
+        "decoded_preview": "356"
+      },
+      "v2_metrics": {
+        "token_count": 19,
+        "tokens_per_word": 1.12,
+        "unk_count": 0,
+        "decoded_preview": "धारा 356 के अनुसार किसी व्यक्ति की ख्याति की अपहानि करने वाल",
+        "compression_improvement_pct": 73.24
+      }
+    },
+    {
+      "category": "mixed_bilingual_query",
+      "text_sample": "Whether Section 482 of CrPC / धारा 528 BNSS allows quashing of FIR where civil dispute is criminalized?",
+      "char_count": 103,
+      "word_count": 18,
+      "v1_metrics": {
+        "token_count": 46,
+        "tokens_per_word": 2.56,
+        "unk_count": 4,
+        "decoded_preview": "WhetherSection482ofCrPC/528BNSSallowsquashingofFIRwherecivil"
+      },
+      "v2_metrics": {
+        "token_count": 44,
+        "tokens_per_word": 2.44,
+        "unk_count": 0,
+        "decoded_preview": "Whether Section 482 of CrPC / धारा 528 BNSS allows quashing ",
+        "compression_improvement_pct": 4.35
+      }
+    }
+  ]
+}

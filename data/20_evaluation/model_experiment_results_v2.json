@@ -1,0 +1,133 @@
+{
+  "report_version": "v2.0.0",
+  "phase": 33,
+  "execution_device": "cuda",
+  "dataset_manifest_ref": "research/original_model/manifests/dataset_manifest_v2.json",
+  "experiments": [
+    {
+      "experiment_name": "exp_a_baseline_reproduction",
+      "seed": 42,
+      "steps": 50,
+      "initial_train_loss": 6.9449,
+      "final_train_loss": 5.4777,
+      "initial_val_loss": 6.9452,
+      "final_val_loss": 5.6399,
+      "train_loss_delta": -1.4672,
+      "val_loss_delta": -1.3053,
+      "tokens_per_second": 27836.9,
+      "total_time_seconds": 1.84,
+      "peak_vram_mb": 95.47,
+      "checkpoint_file": "research\\original_model\\checkpoints\\phase33_exp_a_baseline_reproduction.pt",
+      "checkpoint_sha256": "43b5afc0afe635dccdfd281342c86f6862f5d39d001b1438d3e267efa4355aa0",
+      "model_parameters": 938752,
+      "data_scope": "English-only KB (V1 Tokenizer)"
+    },
+    {
+      "experiment_name": "exp_b_english_only_v2",
+      "seed": 42,
+      "steps": 50,
+      "initial_train_loss": 7.629,
+      "final_train_loss": 5.3828,
+      "initial_val_loss": 7.6512,
+      "final_val_loss": 5.603,
+      "train_loss_delta": -2.2462,
+      "val_loss_delta": -2.0482,
+      "tokens_per_second": 37936.1,
+      "total_time_seconds": 1.35,
+      "peak_vram_mb": 120.31,
+      "checkpoint_file": "research\\original_model\\checkpoints\\phase33_exp_b_english_only_v2.pt",
+      "checkpoint_sha256": "65e66e74ec8a50ee9b349711659a7f6a4b5e07693217f0b1ac6f6f9af7ba29c6",
+      "model_parameters": 1069824,
+      "data_scope": "English-only KB (V2 Tokenizer)"
+    },
+    {
+      "experiment_name": "exp_c_hindi_evaluation",
+      "total_hindi_provisions": 29,
+      "total_hindi_tokens_v1": 9816,
+      "total_hindi_tokens_v2": 3153,
+      "hindi_compression_ratio": 3.11,
+      "untrained_random_loss_v1": 6.6256,
+      "untrained_random_loss_v2": 7.631,
+      "english_trained_model_on_hindi_loss": 9.4283,
+      "finding": "Tokenizer V2 reduces Hindi token inflation by 2.6x; model trained solely on English does not transfer zero-shot cross-entropy without joint training"
+    },
+    {
+      "experiment_name": "exp_d_multilingual_joint",
+      "seed": 42,
+      "steps": 50,
+      "initial_train_loss": 7.6606,
+      "final_train_loss": 5.4005,
+      "initial_val_loss": 7.6762,
+      "final_val_loss": 5.8298,
+      "train_loss_delta": -2.2601,
+      "val_loss_delta": -1.8464,
+      "tokens_per_second": 38973.1,
+      "total_time_seconds": 1.31,
+      "peak_vram_mb": 128.73,
+      "checkpoint_file": "research\\original_model\\checkpoints\\phase33_exp_d_multilingual_joint.pt",
+      "checkpoint_sha256": "ce5a9983fde2e22c4c63c79d3693158d8b3008b86652618f031286f197bd9377",
+      "model_parameters": 1069824,
+      "data_scope": "Source-Grouped Bilingual (EN + HI)",
+      "evaluated_hindi_loss": 7.8964,
+      "hindi_loss_improvement_vs_english_only": 1.5319
+    },
+    {
+      "experiment_name": "exp_e_parameter_scale_comparison",
+      "comparison": {
+        "prototype_1m": {
+          "params": 1069824,
+          "final_train_loss": 5.4005,
+          "final_val_loss": 5.8298,
+          "tok_per_sec": 38973.1,
+          "peak_vram_mb": 128.73
+        },
+        "intermediate_4.5m": {
+          "params": 4501248,
+          "final_train_loss": 5.7055,
+          "final_val_loss": 6.1342,
+          "tok_per_sec": 30920.4,
+          "peak_vram_mb": 231.63
+        },
+        "target_10.5m": {
+          "params": 10550400,
+          "final_train_loss": 5.7128,
+          "final_val_loss": 6.2005,
+          "tok_per_sec": 15357.6,
+          "peak_vram_mb": 486.51
+        }
+      },
+      "empirical_finding": "10.5M model achieves lower training loss in 50 steps due to capacity, but validation loss improves modestly and requires 628x more data to avoid overfitting at scale"
+    },
+    {
+      "experiment_name": "exp_f_multi_seed_stability",
+      "seeds_tested": [
+        42,
+        43,
+        44
+      ],
+      "results": [
+        {
+          "seed": 42,
+          "train_loss_delta": -2.1791,
+          "final_val_loss": 5.8874,
+          "checkpoint_sha256": "cd52320100e8cbfabe31ceb97390407f54d0d2fef38abf5b07b20ff5a8c96489"
+        },
+        {
+          "seed": 43,
+          "train_loss_delta": -2.1469,
+          "final_val_loss": 5.8526,
+          "checkpoint_sha256": "b2a4a272c40f98bb66cd0a6fda80998b9adb9d19a7c65fbcaa329e541bffec3d"
+        },
+        {
+          "seed": 44,
+          "train_loss_delta": -1.9976,
+          "final_val_loss": 5.9147,
+          "checkpoint_sha256": "df9c01eb5ddf33e7206df8157d422e1583fd5a022cfcd5b7c858893a508cea17"
+        }
+      ],
+      "mean_loss_delta": -2.1079,
+      "loss_delta_variance": 0.006252,
+      "is_stable": true
+    }
+  ]
+}

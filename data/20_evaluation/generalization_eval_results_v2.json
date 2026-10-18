@@ -1,0 +1,63 @@
+{
+  "evaluation_version": "v2.0.0",
+  "phase": 33,
+  "model_evaluated": "research/original_model/checkpoints/phase33_exp_d_multilingual_joint.pt",
+  "tokenizer_used": "research/original_model/tokenizer_v2.json",
+  "vocabulary_size": 2048,
+  "random_guessing_baseline": {
+    "loss": 7.6246,
+    "perplexity": 2048.0
+  },
+  "domain_evaluations": [
+    {
+      "domain_name": "Held-Out English Statutes (DPDP + Limitation)",
+      "sample_count": 143,
+      "token_count": 28142,
+      "cross_entropy_loss": 5.6911,
+      "perplexity": 296.21,
+      "random_baseline_loss": 7.6246,
+      "random_baseline_ppl": 2048.0,
+      "delta_vs_random": -1.9335,
+      "learned_distribution": true
+    },
+    {
+      "domain_name": "Held-Out English Judicial Precedents (Arjun Khotkar)",
+      "sample_count": 7,
+      "token_count": 1045,
+      "cross_entropy_loss": 5.8787,
+      "perplexity": 357.33,
+      "random_baseline_loss": 7.6246,
+      "random_baseline_ppl": 2048.0,
+      "delta_vs_random": -1.746,
+      "learned_distribution": true
+    },
+    {
+      "domain_name": "Held-Out Hindi Statutes (IT Act 2000 HI)",
+      "sample_count": 3,
+      "token_count": 334,
+      "cross_entropy_loss": 8.0093,
+      "perplexity": 3008.72,
+      "random_baseline_loss": 7.6246,
+      "random_baseline_ppl": 2048.0,
+      "delta_vs_random": 0.3846,
+      "learned_distribution": false
+    },
+    {
+      "domain_name": "Bilingual Statutory Queries & Citations",
+      "sample_count": 6,
+      "token_count": 205,
+      "cross_entropy_loss": 6.6705,
+      "perplexity": 788.79,
+      "random_baseline_loss": 7.6246,
+      "random_baseline_ppl": 2048.0,
+      "delta_vs_random": -0.9541,
+      "learned_distribution": true
+    }
+  ],
+  "trust_boundaries": {
+    "is_autonomous_legal_reasoner": false,
+    "substitutes_for_rag": false,
+    "rag_mandatory_for_statutory_grounding": true,
+    "hallucination_warning": "Next-token probability prediction does not imply factual statutory veracity. Grounded retrieval remains non-negotiable."
+  }
+}
