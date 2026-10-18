@@ -21,6 +21,47 @@ class CitedEvidence(BaseModel):
     is_synthetic_scaffold: bool = False
 
 
+from enum import Enum
+
+
+class ClaimType(str, Enum):
+    STATUTORY_RULE = "statutory_rule"
+    STATUTORY_EXCEPTION = "statutory_exception"
+    PROCEDURAL_REQUIREMENT = "procedural_requirement"
+    PRECEDENT_PROPOSITION = "precedent_proposition"
+    TRANSITIONAL_SAVINGS = "transitional_savings"
+    GENERAL_EXPLANATION = "general_explanation"
+
+
+class ClaimVerificationStatus(str, Enum):
+    VERIFIED_GROUNDED = "verified_grounded"
+    UNSUPPORTED = "unsupported"
+    OVERSTATED = "overstated"
+    OUTDATED = "outdated"
+    WRONG_AUTHORITY = "wrong_authority"
+    PENDING_LEGAL_REVIEW = "pending_legal_review"
+
+
+class LegalClaim(BaseModel):
+    """
+    Structured representation of a single material legal proposition asserted in an answer.
+    Enables claim-level citation auditing, jurisdiction tracking, and temporal verification.
+    """
+    claim_id: str
+    claim_text: str
+    claim_type: ClaimType
+    source_id: Optional[str] = None
+    act_or_case_title: Optional[str] = None
+    provision_or_para_ref: Optional[str] = None
+    supporting_chunk_id: Optional[str] = None
+    verbatim_evidence_passage: Optional[str] = None
+    jurisdiction: str = "IN"
+    temporal_applicability: Optional[str] = None
+    verification_status: ClaimVerificationStatus = ClaimVerificationStatus.VERIFIED_GROUNDED
+    verification_method: str = "deterministic_evidence_alignment"
+    verification_notes: Optional[str] = None
+
+
 class RAGResponse(BaseModel):
     """
     Complete response produced by the LegalMitra RAG engine.
@@ -30,6 +71,10 @@ class RAGResponse(BaseModel):
     answer: str
     citations: List[str] = Field(default_factory=list)
     cited_evidence: List[CitedEvidence] = Field(default_factory=list)
+    claims: List[LegalClaim] = Field(
+        default_factory=list,
+        description="Structured claim-level decomposition of material legal propositions asserted in answer"
+    )
     evidence_sufficiency: str = Field(
         default="sufficient",
         description="'sufficient', 'insufficient', 'contradictory', or 'potentially_outdated'"

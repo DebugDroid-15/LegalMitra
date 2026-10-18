@@ -20,6 +20,7 @@ from legalmitra.evaluation.models import (
     AnswerExpectedType,
     CaseEvaluationResult,
     CitationAudit,
+    ClaimAudit,
     EvaluationCase,
     EvaluationCategory,
     EvaluationSummaryReport,
@@ -188,6 +189,36 @@ class LegalEvaluationRunner:
                 failure_reasons.append("Expected abstention/insufficient verdict, but answer was affirmative")
                 severity = SeverityLevel.HIGH
 
+        # 8. Claim-Level Grounding Audit
+        total_clms = len(rag_resp.claims)
+        grounded_clms = sum(1 for c in rag_resp.claims if c.verification_status.value == "verified_grounded")
+        unsupported_clms = sum(1 for c in rag_resp.claims if c.verification_status.value == "unsupported")
+        overstated_clms = sum(1 for c in rag_resp.claims if c.verification_status.value == "overstated")
+        outdated_clms = sum(1 for c in rag_resp.claims if c.verification_status.value == "outdated")
+        wrong_auth_clms = sum(1 for c in rag_resp.claims if c.verification_status.value == "wrong_authority")
+        clm_support_rate = round(grounded_clms / total_clms, 4) if total_clms > 0 else 1.0
+
+        claim_notes = []
+        if unsupported_clms > 0:
+            claim_notes.append(f"{unsupported_clms} unsupported claims detected")
+        if wrong_auth_clms > 0:
+            claim_notes.append(f"{wrong_auth_clms} claims supported by wrong authority / scaffold")
+            failure_reasons.append("Claim supported by wrong authority or quarantined scaffold")
+            severity = SeverityLevel.CRITICAL
+        if outdated_clms > 0 and not case.as_of_date:
+            claim_notes.append(f"{outdated_clms} outdated claims asserted without historical anchor")
+
+        claim_audit = ClaimAudit(
+            total_claims=total_clms,
+            grounded_claims=grounded_clms,
+            unsupported_claims=unsupported_clms,
+            overstated_claims=overstated_clms,
+            outdated_claims=outdated_clms,
+            wrong_authority_claims=wrong_auth_clms,
+            claim_support_rate=clm_support_rate,
+            audit_notes=claim_notes,
+        )
+
         passed = len(failure_reasons) == 0
 
         return CaseEvaluationResult(
@@ -204,6 +235,7 @@ class LegalEvaluationRunner:
             citation_audit=citation_audit,
             temporal_audit=temporal_audit,
             adversarial_audit=adversarial_audit,
+            claim_audit=claim_audit,
             latency_seconds=latency,
             failure_reasons=failure_reasons,
         )
@@ -235,8 +267,13 @@ class LegalEvaluationRunner:
         mrr = calculate_mrr(rankings)
 
         # Aggregate citation support rate
+        # Aggregate citation support rate
         all_support = [r.citation_audit.citation_support_rate for r in results if r.citation_audit.total_citations_extracted > 0]
         mean_support_rate = round(sum(all_support) / len(all_support), 4) if all_support else 1.0
+
+        # Aggregate claim support rate
+        all_claim_rates = [r.claim_audit.claim_support_rate for r in results if r.claim_audit and r.claim_audit.total_claims > 0]
+        mean_claim_support = round(sum(all_claim_rates) / len(all_claim_rates), 4) if all_claim_rates else 1.0
 
         all_hallucination = [r.citation_audit.hallucinated_citations_count for r in results]
         total_hallucinations = sum(all_hallucination)
@@ -281,6 +318,7 @@ class LegalEvaluationRunner:
             retrieval_recall_at_k=retrieval_recall,
             mean_reciprocal_rank=mrr,
             citation_support_rate=mean_support_rate,
+            claim_support_rate=mean_claim_support,
             hallucination_rate=hallucination_rate,
             abstention_precision=abstention_precision,
             temporal_correctness_rate=temp_rate,

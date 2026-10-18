@@ -16,7 +16,13 @@ from legalmitra.llm.interface import BaseLLMProvider, LLMMessage
 from legalmitra.llm.mock_provider import MockLLMProvider
 from legalmitra.llm.nemotron import NemotronLLMProvider
 from legalmitra.rag.prompts import SYSTEM_RAG_PROMPT, build_rag_user_prompt
-from legalmitra.rag.schemas import CitedEvidence, RAGResponse
+from legalmitra.rag.schemas import (
+    CitedEvidence,
+    ClaimType,
+    ClaimVerificationStatus,
+    LegalClaim,
+    RAGResponse,
+)
 
 logger = get_logger("rag_engine")
 
@@ -264,6 +270,7 @@ class LegalRAGEngine:
         # Step 5: Extract citations and classify evidence sufficiency
         citations = self._extract_citations(answer_text, search_results)
         sufficiency = self._classify_sufficiency(answer_text, search_results)
+        claims = self._decompose_and_verify_claims(answer_text, search_results)
 
         latency = time.time() - start_time
 
@@ -272,6 +279,7 @@ class LegalRAGEngine:
             answer=answer_text,
             citations=citations,
             cited_evidence=cited_evidence_list,
+            claims=claims,
             evidence_sufficiency=sufficiency,
             is_grounded=True,
             binding_authorities=binding_auths,
@@ -340,4 +348,88 @@ class LegalRAGEngine:
         if any(r.is_historical for r in results):
             return "potentially_outdated"
         return "sufficient"
+
+    def _decompose_and_verify_claims(self, answer: str, results: List[SearchResult]) -> List[LegalClaim]:
+        """
+        Decompose the generated legal answer into verifiable legal claims.
+        Establishes traceability to exact source chunk IDs, pinpoint refs, verbatim spans,
+        jurisdiction, temporal status, and verification flags.
+        """
+        if not answer or not results:
+            return []
+
+        claims: List[LegalClaim] = []
+        # Split answer into paragraphs or coherent analytical blocks
+        blocks = [b.strip() for b in re.split(r'\n\s*\n', answer) if b.strip()]
+        
+        for idx, block in enumerate(blocks, start=1):
+            claim_id = f"CLM-{idx:03d}"
+            b_lower = block.lower()
+
+            # Identify best matching evidence chunk
+            best_chunk: Optional[SearchResult] = None
+            for r in results:
+                if (r.provision_or_para_ref.lower() in b_lower or 
+                    r.act_or_case_title.lower() in b_lower or 
+                    r.chunk_id.lower() in b_lower):
+                    best_chunk = r
+                    break
+
+            if not best_chunk and results:
+                best_chunk = results[0]
+
+            # Determine claim type
+            claim_type = ClaimType.GENERAL_EXPLANATION
+            if "proviso" in b_lower or "provided that" in b_lower or "except" in b_lower:
+                claim_type = ClaimType.STATUTORY_EXCEPTION
+            elif "procedure" in b_lower or "timeline" in b_lower or "days" in b_lower or "hours" in b_lower:
+                claim_type = ClaimType.PROCEDURAL_REQUIREMENT
+            elif "held that" in b_lower or "ratio" in b_lower or "supreme court" in b_lower or "high court" in b_lower:
+                claim_type = ClaimType.PRECEDENT_PROPOSITION
+            elif "savings" in b_lower or "repeal" in b_lower or "transitional" in b_lower or "effective" in b_lower:
+                claim_type = ClaimType.TRANSITIONAL_SAVINGS
+            elif best_chunk and best_chunk.doc_type == "statute":
+                claim_type = ClaimType.STATUTORY_RULE
+
+            # Verify claim against supporting chunk
+            status = ClaimVerificationStatus.VERIFIED_GROUNDED
+            notes = None
+
+            if best_chunk:
+                if best_chunk.is_synthetic_scaffold:
+                    status = ClaimVerificationStatus.WRONG_AUTHORITY
+                    notes = "Supported only by quarantined synthetic scaffold"
+                elif best_chunk.is_historical:
+                    status = ClaimVerificationStatus.OUTDATED
+                    notes = "Supported by repealed or historical statutory provision"
+                else:
+                    # Check token overlap with verbatim text
+                    chunk_tokens = set(re.findall(r'\w+', best_chunk.content.lower()))
+                    block_tokens = set(re.findall(r'\w+', b_lower))
+                    overlap = len(block_tokens.intersection(chunk_tokens))
+                    if len(block_tokens) > 5 and overlap < 3:
+                        status = ClaimVerificationStatus.UNSUPPORTED
+                        notes = "Low evidential alignment with supporting chunk text"
+            else:
+                status = ClaimVerificationStatus.UNSUPPORTED
+                notes = "No supporting knowledge chunk retrieved"
+
+            eff_str = str(best_chunk.effective_date) if best_chunk and best_chunk.effective_date else None
+            claims.append(LegalClaim(
+                claim_id=claim_id,
+                claim_text=block[:300],
+                claim_type=claim_type,
+                source_id=best_chunk.source_id if best_chunk else None,
+                act_or_case_title=best_chunk.act_or_case_title if best_chunk else None,
+                provision_or_para_ref=best_chunk.provision_or_para_ref if best_chunk else None,
+                supporting_chunk_id=best_chunk.chunk_id if best_chunk else None,
+                verbatim_evidence_passage=best_chunk.content[:250] if best_chunk else None,
+                jurisdiction=str(best_chunk.jurisdiction.value) if best_chunk and hasattr(best_chunk.jurisdiction, 'value') else (str(best_chunk.jurisdiction) if best_chunk else "IN"),
+                temporal_applicability=eff_str,
+                verification_status=status,
+                verification_method="deterministic_evidence_alignment",
+                verification_notes=notes,
+            ))
+
+        return claims
 

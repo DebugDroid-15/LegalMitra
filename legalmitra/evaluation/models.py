@@ -79,6 +79,17 @@ class AdversarialAudit(BaseModel):
     notes: Optional[str] = None
 
 
+class ClaimAudit(BaseModel):
+    total_claims: int = 0
+    grounded_claims: int = 0
+    unsupported_claims: int = 0
+    overstated_claims: int = 0
+    outdated_claims: int = 0
+    wrong_authority_claims: int = 0
+    claim_support_rate: float = 1.0
+    audit_notes: List[str] = Field(default_factory=list)
+
+
 class CaseEvaluationResult(BaseModel):
     eval_id: str
     category: EvaluationCategory
@@ -93,6 +104,7 @@ class CaseEvaluationResult(BaseModel):
     citation_audit: CitationAudit
     temporal_audit: TemporalAudit
     adversarial_audit: AdversarialAudit
+    claim_audit: Optional[ClaimAudit] = None
     latency_seconds: float
     failure_reasons: List[str] = Field(default_factory=list)
 
@@ -106,6 +118,7 @@ class EvaluationSummaryReport(BaseModel):
     retrieval_recall_at_k: float
     mean_reciprocal_rank: float
     citation_support_rate: float
+    claim_support_rate: float = 1.0
     hallucination_rate: float
     abstention_precision: float
     temporal_correctness_rate: float

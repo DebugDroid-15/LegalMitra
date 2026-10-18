@@ -1,0 +1,8 @@
+{
+  "manifest_version": "6.0.0",
+  "dataset_name": "legalmitra_evaluation_cases_v6",
+  "total_cases": 68,
+  "sha256": "3ef12a9c1d8e81b187bdcb7965ee1df279700a03235e76aaa56661a4b118396e",
+  "generated_date": "2026-10-18",
+  "phase": "Phase 28 Independent Legal Answer Validation, Claim-Level Citation Auditing & Temporal Integrity"
+}
