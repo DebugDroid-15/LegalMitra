@@ -1,0 +1,258 @@
+{
+  "manifest_version": "1.0.0",
+  "analysis_id": "COVERAGE-GAP-ANALYSIS-PHASE52",
+  "generated_at": "2026-10-19T17:41:19.061682+00:00",
+  "total_domains_audited": 17,
+  "domains_by_coverage": {
+    "HIGH": 8,
+    "MODERATE": 5,
+    "LOW": 4
+  },
+  "prioritized_acquisition_backlog": [
+    {
+      "rank": 1,
+      "domain_id": "DOM-11-CORPORATE-INSOLVENCY",
+      "title": "Insolvency and Bankruptcy Code, 2016 (IBC)",
+      "priority": "CRITICAL",
+      "rationale": "High-volume corporate disputes; Section 7/9 admission standards and Section 14 moratorium rules frequently litigated."
+    },
+    {
+      "rank": 2,
+      "domain_id": "DOM-14-FAMILY-SUCCESSION",
+      "title": "Hindu Succession Act, 1956 (Coparcenary & Gender Parity)",
+      "priority": "HIGH",
+      "rationale": "Critical personal law questions regarding Vineeta Sharma (2020) coparcenary rights require authentic source texts."
+    },
+    {
+      "rank": 3,
+      "domain_id": "DOM-09-INTELLECTUAL-PROPERTY",
+      "title": "Patents Act, 1970 (Section 3(d) & Pharmaceutical Inventions)",
+      "priority": "HIGH",
+      "rationale": "Technical jurisprudence on patentability standards under Section 3(d) requires authentic statutory chunks."
+    },
+    {
+      "rank": 4,
+      "domain_id": "DOM-12-TAXATION-DIRECT-INDIRECT",
+      "title": "Central Goods and Services Tax Act, 2017 (Input Tax Credit)",
+      "priority": "MEDIUM",
+      "rationale": "High-complexity fiscal statute; requires strict fail-closed guards to prevent hallucination of transitional credit rules."
+    },
+    {
+      "rank": 5,
+      "domain_id": "DOM-13-ENVIRONMENTAL-LAW",
+      "title": "National Green Tribunal Act, 2010 (Section 14 & 15 Limitation)",
+      "priority": "MEDIUM",
+      "rationale": "Environmental statutory jurisdiction and absolute liability doctrines."
+    }
+  ],
+  "domain_reports": [
+    {
+      "domain_id": "DOM-01-CRIMINAL",
+      "name": "Criminal Law & Evidentiary Transition",
+      "priority_tier": "CRITICAL",
+      "current_coverage_status": "HIGH",
+      "active_sources_in_db": 3,
+      "active_chunks_in_db": 804,
+      "gap_assessment": "Substantive offenses and procedural transition covered. High Court anticipatory bail interpretations under BNSS s.482 pending authentic expansion.",
+      "recommended_acquisitions": [
+        "Maintain temporal amendment monitor"
+      ]
+    },
+    {
+      "domain_id": "DOM-02-CONSTITUTIONAL",
+      "name": "Constitutional Law & Fundamental Rights",
+      "priority_tier": "CRITICAL",
+      "current_coverage_status": "HIGH",
+      "active_sources_in_db": 1,
+      "active_chunks_in_db": 42,
+      "gap_assessment": "Key articles (14, 19, 20, 21, 32, 226) and Constitution Benches mapped. Center-State legislative relations (Art. 245-254) need further chunking.",
+      "recommended_acquisitions": [
+        "Maintain temporal amendment monitor"
+      ]
+    },
+    {
+      "domain_id": "DOM-03-DIGITAL-DATA",
+      "name": "Information Technology & Digital Data Privacy",
+      "priority_tier": "HIGH",
+      "current_coverage_status": "MODERATE",
+      "active_sources_in_db": 4,
+      "active_chunks_in_db": 366,
+      "gap_assessment": "DPDP unnotified sections require temporal guardrails; Cert-In cybersecurity directions not yet ingested.",
+      "recommended_acquisitions": [
+        "Ingest subordinate rules and High Court precedents"
+      ]
+    },
+    {
+      "domain_id": "DOM-04-COMMERCIAL-ARBITRATION",
+      "name": "Commercial Law, Arbitration & Dispute Resolution",
+      "priority_tier": "CRITICAL",
+      "current_coverage_status": "HIGH",
+      "active_sources_in_db": 2,
+      "active_chunks_in_db": 19,
+      "gap_assessment": "Arbitration Act well indexed (ss. 8, 9, 11, 34, 37). Mediation Act 2023 remains to be acquired.",
+      "recommended_acquisitions": [
+        "Maintain temporal amendment monitor"
+      ]
+    },
+    {
+      "domain_id": "DOM-05-CONTRACTS-PROPERTY",
+      "name": "Contracts, Specific Relief & Property Law",
+      "priority_tier": "HIGH",
+      "current_coverage_status": "HIGH",
+      "active_sources_in_db": 3,
+      "active_chunks_in_db": 39,
+      "gap_assessment": "Core sections indexed (ICA ss. 10, 56, 73; SRA ss. 10, 14A, 20; TPA ss. 53A, 54, 58). Easements Act not yet covered.",
+      "recommended_acquisitions": [
+        "Maintain temporal amendment monitor"
+      ]
+    },
+    {
+      "domain_id": "DOM-06-CIVIL-PROCEDURE",
+      "name": "Civil Procedure & Limitation",
+      "priority_tier": "HIGH",
+      "current_coverage_status": "HIGH",
+      "active_sources_in_db": 2,
+      "active_chunks_in_db": 34,
+      "gap_assessment": "CPC sections and key Orders (Order VII, Order XXXIX) covered. Detailed procedural rules for specialized High Court original side pending.",
+      "recommended_acquisitions": [
+        "Maintain temporal amendment monitor"
+      ]
+    },
+    {
+      "domain_id": "DOM-07-CONSUMER-PROTECTION",
+      "name": "Consumer Protection & E-Commerce",
+      "priority_tier": "HIGH",
+      "current_coverage_status": "HIGH",
+      "active_sources_in_db": 2,
+      "active_chunks_in_db": 16,
+      "gap_assessment": "Statute and e-commerce rules in force; NCDRC appellate precedents sparsely represented.",
+      "recommended_acquisitions": [
+        "Maintain temporal amendment monitor"
+      ]
+    },
+    {
+      "domain_id": "DOM-08-BANKING-NEGOTIABLE",
+      "name": "Banking & Negotiable Instruments",
+      "priority_tier": "HIGH",
+      "current_coverage_status": "MODERATE",
+      "active_sources_in_db": 1,
+      "active_chunks_in_db": 9,
+      "gap_assessment": "NI Act Section 138-142 covered with Rangappa precedent. SARFAESI Act and DRT regulations missing.",
+      "recommended_acquisitions": [
+        "Ingest subordinate rules and High Court precedents"
+      ]
+    },
+    {
+      "domain_id": "DOM-09-INTELLECTUAL-PROPERTY",
+      "name": "Intellectual Property Law (IPR)",
+      "priority_tier": "HIGH",
+      "current_coverage_status": "MODERATE",
+      "active_sources_in_db": 0,
+      "active_chunks_in_db": 0,
+      "gap_assessment": "Key sections and leading Delhi High Court rulings mapped. Patents Act compulsory licensing and Section 3(d) chunks need expansion.",
+      "recommended_acquisitions": [
+        "Ingest subordinate rules and High Court precedents"
+      ]
+    },
+    {
+      "domain_id": "DOM-10-LABOUR-EMPLOYMENT",
+      "name": "Labour & Industrial Welfare Codes",
+      "priority_tier": "HIGH",
+      "current_coverage_status": "MODERATE",
+      "active_sources_in_db": 0,
+      "active_chunks_in_db": 0,
+      "gap_assessment": "Enacted Labour Codes registered with unnotified commencement guardrails; historical Industrial Disputes Act 1947 savings mapped.",
+      "recommended_acquisitions": [
+        "Ingest subordinate rules and High Court precedents"
+      ]
+    },
+    {
+      "domain_id": "DOM-11-CORPORATE-INSOLVENCY",
+      "name": "Corporate Law & Insolvency (IBC)",
+      "priority_tier": "CRITICAL",
+      "current_coverage_status": "LOW",
+      "active_sources_in_db": 0,
+      "active_chunks_in_db": 0,
+      "gap_assessment": "High-priority gap. IBC CIRP regulations and Sections 7, 9, 10, 14, 31 require structured ingestion.",
+      "recommended_acquisitions": [
+        "Acquire primary text of IND-STAT-COMP-2013 from India Code",
+        "Build Gazette-verified temporal versioning map"
+      ]
+    },
+    {
+      "domain_id": "DOM-12-TAXATION-DIRECT-INDIRECT",
+      "name": "Direct & Indirect Taxation",
+      "priority_tier": "MEDIUM",
+      "current_coverage_status": "LOW",
+      "active_sources_in_db": 0,
+      "active_chunks_in_db": 0,
+      "gap_assessment": "High volume domain. GST council notifications and annual Finance Act amendments currently omitted to avoid hallucination.",
+      "recommended_acquisitions": [
+        "Acquire primary text of IND-STAT-ITA-1961 from India Code",
+        "Build Gazette-verified temporal versioning map"
+      ]
+    },
+    {
+      "domain_id": "DOM-13-ENVIRONMENTAL-LAW",
+      "name": "Environmental & Forest Conservation",
+      "priority_tier": "MEDIUM",
+      "current_coverage_status": "LOW",
+      "active_sources_in_db": 0,
+      "active_chunks_in_db": 0,
+      "gap_assessment": "NGT principles (polluter pays, precautionary principle) not yet ingested in full.",
+      "recommended_acquisitions": [
+        "Acquire primary text of IND-STAT-EPA-1986 from India Code",
+        "Build Gazette-verified temporal versioning map"
+      ]
+    },
+    {
+      "domain_id": "DOM-14-FAMILY-SUCCESSION",
+      "name": "Family & Succession Law",
+      "priority_tier": "MEDIUM",
+      "current_coverage_status": "LOW",
+      "active_sources_in_db": 0,
+      "active_chunks_in_db": 0,
+      "gap_assessment": "High-volume personal laws absent from current database; matrimonial relief queries must fail-closed or abstain.",
+      "recommended_acquisitions": [
+        "Acquire primary text of IND-STAT-HMA-1955 from India Code",
+        "Build Gazette-verified temporal versioning map"
+      ]
+    },
+    {
+      "domain_id": "DOM-15-LOCAL-RENT-MUNICIPAL",
+      "name": "State Rent Control & Police Legislation",
+      "priority_tier": "MEDIUM",
+      "current_coverage_status": "MODERATE",
+      "active_sources_in_db": 4,
+      "active_chunks_in_db": 15,
+      "gap_assessment": "State-specific pilot statutes ingested. Other states (e.g. Karnataka, Tamil Nadu, UP) not covered.",
+      "recommended_acquisitions": [
+        "Ingest subordinate rules and High Court precedents"
+      ]
+    },
+    {
+      "domain_id": "DOM-16-MOTOR-ACCIDENTS-TRANSPORT",
+      "name": "Motor Accidents & Transport Regulation",
+      "priority_tier": "HIGH",
+      "current_coverage_status": "HIGH",
+      "active_sources_in_db": 1,
+      "active_chunks_in_db": 4,
+      "gap_assessment": "MVA 1988 s.166 compensation principles and hit-and-run provisions ingested.",
+      "recommended_acquisitions": [
+        "Maintain temporal amendment monitor"
+      ]
+    },
+    {
+      "domain_id": "DOM-17-INFORMATION-GOVERNANCE",
+      "name": "Right to Information & Administrative Transparency",
+      "priority_tier": "HIGH",
+      "current_coverage_status": "HIGH",
+      "active_sources_in_db": 1,
+      "active_chunks_in_db": 9,
+      "gap_assessment": "RTI Act sections 6, 7, 8 (exemptions) and 19 (appeals) fully indexed.",
+      "recommended_acquisitions": [
+        "Maintain temporal amendment monitor"
+      ]
+    }
+  ]
+}

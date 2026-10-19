@@ -184,9 +184,11 @@ class EvidenceTraceableAnswerAssembler:
             claim_idx += 1
 
         # Synthesize claims from Judicial Precedents
-        for jp in evidence_set.judicial_precedents[:3]:
+        for jp in evidence_set.judicial_precedents[:4]:
             governing_provisions.append(f"{jp.title} ({jp.provision_or_para_ref})")
             citations.append(f"{jp.title}, {jp.provision_or_para_ref}")
+            if jp.authority_level in ("OVERRULED_HISTORICAL", "OVERRULED", "DISSENTING_OPINION") or "overruled" in jp.passage_text.lower() or "dissent" in jp.passage_text.lower():
+                competing_authorities.append(f"{jp.title} [{jp.authority_level}]: {jp.passage_text[:300]}")
 
             claim_text = f"The Supreme Court in {jp.title} held under Article 141: {jp.passage_text[:160]}..."
             val = self.temporal_engine.validate_claim_evidence(
@@ -260,6 +262,7 @@ class EvidenceTraceableAnswerAssembler:
                 statutory_version="N/A",
                 jurisdiction="IN",
                 authority_status="FABRICATED_CITATION",
+                validation_verdict="UNSUPPORTED",
                 validation_rationale=val.get("rationale", ""),
                 is_supported=False,
                 requires_qualification=True,

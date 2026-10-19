@@ -397,7 +397,7 @@ class LegalQueryAnalyzer:
             if any(term in q_lower for term in [
                 "is my clause valid", "can i evict", "can a landlord evict", "evict",
                 "is my petition maintainable", "what is the compensation", "offense of cheating",
-                "cheating?", "file a writ", "writ petition", "does section 420", "420 ipc or"
+                "cheating?", "cheating", "file a writ", "writ petition", "does section 420", "420 ipc or"
             ]):
                 clarification_necessary = True
                 clarification_prompt = (

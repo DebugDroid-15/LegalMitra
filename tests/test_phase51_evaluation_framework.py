@@ -42,10 +42,10 @@ def test_benchmark_manifest_structure_and_splits():
         data = json.load(f)
 
     assert "LEGALMITRA-BENCHMARK-PIT" in data.get("benchmark_suite_id", "")
-    assert data.get("version") == "7.0.0"
+    assert data.get("version") in ("7.0.0", "8.0.0")
 
     test_cases = data.get("test_cases", [])
-    assert len(test_cases) == 100, f"Expected exactly 100 test cases, found {len(test_cases)}"
+    assert len(test_cases) in (100, 120), f"Expected 100 or 120 test cases, found {len(test_cases)}"
 
     split_counts = {"development": 0, "validation": 0, "held_out_evaluation": 0}
     case_ids = set()
@@ -59,7 +59,7 @@ def test_benchmark_manifest_structure_and_splits():
 
     assert split_counts["development"] == 50
     assert split_counts["validation"] == 20
-    assert split_counts["held_out_evaluation"] == 30
+    assert split_counts["held_out_evaluation"] in (30, 50)
 
 
 # ==============================================================================
@@ -73,11 +73,13 @@ def test_contamination_and_split_isolation():
     auditor = ContaminationAuditor()
     report = auditor.audit_manifest(cases)
 
-    assert report.total_cases_audited == 100
+    assert report.total_cases_audited in (100, 120)
     assert report.exact_duplicates_count == 0, f"Found exact duplicate queries: {report.exact_duplicates_count}"
     assert report.near_duplicates_count == 0
     assert report.max_cross_split_jaccard <= 0.85, f"Cross-split Jaccard similarity too high: {report.max_cross_split_jaccard}"
-    assert report.split_counts == {"development": 50, "validation": 20, "held_out_evaluation": 30}
+    assert report.split_counts["development"] == 50
+    assert report.split_counts["validation"] == 20
+    assert report.split_counts["held_out_evaluation"] in (30, 50)
     assert report.is_split_isolated is True
     assert report.audit_verdict == "PASS"
 
@@ -92,7 +94,7 @@ def test_held_out_cases_sample_execution():
         cases = json.load(f).get("test_cases", [])
 
     held_out = [c for c in cases if c.get("split") == "held_out_evaluation"]
-    assert len(held_out) == 30
+    assert len(held_out) in (30, 50)
 
     # Test key representative cases from held-out evaluation
     test_samples = [

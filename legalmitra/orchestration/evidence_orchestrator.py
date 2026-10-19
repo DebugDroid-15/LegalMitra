@@ -114,9 +114,18 @@ class UnifiedEvidenceOrchestrator:
             limit=limit,
         )
 
+        from legalmitra.corpus.eligibility import EvidenceEligibilityEngine
+        eligibility_engine = EvidenceEligibilityEngine()
+
         for r in raw_results:
-            # Check scaffold quarantine
-            if r.is_synthetic_scaffold:
+            # Check scaffold quarantine and source eligibility
+            verdict = eligibility_engine.evaluate_chunk_eligibility(
+                source_id=r.source_id,
+                chunk_id=r.chunk_id,
+                is_synthetic_scaffold=bool(r.is_synthetic_scaffold),
+                as_of_date=parsed_query.query_date,
+            )
+            if not verdict.is_eligible:
                 continue
 
             item = EvidenceItem(

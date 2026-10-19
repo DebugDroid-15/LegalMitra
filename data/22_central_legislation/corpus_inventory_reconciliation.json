@@ -1,0 +1,146 @@
+{
+  "manifest_version": "1.0.0",
+  "reconciliation_id": "CORPUS-RECONCILIATION-PHASE52",
+  "generated_at": "2026-10-19T17:37:41.136128Z",
+  "total_registered_sources": 59,
+  "total_acquired_sources": 59,
+  "total_verified_sources": 6,
+  "total_indexed_chunks": 1505,
+  "total_eligible_chunks": 1499,
+  "total_quarantined_chunks": 6,
+  "orphan_chunks_count": 0,
+  "duplicate_source_ids_count": 0,
+  "stale_index_records_count": 0,
+  "reconciliation_status": "RECONCILED_AND_VERIFIED",
+  "categories": {
+    "statute": {
+      "category_name": "statute",
+      "registered_count": 26,
+      "acquired_count": 26,
+      "verified_count": 5,
+      "indexed_chunk_count": 1394,
+      "eligible_chunk_count": 1394,
+      "quarantined_chunk_count": 0,
+      "unresolved_count": 0,
+      "reconciliation_discrepancies": []
+    },
+    "judgment": {
+      "category_name": "judgment",
+      "registered_count": 23,
+      "acquired_count": 23,
+      "verified_count": 1,
+      "indexed_chunk_count": 98,
+      "eligible_chunk_count": 92,
+      "quarantined_chunk_count": 6,
+      "unresolved_count": 0,
+      "reconciliation_discrepancies": []
+    },
+    "rules_regulation": {
+      "category_name": "rules_regulation",
+      "registered_count": 4,
+      "acquired_count": 4,
+      "verified_count": 0,
+      "indexed_chunk_count": 8,
+      "eligible_chunk_count": 8,
+      "quarantined_chunk_count": 0,
+      "unresolved_count": 0,
+      "reconciliation_discrepancies": []
+    },
+    "notification": {
+      "category_name": "notification",
+      "registered_count": 5,
+      "acquired_count": 5,
+      "verified_count": 0,
+      "indexed_chunk_count": 5,
+      "eligible_chunk_count": 5,
+      "quarantined_chunk_count": 0,
+      "unresolved_count": 0,
+      "reconciliation_discrepancies": []
+    },
+    "other": {
+      "category_name": "other",
+      "registered_count": 1,
+      "acquired_count": 1,
+      "verified_count": 0,
+      "indexed_chunk_count": 0,
+      "eligible_chunk_count": 0,
+      "quarantined_chunk_count": 0,
+      "unresolved_count": 0,
+      "reconciliation_discrepancies": []
+    }
+  },
+  "deduplication_audit": {
+    "duplicate_ids": [],
+    "is_deduplicated": true,
+    "total_unique_source_ids": 59
+  },
+  "quarantined_inventory": [
+    {
+      "chunk_id": "IND-JUD-DEL-2024-BAIL:RATIO",
+      "source_id": "IND-JUD-DEL-2024-BAIL",
+      "title": "State (NCT of Delhi) v. Rahul Kumar - Anticipatory Bail under BNSS",
+      "reason": "Synthetic scaffold chunk quarantined per governance rules"
+    },
+    {
+      "chunk_id": "IND-JUD-DEL-2024-BAIL:PARA:1",
+      "source_id": "IND-JUD-DEL-2024-BAIL",
+      "title": "State (NCT of Delhi) v. Rahul Kumar - Anticipatory Bail under BNSS",
+      "reason": "Synthetic scaffold chunk quarantined per governance rules"
+    },
+    {
+      "chunk_id": "IND-JUD-DEL-2024-BAIL:PARA:2",
+      "source_id": "IND-JUD-DEL-2024-BAIL",
+      "title": "State (NCT of Delhi) v. Rahul Kumar - Anticipatory Bail under BNSS",
+      "reason": "Synthetic scaffold chunk quarantined per governance rules"
+    },
+    {
+      "chunk_id": "IND-JUD-DEL-2024-BAIL:PARA:3",
+      "source_id": "IND-JUD-DEL-2024-BAIL",
+      "title": "State (NCT of Delhi) v. Rahul Kumar - Anticipatory Bail under BNSS",
+      "reason": "Synthetic scaffold chunk quarantined per governance rules"
+    },
+    {
+      "chunk_id": "IND-JUD-DEL-2024-BAIL:PARA:4",
+      "source_id": "IND-JUD-DEL-2024-BAIL",
+      "title": "State (NCT of Delhi) v. Rahul Kumar - Anticipatory Bail under BNSS",
+      "reason": "Synthetic scaffold chunk quarantined per governance rules"
+    },
+    {
+      "chunk_id": "IND-JUD-DEL-2024-BAIL:PARA:5",
+      "source_id": "IND-JUD-DEL-2024-BAIL",
+      "title": "State (NCT of Delhi) v. Rahul Kumar - Anticipatory Bail under BNSS",
+      "reason": "Synthetic scaffold chunk quarantined per governance rules"
+    }
+  ],
+  "empty_sources": [
+    {
+      "document_id": "IND-UNSUPPORTED-001",
+      "title": "Corrupt or Unsupported Document Format (.xyz)",
+      "source_type": "other",
+      "reason": "Test fixture format checker or unparsed administrative index entry"
+    },
+    {
+      "document_id": "IND-GUIDE-SCI-PROC-2025",
+      "title": "Supreme Court of India Handbook on Practice and Procedure and Office Procedure (2017, updated to 06.10.2025)",
+      "source_type": "rules_regulation",
+      "reason": "Test fixture format checker or unparsed administrative index entry"
+    }
+  ],
+  "discrepancy_ledger": [
+    {
+      "type": "UNPARSED_SOURCE_FIXTURES",
+      "severity": "INFORMATIONAL",
+      "description": "Found 2 sources registered without parsed text chunks (test fixture / unparsed guide)",
+      "sources": [
+        "IND-UNSUPPORTED-001",
+        "IND-GUIDE-SCI-PROC-2025"
+      ]
+    },
+    {
+      "type": "QUARANTINED_SCAFFOLD_CHUNKS",
+      "severity": "GOVERNANCE_INVARIANT",
+      "description": "Found 6 synthetic scaffold chunks strictly isolated under is_synthetic_scaffold = 1",
+      "count": 6
+    }
+  ]
+}
