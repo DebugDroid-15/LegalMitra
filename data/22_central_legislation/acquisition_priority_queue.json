@@ -1,0 +1,105 @@
+{
+  "queue_version": "LEGALMITRA-CENTRAL-PRIORITY-V1",
+  "generated_at": "2026-10-19T11:55:30Z",
+  "priority_policy": "HIGHEST_RETRIEVAL_IMPACT_TEMPORAL_TRANSITION",
+  "priority_batches": [
+    {
+      "batch_id": "BATCH-01-CRIMINAL-TRANSITION",
+      "domain": "Criminal Law & Evidentiary Transition",
+      "priority_tier": "CRITICAL",
+      "rationale": "High-demand transition from IPC/CrPC/IEA to BNS/BNSS/BSA effective 1 July 2024 with complex savings under BNSS s.531(2)(a) and Art. 20(1) ex post facto protections.",
+      "instruments": [
+        {
+          "instrument_id": "IND-STAT-BNS-2023",
+          "title": "Bharatiya Nyaya Sanhita, 2023",
+          "act_number": "Act No. 45 of 2023",
+          "official_source": "https://www.indiacode.nic.in/handle/123456789/20062",
+          "commencement_notification": "S.O. 849(E)",
+          "commencement_date": "2024-07-01",
+          "key_sections": ["1", "4", "63", "69", "103", "111", "358"],
+          "replaces_instrument_id": "IND-STAT-IPC-1860"
+        },
+        {
+          "instrument_id": "IND-STAT-BNSS-2023",
+          "title": "Bharatiya Nagarik Suraksha Sanhita, 2023",
+          "act_number": "Act No. 46 of 2023",
+          "official_source": "https://www.indiacode.nic.in/handle/123456789/20063",
+          "commencement_notification": "S.O. 848(E)",
+          "commencement_date": "2024-07-01",
+          "key_sections": ["1", "173", "175", "187", "479", "482", "531"],
+          "replaces_instrument_id": "IND-STAT-CRPC-1973"
+        },
+        {
+          "instrument_id": "IND-STAT-BSA-2023",
+          "title": "Bharatiya Sakshya Adhiniyam, 2023",
+          "act_number": "Act No. 47 of 2023",
+          "official_source": "https://www.indiacode.nic.in/handle/123456789/20064",
+          "commencement_notification": "S.O. 850(E)",
+          "commencement_date": "2024-07-01",
+          "key_sections": ["1", "24", "61", "63", "170"],
+          "replaces_instrument_id": "IND-STAT-IEA-1872"
+        }
+      ]
+    },
+    {
+      "batch_id": "BATCH-02-DIGITAL-DATA",
+      "domain": "Information Technology & Data Privacy",
+      "priority_tier": "HIGH",
+      "rationale": "Complex phased commencement where DPDP Act 2023 is enacted but Section 44(2) omission of IT Act Section 43A remains unappointed, requiring point-in-time co-existence modeling.",
+      "instruments": [
+        {
+          "instrument_id": "IND-STAT-IT-2000",
+          "title": "Information Technology Act, 2000",
+          "act_number": "Act No. 21 of 2000",
+          "official_source": "https://www.indiacode.nic.in/handle/123456789/1999",
+          "commencement_date": "2000-10-17",
+          "amended_by": ["IND-AMEND-IT-2008"],
+          "key_sections": ["43", "43A", "66A", "67", "69A", "79"]
+        },
+        {
+          "instrument_id": "IND-STAT-DPDP-2023",
+          "title": "Digital Personal Data Protection Act, 2023",
+          "act_number": "Act No. 22 of 2023",
+          "official_source": "https://www.indiacode.nic.in/handle/123456789/20023",
+          "enactment_date": "2023-08-11",
+          "commencement_date": null,
+          "is_phased_commencement": true,
+          "key_sections": ["1", "2", "6", "8", "16", "28", "33", "44"]
+        }
+      ]
+    },
+    {
+      "batch_id": "BATCH-03-COMMERCIAL-REFORMS",
+      "domain": "Commercial Remedies & Consumer Justice",
+      "priority_tier": "HIGH",
+      "rationale": "High-value commercial shifts: 2018 Specific Relief amendment making specific performance mandatory, 2015 Arbitration amendment restricting patent illegality, and 2019 Consumer Protection product liability.",
+      "instruments": [
+        {
+          "instrument_id": "IND-STAT-SRA-1963",
+          "title": "Specific Relief Act, 1963",
+          "act_number": "Act No. 47 of 1963",
+          "official_source": "https://www.indiacode.nic.in/handle/123456789/1583",
+          "amended_by": ["IND-AMEND-SRA-2018"],
+          "key_sections": ["10", "14", "16", "20", "20A", "41"]
+        },
+        {
+          "instrument_id": "IND-STAT-ARB-1996",
+          "title": "Arbitration and Conciliation Act, 1996",
+          "act_number": "Act No. 26 of 1996",
+          "official_source": "https://www.indiacode.nic.in/handle/123456789/1978",
+          "amended_by": ["IND-AMEND-ARB-2015", "IND-AMEND-ARB-2019"],
+          "key_sections": ["8", "9", "11", "29A", "34", "36"]
+        },
+        {
+          "instrument_id": "IND-STAT-CPA-2019",
+          "title": "Consumer Protection Act, 2019",
+          "act_number": "Act No. 35 of 2019",
+          "official_source": "https://www.indiacode.nic.in/handle/123456789/15252",
+          "commencement_date": "2020-07-20",
+          "replaces_instrument_id": "IND-STAT-CPA-1986",
+          "key_sections": ["2", "35", "47", "58", "82", "83", "107"]
+        }
+      ]
+    }
+  ]
+}

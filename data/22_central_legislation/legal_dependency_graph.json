@@ -1,0 +1,156 @@
+{
+  "graph_version": "LEGALMITRA-DEPENDENCY-GRAPH-V1",
+  "generated_at": "2026-10-19T11:59:15Z",
+  "total_nodes": 18,
+  "total_edges": 16,
+  "nodes": [
+    {"id": "IND-STAT-BNS-2023", "type": "ACT", "label": "Bharatiya Nyaya Sanhita, 2023"},
+    {"id": "IND-STAT-IPC-1860", "type": "ACT", "label": "Indian Penal Code, 1860"},
+    {"id": "IND-STAT-BNSS-2023", "type": "ACT", "label": "Bharatiya Nagarik Suraksha Sanhita, 2023"},
+    {"id": "IND-STAT-CRPC-1973", "type": "ACT", "label": "Code of Criminal Procedure, 1973"},
+    {"id": "IND-STAT-BSA-2023", "type": "ACT", "label": "Bharatiya Sakshya Adhiniyam, 2023"},
+    {"id": "IND-STAT-IEA-1872", "type": "ACT", "label": "Indian Evidence Act, 1872"},
+    {"id": "IND-STAT-DPDP-2023", "type": "ACT", "label": "Digital Personal Data Protection Act, 2023"},
+    {"id": "IND-STAT-IT-2000", "type": "ACT", "label": "Information Technology Act, 2000"},
+    {"id": "IND-AMEND-IT-2008", "type": "AMENDMENT_ACT", "label": "IT (Amendment) Act, 2008"},
+    {"id": "IND-STAT-SRA-1963", "type": "ACT", "label": "Specific Relief Act, 1963"},
+    {"id": "IND-AMEND-SRA-2018", "type": "AMENDMENT_ACT", "label": "Specific Relief (Amendment) Act, 2018"},
+    {"id": "IND-STAT-ARB-1996", "type": "ACT", "label": "Arbitration and Conciliation Act, 1996"},
+    {"id": "IND-AMEND-ARB-2015", "type": "AMENDMENT_ACT", "label": "Arbitration (Amendment) Act, 2015"},
+    {"id": "IND-STAT-CPA-2019", "type": "ACT", "label": "Consumer Protection Act, 2019"},
+    {"id": "IND-STAT-CPA-1986", "type": "ACT", "label": "Consumer Protection Act, 1986"},
+    {"id": "IND-CONST-1950", "type": "CONSTITUTION", "label": "The Constitution of India"},
+    {"id": "IND-AMEND-CONST-106", "type": "CONSTITUTIONAL_AMENDMENT", "label": "Constitution (106th Amendment) Act, 2023"},
+    {"id": "IND-AMEND-CONST-103", "type": "CONSTITUTIONAL_AMENDMENT", "label": "Constitution (103rd Amendment) Act, 2019"}
+  ],
+  "edges": [
+    {
+      "source": "IND-STAT-BNS-2023",
+      "target": "IND-STAT-IPC-1860",
+      "relationship": "REPEALS",
+      "effective_date": "2024-07-01",
+      "authority": "BNS Section 358(1)",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "source": "IND-STAT-BNS-2023",
+      "target": "IND-STAT-IPC-1860",
+      "relationship": "SAVES",
+      "effective_date": "2024-07-01",
+      "authority": "BNS Section 358(2)",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "source": "IND-STAT-BNSS-2023",
+      "target": "IND-STAT-CRPC-1973",
+      "relationship": "REPEALS",
+      "effective_date": "2024-07-01",
+      "authority": "BNSS Section 531(1)",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "source": "IND-STAT-BNSS-2023",
+      "target": "IND-STAT-CRPC-1973",
+      "relationship": "SAVES",
+      "effective_date": "2024-07-01",
+      "authority": "BNSS Section 531(2)(a)",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "source": "IND-STAT-BSA-2023",
+      "target": "IND-STAT-IEA-1872",
+      "relationship": "REPEALS",
+      "effective_date": "2024-07-01",
+      "authority": "BSA Section 170(1)",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "source": "IND-STAT-BSA-2023",
+      "target": "IND-STAT-IEA-1872",
+      "relationship": "SAVES",
+      "effective_date": "2024-07-01",
+      "authority": "BSA Section 170(2)",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "source": "IND-AMEND-SRA-2018",
+      "target": "IND-STAT-SRA-1963",
+      "relationship": "SUBSTITUTES",
+      "effective_date": "2018-10-01",
+      "authority": "Act 18 of 2018 s.3 (Section 10)",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "source": "IND-AMEND-SRA-2018",
+      "target": "IND-STAT-SRA-1963",
+      "relationship": "INSERTS",
+      "effective_date": "2018-10-01",
+      "authority": "Act 18 of 2018 s.10 (Section 20A)",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "source": "IND-AMEND-ARB-2015",
+      "target": "IND-STAT-ARB-1996",
+      "relationship": "INSERTS",
+      "effective_date": "2015-10-23",
+      "authority": "Act 3 of 2016 s.15 (Section 29A)",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "source": "IND-AMEND-ARB-2015",
+      "target": "IND-STAT-ARB-1996",
+      "relationship": "INSERTS",
+      "effective_date": "2015-10-23",
+      "authority": "Act 3 of 2016 s.18 (Section 34(2A))",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "source": "IND-AMEND-IT-2008",
+      "target": "IND-STAT-IT-2000",
+      "relationship": "INSERTS",
+      "effective_date": "2009-10-27",
+      "authority": "Act 10 of 2009 s.22 (Section 43A)",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "source": "IND-STAT-DPDP-2023",
+      "target": "IND-STAT-IT-2000",
+      "relationship": "OMITS_PENDING",
+      "effective_date": null,
+      "authority": "DPDP Act 2023 s.44(2)",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "source": "IND-STAT-CPA-2019",
+      "target": "IND-STAT-CPA-1986",
+      "relationship": "REPEALS",
+      "effective_date": "2020-07-20",
+      "authority": "CPA 2019 s.107(1)",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "source": "IND-STAT-CPA-2019",
+      "target": "IND-STAT-CPA-1986",
+      "relationship": "SAVES",
+      "effective_date": "2020-07-20",
+      "authority": "CPA 2019 s.107(2)",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "source": "IND-AMEND-CONST-106",
+      "target": "IND-CONST-1950",
+      "relationship": "INSERTS",
+      "effective_date": "2023-09-28",
+      "authority": "106th Amendment s.2 (Article 330A)",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "source": "IND-AMEND-CONST-103",
+      "target": "IND-CONST-1950",
+      "relationship": "INSERTS",
+      "effective_date": "2019-01-14",
+      "authority": "103rd Amendment s.2 (Articles 15(6), 16(6))",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    }
+  ]
+}

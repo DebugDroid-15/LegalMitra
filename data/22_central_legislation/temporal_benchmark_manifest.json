@@ -1,0 +1,221 @@
+{
+  "benchmark_suite_id": "LEGALMITRA-BENCHMARK-PIT-V1",
+  "version": "1.0.0",
+  "description": "Gold-standard point-in-time statutory retrieval and temporal resolution evaluation suite comprising 10 multi-era Indian legal scenarios.",
+  "created_at": "2026-10-19T12:00:00Z",
+  "total_test_cases": 10,
+  "test_cases": [
+    {
+      "case_id": "PIT-01",
+      "title": "Cheating and Dishonestly Inducing Delivery of Property Across Criminal Law Transition",
+      "domain": "criminal_law",
+      "facts": {
+        "alleged_offense_date": "2023-11-15",
+        "complaint_date": "2024-08-20",
+        "pending_proceedings_pre_july_2024": false
+      },
+      "expected_resolution": {
+        "substantive_act_id": "ACT-CENTRAL-1860-045",
+        "substantive_provision": "Section 420",
+        "substantive_act_title": "Indian Penal Code, 1860",
+        "procedural_act_id": "ACT-CENTRAL-2023-046",
+        "procedural_act_title": "Bharatiya Nagarik Suraksha Sanhita, 2023",
+        "constitutional_basis": "Constitution of India, Article 20(1) (Protection against ex post facto criminal laws)",
+        "procedural_savings_provision": "BNSS 2023 Section 531(2)(a)",
+        "expected_substantive_text_fragment": "Cheating and dishonestly inducing delivery of property",
+        "expected_procedural_note": "Trial and investigation proceed under BNSS 2023 because no investigation/inquiry/trial was pending prior to 01.07.2024"
+      }
+    },
+    {
+      "case_id": "PIT-02",
+      "title": "Theft Offense Committed Post-July 2024 Transition",
+      "domain": "criminal_law",
+      "facts": {
+        "alleged_offense_date": "2024-07-15",
+        "complaint_date": "2024-07-16",
+        "pending_proceedings_pre_july_2024": false
+      },
+      "expected_resolution": {
+        "substantive_act_id": "ACT-CENTRAL-2023-045",
+        "substantive_provision": "Section 303(2)",
+        "substantive_act_title": "Bharatiya Nyaya Sanhita, 2023",
+        "procedural_act_id": "ACT-CENTRAL-2023-046",
+        "procedural_act_title": "Bharatiya Nagarik Suraksha Sanhita, 2023",
+        "constitutional_basis": "Constitution of India, Article 20(1)",
+        "expected_substantive_text_fragment": "Whoever commits theft shall be punished with imprisonment of either description for a term which may extend to three years, or with fine, or with both",
+        "expected_procedural_note": "Governed exclusively by BNS 2023 substantively and BNSS 2023 procedurally"
+      }
+    },
+    {
+      "case_id": "PIT-03",
+      "title": "Electronic Record Admissibility Certificate Era Comparison",
+      "domain": "evidence_law",
+      "facts": {
+        "pre_transition_query_date": "2024-05-10",
+        "post_transition_query_date": "2024-08-10"
+      },
+      "expected_resolution": {
+        "pre_transition": {
+          "act_id": "ACT-CENTRAL-1872-001",
+          "act_title": "Indian Evidence Act, 1872",
+          "provision": "Section 65B",
+          "key_phrase": "Admissibility of electronic records",
+          "condition": "Section 65B(4) certificate requirement"
+        },
+        "post_transition": {
+          "act_id": "ACT-CENTRAL-2023-047",
+          "act_title": "Bharatiya Sakshya Adhiniyam, 2023",
+          "provision": "Section 63",
+          "key_phrase": "Admissibility of electronic records",
+          "condition": "Section 63 certificate requirement including Schedule format"
+        }
+      }
+    },
+    {
+      "case_id": "PIT-04",
+      "title": "Specific Relief Act Section 10 Discretionary vs Mandatory Regime",
+      "domain": "commercial_contracts",
+      "facts": {
+        "era_a_date": "2017-06-01",
+        "era_b_date": "2019-01-15",
+        "amendment_effective_date": "2018-10-01"
+      },
+      "expected_resolution": {
+        "pre_amendment": {
+          "act_id": "ACT-CENTRAL-1963-047",
+          "provision": "Section 10",
+          "nature": "discretionary",
+          "operative_phrase": "the specific performance of any contract may, in the discretion of the court, be enforced",
+          "valid_interval": "[1963-12-13, 2018-10-01)"
+        },
+        "post_amendment": {
+          "act_id": "ACT-CENTRAL-1963-047",
+          "provision": "Section 10",
+          "nature": "mandatory",
+          "operative_phrase": "The specific performance of a contract shall be enforced by the court subject to the provisions contained in sub-section (2) of section 11, section 14 and section 16",
+          "valid_interval": "[2018-10-01, null)"
+        }
+      }
+    },
+    {
+      "case_id": "PIT-05",
+      "title": "Arbitration and Conciliation Section 34 Challenge Commencement Boundary",
+      "domain": "commercial_arbitration",
+      "facts": {
+        "arbitration_commencement_pre_2015": "2015-08-01",
+        "arbitration_commencement_post_2015": "2016-01-10",
+        "amendment_effective_date": "2015-10-23"
+      },
+      "expected_resolution": {
+        "pre_2015_commenced": {
+          "regime": "1996_original_or_pre_amendment",
+          "applicability": "Section 26 of 2015 Amendment Act specifies amendment does not apply unless parties agree",
+          "landmark_precedent": "BCCI v. Kochi Cricket Pvt. Ltd. (2018) 6 SCC 287"
+        },
+        "post_2015_commenced": {
+          "regime": "2015_amended",
+          "applicability": "2015 Amendment Act applies including Section 34(2A) patent illegality restriction"
+        }
+      }
+    },
+    {
+      "case_id": "PIT-06",
+      "title": "Data Breach Compensation and Phased Commencement of DPDP Act 2023",
+      "domain": "data_protection_and_cyber",
+      "facts": {
+        "breach_date": "2024-04-10",
+        "claim_date": "2024-10-15",
+        "dpdp_section_44_status": "uncommenced_under_s1_2"
+      },
+      "expected_resolution": {
+        "operative_statute": "ACT-CENTRAL-2000-021",
+        "operative_statute_title": "Information Technology Act, 2000",
+        "operative_provision": "Section 43A",
+        "dpdp_statute": "ACT-CENTRAL-2023-022",
+        "dpdp_provision": "Section 44(2)",
+        "status_determination": "IT Act Section 43A remains active and enforceable because DPDP Act Section 44 has not been notified under Section 1(2)",
+        "rejection_of_hallucinated_repeal": true
+      }
+    },
+    {
+      "case_id": "PIT-07",
+      "title": "Consumer Protection Pecuniary Jurisdiction Transition",
+      "domain": "consumer_protection",
+      "facts": {
+        "complaint_date_era_1": "2018-05-10",
+        "complaint_date_era_2": "2021-03-15",
+        "transition_date": "2020-07-20"
+      },
+      "expected_resolution": {
+        "era_1": {
+          "governing_act": "ACT-CENTRAL-1986-068",
+          "title": "Consumer Protection Act, 1986",
+          "district_forum_limit": "INR 20 Lakhs",
+          "determination": "Filed under CPA 1986, jurisdiction governed by value of goods/services and compensation claimed"
+        },
+        "era_2": {
+          "governing_act": "ACT-CENTRAL-2019-035",
+          "title": "Consumer Protection Act, 2019",
+          "district_commission_limit": "INR 1 Crore (later adjusted to 50 Lakhs via 2021 Rules)",
+          "determination": "Filed under CPA 2019, pending proceedings not transferred unless covered by rules (Neena Aneja v. New India Assurance)"
+        }
+      }
+    },
+    {
+      "case_id": "PIT-08",
+      "title": "Negotiable Instruments Act Section 143A Interim Compensation Prospectivity",
+      "domain": "banking_and_negotiable_instruments",
+      "facts": {
+        "complaint_date_pre_amendment": "2017-11-20",
+        "complaint_date_post_amendment": "2019-04-15",
+        "amendment_date": "2018-09-01"
+      },
+      "expected_resolution": {
+        "pre_amendment_complaints": {
+          "section_143a_applicable": false,
+          "statutory_rule": "Section 143A introduced by Act 20 of 2018 is prospective and cannot be applied to complaints filed prior to 01.09.2018 (G.J. Raja v. Tejraj Sharma, (2019) 19 SCC 469)"
+        },
+        "post_amendment_complaints": {
+          "section_143a_applicable": true,
+          "statutory_rule": "Court trying Section 138 offense may order interim compensation up to 20% of the cheque amount"
+        }
+      }
+    },
+    {
+      "case_id": "PIT-09",
+      "title": "Unlawful Assembly and Rioting with Pre-July Incident and Post-July Trial",
+      "domain": "criminal_law",
+      "facts": {
+        "incident_date": "2024-02-14",
+        "charge_sheet_date": "2024-11-01",
+        "pending_pre_july": false
+      },
+      "expected_resolution": {
+        "substantive_provisions": [
+          {"act": "IPC 1860", "section": "Section 141", "concept": "Unlawful assembly"},
+          {"act": "IPC 1860", "section": "Section 147", "concept": "Punishment for rioting"},
+          {"act": "IPC 1860", "section": "Section 149", "concept": "Every member of unlawful assembly guilty of offense committed in prosecution of common object"}
+        ],
+        "procedural_provisions": [
+          {"act": "BNSS 2023", "concept": "Investigation and trial procedure governed by BNSS 2023 under s.531(2)(a)"}
+        ],
+        "substantive_bns_inapplicability": "BNS 2023 Section 189/190 cannot be retrospectively applied to an incident occurring in February 2024"
+      }
+    },
+    {
+      "case_id": "PIT-10",
+      "title": "Electronic Signature Validity and Recognition Under Information Technology Act",
+      "domain": "cyber_and_commercial",
+      "facts": {
+        "execution_date": "2022-09-15",
+        "query_point": "2026-10-19"
+      },
+      "expected_resolution": {
+        "act_id": "ACT-CENTRAL-2000-021",
+        "provisions": ["Section 3A", "Section 10A"],
+        "validity": "Active and in force throughout the interval [2009-10-27, null)",
+        "legal_effect": "Contracts formed through electronic records and signatures are valid and enforceable; not affected by uncommenced DPDP provisions"
+      }
+    }
+  ]
+}
