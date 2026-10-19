@@ -115,24 +115,42 @@ class BoundedResponseError(ValueError):
     pass
 
 
+import threading
+from urllib.request import HTTPRedirectHandler
+
+
 class RateLimiter:
-    """Token-bucket or sliding window rate limiter."""
+    """Thread-safe token-bucket or sliding window rate limiter."""
 
     def __init__(self, requests_per_minute: int = 20) -> None:
         self.rpm = requests_per_minute
         self.min_interval = 60.0 / requests_per_minute
         self._last_request_time = 0.0
+        self._lock = threading.Lock()
 
     def wait_if_needed(self) -> float:
-        now = time.time()
-        elapsed = now - self._last_request_time
-        if elapsed < self.min_interval:
-            delay = self.min_interval - elapsed
-            time.sleep(delay)
-            self._last_request_time = time.time()
-            return delay
-        self._last_request_time = now
-        return 0.0
+        with self._lock:
+            now = time.time()
+            elapsed = now - self._last_request_time
+            if elapsed < self.min_interval:
+                delay = self.min_interval - elapsed
+                time.sleep(delay)
+                self._last_request_time = time.time()
+                return delay
+            self._last_request_time = now
+            return 0.0
+
+
+class SafeRedirectHandler(HTTPRedirectHandler):
+    """Revalidates destination URL on HTTP 301/302 redirects against SSRF policy."""
+
+    def __init__(self, security_validator) -> None:
+        self.security_validator = security_validator
+        super().__init__()
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        self.security_validator(newurl)
+        return super().redirect_request(req, fp, code, msg, headers, newurl)
 
 
 class BaseJudicialConnector(ABC):
@@ -167,11 +185,17 @@ class BaseJudicialConnector(ABC):
         if parsed.scheme not in ("http", "https"):
             raise SSRFProtectionError(f"Prohibited URL scheme: {parsed.scheme}")
 
+        if parsed.username or parsed.password:
+            raise SSRFProtectionError("Prohibited URL with embedded user credentials")
+
+        if parsed.port and parsed.port not in (80, 443):
+            raise SSRFProtectionError(f"Prohibited non-standard port: {parsed.port}")
+
         hostname = parsed.hostname
         if not hostname:
             raise SSRFProtectionError("Missing hostname in URL")
 
-        host_lower = hostname.lower()
+        host_lower = hostname.lower().strip("[]")
         if host_lower in self._BLOCKED_HOSTNAMES:
             raise SSRFProtectionError(f"Prohibited loopback/local host: {hostname}")
 

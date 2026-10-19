@@ -104,8 +104,8 @@
       "current_tier": 5,
       "tier_label": "TIER_5_SAMPLING_VALIDATED",
       "total_estimated_historical_cases": 150000,
-      "ingested_record_count": 105,
-      "verified_record_count": 105,
+      "ingested_record_count": 43,
+      "verified_record_count": 43,
       "ocr_average_confidence": 0.976,
       "vernacular_languages_supported": [
         "en",
@@ -114,6 +114,285 @@
       "precedent_graph_linked_nodes": 28,
       "known_coverage_gaps": [
         "Goa and Aurangabad circuit bench archival judgments 1980-1995"
+      ]
+    },
+    "IND-MIL-AFT": {
+      "court_id": "IND-MIL-AFT",
+      "court_name": "Armed Forces Tribunal",
+      "institutional_tier": "MILITARY_JUSTICE",
+      "current_tier": 2,
+      "tier_label": "TIER_2_SOURCE_IDENTIFIED",
+      "total_estimated_historical_cases": 35000,
+      "ingested_record_count": 14,
+      "verified_record_count": 14,
+      "ocr_average_confidence": 0.954,
+      "vernacular_languages_supported": [
+        "en"
+      ],
+      "precedent_graph_linked_nodes": 4,
+      "known_coverage_gaps": [
+        "Regional bench orders (Lucknow, Jaipur, Kochi) maintained in separate registries"
+      ]
+    },
+    "IND-TR-NCLAT": {
+      "court_id": "IND-TR-NCLAT",
+      "court_name": "National Company Law Appellate Tribunal",
+      "institutional_tier": "TRIBUNAL",
+      "current_tier": 3,
+      "tier_label": "TIER_3_PIPELINE_DESIGNED",
+      "total_estimated_historical_cases": 15000,
+      "ingested_record_count": 18,
+      "verified_record_count": 18,
+      "ocr_average_confidence": 0.981,
+      "vernacular_languages_supported": [
+        "en"
+      ],
+      "precedent_graph_linked_nodes": 6,
+      "known_coverage_gaps": [
+        "Chennai Bench orders require distinct pagination handler"
+      ]
+    },
+    "IND-TR-NGT": {
+      "court_id": "IND-TR-NGT",
+      "court_name": "National Green Tribunal",
+      "institutional_tier": "TRIBUNAL",
+      "current_tier": 2,
+      "tier_label": "TIER_2_SOURCE_IDENTIFIED",
+      "total_estimated_historical_cases": 28000,
+      "ingested_record_count": 12,
+      "verified_record_count": 12,
+      "ocr_average_confidence": 0.974,
+      "vernacular_languages_supported": [
+        "en"
+      ],
+      "precedent_graph_linked_nodes": 4,
+      "known_coverage_gaps": [
+        "Zonal bench orders (Western, Eastern, Southern, Central) to be integrated"
+      ]
+    },
+    "IND-HC-ALL": {
+      "court_id": "IND-HC-ALL",
+      "court_name": "High Court of Judicature at Allahabad",
+      "institutional_tier": "HIGH_COURT",
+      "current_tier": 2,
+      "tier_label": "TIER_2_SOURCE_IDENTIFIED",
+      "total_estimated_historical_cases": 300000,
+      "ingested_record_count": 18,
+      "verified_record_count": 18,
+      "ocr_average_confidence": 0.958,
+      "vernacular_languages_supported": [
+        "en",
+        "hi"
+      ],
+      "precedent_graph_linked_nodes": 4,
+      "known_coverage_gaps": [
+        "Pre-2000 digital orders fragmented across Lucknow and Prayagraj portals"
+      ]
+    },
+    "IND-HC-CAL": {
+      "court_id": "IND-HC-CAL",
+      "court_name": "Calcutta High Court",
+      "institutional_tier": "HIGH_COURT",
+      "current_tier": 2,
+      "tier_label": "TIER_2_SOURCE_IDENTIFIED",
+      "total_estimated_historical_cases": 280000,
+      "ingested_record_count": 15,
+      "verified_record_count": 15,
+      "ocr_average_confidence": 0.965,
+      "vernacular_languages_supported": [
+        "en"
+      ],
+      "precedent_graph_linked_nodes": 4,
+      "known_coverage_gaps": [
+        "Circuit Benches at Jalpaiguri and Port Blair require separate endpoints"
+      ]
+    },
+    "IND-HC-MAD": {
+      "court_id": "IND-HC-MAD",
+      "court_name": "High Court of Judicature at Madras",
+      "institutional_tier": "HIGH_COURT",
+      "current_tier": 2,
+      "tier_label": "TIER_2_SOURCE_IDENTIFIED",
+      "total_estimated_historical_cases": 260000,
+      "ingested_record_count": 16,
+      "verified_record_count": 16,
+      "ocr_average_confidence": 0.962,
+      "vernacular_languages_supported": [
+        "en",
+        "ta"
+      ],
+      "precedent_graph_linked_nodes": 3,
+      "known_coverage_gaps": [
+        "Madurai Bench digitization batch pending"
+      ]
+    },
+    "IND-HC-GUJ": {
+      "court_id": "IND-HC-GUJ",
+      "court_name": "High Court of Gujarat",
+      "institutional_tier": "HIGH_COURT",
+      "current_tier": 2,
+      "tier_label": "TIER_2_SOURCE_IDENTIFIED",
+      "total_estimated_historical_cases": 180000,
+      "ingested_record_count": 10,
+      "verified_record_count": 10,
+      "ocr_average_confidence": 0.97,
+      "vernacular_languages_supported": [
+        "en",
+        "gu"
+      ],
+      "precedent_graph_linked_nodes": 2,
+      "known_coverage_gaps": [
+        "Gujarati vernacular orders require dedicated OCR pipeline"
+      ]
+    },
+    "IND-HC-KAR": {
+      "court_id": "IND-HC-KAR",
+      "court_name": "High Court of Karnataka",
+      "institutional_tier": "HIGH_COURT",
+      "current_tier": 2,
+      "tier_label": "TIER_2_SOURCE_IDENTIFIED",
+      "total_estimated_historical_cases": 190000,
+      "ingested_record_count": 12,
+      "verified_record_count": 12,
+      "ocr_average_confidence": 0.968,
+      "vernacular_languages_supported": [
+        "en",
+        "kn"
+      ],
+      "precedent_graph_linked_nodes": 2,
+      "known_coverage_gaps": [
+        "Dharwad and Kalaburagi bench sync"
+      ]
+    },
+    "IND-HC-PNH": {
+      "court_id": "IND-HC-PNH",
+      "court_name": "Punjab and Haryana High Court",
+      "institutional_tier": "HIGH_COURT",
+      "current_tier": 2,
+      "tier_label": "TIER_2_SOURCE_IDENTIFIED",
+      "total_estimated_historical_cases": 220000,
+      "ingested_record_count": 14,
+      "verified_record_count": 14,
+      "ocr_average_confidence": 0.964,
+      "vernacular_languages_supported": [
+        "en",
+        "pa",
+        "hi"
+      ],
+      "precedent_graph_linked_nodes": 3,
+      "known_coverage_gaps": [
+        "Pre-1995 decisions offline"
+      ]
+    },
+    "IND-HC-PAT": {
+      "court_id": "IND-HC-PAT",
+      "court_name": "High Court of Judicature at Patna",
+      "institutional_tier": "HIGH_COURT",
+      "current_tier": 2,
+      "tier_label": "TIER_2_SOURCE_IDENTIFIED",
+      "total_estimated_historical_cases": 150000,
+      "ingested_record_count": 8,
+      "verified_record_count": 8,
+      "ocr_average_confidence": 0.951,
+      "vernacular_languages_supported": [
+        "en",
+        "hi"
+      ],
+      "precedent_graph_linked_nodes": 2,
+      "known_coverage_gaps": [
+        "Digital portal connectivity intermittent"
+      ]
+    },
+    "IND-HC-RAJ": {
+      "court_id": "IND-HC-RAJ",
+      "court_name": "High Court of Judicature for Rajasthan",
+      "institutional_tier": "HIGH_COURT",
+      "current_tier": 2,
+      "tier_label": "TIER_2_SOURCE_IDENTIFIED",
+      "total_estimated_historical_cases": 160000,
+      "ingested_record_count": 10,
+      "verified_record_count": 10,
+      "ocr_average_confidence": 0.955,
+      "vernacular_languages_supported": [
+        "en",
+        "hi"
+      ],
+      "precedent_graph_linked_nodes": 2,
+      "known_coverage_gaps": [
+        "Jaipur Bench portal separation"
+      ]
+    },
+    "IND-HC-TEL": {
+      "court_id": "IND-HC-TEL",
+      "court_name": "High Court for the State of Telangana",
+      "institutional_tier": "HIGH_COURT",
+      "current_tier": 2,
+      "tier_label": "TIER_2_SOURCE_IDENTIFIED",
+      "total_estimated_historical_cases": 85000,
+      "ingested_record_count": 9,
+      "verified_record_count": 9,
+      "ocr_average_confidence": 0.972,
+      "vernacular_languages_supported": [
+        "en",
+        "te"
+      ],
+      "precedent_graph_linked_nodes": 2,
+      "known_coverage_gaps": [
+        "Post-2019 bifurcation records clean; legacy records in Hyderabad HC archive"
+      ]
+    },
+    "IND-TR-ITAT": {
+      "court_id": "IND-TR-ITAT",
+      "court_name": "Income Tax Appellate Tribunal",
+      "institutional_tier": "TRIBUNAL",
+      "current_tier": 2,
+      "tier_label": "TIER_2_SOURCE_IDENTIFIED",
+      "total_estimated_historical_cases": 95000,
+      "ingested_record_count": 11,
+      "verified_record_count": 11,
+      "ocr_average_confidence": 0.968,
+      "vernacular_languages_supported": [
+        "en"
+      ],
+      "precedent_graph_linked_nodes": 3,
+      "known_coverage_gaps": [
+        "63 Benches nationwide require unified connector"
+      ]
+    },
+    "HIST-FED-COURT": {
+      "court_id": "HIST-FED-COURT",
+      "court_name": "Federal Court of India",
+      "institutional_tier": "HISTORICAL_ARCHIVE",
+      "current_tier": 5,
+      "tier_label": "TIER_5_SAMPLING_VALIDATED",
+      "total_estimated_historical_cases": 350,
+      "ingested_record_count": 8,
+      "verified_record_count": 8,
+      "ocr_average_confidence": 0.952,
+      "vernacular_languages_supported": [
+        "en"
+      ],
+      "precedent_graph_linked_nodes": 3,
+      "known_coverage_gaps": [
+        "FCR volumes 1937-1950 digitized from National Archives scans"
+      ]
+    },
+    "HIST-PRIVY-COUNCIL": {
+      "court_id": "HIST-PRIVY-COUNCIL",
+      "court_name": "Judicial Committee of the Privy Council (Indian Appeals)",
+      "institutional_tier": "HISTORICAL_ARCHIVE",
+      "current_tier": 5,
+      "tier_label": "TIER_5_SAMPLING_VALIDATED",
+      "total_estimated_historical_cases": 4500,
+      "ingested_record_count": 12,
+      "verified_record_count": 12,
+      "ocr_average_confidence": 0.961,
+      "vernacular_languages_supported": [
+        "en"
+      ],
+      "precedent_graph_linked_nodes": 4,
+      "known_coverage_gaps": [
+        "Moore's Indian Appeals and L.R. I.A. digitized via open legal repositories"
       ]
     },
     "IND-DC-ECOURTS": {

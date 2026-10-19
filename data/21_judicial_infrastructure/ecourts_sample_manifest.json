@@ -32,32 +32,32 @@
       "privacy_classification": "UNRESTRICTED_PUBLIC",
       "audit_log": [
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "METADATA_ACQUIRED",
           "Metadata parsed and CNR validated"
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "DOCUMENT_ACQUIRED",
           "Document payload acquired (160 chars)"
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "AUTHENTICITY_VALIDATED",
           "Digest verified SHA-256=348e78a8e1b3d989..."
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "PROCEDURAL_EXTRACTED",
           "Disposal: DECREED_WITH_COSTS"
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "PRIVACY_REVIEWED",
           "Classification: UNRESTRICTED_PUBLIC"
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "ELIGIBLE_INDEXED",
           "Approved for grounded RAG retrieval"
         ]
@@ -87,32 +87,32 @@
       "privacy_classification": "UNRESTRICTED_PUBLIC",
       "audit_log": [
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "METADATA_ACQUIRED",
           "Metadata parsed and CNR validated"
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "DOCUMENT_ACQUIRED",
           "Document payload acquired (143 chars)"
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "AUTHENTICITY_VALIDATED",
           "Digest verified SHA-256=6d49883fa185096d..."
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "PROCEDURAL_EXTRACTED",
           "Disposal: DISPOSED_OF"
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "PRIVACY_REVIEWED",
           "Classification: UNRESTRICTED_PUBLIC"
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "ELIGIBLE_INDEXED",
           "Approved for grounded RAG retrieval"
         ]
@@ -141,32 +141,32 @@
       "privacy_classification": "UNRESTRICTED_PUBLIC",
       "audit_log": [
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "METADATA_ACQUIRED",
           "Metadata parsed and CNR validated"
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "DOCUMENT_ACQUIRED",
           "Document payload acquired (161 chars)"
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "AUTHENTICITY_VALIDATED",
           "Digest verified SHA-256=1f01630d97ff1c23..."
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "PROCEDURAL_EXTRACTED",
           "Disposal: ALLOWED"
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "PRIVACY_REVIEWED",
           "Classification: UNRESTRICTED_PUBLIC"
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "ELIGIBLE_INDEXED",
           "Approved for grounded RAG retrieval"
         ]
@@ -195,32 +195,32 @@
       "privacy_classification": "UNRESTRICTED_PUBLIC",
       "audit_log": [
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "METADATA_ACQUIRED",
           "Metadata parsed and CNR validated"
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "DOCUMENT_ACQUIRED",
           "Document payload acquired (150 chars)"
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "AUTHENTICITY_VALIDATED",
           "Digest verified SHA-256=a978d98e3ea0b2fb..."
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "PROCEDURAL_EXTRACTED",
           "Disposal: CONVICTED"
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "PRIVACY_REVIEWED",
           "Classification: UNRESTRICTED_PUBLIC"
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "ELIGIBLE_INDEXED",
           "Approved for grounded RAG retrieval"
         ]
@@ -250,27 +250,27 @@
       "privacy_classification": "REDACTION_REQUIRED_CHILD_PROTECTION",
       "audit_log": [
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "METADATA_ACQUIRED",
           "Metadata parsed and CNR validated"
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "DOCUMENT_ACQUIRED",
           "Document payload acquired (178 chars)"
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "AUTHENTICITY_VALIDATED",
           "Digest verified SHA-256=179b5b7715847be7..."
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "PROCEDURAL_EXTRACTED",
           "Disposal: PENDING_TRIAL"
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "BLOCKED_RESTRICTED",
           "Privacy bar: REDACTION_REQUIRED_CHILD_PROTECTION"
         ]
@@ -299,32 +299,32 @@
       "privacy_classification": "UNRESTRICTED_PUBLIC",
       "audit_log": [
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "METADATA_ACQUIRED",
           "Metadata parsed and CNR validated"
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "DOCUMENT_ACQUIRED",
           "Document payload acquired (167 chars)"
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "AUTHENTICITY_VALIDATED",
           "Digest verified SHA-256=44c0b2f9b4db8644..."
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "PROCEDURAL_EXTRACTED",
           "Disposal: AWARD_PASSED"
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "PRIVACY_REVIEWED",
           "Classification: UNRESTRICTED_PUBLIC"
         ],
         [
-          "2026-10-18T19:13:58Z",
+          "2026-10-19T02:52:26Z",
           "ELIGIBLE_INDEXED",
           "Approved for grounded RAG retrieval"
         ]

@@ -117,13 +117,16 @@ class DelhiHighCourtConnector(BaseJudicialConnector):
             discovered_doc.transition(SourceDocumentState.BLOCKED_ACCESS_DENIED, "Live mode is disabled by safety policy")
             raise PermissionError("Live endpoint acquisition disabled. Enable is_live_enabled=True with approved authorization.")
 
-        # Live acquisition using safe urllib request
+        # Live acquisition using safe urllib request with redirect revalidation
         import urllib.request
+        from legalmitra.judicial.connectors.connector_base import SafeRedirectHandler
+
+        opener = urllib.request.build_opener(SafeRedirectHandler(self.validate_url_security))
         req = urllib.request.Request(
             discovered_doc.source_url,
             headers={"User-Agent": "LegalMitra-Academic-Research/1.0 (Indian Legal Source Ingestion)"},
         )
-        with urllib.request.urlopen(req, timeout=self.request_timeout_seconds) as resp:
+        with opener.open(req, timeout=self.request_timeout_seconds) as resp:
             content_type = resp.headers.get_content_type()
             raw_data = resp.read(self.max_response_bytes + 1)
             if len(raw_data) > self.max_response_bytes:

@@ -407,13 +407,86 @@ def generate_artifacts() -> None:
     print("-> ecourts_sample_manifest.json generated.")
 
     # 4. Judicial Coverage Matrix v3
+    with open(os.path.join(output_dir, "judicial_coverage_matrix_v2.json"), "r", encoding="utf-8") as f:
+        v2_matrix = json.load(f)
+
+    # Base assessments from v2 (19 institutions)
+    v3_assessments = dict(v2_matrix.get("assessments", {}))
+
+    # Remove legacy generic district entry in favor of formal eCourts protocol entry
+    v3_assessments.pop("IND-DIST-GENERIC", None)
+
+    # Update upgraded institutions for Phase 40
+    v3_assessments["IND-SC"] = {
+        "court_id": "IND-SC",
+        "court_name": "Supreme Court of India",
+        "institutional_tier": "APEX",
+        "current_tier": 6,
+        "tier_label": "TIER_6_SUBSTANTIAL_HOLDINGS",
+        "total_estimated_historical_cases": 75000,
+        "ingested_record_count": 210,
+        "verified_record_count": 210,
+        "ocr_average_confidence": 0.988,
+        "vernacular_languages_supported": ["en", "hi"],
+        "precedent_graph_linked_nodes": 78,
+        "known_coverage_gaps": ["Pre-1970 digital unreported orders requiring archival microfilm OCR scanning"],
+    }
+
+    v3_assessments["IND-HC-DEL"] = {
+        "court_id": "IND-HC-DEL",
+        "court_name": "High Court of Delhi",
+        "institutional_tier": "HIGH_COURT",
+        "current_tier": 6,
+        "tier_label": "TIER_6_SUBSTANTIAL_HOLDINGS",
+        "total_estimated_historical_cases": 120000,
+        "ingested_record_count": 145,
+        "verified_record_count": 145,
+        "ocr_average_confidence": 0.982,
+        "vernacular_languages_supported": ["en", "hi"],
+        "precedent_graph_linked_nodes": 36,
+        "known_coverage_gaps": ["Pre-2000 unreported orders not indexed in public digital cause list"],
+    }
+
+    v3_assessments["IND-HC-BOM"] = {
+        "court_id": "IND-HC-BOM",
+        "court_name": "High Court of Judicature at Bombay",
+        "institutional_tier": "HIGH_COURT",
+        "current_tier": 5,
+        "tier_label": "TIER_5_SAMPLING_VALIDATED",
+        "total_estimated_historical_cases": 150000,
+        "ingested_record_count": 43,
+        "verified_record_count": 43,
+        "ocr_average_confidence": 0.976,
+        "vernacular_languages_supported": ["en", "mr"],
+        "precedent_graph_linked_nodes": 28,
+        "known_coverage_gaps": ["Goa and Aurangabad circuit bench archival judgments 1980-1995"],
+    }
+
+    v3_assessments["IND-DC-ECOURTS"] = {
+        "court_id": "IND-DC-ECOURTS",
+        "court_name": "National District & Subordinate Courts (eCourts CIS Ingestion)",
+        "institutional_tier": "DISTRICT_COURT",
+        "current_tier": 4,
+        "tier_label": "TIER_4_PIPELINE_TESTED",
+        "total_estimated_historical_cases": 10000000,
+        "ingested_record_count": 30,
+        "verified_record_count": 30,
+        "ocr_average_confidence": 0.965,
+        "vernacular_languages_supported": ["en", "hi", "mr", "kn"],
+        "precedent_graph_linked_nodes": 0,
+        "known_coverage_gaps": ["CAPTCHA access boundary restricts real-time automated ingestion; relies on authorized eCommittee API tokens and vetted local dumps."],
+    }
+
+    total_ingested = sum(a["ingested_record_count"] for a in v3_assessments.values())
+    total_verified = sum(a["verified_record_count"] for a in v3_assessments.values())
+
     coverage_matrix_v3 = {
         "summary": {
             "version": "3.0.0",
             "phase": "PHASE_40",
-            "total_institutions_tracked": 19,
-            "total_ingested_records": 615,
-            "total_verified_records": 615,
+            "total_institutions_tracked": len(v3_assessments),
+            "total_ingested_records": total_ingested,
+            "total_verified_records": total_verified,
             "operational_connectors_count": 2,
             "ecourts_protocol_status": "OPERATIONAL_STAGED",
             "devanagari_ocr_qa_status": "OPERATIONAL_VALIDATED",
@@ -457,69 +530,12 @@ def generate_artifacts() -> None:
                 "operational_status": "OPERATIONAL_FIXTURE_VERIFIED",
             },
         },
-        "assessments": {
-            "IND-SC": {
-                "court_id": "IND-SC",
-                "court_name": "Supreme Court of India",
-                "institutional_tier": "APEX",
-                "current_tier": 6,
-                "tier_label": "TIER_6_SUBSTANTIAL_HOLDINGS",
-                "total_estimated_historical_cases": 75000,
-                "ingested_record_count": 210,
-                "verified_record_count": 210,
-                "ocr_average_confidence": 0.988,
-                "vernacular_languages_supported": ["en", "hi"],
-                "precedent_graph_linked_nodes": 78,
-                "known_coverage_gaps": ["Pre-1970 digital unreported orders requiring archival microfilm OCR scanning"],
-            },
-            "IND-HC-DEL": {
-                "court_id": "IND-HC-DEL",
-                "court_name": "High Court of Delhi",
-                "institutional_tier": "HIGH_COURT",
-                "current_tier": 6,
-                "tier_label": "TIER_6_SUBSTANTIAL_HOLDINGS",
-                "total_estimated_historical_cases": 120000,
-                "ingested_record_count": 145,
-                "verified_record_count": 145,
-                "ocr_average_confidence": 0.982,
-                "vernacular_languages_supported": ["en", "hi"],
-                "precedent_graph_linked_nodes": 36,
-                "known_coverage_gaps": ["Pre-2000 unreported orders not indexed in public digital cause list"],
-            },
-            "IND-HC-BOM": {
-                "court_id": "IND-HC-BOM",
-                "court_name": "High Court of Judicature at Bombay",
-                "institutional_tier": "HIGH_COURT",
-                "current_tier": 5,
-                "tier_label": "TIER_5_SAMPLING_VALIDATED",
-                "total_estimated_historical_cases": 150000,
-                "ingested_record_count": 105,
-                "verified_record_count": 105,
-                "ocr_average_confidence": 0.976,
-                "vernacular_languages_supported": ["en", "mr"],
-                "precedent_graph_linked_nodes": 28,
-                "known_coverage_gaps": ["Goa and Aurangabad circuit bench archival judgments 1980-1995"],
-            },
-            "IND-DC-ECOURTS": {
-                "court_id": "IND-DC-ECOURTS",
-                "court_name": "National District & Subordinate Courts (eCourts CIS Ingestion)",
-                "institutional_tier": "DISTRICT_COURT",
-                "current_tier": 4,
-                "tier_label": "TIER_4_PIPELINE_TESTED",
-                "total_estimated_historical_cases": 10000000,
-                "ingested_record_count": 30,
-                "verified_record_count": 30,
-                "ocr_average_confidence": 0.965,
-                "vernacular_languages_supported": ["en", "hi", "mr", "kn"],
-                "precedent_graph_linked_nodes": 0,
-                "known_coverage_gaps": ["CAPTCHA access boundary restricts real-time automated ingestion; relies on authorized eCommittee API tokens and vetted local dumps."],
-            },
-        },
+        "assessments": v3_assessments,
     }
 
     with open(os.path.join(output_dir, "judicial_coverage_matrix_v3.json"), "w", encoding="utf-8") as f:
         json.dump(coverage_matrix_v3, f, indent=2, ensure_ascii=False)
-    print("-> judicial_coverage_matrix_v3.json generated.")
+    print(f"-> judicial_coverage_matrix_v3.json generated with {len(v3_assessments)} institutions and {total_ingested} records.")
 
     # 5. Independent Judicial Benchmark v3 (at least 45 test cases)
     # Load v2 benchmark
