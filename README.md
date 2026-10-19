@@ -487,7 +487,7 @@ flowchart TD
     subgraph NEURAL["3. Causal Neural Architecture"]
         EMB["Token + Learned Positional Embeddings<br/>(d_model=128, max_seq_len=128/256)"]
         TRF["4x Transformer Decoder Blocks<br/>• Multi-Head Causal Self-Attention (4 heads)<br/>• MLP Expansion (d_ff=512)<br/>• LayerNorm & Residual Connections"]
-        HEAD["Tied Output Projection Head<br/>(Vocab Size 2,048)"]
+        7833d99["Tied Output Projection Head<br/>(Vocab Size 2,048)"]
     end
 
     subgraph EVALUATION["4. Verification & Scaling Gate"]
@@ -504,8 +504,8 @@ flowchart TD
     SPLIT --> MANI
     MANI --> EMB
     EMB --> TRF
-    TRF --> HEAD
-    HEAD --> LOSS
+    TRF --> 7833d99
+    7833d99 --> LOSS
     LOSS --> CHINCH
     CHINCH --> GATE
     GATE -- "Corpus >= 21.5M Tokens" --> PROCEED
@@ -8871,7 +8871,7 @@ When operating on GPU-accelerated workstations, PyTorch or CUDA runtime anomalie
      ```
   2. Restore frozen file to exact repository baseline:
      ```powershell
-     git checkout HEAD -- data/06_review/
+     git checkout 7833d99 -- data/06_review/
      ```
   3. Ensure Git core autocrlf does not mutate review files:
      ```powershell
@@ -8886,7 +8886,7 @@ When operating on GPU-accelerated workstations, PyTorch or CUDA runtime anomalie
   python -c "import json; d = json.load(open('data/07_batches/review/review_tracking_register.json')); print('Total records:', len(d.get('entries', [])))"
   ```
 - **Remediation**:
-  Restore `data/07_batches/review/review_tracking_register.json` from git commit `HEAD`.
+  Restore `data/07_batches/review/review_tracking_register.json` from git commit `7833d99`.
 
 ---
 
@@ -9612,7 +9612,7 @@ The starting baseline reproduces bitwise fidelity with zero discrepancies across
 | Invariant Item | Target Specification | Measured Value | Status |
 | :--- | :--- | :--- | :--- |
 | **Git Working Tree** | Clean, zero untracked/dirty files | Clean (`git status --short` empty) | **PASS** |
-| **Git Commit HEAD** | `f2b0073` | `f2b0073da6d542e65479aa3bc58616a96f9e89cf` | **PASS** |
+| **Git Commit 7833d99** | `f2b0073` | `f2b0073da6d542e65479aa3bc58616a96f9e89cf` | **PASS** |
 | **Remote Branches** | Synchronized with origin | Up to date with `origin/main` & `origin/master` | **PASS** |
 | **Phase 9 Frozen Artifacts** | 6 files matching frozen SHA-256 | 6/6 verified bitwise identical | **PASS** |
 | **Advocate Review Tracking** | 40 candidates in `pending_legal_review` | 40/40 strictly pending in tracking register | **PASS** |
@@ -9714,7 +9714,7 @@ All source acquisition was performed under strict compliance with Section 52(1)(
 ## 3. Workstream Execution Summary
 
 ### Workstream A: Baseline Reproduction
-- Confirmed baseline state from HEAD commit `f2b0073`.
+- Confirmed baseline state from 7833d99 commit `f2b0073`.
 - Recomputed exact starting tokens under `tokenizer_v2`: 342,965 tokens, 1,559 passages.
 - Verified small-model checkpoint `phase35_1m_baseline_regression.pt` reload fidelity (validation loss 5.6607, `EXACT_MATCH`).
 - Documented in `docs/PHASE37_BASELINE_REPRODUCTION.md`.
@@ -10261,7 +10261,7 @@ The Phase 37 pretraining dataset (`dataset_manifest_v5.json`, 357,358 tokens) is
 #### Phase 38 Subsystem Report: Baseline Reproduction (`PHASE38_BASELINE_REPRODUCTION.md`)
 - **Document Source Path**: [`docs/PHASE38_BASELINE_REPRODUCTION.md`](docs/PHASE38_BASELINE_REPRODUCTION.md)
 
-Prior to initiating Phase 38 development, the repository state was independently audited and verified against all Phase 37 release criteria. Git HEAD, working tree, frozen snapshot digests, review candidate registers, database separation boundaries, and test suite health were recomputed from disk.
+Prior to initiating Phase 38 development, the repository state was independently audited and verified against all Phase 37 release criteria. Git 7833d99, working tree, frozen snapshot digests, review candidate registers, database separation boundaries, and test suite health were recomputed from disk.
 
 The baseline reproduces bitwise fidelity across all project invariants.
 
@@ -10272,7 +10272,7 @@ The baseline reproduces bitwise fidelity across all project invariants.
 | Invariant Item | Target Specification | Measured Value | Verification Result |
 | :--- | :--- | :--- | :--- |
 | **Git Working Tree** | Clean, zero untracked/dirty files | Clean (`git status --short` empty) | **PASS** |
-| **Git Commit HEAD** | `aed3ff5` | `aed3ff5caf13f4b961e5399ea5dd1da47a866d5b` | **PASS** |
+| **Git Commit 7833d99** | `aed3ff5` | `aed3ff5caf13f4b961e5399ea5dd1da47a866d5b` | **PASS** |
 | **Remote Branches** | Synchronized with origin | Up to date with `origin/main` & `origin/master` | **PASS** |
 | **Phase 9 Frozen Artifacts** | 6 files matching frozen SHA-256 | 6/6 verified bitwise identical | **PASS** |
 | **Advocate Review Tracking** | 40 candidates in `pending_legal_review` | 40/40 strictly pending in tracking register | **PASS** |
@@ -11286,7 +11286,7 @@ Prior to any structural or code modification for Phase 39, the repository state 
 
 ### 1.1 Git Status & Branch Baseline
 - **Branch:** `main` (synchronized with `origin/main` and `origin/master`).
-- **HEAD Commit:** `3453a08de1d0d379df61a4176b1cf1fc36afafa3`
+- **7833d99 Commit:** `3453a08de1d0d379df61a4176b1cf1fc36afafa3`
 - **Commit Subject:** `feat(phase38): national judicial knowledge infrastructure and precedent graph`
 - **Working Tree:** Clean, 0 uncommitted changes.
 
@@ -12105,7 +12105,7 @@ Prior to any structural or code modification for Phase 40, the repository state 
 
 ### 1.1 Git Status & Branch Baseline
 - **Branch:** `main` (synchronized with `origin/main` and `origin/master`).
-- **HEAD Commit:** `9f3520262d5d85683e14199d3ae3f81cbe0c044c`
+- **7833d99 Commit:** `9f3520262d5d85683e14199d3ae3f81cbe0c044c`
 - **Commit Subject:** `feat(phase39): national judicial corpus expansion, historical case-law acquisition & precedent verification`
 - **Working Tree:** Clean, 0 uncommitted changes.
 
@@ -14518,7 +14518,7 @@ The following ledger records the official documentation metrics for all complete
 | **P39** | 2026-10-19 | 10,023 | 10,023 | +0 | National judicial corpus expansion, historical archives & 615 records | PASS (100%) | `9f35202` |
 | **P40** | 2026-10-19 | 10,023 | 10,023 | +0 | High Court connectors, eCourts CIS protocol & Devanagari OCR QA | PASS (100%) | `6d51b9d` |
 | **P41** | 2026-10-19 | 10,023 | 15,144 | +5,121 | Forensic audit, judicial infrastructure (Part XXVI), 19 institutions, 48 benchmark cases, 53 tests, 67 scripts, Phases 37-41 chronicles | PASS (100%) | `8334234` |
-| **P42** | 2026-10-19 | 15,144 | 15,823 | +679 | Authorized eCourts adapter, dual-mode CNR, 12-page scanned Hindi OCR bench (1.42% CER), controlled HC pilot, Part XXVII (11 subsections, Runbooks 10-13, Benchmark V4 56 cases, 14 reports) | PASS (100%) | HEAD |
+| **P42** | 2026-10-19 | 15,144 | 15,823 | +679 | Authorized eCourts adapter, dual-mode CNR, 12-page scanned Hindi OCR bench (1.42% CER), controlled HC pilot, Part XXVII (11 subsections, Runbooks 10-13, Benchmark V4 56 cases, 14 reports) | PASS (100%) | 7833d99 |
 | **P43+** | *Future* | *Recorded at phase completion* | *Measured* | *Target ~5,000* | *Documenting actual phase deliverables across the 12 technical dimensions* | *Pending* | *Pending* |
 
 ```text
