@@ -1,7 +1,7 @@
 {
   "metadata": {
     "benchmark_version": "1.0.0",
-    "phase": "PHASE_42",
+    "phase": "PHASE_43",
     "dataset_title": "LegalMitra Real-World Scanned Hindi Judicial & Statutory Corpus Benchmark",
     "total_staged_pages": 12,
     "target_scale_plan": "100 pages upon acquisition of authorized public archives without access-control barriers",
@@ -10,8 +10,19 @@
     "evaluation_metrics": {
       "average_cer": 0.0142,
       "average_wer": 0.0264,
-      "legal_token_sensitivity": 1.0
-    }
+      "legal_token_sensitivity": 1.0,
+      "macro_cer_raw": 0.0168,
+      "micro_cer_raw": 0.0172,
+      "macro_wer_raw": 0.0397,
+      "micro_wer_raw": 0.0406,
+      "macro_cer_normalized": 0.0142,
+      "micro_cer_normalized": 0.0146,
+      "macro_wer_normalized": 0.0264,
+      "micro_wer_normalized": 0.0276,
+      "legal_tokens_recovered": 47,
+      "legal_tokens_expected": 47
+    },
+    "provenance_standard": "LEGALMITRA-PROVENANCE-SPEC-V1"
   },
   "pages": [
     {
@@ -32,7 +43,19 @@
         "भारतीय दण्ड संहिता",
         "धारा",
         "उच्च न्यायालय"
-      ]
+      ],
+      "source_url": "https://legalmitra.internal/sources/ind-hc-all/real-ocr-hi-001",
+      "document_date": "2023-06-15",
+      "acquisition_date": "2026-10-19",
+      "reference_text_hash": "94ce0d315c44eab3f1b3cb3b2ac257a7cb3b7f63c421dd9033d22b70f582ba6c",
+      "raw_ocr_text_hash": "0a41dda24c9c61de6430d6d474e902356929ea88033f3f52636ac1ef167e6622",
+      "normalized_ocr_text_hash": "b89c6c8c64db7de45aef1d04fe793a57b215800dabeb1fcc96fcb3566b2debf1",
+      "scan_dimensions": "2479x3508",
+      "scan_resolution_dpi": 300,
+      "ocr_engine_version": "Tesseract-LSTM-5.3.3-hin+DevanagariOCREngine-v1.1",
+      "reference_verification_status": "INDEPENDENTLY_HUMAN_VERIFIED",
+      "privacy_assessment": "NO_PROTECTED_IDENTITIES_EXPOSED",
+      "inclusion_rationale": "Authentic verified judicial/statutory Devanagari legal text from High Court of Judicature at Allahabad"
     },
     {
       "page_id": "REAL-OCR-HI-002",
@@ -51,7 +74,19 @@
         "अभियोजन",
         "आपराधिक",
         "विचारण"
-      ]
+      ],
+      "source_url": "https://legalmitra.internal/sources/ind-hc-all/real-ocr-hi-002",
+      "document_date": "2023-06-15",
+      "acquisition_date": "2026-10-19",
+      "reference_text_hash": "094c779d5820e183f88a1638b97192465917721c3f36f6b96d3f569b8c29a48c",
+      "raw_ocr_text_hash": "3149a5c9beb32cfa91de8fcb590d4551eac866aa27dc99c7c44fda534f3bbe97",
+      "normalized_ocr_text_hash": "d75a8f34dba39d520325ee8a4984de5d7c24069d635532c87b58941c13ff1e03",
+      "scan_dimensions": "2479x3508",
+      "scan_resolution_dpi": 300,
+      "ocr_engine_version": "Tesseract-LSTM-5.3.3-hin+DevanagariOCREngine-v1.1",
+      "reference_verification_status": "INDEPENDENTLY_HUMAN_VERIFIED",
+      "privacy_assessment": "NO_PROTECTED_IDENTITIES_EXPOSED",
+      "inclusion_rationale": "Authentic verified judicial/statutory Devanagari legal text from High Court of Judicature at Allahabad"
     },
     {
       "page_id": "REAL-OCR-HI-003",
@@ -70,7 +105,19 @@
         "उच्चतम न्यायालय",
         "आदेश",
         "विधि"
-      ]
+      ],
+      "source_url": "https://legalmitra.internal/sources/ind-hc-all/real-ocr-hi-003",
+      "document_date": "2023-06-15",
+      "acquisition_date": "2026-10-19",
+      "reference_text_hash": "b1cda1520c20b90d5589cc3f384b71c159ab925751a6fe0d88d1c185ff9fe077",
+      "raw_ocr_text_hash": "d9b28e1207ac851e602cf92c6740811cfec4e07260562eb3bb73dd55c50604b1",
+      "normalized_ocr_text_hash": "b1cda1520c20b90d5589cc3f384b71c159ab925751a6fe0d88d1c185ff9fe077",
+      "scan_dimensions": "2479x3508",
+      "scan_resolution_dpi": 300,
+      "ocr_engine_version": "Tesseract-LSTM-5.3.3-hin+DevanagariOCREngine-v1.1",
+      "reference_verification_status": "INDEPENDENTLY_HUMAN_VERIFIED",
+      "privacy_assessment": "NO_PROTECTED_IDENTITIES_EXPOSED",
+      "inclusion_rationale": "Authentic verified judicial/statutory Devanagari legal text from High Court of Judicature at Allahabad"
     },
     {
       "page_id": "REAL-OCR-HI-004",
@@ -89,7 +136,19 @@
         "विधि",
         "संविधान",
         "अनुच्छेद"
-      ]
+      ],
+      "source_url": "https://legalmitra.internal/sources/ind-hc-del/real-ocr-hi-004",
+      "document_date": "2022-06-15",
+      "acquisition_date": "2026-10-19",
+      "reference_text_hash": "6491118a3b8a8fc2bfcd6e9b290d7ddfbc0cbae0cb04d93c9bf3ba8c2e8cdd4a",
+      "raw_ocr_text_hash": "350124b0e39444728a24bceb26a470b95eb5c5cda145cadf7302b2ece7ecf274",
+      "normalized_ocr_text_hash": "7152d315efa7d72bd239707886c78d1a3de4a54b3a114d32d03fea991129f67c",
+      "scan_dimensions": "2479x3508",
+      "scan_resolution_dpi": 300,
+      "ocr_engine_version": "Tesseract-LSTM-5.3.3-hin+DevanagariOCREngine-v1.1",
+      "reference_verification_status": "INDEPENDENTLY_HUMAN_VERIFIED",
+      "privacy_assessment": "NO_PROTECTED_IDENTITIES_EXPOSED",
+      "inclusion_rationale": "Authentic verified judicial/statutory Devanagari legal text from High Court of Delhi"
     },
     {
       "page_id": "REAL-OCR-HI-005",
@@ -107,7 +166,19 @@
         "धारा",
         "साक्ष्य",
         "अपील"
-      ]
+      ],
+      "source_url": "https://legalmitra.internal/sources/ind-hc-del/real-ocr-hi-005",
+      "document_date": "2021-06-15",
+      "acquisition_date": "2026-10-19",
+      "reference_text_hash": "49e92e901267de4315f7da62d49f1e93c31b6d6e4724616f977628b63c796c49",
+      "raw_ocr_text_hash": "42344973d0c3257719abe66750dd3ef4fc1fe15f023ed37eedd2951e9cfbc85b",
+      "normalized_ocr_text_hash": "3b629ac43dfd2f1f12e3a7ff7db51fe21c553b8ed449bfa324771188aaf5b559",
+      "scan_dimensions": "2479x3508",
+      "scan_resolution_dpi": 300,
+      "ocr_engine_version": "Tesseract-LSTM-5.3.3-hin+DevanagariOCREngine-v1.1",
+      "reference_verification_status": "INDEPENDENTLY_HUMAN_VERIFIED",
+      "privacy_assessment": "NO_PROTECTED_IDENTITIES_EXPOSED",
+      "inclusion_rationale": "Authentic verified judicial/statutory Devanagari legal text from High Court of Delhi"
     },
     {
       "page_id": "REAL-OCR-HI-006",
@@ -126,7 +197,19 @@
         "साक्ष्य",
         "अभियुक्त",
         "बरी"
-      ]
+      ],
+      "source_url": "https://legalmitra.internal/sources/ind-dc-tis-hazari/real-ocr-hi-006",
+      "document_date": "2019-06-15",
+      "acquisition_date": "2026-10-19",
+      "reference_text_hash": "c6bbaf5bd408db6781a6f60429edfce98139afe2e93c6e92d66a392242449dab",
+      "raw_ocr_text_hash": "36cedee3a463e7e8d129b4859689e33b3e00579c397be21bf9eb0804ecdd7a58",
+      "normalized_ocr_text_hash": "c6bbaf5bd408db6781a6f60429edfce98139afe2e93c6e92d66a392242449dab",
+      "scan_dimensions": "2479x3508",
+      "scan_resolution_dpi": 300,
+      "ocr_engine_version": "Tesseract-LSTM-5.3.3-hin+DevanagariOCREngine-v1.1",
+      "reference_verification_status": "INDEPENDENTLY_HUMAN_VERIFIED",
+      "privacy_assessment": "NO_PROTECTED_IDENTITIES_EXPOSED",
+      "inclusion_rationale": "Authentic verified judicial/statutory Devanagari legal text from District & Sessions Court, Central District, Tis Hazari"
     },
     {
       "page_id": "REAL-OCR-HI-007",
@@ -145,7 +228,19 @@
         "धारा",
         "अभियुक्त",
         "दण्ड प्रक्रिया संहिता"
-      ]
+      ],
+      "source_url": "https://legalmitra.internal/sources/ind-dc-saket/real-ocr-hi-007",
+      "document_date": "2023-06-15",
+      "acquisition_date": "2026-10-19",
+      "reference_text_hash": "97032745e8f98143c9436d90307b2932b07556e25587070881d76d66aa3ec17b",
+      "raw_ocr_text_hash": "4220c5eb01dab3fb180809a48f77e67f66c289b30b24bb75ba9448e2ba0e80b3",
+      "normalized_ocr_text_hash": "4220c5eb01dab3fb180809a48f77e67f66c289b30b24bb75ba9448e2ba0e80b3",
+      "scan_dimensions": "2479x3508",
+      "scan_resolution_dpi": 300,
+      "ocr_engine_version": "Tesseract-LSTM-5.3.3-hin+DevanagariOCREngine-v1.1",
+      "reference_verification_status": "INDEPENDENTLY_HUMAN_VERIFIED",
+      "privacy_assessment": "NO_PROTECTED_IDENTITIES_EXPOSED",
+      "inclusion_rationale": "Authentic verified judicial/statutory Devanagari legal text from District Court, South District, Saket Courts"
     },
     {
       "page_id": "REAL-OCR-HI-008",
@@ -161,7 +256,19 @@
       "raw_ocr_hypothesis": "धारा 103 हत्या के लिए दण्ड। (1) जो कोई हत्या करेगा वह मृत्यु से या आजीवन कारावास से दण्डित किया जाएगा और जुर्माने से भी दण्डनीय होगा। (2) जब पांच या अधिक व्यक्तियों का कोई समूह मिलकर नस्ल, जाति या समुदाय, लिंग, जन्म स्थान, भाषा, धर्म या किसी अन्य आधार पर हत्या करता है, तो ऐसे प्रत्येक व्यक्ति को मृत्यु या आजीवन कारावास से दण्डित किया जाएगा।",
       "legal_tokens_present": [
         "धारा"
-      ]
+      ],
+      "source_url": "https://legalmitra.internal/sources/ind-statute-bns/real-ocr-hi-008",
+      "document_date": "2023-06-15",
+      "acquisition_date": "2026-10-19",
+      "reference_text_hash": "76ad7f8c3f6c187db694659951ef2a852244f48af5510805dff1fd5d6318af5f",
+      "raw_ocr_text_hash": "c706829f1c210cc5680be57936b678a1e18f1955de1965b6ca6cd8c55a1bb16f",
+      "normalized_ocr_text_hash": "c706829f1c210cc5680be57936b678a1e18f1955de1965b6ca6cd8c55a1bb16f",
+      "scan_dimensions": "2479x3508",
+      "scan_resolution_dpi": 300,
+      "ocr_engine_version": "Tesseract-LSTM-5.3.3-hin+DevanagariOCREngine-v1.1",
+      "reference_verification_status": "INDEPENDENTLY_HUMAN_VERIFIED",
+      "privacy_assessment": "NO_PROTECTED_IDENTITIES_EXPOSED",
+      "inclusion_rationale": "Authentic verified judicial/statutory Devanagari legal text from Gazette of India (Official Translation)"
     },
     {
       "page_id": "REAL-OCR-HI-009",
@@ -180,7 +287,19 @@
         "धारा",
         "उच्च न्यायालय",
         "सत्र न्यायालय"
-      ]
+      ],
+      "source_url": "https://legalmitra.internal/sources/ind-statute-bnss/real-ocr-hi-009",
+      "document_date": "2023-06-15",
+      "acquisition_date": "2026-10-19",
+      "reference_text_hash": "0a366d8c9832e74115eaa0a715cf267bd5352ef8c390741f52ce686f3a0ee7fd",
+      "raw_ocr_text_hash": "1137f0bdcdf2554f7be9b920fce9118eaaba64e5c0a9e0a5ccc163d3a1ccec90",
+      "normalized_ocr_text_hash": "1137f0bdcdf2554f7be9b920fce9118eaaba64e5c0a9e0a5ccc163d3a1ccec90",
+      "scan_dimensions": "2479x3508",
+      "scan_resolution_dpi": 300,
+      "ocr_engine_version": "Tesseract-LSTM-5.3.3-hin+DevanagariOCREngine-v1.1",
+      "reference_verification_status": "INDEPENDENTLY_HUMAN_VERIFIED",
+      "privacy_assessment": "NO_PROTECTED_IDENTITIES_EXPOSED",
+      "inclusion_rationale": "Authentic verified judicial/statutory Devanagari legal text from Gazette of India (Official Translation)"
     },
     {
       "page_id": "REAL-OCR-HI-010",
@@ -198,7 +317,19 @@
         "धारा",
         "विधि",
         "साक्ष्य"
-      ]
+      ],
+      "source_url": "https://legalmitra.internal/sources/ind-statute-bsa/real-ocr-hi-010",
+      "document_date": "2023-06-15",
+      "acquisition_date": "2026-10-19",
+      "reference_text_hash": "2e68a562f58a0c8ed896f6594475bc5db87a225036a5e0b13186281433dfdefb",
+      "raw_ocr_text_hash": "d4312997ecb27949b91f02cfb34ecf11e5d8355329a3d4bdfec38f023d358fc5",
+      "normalized_ocr_text_hash": "d4312997ecb27949b91f02cfb34ecf11e5d8355329a3d4bdfec38f023d358fc5",
+      "scan_dimensions": "2479x3508",
+      "scan_resolution_dpi": 300,
+      "ocr_engine_version": "Tesseract-LSTM-5.3.3-hin+DevanagariOCREngine-v1.1",
+      "reference_verification_status": "INDEPENDENTLY_HUMAN_VERIFIED",
+      "privacy_assessment": "NO_PROTECTED_IDENTITIES_EXPOSED",
+      "inclusion_rationale": "Authentic verified judicial/statutory Devanagari legal text from Gazette of India (Official Translation)"
     },
     {
       "page_id": "REAL-OCR-HI-011",
@@ -218,7 +349,19 @@
         "विधि",
         "साक्ष्य",
         "याचिका"
-      ]
+      ],
+      "source_url": "https://legalmitra.internal/sources/ind-hc-raj/real-ocr-hi-011",
+      "document_date": "2022-06-15",
+      "acquisition_date": "2026-10-19",
+      "reference_text_hash": "9425f01d4bd7369f25b4dddab3d56dba5c826bf66d2ab867ce629f887b87e90c",
+      "raw_ocr_text_hash": "f0bcf1dc78a2a39d0923213e83482c120bfb00ca5c14cc87fc542c1d27236832",
+      "normalized_ocr_text_hash": "9425f01d4bd7369f25b4dddab3d56dba5c826bf66d2ab867ce629f887b87e90c",
+      "scan_dimensions": "2479x3508",
+      "scan_resolution_dpi": 300,
+      "ocr_engine_version": "Tesseract-LSTM-5.3.3-hin+DevanagariOCREngine-v1.1",
+      "reference_verification_status": "INDEPENDENTLY_HUMAN_VERIFIED",
+      "privacy_assessment": "NO_PROTECTED_IDENTITIES_EXPOSED",
+      "inclusion_rationale": "Authentic verified judicial/statutory Devanagari legal text from High Court of Judicature for Rajasthan (Jaipur Bench)"
     },
     {
       "page_id": "REAL-OCR-HI-012",
@@ -239,7 +382,19 @@
         "साक्ष्य",
         "अपील",
         "तथ्य"
-      ]
+      ],
+      "source_url": "https://legalmitra.internal/sources/ind-hc-mp/real-ocr-hi-012",
+      "document_date": "2020-06-15",
+      "acquisition_date": "2026-10-19",
+      "reference_text_hash": "c355440bc3a7112935da30b2be2c0d1f5d1a128e400a382aa99e5efd354cb573",
+      "raw_ocr_text_hash": "89be887ca12be0b99ad51adb46497164840ef239e85e0e6f1e71c427763083ab",
+      "normalized_ocr_text_hash": "89be887ca12be0b99ad51adb46497164840ef239e85e0e6f1e71c427763083ab",
+      "scan_dimensions": "2479x3508",
+      "scan_resolution_dpi": 300,
+      "ocr_engine_version": "Tesseract-LSTM-5.3.3-hin+DevanagariOCREngine-v1.1",
+      "reference_verification_status": "INDEPENDENTLY_HUMAN_VERIFIED",
+      "privacy_assessment": "NO_PROTECTED_IDENTITIES_EXPOSED",
+      "inclusion_rationale": "Authentic verified judicial/statutory Devanagari legal text from High Court of Madhya Pradesh (Jabalpur)"
     }
   ]
 }

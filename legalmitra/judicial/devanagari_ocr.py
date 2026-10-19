@@ -56,6 +56,27 @@ class DevanagariOCREngine:
         "भारतीय दण्ड संहिता", "साक्ष्य", "तथ्य", "निर्णय", "आदेश",
     ]
 
+    # Whitelist of legitimate Hindi words that retain Chandrabindu (tadbhav words)
+    _CHANDRABINDU_EXCEPTIONS = {
+        "माँ", "गाँव", "पाँच", "आँख", "यहाँ", "वहाँ", "जहाँ", "कहाँ",
+        "मुँह", "दायाँ", "बायाँ", "हँसना", "छाँव", "धुआँ", "कुआँ",
+    }
+
+    def _normalize_anusvara_with_whitelist(self, text: str) -> str:
+        """Context-aware Chandrabindu-to-Anusvara normalization respecting genuine tadbhav words."""
+        tokens = text.split()
+        processed = []
+        for tok in tokens:
+            # Strip punctuation for exception matching
+            clean_tok = re.sub(r"[।॥,\.\(\)\"\':;!?]", "", tok)
+            if clean_tok in self._CHANDRABINDU_EXCEPTIONS:
+                processed.append(tok)
+            else:
+                # Normalize Chandrabindu (\u0901) to Anusvara (\u0902) when preceding non-vowels (consonants \u0915-\u0939)
+                tok_norm = re.sub(r"\u0901(?=[\u0915-\u0939])", "\u0902", tok)
+                processed.append(tok_norm)
+        return " ".join(processed)
+
     def normalize(self, text: str) -> DevanagariOCRResult:
         """Apply conservative Unicode normalization without mutating underlying raw text."""
         anomalies: List[str] = []
@@ -83,8 +104,8 @@ class DevanagariOCREngine:
         # Ensure single space after danda if followed by another word
         norm_text = re.sub(r"([।॥])(?=[^\s।॥\n])", r"\1 ", norm_text)
 
-        # 5. Anusvara / Chandrabindu OCR normalization: normalize chandrabindu \u0901 to anusvara \u0902 when preceding non-vowel
-        norm_text = re.sub(r"\u0901(?=[\u0915-\u0939])", "\u0902", norm_text)
+        # 5. Anusvara / Chandrabindu OCR normalization with genuine word protection
+        norm_text = self._normalize_anusvara_with_whitelist(norm_text)
 
         # 6. Collapse excessive whitespace while preserving paragraph breaks
         norm_text = re.sub(r"[ \t]+", " ", norm_text)
