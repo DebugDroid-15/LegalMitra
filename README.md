@@ -207,6 +207,8 @@
   - [24.2 Commit Message Standards](#242-commit-message-standards)
   - [24.3 Coding Conventions & Linting](#243-coding-conventions--linting)
   - [24.4 Invariant Enforcement & Pre-Commit Checks](#244-invariant-enforcement--pre-commit-checks)
+  - [24.5 Mandatory Per-Phase Documentation Policy](#245-mandatory-per-phase-documentation-policy)
+  - [24.6 Permanent Phase Documentation Ledger](#246-permanent-phase-documentation-ledger)
 - [Part XXV: Intellectual Property, Team Attribution & Future Roadmap](#part-xxv-intellectual-property-team-attribution--future-roadmap)
   - [25.1 Team Shatrujeet Ownership & Authorship](#251-team-shatrujeet-ownership--authorship)
   - [25.2 Proprietary License Terms](#252-proprietary-license-terms)
@@ -14458,8 +14460,72 @@ python scripts/verify_freeze.py
 # Invariant Check 2: Verify Advocate Review Packages (Must be 40/40 pending)
 python scripts/verify_review_packages.py
 
-# Invariant Check 3: Run Full Pytest Suite (Must pass 315 tests)
+# Invariant Check 3: Run Full Pytest Suite (Must pass 370 tests)
 pytest -q
+
+# Invariant Check 4: Verify README Size Integrity (Must be >= 15,000 lines)
+python -c "with open('README.md', encoding='utf-8') as f: lines = len(f.readlines()); assert lines >= 15000"
+```
+
+---
+
+### 24.5 Mandatory Per-Phase Documentation Policy
+
+To preserve the intellectual integrity, forensic reproducibility, and operational transparency of LegalMitra as it scales, Team Shatrujeet enforces the **Mandatory Per-Phase README Documentation Policy** as a permanent, non-negotiable software engineering invariant:
+
+```text
+========================================================================================================================
+                          LEGALMITRA PER-PHASE DOCUMENTATION INTEGRITY CONTRACT
+========================================================================================================================
+  RULE 1 : No development phase is complete until its code, tests, safeguards, phase completion report,
+           AND root README.md documentation update have all been completed and verified.
+  RULE 2 : The documentation update must occur IN THE SAME PHASE before the release commit is finalized.
+  RULE 3 : Each phase targets approximately 5,000 additional meaningful physical lines of documentation.
+  RULE 4 : The 5,000-line target is a documentation target, NOT permission to pad or generate filler.
+           If a phase is too small, document actual work, report measured increase and shortfall.
+  RULE 5 : Never claim lines were added unless supported by actual measured line-count commands.
+  RULE 6 : Every phase update must record its entry in the Permanent Phase Documentation Ledger (24.6).
+========================================================================================================================
+```
+
+#### The 12 Mandatory Technical Dimensions Per Phase
+For every completed phase, the documentation update must provide substantive, technically accurate explanations across twelve discrete dimensions:
+1. **What was done**: Every significant feature, class, module, script, schema, API route, test suite, and data artifact added or modified.
+2. **Why it was done**: The precise jurisprudential or systems problem addressed, previous limitations, and architectural design rationale.
+3. **How it works**: Internal architecture, algorithms, interfaces, dependencies, data structures, and concrete execution paths.
+4. **System flow**: Mermaid diagrams, flowcharts, sequence diagrams, state transitions, data-flow diagrams, and component interactions.
+5. **Impact on LegalMitra**: Verified effects on legal accuracy, evidence provenance, retrieval quality, SSRF security, rate limiting, coverage, and performance. Demonstrated empirical impact must be documented separately from theoretical or expected impact.
+6. **How to use it**: Exact commands, CLI arguments, API request/response examples, configuration variables, inputs, outputs, and operational procedures.
+7. **How it is tested**: Actual pytest commands, assertion inventories, benchmark methodologies, empirical metrics, limitations, and reproduction instructions.
+8. **Failure modes**: Known defects, edge cases, security threats, operational blockers, fallback mechanisms, and recovery runbooks.
+9. **Dependencies and integration**: How the phase interfaces with existing subpackages and affects downstream legal workflows.
+10. **Release status**: Clear, unambiguous labeling of capabilities as **`implemented`**, **`experimental`**, **`planned`**, **`blocked`**, or **`not independently verified`**.
+11. **Historical traceability**: Traceable links to phase reports in `docs/`, implementation files in `legalmitra/`, test suites in `tests/`, manifests in `data/`, and prior phase foundations.
+12. **Next steps**: Unresolved technical blockers, concrete acceptance criteria, and priority roadmap items for subsequent work.
+
+---
+
+### 24.6 Permanent Phase Documentation Ledger
+
+The following ledger records the official documentation metrics for all completed phases, establishing immutable auditability across LegalMitra's engineering history:
+
+| Phase | Completion Date | Baseline Lines | Final Lines | Net Increase | Primary Sections Updated & Documented | Validation Status | Verified Release Commit |
+|:---|:---:|:---:|:---:|:---:|:---|:---:|:---:|
+| **P35.5** | 2026-10-18 | 1,240 | 10,023 | +8,783 | Full README reconstruction (Parts I through XXV), 36 phases cataloged | PASS (100%) | `f2b0073` |
+| **P36** | 2026-10-18 | 10,023 | 10,023 | +0 | Source eligibility ledger & 111-source audit (baseline maintained at 10,023) | PASS (100%) | `db588a5` |
+| **P37** | 2026-10-18 | 10,023 | 10,023 | +0 | Authorized national corpus acquisition & Hindi data expansion (manifest v5) | PASS (100%) | `aed3ff5` |
+| **P38** | 2026-10-19 | 10,023 | 10,023 | +0 | Judicial infrastructure, 4-tier ontology & precedent graph engine | PASS (100%) | `3453a08` |
+| **P39** | 2026-10-19 | 10,023 | 10,023 | +0 | National judicial corpus expansion, historical archives & 615 records | PASS (100%) | `9f35202` |
+| **P40** | 2026-10-19 | 10,023 | 10,023 | +0 | High Court connectors, eCourts CIS protocol & Devanagari OCR QA | PASS (100%) | `6d51b9d` |
+| **P41** | 2026-10-19 | 10,023 | 15,144 | +5,121 | Forensic audit, judicial infrastructure (Part XXVI), 19 institutions, 48 benchmark cases, 53 tests, 67 scripts, Phases 37-41 chronicles | PASS (100%) | `8334234` |
+| **P42+** | *Future* | *Recorded at phase completion* | *Measured* | *Target ~5,000* | *Documenting actual phase deliverables across the 12 technical dimensions* | *Pending* | *Pending* |
+
+```text
+========================================================================================================================
+                              LEDGER VERIFICATION COMMAND (RUN BEFORE EVERY COMMIT)
+========================================================================================================================
+powershell -Command "python -c "with open('README.md', encoding='utf-8') as f: lines = len(f.readlines()); print(f'README Physical Lines: {lines}'); assert lines >= 15000""
+========================================================================================================================
 ```
 
 ---
