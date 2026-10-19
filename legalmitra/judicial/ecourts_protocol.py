@@ -120,6 +120,10 @@ class ECourtsProtocolValidator:
     def __init__(self) -> None:
         self.privacy_engine = RestrictedRecordsPolicyEngine()
 
+    def validate_cnr_syntax(self, cnr_text: str) -> CNRDecomposition:
+        """Alias for validate_cnr to explicitly separate syntactic from semantic validation."""
+        return self.validate_cnr(cnr_text)
+
     def validate_cnr(self, cnr_text: str) -> CNRDecomposition:
         clean = cnr_text.strip().upper()
         if len(clean) != 16:
@@ -159,6 +163,37 @@ class ECourtsProtocolValidator:
             case_number=case_no,
             filing_year=year,
         )
+
+    def validate_cnr_semantic(self, cnr_text: str) -> Dict[str, Any]:
+        """Perform semantic validation against state code tables and reasonable establishment rules."""
+        decomp = self.validate_cnr(cnr_text)
+        if not decomp.is_valid:
+            return {
+                "cnr": cnr_text,
+                "is_syntactically_valid": False,
+                "is_semantically_valid": False,
+                "reason": decomp.error_message,
+            }
+        
+        valid_states = {
+            "DL", "MH", "UP", "KA", "TN", "WB", "GJ", "RJ", "PB", "HR",
+            "MP", "BR", "AP", "TS", "KL", "OD", "AS", "JH", "CH", "UK",
+        }
+        if decomp.state_code not in valid_states:
+            return {
+                "cnr": cnr_text,
+                "is_syntactically_valid": True,
+                "is_semantically_valid": False,
+                "reason": f"State code '{decomp.state_code}' not recognized in CIS registry",
+            }
+
+        return {
+            "cnr": cnr_text,
+            "is_syntactically_valid": True,
+            "is_semantically_valid": True,
+            "reason": "Syntactically and semantically valid under CIS rules",
+            "decomposition": decomp.to_dict(),
+        }
 
     def process_record(self, raw_record: Dict[str, Any]) -> ECourtsIngestionRecord:
         """Execute the 7-stage ingestion workflow on an authorized subordinate record."""

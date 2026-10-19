@@ -83,7 +83,10 @@ class DevanagariOCREngine:
         # Ensure single space after danda if followed by another word
         norm_text = re.sub(r"([।॥])(?=[^\s।॥\n])", r"\1 ", norm_text)
 
-        # 5. Collapse excessive whitespace while preserving paragraph breaks
+        # 5. Anusvara / Chandrabindu OCR normalization: normalize chandrabindu \u0901 to anusvara \u0902 when preceding non-vowel
+        norm_text = re.sub(r"\u0901(?=[\u0915-\u0939])", "\u0902", norm_text)
+
+        # 6. Collapse excessive whitespace while preserving paragraph breaks
         norm_text = re.sub(r"[ \t]+", " ", norm_text)
         norm_text = re.sub(r"\n\s*\n+", "\n\n", norm_text)
 

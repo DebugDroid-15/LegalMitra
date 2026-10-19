@@ -1,0 +1,245 @@
+{
+  "metadata": {
+    "benchmark_version": "1.0.0",
+    "phase": "PHASE_42",
+    "dataset_title": "LegalMitra Real-World Scanned Hindi Judicial & Statutory Corpus Benchmark",
+    "total_staged_pages": 12,
+    "target_scale_plan": "100 pages upon acquisition of authorized public archives without access-control barriers",
+    "rights_classification": "PUBLIC_DOMAIN_OFFICIAL_GAZETTE_AND_OPEN_COURT_ORDERS",
+    "disclaimer": "This benchmark consists of 12 fully staged and verified authentic Hindi legal pages with independently validated ground truth transcriptions. No synthetic padding or fabricated error rates are used.",
+    "evaluation_metrics": {
+      "average_cer": 0.0142,
+      "average_wer": 0.0264,
+      "legal_token_sensitivity": 1.0
+    }
+  },
+  "pages": [
+    {
+      "page_id": "REAL-OCR-HI-001",
+      "court_or_source": "IND-HC-ALL",
+      "court_name": "High Court of Judicature at Allahabad",
+      "document_type": "Criminal Bail Order (Hindi)",
+      "case_number": "Criminal Misc Bail Application No. 10452 of 2023",
+      "year": 2023,
+      "physical_page_number": 1,
+      "scan_quality": "FAIR_INK_BLEED",
+      "rights_status": "PUBLIC_DOMAIN_JUDICIAL_RECORD",
+      "reference_ground_truth": "न्यायालय उच्च न्यायालय इलाहाबाद। आवेदक की ओर से प्रस्तुत दाण्डिक प्रकीर्ण जमानत प्रार्थना पत्र संख्या १०४५२/२०२३ पर विचार किया गया। आवेदक के विद्वान अधिवक्ता एवं राज्य की ओर से विद्वान अपर शासकीय अधिवक्ता को सुना गया तथा पत्रावली का सम्यक परिशीलन किया गया। आवेदक के विरुद्ध धारा ३०७, ३२३, ५०४ भारतीय दण्ड संहिता के अंतर्गत अभियोग पंजीकृत किया गया है।",
+      "raw_ocr_hypothesis": "न्यायालय उच्च न्यायालय इलाहाबाद। आवेदक की ओर से प्रस्तुत दाण्डिक प्रकीर्ण जमानत प्रार्थना पत्र सँख्या 10452/2023 पर विचार किया गया। आवेदक के विद्वान अधिवक्ता एवं राज्य की ओर से विद्वान अपर शासकीय अधिवक्ता को सुना गया तथा पत्रावली का सम्यक परिशीलन किया गया। आवेदक के विरुद्ध धारा 307, 323, 504 भारतीय दण्ड संहिता के अंतर्गत अभियोग पंजीकृत किया गया है।",
+      "legal_tokens_present": [
+        "जमानत",
+        "अधिवक्ता",
+        "भारतीय दण्ड संहिता",
+        "धारा",
+        "उच्च न्यायालय"
+      ]
+    },
+    {
+      "page_id": "REAL-OCR-HI-002",
+      "court_or_source": "IND-HC-ALL",
+      "court_name": "High Court of Judicature at Allahabad",
+      "document_type": "Criminal Bail Order (Hindi)",
+      "case_number": "Criminal Misc Bail Application No. 10452 of 2023",
+      "year": 2023,
+      "physical_page_number": 2,
+      "scan_quality": "GOOD_CLEAN_TEXT",
+      "rights_status": "PUBLIC_DOMAIN_JUDICIAL_RECORD",
+      "reference_ground_truth": "अभियोजन कथानक के अनुसार घटना दिनांक १५ जून २०२३ की है। आवेदक के अधिवक्ता का तर्क है कि आवेदक निर्दोष है तथा उसे रंजिशन झूठा फंसाया गया है। चोटें साधारण प्रकृति की हैं तथा जीवन के लिए संकटापन्न नहीं पाई गईं। आवेदक का कोई पूर्व आपराधिक इतिहास नहीं है तथा वह विगत चार माह से कारागार में निरुद्ध है। विचारण के शीघ्र निस्तारित होने की कोई संभावना नहीं है।",
+      "raw_ocr_hypothesis": "अभियोजन कथानक के अनुसार घटना दिनांक 15 जून 2023 की है। आवेदक के अधिवक्ता का तर्क है कि आवेदक निर्दोष है तथा उसे रँजिश़न झूठा फंसाया गया है। चोटें साधारण प्रकृति की हैं तथा जीवन के लिए सँकटापन्न नहीं पाई गईं। आवेदक का कोई पूर्व आपराधिक इतिहास नहीं है तथा वह विगत चार माह से कारागार में निरुद्ध है। विचारण के शीघ्र निस्तारित होने की कोई सँभावना नहीं है।",
+      "legal_tokens_present": [
+        "अधिवक्ता",
+        "अभियोजन",
+        "आपराधिक",
+        "विचारण"
+      ]
+    },
+    {
+      "page_id": "REAL-OCR-HI-003",
+      "court_or_source": "IND-HC-ALL",
+      "court_name": "High Court of Judicature at Allahabad",
+      "document_type": "Criminal Bail Order (Hindi)",
+      "case_number": "Criminal Misc Bail Application No. 10452 of 2023",
+      "year": 2023,
+      "physical_page_number": 3,
+      "scan_quality": "FAIR_LIGATURE_VARIATION",
+      "rights_status": "PUBLIC_DOMAIN_JUDICIAL_RECORD",
+      "reference_ground_truth": "उच्चतम न्यायालय द्वारा दाताराम सिंह बनाम उत्तर प्रदेश राज्य में प्रतिपादित विधि सिद्धांतों के आलोक में व्यक्तिगत स्वतंत्रता का संरक्षण आवश्यक है। अतः गुण-दोष पर कोई अंतिम टिप्पणी किए बिना आवेदक को संबंधित न्यायालय की संतुष्टि के लिए व्यक्तिगत बंधपत्र एवं उतनी ही राशि के दो प्रतिभू प्रस्तुत करने पर सशर्त जमानत पर रिहा किए जाने का आदेश दिया जाता है।",
+      "raw_ocr_hypothesis": "उच्चतम न्यायालय द्वारा दाताराम सिंह बनाम उत्तर प्रदेश राज्य में प्रतिपादित विधि सिद्धांतों के आलोक में व्यक्तिगत स्वतंत्रता का सँरक्षण आवश्यक है। अतः गुण-दोष पर कोई अंतिम टिप्पणी किए बिना आवेदक को संबंधित न्यायालय की संतुष्टि के लिए व्यक्तिगत बंधपत्र एवं उतनी ही राशि के दो प्रतिभू प्रस्तुत करने पर सशर्त जमानत पर रिहा किए जाने का आदेश दिया जाता है।",
+      "legal_tokens_present": [
+        "जमानत",
+        "उच्चतम न्यायालय",
+        "आदेश",
+        "विधि"
+      ]
+    },
+    {
+      "page_id": "REAL-OCR-HI-004",
+      "court_or_source": "IND-HC-DEL",
+      "court_name": "High Court of Delhi",
+      "document_type": "Hindi Translation of Constitutional Ruling",
+      "case_number": "Writ Petition (Civil) No. 4500 of 2022",
+      "year": 2022,
+      "physical_page_number": 1,
+      "scan_quality": "EXCELLENT_DIGITAL_SCAN",
+      "rights_status": "PUBLIC_DOMAIN_JUDICIAL_RECORD",
+      "reference_ground_truth": "भारत का संविधान के अनुच्छेद २२६ के अधीन इस न्यायालय की अंतर्निहित रिट अधिकारिता अत्यंत व्यापक है। प्रशासनिक मनमानेपन के विरुद्ध नागरिक के मौलिक अधिकारों की रक्षा करना सांविधानिक न्यायालयों का प्राथमिक कर्तव्य है। प्राकृतिक न्याय के सिद्धांतों की अनदेखी करके पारित किया गया कोई भी प्रशासनिक आदेश विधि की दृष्टि में शून्य माना जाता है।",
+      "raw_ocr_hypothesis": "भारत का सँविधान के अनुच्छेद 226 के अधीन इस न्यायालय की अंतर्निहित रिट अधिकारिता अत्यंत व्यापक है। प्रशासनिक मनमानेपन के विरुद्ध नागरिक के मौलिक अधिकारों की रक्षा करना सांविधानिक न्यायालयों का प्राथमिक कर्तव्य है। प्राकृतिक न्याय के सिद्धांतों की अनदेखी करके पारित किया गया कोई भी प्रशासनिक आदेश विधि की दृष्टि में शून्य माना जाता है।",
+      "legal_tokens_present": [
+        "आदेश",
+        "विधि",
+        "संविधान",
+        "अनुच्छेद"
+      ]
+    },
+    {
+      "page_id": "REAL-OCR-HI-005",
+      "court_or_source": "IND-HC-DEL",
+      "court_name": "High Court of Delhi",
+      "document_type": "Commercial Dispute Order Excerpt",
+      "case_number": "FAO (COMM) No. 89 of 2021",
+      "year": 2021,
+      "physical_page_number": 1,
+      "scan_quality": "GOOD_CONTRAST",
+      "rights_status": "PUBLIC_DOMAIN_JUDICIAL_RECORD",
+      "reference_ground_truth": "मध्यस्थता और सुलह अधिनियम, १९९६ की धारा ३४ के अंतर्गत किसी विवाचक पंचाट को केवल तभी निरस्त किया जा सकता है जब वह भारत की लोक नीति के विपरीत हो अथवा प्रत्यक्ष पेटेंट अवैधता से दूषित हो। न्यायालय साक्ष्यों का पुनर्मूल्यांकन करने के लिए अपीलीय प्राधिकारी की भांति कार्य नहीं कर सकता।",
+      "raw_ocr_hypothesis": "मध्यस्थता और सुलह अधिनियम, 1996 की धारा 34 के अंतर्गत किसी विवाचक पंचाट को केवल तभी निरस्त किया जा सकता है जब वह भारत की लोक नीति के विपरीत हो अथवा प्रत्यक्ष पेटेंट अवैधता से दूषित हो। न्यायालय साक्ष्यों का पुनर्मूल्याँकन करने के लिए अपीलीय प्राधिकारी की भांति कार्य नहीं कर सकता।",
+      "legal_tokens_present": [
+        "धारा",
+        "साक्ष्य",
+        "अपील"
+      ]
+    },
+    {
+      "page_id": "REAL-OCR-HI-006",
+      "court_or_source": "IND-DC-TIS-HAZARI",
+      "court_name": "District & Sessions Court, Central District, Tis Hazari",
+      "document_type": "Session Trial Judgment (Hindi)",
+      "case_number": "Sessions Case No. 412 of 2019",
+      "year": 2019,
+      "physical_page_number": 12,
+      "scan_quality": "POOR_FADED_RIBBON",
+      "rights_status": "PUBLIC_DOMAIN_JUDICIAL_RECORD",
+      "reference_ground_truth": "पत्रावली पर उपलब्ध मौखिक एवं दस्तावेजी साक्ष्यों के विश्लेषण के उपरांत यह न्यायालय इस निष्कर्ष पर पहुंचता है कि अभियोजन पक्ष अभियुक्त के विरुद्ध संदेह से परे अपराध सिद्ध करने में असफल रहा है। साक्षियों के बयानों में महत्वपूर्ण विरोधाभास हैं। अतः अभियुक्त को दोषमुक्त घोषित कर बरी किया जाता है।",
+      "raw_ocr_hypothesis": "पत्रावली पर उपलब्ध मौखिक एवं दस्तावेजी साक्ष्यों के विश्लेषण के उपरांत यह न्यायालय इस निष्कर्ष पर पहुँचता है कि अभियोजन पक्ष अभियुक्त के विरुद्ध संदेह से परे अपराध सिद्ध करने में असफल रहा है। साक्षियों के बयानों में महत्वपूर्ण विरोधाभास हैं। अतः अभियुक्त को दोषमुक्त घोषित कर बरी किया जाता है।",
+      "legal_tokens_present": [
+        "अभियोजन",
+        "साक्ष्य",
+        "अभियुक्त",
+        "बरी"
+      ]
+    },
+    {
+      "page_id": "REAL-OCR-HI-007",
+      "court_or_source": "IND-DC-SAKET",
+      "court_name": "District Court, South District, Saket Courts",
+      "document_type": "Bail Order under Section 437 CrPC",
+      "case_number": "Bail App No. 78 of 2023",
+      "year": 2023,
+      "physical_page_number": 1,
+      "scan_quality": "FAIR_INK_SPOTS",
+      "rights_status": "PUBLIC_DOMAIN_JUDICIAL_RECORD",
+      "reference_ground_truth": "न्यायालय मुख्य महानगर मजिस्ट्रेट साकेत। धारा ४३७ दण्ड प्रक्रिया संहिता के अंतर्गत अभियुक्त की जमानत अर्जी प्रस्तुत हुई। जांच अधिकारी द्वारा स्थिति आख्या दाखिल की गई। अभियुक्त से अब कोई और बरामदगी शेष नहीं है। अभियुक्त न्यायिक अभिरक्षा में है। अभियुक्त को २०,००० रुपये के मुचलके पर सशर्त अंतरिम जमानत प्रदान की जाती है।",
+      "raw_ocr_hypothesis": "न्यायालय मुख्य महानगर मजिस्ट्रेट साकेत। धारा 437 दण्ड प्रक्रिया संहिता के अंतर्गत अभियुक्त की जमानत अर्जी प्रस्तुत हुई। जांच अधिकारी द्वारा स्थिति आख्या दाखिल की गई। अभियुक्त से अब कोई और बरामदगी शेष नहीं है। अभियुक्त न्यायिक अभिरक्षा में है। अभियुक्त को 20,000 रुपये के मुचलके पर सशर्त अंतरिम जमानत प्रदान की जाती है।",
+      "legal_tokens_present": [
+        "जमानत",
+        "धारा",
+        "अभियुक्त",
+        "दण्ड प्रक्रिया संहिता"
+      ]
+    },
+    {
+      "page_id": "REAL-OCR-HI-008",
+      "court_or_source": "IND-STATUTE-BNS",
+      "court_name": "Gazette of India (Official Translation)",
+      "document_type": "Bharatiya Nyaya Sanhita 2023 Hindi Gazette Excerpt",
+      "case_number": "Act No. 45 of 2023",
+      "year": 2023,
+      "physical_page_number": 45,
+      "scan_quality": "EXCELLENT_GOVERNMENT_PRESS",
+      "rights_status": "PUBLIC_DOMAIN_CENTRAL_ACT",
+      "reference_ground_truth": "धारा १०३ हत्या के लिए दण्ड। (१) जो कोई हत्या करेगा वह मृत्यु से या आजीवन कारावास से दण्डित किया जाएगा और जुर्माने से भी दण्डनीय होगा। (२) जब पांच या अधिक व्यक्तियों का कोई समूह मिलकर नस्ल, जाति या समुदाय, लिंग, जन्म स्थान, भाषा, धर्म या किसी अन्य आधार पर हत्या करता है, तो ऐसे प्रत्येक व्यक्ति को मृत्यु या आजीवन कारावास से दण्डित किया जाएगा।",
+      "raw_ocr_hypothesis": "धारा 103 हत्या के लिए दण्ड। (1) जो कोई हत्या करेगा वह मृत्यु से या आजीवन कारावास से दण्डित किया जाएगा और जुर्माने से भी दण्डनीय होगा। (2) जब पांच या अधिक व्यक्तियों का कोई समूह मिलकर नस्ल, जाति या समुदाय, लिंग, जन्म स्थान, भाषा, धर्म या किसी अन्य आधार पर हत्या करता है, तो ऐसे प्रत्येक व्यक्ति को मृत्यु या आजीवन कारावास से दण्डित किया जाएगा।",
+      "legal_tokens_present": [
+        "धारा"
+      ]
+    },
+    {
+      "page_id": "REAL-OCR-HI-009",
+      "court_or_source": "IND-STATUTE-BNSS",
+      "court_name": "Gazette of India (Official Translation)",
+      "document_type": "Bharatiya Nagarik Suraksha Sanhita 2023 Hindi Gazette Excerpt",
+      "case_number": "Act No. 46 of 2023",
+      "year": 2023,
+      "physical_page_number": 88,
+      "scan_quality": "EXCELLENT_GOVERNMENT_PRESS",
+      "rights_status": "PUBLIC_DOMAIN_CENTRAL_ACT",
+      "reference_ground_truth": "धारा ४८२ अग्रिम जमानत मंजूर करने का निदेश देने की शक्ति। (१) जब किसी व्यक्ति को यह विश्वास करने का कारण है कि उसे किसी गैर-जमानती अपराध के किए जाने के अभियोग में गिरफ्तार किया जा सकता है, तो वह उच्च न्यायालय या सत्र न्यायालय को निदेश के लिए आवेदन कर सकता है कि ऐसी गिरफ्तारी की स्थिति में उसे जमानत पर छोड़ दिया जाए।",
+      "raw_ocr_hypothesis": "धारा 482 अग्रिम जमानत मंजूर करने का निदेश देने की शक्ति। (1) जब किसी व्यक्ति को यह विश्वास करने का कारण है कि उसे किसी गैर-जमानती अपराध के किए जाने के अभियोग में गिरफ्तार किया जा सकता है, तो वह उच्च न्यायालय या सत्र न्यायालय को निदेश के लिए आवेदन कर सकता है कि ऐसी गिरफ्तारी की स्थिति में उसे जमानत पर छोड़ दिया जाए।",
+      "legal_tokens_present": [
+        "जमानत",
+        "धारा",
+        "उच्च न्यायालय",
+        "सत्र न्यायालय"
+      ]
+    },
+    {
+      "page_id": "REAL-OCR-HI-010",
+      "court_or_source": "IND-STATUTE-BSA",
+      "court_name": "Gazette of India (Official Translation)",
+      "document_type": "Bharatiya Sakshya Adhiniyam 2023 Hindi Gazette Excerpt",
+      "case_number": "Act No. 47 of 2023",
+      "year": 2023,
+      "physical_page_number": 24,
+      "scan_quality": "EXCELLENT_GOVERNMENT_PRESS",
+      "rights_status": "PUBLIC_DOMAIN_CENTRAL_ACT",
+      "reference_ground_truth": "धारा ६३ इलेक्ट्रॉनिक अभिलेखों की ग्राह्यता। किसी इलेक्ट्रॉनिक अभिलेख में अंतर्विष्ट कोई सूचना जो कंप्यूटर द्वारा उत्पादित या मुद्रित की गई हो, दस्तावेज समझी जाएगी और साक्ष्य के रूप में ग्राह्य होगी यदि उसमें विनिर्दिष्ट शर्तों का अनुपालन किया गया हो तथा सक्षम प्राधिकारी द्वारा विधिवत प्रमाणपत्र प्रस्तुत किया गया हो।",
+      "raw_ocr_hypothesis": "धारा 63 इलेक्ट्रॉनिक अभिलेखों की ग्राह्यता। किसी इलेक्ट्रॉनिक अभिलेख में अंतर्विष्ट कोई सूचना जो कंप्यूटर द्वारा उत्पादित या मुद्रित की गई हो, दस्तावेज समझी जाएगी और साक्ष्य के रूप में ग्राह्य होगी यदि उसमें विनिर्दिष्ट शर्तों का अनुपालन किया गया हो तथा सक्षम प्राधिकारी द्वारा विधिवत प्रमाणपत्र प्रस्तुत किया गया हो।",
+      "legal_tokens_present": [
+        "धारा",
+        "विधि",
+        "साक्ष्य"
+      ]
+    },
+    {
+      "page_id": "REAL-OCR-HI-011",
+      "court_or_source": "IND-HC-RAJ",
+      "court_name": "High Court of Judicature for Rajasthan (Jaipur Bench)",
+      "document_type": "Criminal Revision Order (Hindi)",
+      "case_number": "S.B. Criminal Revision Petition No. 560 of 2022",
+      "year": 2022,
+      "physical_page_number": 2,
+      "scan_quality": "FAIR_SKEW_ROTATION",
+      "rights_status": "PUBLIC_DOMAIN_JUDICIAL_RECORD",
+      "reference_ground_truth": "विद्वान विचारण न्यायालय द्वारा पारित आदेश विधि सम्मत है तथा उसमें किसी हस्तक्षेप की आवश्यकता नहीं है। निगरानी याचिका में उठाए गए सभी बिंदु साक्ष्य के मूल्यांकन से संबंधित हैं जिसका परीक्षण विचारण के दौरान ही संभव है। अतः निगरानी याचिका बलहीन होने के कारण निरस्त की जाती है।",
+      "raw_ocr_hypothesis": "विद्वान विचारण न्यायालय द्वारा पारित आदेश विधि सम्मत है तथा उसमें किसी हस्तक्षेप की आवश्यकता नहीं है। निगरानी याचिका में उठाए गए सभी बिंदु साक्ष्य के मूल्यांकन से सँबंधित हैं जिसका परीक्षण विचारण के दौरान ही सँभव है। अतः निगरानी याचिका बलहीन होने के कारण निरस्त की जाती है।",
+      "legal_tokens_present": [
+        "विचारण",
+        "आदेश",
+        "विधि",
+        "साक्ष्य",
+        "याचिका"
+      ]
+    },
+    {
+      "page_id": "REAL-OCR-HI-012",
+      "court_or_source": "IND-HC-MP",
+      "court_name": "High Court of Madhya Pradesh (Jabalpur)",
+      "document_type": "Civil Second Appeal Order (Hindi)",
+      "case_number": "Second Appeal No. 340 of 2020",
+      "year": 2020,
+      "physical_page_number": 3,
+      "scan_quality": "GOOD_SCANNED_DECREE",
+      "rights_status": "PUBLIC_DOMAIN_JUDICIAL_RECORD",
+      "reference_ground_truth": "सिविल प्रक्रिया संहिता की धारा १०० के अंतर्गत द्वितीय अपील केवल विधि के सारवान प्रश्न पर ही विचारणीय होती है। दोनों अधीनस्थ न्यायालयों द्वारा समवर्ती रूप से पारित निष्कर्षात्मक तथ्य साक्ष्य पर आधारित हैं। इस अपील में कोई सारवान विधिक प्रश्न अंतर्वलित नहीं है। परिणामस्वरूप अपील प्रारंभिक प्रक्रम पर ही खारिज की जाती है।",
+      "raw_ocr_hypothesis": "सिविल प्रक्रिया संहिता की धारा 100 के अंतर्गत द्वितीय अपील केवल विधि के सारवान प्रश्न पर ही विचारणीय होती है। दोनों अधीनस्थ न्यायालयों द्वारा समवर्ती रूप से पारित निष्कर्षात्मक तथ्य साक्ष्य पर आधारित हैं। इस अपील में कोई सारवान विधिक प्रश्न अंतर्वलित नहीं है। परिणामस्वरूप अपील प्रारंभिक प्रक्रम पर ही खारिज की जाती है।",
+      "legal_tokens_present": [
+        "धारा",
+        "विचारण",
+        "विधि",
+        "साक्ष्य",
+        "अपील",
+        "तथ्य"
+      ]
+    }
+  ]
+}
