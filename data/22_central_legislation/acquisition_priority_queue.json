@@ -1,6 +1,6 @@
 {
-  "queue_version": "LEGALMITRA-CENTRAL-PRIORITY-V1",
-  "generated_at": "2026-10-19T11:55:30Z",
+  "queue_version": "LEGALMITRA-CENTRAL-PRIORITY-V2",
+  "generated_at": "2026-10-19T12:30:00Z",
   "priority_policy": "HIGHEST_RETRIEVAL_IMPACT_TEMPORAL_TRANSITION",
   "priority_batches": [
     {
@@ -98,6 +98,85 @@
           "commencement_date": "2020-07-20",
           "replaces_instrument_id": "IND-STAT-CPA-1986",
           "key_sections": ["2", "35", "47", "58", "82", "83", "107"]
+        }
+      ]
+    },
+    {
+      "batch_id": "BATCH-04-CORPORATE-INSOLVENCY",
+      "domain": "Corporate Governance & Insolvency Resolution",
+      "priority_tier": "CRITICAL",
+      "rationale": "Frequent high-stakes statutory amendments: Companies Act Section 135 CSR regime transformation and IBC Section 29A disqualification and Section 32A clean-slate immunity.",
+      "instruments": [
+        {
+          "instrument_id": "IND-STAT-COMP-2013",
+          "title": "Companies Act, 2013",
+          "act_number": "Act No. 18 of 2013",
+          "official_source": "https://www.indiacode.nic.in/handle/123456789/2114",
+          "assent_date": "2013-08-29",
+          "amended_by": ["IND-AMEND-COMP-2015", "IND-AMEND-COMP-2017", "IND-AMEND-COMP-2019", "IND-AMEND-COMP-2020"],
+          "key_sections": ["134", "135", "149", "166", "241", "242", "447"],
+          "replaces_instrument_id": "IND-STAT-COMP-1956"
+        },
+        {
+          "instrument_id": "IND-STAT-IBC-2016",
+          "title": "Insolvency and Bankruptcy Code, 2016",
+          "act_number": "Act No. 31 of 2016",
+          "official_source": "https://www.indiacode.nic.in/handle/123456789/2154",
+          "assent_date": "2016-05-28",
+          "amended_by": ["IND-AMEND-IBC-2018", "IND-AMEND-IBC-2019", "IND-AMEND-IBC-2020"],
+          "key_sections": ["7", "9", "14", "29A", "31", "32A", "53"]
+        }
+      ]
+    },
+    {
+      "batch_id": "BATCH-05-CONTRACTS-PROPERTY",
+      "domain": "Commercial Contracts & Immoveable Property",
+      "priority_tier": "CRITICAL",
+      "rationale": "Foundational civil obligations with pivotal historical amendments: Contract Act Section 28 (1997 amendment) and Transfer of Property Act Section 53A (2001 mandatory registration amendment).",
+      "instruments": [
+        {
+          "instrument_id": "IND-STAT-CONTRACT-1872",
+          "title": "Indian Contract Act, 1872",
+          "act_number": "Act No. 9 of 1872",
+          "official_source": "https://www.indiacode.nic.in/handle/123456789/2187",
+          "commencement_date": "1872-09-01",
+          "amended_by": ["IND-AMEND-CONTRACT-1997"],
+          "key_sections": ["10", "23", "27", "28", "73", "74"]
+        },
+        {
+          "instrument_id": "IND-STAT-TPA-1882",
+          "title": "Transfer of Property Act, 1882",
+          "act_number": "Act No. 4 of 1882",
+          "official_source": "https://www.indiacode.nic.in/handle/123456789/2338",
+          "commencement_date": "1882-07-01",
+          "amended_by": ["IND-AMEND-TPA-1929", "IND-AMEND-TPA-2001"],
+          "key_sections": ["5", "52", "53A", "54", "58", "105"]
+        }
+      ]
+    },
+    {
+      "batch_id": "BATCH-06-CIVIL-PROCEDURE-TRANSPORT",
+      "domain": "Civil Procedure & Motor Accident Claims",
+      "priority_tier": "HIGH",
+      "rationale": "High-volume trial and appellate procedure: CPC Order VIII Rule 1 commercial litigation hard deadline vs ordinary civil suits, and Motor Vehicles Act 2019 amendment transitioning from Section 163A to Section 164 no-fault liability.",
+      "instruments": [
+        {
+          "instrument_id": "IND-STAT-CPC-1908",
+          "title": "Code of Civil Procedure, 1908",
+          "act_number": "Act No. 5 of 1908",
+          "official_source": "https://www.indiacode.nic.in/handle/123456789/2191",
+          "commencement_date": "1909-01-01",
+          "amended_by": ["IND-STAT-COMM-COURTS-2015"],
+          "key_sections": ["9", "10", "11", "100", "Order VIII Rule 1", "Order XXXIX"]
+        },
+        {
+          "instrument_id": "IND-STAT-MVA-1988",
+          "title": "Motor Vehicles Act, 1988",
+          "act_number": "Act No. 59 of 1988",
+          "official_source": "https://www.indiacode.nic.in/handle/123456789/1798",
+          "commencement_date": "1989-07-01",
+          "amended_by": ["IND-AMEND-MVA-2019"],
+          "key_sections": ["146", "147", "149", "163A", "164", "166"]
         }
       ]
     }

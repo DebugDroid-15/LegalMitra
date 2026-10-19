@@ -1,9 +1,9 @@
 {
-  "benchmark_suite_id": "LEGALMITRA-BENCHMARK-PIT-V1",
-  "version": "1.0.0",
-  "description": "Gold-standard point-in-time statutory retrieval and temporal resolution evaluation suite comprising 10 multi-era Indian legal scenarios.",
-  "created_at": "2026-10-19T12:00:00Z",
-  "total_test_cases": 10,
+  "benchmark_suite_id": "LEGALMITRA-BENCHMARK-PIT-V2",
+  "version": "2.0.0",
+  "description": "Gold-standard point-in-time statutory retrieval and temporal resolution evaluation suite comprising 20 multi-era Indian legal scenarios across criminal, constitutional, commercial, corporate, insolvency, property, and transport jurisprudence.",
+  "created_at": "2026-10-19T12:37:00Z",
+  "total_test_cases": 20,
   "test_cases": [
     {
       "case_id": "PIT-01",
@@ -215,6 +215,205 @@
         "provisions": ["Section 3A", "Section 10A"],
         "validity": "Active and in force throughout the interval [2009-10-27, null)",
         "legal_effect": "Contracts formed through electronic records and signatures are valid and enforceable; not affected by uncommenced DPDP provisions"
+      }
+    },
+    {
+      "case_id": "PIT-11",
+      "title": "Corporate CSR Non-Compliance Decriminalization Transition",
+      "domain": "corporate_governance",
+      "facts": {
+        "financial_year_era_1": "2018-19",
+        "financial_year_era_2": "2022-23",
+        "amendment_effective_date": "2021-01-22"
+      },
+      "expected_resolution": {
+        "pre_2021_regime": {
+          "governing_statute": "IND-STAT-COMP-2013",
+          "section": "Section 135",
+          "character": "Comply or explain disclosure in Board report under Section 134(3)(o)",
+          "penalty_framework": "General criminal penalty under Section 450",
+          "mandatory_unspent_transfer": false
+        },
+        "post_2021_regime": {
+          "governing_statute": "IND-STAT-COMP-2013",
+          "section": "Section 135(7)",
+          "character": "Mandatory transfer to unspent CSR account; civil monetary penalties",
+          "penalty_framework": "Twice the unspent amount or INR 1 Crore for company; INR 2 Lakhs for officer in default",
+          "mandatory_unspent_transfer": true
+        }
+      }
+    },
+    {
+      "case_id": "PIT-12",
+      "title": "IBC Section 29A Disqualification of Promoters as Resolution Applicants",
+      "domain": "insolvency_and_restructuring",
+      "facts": {
+        "plan_submission_date_era_1": "2017-06-01",
+        "plan_submission_date_era_2": "2018-03-15",
+        "amendment_date": "2017-11-23"
+      },
+      "expected_resolution": {
+        "pre_amendment": {
+          "governing_code": "IND-STAT-IBC-2016",
+          "disqualification_active": false,
+          "determination": "Prior to 23 November 2017, promoters were not statutorily barred from bidding for their own corporate debtor under Section 29A"
+        },
+        "post_amendment": {
+          "governing_code": "IND-STAT-IBC-2016",
+          "disqualification_active": true,
+          "provision": "Section 29A",
+          "determination": "Wilful defaulters and promoters with NPAs exceeding 1 year barred from submitting resolution plans (ArcelorMittal India v. Satish Kumar Gupta)"
+        }
+      }
+    },
+    {
+      "case_id": "PIT-13",
+      "title": "IBC Section 32A Clean Slate Immunity and Attachment Bar",
+      "domain": "insolvency_and_criminal_offences",
+      "facts": {
+        "pre_cirp_offense_date": "2018-05-10",
+        "resolution_plan_approval_date": "2021-04-15",
+        "enforcement_action_date": "2021-09-20"
+      },
+      "expected_resolution": {
+        "governing_provision": "IBC 2016 Section 32A",
+        "statutory_immunity_active": true,
+        "asset_attachment_permissible": false,
+        "legal_rule": "Section 32A(1) extinguishes corporate debtor liability for pre-CIRP offences; Section 32A(2) strictly bars investigating agencies from attaching debtor property once approved plan changes control (Manish Kumar v. Union of India)"
+      }
+    },
+    {
+      "case_id": "PIT-14",
+      "title": "Contract Act Section 28 Extinguishment Clause Validity Transition",
+      "domain": "commercial_contracts",
+      "facts": {
+        "contract_execution_era_1": "1995-04-10",
+        "contract_execution_era_2": "2002-08-15",
+        "amendment_date": "1997-01-08"
+      },
+      "expected_resolution": {
+        "pre_1997": {
+          "act": "IND-STAT-CONTRACT-1872",
+          "clause_status": "Valid and enforceable",
+          "judicial_doctrine": "Vulcan Insurance doctrine: contractual clauses extinguishing rights upon expiry of notice periods did not restrict remedies in courts"
+        },
+        "post_1997": {
+          "act": "IND-STAT-CONTRACT-1872",
+          "clause_status": "Void ab initio under Section 28 clause (b)",
+          "judicial_doctrine": "Act 1 of 1997 added clause (b) rendering void any clause extinguishing party rights on expiry of a specified period (Union of India v. Indusind Bank)"
+        }
+      }
+    },
+    {
+      "case_id": "PIT-15",
+      "title": "Transfer of Property Act Section 53A Part Performance Registration Requirement",
+      "domain": "property_law",
+      "facts": {
+        "agreement_date_era_1": "1998-03-12",
+        "agreement_date_era_2": "2005-11-20",
+        "amendment_date": "2001-09-24"
+      },
+      "expected_resolution": {
+        "pre_2001": {
+          "governing_law": "IND-STAT-TPA-1882 Section 53A",
+          "mandatory_registration": false,
+          "defense_available": true,
+          "determination": "Unregistered agreement for sale accompanied by delivery of possession established valid Section 53A defense"
+        },
+        "post_2001": {
+          "governing_law": "IND-STAT-TPA-1882 Section 53A read with Registration Act Section 17(1A)",
+          "mandatory_registration": true,
+          "defense_available": false,
+          "determination": "Post-24.09.2001, unregistered agreement conveys zero protection against ejectment by transferor"
+        }
+      }
+    },
+    {
+      "case_id": "PIT-16",
+      "title": "CPC Order VIII Rule 1 Commercial Dispute vs Ordinary Civil Suit Written Statement Deadline",
+      "domain": "civil_and_commercial_procedure",
+      "facts": {
+        "days_elapsed_since_summons": 105,
+        "suit_type_a": "ordinary_civil_suit",
+        "suit_type_b": "commercial_dispute_of_specified_value"
+      },
+      "expected_resolution": {
+        "ordinary_civil_suit": {
+          "governing_rule": "CPC 1908 Order VIII Rule 1 proviso",
+          "court_power": "Delay beyond 90 days condonable in exceptional circumstances; timeline directory (Kailash v. Nanhku)",
+          "right_forfeited": false
+        },
+        "commercial_dispute": {
+          "governing_rule": "Commercial Courts Act 2015 read with CPC Order VIII Rule 1 second proviso",
+          "court_power": "Delay beyond 120 days strictly non-extendable; on day 105 court may accept on payment of costs; on day 121 right is forfeited permanently (SCG Contracts v. Chamankar)",
+          "right_forfeited": false,
+          "hard_cap_limit": 120
+        }
+      }
+    },
+    {
+      "case_id": "PIT-17",
+      "title": "Motor Vehicles Act Compensation Regime Transition (Section 163A to Section 164)",
+      "domain": "tort_and_transport",
+      "facts": {
+        "accident_date_era_1": "2021-08-10",
+        "accident_date_era_2": "2022-09-15",
+        "chapter_xi_effective_date": "2022-04-01"
+      },
+      "expected_resolution": {
+        "pre_2022_accident": {
+          "governing_section": "Section 163A read with Second Schedule",
+          "compensation_basis": "Structured formula calculation subject to maximum income cap of INR 40,000 per annum"
+        },
+        "post_2022_accident": {
+          "governing_section": "Section 164 substituted by Act 32 of 2019 (S.O. 859(E))",
+          "compensation_basis": "Fixed statutory no-fault compensation: INR 5,00,000 for death, INR 2,50,000 for grievous hurt"
+        }
+      }
+    },
+    {
+      "case_id": "PIT-18",
+      "title": "Pre-2013 Corporate Action Governing Law and Continuity Savings",
+      "domain": "corporate_law",
+      "facts": {
+        "corporate_act_date": "2010-06-15",
+        "query_date": "2026-10-19"
+      },
+      "expected_resolution": {
+        "governing_statute": "IND-STAT-COMP-1956",
+        "savings_provision": "Companies Act 2013 Section 465(2)",
+        "legal_effect": "Corporate acts, contracts, and proceedings validly executed under Companies Act 1956 remain governed by 1956 Act provisions pursuant to statutory savings"
+      }
+    },
+    {
+      "case_id": "PIT-19",
+      "title": "Specific Relief Act Section 20A Statutory Bar on Infrastructure Injunctions",
+      "domain": "commercial_contracts",
+      "facts": {
+        "contract_date": "2019-02-10",
+        "project_type": "national_highway_expansion",
+        "injunction_sought": "stay_on_construction"
+      },
+      "expected_resolution": {
+        "governing_provision": "Specific Relief Act 1963 Section 20A (inserted by Act 18 of 2018)",
+        "injunction_permissible": false,
+        "statutory_mandate": "Courts prohibited from granting injunctions where delay or impediment would be caused to infrastructure projects listed in Schedule"
+      }
+    },
+    {
+      "case_id": "PIT-20",
+      "title": "Electronic Record Admissibility in Criminal Trial Commencing in 2025",
+      "domain": "evidence_law",
+      "facts": {
+        "investigation_commenced": "2024-09-01",
+        "trial_hearing_date": "2025-03-10",
+        "evidence_type": "cctv_footage_and_digital_call_logs"
+      },
+      "expected_resolution": {
+        "governing_statute": "Bharatiya Sakshya Adhiniyam, 2023 (Act 47 of 2023)",
+        "provision": "Section 63",
+        "certificate_requirement": "Section 63(4) certificate complying with the prescribed Schedule format",
+        "iea_s65b_status": "Repealed; inapplicable to investigations instituted post-01.07.2024"
       }
     }
   ]

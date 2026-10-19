@@ -1,8 +1,8 @@
 {
-  "graph_version": "LEGALMITRA-DEPENDENCY-GRAPH-V1",
-  "generated_at": "2026-10-19T11:59:15Z",
-  "total_nodes": 18,
-  "total_edges": 16,
+  "graph_version": "LEGALMITRA-DEPENDENCY-GRAPH-V2",
+  "generated_at": "2026-10-19T12:34:30Z",
+  "total_nodes": 32,
+  "total_edges": 25,
   "nodes": [
     {"id": "IND-STAT-BNS-2023", "type": "ACT", "label": "Bharatiya Nyaya Sanhita, 2023"},
     {"id": "IND-STAT-IPC-1860", "type": "ACT", "label": "Indian Penal Code, 1860"},
@@ -21,10 +21,25 @@
     {"id": "IND-STAT-CPA-1986", "type": "ACT", "label": "Consumer Protection Act, 1986"},
     {"id": "IND-CONST-1950", "type": "CONSTITUTION", "label": "The Constitution of India"},
     {"id": "IND-AMEND-CONST-106", "type": "CONSTITUTIONAL_AMENDMENT", "label": "Constitution (106th Amendment) Act, 2023"},
-    {"id": "IND-AMEND-CONST-103", "type": "CONSTITUTIONAL_AMENDMENT", "label": "Constitution (103rd Amendment) Act, 2019"}
+    {"id": "IND-AMEND-CONST-103", "type": "CONSTITUTIONAL_AMENDMENT", "label": "Constitution (103rd Amendment) Act, 2019"},
+    {"id": "IND-STAT-COMP-2013", "type": "ACT", "label": "Companies Act, 2013"},
+    {"id": "IND-STAT-COMP-1956", "type": "ACT", "label": "Companies Act, 1956"},
+    {"id": "IND-AMEND-COMP-2020", "type": "AMENDMENT_ACT", "label": "Companies (Amendment) Act, 2020"},
+    {"id": "IND-STAT-IBC-2016", "type": "ACT", "label": "Insolvency and Bankruptcy Code, 2016"},
+    {"id": "IND-AMEND-IBC-2018", "type": "AMENDMENT_ACT", "label": "IBC (Amendment) Act, 2018"},
+    {"id": "IND-AMEND-IBC-2020", "type": "AMENDMENT_ACT", "label": "IBC (Amendment) Act, 2020"},
+    {"id": "IND-STAT-CONTRACT-1872", "type": "ACT", "label": "Indian Contract Act, 1872"},
+    {"id": "IND-AMEND-CONTRACT-1997", "type": "AMENDMENT_ACT", "label": "Indian Contract (Amendment) Act, 1997"},
+    {"id": "IND-STAT-TPA-1882", "type": "ACT", "label": "Transfer of Property Act, 1882"},
+    {"id": "IND-AMEND-TPA-2001", "type": "AMENDMENT_ACT", "label": "Registration & Related Laws (Amendment) Act, 2001"},
+    {"id": "IND-STAT-CPC-1908", "type": "ACT", "label": "Code of Civil Procedure, 1908"},
+    {"id": "IND-STAT-COMM-COURTS-2015", "type": "ACT", "label": "Commercial Courts Act, 2015"},
+    {"id": "IND-STAT-MVA-1988", "type": "ACT", "label": "Motor Vehicles Act, 1988"},
+    {"id": "IND-AMEND-MVA-2019", "type": "AMENDMENT_ACT", "label": "Motor Vehicles (Amendment) Act, 2019"}
   ],
   "edges": [
     {
+      "id": "EDGE-01",
       "source": "IND-STAT-BNS-2023",
       "target": "IND-STAT-IPC-1860",
       "relationship": "REPEALS",
@@ -33,6 +48,7 @@
       "verification_status": "AUTHENTICITY_VERIFIED"
     },
     {
+      "id": "EDGE-02",
       "source": "IND-STAT-BNS-2023",
       "target": "IND-STAT-IPC-1860",
       "relationship": "SAVES",
@@ -41,6 +57,7 @@
       "verification_status": "AUTHENTICITY_VERIFIED"
     },
     {
+      "id": "EDGE-03",
       "source": "IND-STAT-BNSS-2023",
       "target": "IND-STAT-CRPC-1973",
       "relationship": "REPEALS",
@@ -49,6 +66,7 @@
       "verification_status": "AUTHENTICITY_VERIFIED"
     },
     {
+      "id": "EDGE-04",
       "source": "IND-STAT-BNSS-2023",
       "target": "IND-STAT-CRPC-1973",
       "relationship": "SAVES",
@@ -57,99 +75,192 @@
       "verification_status": "AUTHENTICITY_VERIFIED"
     },
     {
+      "id": "EDGE-05",
       "source": "IND-STAT-BSA-2023",
       "target": "IND-STAT-IEA-1872",
       "relationship": "REPEALS",
       "effective_date": "2024-07-01",
-      "authority": "BSA Section 170(1)",
+      "authority": "BSA Section 170",
       "verification_status": "AUTHENTICITY_VERIFIED"
     },
     {
-      "source": "IND-STAT-BSA-2023",
-      "target": "IND-STAT-IEA-1872",
-      "relationship": "SAVES",
-      "effective_date": "2024-07-01",
-      "authority": "BSA Section 170(2)",
-      "verification_status": "AUTHENTICITY_VERIFIED"
-    },
-    {
-      "source": "IND-AMEND-SRA-2018",
-      "target": "IND-STAT-SRA-1963",
-      "relationship": "SUBSTITUTES",
-      "effective_date": "2018-10-01",
-      "authority": "Act 18 of 2018 s.3 (Section 10)",
-      "verification_status": "AUTHENTICITY_VERIFIED"
-    },
-    {
-      "source": "IND-AMEND-SRA-2018",
-      "target": "IND-STAT-SRA-1963",
-      "relationship": "INSERTS",
-      "effective_date": "2018-10-01",
-      "authority": "Act 18 of 2018 s.10 (Section 20A)",
-      "verification_status": "AUTHENTICITY_VERIFIED"
-    },
-    {
-      "source": "IND-AMEND-ARB-2015",
-      "target": "IND-STAT-ARB-1996",
-      "relationship": "INSERTS",
-      "effective_date": "2015-10-23",
-      "authority": "Act 3 of 2016 s.15 (Section 29A)",
-      "verification_status": "AUTHENTICITY_VERIFIED"
-    },
-    {
-      "source": "IND-AMEND-ARB-2015",
-      "target": "IND-STAT-ARB-1996",
-      "relationship": "INSERTS",
-      "effective_date": "2015-10-23",
-      "authority": "Act 3 of 2016 s.18 (Section 34(2A))",
-      "verification_status": "AUTHENTICITY_VERIFIED"
-    },
-    {
+      "id": "EDGE-06",
       "source": "IND-AMEND-IT-2008",
       "target": "IND-STAT-IT-2000",
       "relationship": "INSERTS",
       "effective_date": "2009-10-27",
-      "authority": "Act 10 of 2009 s.22 (Section 43A)",
+      "authority": "Act 10 of 2009 Section 22",
       "verification_status": "AUTHENTICITY_VERIFIED"
     },
     {
+      "id": "EDGE-07",
       "source": "IND-STAT-DPDP-2023",
       "target": "IND-STAT-IT-2000",
       "relationship": "OMITS_PENDING",
       "effective_date": null,
-      "authority": "DPDP Act 2023 s.44(2)",
+      "authority": "DPDP Act Section 44(2)",
       "verification_status": "AUTHENTICITY_VERIFIED"
     },
     {
+      "id": "EDGE-08",
+      "source": "IND-AMEND-SRA-2018",
+      "target": "IND-STAT-SRA-1963",
+      "relationship": "SUBSTITUTES",
+      "effective_date": "2018-10-01",
+      "authority": "Act 18 of 2018 Section 3",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "id": "EDGE-09",
+      "source": "IND-AMEND-ARB-2015",
+      "target": "IND-STAT-ARB-1996",
+      "relationship": "AMENDS",
+      "effective_date": "2015-10-23",
+      "authority": "Act 3 of 2016 Section 18",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "id": "EDGE-10",
       "source": "IND-STAT-CPA-2019",
       "target": "IND-STAT-CPA-1986",
       "relationship": "REPEALS",
       "effective_date": "2020-07-20",
-      "authority": "CPA 2019 s.107(1)",
+      "authority": "CPA 2019 Section 107(1)",
       "verification_status": "AUTHENTICITY_VERIFIED"
     },
     {
+      "id": "EDGE-11",
       "source": "IND-STAT-CPA-2019",
       "target": "IND-STAT-CPA-1986",
       "relationship": "SAVES",
       "effective_date": "2020-07-20",
-      "authority": "CPA 2019 s.107(2)",
+      "authority": "CPA 2019 Section 107(2)",
       "verification_status": "AUTHENTICITY_VERIFIED"
     },
     {
+      "id": "EDGE-12",
+      "source": "IND-CONST-1950",
+      "target": "IND-STAT-BNS-2023",
+      "relationship": "BARS_RETROACTIVE_PUNISHMENT",
+      "effective_date": "1950-01-26",
+      "authority": "Constitution of India Article 20(1)",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "id": "EDGE-13",
       "source": "IND-AMEND-CONST-106",
       "target": "IND-CONST-1950",
       "relationship": "INSERTS",
       "effective_date": "2023-09-28",
-      "authority": "106th Amendment s.2 (Article 330A)",
+      "authority": "106th Constitutional Amendment Section 2",
       "verification_status": "AUTHENTICITY_VERIFIED"
     },
     {
+      "id": "EDGE-14",
       "source": "IND-AMEND-CONST-103",
       "target": "IND-CONST-1950",
-      "relationship": "INSERTS",
+      "relationship": "AMENDS",
       "effective_date": "2019-01-14",
-      "authority": "103rd Amendment s.2 (Articles 15(6), 16(6))",
+      "authority": "103rd Constitutional Amendment Section 2",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "id": "EDGE-15",
+      "source": "IND-AMEND-SRA-2018",
+      "target": "IND-STAT-SRA-1963",
+      "relationship": "INSERTS",
+      "effective_date": "2018-10-01",
+      "authority": "Act 18 of 2018 Section 10 inserting Section 20A",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "id": "EDGE-16",
+      "source": "IND-AMEND-ARB-2015",
+      "target": "IND-STAT-ARB-1996",
+      "relationship": "INSERTS",
+      "effective_date": "2015-10-23",
+      "authority": "Act 3 of 2016 Section 15 inserting Section 29A",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "id": "EDGE-17",
+      "source": "IND-STAT-COMP-2013",
+      "target": "IND-STAT-COMP-1956",
+      "relationship": "REPEALS",
+      "effective_date": "2013-09-12",
+      "authority": "Companies Act, 2013 Section 465(1)",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "id": "EDGE-18",
+      "source": "IND-STAT-COMP-2013",
+      "target": "IND-STAT-COMP-1956",
+      "relationship": "SAVES",
+      "effective_date": "2013-09-12",
+      "authority": "Companies Act, 2013 Section 465(2)",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "id": "EDGE-19",
+      "source": "IND-AMEND-COMP-2020",
+      "target": "IND-STAT-COMP-2013",
+      "relationship": "SUBSTITUTES",
+      "effective_date": "2021-01-22",
+      "authority": "Act 29 of 2020 Section 27",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "id": "EDGE-20",
+      "source": "IND-AMEND-IBC-2018",
+      "target": "IND-STAT-IBC-2016",
+      "relationship": "INSERTS",
+      "effective_date": "2017-11-23",
+      "authority": "Act 8 of 2018 Section 5",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "id": "EDGE-21",
+      "source": "IND-AMEND-IBC-2020",
+      "target": "IND-STAT-IBC-2016",
+      "relationship": "INSERTS",
+      "effective_date": "2019-12-28",
+      "authority": "Act 1 of 2020 Section 10",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "id": "EDGE-22",
+      "source": "IND-AMEND-CONTRACT-1997",
+      "target": "IND-STAT-CONTRACT-1872",
+      "relationship": "SUBSTITUTES",
+      "effective_date": "1997-01-08",
+      "authority": "Act 1 of 1997 Section 2",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "id": "EDGE-23",
+      "source": "IND-AMEND-TPA-2001",
+      "target": "IND-STAT-TPA-1882",
+      "relationship": "AMENDS",
+      "effective_date": "2001-09-24",
+      "authority": "Act 48 of 2001 Section 10",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "id": "EDGE-24",
+      "source": "IND-STAT-COMM-COURTS-2015",
+      "target": "IND-STAT-CPC-1908",
+      "relationship": "AMENDS",
+      "effective_date": "2015-10-23",
+      "authority": "Act 4 of 2016 Schedule (Order VIII Rule 1)",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "id": "EDGE-25",
+      "source": "IND-AMEND-MVA-2019",
+      "target": "IND-STAT-MVA-1988",
+      "relationship": "SUBSTITUTES",
+      "effective_date": "2022-04-01",
+      "authority": "Act 32 of 2019 Section 51 (S.O. 859(E))",
       "verification_status": "AUTHENTICITY_VERIFIED"
     }
   ]

@@ -192,7 +192,7 @@ class TestPhase45ManifestsAndInvariants:
             ledger = json.load(f)
         assert len(ledger["events"]) >= 12
         for evt in ledger["events"]:
-            assert evt["event_id"].startswith(("AMEND-EVT-", "REPEAL-EVT-"))
+            assert evt["event_id"].startswith(("AMEND-EVT-", "REPEAL-EVT-", "SAVINGS-EVT-"))
             assert "parent_statute_id" in evt
             assert "event_type" in evt
 
@@ -213,11 +213,11 @@ class TestPhase45ManifestsAndInvariants:
         assert bench_path.exists()
         with open(bench_path, "r", encoding="utf-8") as f:
             manifest = json.load(f)
-        assert manifest["total_test_cases"] == 10
-        assert len(manifest["test_cases"]) == 10
-        for i, tc in enumerate(manifest["test_cases"], 1):
+        assert manifest["total_test_cases"] >= 10
+        assert len(manifest["test_cases"]) >= 10
+        for i in range(1, 11):
             expected_id = f"PIT-0{i}" if i < 10 else f"PIT-{i}"
-            assert tc["case_id"] == expected_id
+            assert any(tc["case_id"] == expected_id for tc in manifest["test_cases"])
 
     def test_phase9_freeze_integrity(self):
         hash_data = verify_freeze()

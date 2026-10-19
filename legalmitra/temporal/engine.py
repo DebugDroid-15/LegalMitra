@@ -321,6 +321,170 @@ class TemporalLawEngine:
                 "commencement_notification": "S.O. 2351(E) dated 15 July 2020, effective 20 July 2020",
             }
 
+    def resolve_companies_act_csr_regime(self, query_date_str: str) -> Dict[str, Any]:
+        """Resolves whether Companies Act Section 135 CSR comply-or-explain (pre-2021)
+        or mandatory unspent account transfer and civil penalties (post-2021) apply.
+        """
+        TRANSITION_DATE = datetime.date(2021, 1, 22)
+        try:
+            q_date = datetime.date.fromisoformat(query_date_str)
+        except ValueError:
+            return {"error": f"Invalid query_date: {query_date_str}"}
+
+        if q_date < TRANSITION_DATE:
+            return {
+                "date": query_date_str,
+                "regime": "Companies Act, 2013 (Pre-2020 Amendment)",
+                "csr_character": "Comply or explain disclosure in Board report under Section 134(3)(o)",
+                "penalty_type": "Criminal general penalty under Section 450",
+                "unspent_transfer_mandate": False,
+                "governing_provision": "Section 135 as enacted by Act 18 of 2013",
+            }
+        else:
+            return {
+                "date": query_date_str,
+                "regime": "Companies Act, 2013 (Post-2020 Amendment by Act 29 of 2020)",
+                "csr_character": "Mandatory spending and unspent account transfer under Section 135(6)",
+                "penalty_type": "Civil monetary administrative penalty under Section 135(7)",
+                "unspent_transfer_mandate": True,
+                "governing_provision": "Section 135 as amended by Act 29 of 2020 w.e.f. 22 January 2021",
+                "notification_ref": "Ministry of Corporate Affairs S.O. 325(E) dated 22 January 2021",
+            }
+
+    def resolve_ibc_clean_slate_regime(self, query_date_str: str) -> Dict[str, Any]:
+        """Resolves whether Section 32A clean-slate immunity under IBC applies based on date."""
+        TRANSITION_DATE = datetime.date(2019, 12, 28)
+        try:
+            q_date = datetime.date.fromisoformat(query_date_str)
+        except ValueError:
+            return {"error": f"Invalid query_date: {query_date_str}"}
+
+        if q_date < TRANSITION_DATE:
+            return {
+                "date": query_date_str,
+                "regime": "Insolvency and Bankruptcy Code, 2016 (Pre-Section 32A)",
+                "clean_slate_statutory_immunity": False,
+                "asset_attachment_bar": False,
+                "governing_rule": "Absence of express statutory immunity; governed by general law and NCLT approval orders",
+            }
+        else:
+            return {
+                "date": query_date_str,
+                "regime": "Insolvency and Bankruptcy Code, 2016 (Post-Section 32A Insertion)",
+                "clean_slate_statutory_immunity": True,
+                "asset_attachment_bar": True,
+                "governing_rule": "Section 32A immunizes corporate debtor and new management from pre-CIRP offences; bars attachment of debtor properties",
+                "notification_ref": "Inserted by Ordinance on 28 December 2019 / Act No. 1 of 2020",
+            }
+
+    def resolve_contract_section28_regime(self, agreement_date_str: str) -> Dict[str, Any]:
+        """Resolves whether Contract Act Section 28 pre-1997 (Vulcan Insurance doctrine)
+        or post-1997 (extinguishment clauses void) applies.
+        """
+        TRANSITION_DATE = datetime.date(1997, 1, 8)
+        try:
+            a_date = datetime.date.fromisoformat(agreement_date_str)
+        except ValueError:
+            return {"error": f"Invalid agreement_date: {agreement_date_str}"}
+
+        if a_date < TRANSITION_DATE:
+            return {
+                "date": agreement_date_str,
+                "regime": "Indian Contract Act, 1872 (Pre-1997 Amendment)",
+                "extinguishment_clause_valid": True,
+                "doctrine": "Vulcan Insurance doctrine: contractual clauses extinguishing rights after stipulated period were lawful",
+                "clause_b_active": False,
+            }
+        else:
+            return {
+                "date": agreement_date_str,
+                "regime": "Indian Contract Act, 1872 (Post-1997 Amendment by Act 1 of 1997)",
+                "extinguishment_clause_valid": False,
+                "doctrine": "Section 28 clause (b) renders void any clause extinguishing rights on expiry of period",
+                "clause_b_active": True,
+                "statutory_ref": "Indian Contract (Amendment) Act, 1997 (Act No. 1 of 1997) w.e.f. 8 January 1997",
+            }
+
+    def resolve_tpa_part_performance_regime(self, agreement_date_str: str) -> Dict[str, Any]:
+        """Resolves whether Transfer of Property Act Section 53A requires mandatory registration."""
+        TRANSITION_DATE = datetime.date(2001, 9, 24)
+        try:
+            a_date = datetime.date.fromisoformat(agreement_date_str)
+        except ValueError:
+            return {"error": f"Invalid agreement_date: {agreement_date_str}"}
+
+        if a_date < TRANSITION_DATE:
+            return {
+                "date": agreement_date_str,
+                "regime": "Transfer of Property Act, 1882 (Pre-2001 Amendment)",
+                "mandatory_registration": False,
+                "s53a_protection_unregistered": True,
+                "registration_act_s17_1a_required": False,
+            }
+        else:
+            return {
+                "date": agreement_date_str,
+                "regime": "Transfer of Property Act, 1882 (Post-2001 Amendment by Act 48 of 2001)",
+                "mandatory_registration": True,
+                "s53a_protection_unregistered": False,
+                "registration_act_s17_1a_required": True,
+                "governing_rule": "Contract for transfer of immoveable property must be registered to claim Section 53A defense",
+                "notification_ref": "Act No. 48 of 2001 w.e.f. 24 September 2001",
+            }
+
+    def resolve_cpc_commercial_timeline(self, is_commercial_dispute: bool, days_elapsed: int) -> Dict[str, Any]:
+        """Resolves written statement filing deadlines under CPC Order VIII Rule 1
+        distinguishing ordinary civil suits from commercial suits.
+        """
+        if not is_commercial_dispute:
+            condonable = True
+            forfeited = False
+            rationale = "In ordinary civil suits, the 30-90 day timeline under Order VIII Rule 1 is directory (Kailash v. Nanhku)."
+        else:
+            condonable = days_elapsed <= 120
+            forfeited = days_elapsed > 120
+            rationale = "In commercial disputes of Specified Value, Order VIII Rule 1 second proviso strictly forfeits the right after 120 days (SCG Contracts)."
+
+        return {
+            "is_commercial_dispute": is_commercial_dispute,
+            "days_elapsed": days_elapsed,
+            "within_initial_period": days_elapsed <= 30,
+            "within_extended_period": days_elapsed <= (120 if is_commercial_dispute else 90),
+            "delay_condonable": condonable,
+            "right_to_file_forfeited": forfeited,
+            "procedural_rationale": rationale,
+        }
+
+    def resolve_mva_compensation_regime(self, accident_date_str: str) -> Dict[str, Any]:
+        """Resolves whether Motor Vehicles Act Section 163A (structured formula)
+        or Section 164 (fixed no-fault sum) applies based on accident date.
+        """
+        TRANSITION_DATE = datetime.date(2022, 4, 1)
+        try:
+            a_date = datetime.date.fromisoformat(accident_date_str)
+        except ValueError:
+            return {"error": f"Invalid accident_date: {accident_date_str}"}
+
+        if a_date < TRANSITION_DATE:
+            return {
+                "date": accident_date_str,
+                "regime": "Motor Vehicles Act, 1988 (Pre-2019 Amendment Chapter XI / Section 163A)",
+                "governing_section": "Section 163A read with Second Schedule",
+                "basis": "Structured formula compensation with annual income cap of INR 40,000",
+                "fixed_no_fault_sum": None,
+            }
+        else:
+            return {
+                "date": accident_date_str,
+                "regime": "Motor Vehicles Act, 1988 (Post-2019 Amendment Section 164)",
+                "governing_section": "Section 164 substituted by Act 32 of 2019",
+                "basis": "Fixed no-fault statutory compensation: INR 5,00,000 for death, INR 2,50,000 for grievous hurt",
+                "fixed_sum_death": 500000,
+                "fixed_sum_grievous_hurt": 250000,
+                "notification_ref": "Ministry of Road Transport and Highways S.O. 859(E) dated 25 February 2022, effective 1 April 2022",
+            }
+
+
 
 
 def build_default_temporal_engine() -> TemporalLawEngine:
@@ -625,6 +789,204 @@ def build_default_temporal_engine() -> TemporalLawEngine:
         version_effective_until=None,
         commencement_date="2023-09-28",
         amendment_act_id="IND-AMEND-CONST-106",
+        temporal_status=TemporalStatus.ACTIVE,
+    ))
+
+    # --- BATCH 2 STATUTES & PROVISIONS ---
+    # 14. Companies Act, 2013
+    engine.register_statute(StatuteLifecycle(
+        statute_id="IND-STAT-COMP-2013",
+        title="Companies Act, 2013",
+        enactment_date="2013-08-29",
+        assent_date="2013-08-29",
+        commencement_date="2013-09-12",
+        commencement_notification="Phased enforcement via MCA notifications",
+        is_fully_commenced=True,
+    ))
+
+    # 15. Insolvency and Bankruptcy Code, 2016
+    engine.register_statute(StatuteLifecycle(
+        statute_id="IND-STAT-IBC-2016",
+        title="Insolvency and Bankruptcy Code, 2016",
+        enactment_date="2016-05-28",
+        assent_date="2016-05-28",
+        commencement_date="2016-08-05",
+        commencement_notification="S.O. 2618(E)",
+        is_fully_commenced=True,
+    ))
+
+    # 16. Indian Contract Act, 1872
+    engine.register_statute(StatuteLifecycle(
+        statute_id="IND-STAT-CONTRACT-1872",
+        title="Indian Contract Act, 1872",
+        enactment_date="1872-04-25",
+        commencement_date="1872-09-01",
+        is_fully_commenced=True,
+    ))
+
+    # 17. Transfer of Property Act, 1882
+    engine.register_statute(StatuteLifecycle(
+        statute_id="IND-STAT-TPA-1882",
+        title="Transfer of Property Act, 1882",
+        enactment_date="1882-02-17",
+        commencement_date="1882-07-01",
+        is_fully_commenced=True,
+    ))
+
+    # 18. Code of Civil Procedure, 1908
+    engine.register_statute(StatuteLifecycle(
+        statute_id="IND-STAT-CPC-1908",
+        title="Code of Civil Procedure, 1908",
+        enactment_date="1908-03-21",
+        commencement_date="1909-01-01",
+        is_fully_commenced=True,
+    ))
+
+    # 19. Motor Vehicles Act, 1988
+    engine.register_statute(StatuteLifecycle(
+        statute_id="IND-STAT-MVA-1988",
+        title="Motor Vehicles Act, 1988",
+        enactment_date="1988-10-14",
+        commencement_date="1989-07-01",
+        is_fully_commenced=True,
+    ))
+
+    # Batch 2 Provision Versions:
+    # Companies Act Section 135 (Pre-2020: Comply or Explain)
+    engine.register_provision_version(ProvisionTemporalVersion(
+        provision_id="COMP-SEC-135",
+        statute_id="IND-STAT-COMP-2013",
+        section_number="135",
+        version_number=1,
+        text="135. (5) The Board of every company referred to in sub-section (1), shall ensure that the company spends, in every financial year, at least two per cent. of the average net profits of the company made during the three immediately preceding financial years... Provided further that if the company fails to spend such amount, the Board shall, in its report made under clause (o) of sub-section (3) of section 134, specify the reasons for not spending the amount.",
+        version_effective_from="2014-04-01",
+        version_effective_until="2021-01-21",
+        commencement_date="2014-04-01",
+        temporal_status=TemporalStatus.AMENDED_HISTORICAL,
+    ))
+
+    # Companies Act Section 135 (Post-2020: Mandatory Unspent Transfer & Civil Penalty)
+    engine.register_provision_version(ProvisionTemporalVersion(
+        provision_id="COMP-SEC-135",
+        statute_id="IND-STAT-COMP-2013",
+        section_number="135",
+        version_number=2,
+        text="135. (6) Any amount remaining unspent under sub-section (5), pursuant to any ongoing project... shall be transferred by the company within a period of thirty days from the end of the financial year to a special account to be opened by the company... (7) If a company is in default in complying with the provisions of sub-section (5) or sub-section (6), the company shall be liable to a penalty of twice the amount required to be transferred...",
+        version_effective_from="2021-01-22",
+        version_effective_until=None,
+        commencement_date="2021-01-22",
+        commencement_notification="S.O. 325(E) dated 22 January 2021",
+        amendment_act_id="IND-AMEND-COMP-2020",
+        temporal_status=TemporalStatus.ACTIVE,
+    ))
+
+    # IBC Section 29A (Disqualification of Resolution Applicants)
+    engine.register_provision_version(ProvisionTemporalVersion(
+        provision_id="IBC-SEC-29A",
+        statute_id="IND-STAT-IBC-2016",
+        section_number="29A",
+        version_number=1,
+        text="29A. Persons not eligible to be resolution applicant.—A person shall not be eligible to submit a resolution plan, if such person, or any other person acting jointly or in concert with such person— (a) is an undischarged insolvent; (b) is a wilful defaulter in accordance with the guidelines of the Reserve Bank of India...",
+        version_effective_from="2017-11-23",
+        version_effective_until=None,
+        commencement_date="2017-11-23",
+        amendment_act_id="IND-AMEND-IBC-2018",
+        temporal_status=TemporalStatus.ACTIVE,
+    ))
+
+    # IBC Section 32A (Clean-Slate Immunity)
+    engine.register_provision_version(ProvisionTemporalVersion(
+        provision_id="IBC-SEC-32A",
+        statute_id="IND-STAT-IBC-2016",
+        section_number="32A",
+        version_number=1,
+        text="32A. Liability for prior offences, etc.—(1) Notwithstanding anything to the contrary contained in this Code or any other law for the time being in force, the liability of a corporate debtor for an offence committed prior to the commencement of the corporate insolvency resolution process shall cease, and the corporate debtor shall not be prosecuted for such an offence from the date the resolution plan has been approved by the Adjudicating Authority under section 31...",
+        version_effective_from="2019-12-28",
+        version_effective_until=None,
+        commencement_date="2019-12-28",
+        amendment_act_id="IND-AMEND-IBC-2020",
+        temporal_status=TemporalStatus.ACTIVE,
+    ))
+
+    # Contract Act Section 28 (Historical Pre-1997 Version)
+    engine.register_provision_version(ProvisionTemporalVersion(
+        provision_id="CONTRACT-SEC-28",
+        statute_id="IND-STAT-CONTRACT-1872",
+        section_number="28",
+        version_number=1,
+        text="28. Agreements in restraint of legal proceedings, void.—Every agreement, by which any party thereto is restricted absolutely from enforcing his rights under or in respect of any contract, by the usual legal proceedings in the ordinary tribunals, or which limits the time within which he may thus enforce his rights, is void to that extent.",
+        version_effective_from="1872-09-01",
+        version_effective_until="1997-01-07",
+        commencement_date="1872-09-01",
+        temporal_status=TemporalStatus.AMENDED_HISTORICAL,
+    ))
+
+    # Contract Act Section 28 (Current Post-1997 Version)
+    engine.register_provision_version(ProvisionTemporalVersion(
+        provision_id="CONTRACT-SEC-28",
+        statute_id="IND-STAT-CONTRACT-1872",
+        section_number="28",
+        version_number=2,
+        text="28. Agreements in restraint of legal proceedings, void.—Every agreement,— (a) by which any party thereto is restricted absolutely from enforcing his rights under or in respect of any contract, by the usual legal proceedings in the ordinary tribunals, or which limits the time within which he may thus enforce his rights; or (b) which extinguishes the rights of any party thereto, or discharges any party thereto, from any liability, under or in respect of any contract on the expiry of a specified period so as to restrict any party from enforcing his rights, is void to that extent.",
+        version_effective_from="1997-01-08",
+        version_effective_until=None,
+        commencement_date="1997-01-08",
+        amendment_act_id="IND-AMEND-CONTRACT-1997",
+        temporal_status=TemporalStatus.ACTIVE,
+    ))
+
+    # Transfer of Property Act Section 53A (Historical: 1929 to 2001)
+    engine.register_provision_version(ProvisionTemporalVersion(
+        provision_id="TPA-SEC-53A",
+        statute_id="IND-STAT-TPA-1882",
+        section_number="53A",
+        version_number=1,
+        text="53A. Part performance.—Where any person contracts to transfer for consideration any immoveable property by writing signed by him... and the transferee has, in part performance of the contract, taken possession of the property... then, notwithstanding that the contract, though required to be registered, has not been registered... the transferor or any person claiming under him shall be debarred from enforcing against the transferee...",
+        version_effective_from="1929-04-01",
+        version_effective_until="2001-09-23",
+        commencement_date="1929-04-01",
+        temporal_status=TemporalStatus.AMENDED_HISTORICAL,
+    ))
+
+    # Transfer of Property Act Section 53A (Current Post-2001 Amendment)
+    engine.register_provision_version(ProvisionTemporalVersion(
+        provision_id="TPA-SEC-53A",
+        statute_id="IND-STAT-TPA-1882",
+        section_number="53A",
+        version_number=2,
+        text="53A. Part performance.—Where any person contracts to transfer for consideration any immoveable property by writing signed by him... and the transferee has, in part performance of the contract, taken possession of the property... then, notwithstanding that there is an instrument of transfer, that the transfer has not been completed in the manner prescribed therefor by the law for the time being in force, the transferor or any person claiming under him shall be debarred from enforcing against the transferee...",
+        version_effective_from="2001-09-24",
+        version_effective_until=None,
+        commencement_date="2001-09-24",
+        amendment_act_id="IND-AMEND-TPA-2001",
+        temporal_status=TemporalStatus.ACTIVE,
+    ))
+
+    # Motor Vehicles Act Section 163A (Historical Formula)
+    engine.register_provision_version(ProvisionTemporalVersion(
+        provision_id="MVA-SEC-163A",
+        statute_id="IND-STAT-MVA-1988",
+        section_number="163A",
+        version_number=1,
+        text="163A. Special provisions as to payment of compensation on structured formula basis.—(1) Notwithstanding anything contained in this Act or in any other law for the time being in force or instrument having the force of law, the owner of the motor vehicle or the authorised insurer shall be liable to pay in the case of death or permanent disablement due to accident arising out of the use of motor vehicle, compensation, as indicated in the Second Schedule...",
+        version_effective_from="1994-11-14",
+        version_effective_until="2022-03-31",
+        commencement_date="1994-11-14",
+        temporal_status=TemporalStatus.AMENDED_HISTORICAL,
+    ))
+
+    # Motor Vehicles Act Section 164 (Current Fixed No-Fault Compensation)
+    engine.register_provision_version(ProvisionTemporalVersion(
+        provision_id="MVA-SEC-164",
+        statute_id="IND-STAT-MVA-1988",
+        section_number="164",
+        version_number=1,
+        text="164. Payment of compensation in case of death or grievous hurt, etc.—(1) Notwithstanding anything contained in this Act or in any other law for the time being in force or instrument having the force of law, the owner of the motor vehicle or the authorised insurer shall be liable to pay in the case of death or grievous hurt due to any accident arising out of the use of motor vehicle, a compensation, of a sum of five lakh rupees in case of death or of two and a half lakh rupees in case of grievous hurt to the legal heirs or the victim, as the case may be.",
+        version_effective_from="2022-04-01",
+        version_effective_until=None,
+        commencement_date="2022-04-01",
+        commencement_notification="S.O. 859(E) dated 25 February 2022",
+        amendment_act_id="IND-AMEND-MVA-2019",
         temporal_status=TemporalStatus.ACTIVE,
     ))
 
