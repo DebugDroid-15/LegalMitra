@@ -1,7 +1,7 @@
 {
   "manifest_version": "1.0.0",
   "analysis_id": "COVERAGE-GAP-ANALYSIS-PHASE52",
-  "generated_at": "2026-10-19T17:41:19.061682+00:00",
+  "generated_at": "2026-10-19T18:09:30.637885+00:00",
   "total_domains_audited": 17,
   "domains_by_coverage": {
     "HIGH": 8,
@@ -147,8 +147,8 @@
       "name": "Intellectual Property Law (IPR)",
       "priority_tier": "HIGH",
       "current_coverage_status": "MODERATE",
-      "active_sources_in_db": 0,
-      "active_chunks_in_db": 0,
+      "active_sources_in_db": 1,
+      "active_chunks_in_db": 3,
       "gap_assessment": "Key sections and leading Delhi High Court rulings mapped. Patents Act compulsory licensing and Section 3(d) chunks need expansion.",
       "recommended_acquisitions": [
         "Ingest subordinate rules and High Court precedents"
@@ -171,8 +171,8 @@
       "name": "Corporate Law & Insolvency (IBC)",
       "priority_tier": "CRITICAL",
       "current_coverage_status": "LOW",
-      "active_sources_in_db": 0,
-      "active_chunks_in_db": 0,
+      "active_sources_in_db": 1,
+      "active_chunks_in_db": 4,
       "gap_assessment": "High-priority gap. IBC CIRP regulations and Sections 7, 9, 10, 14, 31 require structured ingestion.",
       "recommended_acquisitions": [
         "Acquire primary text of IND-STAT-COMP-2013 from India Code",
@@ -210,8 +210,8 @@
       "name": "Family & Succession Law",
       "priority_tier": "MEDIUM",
       "current_coverage_status": "LOW",
-      "active_sources_in_db": 0,
-      "active_chunks_in_db": 0,
+      "active_sources_in_db": 1,
+      "active_chunks_in_db": 3,
       "gap_assessment": "High-volume personal laws absent from current database; matrimonial relief queries must fail-closed or abstain.",
       "recommended_acquisitions": [
         "Acquire primary text of IND-STAT-HMA-1955 from India Code",

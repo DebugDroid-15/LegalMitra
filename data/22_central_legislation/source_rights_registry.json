@@ -1,9 +1,9 @@
 {
   "manifest_version": "1.0.0",
   "registry_id": "SOURCE-RIGHTS-REGISTRY-PHASE52",
-  "generated_at": "2026-10-19T17:40:20.934579+00:00",
-  "total_registered_records": 59,
-  "rights_verified_count": 56,
+  "generated_at": "2026-10-19T18:09:22.797840+00:00",
+  "total_registered_records": 62,
+  "rights_verified_count": 59,
   "rights_restricted_count": 3,
   "training_prohibited_enforced": true,
   "statutory_framework": {
@@ -660,6 +660,39 @@
       "training_use_permitted": "STRICTLY_PROHIBITED",
       "attribution_requirement": "Supreme Court of India / Respective High Court",
       "retrieval_context_notes": "Judicial ruling reproduction permitted under s.52(1)(q)(iv). Permitted for internal legal query retrieval."
+    },
+    {
+      "document_id": "IND-STAT-IBC-2016",
+      "title": "The Insolvency and Bankruptcy Code, 2016",
+      "source_type": "statute",
+      "legal_basis": "Section 52(1)(q)(i), (ii) Copyright Act, 1957 & GODL-India (Gazette of India)",
+      "rights_status": "RIGHTS_VERIFIED",
+      "internal_retrieval_permitted": true,
+      "training_use_permitted": "STRICTLY_PROHIBITED",
+      "attribution_requirement": "Government of India / Legislative Department / Official Gazette",
+      "retrieval_context_notes": "Statutory text published under official authority. Permitted for internal legal query retrieval."
+    },
+    {
+      "document_id": "IND-STAT-HSA-1956",
+      "title": "The Hindu Succession Act, 1956",
+      "source_type": "statute",
+      "legal_basis": "Section 52(1)(q)(i), (ii) Copyright Act, 1957 & GODL-India (Gazette of India)",
+      "rights_status": "RIGHTS_VERIFIED",
+      "internal_retrieval_permitted": true,
+      "training_use_permitted": "STRICTLY_PROHIBITED",
+      "attribution_requirement": "Government of India / Legislative Department / Official Gazette",
+      "retrieval_context_notes": "Statutory text published under official authority. Permitted for internal legal query retrieval."
+    },
+    {
+      "document_id": "IND-STAT-PAT-1970",
+      "title": "The Patents Act, 1970",
+      "source_type": "statute",
+      "legal_basis": "Section 52(1)(q)(i), (ii) Copyright Act, 1957 & GODL-India (Gazette of India)",
+      "rights_status": "RIGHTS_VERIFIED",
+      "internal_retrieval_permitted": true,
+      "training_use_permitted": "STRICTLY_PROHIBITED",
+      "attribution_requirement": "Government of India / Legislative Department / Official Gazette",
+      "retrieval_context_notes": "Statutory text published under official authority. Permitted for internal legal query retrieval."
     }
   ]
 }

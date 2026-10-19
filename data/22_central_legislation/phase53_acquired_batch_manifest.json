@@ -1,0 +1,232 @@
+{
+  "manifest_version": "1.0.0",
+  "batch_id": "BATCH-PHASE53-CORPUS-ACQUISITION",
+  "total_candidates": 3,
+  "candidates": [
+    {
+      "candidate_id": "IND-STAT-IBC-2016",
+      "official_title": "The Insolvency and Bankruptcy Code, 2016",
+      "source_type": "statute",
+      "domain_id": "DOM-11-CORPORATE-INSOLVENCY",
+      "issuing_authority": "Ministry of Law and Justice (Legislative Department)",
+      "jurisdiction": "IN",
+      "canonical_source_url": "https://www.indiacode.nic.in/handle/123456789/2154",
+      "priority_tier": "CRITICAL",
+      "priority_score": 9.65,
+      "priority_rationale": "Domain importance: 10/10; User impact: 10/10; Coverage gap: 9/10; Authority: 10/10; Temporal complexity: 9/10",
+      "state": "RETRIEVAL_EVALUATED",
+      "sha256_checksum": "353e57fcd214d5182ede93fd43929863b04a8408f8a8510885efc2bd51b1dd38",
+      "raw_artifact_path": "data\\01_raw\\IND-STAT-IBC-2016.json",
+      "publication_date": "2016-05-28",
+      "effective_date": "2016-12-01",
+      "commencement_notification_ref": "Ministry of Corporate Affairs S.O. 3594(E) dated 30.11.2016",
+      "rights_basis": "Section 52(1)(q)(ii) Copyright Act, 1957 / GODL-India",
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "parsed_sections_count": 4,
+      "state_history": [
+        {
+          "timestamp": "2026-10-19T18:08:08.657148+00:00",
+          "state": "REGISTERED",
+          "reason": "Registered in acquisition candidate ledger"
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.657148+00:00",
+          "state": "ACQUISITION_PENDING",
+          "reason": "Queued for primary source acquisition"
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.658139+00:00",
+          "state": "ACQUIRED",
+          "reason": "Acquired raw statutory JSON; SHA-256=353e57fcd214d518"
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.658139+00:00",
+          "state": "PARSED",
+          "reason": "Parsed 4 statutory provisions"
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.658139+00:00",
+          "state": "STRUCTURALLY_VALIDATED",
+          "reason": "Verified JSON structure against LegalMitra statute schema"
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.658139+00:00",
+          "state": "AUTHENTICITY_CHECKED",
+          "reason": "Checksum verified; Gazette ref=Ministry of Corporate Af..."
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.658139+00:00",
+          "state": "RIGHTS_ASSESSED",
+          "reason": "Verified s.52(1)(q) copyright exemption; training strictly prohibited"
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.658139+00:00",
+          "state": "TEMPORALLY_VERIFIED",
+          "reason": "Effective date verified: 2016-12-01"
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.670263+00:00",
+          "state": "INDEXED",
+          "reason": "Ingested 0 new chunks into KB"
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.670263+00:00",
+          "state": "RETRIEVAL_EVALUATED",
+          "reason": "Evaluated and cleared for retrieval"
+        }
+      ],
+      "failure_reason": null
+    },
+    {
+      "candidate_id": "IND-STAT-HSA-1956",
+      "official_title": "The Hindu Succession Act, 1956",
+      "source_type": "statute",
+      "domain_id": "DOM-14-FAMILY-SUCCESSION",
+      "issuing_authority": "Ministry of Law and Justice (Legislative Department)",
+      "jurisdiction": "IN",
+      "canonical_source_url": "https://www.indiacode.nic.in/handle/123456789/1598",
+      "priority_tier": "HIGH",
+      "priority_score": 9.05,
+      "priority_rationale": "Domain importance: 9/10; User impact: 9/10; Coverage gap: 9/10; Authority: 10/10; Temporal complexity: 8/10",
+      "state": "RETRIEVAL_EVALUATED",
+      "sha256_checksum": "a2c36706ad0c78cc058842af416506e99ff0fcb841896b72083d627d6ded67a5",
+      "raw_artifact_path": "data\\01_raw\\IND-STAT-HSA-1956.json",
+      "publication_date": "1956-06-17",
+      "effective_date": "1956-06-17",
+      "commencement_notification_ref": "Act No. 30 of 1956 published in the Gazette of India Extraordinary, Part II, Section 1",
+      "rights_basis": "Section 52(1)(q)(ii) Copyright Act, 1957 / GODL-India",
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "parsed_sections_count": 3,
+      "state_history": [
+        {
+          "timestamp": "2026-10-19T18:08:08.670263+00:00",
+          "state": "REGISTERED",
+          "reason": "Registered in acquisition candidate ledger"
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.670263+00:00",
+          "state": "ACQUISITION_PENDING",
+          "reason": "Queued for primary source acquisition"
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.672164+00:00",
+          "state": "ACQUIRED",
+          "reason": "Acquired raw statutory JSON; SHA-256=a2c36706ad0c78cc"
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.672164+00:00",
+          "state": "PARSED",
+          "reason": "Parsed 3 statutory provisions"
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.672164+00:00",
+          "state": "STRUCTURALLY_VALIDATED",
+          "reason": "Verified JSON structure against LegalMitra statute schema"
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.672164+00:00",
+          "state": "AUTHENTICITY_CHECKED",
+          "reason": "Checksum verified; Gazette ref=Act No. 30 of 1956 publi..."
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.672164+00:00",
+          "state": "RIGHTS_ASSESSED",
+          "reason": "Verified s.52(1)(q) copyright exemption; training strictly prohibited"
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.672164+00:00",
+          "state": "TEMPORALLY_VERIFIED",
+          "reason": "Effective date verified: 1956-06-17"
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.674266+00:00",
+          "state": "INDEXED",
+          "reason": "Ingested 0 new chunks into KB"
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.674266+00:00",
+          "state": "RETRIEVAL_EVALUATED",
+          "reason": "Evaluated and cleared for retrieval"
+        }
+      ],
+      "failure_reason": null
+    },
+    {
+      "candidate_id": "IND-STAT-PAT-1970",
+      "official_title": "The Patents Act, 1970",
+      "source_type": "statute",
+      "domain_id": "DOM-09-INTELLECTUAL-PROPERTY",
+      "issuing_authority": "Ministry of Commerce and Industry / Legislative Department",
+      "jurisdiction": "IN",
+      "canonical_source_url": "https://www.indiacode.nic.in/handle/123456789/1392",
+      "priority_tier": "HIGH",
+      "priority_score": 8.3,
+      "priority_rationale": "Domain importance: 9/10; User impact: 8/10; Coverage gap: 7/10; Authority: 10/10; Temporal complexity: 8/10",
+      "state": "RETRIEVAL_EVALUATED",
+      "sha256_checksum": "64996e063e6992b9939967aba271d6f7007d7c789d938e3519ee0f9e00f5bdf9",
+      "raw_artifact_path": "data\\01_raw\\IND-STAT-PAT-1970.json",
+      "publication_date": "1970-09-19",
+      "effective_date": "1972-04-20",
+      "commencement_notification_ref": "S.O. 197(E) dated 20 April 1972 (Amended 2005)",
+      "rights_basis": "Section 52(1)(q)(ii) Copyright Act, 1957 / GODL-India",
+      "is_retrieval_eligible": true,
+      "is_training_eligible": false,
+      "parsed_sections_count": 3,
+      "state_history": [
+        {
+          "timestamp": "2026-10-19T18:08:08.674266+00:00",
+          "state": "REGISTERED",
+          "reason": "Registered in acquisition candidate ledger"
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.674266+00:00",
+          "state": "ACQUISITION_PENDING",
+          "reason": "Queued for primary source acquisition"
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.675245+00:00",
+          "state": "ACQUIRED",
+          "reason": "Acquired raw statutory JSON; SHA-256=64996e063e6992b9"
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.675245+00:00",
+          "state": "PARSED",
+          "reason": "Parsed 3 statutory provisions"
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.675245+00:00",
+          "state": "STRUCTURALLY_VALIDATED",
+          "reason": "Verified JSON structure against LegalMitra statute schema"
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.675245+00:00",
+          "state": "AUTHENTICITY_CHECKED",
+          "reason": "Checksum verified; Gazette ref=S.O. 197(E) dated 20 Apr..."
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.675245+00:00",
+          "state": "RIGHTS_ASSESSED",
+          "reason": "Verified s.52(1)(q) copyright exemption; training strictly prohibited"
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.675245+00:00",
+          "state": "TEMPORALLY_VERIFIED",
+          "reason": "Effective date verified: 1972-04-20"
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.678251+00:00",
+          "state": "INDEXED",
+          "reason": "Ingested 0 new chunks into KB"
+        },
+        {
+          "timestamp": "2026-10-19T18:08:08.678251+00:00",
+          "state": "RETRIEVAL_EVALUATED",
+          "reason": "Evaluated and cleared for retrieval"
+        }
+      ],
+      "failure_reason": null
+    }
+  ]
+}

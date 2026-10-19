@@ -1,12 +1,12 @@
 {
-  "release_id": "LEGALMITRA-RELEASE-PHASE52",
-  "target_version": "0.52.0",
+  "release_id": "LEGALMITRA-RELEASE-PHASE53",
+  "target_version": "0.53.0",
   "total_gates": 11,
   "passed_gates": 10,
   "failed_gates": 0,
   "pending_gates": 1,
   "overall_decision": "STAGE_GATED_PENDING_ADVOCATE_SIGN_OFF",
-  "evaluated_at": "2026-10-19T17:52:00.334820Z",
+  "evaluated_at": "2026-10-19T18:28:29.398857Z",
   "gates": [
     {
       "gate_id": "RG-01-PROVENANCE",
@@ -14,15 +14,15 @@
       "description": "Verifies that knowledge base chunks derive from authentic sources and synthetic scaffolds are strictly quarantined.",
       "category": "SOURCE_INTEGRITY",
       "threshold": "100% verified source chunks; synthetic scaffolds quarantined",
-      "actual_value": "1505 verified chunks; 6 quarantined scaffold chunks",
+      "actual_value": "1515 verified chunks; 6 quarantined scaffold chunks",
       "status": "PASSED",
       "blocking": true,
       "evidence": {
-        "total_chunks": 1505,
+        "total_chunks": 1515,
         "quarantined_scaffold_chunks": 6,
         "database_path": "C:\\PROJECTS\\LegalMitra\\data\\legalmitra_kb.db"
       },
-      "verified_at": "2026-10-19T17:51:58.928543Z"
+      "verified_at": "2026-10-19T18:28:28.921249Z"
     },
     {
       "gate_id": "RG-02-TEMPORAL-CORRECTNESS",
@@ -37,7 +37,7 @@
         "evaluated_temporal_cases": 19,
         "accuracy": 1.0
       },
-      "verified_at": "2026-10-19T17:51:58.934569Z"
+      "verified_at": "2026-10-19T18:28:28.923245Z"
     },
     {
       "gate_id": "RG-03-PRECEDENT-HIERARCHY",
@@ -53,7 +53,7 @@
         "referral_case_handled": "CASE-SC-RAMESH-CHANDRA-REF-2019",
         "stayed_precedent_handled": "CASE-SC-ST-STEPHENS-STAY-2023"
       },
-      "verified_at": "2026-10-19T17:51:58.934569Z"
+      "verified_at": "2026-10-19T18:28:28.923245Z"
     },
     {
       "gate_id": "RG-04-CLAIM-GROUNDING",
@@ -61,15 +61,15 @@
       "description": "Ensures every material legal assertion is grounded in authentic statutory or precedent extracts.",
       "category": "LEGAL_VALIDITY",
       "threshold": ">= 90% claim grounding rate; >= 90% citation validity",
-      "actual_value": "Claim Support: 97.0%; Citation Validity: 98.4%",
+      "actual_value": "Claim Support: 96.6%; Citation Validity: 98.6%",
       "status": "PASSED",
       "blocking": true,
       "evidence": {
-        "material_claim_support": 0.9696969696969697,
-        "citation_validity": 0.984375,
-        "sample_cases_evaluated": 30
+        "material_claim_support": 0.9664429530201343,
+        "citation_validity": 0.986013986013986,
+        "sample_cases_evaluated": 35
       },
-      "verified_at": "2026-10-19T17:51:59.728895Z"
+      "verified_at": "2026-10-19T18:28:29.244859Z"
     },
     {
       "gate_id": "RG-05-CLARIFICATION-ABSTENTION",
@@ -89,7 +89,7 @@
           "CLARIFICATION_REQUIRED"
         ]
       },
-      "verified_at": "2026-10-19T17:51:59.729895Z"
+      "verified_at": "2026-10-19T18:28:29.244859Z"
     },
     {
       "gate_id": "RG-06-CITATION-INTEGRITY",
@@ -104,7 +104,7 @@
         "neutral_citation_regex_audit": "Active regex and knowledge-base cross-check",
         "synthetic_scaffold_interception": "Active quarantine check"
       },
-      "verified_at": "2026-10-19T17:51:59.729895Z"
+      "verified_at": "2026-10-19T18:28:29.244859Z"
     },
     {
       "gate_id": "RG-07-ADVERSARIAL-SECURITY",
@@ -121,7 +121,7 @@
         "failed_attacks": 0,
         "robustness_rate": 1.0
       },
-      "verified_at": "2026-10-19T17:52:00.272660Z"
+      "verified_at": "2026-10-19T18:28:29.369855Z"
     },
     {
       "gate_id": "RG-08-DATABASE-ISOLATION",
@@ -138,7 +138,7 @@
         "distinct_files": true,
         "table_isolation_verified": true
       },
-      "verified_at": "2026-10-19T17:52:00.274669Z"
+      "verified_at": "2026-10-19T18:28:29.370855Z"
     },
     {
       "gate_id": "RG-09-REGRESSION-INTEGRITY",
@@ -154,23 +154,23 @@
         "phase40_50_test_count": 159,
         "test_pass_rate": 1.0
       },
-      "verified_at": "2026-10-19T17:52:00.274669Z"
+      "verified_at": "2026-10-19T18:28:29.370855Z"
     },
     {
       "gate_id": "RG-10-HELD-OUT-EVALUATION",
       "name": "Independent Held-Out Evaluation Generalization",
-      "description": "Evaluates generalization on 50 independently curated, held-out evaluation cases with verified zero split contamination.",
+      "description": "Evaluates generalization on 55 independently curated, held-out evaluation cases with verified zero split contamination.",
       "category": "LEGAL_VALIDITY",
-      "threshold": "50 held-out cases; 0 exact duplicates; max similarity <= 0.85; >= 90% pass rate",
-      "actual_value": "50 held-out cases verified; 0 exact duplicates; max similarity 0.36",
+      "threshold": "55 held-out cases; 0 exact duplicates; max similarity <= 0.85; >= 90% pass rate",
+      "actual_value": "55 held-out cases verified; 0 exact duplicates; max similarity 0.36",
       "status": "PASSED",
       "blocking": true,
       "evidence": {
-        "held_out_case_count": 50,
+        "held_out_case_count": 55,
         "exact_duplicates": 0,
         "max_cross_split_jaccard": 0.36363636363636365
       },
-      "verified_at": "2026-10-19T17:52:00.331708Z"
+      "verified_at": "2026-10-19T18:28:29.391847Z"
     },
     {
       "gate_id": "RG-11-LEGAL-REVIEW",
@@ -188,7 +188,7 @@
         "governing_statute": "Advocates Act, 1961",
         "notes": "Governance invariant strictly preserved: Automated tools cannot self-certify advocate review."
       },
-      "verified_at": "2026-10-19T17:52:00.334820Z"
+      "verified_at": "2026-10-19T18:28:29.398857Z"
     }
   ]
 }

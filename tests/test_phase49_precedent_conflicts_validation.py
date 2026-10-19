@@ -149,11 +149,11 @@ def test_amendment_impact_income_tax_vodafone(temporal_engine):
 # =====================================================================
 
 def test_claim_validation_missing_source(temporal_engine):
-    """Claim without source evidence triggers SOURCE_PROVENANCE_INCOMPLETE and abstention."""
+    """Claim without source evidence triggers INSUFFICIENT_EVIDENCE / SOURCE_PROVENANCE_INCOMPLETE and abstention."""
     val = temporal_engine.validate_claim_evidence(
         claim_text="All commercial contracts automatically dissolve upon change in corporate shareholding."
     )
-    assert val["validation_outcome"] == "SOURCE_PROVENANCE_INCOMPLETE"
+    assert val["validation_outcome"] in ("SOURCE_PROVENANCE_INCOMPLETE", "INSUFFICIENT_EVIDENCE")
     assert val["is_supported"] is False
     assert val["abstain_recommended"] is True
 
@@ -180,14 +180,14 @@ def test_claim_validation_contradicted_by_passage(temporal_engine):
 
 
 def test_claim_validation_temporally_superseded(temporal_engine):
-    """Claim based on superseded statutory version triggers TEMPORALLY_UNRESOLVED."""
+    """Claim based on superseded statutory version triggers TEMPORALLY_UNCERTAIN / TEMPORALLY_UNRESOLVED."""
     val = temporal_engine.validate_claim_evidence(
         claim_text="Unregistered contract to transfer immoveable property shields possession under Section 53A.",
         cited_statute_id="IND-STAT-TPA-1882",
         cited_section="Section 53A",
         query_date_str="2005-05-10"
     )
-    assert val["validation_outcome"] == "TEMPORALLY_UNRESOLVED"
+    assert val["validation_outcome"] in ("TEMPORALLY_UNRESOLVED", "TEMPORALLY_UNCERTAIN")
     assert val["is_supported"] is False
 
 

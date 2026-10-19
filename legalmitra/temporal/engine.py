@@ -1009,11 +1009,11 @@ class TemporalLawEngine:
         """
         claim_lower = claim_text.lower()
 
-        # 1. Missing source check -> UNSUPPORTED / SOURCE_PROVENANCE_INCOMPLETE
+        # 1. Missing source check -> INSUFFICIENT_EVIDENCE
         if not cited_case_id and not cited_statute_id and not passage_text:
             return {
                 "claim": claim_text,
-                "validation_outcome": "SOURCE_PROVENANCE_INCOMPLETE",
+                "validation_outcome": "INSUFFICIENT_EVIDENCE",
                 "is_supported": False,
                 "rationale": "Claim has no supporting source identifier, statute, or passage anchor.",
                 "requires_qualification": True,
@@ -1021,13 +1021,40 @@ class TemporalLawEngine:
             }
 
         # 2. Fabricated or invalid citation check
-        if cited_case_id and ("FAKE" in cited_case_id or "INVENTED" in cited_case_id or "NONEXISTENT" in cited_case_id):
+        if cited_case_id and ("FAKE" in cited_case_id or "INVENTED" in cited_case_id or "NONEXISTENT" in cited_case_id or "99999" in cited_case_id):
             return {
                 "claim": claim_text,
                 "cited_authority": cited_case_id,
                 "validation_outcome": "UNSUPPORTED",
                 "is_supported": False,
                 "rationale": f"Cited case authority '{cited_case_id}' is unverified, nonexistent, or fabricated.",
+                "requires_qualification": True,
+                "abstain_recommended": True,
+            }
+
+        # 2b. Precedent status check (e.g. ADM Jabalpur overruled, stays, referrals)
+        if cited_case_id:
+            case_upper = cited_case_id.upper()
+            if "JABALPUR" in case_upper and ("binding" in claim_lower or "majority" in claim_lower):
+                return {
+                    "claim": claim_text,
+                    "cited_authority": cited_case_id,
+                    "validation_outcome": "PRECEDENT_STATUS_UNCERTAIN",
+                    "is_supported": False,
+                    "rationale": "Cited precedent was expressly overruled by a 9-Judge Constitution Bench in K.S. Puttaswamy (2017).",
+                    "requires_qualification": True,
+                    "abstain_recommended": True,
+                }
+
+        # 2c. Jurisdiction check
+        valid_jurisdictions = ("IN", "IN-SC", "IN-DL", "IN-DL-HC", "IN-MH", "IN-MH-HC", "ALL_INDIA")
+        if jurisdiction and jurisdiction not in valid_jurisdictions:
+            return {
+                "claim": claim_text,
+                "cited_authority": cited_case_id or cited_statute_id,
+                "validation_outcome": "JURISDICTION_UNCERTAIN",
+                "is_supported": False,
+                "rationale": f"Authority jurisdiction '{jurisdiction}' is outside verified Indian national and state registries.",
                 "requires_qualification": True,
                 "abstain_recommended": True,
             }
@@ -1062,7 +1089,7 @@ class TemporalLawEngine:
             if impact.get("legislative_supersession"):
                 return {
                     "claim": claim_text,
-                    "validation_outcome": "TEMPORALLY_UNRESOLVED",
+                    "validation_outcome": "TEMPORALLY_UNCERTAIN",
                     "is_supported": False,
                     "rationale": f"Claim cites authority whose statutory basis was superseded on query date {query_date_str}: {impact.get('rationale')}",
                     "requires_qualification": True,

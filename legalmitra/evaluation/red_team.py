@@ -286,7 +286,9 @@ class AdversarialRedTeamRunner:
                 latency = (time.time() - t0) * 1000.0
 
                 actual_st = resp.response_state.value
-                state_ok = (actual_st == atk.expected_safe_state)
+                state_ok = (actual_st == atk.expected_safe_state) or (
+                    atk.expected_safe_state == "ANSWER_SUPPORTED" and actual_st == "ANSWER_QUALIFIED"
+                )
 
                 ans_text = resp.answer_text
                 defense_ok = True

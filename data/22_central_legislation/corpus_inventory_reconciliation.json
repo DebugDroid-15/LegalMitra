@@ -1,12 +1,12 @@
 {
   "manifest_version": "1.0.0",
   "reconciliation_id": "CORPUS-RECONCILIATION-PHASE52",
-  "generated_at": "2026-10-19T17:37:41.136128Z",
-  "total_registered_sources": 59,
-  "total_acquired_sources": 59,
-  "total_verified_sources": 6,
-  "total_indexed_chunks": 1505,
-  "total_eligible_chunks": 1499,
+  "generated_at": "2026-10-19T18:08:28.530481Z",
+  "total_registered_sources": 62,
+  "total_acquired_sources": 62,
+  "total_verified_sources": 9,
+  "total_indexed_chunks": 1515,
+  "total_eligible_chunks": 1509,
   "total_quarantined_chunks": 6,
   "orphan_chunks_count": 0,
   "duplicate_source_ids_count": 0,
@@ -15,11 +15,11 @@
   "categories": {
     "statute": {
       "category_name": "statute",
-      "registered_count": 26,
-      "acquired_count": 26,
-      "verified_count": 5,
-      "indexed_chunk_count": 1394,
-      "eligible_chunk_count": 1394,
+      "registered_count": 29,
+      "acquired_count": 29,
+      "verified_count": 8,
+      "indexed_chunk_count": 1404,
+      "eligible_chunk_count": 1404,
       "quarantined_chunk_count": 0,
       "unresolved_count": 0,
       "reconciliation_discrepancies": []
@@ -72,7 +72,7 @@
   "deduplication_audit": {
     "duplicate_ids": [],
     "is_deduplicated": true,
-    "total_unique_source_ids": 59
+    "total_unique_source_ids": 62
   },
   "quarantined_inventory": [
     {
