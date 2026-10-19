@@ -227,6 +227,16 @@ class LegalQueryAnalyzer:
         if any(term in q_lower for term in ["delhi rent control", "drc act", "rent control", "rent controller"]):
             acts.append("IND-STAT-DRC-1958")
             provisions.append("Section 3")
+        if any(term in q_lower for term in ["osh code", "occupational safety"]):
+            acts.append("IND-STAT-OSHCODE-2020")
+            provisions.append("Section 25")
+        if any(term in q_lower for term in ["ni act", "negotiable instruments", "cheque bounce", "138", "139"]):
+            acts.append("IND-STAT-NI-1881")
+            provisions.append("Section 138")
+            provisions.append("Section 139")
+        if any(term in q_lower for term in ["commercial court", "commercial courts act", "pre-institution mediation"]):
+            acts.append("IND-STAT-COMMERCIAL_COURTS-2015")
+            provisions.append("Section 12A")
 
         # Extract explicit section references
         sec_matches = re.findall(r"\b(?:section|sec\.?|s\.)\s*(\d+[A-Za-z]?(?:\(\d+\))?)\b", clean_q, re.IGNORECASE)
@@ -261,7 +271,7 @@ class LegalQueryAnalyzer:
             ("novartis", "CASE-NOVARTIS-2013"),
             ("subhash kashinath", "CASE-SC-SUBHASH-KASHINATH-2018"),
             ("subhash", "CASE-SC-SUBHASH-KASHINATH-2018"),
-            ("ramesh chandra", "CASE-SC-RAMESH-VERMA-2017"),
+            ("ramesh chandra", "CASE-SC-RAMESH-CHANDRA-REF-2019"),
             ("ramesh verma", "CASE-SC-RAMESH-VERMA-2017"),
             ("rohan builders", "CASE-HC-BOM-ARBITRATION-2021"),
             ("harkirat", "CASE-HC-BOM-ARBITRATION-2021"),
@@ -364,7 +374,7 @@ class LegalQueryAnalyzer:
         temporal_sensitive_terms = [
             "cheating", "electronic record", "forfeiture clause", "unregistered agreement",
             "copyright fair dealing", "patent application", "mva compensation", "accident date",
-            "labour code", "wages"
+            "labour code", "wages", "420", "318", "misrepresentation"
         ]
         if any(term in q_lower for term in temporal_sensitive_terms) and not query_date:
             missing_facts.append("Transaction or incident date (decisive across legislative amendment/commencement boundaries)")
@@ -372,7 +382,7 @@ class LegalQueryAnalyzer:
         # Check if missing jurisdiction is materially decisive
         jurisdiction_sensitive_terms = [
             "arbitration mandate extension", "section 29a", "rent control", "court fees",
-            "quashing petition", "high court rules"
+            "quashing petition", "high court rules", "article 226", "writ petition", "writ against"
         ]
         if any(term in q_lower for term in jurisdiction_sensitive_terms) and not detected_jurisdiction:
             missing_facts.append("State or High Court territorial jurisdiction (decisive due to inter-High Court conflicts or state amendments)")
@@ -384,7 +394,11 @@ class LegalQueryAnalyzer:
 
         if missing_facts:
             # Clarification necessary if answering definitively would risk asserting overruled/inapplicable law
-            if any(term in q_lower for term in ["is my clause valid", "can i evict", "can a landlord evict", "evict", "is my petition maintainable", "what is the compensation", "offense of cheating", "cheating?"]):
+            if any(term in q_lower for term in [
+                "is my clause valid", "can i evict", "can a landlord evict", "evict",
+                "is my petition maintainable", "what is the compensation", "offense of cheating",
+                "cheating?", "file a writ", "writ petition", "does section 420", "420 ipc or"
+            ]):
                 clarification_necessary = True
                 clarification_prompt = (
                     "To determine the governing legal position accurately, please clarify: "

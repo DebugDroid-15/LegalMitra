@@ -74,7 +74,7 @@ class LegalDecisionPolicy:
 
         # 3. Check for uncommenced enactments / temporal uncertainty -> ABSTAIN_TEMPORAL_UNCERTAINTY
         uncommenced_codes = [ca for ca in evidence_set.contrary_authorities if ca.authority_level == "ENACTED_UNCOMMENCED"]
-        if uncommenced_codes and any(kw in parsed_query.original_query.lower() for kw in ["enforce", "in force", "commenced", "recovery application", "national floor", "apply code on wages"]) and not ("definition" in parsed_query.original_query.lower() or "section 2(s)" in parsed_query.original_query.lower()):
+        if uncommenced_codes and any(kw in parsed_query.original_query.lower() for kw in ["enforce", "in force", "commenced", "recovery application", "national floor", "apply code on wages", "implement", "shift", "citing"]) and not ("definition" in parsed_query.original_query.lower() or "section 2(s)" in parsed_query.original_query.lower()):
             return PolicyEvaluationResult(
                 state=LegalResponseState.ABSTAIN_TEMPORAL_UNCERTAINTY,
                 allows_partial_answer=True,

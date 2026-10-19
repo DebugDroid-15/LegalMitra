@@ -871,9 +871,19 @@ class TemporalLawEngine:
         remains operative, modified, or superseded on a given query date based on
         subsequent legislative amendments.
         """
+        if not query_date_str or not isinstance(query_date_str, str):
+            return {
+                "case_id": case_id,
+                "statute_id": statute_id,
+                "section": section,
+                "query_date": str(query_date_str) if query_date_str else "",
+                "status": "OPERATIVE_FOR_VERSION",
+                "operative_statutory_version": "Undated Query Context",
+                "legislative_supersession": False,
+            }
         try:
             q_date = datetime.date.fromisoformat(query_date_str)
-        except ValueError:
+        except (ValueError, TypeError):
             return {"error": f"Invalid query_date: {query_date_str}"}
 
         # Known verified legislative amendment vs precedent mappings

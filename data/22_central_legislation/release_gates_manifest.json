@@ -1,0 +1,194 @@
+{
+  "release_id": "LEGALMITRA-RELEASE-PHASE51",
+  "target_version": "0.51.0",
+  "total_gates": 11,
+  "passed_gates": 10,
+  "failed_gates": 0,
+  "pending_gates": 1,
+  "overall_decision": "STAGE_GATED_PENDING_ADVOCATE_SIGN_OFF",
+  "evaluated_at": "2026-10-19T15:41:05.407194Z",
+  "gates": [
+    {
+      "gate_id": "RG-01-PROVENANCE",
+      "name": "Source Provenance & Scaffold Quarantine Verification",
+      "description": "Verifies that knowledge base chunks derive from authentic sources and synthetic scaffolds are strictly quarantined.",
+      "category": "SOURCE_INTEGRITY",
+      "threshold": "100% verified source chunks; synthetic scaffolds quarantined",
+      "actual_value": "1505 verified chunks; 6 quarantined scaffold chunks",
+      "status": "PASSED",
+      "blocking": true,
+      "evidence": {
+        "total_chunks": 1505,
+        "quarantined_scaffold_chunks": 6,
+        "database_path": "C:\\PROJECTS\\LegalMitra\\data\\legalmitra_kb.db"
+      },
+      "verified_at": "2026-10-19T15:41:05.021292Z"
+    },
+    {
+      "gate_id": "RG-02-TEMPORAL-CORRECTNESS",
+      "name": "Temporal Validity & Statutory Transition Accuracy",
+      "description": "Evaluates accuracy of point-in-time statutory selection across pre/post amendment and repeal dates.",
+      "category": "LEGAL_VALIDITY",
+      "threshold": ">= 95% temporal accuracy across statutory transitions",
+      "actual_value": "100.0% (19 temporal benchmark cases verified)",
+      "status": "PASSED",
+      "blocking": true,
+      "evidence": {
+        "evaluated_temporal_cases": 19,
+        "accuracy": 1.0
+      },
+      "verified_at": "2026-10-19T15:41:05.022296Z"
+    },
+    {
+      "gate_id": "RG-03-PRECEDENT-HIERARCHY",
+      "name": "Precedent Hierarchy, Overruling & Referral Fidelity",
+      "description": "Verifies non-collapsing of distinct authority statuses (Constitution Bench bindingness, overruled historical, larger bench referrals, interlocutory stays).",
+      "category": "LEGAL_VALIDITY",
+      "threshold": "100% precedent status separation; zero conflation of overruled/referred cases",
+      "actual_value": "100% (ADM Jabalpur overruled, Ramesh Chandra referral sub judice, St. Stephen's stay preserved)",
+      "status": "PASSED",
+      "blocking": true,
+      "evidence": {
+        "overruled_case_handled": "CASE-SC-ADM-JABALPUR-1976",
+        "referral_case_handled": "CASE-SC-RAMESH-CHANDRA-REF-2019",
+        "stayed_precedent_handled": "CASE-SC-ST-STEPHENS-STAY-2023"
+      },
+      "verified_at": "2026-10-19T15:41:05.022296Z"
+    },
+    {
+      "gate_id": "RG-04-CLAIM-GROUNDING",
+      "name": "Claim-Level Evidence Grounding & Verification",
+      "description": "Ensures every material legal assertion is grounded in authentic statutory or precedent extracts.",
+      "category": "LEGAL_VALIDITY",
+      "threshold": ">= 90% claim grounding rate; >= 90% citation validity",
+      "actual_value": "Claim Support: 97.4%; Citation Validity: 98.2%",
+      "status": "PASSED",
+      "blocking": true,
+      "evidence": {
+        "material_claim_support": 0.9743589743589743,
+        "citation_validity": 0.9824561403508771,
+        "sample_cases_evaluated": 25
+      },
+      "verified_at": "2026-10-19T15:41:05.194197Z"
+    },
+    {
+      "gate_id": "RG-05-CLARIFICATION-ABSTENTION",
+      "name": "Deterministic Calibrated Abstention & Clarification",
+      "description": "Enforces deterministic abstention on uncommenced statutes, source integrity failures, and prompts for missing material facts.",
+      "category": "SAFETY_SECURITY",
+      "threshold": "100% abstention on uncommenced/unverified authorities; 100% clarification on decisive missing facts",
+      "actual_value": "100% compliance across PIT-76 to PIT-80, PIT-96 to PIT-100",
+      "status": "PASSED",
+      "blocking": true,
+      "evidence": {
+        "abstain_states_verified": [
+          "ABSTAIN_SOURCE_INTEGRITY_FAILURE",
+          "ABSTAIN_TEMPORAL_UNCERTAINTY",
+          "ABSTAIN_INSUFFICIENT_EVIDENCE",
+          "ABSTAIN_AUTHORITY_CONFLICT",
+          "CLARIFICATION_REQUIRED"
+        ]
+      },
+      "verified_at": "2026-10-19T15:41:05.194197Z"
+    },
+    {
+      "gate_id": "RG-06-CITATION-INTEGRITY",
+      "name": "Anti-Hallucination & Fabricated Citation Immunity",
+      "description": "Verifies complete immunity against fabricated neutral citations and unverified case citations.",
+      "category": "SAFETY_SECURITY",
+      "threshold": "0.0% fabricated citation acceptance rate",
+      "actual_value": "0.0% acceptance (100% intercepted with ABSTAIN_SOURCE_INTEGRITY_FAILURE)",
+      "status": "PASSED",
+      "blocking": true,
+      "evidence": {
+        "neutral_citation_regex_audit": "Active regex and knowledge-base cross-check",
+        "synthetic_scaffold_interception": "Active quarantine check"
+      },
+      "verified_at": "2026-10-19T15:41:05.194197Z"
+    },
+    {
+      "gate_id": "RG-07-ADVERSARIAL-SECURITY",
+      "name": "Adversarial Robustness & Prompt Injection Defense",
+      "description": "Evaluates defense against prompt injections, system leakage, authority manipulation, and stress inputs (D1-D4).",
+      "category": "SAFETY_SECURITY",
+      "threshold": ">= 95% attack interception rate; 0 failed attacks",
+      "actual_value": "100.0% robust (20/20 attacks defeated)",
+      "status": "PASSED",
+      "blocking": true,
+      "evidence": {
+        "total_attacks": 20,
+        "passed_attacks": 20,
+        "failed_attacks": 0,
+        "robustness_rate": 1.0
+      },
+      "verified_at": "2026-10-19T15:41:05.379191Z"
+    },
+    {
+      "gate_id": "RG-08-DATABASE-ISOLATION",
+      "name": "Physical Database Decoupling & Privacy Safeguard",
+      "description": "Verifies strict physical separation of authoritative legal knowledge base from conversational/session databases.",
+      "category": "SYSTEM_ARCHITECTURE",
+      "threshold": "Strict physical separation; zero user conversation tables in legal knowledge base",
+      "actual_value": "Verified distinct databases; legal knowledge base isolated from user session stores",
+      "status": "PASSED",
+      "blocking": true,
+      "evidence": {
+        "legal_kb_path": "C:\\PROJECTS\\LegalMitra\\data\\legalmitra_kb.db",
+        "conversation_db_path": "C:\\PROJECTS\\LegalMitra\\data\\conversations.db",
+        "distinct_files": true,
+        "table_isolation_verified": true
+      },
+      "verified_at": "2026-10-19T15:41:05.381218Z"
+    },
+    {
+      "gate_id": "RG-09-REGRESSION-INTEGRITY",
+      "name": "Multi-Phase Backward Compatibility & Regression Suite",
+      "description": "Ensures zero regressions across all historical test suites (Phases 9 freeze, 40-50 suites).",
+      "category": "SYSTEM_ARCHITECTURE",
+      "threshold": "100% test pass rate across all historical phases",
+      "actual_value": "100% pass rate (159/159 historical phase tests passed)",
+      "status": "PASSED",
+      "blocking": true,
+      "evidence": {
+        "phase9_freeze_verified": true,
+        "phase40_50_test_count": 159,
+        "test_pass_rate": 1.0
+      },
+      "verified_at": "2026-10-19T15:41:05.381218Z"
+    },
+    {
+      "gate_id": "RG-10-HELD-OUT-EVALUATION",
+      "name": "Independent Held-Out Evaluation Generalization",
+      "description": "Evaluates generalization on 30 independently curated, held-out evaluation cases with verified zero split contamination.",
+      "category": "LEGAL_VALIDITY",
+      "threshold": "30 held-out cases; 0 exact duplicates; max similarity <= 0.85; >= 90% pass rate",
+      "actual_value": "30 held-out cases verified; 0 exact duplicates; max similarity 0.29",
+      "status": "PASSED",
+      "blocking": true,
+      "evidence": {
+        "held_out_case_count": 30,
+        "exact_duplicates": 0,
+        "max_cross_split_jaccard": 0.29411764705882354
+      },
+      "verified_at": "2026-10-19T15:41:05.405208Z"
+    },
+    {
+      "gate_id": "RG-11-LEGAL-REVIEW",
+      "name": "Mandatory Advocate Sign-Off on Legal Review Packages",
+      "description": "Enforces mandatory statutory review and sign-off by an enrolled Indian advocate under the Advocates Act, 1961 before unrestricted public deployment.",
+      "category": "GOVERNANCE",
+      "threshold": "100% legal review packages approved by enrolled advocate",
+      "actual_value": "40 candidates pending legal review; 0 unverified auto-promotions (40 pending)",
+      "status": "PENDING_HUMAN_REVIEW",
+      "blocking": true,
+      "evidence": {
+        "total_review_packages": 40,
+        "pending_review_packages": 40,
+        "approved_review_packages": 0,
+        "governing_statute": "Advocates Act, 1961",
+        "notes": "Governance invariant strictly preserved: Automated tools cannot self-certify advocate review."
+      },
+      "verified_at": "2026-10-19T15:41:05.407194Z"
+    }
+  ]
+}

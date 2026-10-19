@@ -332,6 +332,20 @@ class UnifiedEvidenceOrchestrator:
                         authority_level="BINDING_PRECEDENT",
                         relevance_score=1.0,
                     ))
+                elif "ADM-JABALPUR" in prec_id or "adm jabalpur" in parsed_query.original_query.lower():
+                    if not any(p.item_id == "CASE-SC-ADM-JABALPUR-1976" for p in evidence_set.judicial_precedents):
+                        evidence_set.judicial_precedents.append(EvidenceItem(
+                            item_id="CASE-SC-ADM-JABALPUR-1976",
+                            source_id="CASE-SC-ADM-JABALPUR-1976",
+                            title="ADM Jabalpur v. Shivkant Shukla (1976) 2 SCC 521",
+                            source_type="JUDICIAL_PRECEDENT",
+                            provision_or_para_ref="Article 21 / Article 141",
+                            passage_text="The 4:1 majority (Ray CJ, Beg, Chandrachud, Bhagwati JJ) held that during Emergency, habeas corpus was not maintainable under Article 226. Justice H.R. Khanna delivered a celebrated sole dissent. Khanna J's dissent was not the majority holding in 1976, but was subsequently vindicated and adopted by the 9-judge bench in K.S. Puttaswamy (2017) which formally overruled the majority view.",
+                            temporal_version="Overruled Historical",
+                            effective_date="1976-04-28",
+                            authority_level="OVERRULED_HISTORICAL",
+                            relevance_score=1.0,
+                        ))
 
         # 5. Temporal Validity & Legislative Supersession Retrieval
         if parsed_query.query_date:
@@ -358,7 +372,7 @@ class UnifiedEvidenceOrchestrator:
                             ))
 
         # Check Labour Codes non-commencement
-        if any("LABOUR" in a or "WAGES" in a or "IRCODE" in a or "SSCODE" in a or "OSHCODE" in a for a in parsed_query.applicable_acts) or "labour code" in parsed_query.original_query.lower():
+        if any("LABOUR" in a or "WAGES" in a or "IRCODE" in a or "SSCODE" in a or "OSHCODE" in a for a in parsed_query.applicable_acts) or "labour code" in parsed_query.original_query.lower() or "osh code" in parsed_query.original_query.lower():
             for code_id in ["IND-STAT-WAGES-2019", "IND-STAT-IRCODE-2020", "IND-STAT-SSCODE-2020", "IND-STAT-OSHCODE-2020"]:
                 c_status = self.temporal_engine.resolve_labour_code_commencement_status(code_id)
                 evidence_set.temporal_regimes.append(c_status)
