@@ -97,4 +97,16 @@ class RAGResponse(BaseModel):
     )
     model_used: str
     latency_seconds: float = 0.0
+    response_state: Optional[str] = Field(
+        default="ANSWER_SUPPORTED",
+        description="Phase 50 policy response state"
+    )
+    structured_issues: List[str] = Field(
+        default_factory=list,
+        description="Phase 50 spotted legal issues"
+    )
+    competing_authorities: List[str] = Field(
+        default_factory=list,
+        description="Phase 50 contrary or qualifying authorities"
+    )
 

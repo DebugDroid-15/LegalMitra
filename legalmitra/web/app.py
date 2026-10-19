@@ -301,6 +301,9 @@ def submit_chat(
             model_used=rag_resp.model_used,
             latency_seconds=round(rag_resp.latency_seconds, 2),
             timestamp=datetime.now(timezone.utc).isoformat(),
+            response_state=getattr(rag_resp, "response_state", "ANSWER_SUPPORTED"),
+            structured_issues=getattr(rag_resp, "structured_issues", []),
+            competing_authorities=getattr(rag_resp, "competing_authorities", []),
         )
 
     except Exception as exc:

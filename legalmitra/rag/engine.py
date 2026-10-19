@@ -15,6 +15,8 @@ from legalmitra.knowledge.models import AuthorityLevel, SearchFilters, SearchRes
 from legalmitra.llm.interface import BaseLLMProvider, LLMMessage
 from legalmitra.llm.mock_provider import MockLLMProvider
 from legalmitra.llm.nemotron import NemotronLLMProvider
+from legalmitra.orchestration.decision_policy import LegalResponseState
+from legalmitra.orchestration.pipeline import LegalQueryPipeline
 from legalmitra.rag.prompts import SYSTEM_RAG_PROMPT, build_rag_user_prompt
 from legalmitra.rag.schemas import (
     CitedEvidence,
@@ -51,6 +53,7 @@ class LegalRAGEngine:
                 else:
                     logger.warning("NVIDIA credentials not configured. Falling back to MockLLMProvider for RAG.")
                     self.llm_provider = MockLLMProvider()
+        self.pipeline = LegalQueryPipeline(kb=self.kb)
 
     def _resolve_query_context(self, query: str, history: Optional[List[Dict[str, str]]]) -> str:
         """Resolve pronouns and anaphoric references from previous conversation turns."""
@@ -340,6 +343,14 @@ class LegalRAGEngine:
                 latency_seconds=latency,
             )
 
+        # Step 0b (Phase 50): Execute Unified Legal Query Pipeline for structured issues & claim validation
+        pipeline_res = self.pipeline.execute(
+            query=query,
+            context_date=filters.as_of_date,
+            jurisdiction=filters.jurisdiction,
+            limit=limit,
+        )
+
         # Step 1: Context Resolution & Legal Synonym Expansion
         resolved_query = self._resolve_query_context(query, history)
         search_query = self._expand_legal_synonyms(resolved_query)
@@ -446,6 +457,9 @@ class LegalRAGEngine:
                 ),
                 model_used=self.llm_provider.__class__.__name__,
                 latency_seconds=latency,
+                response_state=pipeline_res.response_state.value,
+                structured_issues=pipeline_res.parsed_query.candidate_issues,
+                competing_authorities=pipeline_res.competing_authorities,
             )
 
         # Step 3: Check for temporal or jurisdictional ambiguities
@@ -510,6 +524,15 @@ class LegalRAGEngine:
         sufficiency = self._classify_sufficiency(answer_text, search_results)
         claims = self._decompose_and_verify_claims(answer_text, search_results)
 
+        # Step 6 (Phase 50): Execute Unified Legal Query Pipeline for claim validation & policy state
+        pipeline_res = self.pipeline.execute(
+            query=query,
+            context_date=filters.as_of_date,
+            jurisdiction=filters.jurisdiction,
+            raw_draft_answer=answer_text,
+            limit=limit,
+        )
+
         latency = time.time() - start_time
 
         return RAGResponse(
@@ -525,6 +548,9 @@ class LegalRAGEngine:
             missing_facts_prompt=missing_facts,
             model_used=getattr(llm_resp, "model_name", self.llm_provider.__class__.__name__),
             latency_seconds=latency,
+            response_state=pipeline_res.response_state.value,
+            structured_issues=pipeline_res.parsed_query.candidate_issues,
+            competing_authorities=pipeline_res.competing_authorities,
         )
 
     def _detect_missing_facts(self, query: str, filters: SearchFilters) -> Optional[str]:
