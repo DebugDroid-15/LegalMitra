@@ -215,8 +215,42 @@ class BaseJudicialConnector(ABC):
             if ip_obj.is_private or ip_obj.is_loopback or ip_obj.is_link_local or ip_obj.is_reserved:
                 raise SSRFProtectionError(f"Target IP address '{host_lower}' is private/reserved")
         except ValueError:
-            # Not an IP literal, it is a valid domain name
-            pass
+            # Domain name: perform DNS resolution check to prevent DNS rebinding attacks
+            try:
+                resolved_addrs = socket.getaddrinfo(hostname, None)
+                for addr in resolved_addrs:
+                    sockaddr = addr[4]
+                    ip_str = sockaddr[0]
+                    ip_obj = ipaddress.ip_address(ip_str)
+                    if ip_obj.is_private or ip_obj.is_loopback or ip_obj.is_link_local or ip_obj.is_reserved:
+                        raise SSRFProtectionError(
+                            f"Domain '{hostname}' resolves to private/reserved IP '{ip_str}'"
+                        )
+            except socket.gaierror:
+                # In offline/dry-run mode without external DNS access, allow domain if on whitelist
+                pass
+
+    @classmethod
+    def audit_connector_credentials(cls, court_id: str) -> Dict[str, Any]:
+        """Audit environment configuration for connector without exposing secret values."""
+        import os
+        env_var_map = {
+            "IND-HC-DEL": "DELHI_HIGH_COURT_API_KEY",
+            "IND-HC-BOM": "BOMBAY_HIGH_COURT_API_KEY",
+            "IND-ECOURTS": "ECOURTS_CIS_API_TOKEN",
+        }
+        var_name = env_var_map.get(court_id, f"{court_id.replace('-', '_')}_API_KEY")
+        val = os.environ.get(var_name)
+        is_configured = bool(val and len(val.strip()) > 0)
+        masked_val = (val[:3] + "***" + val[-2:]) if is_configured and len(val) >= 6 else ("***" if is_configured else None)
+
+        return {
+            "court_id": court_id,
+            "credential_env_var": var_name,
+            "is_configured": is_configured,
+            "masked_value": masked_val,
+            "authorization_status": "CREDENTIALS_PRESENT" if is_configured else "BLOCKED_PENDING_CREDENTIALS",
+        }
 
     def compute_sha256(self, data: bytes) -> str:
         return hashlib.sha256(data).hexdigest()

@@ -25,6 +25,7 @@ from legalmitra.judicial.connectors.bombay_high_court_connector import (
     BombayHighCourtConnector,
 )
 from legalmitra.judicial.connectors.connector_base import (
+    BaseJudicialConnector,
     RateLimiter,
     SourceDocumentState,
     SSRFProtectionError,
@@ -44,12 +45,18 @@ def run_preflight_checks() -> Dict[str, Any]:
     delhi_conn = DelhiHighCourtConnector(dry_run=True)
     bombay_conn = BombayHighCourtConnector(dry_run=True)
 
-    # 1. SSRF check
-    ssrf_passed = False
+    # 1. SSRF check (loopback & cloud metadata)
+    ssrf_loopback_passed = False
+    ssrf_metadata_passed = False
     try:
         delhi_conn.validate_url_security("http://127.0.0.1:8000/internal")
     except SSRFProtectionError:
-        ssrf_passed = True
+        ssrf_loopback_passed = True
+
+    try:
+        delhi_conn.validate_url_security("http://169.254.169.254/latest/meta-data/")
+    except SSRFProtectionError:
+        ssrf_metadata_passed = True
     
     # 2. Allowed domain check
     delhi_allowed = "delhihighcourt.nic.in" in delhi_conn.allowed_domains
@@ -59,12 +66,28 @@ def run_preflight_checks() -> Dict[str, Any]:
     limiter = RateLimiter(requests_per_minute=60)
     delay = limiter.wait_if_needed()
 
+    # 4. Safe credential audit (no secret values exposed)
+    delhi_cred = BaseJudicialConnector.audit_connector_credentials("IND-HC-DEL")
+    bombay_cred = BaseJudicialConnector.audit_connector_credentials("IND-HC-BOM")
+
+    all_passed = (
+        ssrf_loopback_passed
+        and ssrf_metadata_passed
+        and delhi_allowed
+        and bombay_allowed
+        and delay == 0.0
+    )
+
     return {
-        "ssrf_protection_verified": ssrf_passed,
+        "ssrf_protection_verified": ssrf_loopback_passed and ssrf_metadata_passed,
+        "ssrf_loopback_protection_verified": ssrf_loopback_passed,
+        "ssrf_metadata_protection_verified": ssrf_metadata_passed,
         "delhi_domain_whitelisted": delhi_allowed,
         "bombay_domain_whitelisted": bombay_allowed,
         "rate_limiter_functional": delay == 0.0,
-        "preflight_status": "PASS" if (ssrf_passed and delhi_allowed and bombay_allowed) else "FAIL",
+        "delhi_credentials": delhi_cred,
+        "bombay_credentials": bombay_cred,
+        "preflight_status": "PASS" if all_passed else "FAIL",
     }
 
 

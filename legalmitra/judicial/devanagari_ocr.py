@@ -29,6 +29,7 @@ class DevanagariOCRResult:
     has_replacement_characters: bool
     requires_human_review: bool
     legal_tokens_detected: List[str]
+    transformations_applied: List[str] = field(default_factory=list)
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -39,6 +40,7 @@ class DevanagariOCRResult:
             "has_replacement_characters": self.has_replacement_characters,
             "requires_human_review": self.requires_human_review,
             "legal_tokens_detected": self.legal_tokens_detected,
+            "transformations_applied": self.transformations_applied,
         }
 
 
@@ -56,31 +58,60 @@ class DevanagariOCREngine:
         "भारतीय दण्ड संहिता", "साक्ष्य", "तथ्य", "निर्णय", "आदेश",
     ]
 
-    # Whitelist of legitimate Hindi words that retain Chandrabindu (tadbhav words)
-    _CHANDRABINDU_EXCEPTIONS = {
-        "माँ", "गाँव", "पाँच", "आँख", "यहाँ", "वहाँ", "जहाँ", "कहाँ",
-        "मुँह", "दायाँ", "बायाँ", "हँसना", "छाँव", "धुआँ", "कुआँ",
+    # Whitelist of legitimate Hindi words that retain Chandrabindu (tadbhav words and inflections)
+    _CHANDRABINDU_EXCEPTIONS: Set[str] = {
+        "माँ", "माएँ", "माओं", "माताएँ",
+        "गाँव", "गाँवों", "गाँववासी", "गाँववासियों",
+        "पाँच", "पाँचों", "पाँचवाँ", "पाँचवीं", "पाँचवें",
+        "आँख", "आँखों", "आँखें",
+        "यहाँ", "वहाँ", "जहाँ", "कहाँ", "तहाँ",
+        "मुँह", "मुँहफट",
+        "दायाँ", "दाएँ", "दायीं", "दाहिनी",
+        "बायाँ", "बाएँ", "बाईं",
+        "हँसना", "हँसते", "हँसती", "हँसा", "हँसकर", "हँसी",
+        "छाँव", "छाँवों",
+        "धुआँ", "धुएँ",
+        "कुआँ", "कुएँ", "कुओं",
+        "टाँग", "टाँगों", "टाँगें",
+        "फाँदना", "फाँद",
+        "साँप", "साँपों",
+        "बाँटना", "बाँटा", "बाँट",
+        "काँटा", "काँटे", "काँटों",
+        "जाँच", "जाँचकर्ता", "जाँच-पड़ताल", "जाँचें",
+        "साँठगाँठ",
+        "गाँधी", "गाँधीनगर",
     }
 
-    def _normalize_anusvara_with_whitelist(self, text: str) -> str:
-        """Context-aware Chandrabindu-to-Anusvara normalization respecting genuine tadbhav words."""
+    # Stems of tadbhav words where Chandrabindu should be preserved even in compounds/derivatives
+    _TADBHAV_STEMS: Tuple[str, ...] = (
+        "गाँव", "आँख", "पाँच", "मुँह", "छाँव", "धुआँ", "कुआँ",
+        "टाँग", "फाँद", "साँप", "बाँट", "काँटा", "जाँच", "साँठगाँठ",
+        "गाँधी", "हँस",
+    )
+
+    def _normalize_anusvara_with_whitelist(self, text: str) -> Tuple[str, int]:
+        """Context-aware Chandrabindu-to-Anusvara normalization respecting genuine tadbhav words and inflections."""
         tokens = text.split()
         processed = []
+        change_count = 0
         for tok in tokens:
-            # Strip punctuation for exception matching
-            clean_tok = re.sub(r"[।॥,\.\(\)\"\':;!?]", "", tok)
-            if clean_tok in self._CHANDRABINDU_EXCEPTIONS:
+            # Strip punctuation and common bracket characters for exception matching
+            clean_tok = re.sub(r"[।॥,\.\(\)\"\':;!?\-\—\/\[\]{}<>]", "", tok)
+            if clean_tok in self._CHANDRABINDU_EXCEPTIONS or any(clean_tok.startswith(stem) for stem in self._TADBHAV_STEMS):
                 processed.append(tok)
             else:
                 # Normalize Chandrabindu (\u0901) to Anusvara (\u0902) when preceding non-vowels (consonants \u0915-\u0939)
-                tok_norm = re.sub(r"\u0901(?=[\u0915-\u0939])", "\u0902", tok)
+                tok_norm, n_subs = re.subn(r"\u0901(?=[\u0915-\u0939])", "\u0902", tok)
+                if n_subs > 0:
+                    change_count += n_subs
                 processed.append(tok_norm)
-        return " ".join(processed)
+        return " ".join(processed), change_count
 
     def normalize(self, text: str) -> DevanagariOCRResult:
         """Apply conservative Unicode normalization without mutating underlying raw text."""
         anomalies: List[str] = []
         ligature_warnings: List[str] = []
+        transformations: List[str] = []
 
         # 1. Check for replacement characters
         has_repl = self._REPLACEMENTS in text
@@ -94,27 +125,37 @@ class DevanagariOCREngine:
 
         # 3. Unicode NFC Normalization
         norm_text = unicodedata.normalize("NFC", text)
+        if norm_text != text:
+            transformations.append("Unicode NFC canonical composition applied")
 
         # 4. Standardize danda and double danda spacing while protecting Latin periods in citations
         # Replace solitary vertical pipes '|' when surrounded by Devanagari characters with Devanagari Danda '।'
+        before_danda = norm_text
         norm_text = re.sub(r"(?<=[\u0900-\u097F])\s*\|\s*", "। ", norm_text)
         norm_text = re.sub(r"(?<=[\u0900-\u097F])\s*\|\|\s*", "॥ ", norm_text)
         # Attach danda directly to preceding word (no leading space)
         norm_text = re.sub(r"\s+([।॥])", r"\1", norm_text)
         # Ensure single space after danda if followed by another word
         norm_text = re.sub(r"([।॥])(?=[^\s।॥\n])", r"\1 ", norm_text)
+        if norm_text != before_danda:
+            transformations.append("Standardized Devanagari danda spacing and ASCII pipe replacement")
 
         # 5. Anusvara / Chandrabindu OCR normalization with genuine word protection
-        norm_text = self._normalize_anusvara_with_whitelist(norm_text)
+        norm_text, n_anusvara_changes = self._normalize_anusvara_with_whitelist(norm_text)
+        if n_anusvara_changes > 0:
+            transformations.append(f"Normalized {n_anusvara_changes} OCR-confused Chandrabindu marks to Anusvara")
 
         # 6. Collapse excessive whitespace while preserving paragraph breaks
+        before_ws = norm_text
         norm_text = re.sub(r"[ \t]+", " ", norm_text)
         norm_text = re.sub(r"\n\s*\n+", "\n\n", norm_text)
+        if norm_text != before_ws:
+            transformations.append("Collapsed redundant intra-paragraph whitespace")
 
-        # 6. Scan for legal tokens
+        # 7. Scan for legal tokens
         found_tokens = [tok for tok in self._LEGAL_TOKENS if tok in norm_text]
 
-        # 7. Check for orphaned Halant / Virama (Virama preceded by whitespace or non-Devanagari)
+        # 8. Check for orphaned Halant / Virama (Virama preceded by whitespace or non-Devanagari)
         orphaned_halant = re.findall(r"(?:[^\u0900-\u097F]|\s)\u094D", norm_text)
         if orphaned_halant:
             ligature_warnings.append(f"Found {len(orphaned_halant)} orphaned halant virama marks")
@@ -132,6 +173,7 @@ class DevanagariOCREngine:
             has_replacement_characters=has_repl,
             requires_human_review=requires_review,
             legal_tokens_detected=found_tokens,
+            transformations_applied=transformations,
         )
 
     @staticmethod
