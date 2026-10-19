@@ -14549,7 +14549,7 @@ The following ledger records the official documentation metrics for all complete
 | **P43** | 2026-10-19 | 15,823 | 16,257 | +434 | Hindi legal OCR benchmark audit, full provenance schema, micro/macro CER & WER, tadbhav whitelist protection, Part XXVIII (12 subsections, Runbooks 14-18, 14 reports) | PASS (100%) | `b67b005` |
 | **P44** | 2026-10-19 | 16,257 | 16,558 | +301 | OCR-to-RAG dataflow, tadbhav stem protection, OCR quality gate, 10 failure scenarios, SSRF hardening, 10-layer reconciliation, Part XXIX (12 subsections, Runbooks 19-23, 14 reports) | PASS (100%) | `a570e9d` |
 | **P45** | 2026-10-19 | 16,558 | 16,862 | +304 | Central legislation Batch 1, half-open temporal validity intervals, amendment event ledger, phased commencement, PIT-V1 benchmark (10 cases), Runbooks 24-28, 16 reports | PASS (100%) | `f572529` |
-| **P46** | 2026-10-19 | 16,862 | 17,133 | +271 | Central legislation Batch 2, corporate CSR, IBC Section 29A/32A, Contract s.28, TPA s.53A, Commercial CPC, MVA s.164, PIT-V2 benchmark (20 cases), Runbooks 29-33, 16 reports | PASS (100%) | `HEAD_COMMIT` |
+| **P46** | 2026-10-19 | 16,862 | 17,133 | +271 | Central legislation Batch 2, corporate CSR, IBC Section 29A/32A, Contract s.28, TPA s.53A, Commercial CPC, MVA s.164, PIT-V2 benchmark (20 cases), Runbooks 29-33, 16 reports | PASS (100%) | `2819233` |
 | **P47+** | *Future* | *Recorded at phase completion* | *Measured* | *Target ~5,000* | *Documenting actual phase deliverables across the 12 technical dimensions* | *Pending* | *Pending* |
 
 ```text
