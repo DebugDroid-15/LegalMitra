@@ -1,9 +1,9 @@
 {
-  "benchmark_suite_id": "LEGALMITRA-BENCHMARK-PIT-V2",
-  "version": "2.0.0",
-  "description": "Gold-standard point-in-time statutory retrieval and temporal resolution evaluation suite comprising 20 multi-era Indian legal scenarios across criminal, constitutional, commercial, corporate, insolvency, property, and transport jurisprudence.",
+  "benchmark_suite_id": "LEGALMITRA-BENCHMARK-PIT-V3",
+  "version": "3.0.0",
+  "description": "Point-in-Time statutory and judicial retrieval benchmark covering 30 multi-era Indian legal scenarios across Criminal, Data, Commercial, Corporate, IBC, Contracts, Property, Civil Procedure, Transport, Intellectual Property, and Labour Jurisprudence.",
   "created_at": "2026-10-19T12:37:00Z",
-  "total_test_cases": 20,
+  "total_test_cases": 30,
   "test_cases": [
     {
       "case_id": "PIT-01",
@@ -192,12 +192,27 @@
       },
       "expected_resolution": {
         "substantive_provisions": [
-          {"act": "IPC 1860", "section": "Section 141", "concept": "Unlawful assembly"},
-          {"act": "IPC 1860", "section": "Section 147", "concept": "Punishment for rioting"},
-          {"act": "IPC 1860", "section": "Section 149", "concept": "Every member of unlawful assembly guilty of offense committed in prosecution of common object"}
+          {
+            "act": "IPC 1860",
+            "section": "Section 141",
+            "concept": "Unlawful assembly"
+          },
+          {
+            "act": "IPC 1860",
+            "section": "Section 147",
+            "concept": "Punishment for rioting"
+          },
+          {
+            "act": "IPC 1860",
+            "section": "Section 149",
+            "concept": "Every member of unlawful assembly guilty of offense committed in prosecution of common object"
+          }
         ],
         "procedural_provisions": [
-          {"act": "BNSS 2023", "concept": "Investigation and trial procedure governed by BNSS 2023 under s.531(2)(a)"}
+          {
+            "act": "BNSS 2023",
+            "concept": "Investigation and trial procedure governed by BNSS 2023 under s.531(2)(a)"
+          }
         ],
         "substantive_bns_inapplicability": "BNS 2023 Section 189/190 cannot be retrospectively applied to an incident occurring in February 2024"
       }
@@ -212,7 +227,10 @@
       },
       "expected_resolution": {
         "act_id": "ACT-CENTRAL-2000-021",
-        "provisions": ["Section 3A", "Section 10A"],
+        "provisions": [
+          "Section 3A",
+          "Section 10A"
+        ],
         "validity": "Active and in force throughout the interval [2009-10-27, null)",
         "legal_effect": "Contracts formed through electronic records and signatures are valid and enforceable; not affected by uncommenced DPDP provisions"
       }
@@ -415,6 +433,185 @@
         "certificate_requirement": "Section 63(4) certificate complying with the prescribed Schedule format",
         "iea_s65b_status": "Repealed; inapplicable to investigations instituted post-01.07.2024"
       }
+    },
+    {
+      "case_id": "PIT-21",
+      "domain": "Intellectual Property (Copyright Moral Rights)",
+      "query_description": "Author assigned copyright in a novel in 1975 and died in 1985. In 2018, the publisher publishes a distorted and mutilated edition. Do the author's legal heirs have a valid cause of action under Section 57 of the Copyright Act, 1957?",
+      "query_temporal_anchor": "2018-06-15",
+      "target_statutes": [
+        "IND-STAT-COPYRIGHT-1957"
+      ],
+      "expected_governing_regime": "Copyright (Amendment) Act, 2012 / Post-2012 Section 57 Regime",
+      "expected_applicable_provisions": [
+        "COP-1957-SEC-57-V2"
+      ],
+      "expected_disentangled_rationale": "Prior to Act 27 of 2012, moral rights were subject to the expiration of the term of copyright or immediate action. The 2012 amendment removed this constraint and expressly allowed legal representatives under Section 57(2) to enforce moral rights indefinitely.",
+      "expected_precedent_cites": [
+        "Amar Nath Sehgal v. Union of India (2005) 30 PTC 253 (Del)"
+      ],
+      "temporal_validation_status": "VERIFIED_TEMPORAL_TRUTH"
+    },
+    {
+      "case_id": "PIT-22",
+      "domain": "Intellectual Property (Copyright Fair Dealing in Education)",
+      "query_description": "In 2017, a university faculty compiles course packs containing excerpts from academic textbooks for enrolled students via a licensed campus photocopy kiosk. Does this constitute copyright infringement under the Copyright Act, 1957?",
+      "query_temporal_anchor": "2017-09-10",
+      "target_statutes": [
+        "IND-STAT-COPYRIGHT-1957"
+      ],
+      "expected_governing_regime": "Copyright Act, 1957 Section 52(1)(i) as amended in 2012",
+      "expected_applicable_provisions": [
+        "COP-1957-SEC-52-V2"
+      ],
+      "expected_disentangled_rationale": "Protected under Section 52(1)(i) ('reproduction by teacher or pupil in course of instruction'). The Delhi High Court in Rameshwari Photocopy Service held that course packs prepared for instructional purposes do not infringe copyright.",
+      "expected_precedent_cites": [
+        "The Chancellor, Masters & Scholars of University of Oxford v. Rameshwari Photocopy Service (2016) 160 DRJ 678"
+      ],
+      "temporal_validation_status": "VERIFIED_TEMPORAL_TRUTH"
+    },
+    {
+      "case_id": "PIT-23",
+      "domain": "Intellectual Property (Patent Product Eligibility Transition)",
+      "query_description": "A pharmaceutical company invents a novel chemical molecule for heart failure in March 1999 and applies for a product patent in India. Is a product patent for a drug molecule grantable in 1999 under the Patents Act, 1970?",
+      "query_temporal_anchor": "1999-03-20",
+      "target_statutes": [
+        "IND-STAT-PATENTS-1970"
+      ],
+      "expected_governing_regime": "Patents Act, 1970 (Pre-2005 Regime under Section 5)",
+      "expected_applicable_provisions": [
+        "PAT-1970-SEC-5-V1"
+      ],
+      "expected_disentangled_rationale": "Under Section 5 of Patents Act 1970 prior to its deletion by Act 15 of 2005, only process/method patents were grantable for food and medicine. Product patent applications were routed to the 'mailbox' system under Section 5(2) and not examinable until 1 January 2005.",
+      "expected_precedent_cites": [],
+      "temporal_validation_status": "VERIFIED_TEMPORAL_TRUTH"
+    },
+    {
+      "case_id": "PIT-24",
+      "domain": "Intellectual Property (Patent Section 3(d) Therapeutic Efficacy)",
+      "query_description": "In 2014, an applicant claims a patent on a crystalline polymorphic salt of an anti-cancer compound, demonstrating higher solubility and shelf-life, but no difference in clinical therapeutic efficacy. Does the application satisfy patentability under Section 3(d)?",
+      "query_temporal_anchor": "2014-05-12",
+      "target_statutes": [
+        "IND-STAT-PATENTS-1970"
+      ],
+      "expected_governing_regime": "Patents (Amendment) Act, 2005 / Post-2005 Section 3(d)",
+      "expected_applicable_provisions": [
+        "PAT-1970-SEC-3D-V2"
+      ],
+      "expected_disentangled_rationale": "Barred under Section 3(d) of Patents Act 1970 as interpreted by the Supreme Court in Novartis AG v. Union of India (2013). Efficacy in the case of pharmaceuticals means therapeutic efficacy; physical advantages like solubility do not satisfy Section 3(d).",
+      "expected_precedent_cites": [
+        "Novartis AG v. Union of India (2013) 6 SCC 1"
+      ],
+      "temporal_validation_status": "VERIFIED_TEMPORAL_TRUTH"
+    },
+    {
+      "case_id": "PIT-25",
+      "domain": "Intellectual Property (Patents Compulsory Licensing)",
+      "query_description": "In 2013, an Indian generic manufacturer seeks a compulsory license under Section 84 of the Patents Act, 1970 for an imported patented kidney cancer drug priced at ₹2,80,000 per month. Is the ground of unaffordable price tenable under Section 84?",
+      "query_temporal_anchor": "2013-08-20",
+      "target_statutes": [
+        "IND-STAT-PATENTS-1970"
+      ],
+      "expected_governing_regime": "Patents Act, 1970 Section 84 as amended post-TRIPS",
+      "expected_applicable_provisions": [
+        "PAT-1970-SEC-84-V1"
+      ],
+      "expected_disentangled_rationale": "Tenable under Section 84(1)(b) ('not available to the public at a reasonably affordable price'). Upholding the compulsory license in Bayer v. Natco, the Bombay High Court held that affordability must be judged from the perspective of the public.",
+      "expected_precedent_cites": [
+        "Bayer Corporation v. Union of India 2014 SCC OnLine Bom 563"
+      ],
+      "temporal_validation_status": "VERIFIED_TEMPORAL_TRUTH"
+    },
+    {
+      "case_id": "PIT-26",
+      "domain": "Intellectual Property (Trade Marks Deceptive Similarity in Pharmaceuticals)",
+      "query_description": "In 2015, a pharmaceutical company uses the brand name 'Falcigo' for an anti-malarial drug and sues a competitor using 'Falcitab'. Does the fact that both drugs are prescription-only Schedule H drugs relax the deceptive similarity threshold?",
+      "query_temporal_anchor": "2015-11-14",
+      "target_statutes": [
+        "IND-STAT-TRADEMARKS-1999"
+      ],
+      "expected_governing_regime": "Trade Marks Act, 1999 Sections 11 & 29",
+      "expected_applicable_provisions": [
+        "TM-1999-SEC-11-V1",
+        "TM-1999-SEC-29-V1"
+      ],
+      "expected_disentangled_rationale": "No. Under the Supreme Court's ruling in Cadila Health Care Ltd. v. Cadila Pharmaceuticals Ltd. (2001), a stricter standard of similarity applies to medicinal products regardless of prescription status, to prevent potentially fatal confusion.",
+      "expected_precedent_cites": [
+        "Cadila Health Care Ltd. v. Cadila Pharmaceuticals Ltd. (2001) 5 SCC 73"
+      ],
+      "temporal_validation_status": "VERIFIED_TEMPORAL_TRUTH"
+    },
+    {
+      "case_id": "PIT-27",
+      "domain": "Labour Law (Industrial Disputes vs Industrial Relations Code Coexistence)",
+      "query_description": "In October 2024, a manufacturing factory employing 80 workmen retrenches 20 workers without 1 month's prior notice or 15 days average pay compensation. Does the employer face liability under Section 25F of the Industrial Disputes Act, 1947, or has IDA 1947 been repealed by the Industrial Relations Code, 2020?",
+      "query_temporal_anchor": "2024-10-15",
+      "target_statutes": [
+        "IND-STAT-IDA-1947",
+        "IND-STAT-IRCODE-2020"
+      ],
+      "expected_governing_regime": "Industrial Disputes Act, 1947 Section 25F (In Force)",
+      "expected_applicable_provisions": [
+        "IDA-1947-SEC-25F-V1"
+      ],
+      "expected_disentangled_rationale": "Governed strictly by Section 25F of IDA 1947. Although enacted in 2020, the Industrial Relations Code, 2020 has NOT commenced in the Gazette of India under Section 1(3), and its Section 104 repeal of IDA 1947 has not taken effect. Employer is liable for illegal retrenchment.",
+      "expected_precedent_cites": [
+        "Workmen of American Express v. Management (1985) 4 SCC 71"
+      ],
+      "temporal_validation_status": "VERIFIED_TEMPORAL_TRUTH"
+    },
+    {
+      "case_id": "PIT-28",
+      "domain": "Labour Law (Factories Act vs OSH Code Coexistence)",
+      "query_description": "In August 2024, an inspector discovers workers in a chemical factory working 58 hours in a week without overtime wages. Is the prosecution governed by Section 59 of the Factories Act, 1948 or the Occupational Safety, Health and Working Conditions Code, 2020?",
+      "query_temporal_anchor": "2024-08-20",
+      "target_statutes": [
+        "IND-STAT-FACTORIES-1948",
+        "IND-STAT-OSHCODE-2020"
+      ],
+      "expected_governing_regime": "Factories Act, 1948 Section 59 (In Force)",
+      "expected_applicable_provisions": [
+        "FACT-1948-SEC-59-V1"
+      ],
+      "expected_disentangled_rationale": "Governed by Section 59 of Factories Act 1948 (twice ordinary rate of wages for >48 hours/week). The OSH Code 2020 remains uncommenced under Section 1(3), and its Section 143 repeal of Factories Act 1948 is inoperative.",
+      "expected_precedent_cites": [],
+      "temporal_validation_status": "VERIFIED_TEMPORAL_TRUTH"
+    },
+    {
+      "case_id": "PIT-29",
+      "domain": "Labour Law (Definition of Industry & Hospital Dispute)",
+      "query_description": "In 1985, non-medical staff at a municipal charitable hospital raise a wage dispute under IDA 1947. Does the hospital qualify as an 'industry' under Section 2(j)?",
+      "query_temporal_anchor": "1985-03-15",
+      "target_statutes": [
+        "IND-STAT-IDA-1947"
+      ],
+      "expected_governing_regime": "Industrial Disputes Act, 1947 Section 2(j)",
+      "expected_applicable_provisions": [
+        "IDA-1947-SEC-2J-V1"
+      ],
+      "expected_disentangled_rationale": "Qualifies as an industry. Under the 7-judge Constitution Bench ruling in Bangalore Water Supply v. A. Rajappa (1978), hospital activities satisfying the triple test of systematic activity, employer-employee cooperation, and production/distribution of services are industries.",
+      "expected_precedent_cites": [
+        "Bangalore Water Supply and Sewerage Board v. A. Rajappa (1978) 2 SCC 213"
+      ],
+      "temporal_validation_status": "VERIFIED_TEMPORAL_TRUTH"
+    },
+    {
+      "case_id": "PIT-30",
+      "domain": "Labour Law (Judicial Invalidation of Closure Provision)",
+      "query_description": "An employer of an establishment employing 150 workers sought to close down operations in November 1978 and was prosecuted under Section 25-O of the Industrial Disputes Act, 1947. Was Section 25-O legally operative in November 1978?",
+      "query_temporal_anchor": "1978-11-20",
+      "target_statutes": [
+        "IND-STAT-IDA-1947"
+      ],
+      "expected_governing_regime": "Judicial Invalidation Period (Post-Excel Wear / Pre-1984 Amendment)",
+      "expected_applicable_provisions": [
+        "IDA-1947-SEC-25O-V1"
+      ],
+      "expected_disentangled_rationale": "Inoperative and unconstitutional. The Supreme Court in Excel Wear v. Union of India struck down Section 25-O on 29.09.1978 as violative of Article 19(1)(g). Section 25-O remained invalid until reenacted by Parliament with Act 49 of 1984.",
+      "expected_precedent_cites": [
+        "Excel Wear v. Union of India (1978) 4 SCC 224"
+      ],
+      "temporal_validation_status": "VERIFIED_TEMPORAL_TRUTH"
     }
   ]
 }

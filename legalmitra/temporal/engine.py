@@ -7,6 +7,8 @@ repeal-with-savings transitions, and historical point-in-time querying.
 from __future__ import annotations
 
 import datetime
+import json
+from pathlib import Path
 from dataclasses import asdict, dataclass, field
 from enum import Enum
 from typing import Any, Dict, List, Optional
@@ -485,6 +487,263 @@ class TemporalLawEngine:
             }
 
 
+
+
+
+    def resolve_copyright_regime(self, query_date_str: str) -> Dict[str, Any]:
+        """Resolves applicable Copyright Act 1957 regime across the 2012 amendment boundary."""
+        TRANSITION_DATE = datetime.date(2012, 6, 21)
+        try:
+            q_date = datetime.date.fromisoformat(query_date_str)
+        except ValueError:
+            return {"error": f"Invalid query_date: {query_date_str}"}
+
+        if q_date < TRANSITION_DATE:
+            return {
+                "date": query_date_str,
+                "regime": "Copyright Act, 1957 (Pre-2012 Amendment Regime)",
+                "moral_rights_status": "Subject to copyright term / restricted duration",
+                "fair_dealing_scope": "Limited to private use, research, criticism, review, and reporting",
+                "educational_coursepack_protection": False,
+                "disability_accessible_format_exception": False,
+                "inalienable_author_royalties": False,
+                "governing_provisions": ["COP-1957-SEC-52-V1", "COP-1957-SEC-57-V1"],
+                "statutory_authority": "Act 14 of 1957 prior to Act 27 of 2012",
+            }
+        else:
+            return {
+                "date": query_date_str,
+                "regime": "Copyright Act, 1957 (Post-2012 Amendment Regime)",
+                "moral_rights_status": "Perpetual moral rights enforceable by author and legal representatives (Section 57(2))",
+                "fair_dealing_scope": "Expanded to non-commercial education, accessible formats for persons with disabilities (s.52(1)(zb)), and digital transient storage",
+                "educational_coursepack_protection": True,
+                "disability_accessible_format_exception": True,
+                "inalienable_author_royalties": True,
+                "governing_provisions": ["COP-1957-SEC-52-V2", "COP-1957-SEC-57-V2"],
+                "statutory_authority": "Copyright (Amendment) Act, 2012 (Act 27 of 2012; S.O. 1393(E) w.e.f. 21.06.2012)",
+                "notification_ref": "Ministry of Human Resource Development S.O. 1393(E) dated 21 June 2012",
+            }
+
+    def resolve_patent_section3d_regime(self, query_date_str: str) -> Dict[str, Any]:
+        """Resolves Patents Act 1970 regime for pharmaceutical inventions and Section 3(d) therapeutic efficacy."""
+        TRANSITION_DATE = datetime.date(2005, 1, 1)
+        try:
+            q_date = datetime.date.fromisoformat(query_date_str)
+        except ValueError:
+            return {"error": f"Invalid query_date: {query_date_str}"}
+
+        if q_date < TRANSITION_DATE:
+            return {
+                "date": query_date_str,
+                "regime": "Patents Act, 1970 (Pre-2005 Regime)",
+                "product_patents_available": False,
+                "pharmaceutical_protection": "Process / method of manufacture only (Section 5)",
+                "mailbox_applications": True,
+                "section_3d_requirement": "Mere discovery of new property or new use of known substance",
+                "therapeutic_efficacy_mandate": False,
+                "governing_provisions": ["PAT-1970-SEC-3D-V1", "PAT-1970-SEC-5-V1"],
+            }
+        else:
+            return {
+                "date": query_date_str,
+                "regime": "Patents Act, 1970 (Post-2005 Amendment Regime / Act 15 of 2005)",
+                "product_patents_available": True,
+                "pharmaceutical_protection": "Full product and process patent eligibility (Section 5 deleted)",
+                "mailbox_applications": False,
+                "section_3d_requirement": "Discovery of new form of known substance must result in demonstrable enhancement of known therapeutic efficacy",
+                "therapeutic_efficacy_mandate": True,
+                "governing_provisions": ["PAT-1970-SEC-3D-V2", "PAT-1970-SEC-84-V1"],
+                "statutory_authority": "Patents (Amendment) Act, 2005 (Act 15 of 2005 w.r.e.f. 01.01.2005)",
+                "landmark_precedent": "Novartis AG v. Union of India (2013) 6 SCC 1",
+            }
+
+    def resolve_trademark_regime(self, query_date_str: str) -> Dict[str, Any]:
+        """Resolves Trade Marks Act 1999 regime and Madrid protocol accession."""
+        COMMENCEMENT_DATE = datetime.date(2003, 9, 15)
+        MADRID_DATE = datetime.date(2013, 7, 8)
+        try:
+            q_date = datetime.date.fromisoformat(query_date_str)
+        except ValueError:
+            return {"error": f"Invalid query_date: {query_date_str}"}
+
+        if q_date < COMMENCEMENT_DATE:
+            return {
+                "date": query_date_str,
+                "regime": "Trade and Merchandise Marks Act, 1958",
+                "governing_statute": "IND-STAT-TMMA-1958",
+                "madrid_protocol_active": False,
+                "status": "HISTORICAL_PREDECESSOR",
+            }
+        elif q_date < MADRID_DATE:
+            return {
+                "date": query_date_str,
+                "regime": "Trade Marks Act, 1999 (Pre-Madrid Protocol)",
+                "governing_statute": "IND-STAT-TRADEMARKS-1999",
+                "madrid_protocol_active": False,
+                "medicinal_deceptive_similarity_standard": "Strict protection per Cadila Health Care (2001)",
+                "status": "ACTIVE_NATIONAL",
+            }
+        else:
+            return {
+                "date": query_date_str,
+                "regime": "Trade Marks Act, 1999 (Post-2010 Amendment / Madrid Protocol Chapter IVA)",
+                "governing_statute": "IND-STAT-TRADEMARKS-1999",
+                "madrid_protocol_active": True,
+                "medicinal_deceptive_similarity_standard": "Strict protection per Cadila Health Care (2001)",
+                "notification_ref": "Ministry of Commerce and Industry S.O. 1999(E) dated 8 July 2013",
+                "status": "ACTIVE_INTERNATIONAL_ALIGNED",
+            }
+
+    def resolve_labour_code_commencement_status(self, code_id: str) -> Dict[str, Any]:
+        """Resolves official Gazette commencement and predecessor status for the 4 Labour Codes."""
+        COMMENCEMENT_REGISTRY = {
+            "IND-STAT-WAGES-2019": {
+                "title": "Code on Wages, 2019",
+                "enacted_date": "2019-08-08",
+                "status": "PARTIALLY_COMMENCED",
+                "commenced_sections": ["142"],
+                "commenced_notifications": ["Ministry of Labour and Employment S.O. 4572(E) dated 18 December 2019"],
+                "substantive_in_force": False,
+                "repeal_in_force": False,
+                "operative_predecessors": [
+                    "Minimum Wages Act, 1948",
+                    "Payment of Wages Act, 1936",
+                    "Payment of Bonus Act, 1965",
+                    "Equal Remuneration Act, 1976",
+                ],
+                "legal_advisory": "Substantive provisions (Minimum Wages, Bonus) and Section 69 repeals have NOT commenced nationwide. Precursor Acts remain active law.",
+            },
+            "IND-STAT-IRCODE-2020": {
+                "title": "Industrial Relations Code, 2020",
+                "enacted_date": "2020-09-28",
+                "status": "ENACTED_UNCOMMENCED",
+                "commenced_sections": [],
+                "commenced_notifications": [],
+                "substantive_in_force": False,
+                "repeal_in_force": False,
+                "operative_predecessors": [
+                    "Industrial Disputes Act, 1947",
+                    "Industrial Employment (Standing Orders) Act, 1946",
+                    "Trade Unions Act, 1926",
+                ],
+                "legal_advisory": "No commencement notification issued under Section 1(3). Section 104 repeal of IDA 1947 is inoperative. IDA 1947 remains the governing law for retrenchment, strikes, closures.",
+            },
+            "IND-STAT-SSCODE-2020": {
+                "title": "Code on Social Security, 2020",
+                "enacted_date": "2020-09-28",
+                "status": "PARTIALLY_COMMENCED",
+                "commenced_sections": ["142"],
+                "commenced_notifications": ["Ministry of Labour and Employment S.O. 1730(E) dated 28 April 2021 (w.e.f. 03.05.2021)"],
+                "substantive_in_force": False,
+                "repeal_in_force": False,
+                "operative_predecessors": [
+                    "Employees' Provident Funds and Miscellaneous Provisions Act, 1952",
+                    "Employees' State Insurance Act, 1948",
+                    "Payment of Gratuity Act, 1972",
+                    "Maternity Benefit Act, 1961",
+                ],
+                "legal_advisory": "Section 142 is in force solely for Aadhaar registration on e-Shram. Section 164 repeal is inoperative. EPF, ESI, Gratuity, and Maternity Benefit Acts remain fully in force.",
+            },
+            "IND-STAT-OSHCODE-2020": {
+                "title": "Occupational Safety, Health and Working Conditions Code, 2020",
+                "enacted_date": "2020-09-28",
+                "status": "ENACTED_UNCOMMENCED",
+                "commenced_sections": [],
+                "commenced_notifications": [],
+                "substantive_in_force": False,
+                "repeal_in_force": False,
+                "operative_predecessors": [
+                    "Factories Act, 1948",
+                    "Contract Labour (Regulation and Abolition) Act, 1970",
+                    "Mines Act, 1952",
+                    "Inter-State Migrant Workmen Act, 1979",
+                ],
+                "legal_advisory": "No commencement notification issued under Section 1(3). Section 143 repeal of Factories Act 1948 is inoperative. Factories Act 1948 remains the governing law for factory working hours and safety.",
+            },
+        }
+        return COMMENCEMENT_REGISTRY.get(code_id, {"error": f"Unknown labour code_id: {code_id}"})
+
+    def resolve_industrial_disputes_retrenchment_regime(
+        self, query_date_str: str, continuous_service_days: int = 240
+    ) -> Dict[str, Any]:
+        """Resolves governing law for retrenchment of workmen in industrial establishments.
+        Confirms that Industrial Disputes Act 1947 Section 25F applies, not IR Code 2020.
+        """
+        return {
+            "query_date": query_date_str,
+            "governing_statute": "Industrial Disputes Act, 1947",
+            "statute_id": "IND-STAT-IDA-1947",
+            "governing_section": "Section 25F read with Section 25B",
+            "is_ir_code_in_force": False,
+            "ir_code_repeal_operative": False,
+            "conditions_precedent": [
+                "One month notice in writing indicating reasons, or wages in lieu thereof (Section 25F(a))",
+                "Compensation equal to 15 days average pay for each completed year of service (Section 25F(b))",
+                "Notice served on the appropriate Government (Section 25F(c))",
+            ],
+            "continuous_service_qualification": {
+                "days_worked": continuous_service_days,
+                "qualifies_continuous_service": continuous_service_days >= 240,
+                "includes_holidays_sundays": True,
+                "precedent_authority": "Workmen of American Express v. Management (1985) 4 SCC 71",
+            },
+            "legal_consequence_of_breach": "Retrenchment void ab initio; workman entitled to reinstatement with continuity of service and back-wages.",
+        }
+
+    def resolve_ida_closure_regime(self, query_date_str: str) -> Dict[str, Any]:
+        """Resolves legal status of Section 25-O of IDA 1947 across judicial invalidation in Excel Wear."""
+        INVALIDATION_DATE = datetime.date(1978, 9, 29)  # Excel Wear judgment
+        REENACTMENT_DATE = datetime.date(1984, 8, 18)   # Act 49 of 1984
+        try:
+            q_date = datetime.date.fromisoformat(query_date_str)
+        except ValueError:
+            return {"error": f"Invalid query_date: {query_date_str}"}
+
+        if q_date < INVALIDATION_DATE:
+            return {
+                "date": query_date_str,
+                "status": "OPERATIVE_STATUTE",
+                "regime": "Industrial Disputes Act, 1947 (1976 Inserted Section 25-O)",
+                "is_constitutionally_valid": True,
+                "holding": "Prior permission required 90 days before closure under Act 32 of 1976.",
+            }
+        elif q_date < REENACTMENT_DATE:
+            return {
+                "date": query_date_str,
+                "status": "JUDICIALLY_INVALIDATED",
+                "regime": "Judicial Invalidation Window (Post-Excel Wear / Pre-1984 Amendment)",
+                "is_constitutionally_valid": False,
+                "holding": "Section 25-O struck down by Supreme Court Constitution Bench in Excel Wear v. Union of India on 29.09.1978 for violating Article 19(1)(g). Employers could not be prosecuted under Section 25-O during this interval.",
+                "landmark_precedent": "Excel Wear v. Union of India (1978) 4 SCC 224",
+            }
+        else:
+            return {
+                "date": query_date_str,
+                "status": "OPERATIVE_REENACTED",
+                "regime": "Industrial Disputes Act, 1947 (1984 Substituted Section 25-O)",
+                "is_constitutionally_valid": True,
+                "holding": "Section 25-O reenacted by Parliament via Act 49 of 1984 (w.e.f. 18.08.1984) providing for reasoned inquiry, opportunity of being heard, and judicial review.",
+            }
+
+    def resolve_precedent_for_provision(
+        self, statute_id: str, section: str
+    ) -> List[Dict[str, Any]]:
+        """Queries precedent links for a specific statutory provision from precedent_statute_manifest.json."""
+        manifest_path = Path(__file__).resolve().parent.parent.parent / "data" / "22_central_legislation" / "precedent_statute_manifest.json"
+        if not manifest_path.exists():
+            return []
+        try:
+            with open(manifest_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            links = []
+            for item in data.get("links", []):
+                if item["target_statute_id"] == statute_id and (
+                    section in item["target_section"] or item["target_section"] in section
+                ):
+                    links.append(item)
+            return links
+        except Exception:
+            return []
 
 
 def build_default_temporal_engine() -> TemporalLawEngine:
@@ -990,6 +1249,190 @@ def build_default_temporal_engine() -> TemporalLawEngine:
         temporal_status=TemporalStatus.ACTIVE,
     ))
 
+
+    # --- PHASE 47 STATUTES: INTELLECTUAL PROPERTY & LABOUR JURISPRUDENCE ---
+    # 15. Copyright Act, 1957
+    engine.register_statute(StatuteLifecycle(
+        statute_id="IND-STAT-COPYRIGHT-1957",
+        title="The Copyright Act, 1957",
+        enactment_date="1957-06-04",
+        commencement_date="1958-01-21",
+        commencement_notification="S.R.O. 269 dated 21 January 1958",
+        is_fully_commenced=True,
+    ))
+
+    # 16. Patents Act, 1970
+    engine.register_statute(StatuteLifecycle(
+        statute_id="IND-STAT-PATENTS-1970",
+        title="The Patents Act, 1970",
+        enactment_date="1970-09-19",
+        commencement_date="1972-04-20",
+        commencement_notification="S.O. 290(E) dated 20 April 1972",
+        is_fully_commenced=True,
+    ))
+
+    # 17. Trade Marks Act, 1999
+    engine.register_statute(StatuteLifecycle(
+        statute_id="IND-STAT-TRADEMARKS-1999",
+        title="The Trade Marks Act, 1999",
+        enactment_date="1999-12-30",
+        commencement_date="2003-09-15",
+        commencement_notification="S.O. 1048(E) dated 15 September 2003",
+        repealing_enactment_id="IND-STAT-TMMA-1958",
+        is_fully_commenced=True,
+    ))
+
+    # 18. Industrial Disputes Act, 1947
+    engine.register_statute(StatuteLifecycle(
+        statute_id="IND-STAT-IDA-1947",
+        title="The Industrial Disputes Act, 1947",
+        enactment_date="1947-03-11",
+        commencement_date="1947-04-01",
+        is_fully_commenced=True,
+    ))
+
+    # 19. Factories Act, 1948
+    engine.register_statute(StatuteLifecycle(
+        statute_id="IND-STAT-FACTORIES-1948",
+        title="The Factories Act, 1948",
+        enactment_date="1948-09-23",
+        commencement_date="1949-04-01",
+        is_fully_commenced=True,
+    ))
+
+    # 20. Code on Wages, 2019
+    engine.register_statute(StatuteLifecycle(
+        statute_id="IND-STAT-WAGES-2019",
+        title="The Code on Wages, 2019",
+        enactment_date="2019-08-08",
+        assent_date="2019-08-08",
+        commencement_date=None,
+        is_fully_commenced=False,
+    ))
+
+    # 21. Industrial Relations Code, 2020
+    engine.register_statute(StatuteLifecycle(
+        statute_id="IND-STAT-IRCODE-2020",
+        title="The Industrial Relations Code, 2020",
+        enactment_date="2020-09-28",
+        assent_date="2020-09-28",
+        commencement_date=None,
+        is_fully_commenced=False,
+    ))
+
+    # 22. Code on Social Security, 2020
+    engine.register_statute(StatuteLifecycle(
+        statute_id="IND-STAT-SSCODE-2020",
+        title="The Code on Social Security, 2020",
+        enactment_date="2020-09-28",
+        assent_date="2020-09-28",
+        commencement_date=None,
+        is_fully_commenced=False,
+    ))
+
+    # 23. Occupational Safety, Health and Working Conditions Code, 2020
+    engine.register_statute(StatuteLifecycle(
+        statute_id="IND-STAT-OSHCODE-2020",
+        title="The Occupational Safety, Health and Working Conditions Code, 2020",
+        enactment_date="2020-09-28",
+        assent_date="2020-09-28",
+        commencement_date=None,
+        is_fully_commenced=False,
+    ))
+
+    # --- PHASE 47 PROVISIONS ---
+    # Copyright Act Section 52 (Pre-2012 Version)
+    engine.register_provision_version(ProvisionTemporalVersion(
+        provision_id="COP-SEC-52",
+        statute_id="IND-STAT-COPYRIGHT-1957",
+        section_number="52",
+        version_number=1,
+        text="52. Certain acts not to be infringement of copyright.—(1) The following acts shall not constitute an infringement of copyright, namely:— (a) a fair dealing with a literary, dramatic, musical or artistic work for the purpose of— (i) private use, including research; (ii) criticism or review...",
+        version_effective_from="1958-01-21",
+        version_effective_until="2012-06-20",
+        commencement_date="1958-01-21",
+        temporal_status=TemporalStatus.AMENDED_HISTORICAL,
+    ))
+
+    # Copyright Act Section 52 (Post-2012 Version)
+    engine.register_provision_version(ProvisionTemporalVersion(
+        provision_id="COP-SEC-52",
+        statute_id="IND-STAT-COPYRIGHT-1957",
+        section_number="52",
+        version_number=2,
+        text="52. Certain acts not to be infringement of copyright.—(1) The following acts shall not constitute an infringement of copyright, namely,— (a) a fair dealing with any work, not being a computer programme, for the purposes of— (i) private or personal use, including research; (ii) criticism or review... (i) the reproduction of any work by a teacher or a pupil in the course of instruction... (zb) the adaptation, reproduction, issue of copies or communication to the public of any work in any accessible format, by any person to facilitate a person with disability...",
+        version_effective_from="2012-06-21",
+        version_effective_until=None,
+        commencement_date="2012-06-21",
+        amendment_act_id="IND-AMEND-COPYRIGHT-2012",
+        temporal_status=TemporalStatus.ACTIVE,
+    ))
+
+    # Copyright Act Section 57 (Post-2012 Version - Perpetual Moral Rights)
+    engine.register_provision_version(ProvisionTemporalVersion(
+        provision_id="COP-SEC-57",
+        statute_id="IND-STAT-COPYRIGHT-1957",
+        section_number="57",
+        version_number=2,
+        text="57. Author's special rights.—(1) Independently of the author's copyright and even after the assignment either wholly or partially of the said copyright, the author of a work shall have the right— (a) to claim authorship of the work; and (b) to restrain or claim damages in respect of any distortion, mutilation, modification or other act in relation to the said work if such distortion, mutilation, modification or other act would be prejudicial to his honour or reputation. (2) The right conferred upon an author of a work by sub-section (1) may be exercised by the legal representatives of the author.",
+        version_effective_from="2012-06-21",
+        version_effective_until=None,
+        commencement_date="2012-06-21",
+        amendment_act_id="IND-AMEND-COPYRIGHT-2012",
+        temporal_status=TemporalStatus.ACTIVE,
+    ))
+
+    # Patents Act Section 3(d) (Post-2005 Version - Therapeutic Efficacy)
+    engine.register_provision_version(ProvisionTemporalVersion(
+        provision_id="PAT-SEC-3D",
+        statute_id="IND-STAT-PATENTS-1970",
+        section_number="3(d)",
+        version_number=2,
+        text="3. What are not inventions.—The following are not inventions within the meaning of this Act,— (d) the mere discovery of a new form of a known substance which does not result in the enhancement of the known efficacy of that substance or the mere discovery of any new property or new use for a known substance or of the mere use of a known process, machine or apparatus unless such known process results in a new product or employs at least one new reactant. Explanation.—For the purposes of this clause, salts, esters, ethers, polymorphs, metabolites, pure form, particle size, isomers, mixtures of isomers, complexes, combinations and other derivatives of known substance shall be considered to be the same substance, unless they differ significantly in properties with regard to efficacy.",
+        version_effective_from="2005-01-01",
+        version_effective_until=None,
+        commencement_date="2005-01-01",
+        amendment_act_id="IND-AMEND-PATENTS-2005",
+        temporal_status=TemporalStatus.ACTIVE,
+    ))
+
+    # Patents Act Section 84 (Compulsory Licensing)
+    engine.register_provision_version(ProvisionTemporalVersion(
+        provision_id="PAT-SEC-84",
+        statute_id="IND-STAT-PATENTS-1970",
+        section_number="84",
+        version_number=1,
+        text="84. Compulsory licences.—(1) At any time after the expiration of three years from the date of the grant of a patent, any person interested may make an application to the Controller for grant of compulsory licence on patent on any of the following grounds, namely:— (a) that the reasonable requirements of the public with respect to the patented invention have not been satisfied, or (b) that the patented invention is not available to the public at a reasonably affordable price, or (c) that the patented invention is not worked in the territory of India.",
+        version_effective_from="2003-05-20",
+        version_effective_until=None,
+        commencement_date="2003-05-20",
+        temporal_status=TemporalStatus.ACTIVE,
+    ))
+
+    # Industrial Disputes Act Section 25F (Conditions Precedent to Retrenchment)
+    engine.register_provision_version(ProvisionTemporalVersion(
+        provision_id="IDA-SEC-25F",
+        statute_id="IND-STAT-IDA-1947",
+        section_number="25F",
+        version_number=1,
+        text="25F. Conditions precedent to retrenchment of workmen.—No workman employed in any industry who has been in continuous service for not less than one year under an employer shall be retrenched by that employer until— (a) the workman has been given one month's notice in writing indicating the reasons for retrenchment and the period of notice has expired, or the workman has been paid in lieu of such notice, wages for the period of the notice; (b) the workman has been paid, at the time of retrenchment, compensation which shall be equivalent to fifteen days' average pay for every completed year of continuous service or any part thereof in excess of six months; and (c) notice in the prescribed manner is served on the appropriate Government...",
+        version_effective_from="1953-10-24",
+        version_effective_until=None,
+        commencement_date="1953-10-24",
+        temporal_status=TemporalStatus.ACTIVE,
+    ))
+
+    # Factories Act Section 59 (Overtime Wages)
+    engine.register_provision_version(ProvisionTemporalVersion(
+        provision_id="FACT-SEC-59",
+        statute_id="IND-STAT-FACTORIES-1948",
+        section_number="59",
+        version_number=1,
+        text="59. Extra wages for overtime.—(1) Where a worker works in a factory for more than nine hours in any day or for more than forty-eight hours in any week, he shall, in respect of overtime work, be entitled to wages at the rate of twice his ordinary rate of wages.",
+        version_effective_from="1949-04-01",
+        version_effective_until=None,
+        commencement_date="1949-04-01",
+        temporal_status=TemporalStatus.ACTIVE,
+    ))
+
     return engine
-
-

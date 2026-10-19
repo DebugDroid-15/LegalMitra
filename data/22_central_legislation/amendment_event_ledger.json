@@ -1,7 +1,7 @@
 {
-  "ledger_version": "LEGALMITRA-AMENDMENT-LEDGER-V2",
+  "ledger_version": "LEGALMITRA-AMENDMENT-LEDGER-V3",
   "generated_at": "2026-10-19T12:33:00Z",
-  "total_events": 20,
+  "total_events": 28,
   "events": [
     {
       "event_id": "AMEND-EVT-SRA-2018-SEC10",
@@ -14,8 +14,14 @@
       "effective_date": "2018-10-01",
       "provision_affected": "Section 10",
       "event_type": "SUBSTITUTION",
-      "prior_version_interval": ["1964-03-01", "2018-10-01"],
-      "new_version_interval": ["2018-10-01", null],
+      "prior_version_interval": [
+        "1964-03-01",
+        "2018-10-01"
+      ],
+      "new_version_interval": [
+        "2018-10-01",
+        null
+      ],
       "legal_effect": "Replaces court discretion with mandatory specific performance ('shall be enforced by the court').",
       "verification_status": "AUTHENTICITY_VERIFIED"
     },
@@ -31,7 +37,10 @@
       "provision_affected": "Section 20A",
       "event_type": "INSERTION",
       "prior_version_interval": null,
-      "new_version_interval": ["2018-10-01", null],
+      "new_version_interval": [
+        "2018-10-01",
+        null
+      ],
       "legal_effect": "Statutory bar on civil courts granting injunctions in infrastructure project contracts.",
       "verification_status": "AUTHENTICITY_VERIFIED"
     },
@@ -46,8 +55,14 @@
       "effective_date": "2015-10-23",
       "provision_affected": "Section 34",
       "event_type": "AMENDMENT",
-      "prior_version_interval": ["1996-08-22", "2015-10-23"],
-      "new_version_interval": ["2015-10-23", null],
+      "prior_version_interval": [
+        "1996-08-22",
+        "2015-10-23"
+      ],
+      "new_version_interval": [
+        "2015-10-23",
+        null
+      ],
       "legal_effect": "Inserts Section 34(2A) restricting patent illegality ground to domestic arbitrations and barring merits re-evaluation.",
       "verification_status": "AUTHENTICITY_VERIFIED"
     },
@@ -63,7 +78,10 @@
       "provision_affected": "Section 29A",
       "event_type": "INSERTION",
       "prior_version_interval": null,
-      "new_version_interval": ["2015-10-23", null],
+      "new_version_interval": [
+        "2015-10-23",
+        null
+      ],
       "legal_effect": "Mandatory 12-month timeline for making arbitral awards with court extension requirements.",
       "verification_status": "AUTHENTICITY_VERIFIED"
     },
@@ -79,7 +97,10 @@
       "provision_affected": "Section 43A",
       "event_type": "INSERTION",
       "prior_version_interval": null,
-      "new_version_interval": ["2009-10-27", null],
+      "new_version_interval": [
+        "2009-10-27",
+        null
+      ],
       "legal_effect": "Compensation for failure to protect sensitive personal data or information (SPDI).",
       "verification_status": "AUTHENTICITY_VERIFIED"
     },
@@ -96,7 +117,10 @@
       "commencement_status": "uncommenced",
       "provision_affected": "Section 43A",
       "event_type": "OMISSION",
-      "prior_version_interval": ["2009-10-27", null],
+      "prior_version_interval": [
+        "2009-10-27",
+        null
+      ],
       "new_version_interval": null,
       "legal_effect": "Omits Section 43A of IT Act once Section 44(2) of DPDP Act is formally brought into force.",
       "verification_status": "AUTHENTICITY_VERIFIED"
@@ -112,7 +136,10 @@
       "effective_date": "2024-07-01",
       "provision_affected": "Entire Statute",
       "event_type": "REPEAL",
-      "prior_version_interval": ["1860-10-06", "2024-07-01"],
+      "prior_version_interval": [
+        "1860-10-06",
+        "2024-07-01"
+      ],
       "new_version_interval": null,
       "legal_effect": "Repeals the Indian Penal Code, 1860 subject to statutory savings in Section 358(2).",
       "verification_status": "AUTHENTICITY_VERIFIED"
@@ -129,7 +156,10 @@
       "provision_affected": "Section 358(2)",
       "event_type": "SAVINGS",
       "prior_version_interval": null,
-      "new_version_interval": ["2024-07-01", null],
+      "new_version_interval": [
+        "2024-07-01",
+        null
+      ],
       "legal_effect": "Saves previous operation of IPC, rights, privileges, obligations, and penalties for offenses committed pre-01.07.2024.",
       "verification_status": "AUTHENTICITY_VERIFIED"
     },
@@ -144,7 +174,10 @@
       "effective_date": "2024-07-01",
       "provision_affected": "Entire Statute",
       "event_type": "REPEAL",
-      "prior_version_interval": ["1974-04-01", "2024-07-01"],
+      "prior_version_interval": [
+        "1974-04-01",
+        "2024-07-01"
+      ],
       "new_version_interval": null,
       "legal_effect": "Repeals the Code of Criminal Procedure, 1973 subject to Section 531(2)(a) savings.",
       "verification_status": "AUTHENTICITY_VERIFIED"
@@ -161,7 +194,10 @@
       "provision_affected": "Section 531(2)(a)",
       "event_type": "SAVINGS",
       "prior_version_interval": null,
-      "new_version_interval": ["2024-07-01", null],
+      "new_version_interval": [
+        "2024-07-01",
+        null
+      ],
       "legal_effect": "Pending appeals, applications, trials, inquiries, or investigations instituted pre-01.07.2024 continue under CrPC 1973.",
       "verification_status": "AUTHENTICITY_VERIFIED"
     },
@@ -176,7 +212,10 @@
       "effective_date": "2024-07-01",
       "provision_affected": "Entire Statute",
       "event_type": "REPEAL",
-      "prior_version_interval": ["1872-09-01", "2024-07-01"],
+      "prior_version_interval": [
+        "1872-09-01",
+        "2024-07-01"
+      ],
       "new_version_interval": null,
       "legal_effect": "Repeals Indian Evidence Act, 1872 subject to Section 170 savings for pending proceedings.",
       "verification_status": "AUTHENTICITY_VERIFIED"
@@ -192,7 +231,10 @@
       "effective_date": "2020-07-20",
       "provision_affected": "Entire Statute",
       "event_type": "REPEAL",
-      "prior_version_interval": ["1986-12-24", "2020-07-20"],
+      "prior_version_interval": [
+        "1986-12-24",
+        "2020-07-20"
+      ],
       "new_version_interval": null,
       "legal_effect": "Repeals Consumer Protection Act, 1986 with savings under Section 107(2) preserving pending complaints.",
       "verification_status": "AUTHENTICITY_VERIFIED"
@@ -208,8 +250,14 @@
       "effective_date": "2021-01-22",
       "provision_affected": "Section 135",
       "event_type": "SUBSTITUTION",
-      "prior_version_interval": ["2014-04-01", "2021-01-22"],
-      "new_version_interval": ["2021-01-22", null],
+      "prior_version_interval": [
+        "2014-04-01",
+        "2021-01-22"
+      ],
+      "new_version_interval": [
+        "2021-01-22",
+        null
+      ],
       "legal_effect": "Decriminalizes CSR spending non-compliance from criminal fines to civil administrative penalties and formalizes unspent CSR account transfers.",
       "verification_status": "AUTHENTICITY_VERIFIED"
     },
@@ -225,7 +273,10 @@
       "provision_affected": "Section 29A",
       "event_type": "INSERTION",
       "prior_version_interval": null,
-      "new_version_interval": ["2017-11-23", null],
+      "new_version_interval": [
+        "2017-11-23",
+        null
+      ],
       "legal_effect": "Disqualifies wilful defaulters, undischarged insolvents, and tainted promoters from submitting resolution plans.",
       "verification_status": "AUTHENTICITY_VERIFIED"
     },
@@ -241,7 +292,10 @@
       "provision_affected": "Section 32A",
       "event_type": "INSERTION",
       "prior_version_interval": null,
-      "new_version_interval": ["2019-12-28", null],
+      "new_version_interval": [
+        "2019-12-28",
+        null
+      ],
       "legal_effect": "Clean-slate immunity for corporate debtor and new management from liability for offences committed prior to CIRP upon approval of resolution plan.",
       "verification_status": "AUTHENTICITY_VERIFIED"
     },
@@ -256,8 +310,14 @@
       "effective_date": "1997-01-08",
       "provision_affected": "Section 28",
       "event_type": "SUBSTITUTION",
-      "prior_version_interval": ["1872-09-01", "1997-01-08"],
-      "new_version_interval": ["1997-01-08", null],
+      "prior_version_interval": [
+        "1872-09-01",
+        "1997-01-08"
+      ],
+      "new_version_interval": [
+        "1997-01-08",
+        null
+      ],
       "legal_effect": "Overrules Vulcan Insurance doctrine by voiding clauses that extinguish rights or discharge liability on expiry of specified periods.",
       "verification_status": "AUTHENTICITY_VERIFIED"
     },
@@ -272,8 +332,14 @@
       "effective_date": "2001-09-24",
       "provision_affected": "Section 53A",
       "event_type": "AMENDMENT",
-      "prior_version_interval": ["1929-04-01", "2001-09-24"],
-      "new_version_interval": ["2001-09-24", null],
+      "prior_version_interval": [
+        "1929-04-01",
+        "2001-09-24"
+      ],
+      "new_version_interval": [
+        "2001-09-24",
+        null
+      ],
       "legal_effect": "Mandates that contracts for transfer of immoveable property must be registered under Registration Act s.17(1A) to claim Section 53A part performance protection.",
       "verification_status": "AUTHENTICITY_VERIFIED"
     },
@@ -288,8 +354,14 @@
       "effective_date": "2015-10-23",
       "provision_affected": "Order VIII Rule 1",
       "event_type": "AMENDMENT",
-      "prior_version_interval": ["2002-07-01", null],
-      "new_version_interval": ["2015-10-23", null],
+      "prior_version_interval": [
+        "2002-07-01",
+        null
+      ],
+      "new_version_interval": [
+        "2015-10-23",
+        null
+      ],
       "legal_effect": "Imposes strict mandatory 120-day forfeiture on filing written statements in Commercial Suits of Specified Value.",
       "verification_status": "AUTHENTICITY_VERIFIED"
     },
@@ -304,8 +376,14 @@
       "effective_date": "2022-04-01",
       "provision_affected": "Section 164",
       "event_type": "SUBSTITUTION",
-      "prior_version_interval": ["1994-11-14", "2022-04-01"],
-      "new_version_interval": ["2022-04-01", null],
+      "prior_version_interval": [
+        "1994-11-14",
+        "2022-04-01"
+      ],
+      "new_version_interval": [
+        "2022-04-01",
+        null
+      ],
       "legal_effect": "Replaces Section 163A structured formula with Section 164 fixed no-fault compensation of INR 5 Lakhs for death and INR 2.5 Lakhs for grievous hurt.",
       "verification_status": "AUTHENTICITY_VERIFIED"
     },
@@ -320,9 +398,188 @@
       "effective_date": "2013-09-12",
       "provision_affected": "Entire Statute",
       "event_type": "REPEAL",
-      "prior_version_interval": ["1956-04-01", "2013-09-12"],
+      "prior_version_interval": [
+        "1956-04-01",
+        "2013-09-12"
+      ],
       "new_version_interval": null,
       "legal_effect": "Repeals the Companies Act, 1956 under Section 465 subject to corporate continuity and tribunal savings.",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "event_id": "AMEND-EVT-021",
+      "parent_statute_id": "IND-STAT-COPYRIGHT-1957",
+      "amending_enactment_id": "IND-AMEND-COPYRIGHT-2012",
+      "amending_act_title": "The Copyright (Amendment) Act, 2012",
+      "amending_act_number": "Act No. 27 of 2012",
+      "assent_date": "2012-06-07",
+      "commencement_notification": "Ministry of Human Resource Development S.O. 1393(E) dated 21 June 2012",
+      "effective_date": "2012-06-21",
+      "provision_affected": "Sections 18, 19, 31D, 52, 57, 65A, 65B",
+      "event_type": "AMENDMENT",
+      "prior_version_interval": [
+        "1958-01-21",
+        "2012-06-21"
+      ],
+      "new_version_interval": [
+        "2012-06-21",
+        null
+      ],
+      "legal_effect": "Expands fair dealing for education/disability; makes moral rights under s.57 perpetual; confers non-waivable royalty rights to lyricists/composers.",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "event_id": "AMEND-EVT-022",
+      "parent_statute_id": "IND-STAT-PATENTS-1970",
+      "amending_enactment_id": "IND-AMEND-PATENTS-2005",
+      "amending_act_title": "The Patents (Amendment) Act, 2005",
+      "amending_act_number": "Act No. 15 of 2005",
+      "assent_date": "2005-04-04",
+      "commencement_notification": "Enacted with retrospective effect from 1 January 2005 replacing Ordinance 7 of 2004",
+      "effective_date": "2005-01-01",
+      "provision_affected": "Sections 3(d), 5 (repealed), 25, 84, 92A",
+      "event_type": "AMENDMENT",
+      "prior_version_interval": [
+        "1972-04-20",
+        "2005-01-01"
+      ],
+      "new_version_interval": [
+        "2005-01-01",
+        null
+      ],
+      "legal_effect": "Introduces product patents for pharmaceuticals/agrochemicals; adds Section 3(d) therapeutic efficacy requirement; introduces dual opposition (pre and post-grant).",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "event_id": "AMEND-EVT-023",
+      "parent_statute_id": "IND-STAT-TRADEMARKS-1999",
+      "amending_enactment_id": "IND-AMEND-TRADEMARKS-2010",
+      "amending_act_title": "The Trade Marks (Amendment) Act, 2010",
+      "amending_act_number": "Act No. 40 of 2010",
+      "assent_date": "2010-09-21",
+      "commencement_notification": "Ministry of Commerce and Industry S.O. 1999(E) dated 8 July 2013",
+      "effective_date": "2013-07-08",
+      "provision_affected": "Chapter IVA (Sections 36A to 36G)",
+      "event_type": "AMENDMENT",
+      "prior_version_interval": [
+        "2003-09-15",
+        "2013-07-08"
+      ],
+      "new_version_interval": [
+        "2013-07-08",
+        null
+      ],
+      "legal_effect": "Accedes to the Madrid Protocol, enabling international registration of trade marks through the Indian Trade Marks Registry.",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "event_id": "COMM-EVT-024",
+      "parent_statute_id": "IND-STAT-WAGES-2019",
+      "amending_enactment_id": "IND-STAT-WAGES-2019",
+      "amending_act_title": "Code on Wages, 2019 (Partial Commencement)",
+      "amending_act_number": "Act No. 29 of 2019",
+      "assent_date": "2019-08-08",
+      "commencement_notification": "Ministry of Labour and Employment S.O. 4572(E) dated 18 December 2019",
+      "effective_date": "2019-12-18",
+      "provision_affected": "Section 142 (Rule-making and Central Advisory Board power)",
+      "event_type": "PARTIAL_COMMENCEMENT",
+      "prior_version_interval": [
+        "2019-08-08",
+        "2019-12-18"
+      ],
+      "new_version_interval": [
+        "2019-12-18",
+        null
+      ],
+      "legal_effect": "Enables central advisory board consultations and draft rules; substantive wage/bonus sections and Section 69 repeals remain UNCOMMENCED.",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "event_id": "COMM-EVT-025",
+      "parent_statute_id": "IND-STAT-SSCODE-2020",
+      "amending_enactment_id": "IND-STAT-SSCODE-2020",
+      "amending_act_title": "Code on Social Security, 2020 (Partial Commencement)",
+      "amending_act_number": "Act No. 36 of 2020",
+      "assent_date": "2020-09-28",
+      "commencement_notification": "Ministry of Labour and Employment S.O. 1730(E) dated 28 April 2021",
+      "effective_date": "2021-05-03",
+      "provision_affected": "Section 142 (Aadhaar identification)",
+      "event_type": "PARTIAL_COMMENCEMENT",
+      "prior_version_interval": [
+        "2020-09-28",
+        "2021-05-03"
+      ],
+      "new_version_interval": [
+        "2021-05-03",
+        null
+      ],
+      "legal_effect": "Brings into force Section 142 for Aadhaar seeding of workers on e-Shram; EPF/ESI/Gratuity substantive provisions and Section 164 repeals remain UNCOMMENCED.",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "event_id": "AMEND-EVT-026",
+      "parent_statute_id": "IND-STAT-IDA-1947",
+      "amending_enactment_id": "IND-AMEND-IDA-1984",
+      "amending_act_title": "The Industrial Disputes (Amendment) Act, 1984",
+      "amending_act_number": "Act No. 49 of 1984",
+      "assent_date": "1984-08-16",
+      "commencement_notification": "Ministry of Labour S.O. 605(E) dated 18 August 1984",
+      "effective_date": "1984-08-18",
+      "provision_affected": "Section 25-O",
+      "event_type": "SUBSTITUTION",
+      "prior_version_interval": [
+        "1976-03-05",
+        "1978-09-29"
+      ],
+      "new_version_interval": [
+        "1984-08-18",
+        null
+      ],
+      "legal_effect": "Reenacts Section 25-O following the Supreme Court judgment in Excel Wear v. Union of India, requiring reasoned inquiry and opportunity of being heard.",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "event_id": "REPEAL-EVT-027",
+      "parent_statute_id": "IND-STAT-TMMA-1958",
+      "amending_enactment_id": "IND-STAT-TRADEMARKS-1999",
+      "amending_act_title": "Trade Marks Act, 1999 (Section 159 Repeal & Savings)",
+      "amending_act_number": "Act No. 47 of 1999",
+      "assent_date": "1999-12-30",
+      "commencement_notification": "Ministry of Commerce and Industry S.O. 1048(E) dated 15 September 2003",
+      "effective_date": "2003-09-15",
+      "provision_affected": "Entire Trade and Merchandise Marks Act, 1958",
+      "event_type": "REPEAL_WITH_SAVINGS",
+      "prior_version_interval": [
+        "1958-11-25",
+        "2003-09-15"
+      ],
+      "new_version_interval": [
+        "2003-09-15",
+        null
+      ],
+      "legal_effect": "Repeals the 1958 Act while preserving existing trademark registrations under Section 159(2).",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "event_id": "UNCOMM-EVT-028",
+      "parent_statute_id": "IND-STAT-IRCODE-2020",
+      "amending_enactment_id": "IND-STAT-IRCODE-2020",
+      "amending_act_title": "Industrial Relations Code, 2020 (Status: Uncommenced)",
+      "amending_act_number": "Act No. 35 of 2020",
+      "assent_date": "2020-09-28",
+      "commencement_notification": "Pending Central Government Notification under Section 1(3)",
+      "effective_date": "9999-12-31",
+      "provision_affected": "Section 104 (Repeal of IDA 1947, Trade Unions Act 1926, Standing Orders Act 1946)",
+      "event_type": "UNCOMMENCED_HOLD",
+      "prior_version_interval": [
+        "2020-09-28",
+        "9999-12-31"
+      ],
+      "new_version_interval": [
+        "9999-12-31",
+        null
+      ],
+      "legal_effect": "Section 104 repeal has NOT taken effect; Industrial Disputes Act 1947 and precursor labour acts remain actively in force.",
       "verification_status": "AUTHENTICITY_VERIFIED"
     }
   ]

@@ -1,0 +1,218 @@
+{
+  "manifest_version": "LEGALMITRA-PRECEDENT-STATUTE-V1",
+  "generated_at": "2026-10-19T14:40:00Z",
+  "standard": "LEGALMITRA-PRECEDENT-SPEC-V1",
+  "total_links": 10,
+  "links": [
+    {
+      "link_id": "PREC-LINK-01",
+      "case_id": "CASE-NOVARTIS-2013",
+      "case_title": "Novartis AG v. Union of India and Others",
+      "citation": "(2013) 6 SCC 1",
+      "court": "Supreme Court of India",
+      "bench": "Aftab Alam & Ranjana Prakash Desai, JJ.",
+      "decision_date": "2013-04-01",
+      "target_statute_id": "IND-STAT-PATENTS-1970",
+      "target_provision_id": "PAT-1970-SEC-3D-V2",
+      "target_section": "3(d)",
+      "validity_interval_applied": [
+        "2005-01-01",
+        null
+      ],
+      "relationship_type": "INTERPRETS",
+      "paragraph_anchor": "Paras 157-192 (esp. Paras 166, 187, 191)",
+      "holding_summary": "In the case of medicine, 'efficacy' in Section 3(d) strictly means 'therapeutic efficacy'. Physicochemical advantages such as better thermodynamic stability or enhanced bioavailability of a polymorph (imatinib mesylate beta-crystalline form) without demonstrably superior therapeutic efficacy do not qualify as an invention under Section 3(d).",
+      "supporting_passage": "We have held that what 'efficacy' means under Section 3(d) is therapeutic efficacy... advantageous properties like better thermodynamic stability or lower hygroscopicity may be desirable, but they do not satisfy the requirement of Section 3(d) unless they result in enhanced therapeutic efficacy.",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "link_id": "PREC-LINK-02",
+      "case_id": "CASE-BAYER-NATCO-2014",
+      "case_title": "Bayer Corporation v. Union of India and Others",
+      "citation": "2014 SCC OnLine Bom 563",
+      "court": "High Court of Judicature at Bombay",
+      "bench": "Mohit S. Shah, C.J. & M.S. Sanklecha, J.",
+      "decision_date": "2014-07-15",
+      "target_statute_id": "IND-STAT-PATENTS-1970",
+      "target_provision_id": "PAT-1970-SEC-84-V1",
+      "target_section": "84",
+      "validity_interval_applied": [
+        "2003-05-20",
+        null
+      ],
+      "relationship_type": "APPLIES",
+      "paragraph_anchor": "Paras 42-65",
+      "holding_summary": "Upholds first compulsory license granted to Natco Pharma for kidney and liver cancer drug Sorafenib tosylate (Nexavar); patentee selling drug at ₹2.80 lakh per month held failed to satisfy reasonable requirement of the public at an affordable price under Section 84(1)(b).",
+      "supporting_passage": "The expression 'reasonably affordable price' has to be construed from the perspective of the public... If the patented medicine is priced so high that only a miniscule percentage can afford it, the statutory condition of Section 84(1)(b) is plainly triggered.",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "link_id": "PREC-LINK-03",
+      "case_id": "CASE-EBC-MODAK-2008",
+      "case_title": "Eastern Book Company v. D.B. Modak",
+      "citation": "(2008) 1 SCC 1",
+      "court": "Supreme Court of India",
+      "bench": "P.P. Naolekar & Dalveer Bhandari, JJ.",
+      "decision_date": "2007-12-12",
+      "target_statute_id": "IND-STAT-COPYRIGHT-1957",
+      "target_provision_id": "COP-1957-SEC-13-V1",
+      "target_section": "13",
+      "validity_interval_applied": [
+        "1958-01-21",
+        null
+      ],
+      "relationship_type": "INTERPRETS",
+      "paragraph_anchor": "Paras 54-58",
+      "holding_summary": "Rejects the English 'sweat of the brow' standard and adopts the Canadian 'modicum of creativity' standard for originality in copyright. Inputs requiring minimum intellectual effort, skill, and judgment (like headnotes and editorial catchwords) possess copyright, whereas mechanical copy-editing and paragraphing do not.",
+      "supporting_passage": "The standard of creativity required is a minimal degree of creativity... it must not be the result of a mere mechanical exercise. The author must display some minimal personal intellectual contribution.",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "link_id": "PREC-LINK-04",
+      "case_id": "CASE-RG-ANAND-1978",
+      "case_title": "R.G. Anand v. Delux Films",
+      "citation": "(1978) 4 SCC 118",
+      "court": "Supreme Court of India",
+      "bench": "Y.V. Chandrachud, C.J., R.S. Sarkaria & S. Murtaza Fazal Ali, JJ.",
+      "decision_date": "1978-08-18",
+      "target_statute_id": "IND-STAT-COPYRIGHT-1957",
+      "target_provision_id": "COP-1957-SEC-13-V1",
+      "target_section": "51",
+      "validity_interval_applied": [
+        "1958-01-21",
+        null
+      ],
+      "relationship_type": "INTERPRETS",
+      "paragraph_anchor": "Paras 45-46",
+      "holding_summary": "Lays down the landmark 7 propositions on idea-expression dichotomy: (1) There can be no copyright in an idea, subject matter, themes, or historical facts; (2) Infringement requires substantial copy of the expression; (3) The test is whether the reader or viewer gets the unmistakable impression that the subsequent work is a copy.",
+      "supporting_passage": "Where the same idea is being developed in a different manner, manifest similarities are bound to occur. In order to be actionable the copy must be substantial and material one which at once leads to the conclusion that the defendant is guilty of an act of piracy.",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "link_id": "PREC-LINK-05",
+      "case_id": "CASE-RAMESHWARI-2016",
+      "case_title": "The Chancellor, Masters & Scholars of the University of Oxford v. Rameshwari Photocopy Service",
+      "citation": "2016 SCC OnLine Del 6229 / (2016) 160 DRJ 678",
+      "court": "High Court of Delhi",
+      "bench": "Rajiv Sahai Endlaw, J.",
+      "decision_date": "2016-09-16",
+      "target_statute_id": "IND-STAT-COPYRIGHT-1957",
+      "target_provision_id": "COP-1957-SEC-52-V2",
+      "target_section": "52(1)(i)",
+      "validity_interval_applied": [
+        "2012-06-21",
+        null
+      ],
+      "relationship_type": "INTERPRETS",
+      "paragraph_anchor": "Paras 81-94",
+      "holding_summary": "Holds that the preparation and distribution of photocopied course-packs by an educational institution (or its licensed photocopy kiosk) for enrolled students falls squarely within the fair dealing exception under Section 52(1)(i) ('reproduction by teacher or pupil in course of instruction') and does not constitute copyright infringement.",
+      "supporting_passage": "Education is the foundation of a civilized society... Section 52(1)(i) must be interpreted purposively. So long as the course pack is designed for instruction and not for commercial exploitation in the market, it is fully protected.",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "link_id": "PREC-LINK-06",
+      "case_id": "CASE-CADILA-2001",
+      "case_title": "Cadila Health Care Ltd. v. Cadila Pharmaceuticals Ltd.",
+      "citation": "(2001) 5 SCC 73",
+      "court": "Supreme Court of India",
+      "bench": "B.N. Kirpal, Ruma Pal & Brijesh Kumar, JJ.",
+      "decision_date": "2001-03-26",
+      "target_statute_id": "IND-STAT-TRADEMARKS-1999",
+      "target_provision_id": "TM-1999-SEC-11-V1",
+      "target_section": "11 & 29",
+      "validity_interval_applied": [
+        "2003-09-15",
+        null
+      ],
+      "relationship_type": "INTERPRETS",
+      "paragraph_anchor": "Paras 32-35",
+      "holding_summary": "Formulates strict deceptive similarity test for medicinal brand names ('Falcigo' vs 'Falcitab'). In the case of pharmaceuticals, strict care must be taken to prevent confusion, because confusion in medicinal products can be lethal and injurious to public health, irrespective of whether the drug is prescription-only or over-the-counter.",
+      "supporting_passage": "A stricter standard of similarity is to be applied to medicinal products than to non-medicinal products. In our country with diverse literacy and multiple languages, phonetic and visual confusion must be strictly guarded against.",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "link_id": "PREC-LINK-07",
+      "case_id": "CASE-BANGALORE-WATER-1978",
+      "case_title": "Bangalore Water Supply and Sewerage Board v. A. Rajappa",
+      "citation": "(1978) 2 SCC 213",
+      "court": "Supreme Court of India",
+      "bench": "7-Judge Constitution Bench: M.H. Beg C.J., Y.V. Chandrachud, P.N. Bhagwati, V.R. Krishna Iyer, V.D. Tulzapurkar, D.A. Desai, P.S. Singhal, JJ.",
+      "decision_date": "1978-02-21",
+      "target_statute_id": "IND-STAT-IDA-1947",
+      "target_provision_id": "IDA-1947-SEC-2J-V1",
+      "target_section": "2(j)",
+      "validity_interval_applied": [
+        "1947-04-01",
+        null
+      ],
+      "relationship_type": "INTERPRETS",
+      "paragraph_anchor": "Paras 140-143 (Judgment of Krishna Iyer, J.)",
+      "holding_summary": "Establishes definitive 'triple test' for an 'industry' under Section 2(j) of IDA 1947: (i) systematic activity, (ii) organized by co-operation between employer and employee, (iii) for the production and/or distribution of goods and services calculated to satisfy human wants and wishes. Educational, charitable, and municipal bodies meeting the triple test are industries.",
+      "supporting_passage": "The true focus is functional and the decisive test is the nature of the activity with special reference to the employer-employee relationship. Where there is systematic activity organized by cooperation for production of goods or services, industry prima facie exists.",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "link_id": "PREC-LINK-08",
+      "case_id": "CASE-EXCEL-WEAR-1978",
+      "case_title": "Excel Wear v. Union of India",
+      "citation": "(1978) 4 SCC 224",
+      "court": "Supreme Court of India",
+      "bench": "5-Judge Constitution Bench: Y.V. Chandrachud C.J., P.N. Untwalia, R.S. Sarkaria, S. Murtaza Fazal Ali, P.S. Singhal, JJ.",
+      "decision_date": "1978-09-29",
+      "target_statute_id": "IND-STAT-IDA-1947",
+      "target_provision_id": "IDA-1947-SEC-25O-V1",
+      "target_section": "25-O",
+      "validity_interval_applied": [
+        "1976-03-05",
+        "1978-09-29"
+      ],
+      "relationship_type": "INVALIDATES",
+      "paragraph_anchor": "Paras 28-34",
+      "holding_summary": "Strikes down Section 25-O of the Industrial Disputes Act 1947 (as inserted by Act 32 of 1976) as unconstitutional for violating Article 19(1)(g) of the Constitution, because it imposed unreasonable and arbitrary restrictions on an employer's right to close down an undertaking without requiring reasons or providing a mechanism for judicial review.",
+      "supporting_passage": "The right to close down a business is an integral part of the right to carry on business guaranteed under Article 19(1)(g)... To compel an employer to continue a losing business with no hope of revival is an unreasonable restriction.",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "link_id": "PREC-LINK-09",
+      "case_id": "CASE-AMEX-1985",
+      "case_title": "Workmen of American Express International Banking Corp. v. Management",
+      "citation": "(1985) 4 SCC 71",
+      "court": "Supreme Court of India",
+      "bench": "O. Chinnappa Reddy & E.S. Venkataramiah, JJ.",
+      "decision_date": "1985-07-30",
+      "target_statute_id": "IND-STAT-IDA-1947",
+      "target_provision_id": "IDA-1947-SEC-25F-V1",
+      "target_section": "25F read with 25B",
+      "validity_interval_applied": [
+        "1953-10-24",
+        null
+      ],
+      "relationship_type": "APPLIES",
+      "paragraph_anchor": "Paras 4-6",
+      "holding_summary": "Interprets 'actually worked under the employer' in Section 25B(2) for continuous service of 240 days to include Sundays and paid authorized holidays, holding that welfare legislation must be interpreted purposively in favor of workmen seeking retrenchment protection under Section 25F.",
+      "supporting_passage": "The principles of statutory construction of social welfare legislation require that words should be given a liberal and beneficent meaning... 'actually worked' includes days for which wages are paid though the employee does not physically labour.",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "link_id": "PREC-LINK-10",
+      "case_id": "CASE-MANISH-KUMAR-2021",
+      "case_title": "Manish Kumar v. Union of India",
+      "citation": "(2021) 5 SCC 1",
+      "court": "Supreme Court of India",
+      "bench": "R.F. Nariman, Navin Sinha & K.M. Joseph, JJ.",
+      "decision_date": "2021-01-19",
+      "target_statute_id": "IND-STAT-IBC-2016",
+      "target_provision_id": "IBC-2016-SEC-32A-V1",
+      "target_section": "32A",
+      "validity_interval_applied": [
+        "2019-12-28",
+        null
+      ],
+      "relationship_type": "APPLIES",
+      "paragraph_anchor": "Paras 320-332",
+      "holding_summary": "Upholds the constitutional validity of Section 32A of the IBC. Confirms that immunity granted to the corporate debtor and its assets from pre-CIRP offences upon approval of a resolution plan is vital to facilitate insolvency resolution and protect bona fide resolution applicants.",
+      "supporting_passage": "The clean slate doctrine embodied in Section 32A is an integral part of the economic rationale of the Code. A resolution applicant cannot be expected to step into shoes laden with indefinite prior criminal liabilities.",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "queue_version": "LEGALMITRA-CENTRAL-PRIORITY-V2",
+  "queue_version": "LEGALMITRA-CENTRAL-PRIORITY-V3",
   "generated_at": "2026-10-19T12:30:00Z",
   "priority_policy": "HIGHEST_RETRIEVAL_IMPACT_TEMPORAL_TRANSITION",
   "priority_batches": [
@@ -16,7 +16,15 @@
           "official_source": "https://www.indiacode.nic.in/handle/123456789/20062",
           "commencement_notification": "S.O. 849(E)",
           "commencement_date": "2024-07-01",
-          "key_sections": ["1", "4", "63", "69", "103", "111", "358"],
+          "key_sections": [
+            "1",
+            "4",
+            "63",
+            "69",
+            "103",
+            "111",
+            "358"
+          ],
           "replaces_instrument_id": "IND-STAT-IPC-1860"
         },
         {
@@ -26,7 +34,15 @@
           "official_source": "https://www.indiacode.nic.in/handle/123456789/20063",
           "commencement_notification": "S.O. 848(E)",
           "commencement_date": "2024-07-01",
-          "key_sections": ["1", "173", "175", "187", "479", "482", "531"],
+          "key_sections": [
+            "1",
+            "173",
+            "175",
+            "187",
+            "479",
+            "482",
+            "531"
+          ],
           "replaces_instrument_id": "IND-STAT-CRPC-1973"
         },
         {
@@ -36,7 +52,13 @@
           "official_source": "https://www.indiacode.nic.in/handle/123456789/20064",
           "commencement_notification": "S.O. 850(E)",
           "commencement_date": "2024-07-01",
-          "key_sections": ["1", "24", "61", "63", "170"],
+          "key_sections": [
+            "1",
+            "24",
+            "61",
+            "63",
+            "170"
+          ],
           "replaces_instrument_id": "IND-STAT-IEA-1872"
         }
       ]
@@ -53,8 +75,17 @@
           "act_number": "Act No. 21 of 2000",
           "official_source": "https://www.indiacode.nic.in/handle/123456789/1999",
           "commencement_date": "2000-10-17",
-          "amended_by": ["IND-AMEND-IT-2008"],
-          "key_sections": ["43", "43A", "66A", "67", "69A", "79"]
+          "amended_by": [
+            "IND-AMEND-IT-2008"
+          ],
+          "key_sections": [
+            "43",
+            "43A",
+            "66A",
+            "67",
+            "69A",
+            "79"
+          ]
         },
         {
           "instrument_id": "IND-STAT-DPDP-2023",
@@ -64,7 +95,16 @@
           "enactment_date": "2023-08-11",
           "commencement_date": null,
           "is_phased_commencement": true,
-          "key_sections": ["1", "2", "6", "8", "16", "28", "33", "44"]
+          "key_sections": [
+            "1",
+            "2",
+            "6",
+            "8",
+            "16",
+            "28",
+            "33",
+            "44"
+          ]
         }
       ]
     },
@@ -79,16 +119,35 @@
           "title": "Specific Relief Act, 1963",
           "act_number": "Act No. 47 of 1963",
           "official_source": "https://www.indiacode.nic.in/handle/123456789/1583",
-          "amended_by": ["IND-AMEND-SRA-2018"],
-          "key_sections": ["10", "14", "16", "20", "20A", "41"]
+          "amended_by": [
+            "IND-AMEND-SRA-2018"
+          ],
+          "key_sections": [
+            "10",
+            "14",
+            "16",
+            "20",
+            "20A",
+            "41"
+          ]
         },
         {
           "instrument_id": "IND-STAT-ARB-1996",
           "title": "Arbitration and Conciliation Act, 1996",
           "act_number": "Act No. 26 of 1996",
           "official_source": "https://www.indiacode.nic.in/handle/123456789/1978",
-          "amended_by": ["IND-AMEND-ARB-2015", "IND-AMEND-ARB-2019"],
-          "key_sections": ["8", "9", "11", "29A", "34", "36"]
+          "amended_by": [
+            "IND-AMEND-ARB-2015",
+            "IND-AMEND-ARB-2019"
+          ],
+          "key_sections": [
+            "8",
+            "9",
+            "11",
+            "29A",
+            "34",
+            "36"
+          ]
         },
         {
           "instrument_id": "IND-STAT-CPA-2019",
@@ -97,7 +156,15 @@
           "official_source": "https://www.indiacode.nic.in/handle/123456789/15252",
           "commencement_date": "2020-07-20",
           "replaces_instrument_id": "IND-STAT-CPA-1986",
-          "key_sections": ["2", "35", "47", "58", "82", "83", "107"]
+          "key_sections": [
+            "2",
+            "35",
+            "47",
+            "58",
+            "82",
+            "83",
+            "107"
+          ]
         }
       ]
     },
@@ -113,8 +180,21 @@
           "act_number": "Act No. 18 of 2013",
           "official_source": "https://www.indiacode.nic.in/handle/123456789/2114",
           "assent_date": "2013-08-29",
-          "amended_by": ["IND-AMEND-COMP-2015", "IND-AMEND-COMP-2017", "IND-AMEND-COMP-2019", "IND-AMEND-COMP-2020"],
-          "key_sections": ["134", "135", "149", "166", "241", "242", "447"],
+          "amended_by": [
+            "IND-AMEND-COMP-2015",
+            "IND-AMEND-COMP-2017",
+            "IND-AMEND-COMP-2019",
+            "IND-AMEND-COMP-2020"
+          ],
+          "key_sections": [
+            "134",
+            "135",
+            "149",
+            "166",
+            "241",
+            "242",
+            "447"
+          ],
           "replaces_instrument_id": "IND-STAT-COMP-1956"
         },
         {
@@ -123,8 +203,20 @@
           "act_number": "Act No. 31 of 2016",
           "official_source": "https://www.indiacode.nic.in/handle/123456789/2154",
           "assent_date": "2016-05-28",
-          "amended_by": ["IND-AMEND-IBC-2018", "IND-AMEND-IBC-2019", "IND-AMEND-IBC-2020"],
-          "key_sections": ["7", "9", "14", "29A", "31", "32A", "53"]
+          "amended_by": [
+            "IND-AMEND-IBC-2018",
+            "IND-AMEND-IBC-2019",
+            "IND-AMEND-IBC-2020"
+          ],
+          "key_sections": [
+            "7",
+            "9",
+            "14",
+            "29A",
+            "31",
+            "32A",
+            "53"
+          ]
         }
       ]
     },
@@ -140,8 +232,17 @@
           "act_number": "Act No. 9 of 1872",
           "official_source": "https://www.indiacode.nic.in/handle/123456789/2187",
           "commencement_date": "1872-09-01",
-          "amended_by": ["IND-AMEND-CONTRACT-1997"],
-          "key_sections": ["10", "23", "27", "28", "73", "74"]
+          "amended_by": [
+            "IND-AMEND-CONTRACT-1997"
+          ],
+          "key_sections": [
+            "10",
+            "23",
+            "27",
+            "28",
+            "73",
+            "74"
+          ]
         },
         {
           "instrument_id": "IND-STAT-TPA-1882",
@@ -149,8 +250,18 @@
           "act_number": "Act No. 4 of 1882",
           "official_source": "https://www.indiacode.nic.in/handle/123456789/2338",
           "commencement_date": "1882-07-01",
-          "amended_by": ["IND-AMEND-TPA-1929", "IND-AMEND-TPA-2001"],
-          "key_sections": ["5", "52", "53A", "54", "58", "105"]
+          "amended_by": [
+            "IND-AMEND-TPA-1929",
+            "IND-AMEND-TPA-2001"
+          ],
+          "key_sections": [
+            "5",
+            "52",
+            "53A",
+            "54",
+            "58",
+            "105"
+          ]
         }
       ]
     },
@@ -166,8 +277,17 @@
           "act_number": "Act No. 5 of 1908",
           "official_source": "https://www.indiacode.nic.in/handle/123456789/2191",
           "commencement_date": "1909-01-01",
-          "amended_by": ["IND-STAT-COMM-COURTS-2015"],
-          "key_sections": ["9", "10", "11", "100", "Order VIII Rule 1", "Order XXXIX"]
+          "amended_by": [
+            "IND-STAT-COMM-COURTS-2015"
+          ],
+          "key_sections": [
+            "9",
+            "10",
+            "11",
+            "100",
+            "Order VIII Rule 1",
+            "Order XXXIX"
+          ]
         },
         {
           "instrument_id": "IND-STAT-MVA-1988",
@@ -175,8 +295,191 @@
           "act_number": "Act No. 59 of 1988",
           "official_source": "https://www.indiacode.nic.in/handle/123456789/1798",
           "commencement_date": "1989-07-01",
-          "amended_by": ["IND-AMEND-MVA-2019"],
-          "key_sections": ["146", "147", "149", "163A", "164", "166"]
+          "amended_by": [
+            "IND-AMEND-MVA-2019"
+          ],
+          "key_sections": [
+            "146",
+            "147",
+            "149",
+            "163A",
+            "164",
+            "166"
+          ]
+        }
+      ]
+    },
+    {
+      "batch_id": "BATCH-07-INTELLECTUAL-PROPERTY",
+      "domain": "Intellectual Property Law (Copyright, Patents & Trade Marks)",
+      "priority_tier": "CRITICAL",
+      "rationale": "High-value commercial & technological jurisprudence: Copyright 2012 amendments (moral rights, fair dealing, inalienable royalties), Patents 2005 amendments (product patents, Section 3(d) therapeutic efficacy, compulsory licensing), and Trade Marks Act 1999 (deceptive similarity, Madrid Protocol).",
+      "instruments": [
+        {
+          "instrument_id": "IND-STAT-COPYRIGHT-1957",
+          "title": "Copyright Act, 1957",
+          "act_number": "Act No. 14 of 1957",
+          "official_source": "https://www.indiacode.nic.in/handle/123456789/1367",
+          "commencement_date": "1958-01-21",
+          "amended_by": [
+            "IND-AMEND-COPYRIGHT-2012"
+          ],
+          "key_sections": [
+            "13",
+            "14",
+            "17",
+            "18",
+            "19",
+            "31D",
+            "51",
+            "52",
+            "57",
+            "65A"
+          ]
+        },
+        {
+          "instrument_id": "IND-STAT-PATENTS-1970",
+          "title": "Patents Act, 1970",
+          "act_number": "Act No. 39 of 1970",
+          "official_source": "https://www.indiacode.nic.in/handle/123456789/1392",
+          "commencement_date": "1972-04-20",
+          "amended_by": [
+            "IND-AMEND-PATENTS-1999",
+            "IND-AMEND-PATENTS-2002",
+            "IND-AMEND-PATENTS-2005"
+          ],
+          "key_sections": [
+            "2(1)(j)",
+            "3(d)",
+            "3(k)",
+            "5",
+            "25",
+            "48",
+            "84",
+            "92A"
+          ]
+        },
+        {
+          "instrument_id": "IND-STAT-TRADEMARKS-1999",
+          "title": "Trade Marks Act, 1999",
+          "act_number": "Act No. 47 of 1999",
+          "official_source": "https://www.indiacode.nic.in/handle/123456789/1993",
+          "commencement_date": "2003-09-15",
+          "amended_by": [
+            "IND-AMEND-TRADEMARKS-2010"
+          ],
+          "key_sections": [
+            "9",
+            "11",
+            "28",
+            "29",
+            "134",
+            "135"
+          ],
+          "replaces_instrument_id": "IND-STAT-TMMA-1958"
+        }
+      ]
+    },
+    {
+      "batch_id": "BATCH-08-LABOUR-AND-INDUSTRIAL-RELATIONS",
+      "domain": "Labour Welfare, Industrial Relations & Codification",
+      "priority_tier": "CRITICAL",
+      "rationale": "Complex statutory transitional coexistence: Four enacted New Labour Codes (Wages 2019, IR 2020, Social Security 2020, OSH 2020) where general commencement and repeal clauses remain unnotified, preserving precursor Acts (IDA 1947, Factories Act 1948, EPF Act 1952) in active legal force.",
+      "instruments": [
+        {
+          "instrument_id": "IND-STAT-IDA-1947",
+          "title": "Industrial Disputes Act, 1947",
+          "act_number": "Act No. 14 of 1947",
+          "official_source": "https://www.indiacode.nic.in/handle/123456789/15192",
+          "commencement_date": "1947-04-01",
+          "status": "OPERATIVE_PREDECESSOR",
+          "key_sections": [
+            "2(j)",
+            "2(k)",
+            "2(oo)",
+            "10",
+            "25F",
+            "25N",
+            "25O",
+            "33"
+          ]
+        },
+        {
+          "instrument_id": "IND-STAT-FACTORIES-1948",
+          "title": "Factories Act, 1948",
+          "act_number": "Act No. 63 of 1948",
+          "official_source": "https://www.indiacode.nic.in/handle/123456789/1530",
+          "commencement_date": "1949-04-01",
+          "status": "OPERATIVE_PREDECESSOR",
+          "key_sections": [
+            "2(m)",
+            "21",
+            "51",
+            "54",
+            "59",
+            "67",
+            "79"
+          ]
+        },
+        {
+          "instrument_id": "IND-STAT-WAGES-2019",
+          "title": "Code on Wages, 2019",
+          "act_number": "Act No. 29 of 2019",
+          "official_source": "https://www.indiacode.nic.in/handle/123456789/15599",
+          "assent_date": "2019-08-08",
+          "status": "PARTIALLY_COMMENCED",
+          "commenced_sections": [
+            "142"
+          ],
+          "uncommenced_sections": [
+            "6-14 (Minimum Wages)",
+            "69 (Repeals)"
+          ],
+          "replaces_instrument_id": "IND-STAT-MIN-WAGES-1948"
+        },
+        {
+          "instrument_id": "IND-STAT-IRCODE-2020",
+          "title": "Industrial Relations Code, 2020",
+          "act_number": "Act No. 35 of 2020",
+          "official_source": "https://www.indiacode.nic.in/handle/123456789/15743",
+          "assent_date": "2020-09-28",
+          "status": "ENACTED_UNCOMMENCED",
+          "commenced_sections": [],
+          "uncommenced_sections": [
+            "All Substantive Sections",
+            "104 (Repeal of IDA 1947)"
+          ],
+          "replaces_instrument_id": "IND-STAT-IDA-1947"
+        },
+        {
+          "instrument_id": "IND-STAT-SSCODE-2020",
+          "title": "Code on Social Security, 2020",
+          "act_number": "Act No. 36 of 2020",
+          "official_source": "https://www.indiacode.nic.in/handle/123456789/15744",
+          "assent_date": "2020-09-28",
+          "status": "PARTIALLY_COMMENCED",
+          "commenced_sections": [
+            "142 (Aadhaar Identification)"
+          ],
+          "uncommenced_sections": [
+            "All Substantive Welfare Sections",
+            "164 (Repeals)"
+          ],
+          "replaces_instrument_id": "IND-STAT-EPF-1952"
+        },
+        {
+          "instrument_id": "IND-STAT-OSHCODE-2020",
+          "title": "Occupational Safety, Health and Working Conditions Code, 2020",
+          "act_number": "Act No. 37 of 2020",
+          "official_source": "https://www.indiacode.nic.in/handle/123456789/15745",
+          "assent_date": "2020-09-28",
+          "status": "ENACTED_UNCOMMENCED",
+          "commenced_sections": [],
+          "uncommenced_sections": [
+            "All Substantive Sections",
+            "143 (Repeals)"
+          ],
+          "replaces_instrument_id": "IND-STAT-FACTORIES-1948"
         }
       ]
     }

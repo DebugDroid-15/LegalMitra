@@ -52,6 +52,7 @@ class RelationType(str, Enum):
     RECONSIDERS = "reconsiders"                  # Case -> Case
     DECLINES_TO_FOLLOW = "declines_to_follow"    # Case -> Case
     RELIES_ON = "relies_on"                      # Case -> Case
+    INVALIDATES = "invalidates"
     CONSIDERS_CONSTITUTIONALITY = "considers_constitutionality"  # Case -> Section
     DECIDED_BY = "decided_by"                    # Case -> Court
     HEARD_BY = "heard_by"                        # Case -> Judge
@@ -355,6 +356,44 @@ def build_national_judicial_knowledge_graph() -> LegalKnowledgeGraph:
         "E-OVERRULE-VIDYA-HIMANGNI", "CASE-VIDYA-DROLIA", "CASE-HIMANGNI", RelationType.OVERRULES,
         properties={"is_partial": False, "scope": "Non-arbitrability of landlord-tenant disputes governed by Transfer of Property Act"}
     ))
+
+
+    # --- PHASE 47 INTELLECTUAL PROPERTY & LABOUR NODES ---
+    # Section Nodes
+    graph.add_node(GraphNode("SEC-PAT-3D", EntityType.SECTION, "Section 3(d) Patents Act 1970", "Patents Act s.3(d)"))
+    graph.add_node(GraphNode("SEC-PAT-84", EntityType.SECTION, "Section 84 Patents Act 1970", "Patents Act s.84"))
+    graph.add_node(GraphNode("SEC-COP-13", EntityType.SECTION, "Section 13 Copyright Act 1957", "Copyright Act s.13"))
+    graph.add_node(GraphNode("SEC-COP-51", EntityType.SECTION, "Section 51 Copyright Act 1957", "Copyright Act s.51"))
+    graph.add_node(GraphNode("SEC-COP-52", EntityType.SECTION, "Section 52 Copyright Act 1957", "Copyright Act s.52"))
+    graph.add_node(GraphNode("SEC-TM-11", EntityType.SECTION, "Section 11 Trade Marks Act 1999", "Trade Marks Act s.11"))
+    graph.add_node(GraphNode("SEC-IDA-2J", EntityType.SECTION, "Section 2(j) Industrial Disputes Act 1947", "IDA s.2(j)"))
+    graph.add_node(GraphNode("SEC-IDA-25F", EntityType.SECTION, "Section 25F Industrial Disputes Act 1947", "IDA s.25F"))
+    graph.add_node(GraphNode("SEC-IDA-25O", EntityType.SECTION, "Section 25-O Industrial Disputes Act 1947", "IDA s.25-O"))
+    graph.add_node(GraphNode("SEC-IBC-32A", EntityType.SECTION, "Section 32A Insolvency & Bankruptcy Code 2016", "IBC s.32A"))
+
+    # Landmark Case Nodes
+    graph.add_node(GraphNode("CASE-NOVARTIS-2013", EntityType.CASE, "Novartis AG v. Union of India", "(2013) 6 SCC 1"))
+    graph.add_node(GraphNode("CASE-BAYER-NATCO-2014", EntityType.CASE, "Bayer Corporation v. Union of India", "2014 SCC OnLine Bom 563", "IN-MH"))
+    graph.add_node(GraphNode("CASE-EBC-MODAK-2008", EntityType.CASE, "Eastern Book Company v. D.B. Modak", "(2008) 1 SCC 1"))
+    graph.add_node(GraphNode("CASE-RG-ANAND-1978", EntityType.CASE, "R.G. Anand v. Delux Films", "(1978) 4 SCC 118"))
+    graph.add_node(GraphNode("CASE-RAMESHWARI-2016", EntityType.CASE, "Oxford University v. Rameshwari Photocopy Service", "2016 SCC OnLine Del 6229", "IN-DL"))
+    graph.add_node(GraphNode("CASE-CADILA-2001", EntityType.CASE, "Cadila Health Care v. Cadila Pharmaceuticals", "(2001) 5 SCC 73"))
+    graph.add_node(GraphNode("CASE-BANGALORE-WATER-1978", EntityType.CASE, "Bangalore Water Supply v. A. Rajappa", "(1978) 2 SCC 213"))
+    graph.add_node(GraphNode("CASE-EXCEL-WEAR-1978", EntityType.CASE, "Excel Wear v. Union of India", "(1978) 4 SCC 224"))
+    graph.add_node(GraphNode("CASE-AMEX-1985", EntityType.CASE, "Workmen of American Express v. Management", "(1985) 4 SCC 71"))
+    graph.add_node(GraphNode("CASE-MANISH-KUMAR-2021", EntityType.CASE, "Manish Kumar v. Union of India", "(2021) 5 SCC 1"))
+
+    # Phase 47 Precedent Interpretation / Application Edges
+    graph.add_edge(GraphEdge("E-INT-NOVARTIS-3D", "CASE-NOVARTIS-2013", "SEC-PAT-3D", RelationType.INTERPRETS, properties={"holding": "Therapeutic efficacy requirement for polymorphs under Section 3(d)"}))
+    graph.add_edge(GraphEdge("E-APP-BAYER-84", "CASE-BAYER-NATCO-2014", "SEC-PAT-84", RelationType.APPLIES, properties={"holding": "Compulsory licensing for unaffordable cancer drug Nexavar"}))
+    graph.add_edge(GraphEdge("E-INT-EBC-13", "CASE-EBC-MODAK-2008", "SEC-COP-13", RelationType.INTERPRETS, properties={"holding": "Modicum of creativity standard for copyright originality"}))
+    graph.add_edge(GraphEdge("E-INT-RGANAND-51", "CASE-RG-ANAND-1978", "SEC-COP-51", RelationType.INTERPRETS, properties={"holding": "Idea-expression dichotomy and substantial similarity"}))
+    graph.add_edge(GraphEdge("E-INT-RAMESHWARI-52", "CASE-RAMESHWARI-2016", "SEC-COP-52", RelationType.INTERPRETS, properties={"holding": "Educational course pack fair dealing under Section 52(1)(i)"}))
+    graph.add_edge(GraphEdge("E-INT-CADILA-11", "CASE-CADILA-2001", "SEC-TM-11", RelationType.INTERPRETS, properties={"holding": "Strict deceptive similarity standard for medicinal products"}))
+    graph.add_edge(GraphEdge("E-INT-BANGALORE-2J", "CASE-BANGALORE-WATER-1978", "SEC-IDA-2J", RelationType.INTERPRETS, properties={"holding": "Triple test for industry under Section 2(j)"}))
+    graph.add_edge(GraphEdge("E-INVAL-EXCEL-25O", "CASE-EXCEL-WEAR-1978", "SEC-IDA-25O", RelationType.INVALIDATES, properties={"holding": "Section 25-O closure permission struck down under Article 19(1)(g)"}))
+    graph.add_edge(GraphEdge("E-APP-AMEX-25F", "CASE-AMEX-1985", "SEC-IDA-25F", RelationType.APPLIES, properties={"holding": "Continuous service of 240 days includes Sundays and paid holidays"}))
+    graph.add_edge(GraphEdge("E-APP-MANISH-32A", "CASE-MANISH-KUMAR-2021", "SEC-IBC-32A", RelationType.APPLIES, properties={"holding": "Upholds Section 32A clean-slate immunity for corporate debtor"}))
 
     return graph
 

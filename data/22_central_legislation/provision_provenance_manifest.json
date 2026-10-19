@@ -9,7 +9,10 @@
       "section_number": "10",
       "hierarchy": "Section",
       "version_number": 1,
-      "validity_interval": ["1964-03-01", "2018-10-01"],
+      "validity_interval": [
+        "1964-03-01",
+        "2018-10-01"
+      ],
       "has_proviso": true,
       "has_explanation": true,
       "has_illustration": false,
@@ -22,7 +25,10 @@
       "section_number": "10",
       "hierarchy": "Section",
       "version_number": 2,
-      "validity_interval": ["2018-10-01", null],
+      "validity_interval": [
+        "2018-10-01",
+        null
+      ],
       "has_proviso": false,
       "has_explanation": false,
       "has_illustration": false,
@@ -35,7 +41,10 @@
       "section_number": "20A",
       "hierarchy": "Section",
       "version_number": 1,
-      "validity_interval": ["2018-10-01", null],
+      "validity_interval": [
+        "2018-10-01",
+        null
+      ],
       "has_proviso": false,
       "has_explanation": true,
       "has_illustration": false,
@@ -48,7 +57,10 @@
       "section_number": "34",
       "hierarchy": "Section",
       "version_number": 1,
-      "validity_interval": ["1996-08-22", "2015-10-23"],
+      "validity_interval": [
+        "1996-08-22",
+        "2015-10-23"
+      ],
       "has_proviso": false,
       "has_explanation": true,
       "has_illustration": false,
@@ -61,7 +73,10 @@
       "section_number": "34",
       "hierarchy": "Section",
       "version_number": 2,
-      "validity_interval": ["2015-10-23", null],
+      "validity_interval": [
+        "2015-10-23",
+        null
+      ],
       "has_proviso": true,
       "has_explanation": true,
       "has_illustration": false,
@@ -74,7 +89,10 @@
       "section_number": "29A",
       "hierarchy": "Section",
       "version_number": 1,
-      "validity_interval": ["2015-10-23", null],
+      "validity_interval": [
+        "2015-10-23",
+        null
+      ],
       "has_proviso": true,
       "has_explanation": true,
       "has_illustration": false,
@@ -87,7 +105,10 @@
       "section_number": "43A",
       "hierarchy": "Section",
       "version_number": 1,
-      "validity_interval": ["2009-10-27", null],
+      "validity_interval": [
+        "2009-10-27",
+        null
+      ],
       "has_proviso": false,
       "has_explanation": true,
       "has_illustration": false,
@@ -100,7 +121,10 @@
       "section_number": "531",
       "hierarchy": "Section",
       "version_number": 1,
-      "validity_interval": ["2024-07-01", null],
+      "validity_interval": [
+        "2024-07-01",
+        null
+      ],
       "has_proviso": true,
       "has_explanation": false,
       "has_illustration": false,
@@ -113,7 +137,10 @@
       "section_number": "358",
       "hierarchy": "Section",
       "version_number": 1,
-      "validity_interval": ["2024-07-01", null],
+      "validity_interval": [
+        "2024-07-01",
+        null
+      ],
       "has_proviso": true,
       "has_explanation": false,
       "has_illustration": false,
@@ -126,7 +153,10 @@
       "section_number": "63",
       "hierarchy": "Section",
       "version_number": 1,
-      "validity_interval": ["2024-07-01", null],
+      "validity_interval": [
+        "2024-07-01",
+        null
+      ],
       "has_proviso": false,
       "has_explanation": true,
       "has_illustration": false,
@@ -139,7 +169,10 @@
       "section_number": "65B",
       "hierarchy": "Section",
       "version_number": 1,
-      "validity_interval": ["2000-10-17", "2024-07-01"],
+      "validity_interval": [
+        "2000-10-17",
+        "2024-07-01"
+      ],
       "has_proviso": false,
       "has_explanation": true,
       "has_illustration": false,
@@ -152,7 +185,10 @@
       "section_number": "330A",
       "hierarchy": "Article",
       "version_number": 1,
-      "validity_interval": ["2023-09-28", null],
+      "validity_interval": [
+        "2023-09-28",
+        null
+      ],
       "has_proviso": false,
       "has_explanation": true,
       "has_illustration": false,
@@ -165,7 +201,10 @@
       "section_number": "135",
       "hierarchy": "Section",
       "version_number": 1,
-      "validity_interval": ["2014-04-01", "2021-01-22"],
+      "validity_interval": [
+        "2014-04-01",
+        "2021-01-22"
+      ],
       "has_proviso": true,
       "has_explanation": true,
       "has_illustration": false,
@@ -178,7 +217,10 @@
       "section_number": "135",
       "hierarchy": "Section",
       "version_number": 2,
-      "validity_interval": ["2021-01-22", null],
+      "validity_interval": [
+        "2021-01-22",
+        null
+      ],
       "has_proviso": true,
       "has_explanation": true,
       "has_illustration": false,
@@ -191,7 +233,10 @@
       "section_number": "149",
       "hierarchy": "Section",
       "version_number": 1,
-      "validity_interval": ["2014-04-01", null],
+      "validity_interval": [
+        "2014-04-01",
+        null
+      ],
       "has_proviso": true,
       "has_explanation": true,
       "has_illustration": false,
@@ -204,7 +249,10 @@
       "section_number": "7",
       "hierarchy": "Section",
       "version_number": 1,
-      "validity_interval": ["2016-12-01", null],
+      "validity_interval": [
+        "2016-12-01",
+        null
+      ],
       "has_proviso": true,
       "has_explanation": true,
       "has_illustration": false,
@@ -217,7 +265,10 @@
       "section_number": "14",
       "hierarchy": "Section",
       "version_number": 1,
-      "validity_interval": ["2016-12-01", null],
+      "validity_interval": [
+        "2016-12-01",
+        null
+      ],
       "has_proviso": true,
       "has_explanation": true,
       "has_illustration": false,
@@ -230,7 +281,10 @@
       "section_number": "29A",
       "hierarchy": "Section",
       "version_number": 1,
-      "validity_interval": ["2017-11-23", null],
+      "validity_interval": [
+        "2017-11-23",
+        null
+      ],
       "has_proviso": true,
       "has_explanation": true,
       "has_illustration": false,
@@ -243,7 +297,10 @@
       "section_number": "32A",
       "hierarchy": "Section",
       "version_number": 1,
-      "validity_interval": ["2019-12-28", null],
+      "validity_interval": [
+        "2019-12-28",
+        null
+      ],
       "has_proviso": true,
       "has_explanation": true,
       "has_illustration": false,
@@ -256,7 +313,10 @@
       "section_number": "28",
       "hierarchy": "Section",
       "version_number": 1,
-      "validity_interval": ["1872-09-01", "1997-01-08"],
+      "validity_interval": [
+        "1872-09-01",
+        "1997-01-08"
+      ],
       "has_proviso": true,
       "has_explanation": false,
       "has_illustration": false,
@@ -269,7 +329,10 @@
       "section_number": "28",
       "hierarchy": "Section",
       "version_number": 2,
-      "validity_interval": ["1997-01-08", null],
+      "validity_interval": [
+        "1997-01-08",
+        null
+      ],
       "has_proviso": true,
       "has_explanation": true,
       "has_illustration": false,
@@ -282,7 +345,10 @@
       "section_number": "74",
       "hierarchy": "Section",
       "version_number": 1,
-      "validity_interval": ["1899-05-01", null],
+      "validity_interval": [
+        "1899-05-01",
+        null
+      ],
       "has_proviso": false,
       "has_explanation": true,
       "has_illustration": true,
@@ -295,7 +361,10 @@
       "section_number": "52",
       "hierarchy": "Section",
       "version_number": 1,
-      "validity_interval": ["1929-04-01", null],
+      "validity_interval": [
+        "1929-04-01",
+        null
+      ],
       "has_proviso": false,
       "has_explanation": true,
       "has_illustration": false,
@@ -308,7 +377,10 @@
       "section_number": "53A",
       "hierarchy": "Section",
       "version_number": 1,
-      "validity_interval": ["1929-04-01", "2001-09-24"],
+      "validity_interval": [
+        "1929-04-01",
+        "2001-09-24"
+      ],
       "has_proviso": true,
       "has_explanation": false,
       "has_illustration": false,
@@ -321,7 +393,10 @@
       "section_number": "53A",
       "hierarchy": "Section",
       "version_number": 2,
-      "validity_interval": ["2001-09-24", null],
+      "validity_interval": [
+        "2001-09-24",
+        null
+      ],
       "has_proviso": true,
       "has_explanation": false,
       "has_illustration": false,
@@ -334,7 +409,10 @@
       "section_number": "Order VIII Rule 1",
       "hierarchy": "Order/Rule",
       "version_number": 1,
-      "validity_interval": ["2002-07-01", null],
+      "validity_interval": [
+        "2002-07-01",
+        null
+      ],
       "has_proviso": true,
       "has_explanation": false,
       "has_illustration": false,
@@ -347,7 +425,10 @@
       "section_number": "Order VIII Rule 1 (Commercial)",
       "hierarchy": "Order/Rule",
       "version_number": 2,
-      "validity_interval": ["2015-10-23", null],
+      "validity_interval": [
+        "2015-10-23",
+        null
+      ],
       "has_proviso": true,
       "has_explanation": false,
       "has_illustration": false,
@@ -360,7 +441,10 @@
       "section_number": "163A",
       "hierarchy": "Section",
       "version_number": 1,
-      "validity_interval": ["1994-11-14", "2022-04-01"],
+      "validity_interval": [
+        "1994-11-14",
+        "2022-04-01"
+      ],
       "has_proviso": false,
       "has_explanation": true,
       "has_illustration": false,
@@ -373,12 +457,271 @@
       "section_number": "164",
       "hierarchy": "Section",
       "version_number": 1,
-      "validity_interval": ["2022-04-01", null],
+      "validity_interval": [
+        "2022-04-01",
+        null
+      ],
       "has_proviso": true,
       "has_explanation": false,
       "has_illustration": false,
       "language": "English",
       "source_reference": "Motor Vehicles (Amendment) Act, 2019 (Act 32 of 2019) Section 51 commenced via S.O. 859(E)"
+    },
+    {
+      "provision_id": "COP-1957-SEC-13-V1",
+      "statute_id": "IND-STAT-COPYRIGHT-1957",
+      "section_number": "13",
+      "provision_title": "Works in which copyright subsists",
+      "validity_interval": [
+        "1958-01-21",
+        null
+      ],
+      "text_excerpt": "13. Works in which copyright subsists.—(1) Subject to the provisions of this section and the other provisions of this Act, copyright shall subsist throughout India in the following classes of works, that is to say,— (a) original literary, dramatic, musical and artistic works; (b) cinematograph films; and (c) sound recordings.",
+      "verification_status": "AUTHENTICITY_VERIFIED",
+      "cross_references": [
+        "PROV-COP-14",
+        "PROV-COP-51"
+      ]
+    },
+    {
+      "provision_id": "COP-1957-SEC-52-V1",
+      "statute_id": "IND-STAT-COPYRIGHT-1957",
+      "section_number": "52",
+      "provision_title": "Certain acts not to be infringement of copyright (Pre-2012 Version)",
+      "validity_interval": [
+        "1958-01-21",
+        "2012-06-21"
+      ],
+      "text_excerpt": "52. Certain acts not to be infringement of copyright.—(1) The following acts shall not constitute an infringement of copyright, namely:— (a) a fair dealing with a literary, dramatic, musical or artistic work for the purpose of— (i) private use, including research; (ii) criticism or review, whether of that work or of any other work...",
+      "verification_status": "AUTHENTICITY_VERIFIED",
+      "cross_references": [
+        "PROV-COP-51"
+      ]
+    },
+    {
+      "provision_id": "COP-1957-SEC-52-V2",
+      "statute_id": "IND-STAT-COPYRIGHT-1957",
+      "section_number": "52",
+      "provision_title": "Certain acts not to be infringement of copyright (Post-2012 Version)",
+      "validity_interval": [
+        "2012-06-21",
+        null
+      ],
+      "text_excerpt": "52. Certain acts not to be infringement of copyright.—(1) The following acts shall not constitute an infringement of copyright, namely,— (a) a fair dealing with any work, not being a computer programme, for the purposes of— (i) private or personal use, including research; (ii) criticism or review... (i) the reproduction of any work by a teacher or a pupil in the course of instruction... (zb) the adaptation, reproduction, issue of copies or communication to the public of any work in any accessible format, by any person to facilitate a person with disability...",
+      "verification_status": "AUTHENTICITY_VERIFIED",
+      "cross_references": [
+        "PROV-COP-51",
+        "IND-AMEND-COPYRIGHT-2012"
+      ]
+    },
+    {
+      "provision_id": "COP-1957-SEC-57-V1",
+      "statute_id": "IND-STAT-COPYRIGHT-1957",
+      "section_number": "57",
+      "provision_title": "Author's special rights / Moral Rights (Pre-2012 Version)",
+      "validity_interval": [
+        "1958-01-21",
+        "2012-06-21"
+      ],
+      "text_excerpt": "57. Author's special rights.—(1) Independently of the author's copyright, and even after the assignment either wholly or partially of the said copyright, the author of a work shall have the right— (a) to claim authorship of the work; and (b) to restrain, or claim damages in respect of, any distortion, mutilation, modification or other act in relation to the said work which is done before the expiration of the term of copyright if such distortion, mutilation, modification or other act would be prejudicial to his honour or reputation.",
+      "verification_status": "AUTHENTICITY_VERIFIED",
+      "cross_references": []
+    },
+    {
+      "provision_id": "COP-1957-SEC-57-V2",
+      "statute_id": "IND-STAT-COPYRIGHT-1957",
+      "section_number": "57",
+      "provision_title": "Author's special rights / Moral Rights (Post-2012 Version - Perpetual)",
+      "validity_interval": [
+        "2012-06-21",
+        null
+      ],
+      "text_excerpt": "57. Author's special rights.—(1) Independently of the author's copyright and even after the assignment either wholly or partially of the said copyright, the author of a work shall have the right— (a) to claim authorship of the work; and (b) to restrain or claim damages in respect of any distortion, mutilation, modification or other act in relation to the said work if such distortion, mutilation, modification or other act would be prejudicial to his honour or reputation. (2) The right conferred upon an author of a work by sub-section (1) may be exercised by the legal representatives of the author.",
+      "verification_status": "AUTHENTICITY_VERIFIED",
+      "cross_references": [
+        "IND-AMEND-COPYRIGHT-2012"
+      ]
+    },
+    {
+      "provision_id": "PAT-1970-SEC-3D-V1",
+      "statute_id": "IND-STAT-PATENTS-1970",
+      "section_number": "3(d)",
+      "provision_title": "What are not inventions (Pre-2005 Version)",
+      "validity_interval": [
+        "1972-04-20",
+        "2005-01-01"
+      ],
+      "text_excerpt": "3. What are not inventions.—The following are not inventions within the meaning of this Act,— (d) the mere discovery of any new property or new use for a known substance or of the mere use of a known process, machine or apparatus unless such known process results in a new product or employs at least one new reactant.",
+      "verification_status": "AUTHENTICITY_VERIFIED",
+      "cross_references": []
+    },
+    {
+      "provision_id": "PAT-1970-SEC-3D-V2",
+      "statute_id": "IND-STAT-PATENTS-1970",
+      "section_number": "3(d)",
+      "provision_title": "What are not inventions - Therapeutic Efficacy (Post-2005 Version)",
+      "validity_interval": [
+        "2005-01-01",
+        null
+      ],
+      "text_excerpt": "3. What are not inventions.—The following are not inventions within the meaning of this Act,— (d) the mere discovery of a new form of a known substance which does not result in the enhancement of the known efficacy of that substance or the mere discovery of any new property or new use for a known substance or of the mere use of a known process, machine or apparatus unless such known process results in a new product or employs at least one new reactant. Explanation.—For the purposes of this clause, salts, esters, ethers, polymorphs, metabolites, pure form, particle size, isomers, mixtures of isomers, complexes, combinations and other derivatives of known substance shall be considered to be the same substance, unless they differ significantly in properties with regard to efficacy.",
+      "verification_status": "AUTHENTICITY_VERIFIED",
+      "cross_references": [
+        "IND-AMEND-PATENTS-2005"
+      ]
+    },
+    {
+      "provision_id": "PAT-1970-SEC-84-V1",
+      "statute_id": "IND-STAT-PATENTS-1970",
+      "section_number": "84",
+      "provision_title": "Compulsory licences",
+      "validity_interval": [
+        "2003-05-20",
+        null
+      ],
+      "text_excerpt": "84. Compulsory licences.—(1) At any time after the expiration of three years from the date of the grant of a patent, any person interested may make an application to the Controller for grant of compulsory licence on patent on any of the following grounds, namely:— (a) that the reasonable requirements of the public with respect to the patented invention have not been satisfied, or (b) that the patented invention is not available to the public at a reasonably affordable price, or (c) that the patented invention is not worked in the territory of India.",
+      "verification_status": "AUTHENTICITY_VERIFIED",
+      "cross_references": [
+        "PROV-PAT-92A"
+      ]
+    },
+    {
+      "provision_id": "TM-1999-SEC-9-V1",
+      "statute_id": "IND-STAT-TRADEMARKS-1999",
+      "section_number": "9",
+      "provision_title": "Absolute grounds for refusal of registration",
+      "validity_interval": [
+        "2003-09-15",
+        null
+      ],
+      "text_excerpt": "9. Absolute grounds for refusal of registration.—(1) The trade marks— (a) which are devoid of any distinctive character, that is to say, not capable of distinguishing the goods or services of one person from those of another person; (b) which consist exclusively of marks or indications which may serve in trade to designate the kind, quality, quantity, intended purpose, values, geographical origin or the time of production... shall not be registered.",
+      "verification_status": "AUTHENTICITY_VERIFIED",
+      "cross_references": [
+        "PROV-TM-11"
+      ]
+    },
+    {
+      "provision_id": "TM-1999-SEC-11-V1",
+      "statute_id": "IND-STAT-TRADEMARKS-1999",
+      "section_number": "11",
+      "provision_title": "Relative grounds for refusal of registration",
+      "validity_interval": [
+        "2003-09-15",
+        null
+      ],
+      "text_excerpt": "11. Relative grounds for refusal of registration.—(1) Save as provided in section 12, a trade mark shall not be registered if, because of— (a) its identity with an earlier trade mark and similarity of goods or services covered by the trade mark; or (b) its similarity to an earlier trade mark and the identity or similarity of the goods or services covered by the trade mark, there exists a likelihood of confusion on the part of the public, which includes the likelihood of association with the earlier trade mark.",
+      "verification_status": "AUTHENTICITY_VERIFIED",
+      "cross_references": [
+        "PROV-TM-29"
+      ]
+    },
+    {
+      "provision_id": "TM-1999-SEC-29-V1",
+      "statute_id": "IND-STAT-TRADEMARKS-1999",
+      "section_number": "29",
+      "provision_title": "Infringement of registered trade marks",
+      "validity_interval": [
+        "2003-09-15",
+        null
+      ],
+      "text_excerpt": "29. Infringement of registered trade marks.—(1) A registered trade mark is infringed by a person who, not being a registered proprietor or a person using by way of permitted use, uses in the course of trade, a mark which is identical with, or deceptively similar to, the trade mark in relation to goods or services in respect of which the trade mark is registered...",
+      "verification_status": "AUTHENTICITY_VERIFIED",
+      "cross_references": [
+        "PROV-TM-11",
+        "PROV-TM-134"
+      ]
+    },
+    {
+      "provision_id": "IDA-1947-SEC-2J-V1",
+      "statute_id": "IND-STAT-IDA-1947",
+      "section_number": "2(j)",
+      "provision_title": "Definition of 'industry'",
+      "validity_interval": [
+        "1947-04-01",
+        null
+      ],
+      "text_excerpt": "2(j) 'industry' means any business, trade, undertaking, manufacture or calling of employers and includes any calling, service, employment, handicraft, or industrial occupation or avocation of workmen;",
+      "verification_status": "AUTHENTICITY_VERIFIED",
+      "cross_references": []
+    },
+    {
+      "provision_id": "IDA-1947-SEC-25F-V1",
+      "statute_id": "IND-STAT-IDA-1947",
+      "section_number": "25F",
+      "provision_title": "Conditions precedent to retrenchment of workmen",
+      "validity_interval": [
+        "1953-10-24",
+        null
+      ],
+      "text_excerpt": "25F. Conditions precedent to retrenchment of workmen.—No workman employed in any industry who has been in continuous service for not less than one year under an employer shall be retrenched by that employer until— (a) the workman has been given one month's notice in writing indicating the reasons for retrenchment and the period of notice has expired, or the workman has been paid in lieu of such notice, wages for the period of the notice; (b) the workman has been paid, at the time of retrenchment, compensation which shall be equivalent to fifteen days' average pay for every completed year of continuous service or any part thereof in excess of six months; and (c) notice in the prescribed manner is served on the appropriate Government...",
+      "verification_status": "AUTHENTICITY_VERIFIED",
+      "cross_references": [
+        "PROV-IDA-25B",
+        "PROV-IDA-25N"
+      ]
+    },
+    {
+      "provision_id": "IDA-1947-SEC-25O-V1",
+      "statute_id": "IND-STAT-IDA-1947",
+      "section_number": "25-O",
+      "provision_title": "Procedure for closing down an undertaking (Pre-1984 / Struck Down Version)",
+      "validity_interval": [
+        "1976-03-05",
+        "1978-09-29"
+      ],
+      "text_excerpt": "25-O. Procedure for closing down an undertaking.—(1) An employer who intends to close down an undertaking of an industrial establishment to which this Chapter applies shall... apply, for prior permission at least ninety days before the date on which the intended closure is to become effective... [Invalidated by Supreme Court in Excel Wear v. Union of India on 29.09.1978]",
+      "verification_status": "AUTHENTICITY_VERIFIED",
+      "cross_references": [
+        "CASE-EXCEL-WEAR-1978"
+      ]
+    },
+    {
+      "provision_id": "IDA-1947-SEC-25O-V2",
+      "statute_id": "IND-STAT-IDA-1947",
+      "section_number": "25-O",
+      "provision_title": "Procedure for closing down an undertaking (Post-1984 Substituted Version)",
+      "validity_interval": [
+        "1984-08-18",
+        null
+      ],
+      "text_excerpt": "25-O. Procedure for closing down an undertaking.—(1) An employer who intends to close down an undertaking of an industrial establishment to which this Chapter applies shall, in the prescribed manner, apply, for prior permission at least ninety days before the date on which the intended closure is to become effective, to the appropriate Government... (2) Where an application for permission has been made... the appropriate Government, after making such inquiry as it thinks fit and after giving a reasonable opportunity of being heard... may, having regard to the genuineness and adequacy of the reasons stated by the employer... grant or refuse to grant such permission...",
+      "verification_status": "AUTHENTICITY_VERIFIED",
+      "cross_references": [
+        "IND-AMEND-IDA-1984"
+      ]
+    },
+    {
+      "provision_id": "FACT-1948-SEC-59-V1",
+      "statute_id": "IND-STAT-FACTORIES-1948",
+      "section_number": "59",
+      "provision_title": "Extra wages for overtime",
+      "validity_interval": [
+        "1949-04-01",
+        null
+      ],
+      "text_excerpt": "59. Extra wages for overtime.—(1) Where a worker works in a factory for more than nine hours in any day or for more than forty-eight hours in any week, he shall, in respect of overtime work, be entitled to wages at the rate of twice his ordinary rate of wages.",
+      "verification_status": "AUTHENTICITY_VERIFIED",
+      "cross_references": [
+        "PROV-FACT-51",
+        "PROV-FACT-54"
+      ]
+    },
+    {
+      "provision_id": "SSCODE-2020-SEC-142-V1",
+      "statute_id": "IND-STAT-SSCODE-2020",
+      "section_number": "142",
+      "provision_title": "Application of Aadhaar for identification of beneficiaries",
+      "validity_interval": [
+        "2021-05-03",
+        null
+      ],
+      "text_excerpt": "142. Application of Aadhaar.—(1) An employee or an unorganised worker or any other person, as the case may be, for— (a) registration as member or beneficiary; or (b) seeking benefit, whether in kind or cash including medical sickness benefit, pension, maternity benefit or gratuity... shall establish his identity or, as the case may be, the identity of his family members through Aadhaar number.",
+      "verification_status": "AUTHENTICITY_VERIFIED",
+      "cross_references": [
+        "S.O. 1730(E)"
+      ]
     }
-  ]
+  ],
+  "total_records": 46,
+  "manifest_version": "LEGALMITRA-PROVISION-PROVENANCE-V3"
 }

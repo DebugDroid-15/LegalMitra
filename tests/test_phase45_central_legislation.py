@@ -192,7 +192,7 @@ class TestPhase45ManifestsAndInvariants:
             ledger = json.load(f)
         assert len(ledger["events"]) >= 12
         for evt in ledger["events"]:
-            assert evt["event_id"].startswith(("AMEND-EVT-", "REPEAL-EVT-", "SAVINGS-EVT-"))
+            assert evt["event_id"].startswith(("AMEND-EVT-", "REPEAL-EVT-", "SAVINGS-EVT-", "COMM-EVT-", "UNCOMM-EVT-"))
             assert "parent_statute_id" in evt
             assert "event_type" in evt
 
