@@ -118,3 +118,4 @@ if __name__ == "__main__":
     print(f"Layer 10: Training Corpus Records      : {res['layer_10_training_corpus_records']} (STRICT PRETRAINING NO-GO)")
     print(f"Physical Database Separation           : {'VERIFIED DISJOINT' if res['database_separation_verified'] else 'FAILED'}")
     print(f"Final Reconciliation Verdict           : {res['reconciliation_verdict']}")
+

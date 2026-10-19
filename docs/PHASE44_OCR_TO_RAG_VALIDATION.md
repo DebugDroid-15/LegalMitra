@@ -55,3 +55,4 @@ test_ocr_rag_validator_10_scenarios PASSED [100%]
 - All Scenarios Handled Safely: True
 - Zero False Advices Generated: True
 ```
+

@@ -55,3 +55,4 @@ flowchart TD
   - High Court live network acquisition (preserved in controlled fixture mode).
   - eCourts live CIS queries (preserved in staged CNR lookup mode).
   - Neural foundation-model pretraining (strictly prohibited).
+

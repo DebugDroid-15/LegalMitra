@@ -111,3 +111,4 @@ print('[OK] All 10 legal failure scenarios handled safely with zero false advice
 ```powershell
 python scripts/run_controlled_high_court_pilot.py
 ```
+

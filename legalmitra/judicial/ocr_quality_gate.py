@@ -246,3 +246,4 @@ class OCRQualityGate:
             provenance_details=provenance_details,
             heuristic_confidence=heuristic_confidence,
         )
+

@@ -388,3 +388,4 @@ class OCRRAGValidator:
         results.append(r10)
 
         return results
+

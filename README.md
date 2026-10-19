@@ -14520,7 +14520,7 @@ The following ledger records the official documentation metrics for all complete
 | **P41** | 2026-10-19 | 10,023 | 15,144 | +5,121 | Forensic audit, judicial infrastructure (Part XXVI), 19 institutions, 48 benchmark cases, 53 tests, 67 scripts, Phases 37-41 chronicles | PASS (100%) | `8334234` |
 | **P42** | 2026-10-19 | 15,144 | 15,823 | +679 | Authorized eCourts adapter, dual-mode CNR, 12-page scanned Hindi OCR bench (1.42% CER), controlled HC pilot, Part XXVII (11 subsections, Runbooks 10-13, Benchmark V4 56 cases, 14 reports) | PASS (100%) | 7833d99 |
 | **P43** | 2026-10-19 | 15,823 | 16,257 | +434 | Hindi legal OCR benchmark audit, full provenance schema, micro/macro CER & WER, tadbhav whitelist protection, Part XXVIII (12 subsections, Runbooks 14-18, 14 reports) | PASS (100%) | `b67b005` |
-| **P44** | 2026-10-19 | 16,257 | 16,558 | +301 | OCR-to-RAG dataflow, tadbhav stem protection, OCR quality gate, 10 failure scenarios, SSRF hardening, 10-layer reconciliation, Part XXIX (12 subsections, Runbooks 19-23, 14 reports) | PASS (100%) | HEAD |
+| **P44** | 2026-10-19 | 16,257 | 16,558 | +301 | OCR-to-RAG dataflow, tadbhav stem protection, OCR quality gate, 10 failure scenarios, SSRF hardening, 10-layer reconciliation, Part XXIX (12 subsections, Runbooks 19-23, 14 reports) | PASS (100%) | `a570e9d` |
 | **P45+** | *Future* | *Recorded at phase completion* | *Measured* | *Target ~5,000* | *Documenting actual phase deliverables across the 12 technical dimensions* | *Pending* | *Pending* |
 
 ```text
