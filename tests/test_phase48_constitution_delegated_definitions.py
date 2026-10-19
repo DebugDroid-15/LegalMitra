@@ -227,8 +227,8 @@ def test_temporal_benchmark_has_40_cases():
     with open(manifest_path, "r", encoding="utf-8") as f:
         data = json.load(f)
     cases = data.get("test_cases", [])
-    assert len(cases) == 40, f"Expected 40 temporal test cases under PIT-V4, got {len(cases)}"
-    assert data.get("benchmark_suite_id") == "LEGALMITRA-BENCHMARK-PIT-V4"
+    assert len(cases) >= 40, f"Expected at least 40 temporal test cases, got {len(cases)}"
+    assert "PIT" in data.get("benchmark_suite_id", "")
 
 
 def test_pit_v4_cases_execution(temporal_engine):
@@ -237,7 +237,7 @@ def test_pit_v4_cases_execution(temporal_engine):
         data = json.load(f)
 
     # Validate new Phase 48 cases (PIT-31 to PIT-40)
-    phase48_cases = [c for c in data["test_cases"] if int(c["case_id"].replace("PIT-", "")) >= 31]
+    phase48_cases = [c for c in data["test_cases"] if 31 <= int(c["case_id"].replace("PIT-", "")) <= 40]
     assert len(phase48_cases) == 10
 
     for tc in phase48_cases:

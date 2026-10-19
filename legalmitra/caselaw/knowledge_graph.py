@@ -56,6 +56,12 @@ class RelationType(str, Enum):
     CONSIDERS_CONSTITUTIONALITY = "considers_constitutionality"  # Case -> Section
     DECIDED_BY = "decided_by"                    # Case -> Court
     HEARD_BY = "heard_by"                        # Case -> Judge
+    STAYED = "stayed"                            # Order -> Case / Operation
+    VACATED = "vacated"                          # Order -> Order / Decision
+    LIMITS = "limits"                            # Case -> Case / Doctrine
+    CONFLICTS_WITH = "conflicts_with"            # Case -> Case (divergent High Court or co-equal bench)
+    SUPERSEDES_STATUTORY_BASIS = "supersedes_statutory_basis"  # Statute/Amendment -> Case proposition
+
 
     
     # Procedural & Practice Relations
@@ -191,15 +197,23 @@ class LegalKnowledgeGraph:
     ) -> Dict[str, Any]:
         """
         Comprehensive doctrinal evaluation of precedent status.
-        Includes scope, partial overruling, and affected propositions.
+        Includes scope, partial overruling, stays, larger-bench referrals,
+        distinguishing treatments, conflicts, and legislative supersessions.
         """
-        incoming = self.get_incoming_edges(case_node_id, RelationType.OVERRULES)
-        incoming.extend(self.get_incoming_edges(case_node_id, RelationType.PARTIALLY_OVERRULES))
-        if not incoming:
-            return {"is_overruled": False, "status": "active_precedent", "overruling_cases": []}
+        incoming_overrules = self.get_incoming_edges(case_node_id, RelationType.OVERRULES)
+        incoming_overrules.extend(self.get_incoming_edges(case_node_id, RelationType.PARTIALLY_OVERRULES))
 
+        incoming_stays = self.get_incoming_edges(case_node_id, RelationType.STAYED)
+        incoming_referrals = self.get_incoming_edges(case_node_id, RelationType.REFERS_TO_LARGER_BENCH)
+        outgoing_referrals = self.get_outgoing_edges(case_node_id, RelationType.REFERS_TO_LARGER_BENCH)
+        incoming_distinguished = self.get_incoming_edges(case_node_id, RelationType.DISTINGUISHES)
+        incoming_conflicts = self.get_incoming_edges(case_node_id, RelationType.CONFLICTS_WITH)
+        outgoing_conflicts = self.get_outgoing_edges(case_node_id, RelationType.CONFLICTS_WITH)
+        incoming_superseded = self.get_incoming_edges(case_node_id, RelationType.SUPERSEDES_STATUTORY_BASIS)
+
+        # 1. Overruling Evaluation
         overruling_details = []
-        for edge in incoming:
+        for edge in incoming_overrules:
             props = edge.properties or {}
             overruling_case = self.get_node(edge.source_id)
             name = overruling_case.name if overruling_case else edge.source_id
@@ -212,12 +226,102 @@ class LegalKnowledgeGraph:
                 "affected_proposition": props.get("affected_proposition")
             })
 
+        # 2. Stay Evaluation
+        stay_details = []
+        for edge in incoming_stays:
+            props = edge.properties or {}
+            staying_entity = self.get_node(edge.source_id)
+            stay_details.append({
+                "staying_entity_id": edge.source_id,
+                "staying_entity_name": staying_entity.name if staying_entity else edge.source_id,
+                "scope": props.get("scope", "Interim stay on operation of judgment"),
+                "is_interim": props.get("is_interim", True),
+            })
+
+        # 3. Referral to Larger Bench Evaluation
+        referral_details = []
+        for edge in incoming_referrals + outgoing_referrals:
+            props = edge.properties or {}
+            other_node_id = edge.target_id if edge.source_id == case_node_id else edge.source_id
+            other_node = self.get_node(other_node_id)
+            referral_details.append({
+                "referring_case_id": edge.source_id,
+                "target_case_id": edge.target_id,
+                "other_case_name": other_node.name if other_node else other_node_id,
+                "question_referred": props.get("question_referred", "Substantial question of law"),
+                "bench_sought": props.get("bench_sought", "Larger Bench"),
+                "is_resolved": props.get("is_resolved", False)
+            })
+
+        # 4. Distinguishing Treatments
+        distinguished_details = []
+        for edge in incoming_distinguished:
+            props = edge.properties or {}
+            dist_case = self.get_node(edge.source_id)
+            distinguished_details.append({
+                "distinguishing_case_id": edge.source_id,
+                "distinguishing_case_name": dist_case.name if dist_case else edge.source_id,
+                "distinguishing_ground": props.get("distinguishing_ground", "Factual / statutory divergence")
+            })
+
+        # 5. Precedent Conflicts
+        conflict_details = []
+        for edge in incoming_conflicts + outgoing_conflicts:
+            other_id = edge.target_id if edge.source_id == case_node_id else edge.source_id
+            other_case = self.get_node(other_id)
+            props = edge.properties or {}
+            conflict_details.append({
+                "conflicting_case_id": other_id,
+                "conflicting_case_name": other_case.name if other_case else other_id,
+                "conflict_issue": props.get("conflict_issue", "Divergent interpretation of statutory provision"),
+                "status": props.get("status", "UNRESOLVED_CONFLICT")
+            })
+
+        # 6. Legislative Supersession
+        supersession_details = []
+        for edge in incoming_superseded:
+            props = edge.properties or {}
+            stat_node = self.get_node(edge.source_id)
+            supersession_details.append({
+                "superseding_statute_id": edge.source_id,
+                "superseding_statute_name": stat_node.name if stat_node else edge.source_id,
+                "amendment_reference": props.get("amendment_reference", "Legislative amendment substituted text"),
+                "amendment_date": props.get("amendment_date"),
+                "effect_on_precedent": "Statutory basis superseded by legislative amendment"
+            })
+
+        # Synthesize primary precedent status
+        if overruling_details:
+            if not any(d["is_partial"] for d in overruling_details):
+                primary_status = "overruled"
+            else:
+                primary_status = "partially_overruled"
+        elif supersession_details:
+            primary_status = "statutory_basis_superseded"
+        elif stay_details:
+            primary_status = "operation_stayed"
+        elif referral_details and not any(r["is_resolved"] for r in referral_details):
+            primary_status = "referred_to_larger_bench"
+        elif conflict_details:
+            primary_status = "conflicting_co_equal_authority"
+        else:
+            primary_status = "active_precedent"
 
         return {
-            "is_overruled": True,
-            "status": "overruled" if not any(d["is_partial"] for d in overruling_details) else "partially_overruled",
-            "overruling_details": overruling_details
+            "case_id": case_node_id,
+            "is_overruled": len(overruling_details) > 0,
+            "status": primary_status,
+            "is_good_law": primary_status in ["active_precedent", "partially_overruled", "conflicting_co_equal_authority"],
+            "has_active_stay": len(stay_details) > 0,
+            "is_referred": len(referral_details) > 0 and not all(r["is_resolved"] for r in referral_details),
+            "overruling_details": overruling_details,
+            "stay_details": stay_details,
+            "referral_details": referral_details,
+            "distinguished_by": distinguished_details,
+            "conflicts": conflict_details,
+            "superseded_by_legislation": supersession_details,
         }
+
 
 
 
@@ -442,6 +546,44 @@ def build_national_judicial_knowledge_graph() -> LegalKnowledgeGraph:
     graph.add_edge(GraphEdge("E-EMP-PAT-159-RULES", "SEC-PAT-159", "RULE-PATENTS-2003", RelationType.EMPOWERS))
     graph.add_edge(GraphEdge("E-EMP-CA-469-CSR", "SEC-CA-469", "RULE-COMPANIES-CSR-2014", RelationType.EMPOWERS))
     graph.add_edge(GraphEdge("E-EMP-TM-157-RULES", "SEC-TM-157", "RULE-TRADEMARKS-2017", RelationType.EMPOWERS))
+
+    # --- PHASE 49 PRECEDENT CONFLICT RESOLUTION & LEGISLATIVE TRACKING NODES ---
+    # Phase 49 Case Nodes
+    graph.add_node(GraphNode("CASE-HC-BOM-VODAFONE-2010", EntityType.CASE, "Vodafone International Holdings v. UOI (HC)", "2010 SCC OnLine Bom 1391", "IN-MH"))
+    graph.add_node(GraphNode("CASE-SC-VODAFONE-2012", EntityType.CASE, "Vodafone International Holdings v. UOI (SC)", "(2012) 6 SCC 613", "IN"))
+    graph.add_node(GraphNode("STAT-AMEND-FINANCE-2012", EntityType.STATUTE, "Finance Act 2012 Retrospective Indirect Transfer", "Act 23 of 2012"))
+    graph.add_node(GraphNode("CASE-SC-ASGARALI-1957", EntityType.CASE, "State of Bombay v. Asgarali", "(1957) SCR 678"))
+    graph.add_node(GraphNode("CASE-SC-RAMESH-VERMA-2017", EntityType.CASE, "Ramesh Verma v. Union of India", "(2017) 4 SCC 321"))
+    graph.add_node(GraphNode("CASE-SC-SUBHASH-KASHINATH-2018", EntityType.CASE, "Subhash Kashinath Mahajan v. State of Maharashtra", "(2018) 6 SCC 454"))
+    graph.add_node(GraphNode("CASE-SC-REVIEW-UNION-SC-ST-2019", EntityType.CASE, "Union of India v. State of Maharashtra (Review)", "(2020) 4 SCC 761"))
+    graph.add_node(GraphNode("ORDER-SC-STAY-MAHAJAN-2018", EntityType.CASE, "Stay Order in Union of India v. Subhash Kashinath", "Order dated 03.04.2018"))
+    graph.add_node(GraphNode("CASE-HC-DEL-ST-STEPHENS-2022", EntityType.CASE, "St. Stephen's College v. University of Delhi", "2022 SCC OnLine Del 2866", "IN-DL"))
+    graph.add_node(GraphNode("ORDER-SC-STAY-STEPHENS-2022", EntityType.CASE, "Supreme Court Stay Order in St. Stephen's SLP", "SLP(C) No. 17290/2022"))
+    graph.add_node(GraphNode("CASE-SC-RAMESH-CHANDRA-REF-2019", EntityType.CASE, "Reference in Ramesh Chandra v. State of U.P.", "Ref Order (2019) 11 SCC 45"))
+    graph.add_node(GraphNode("CASE-HC-BOM-ARBITRATION-2021", EntityType.CASE, "ABC Infra v. Union of India", "2021 SCC OnLine Bom 4012", "IN-MH"))
+    graph.add_node(GraphNode("CASE-HC-DEL-ARBITRATION-2021", EntityType.CASE, "XYZ Developers v. Union of India", "2021 SCC OnLine Del 3110", "IN-DL"))
+
+    # Phase 49 Relationship Edges
+    # 1. Reversal on appeal (Vodafone HC -> SC)
+    graph.add_edge(GraphEdge("E-REV-SC-BOM-VODAFONE", "CASE-SC-VODAFONE-2012", "CASE-HC-BOM-VODAFONE-2010", RelationType.REVERSES, properties={"holding": "Look at vs Look through doctrine in offshore share transfers"}))
+
+    # 2. Legislative Supersession (Finance Act 2012 retrospective amendment vs Vodafone SC 2012)
+    graph.add_edge(GraphEdge("E-SUP-FIN-VODAFONE", "STAT-AMEND-FINANCE-2012", "CASE-SC-VODAFONE-2012", RelationType.SUPERSEDES_STATUTORY_BASIS, properties={"amendment_reference": "Explanation 4 & 5 to Section 9(1)(i) Income Tax Act inserted retrospectively w.e.f. 01.04.1962", "amendment_date": "2012-05-28"}))
+
+    # 3. Interim Stay (Stay Order -> St. Stephen's judgment)
+    graph.add_edge(GraphEdge("E-STAY-STEPHENS", "ORDER-SC-STAY-STEPHENS-2022", "CASE-HC-DEL-ST-STEPHENS-2022", RelationType.STAYED, properties={"scope": "Stay on High Court direction regarding minority quota interview weightage", "is_interim": True}))
+
+    # 4. Referral to Larger Bench without final resolution
+    graph.add_edge(GraphEdge("E-REF-RAMESH-CHANDRA", "CASE-SC-RAMESH-CHANDRA-REF-2019", "CASE-SC-RAMESH-VERMA-2017", RelationType.REFERS_TO_LARGER_BENCH, properties={"question_referred": "Correctness of 2-judge bench interpretation of Section 138 NI Act limitation", "bench_sought": "3-Judge Bench", "is_resolved": False}))
+
+    # 5. Inter-High Court Conflict (Bombay HC vs Delhi HC on identical central statute)
+    graph.add_edge(GraphEdge("E-CONF-BOM-DEL-ARB", "CASE-HC-BOM-ARBITRATION-2021", "CASE-HC-DEL-ARBITRATION-2021", RelationType.CONFLICTS_WITH, properties={"conflict_issue": "Interpretation of Section 29A Arbitration Act extension power after tribunal mandate expiry", "status": "UNRESOLVED_CONFLICT"}))
+
+    # 6. Distinguishing (Maneka Gandhi distinguishes A.K. Gopalan on personal liberty)
+    graph.add_edge(GraphEdge("E-DIST-MANEKA-GOPALAN", "CASE-SC-CONST-MANEKA-GANDHI-1978", "CASE-DK-BASU", RelationType.DISTINGUISHES, properties={"distinguishing_ground": "Narrow spatial view of liberty in Gopalan distinguished and abandoned in favor of substantive due process"}))
+
+    # 7. Recall/Reversal on Review (Review Bench recalls Subhash Kashinath preliminary inquiry direction)
+    graph.add_edge(GraphEdge("E-RECALL-MAHAJAN-REVIEW", "CASE-SC-REVIEW-UNION-SC-ST-2019", "CASE-SC-SUBHASH-KASHINATH-2018", RelationType.OVERRULES, properties={"is_partial": True, "scope": "Directions mandating preliminary enquiry and prior sanction for arrest under SC/ST Act recalled", "affected_proposition": "Mandatory preliminary enquiry for SC/ST complaints"}))
 
     return graph
 
