@@ -395,6 +395,54 @@ def build_national_judicial_knowledge_graph() -> LegalKnowledgeGraph:
     graph.add_edge(GraphEdge("E-APP-AMEX-25F", "CASE-AMEX-1985", "SEC-IDA-25F", RelationType.APPLIES, properties={"holding": "Continuous service of 240 days includes Sundays and paid holidays"}))
     graph.add_edge(GraphEdge("E-APP-MANISH-32A", "CASE-MANISH-KUMAR-2021", "SEC-IBC-32A", RelationType.APPLIES, properties={"holding": "Upholds Section 32A clean-slate immunity for corporate debtor"}))
 
+    # --- PHASE 48 CONSTITUTION BENCH JURISPRUDENCE & DELEGATED REGISTRY NODES ---
+    # Constitutional Articles
+    graph.add_node(GraphNode("ART-CONST-31B", EntityType.ARTICLE, "Article 31B Constitution of India", "Art. 31B"))
+    graph.add_node(GraphNode("ART-CONST-31C", EntityType.ARTICLE, "Article 31C Constitution of India", "Art. 31C"))
+    graph.add_node(GraphNode("ART-CONST-245", EntityType.ARTICLE, "Article 245 Constitution of India", "Art. 245"))
+    graph.add_node(GraphNode("ART-CONST-29", EntityType.ARTICLE, "Article 29 Constitution of India", "Art. 29"))
+    graph.add_node(GraphNode("ART-CONST-15", EntityType.ARTICLE, "Article 15 Constitution of India", "Art. 15"))
+    graph.add_node(GraphNode("ART-CONST-356", EntityType.ARTICLE, "Article 356 Constitution of India", "Art. 356"))
+
+    # Constitution Bench Landmark Cases
+    graph.add_node(GraphNode("CASE-SC-CONST-KESAVANANDA-1973", EntityType.CASE, "Kesavananda Bharati v. State of Kerala", "(1973) 4 SCC 225", properties={"bench_strength": 13, "majority_ratio": "7:6"}))
+    graph.add_node(GraphNode("CASE-SC-CONST-MINERVA-MILLS-1980", EntityType.CASE, "Minerva Mills Ltd. v. Union of India", "(1980) 3 SCC 625", properties={"bench_strength": 5, "majority_ratio": "4:1"}))
+    graph.add_node(GraphNode("CASE-SC-CONST-MANEKA-GANDHI-1978", EntityType.CASE, "Maneka Gandhi v. Union of India", "(1978) 1 SCC 248", properties={"bench_strength": 7, "majority_ratio": "7:0"}))
+    graph.add_node(GraphNode("CASE-SC-CONST-IR-COELHO-2007", EntityType.CASE, "I.R. Coelho v. State of Tamil Nadu", "(2007) 2 SCC 1", properties={"bench_strength": 9, "majority_ratio": "9:0"}))
+    graph.add_node(GraphNode("CASE-SC-CONST-PUTTASWAMY-2017", EntityType.CASE, "Justice K.S. Puttaswamy (Retd.) v. Union of India", "(2017) 10 SCC 1", properties={"bench_strength": 9, "majority_ratio": "9:0"}))
+    graph.add_node(GraphNode("CASE-SC-CONST-BOMMAI-1994", EntityType.CASE, "S.R. Bommai v. Union of India", "(1994) 3 SCC 1", properties={"bench_strength": 9, "majority_ratio": "9:0"}))
+    graph.add_node(GraphNode("CASE-SC-CONST-DELHI-LAWS-1951", EntityType.CASE, "In re: The Delhi Laws Act, 1912", "AIR 1951 SC 332", properties={"bench_strength": 7, "majority_ratio": "7:0"}))
+    graph.add_node(GraphNode("CASE-SC-CONST-CHAMPAKAM-1951", EntityType.CASE, "State of Madras v. Champakam Dorairajan", "AIR 1951 SC 226", properties={"bench_strength": 7, "majority_ratio": "7:0"}))
+
+    # Phase 48 Constitution Bench Interpretation / Invalidation Edges
+    graph.add_edge(GraphEdge("E-INT-CONST-KESAV-368", "CASE-SC-CONST-KESAVANANDA-1973", "ART-CONST-368", RelationType.INTERPRETS, properties={"holding": "Basic Structure doctrine limits amending power"}))
+    graph.add_edge(GraphEdge("E-INVAL-MINERVA-368", "CASE-SC-CONST-MINERVA-MILLS-1980", "ART-CONST-368", RelationType.INVALIDATES, properties={"holding": "Clauses (4) and (5) of Article 368 struck down as unconstitutional"}))
+    graph.add_edge(GraphEdge("E-INT-CONST-MANEKA-21", "CASE-SC-CONST-MANEKA-GANDHI-1978", "ART-CONST-21", RelationType.INTERPRETS, properties={"holding": "Procedure established by law must be just, fair and reasonable"}))
+    graph.add_edge(GraphEdge("E-INT-COELHO-31B", "CASE-SC-CONST-IR-COELHO-2007", "ART-CONST-31B", RelationType.INTERPRETS, properties={"holding": "Ninth Schedule laws inserted post 24.04.1973 subject to Basic Structure review"}))
+    graph.add_edge(GraphEdge("E-INT-CONST-PUTTA-21", "CASE-SC-CONST-PUTTASWAMY-2017", "ART-CONST-21", RelationType.INTERPRETS, properties={"holding": "Fundamental right to privacy under Article 21"}))
+    graph.add_edge(GraphEdge("E-INT-BOMMAI-356", "CASE-SC-CONST-BOMMAI-1994", "ART-CONST-356", RelationType.INTERPRETS, properties={"holding": "Proclamation of President's Rule under Article 356 subject to judicial review"}))
+    graph.add_edge(GraphEdge("E-INT-DELHI-245", "CASE-SC-CONST-DELHI-LAWS-1951", "ART-CONST-245", RelationType.INTERPRETS, properties={"holding": "Essential legislative function cannot be delegated to executive"}))
+    graph.add_edge(GraphEdge("E-INVAL-CHAMPAKAM-29", "CASE-SC-CONST-CHAMPAKAM-1951", "ART-CONST-29", RelationType.INVALIDATES, properties={"holding": "Communal G.O. violated Article 29(2) and Article 15(1); prompted 1st Constitutional Amendment"}))
+
+    # Delegated Legislation Rule Nodes
+    graph.add_node(GraphNode("RULE-COPYRIGHT-2013", EntityType.DELEGATED_RULE, "Copyright Rules, 2013", "G.S.R. 172(E)"))
+    graph.add_node(GraphNode("RULE-PATENTS-2003", EntityType.DELEGATED_RULE, "Patents Rules, 2003", "S.O. 493(E)"))
+    graph.add_node(GraphNode("RULE-COMPANIES-CSR-2014", EntityType.DELEGATED_RULE, "Companies (Corporate Social Responsibility Policy) Rules, 2014", "G.S.R. 129(E)"))
+    graph.add_node(GraphNode("RULE-TRADEMARKS-2017", EntityType.DELEGATED_RULE, "Trade Marks Rules, 2017", "G.S.R. 199(E)"))
+
+    # Enabling / Empowering Sections
+    graph.add_node(GraphNode("SEC-COP-78", EntityType.SECTION, "Section 78 Copyright Act 1957", "Copyright Act s.78"))
+    graph.add_node(GraphNode("SEC-PAT-159", EntityType.SECTION, "Section 159 Patents Act 1970", "Patents Act s.159"))
+    graph.add_node(GraphNode("SEC-CA-135", EntityType.SECTION, "Section 135 Companies Act 2013", "Companies Act s.135"))
+    graph.add_node(GraphNode("SEC-CA-469", EntityType.SECTION, "Section 469 Companies Act 2013", "Companies Act s.469"))
+    graph.add_node(GraphNode("SEC-TM-157", EntityType.SECTION, "Section 157 Trade Marks Act 1999", "Trade Marks Act s.157"))
+
+    # Empowering Edges
+    graph.add_edge(GraphEdge("E-EMP-COP-78-RULES", "SEC-COP-78", "RULE-COPYRIGHT-2013", RelationType.EMPOWERS))
+    graph.add_edge(GraphEdge("E-EMP-PAT-159-RULES", "SEC-PAT-159", "RULE-PATENTS-2003", RelationType.EMPOWERS))
+    graph.add_edge(GraphEdge("E-EMP-CA-469-CSR", "SEC-CA-469", "RULE-COMPANIES-CSR-2014", RelationType.EMPOWERS))
+    graph.add_edge(GraphEdge("E-EMP-TM-157-RULES", "SEC-TM-157", "RULE-TRADEMARKS-2017", RelationType.EMPOWERS))
+
     return graph
 
 

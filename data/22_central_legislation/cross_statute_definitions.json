@@ -1,0 +1,315 @@
+{
+  "taxonomy_version": "LEGALMITRA-DEFINITION-TAXONOMY-V1",
+  "generated_at": "2026-10-19T15:20:00Z",
+  "standard": "LEGALMITRA-TAXONOMY-SPEC-V1",
+  "total_terms": 8,
+  "terms": [
+    {
+      "term_key": "workman_vs_worker_vs_employee",
+      "concept_name": "Industrial Employment & Labor Coverage",
+      "definitions": [
+        {
+          "term": "workman",
+          "statute_id": "IND-STAT-IDA-1947",
+          "statute_title": "Industrial Disputes Act, 1947",
+          "section": "Section 2(s)",
+          "temporal_validity": [
+            "1947-04-01",
+            null
+          ],
+          "verbatim_excerpt": "'workman' means any person (including an apprentice) employed in any industry to do any manual, unskilled, skilled, technical, operational, clerical or supervisory work for hire or reward... but does not include any person who is employed mainly in a managerial or administrative capacity, or who, being employed in a supervisory capacity, draws wages exceeding ten thousand rupees per mensem.",
+          "statutory_exclusions": [
+            "Armed forces personnel",
+            "Police / prison officers",
+            "Managerial / administrative employees",
+            "Supervisors earning > ₹10,000/month"
+          ],
+          "operational_status": "CURRENTLY_IN_FORCE"
+        },
+        {
+          "term": "worker",
+          "statute_id": "IND-STAT-FACTORIES-1948",
+          "statute_title": "Factories Act, 1948",
+          "section": "Section 2(l)",
+          "temporal_validity": [
+            "1949-04-01",
+            null
+          ],
+          "verbatim_excerpt": "'worker' means a person employed, directly or by or through any agency (including a contractor) with or without the knowledge of the principal employer, whether for remuneration or not, in any manufacturing process, or in cleaning any part of the machinery or premises used for a manufacturing process...",
+          "statutory_exclusions": [
+            "Any member of the armed forces of the Union"
+          ],
+          "operational_status": "CURRENTLY_IN_FORCE"
+        },
+        {
+          "term": "worker",
+          "statute_id": "IND-STAT-IRCODE-2020",
+          "statute_title": "Industrial Relations Code, 2020",
+          "section": "Section 2(zr)",
+          "temporal_validity": [
+            "UNCOMMENCED",
+            null
+          ],
+          "verbatim_excerpt": "'worker' means any person (except an apprentice) employed in any industry to do any manual, unskilled, skilled, technical, operational, clerical or supervisory work... and includes working journalists... and sales promotion employees... but does not include person employed mainly in managerial capacity or supervisory capacity drawing wages exceeding eighteen thousand rupees per month.",
+          "statutory_exclusions": [
+            "Armed forces",
+            "Police",
+            "Managerial",
+            "Supervisors earning > ₹18,000/month"
+          ],
+          "operational_status": "ENACTED_UNCOMMENCED"
+        },
+        {
+          "term": "employee",
+          "statute_id": "IND-STAT-WAGES-2019",
+          "statute_title": "Code on Wages, 2019",
+          "section": "Section 2(k)",
+          "temporal_validity": [
+            "UNCOMMENCED",
+            null
+          ],
+          "verbatim_excerpt": "'employee' means any person (other than an apprentice engaged under the Apprentices Act, 1961) employed on wages by an establishment to do any skilled, semi-skilled or unskilled, manual, operational, supervisory, managerial, administrative, technical or clerical work...",
+          "statutory_exclusions": [
+            "Apprentices under Apprentices Act, 1961",
+            "Armed forces"
+          ],
+          "operational_status": "ENACTED_UNCOMMENCED"
+        }
+      ],
+      "comparative_semantics": "SAME_TERM_DIFFERENT_MEANING_AND_OVERLAPPING_SCOPE",
+      "doctrinal_warning": "DO NOT SUBSTITUTE! 'Employee' in Code on Wages includes managerial personnel; 'workman' in IDA 1947 strictly excludes managerial personnel. 'Worker' under Factories Act requires connection to manufacturing process."
+    },
+    {
+      "term_key": "industry",
+      "concept_name": "Undertakings & Collective Bargaining Sphere",
+      "definitions": [
+        {
+          "term": "industry",
+          "statute_id": "IND-STAT-IDA-1947",
+          "statute_title": "Industrial Disputes Act, 1947",
+          "section": "Section 2(j)",
+          "temporal_validity": [
+            "1947-04-01",
+            null
+          ],
+          "verbatim_excerpt": "'industry' means any business, trade, undertaking, manufacture or calling of employers and includes any calling, service, employment, handicraft, or industrial occupation or avocation of workmen.",
+          "judicially_established_scope": "Triple test under Bangalore Water Supply (1978): (i) systematic activity, (ii) employer-employee cooperation, (iii) production/distribution of goods/services. Encompasses hospitals, universities, clubs.",
+          "operational_status": "CURRENTLY_IN_FORCE"
+        },
+        {
+          "term": "industry",
+          "statute_id": "IND-STAT-IRCODE-2020",
+          "statute_title": "Industrial Relations Code, 2020",
+          "section": "Section 2(p)",
+          "temporal_validity": [
+            "UNCOMMENCED",
+            null
+          ],
+          "verbatim_excerpt": "'industry' means any systematic activity carried on between an employer and worker... but does not include: (i) institutions owned by charitable organizations, (ii) activities pertaining to sovereign functions, (iii) domestic service...",
+          "statutory_exclusions": [
+            "Charitable institutions",
+            "Sovereign governmental functions",
+            "Domestic service"
+          ],
+          "operational_status": "ENACTED_UNCOMMENCED"
+        }
+      ],
+      "comparative_semantics": "RELATED_TERM_WITH_STATUTORY_EXCLUSIONS",
+      "doctrinal_warning": "IR Code Section 2(p) excludes charitable institutions and universities, narrowing Bangalore Water Supply doctrine; BUT IR Code is UNCOMMENCED, meaning Bangalore Water Supply triple test remains current law."
+    },
+    {
+      "term_key": "goods",
+      "concept_name": "Subject Matter of Sale, Tax & Trade",
+      "definitions": [
+        {
+          "term": "goods",
+          "statute_id": "IND-STAT-SOGA-1930",
+          "statute_title": "Sale of Goods Act, 1930",
+          "section": "Section 2(7)",
+          "temporal_validity": [
+            "1930-07-01",
+            null
+          ],
+          "verbatim_excerpt": "'goods' means every kind of moveable property other than actionable claims and money; and includes stock and shares, growing crops, grass, and things attached to or forming part of the land which are agreed to be severed before sale or under the contract of sale.",
+          "statutory_inclusions": [
+            "Stocks and shares",
+            "Growing crops",
+            "Severable fixtures"
+          ],
+          "statutory_exclusions": [
+            "Actionable claims",
+            "Money"
+          ],
+          "operational_status": "CURRENTLY_IN_FORCE"
+        },
+        {
+          "term": "goods",
+          "statute_id": "IND-STAT-CPA-2019",
+          "statute_title": "Consumer Protection Act, 2019",
+          "section": "Section 2(21)",
+          "temporal_validity": [
+            "2020-07-20",
+            null
+          ],
+          "verbatim_excerpt": "'goods' means goods, as defined in clause (7) of section 2 of the Sale of Goods Act, 1930 and includes food as defined in clause (j) of sub-section (1) of section 3 of the Food Safety and Standards Act, 2006.",
+          "operational_status": "CURRENTLY_IN_FORCE"
+        },
+        {
+          "term": "goods",
+          "statute_id": "IND-STAT-CGST-2017",
+          "statute_title": "Central Goods and Services Tax Act, 2017",
+          "section": "Section 2(52)",
+          "temporal_validity": [
+            "2017-07-01",
+            null
+          ],
+          "verbatim_excerpt": "'goods' means every kind of movable property other than money and securities but includes actionable claim, growing crops, grass and things attached to or forming part of the land which are agreed to be severed before supply or under a contract of supply.",
+          "statutory_exclusions": [
+            "Money",
+            "Securities (shares, debentures)"
+          ],
+          "statutory_inclusions": [
+            "Actionable claims (lottery, betting, gambling)"
+          ],
+          "operational_status": "CURRENTLY_IN_FORCE"
+        }
+      ],
+      "comparative_semantics": "INCORPORATED_BY_REFERENCE_AND_SAME_TERM_DIFFERENT_MEANING",
+      "doctrinal_warning": "CRITICAL DIVERGENCE: In Sale of Goods Act, 'shares' are goods and 'actionable claims' are NOT goods. In CGST Act, 'securities' (shares) are NOT goods and 'actionable claims' ARE goods!"
+    },
+    {
+      "term_key": "consumer",
+      "concept_name": "Beneficiaries of Consumer Protection",
+      "definitions": [
+        {
+          "term": "consumer",
+          "statute_id": "IND-STAT-CPA-1986",
+          "statute_title": "Consumer Protection Act, 1986",
+          "section": "Section 2(1)(d)",
+          "temporal_validity": [
+            "1987-04-15",
+            "2020-07-20"
+          ],
+          "verbatim_excerpt": "'consumer' means any person who buys any goods or hires/avails of any services for consideration... but does not include a person who obtains such goods for resale or for any commercial purpose.",
+          "operational_status": "REPEALED_WITH_SAVINGS"
+        },
+        {
+          "term": "consumer",
+          "statute_id": "IND-STAT-CPA-2019",
+          "statute_title": "Consumer Protection Act, 2019",
+          "section": "Section 2(7)",
+          "temporal_validity": [
+            "2020-07-20",
+            null
+          ],
+          "verbatim_excerpt": "'consumer' means any person who buys any goods or hires/avails of any service... and includes offline or online transactions through electronic means or by teleshopping or direct selling or multi-level marketing; but does not include a person who obtains goods for commercial purpose.",
+          "statutory_inclusions": [
+            "E-commerce",
+            "Teleshopping",
+            "Direct selling",
+            "Multi-level marketing"
+          ],
+          "operational_status": "CURRENTLY_IN_FORCE"
+        }
+      ],
+      "comparative_semantics": "AMENDED_HISTORICAL_WITH_EXPRESS_EXPANSION",
+      "doctrinal_warning": "CPA 2019 expressly resolves modern e-commerce jurisdictional ambiguity."
+    },
+    {
+      "term_key": "invention",
+      "concept_name": "Patentable Subject Matter",
+      "definitions": [
+        {
+          "term": "invention",
+          "statute_id": "IND-STAT-PATENTS-1970",
+          "statute_title": "Patents Act, 1970",
+          "section": "Section 2(1)(j)",
+          "temporal_validity": [
+            "2003-05-20",
+            null
+          ],
+          "verbatim_excerpt": "'invention' means a new product or process involving an inventive step and capable of industrial application.",
+          "filtering_provisions": [
+            "Section 3 (What are not inventions, esp. 3(d), 3(k))",
+            "Section 4 (Atomic energy)"
+          ],
+          "operational_status": "CURRENTLY_IN_FORCE"
+        }
+      ],
+      "comparative_semantics": "QUALIFIED_BY_NEGATIVE_STATUTORY_LIST",
+      "doctrinal_warning": "In Indian patent law, satisfying Section 2(1)(j) is insufficient; the subject matter must clear Section 3 exclusions (e.g. Section 3(d) therapeutic efficacy)."
+    },
+    {
+      "term_key": "electronic_record",
+      "concept_name": "Digital Evidence & Data",
+      "definitions": [
+        {
+          "term": "electronic record",
+          "statute_id": "IND-STAT-IT-2000",
+          "statute_title": "Information Technology Act, 2000",
+          "section": "Section 2(1)(t)",
+          "temporal_validity": [
+            "2000-10-17",
+            null
+          ],
+          "verbatim_excerpt": "'electronic record' means data, record or data generated, image or sound stored, received or sent in an electronic form or micro film or computer generated micro fiche.",
+          "operational_status": "CURRENTLY_IN_FORCE"
+        },
+        {
+          "term": "electronic record",
+          "statute_id": "IND-STAT-BSA-2023",
+          "statute_title": "Bharatiya Sakshya Adhiniyam, 2023",
+          "section": "Section 2(1)(d) & Section 63",
+          "temporal_validity": [
+            "2024-07-01",
+            null
+          ],
+          "verbatim_excerpt": "Adopts definition of 'electronic record' as assigned to it in clause (t) of sub-section (1) of section 2 of the Information Technology Act, 2000.",
+          "operational_status": "CURRENTLY_IN_FORCE"
+        }
+      ],
+      "comparative_semantics": "INCORPORATED_BY_REFERENCE",
+      "doctrinal_warning": "BSA 2023 directly incorporates IT Act definition for electronic evidence admissibility."
+    },
+    {
+      "term_key": "appropriate_government",
+      "concept_name": "Jurisdictional Allocation between Centre and States",
+      "definitions": [
+        {
+          "term": "appropriate Government",
+          "statute_id": "IND-STAT-IDA-1947",
+          "statute_title": "Industrial Disputes Act, 1947",
+          "section": "Section 2(a)",
+          "temporal_validity": [
+            "1947-04-01",
+            null
+          ],
+          "verbatim_excerpt": "Central Government in relation to any industrial dispute concerning major ports, railways, airlines, banking companies, insurance, mines, and listed Central PSUs; State Government in relation to any other industrial dispute.",
+          "operational_status": "CURRENTLY_IN_FORCE"
+        }
+      ],
+      "comparative_semantics": "STATUTORY_JURISDICTION_ALLOCATION",
+      "doctrinal_warning": "Governed by Constitution Bench ruling in Steel Authority of India Ltd. v. National Union Waterfront Workers (2001) 7 SCC 1."
+    },
+    {
+      "term_key": "company",
+      "concept_name": "Incorporated Body Corporate",
+      "definitions": [
+        {
+          "term": "company",
+          "statute_id": "IND-STAT-COMP-2013",
+          "statute_title": "Companies Act, 2013",
+          "section": "Section 2(20)",
+          "temporal_validity": [
+            "2013-09-12",
+            null
+          ],
+          "verbatim_excerpt": "'company' means a company incorporated under this Act or under any previous company law.",
+          "operational_status": "CURRENTLY_IN_FORCE"
+        }
+      ],
+      "comparative_semantics": "STATUTORY_CONTINUITY",
+      "doctrinal_warning": "Incorporates entities registered under Companies Act 1956 and earlier colonial company acts by reference."
+    }
+  ]
+}

@@ -1,0 +1,365 @@
+{
+  "manifest_version": "LEGALMITRA-CONSTITUTION-BENCH-V1",
+  "generated_at": "2026-10-19T15:15:00Z",
+  "standard": "LEGALMITRA-CONSTITUTIONAL-JURISPRUDENCE-SPEC-V1",
+  "total_cases": 8,
+  "cases": [
+    {
+      "case_id": "CASE-SC-CONST-KESAVANANDA-1973",
+      "case_title": "Kesavananda Bharati Sripadagalvaru and Others v. State of Kerala and Another",
+      "canonical_citation": "(1973) 4 SCC 225",
+      "neutral_citation": "1973 INSC 75",
+      "court": "Supreme Court of India",
+      "bench_type": "CONSTITUTION_BENCH",
+      "bench_strength": 13,
+      "bench_roster": [
+        "S.M. Sikri, C.J.",
+        "J.M. Shelat, J.",
+        "K.S. Hegde, J.",
+        "A.N. Grover, J.",
+        "A.N. Ray, J.",
+        "P.J. Reddy, J.",
+        "D.G. Palekar, J.",
+        "H.R. Khanna, J.",
+        "K.K. Mathew, J.",
+        "M.H. Beg, J.",
+        "S.N. Dwivedi, J.",
+        "A.K. Mukherjea, J.",
+        "Y.V. Chandrachud, J."
+      ],
+      "decision_date": "1973-04-24",
+      "outcome_breakdown": "7:6 Majority holding",
+      "target_constitutional_articles": [
+        "Article 368",
+        "Article 13(2)",
+        "Article 31C"
+      ],
+      "paragraph_anchors": "Paras 284-292 (Sikri C.J.), Paras 646-652 (Shelat & Grover JJ.), Paras 1184-1212 (Khanna J.)",
+      "holding_summary": "Parliament has wide power under Article 368 to amend any provision of the Constitution, including Fundamental Rights, but this power does not extend to altering or destroying the 'Basic Structure' or essential framework of the Constitution. The unreviewable conclusive declaration clause of Article 31C struck down as violative of judicial review.",
+      "doctrinal_relationships": [
+        {
+          "target": "Article 368",
+          "relation": "LIMITS",
+          "rationale": "Amending power constrained by Basic Structure doctrine"
+        },
+        {
+          "target": "Article 31C",
+          "relation": "INVALIDATES",
+          "rationale": "Second part of Article 31C barring judicial review struck down"
+        },
+        {
+          "target": "CASE-GOLAK-NATH-1967",
+          "relation": "OVERRULES",
+          "rationale": "Overruled Golak Nath's proposition that constitutional amendments are ordinary law under Art 13(2)"
+        }
+      ],
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "case_id": "CASE-SC-CONST-MINERVA-MILLS-1980",
+      "case_title": "Minerva Mills Ltd. and Others v. Union of India and Others",
+      "canonical_citation": "(1980) 3 SCC 625",
+      "neutral_citation": "1980 INSC 141",
+      "court": "Supreme Court of India",
+      "bench_type": "CONSTITUTION_BENCH",
+      "bench_strength": 5,
+      "bench_roster": [
+        "Y.V. Chandrachud, C.J.",
+        "P.N. Bhagwati, J.",
+        "A.C. Gupta, J.",
+        "N.L. Untwalia, J.",
+        "P.S. Kailasam, J."
+      ],
+      "decision_date": "1980-07-31",
+      "outcome_breakdown": "4:1 Majority (Bhagwati J. concurring in part, dissenting in part)",
+      "target_constitutional_articles": [
+        "Article 368(4)",
+        "Article 368(5)",
+        "Article 31C",
+        "Article 14",
+        "Article 19"
+      ],
+      "paragraph_anchors": "Paras 16-28, 56-60 (Chandrachud C.J. for Majority)",
+      "holding_summary": "Sections 4 and 55 of the Constitution (Forty-second Amendment) Act, 1976 held unconstitutional. Clauses (4) and (5) of Article 368 seeking to exclude judicial review and confer unlimited amending power violated the basic structure. The harmony and balance between Fundamental Rights (Part III) and Directive Principles (Part IV) is an essential feature of the Constitution.",
+      "doctrinal_relationships": [
+        {
+          "target": "Article 368(4)",
+          "relation": "INVALIDATES",
+          "rationale": "Exclusion of judicial review from amendments is unconstitutional"
+        },
+        {
+          "target": "Article 368(5)",
+          "relation": "INVALIDATES",
+          "rationale": "Conferment of absolute unlimited amending power violates basic structure"
+        },
+        {
+          "target": "Article 31C",
+          "relation": "LIMITS",
+          "rationale": "Subordination of Articles 14 and 19 to all Directive Principles struck down"
+        }
+      ],
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "case_id": "CASE-SC-CONST-MANEKA-GANDHI-1978",
+      "case_title": "Maneka Gandhi v. Union of India and Another",
+      "canonical_citation": "(1978) 1 SCC 248",
+      "neutral_citation": "1978 INSC 16",
+      "court": "Supreme Court of India",
+      "bench_type": "CONSTITUTION_BENCH",
+      "bench_strength": 7,
+      "bench_roster": [
+        "M.H. Beg, C.J.",
+        "Y.V. Chandrachud, J.",
+        "P.N. Bhagwati, J.",
+        "V.R. Krishna Iyer, J.",
+        "N.L. Untwalia, J.",
+        "S. Murtaza Fazal Ali, J.",
+        "P.S. Kailasam, J."
+      ],
+      "decision_date": "1978-01-25",
+      "outcome_breakdown": "Unanimous / 7 concurring opinions",
+      "target_constitutional_articles": [
+        "Article 21",
+        "Article 14",
+        "Article 19(1)(a)",
+        "Article 19(1)(g)"
+      ],
+      "paragraph_anchors": "Paras 54-62 (Bhagwati J.), Paras 112-118 (Krishna Iyer J.)",
+      "holding_summary": "The 'procedure established by law' under Article 21 cannot be arbitrary, fanciful, or oppressive; it must be just, fair, and reasonable, incorporating the principles of natural justice. The Golden Triangle doctrine established that Articles 14, 19, and 21 are not mutually exclusive water-tight compartments but form an interwoven tapestry of constitutional liberty.",
+      "doctrinal_relationships": [
+        {
+          "target": "Article 21",
+          "relation": "INTERPRETS",
+          "rationale": "Procedure depriving personal liberty must satisfy substantive fairness and natural justice"
+        },
+        {
+          "target": "CASE-AK-GOPALAN-1950",
+          "relation": "OVERRULES",
+          "rationale": "Overruled Gopalan's siloed compartmentalization of Fundamental Rights"
+        }
+      ],
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "case_id": "CASE-SC-CONST-IR-COELHO-2007",
+      "case_title": "I.R. Coelho (Dead) by LRs v. State of Tamil Nadu and Others",
+      "canonical_citation": "(2007) 2 SCC 1",
+      "neutral_citation": "2007 INSC 22",
+      "court": "Supreme Court of India",
+      "bench_type": "CONSTITUTION_BENCH",
+      "bench_strength": 9,
+      "bench_roster": [
+        "Y.K. Sabharwal, C.J.",
+        "Ashok Bhan, J.",
+        "Arijit Pasayat, J.",
+        "B.P. Singh, J.",
+        "S.H. Kapadia, J.",
+        "C.K. Thakker, J.",
+        "P.K. Balasubramanyan, J.",
+        "Altamas Kabir, J.",
+        "D.K. Jain, J."
+      ],
+      "decision_date": "2007-01-11",
+      "outcome_breakdown": "Unanimous 9:0 (Sabharwal C.J.)",
+      "target_constitutional_articles": [
+        "Article 31B",
+        "Ninth Schedule",
+        "Article 14",
+        "Article 19",
+        "Article 21",
+        "Article 32"
+      ],
+      "paragraph_anchors": "Paras 141-152",
+      "holding_summary": "Any law inserted into the Ninth Schedule by constitutional amendment on or after 24 April 1973 (the date of Kesavananda Bharati) does not enjoy blanket immunity from judicial review. If such a law violates the Fundamental Rights guaranteed under Articles 14, 19, or 21 and the violation touches the Basic Structure, it will be struck down.",
+      "doctrinal_relationships": [
+        {
+          "target": "Article 31B",
+          "relation": "LIMITS",
+          "rationale": "Blanket immunity curtailed post-24.04.1973; subject to basic structure review"
+        },
+        {
+          "target": "Article 32",
+          "relation": "UPHOLDS",
+          "rationale": "Judicial review is an unalterable basic feature"
+        }
+      ],
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "case_id": "CASE-SC-CONST-PUTTASWAMY-2017",
+      "case_title": "Justice K.S. Puttaswamy (Retd.) and Another v. Union of India and Others",
+      "canonical_citation": "(2017) 10 SCC 1",
+      "neutral_citation": "2017 INSC 754",
+      "court": "Supreme Court of India",
+      "bench_type": "CONSTITUTION_BENCH",
+      "bench_strength": 9,
+      "bench_roster": [
+        "J.S. Khehar, C.J.",
+        "J. Chelameswar, J.",
+        "S.A. Bobde, J.",
+        "R.K. Agrawal, J.",
+        "R.F. Nariman, J.",
+        "A.M. Sapre, J.",
+        "D.Y. Chandrachud, J.",
+        "S.K. Kaul, J.",
+        "S. Abdul Nazeer, J."
+      ],
+      "decision_date": "2017-08-24",
+      "outcome_breakdown": "Unanimous 9:0 on core holding (6 concurring opinions)",
+      "target_constitutional_articles": [
+        "Article 21",
+        "Part III",
+        "Article 14",
+        "Article 19"
+      ],
+      "paragraph_anchors": "Paras 297-326 (Chandrachud J.), Paras 379-382 (Nariman J.)",
+      "holding_summary": "The right to privacy is protected as an intrinsic part of the right to life and personal liberty under Article 21 and as a part of the freedoms guaranteed by Part III of the Constitution. Explicitly overruled M.P. Sharma (1954 - 8 judges) and ADM Jabalpur (1976 - 5 judges) to the extent they held privacy not protected. Enacted a 3-fold proportionality test for state infringement (legality, legitimate aim, proportionality).",
+      "doctrinal_relationships": [
+        {
+          "target": "Article 21",
+          "relation": "INTERPRETS",
+          "rationale": "Privacy recognized as fundamental right intrinsic to human dignity"
+        },
+        {
+          "target": "CASE-MP-SHARMA-1954",
+          "relation": "OVERRULES",
+          "rationale": "Overruled to the extent it denied constitutional right to privacy"
+        },
+        {
+          "target": "CASE-ADM-JABALPUR-1976",
+          "relation": "OVERRULES",
+          "rationale": "Formally overruled majority view on suspension of Art. 21 during Emergency"
+        }
+      ],
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "case_id": "CASE-SC-CONST-SR-BOMMAI-1994",
+      "case_title": "S.R. Bommai and Others v. Union of India and Others",
+      "canonical_citation": "(1994) 3 SCC 1",
+      "neutral_citation": "1994 INSC 173",
+      "court": "Supreme Court of India",
+      "bench_type": "CONSTITUTION_BENCH",
+      "bench_strength": 9,
+      "bench_roster": [
+        "A.M. Ahmadi, J.",
+        "J.S. Verma, J.",
+        "P.B. Sawant, J.",
+        "K. Ramaswamy, J.",
+        "S.C. Agrawal, J.",
+        "Yogeshwar Dayal, J.",
+        "B.P. Jeevan Reddy, J.",
+        "S. Ratnavel Pandian, J.",
+        "Kuldip Singh, J."
+      ],
+      "decision_date": "1994-03-11",
+      "outcome_breakdown": "9-judge bench (plurality / majority by Sawant, Kuldip Singh, Jeevan Reddy JJ.)",
+      "target_constitutional_articles": [
+        "Article 356",
+        "Article 74(2)",
+        "Article 355"
+      ],
+      "paragraph_anchors": "Paras 287-304 (Sawant J.), Paras 434-438 (Jeevan Reddy J.)",
+      "holding_summary": "A Presidential proclamation under Article 356 imposing President's Rule in a State is not immune from judicial review; it can be struck down if issued mala fide or on extraneous or irrelevant grounds. Secularism and federalism are basic features of the Constitution. The floor of the Legislative Assembly is the sole constitutional venue for testing the majority of a Ministry.",
+      "doctrinal_relationships": [
+        {
+          "target": "Article 356",
+          "relation": "LIMITS",
+          "rationale": "Subjected to judicial review; assembly cannot be dissolved until Parliament approves"
+        },
+        {
+          "target": "Article 74(2)",
+          "relation": "INTERPRETS",
+          "rationale": "Bar on inquiring into ministerial advice does not bar court from inspecting underlying material"
+        }
+      ],
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "case_id": "CASE-SC-CONST-DELHI-LAWS-1951",
+      "case_title": "In re: The Delhi Laws Act, 1912, the Ajmer-Merwara (Extension of Laws) Act, 1947 and the Part C States (Laws) Act, 1950",
+      "canonical_citation": "1951 SCR 747",
+      "neutral_citation": "AIR 1951 SC 332",
+      "court": "Supreme Court of India",
+      "bench_type": "CONSTITUTION_BENCH",
+      "bench_strength": 7,
+      "bench_roster": [
+        "H.J. Kania, C.J.",
+        "Saiyid Fazl Ali, J.",
+        "M. Patanjali Sastri, J.",
+        "M.C. Mahajan, J.",
+        "B.K. Mukherjea, J.",
+        "S.R. Das, J.",
+        "Vivian Bose, J."
+      ],
+      "decision_date": "1951-05-23",
+      "outcome_breakdown": "7 separate opinions (majority formulation)",
+      "target_constitutional_articles": [
+        "Article 245",
+        "Article 246",
+        "Seventh Schedule"
+      ],
+      "paragraph_anchors": "1951 SCR 747 at 787 (Fazl Ali J.), at 846 (Mukherjea J.)",
+      "holding_summary": "Foundational constitutional doctrine on limits of delegated legislation in India. The Legislature cannot abdicate its 'essential legislative function'—which consists of determining legislative policy and formulating it into a binding rule of conduct. Subordinate, ancillary, or conditional delegation is constitutionally valid, but empowering the executive to repeal or modify existing legislative policies is ultra vires.",
+      "doctrinal_relationships": [
+        {
+          "target": "Article 245",
+          "relation": "INTERPRETS",
+          "rationale": "Legislative power includes power to delegate non-essential functions"
+        },
+        {
+          "target": "Article 246",
+          "relation": "LIMITS",
+          "rationale": "Essential legislative function cannot be delegated to the executive"
+        }
+      ],
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "case_id": "CASE-SC-CONST-CHAMPAKAM-1951",
+      "case_title": "The State of Madras v. Srimathi Champakam Dorairajan and Another",
+      "canonical_citation": "1951 SCR 525",
+      "neutral_citation": "AIR 1951 SC 226",
+      "court": "Supreme Court of India",
+      "bench_type": "CONSTITUTION_BENCH",
+      "bench_strength": 7,
+      "bench_roster": [
+        "H.J. Kania, C.J.",
+        "Saiyid Fazl Ali, J.",
+        "M. Patanjali Sastri, J.",
+        "M.C. Mahajan, J.",
+        "B.K. Mukherjea, J.",
+        "S.R. Das, J.",
+        "Vivian Bose, J."
+      ],
+      "decision_date": "1951-04-09",
+      "outcome_breakdown": "Unanimous 7:0 (Judgment delivered by S.R. Das, J.)",
+      "target_constitutional_articles": [
+        "Article 15(1)",
+        "Article 29(2)",
+        "Article 46"
+      ],
+      "paragraph_anchors": "1951 SCR 525 at 531-533",
+      "holding_summary": "Communal G.O. of the Madras Government allocating seats in medical and engineering colleges on the basis of religion and caste was struck down as violating Article 29(2). Held that Directive Principles of State Policy (Part IV, including Art. 46) cannot override Fundamental Rights (Part III). Prompted Parliament to enact the Constitution (First Amendment) Act, 1951 inserting Article 15(4).",
+      "doctrinal_relationships": [
+        {
+          "target": "Article 29(2)",
+          "relation": "INTERPRETS",
+          "rationale": "State-maintained educational admissions cannot discriminate on ground of religion, race, or caste"
+        },
+        {
+          "target": "Article 46",
+          "relation": "LIMITS",
+          "rationale": "Directive principles must conform and remain subsidiary to Fundamental Rights"
+        },
+        {
+          "target": "IND-AMEND-CONST-01",
+          "relation": "PROMPTED_AMENDMENT",
+          "rationale": "Directly led to enactment of Article 15(4) via First Amendment"
+        }
+      ],
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    }
+  ]
+}

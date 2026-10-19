@@ -1,9 +1,9 @@
 {
-  "benchmark_suite_id": "LEGALMITRA-BENCHMARK-PIT-V3",
-  "version": "3.0.0",
-  "description": "Point-in-Time statutory and judicial retrieval benchmark covering 30 multi-era Indian legal scenarios across Criminal, Data, Commercial, Corporate, IBC, Contracts, Property, Civil Procedure, Transport, Intellectual Property, and Labour Jurisprudence.",
+  "benchmark_suite_id": "LEGALMITRA-BENCHMARK-PIT-V4",
+  "version": "4.0.0",
+  "description": "Point-in-Time statutory, constitutional, and delegated legislation benchmark covering 40 multi-era Indian legal scenarios across Constitutional, Criminal, Data, Commercial, Corporate, IBC, Contracts, Property, CPC, MVA, IP, Labour, Delegated Rules, and Cross-Statute Definition Jurisprudence.",
   "created_at": "2026-10-19T12:37:00Z",
-  "total_test_cases": 30,
+  "total_test_cases": 40,
   "test_cases": [
     {
       "case_id": "PIT-01",
@@ -610,6 +610,189 @@
       "expected_disentangled_rationale": "Inoperative and unconstitutional. The Supreme Court in Excel Wear v. Union of India struck down Section 25-O on 29.09.1978 as violative of Article 19(1)(g). Section 25-O remained invalid until reenacted by Parliament with Act 49 of 1984.",
       "expected_precedent_cites": [
         "Excel Wear v. Union of India (1978) 4 SCC 224"
+      ],
+      "temporal_validation_status": "VERIFIED_TEMPORAL_TRUTH"
+    },
+    {
+      "case_id": "PIT-31",
+      "domain": "Constitutional Bench (Basic Structure & Article 368)",
+      "query_description": "Parliament amends Article 368 to provide that no constitutional amendment shall be called in question in any court on any ground. Can this amendment be sustained in light of Supreme Court Constitution Bench jurisprudence?",
+      "query_temporal_anchor": "1981-05-10",
+      "target_statutes": [
+        "IND-CONST-1950"
+      ],
+      "expected_governing_regime": "Basic Structure Doctrine (Kesavananda / Minerva Mills)",
+      "expected_applicable_provisions": [
+        "Article 368(4)",
+        "Article 368(5)"
+      ],
+      "expected_disentangled_rationale": "Unsustainable and void. The 5-judge Constitution Bench in Minerva Mills v. Union of India (1980) struck down clauses (4) and (5) of Article 368 (inserted by 42nd Amendment) because conferring unlimited amending power and destroying judicial review violates the Basic Structure established in Kesavananda Bharati.",
+      "expected_precedent_cites": [
+        "Kesavananda Bharati v. State of Kerala (1973) 4 SCC 225",
+        "Minerva Mills Ltd. v. Union of India (1980) 3 SCC 625"
+      ],
+      "temporal_validation_status": "VERIFIED_TEMPORAL_TRUTH"
+    },
+    {
+      "case_id": "PIT-32",
+      "domain": "Constitutional Bench (Ninth Schedule & Basic Structure Review)",
+      "query_description": "A state land acquisition act was placed in the Ninth Schedule of the Constitution in 1995. The petitioner challenges it in 2008 for violating Articles 14 and 19. Does Ninth Schedule insertion confer absolute immunity from judicial review?",
+      "query_temporal_anchor": "2008-03-15",
+      "target_statutes": [
+        "IND-CONST-1950"
+      ],
+      "expected_governing_regime": "Ninth Schedule Post-1973 Review (I.R. Coelho)",
+      "expected_applicable_provisions": [
+        "Article 31B",
+        "Ninth Schedule"
+      ],
+      "expected_disentangled_rationale": "No absolute immunity. Under the unanimous 9-judge Constitution Bench ruling in I.R. Coelho v. State of Tamil Nadu (2007), laws inserted into the Ninth Schedule on or after 24 April 1973 are subject to judicial review if they damage the basic structure of the Constitution as reflected in Articles 14, 19, and 21.",
+      "expected_precedent_cites": [
+        "I.R. Coelho v. State of Tamil Nadu (2007) 2 SCC 1"
+      ],
+      "temporal_validation_status": "VERIFIED_TEMPORAL_TRUTH"
+    },
+    {
+      "case_id": "PIT-33",
+      "domain": "Constitutional Bench (Fundamental Right to Privacy)",
+      "query_description": "In 2018, a litigant challenges state biometric data collection as violating fundamental privacy under Article 21. Does the Indian Constitution recognize privacy as an independent fundamental right?",
+      "query_temporal_anchor": "2018-02-10",
+      "target_statutes": [
+        "IND-CONST-1950"
+      ],
+      "expected_governing_regime": "Post-Puttaswamy Privacy Doctrine",
+      "expected_applicable_provisions": [
+        "Article 21",
+        "Part III"
+      ],
+      "expected_disentangled_rationale": "Yes. A 9-judge Constitution Bench in Justice K.S. Puttaswamy v. Union of India (2017) unanimously held that privacy is a fundamental right emanating from Article 21 and the guarantees of freedom in Part III, expressly overruling M.P. Sharma (1954) and ADM Jabalpur (1976).",
+      "expected_precedent_cites": [
+        "Justice K.S. Puttaswamy (Retd.) v. Union of India (2017) 10 SCC 1"
+      ],
+      "temporal_validation_status": "VERIFIED_TEMPORAL_TRUTH"
+    },
+    {
+      "case_id": "PIT-34",
+      "domain": "Constitutional Bench (Delegated Legislation Limits)",
+      "query_description": "Parliament enacts a statute authorizing the Executive by notification to amend or repeal any existing law in a Union Territory. Is such delegation constitutionally valid?",
+      "query_temporal_anchor": "1960-04-12",
+      "target_statutes": [
+        "IND-CONST-1950"
+      ],
+      "expected_governing_regime": "Non-Delegation of Essential Legislative Functions Doctrine",
+      "expected_applicable_provisions": [
+        "Article 245",
+        "Article 246"
+      ],
+      "expected_disentangled_rationale": "Unconstitutional. Under the 7-judge Constitution Bench in In re: Delhi Laws Act (1951), the legislature cannot delegate its essential legislative function (declaring legislative policy). Empowering the executive to modify or repeal existing statutes exceeds permissible delegation.",
+      "expected_precedent_cites": [
+        "In re: Delhi Laws Act, 1912 1951 SCR 747"
+      ],
+      "temporal_validation_status": "VERIFIED_TEMPORAL_TRUTH"
+    },
+    {
+      "case_id": "PIT-35",
+      "domain": "Delegated Legislation (Parent Section & Copyright Rules)",
+      "query_description": "Under which specific statutory section of the Copyright Act, 1957 were the Copyright Rules, 2013 framed by the Central Government, and what was their effective commencement date?",
+      "query_temporal_anchor": "2015-08-14",
+      "target_statutes": [
+        "IND-STAT-COPYRIGHT-1957",
+        "IND-RULE-COPYRIGHT-2013"
+      ],
+      "expected_governing_regime": "Copyright Rules, 2013 read with Section 78",
+      "expected_applicable_provisions": [
+        "Section 78 Copyright Act 1957",
+        "Rule 1(2) Copyright Rules 2013"
+      ],
+      "expected_disentangled_rationale": "Framed under Section 78 of the Copyright Act, 1957 via G.S.R. 172(E) and commenced on 14 March 2013 (the date of publication in the Official Gazette), superseding the Copyright Rules, 1958.",
+      "expected_precedent_cites": [],
+      "temporal_validation_status": "VERIFIED_TEMPORAL_TRUTH"
+    },
+    {
+      "case_id": "PIT-36",
+      "domain": "Delegated Legislation (CSR Policy Rules Amendment 2021)",
+      "query_description": "In March 2022, a company with net worth of ₹600 crore fails to transfer unspent CSR funds to an ongoing project escrow account within 30 days of the end of the financial year. Which delegated rule governs this obligation?",
+      "query_temporal_anchor": "2022-03-31",
+      "target_statutes": [
+        "IND-STAT-COMP-2013",
+        "IND-RULE-COMP-CSR-2014"
+      ],
+      "expected_governing_regime": "Companies (CSR Policy) Rules 2014 as amended on 22.01.2021",
+      "expected_applicable_provisions": [
+        "Section 135(6) Companies Act",
+        "Rule 10 Companies (CSR Policy) Rules"
+      ],
+      "expected_disentangled_rationale": "Governed by Rule 10 of the Companies (CSR Policy) Rules, 2014 (inserted via G.S.R. 40(E) effective 22.01.2021) read with Section 135(6) of the Companies Act, 2013.",
+      "expected_precedent_cites": [],
+      "temporal_validation_status": "VERIFIED_TEMPORAL_TRUTH"
+    },
+    {
+      "case_id": "PIT-37",
+      "domain": "Cross-Statute Definition Taxonomy (Workman vs Employee)",
+      "query_description": "A branch manager of an engineering firm earning ₹85,000 per month is dismissed in 2023. Can the manager file an industrial dispute claiming to be a 'workman' under Section 2(s) of the Industrial Disputes Act, 1947?",
+      "query_temporal_anchor": "2023-07-15",
+      "target_statutes": [
+        "IND-STAT-IDA-1947"
+      ],
+      "expected_governing_regime": "Industrial Disputes Act, 1947 Section 2(s)",
+      "expected_applicable_provisions": [
+        "IDA-1947-SEC-2S"
+      ],
+      "expected_disentangled_rationale": "No. Section 2(s) of IDA 1947 explicitly excludes persons employed mainly in a managerial or administrative capacity. While such a person would qualify as an 'employee' under Section 2(k) of the Code on Wages 2019, that Code remains uncommenced, and the terms are not interchangeable.",
+      "expected_precedent_cites": [],
+      "temporal_validation_status": "VERIFIED_TEMPORAL_TRUTH"
+    },
+    {
+      "case_id": "PIT-38",
+      "domain": "Cross-Statute Definition Taxonomy (Goods: SOGA vs CGST)",
+      "query_description": "A company sells listed equity shares worth ₹50 lakh. The tax officer attempts to levy GST on the transaction, arguing that shares are 'goods' under Section 2(7) of the Sale of Goods Act, 1930. Is the levy tenable?",
+      "query_temporal_anchor": "2022-09-18",
+      "target_statutes": [
+        "IND-STAT-CGST-2017",
+        "IND-STAT-SOGA-1930"
+      ],
+      "expected_governing_regime": "Central Goods and Services Tax Act, 2017 Section 2(52)",
+      "expected_applicable_provisions": [
+        "Section 2(52) CGST Act",
+        "Section 2(7) Sale of Goods Act"
+      ],
+      "expected_disentangled_rationale": "Untenable. Although Section 2(7) of the Sale of Goods Act, 1930 includes stocks and shares within 'goods', Section 2(52) of the CGST Act, 2017 expressly defines 'goods' as moveable property OTHER THAN money and securities. Shares are securities and are strictly excluded from GST.",
+      "expected_precedent_cites": [],
+      "temporal_validation_status": "VERIFIED_TEMPORAL_TRUTH"
+    },
+    {
+      "case_id": "PIT-39",
+      "domain": "Adversarial Definition Equivalence (Worker under Uncommenced IR Code)",
+      "query_description": "In November 2024, an employer argues before a Labour Court that a supervisor drawing ₹15,000/month is not a 'worker' based on the definition in Section 2(zr) of the Industrial Relations Code, 2020. Must the court adopt this definition?",
+      "query_temporal_anchor": "2024-11-10",
+      "target_statutes": [
+        "IND-STAT-IDA-1947",
+        "IND-STAT-IRCODE-2020"
+      ],
+      "expected_governing_regime": "Industrial Disputes Act, 1947 Section 2(s) (In Force)",
+      "expected_applicable_provisions": [
+        "IDA-1947-SEC-2S"
+      ],
+      "expected_disentangled_rationale": "No. The court must reject the argument. The Industrial Relations Code, 2020 remains UNCOMMENCED under Section 1(3), and its Section 2(zr) definition has no legal force. The matter is governed strictly by Section 2(s) of IDA 1947.",
+      "expected_precedent_cites": [],
+      "temporal_validation_status": "VERIFIED_TEMPORAL_TRUTH"
+    },
+    {
+      "case_id": "PIT-40",
+      "domain": "Constitutional Bench (Article 356 & State Assembly Dissolution)",
+      "query_description": "The President issues a proclamation imposing President's Rule under Article 356 in a state and immediately dissolves the Legislative Assembly before Parliament approves the proclamation. Is the dissolution valid under Supreme Court Constitution Bench doctrine?",
+      "query_temporal_anchor": "1998-04-20",
+      "target_statutes": [
+        "IND-CONST-1950"
+      ],
+      "expected_governing_regime": "Article 356 Jurisprudence (S.R. Bommai)",
+      "expected_applicable_provisions": [
+        "Article 356(1)",
+        "Article 356(3)"
+      ],
+      "expected_disentangled_rationale": "Invalid. Under the 9-judge Constitution Bench in S.R. Bommai v. Union of India (1994), the President cannot dissolve the Legislative Assembly until both Houses of Parliament have approved the proclamation under Article 356(3). The assembly may only be kept under suspended animation.",
+      "expected_precedent_cites": [
+        "S.R. Bommai v. Union of India (1994) 3 SCC 1"
       ],
       "temporal_validation_status": "VERIFIED_TEMPORAL_TRUTH"
     }

@@ -217,7 +217,7 @@ class TestPhase47ManifestsAndInvariants:
 
         with open(DATA_DIR / "temporal_benchmark_manifest.json", "r", encoding="utf-8") as f:
             cases = json.load(f)["test_cases"]
-            assert len(cases) == 30
+            assert len(cases) >= 30
 
     def test_pit_v3_benchmark_cases(self):
         with open(DATA_DIR / "temporal_benchmark_manifest.json", "r", encoding="utf-8") as f:

@@ -1,0 +1,93 @@
+{
+  "manifest_version": "LEGALMITRA-DELEGATED-LEGISLATION-V1",
+  "generated_at": "2026-10-19T15:18:00Z",
+  "standard": "LEGALMITRA-DELEGATED-SPEC-V1",
+  "total_instruments": 4,
+  "instruments": [
+    {
+      "instrument_id": "IND-RULE-COPYRIGHT-2013",
+      "official_title": "The Copyright Rules, 2013",
+      "instrument_type": "CENTRAL_RULES",
+      "parent_statute_id": "IND-STAT-COPYRIGHT-1957",
+      "parent_statute_title": "The Copyright Act, 1957",
+      "enabling_provisions": [
+        "Section 78"
+      ],
+      "issuing_authority": "Ministry of Human Resource Development (now Ministry of Education / DPIIT)",
+      "gazette_notification_number": "G.S.R. 172(E)",
+      "publication_date": "2013-03-14",
+      "commencement_date": "2013-03-14",
+      "commencement_rule_ref": "Rule 1(2): 'They shall come into force on the date of their publication in the Official Gazette.'",
+      "replaces_instrument_id": "IND-RULE-COPYRIGHT-1958",
+      "status": "ACTIVE_IN_FORCE",
+      "subject_matter": "Procedures for Copyright Societies (Chapter XI), Statutory Licenses for Broadcasting (Chapter VIII / Rule 29-31), Registration of Copyright (Chapter XIII), and Appellate Board proceedings.",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "instrument_id": "IND-RULE-PATENTS-2003",
+      "official_title": "The Patents Rules, 2003",
+      "instrument_type": "CENTRAL_RULES",
+      "parent_statute_id": "IND-STAT-PATENTS-1970",
+      "parent_statute_title": "The Patents Act, 1970",
+      "enabling_provisions": [
+        "Section 159"
+      ],
+      "issuing_authority": "Ministry of Commerce and Industry (Department of Industrial Policy and Promotion / DPIIT)",
+      "gazette_notification_number": "S.O. 493(E)",
+      "publication_date": "2003-05-02",
+      "commencement_date": "2003-05-20",
+      "commencement_rule_ref": "Rule 1(2): 'They shall come into force on the 20th day of May, 2003.'",
+      "replaces_instrument_id": "IND-RULE-PATENTS-1972",
+      "status": "ACTIVE_IN_FORCE",
+      "subject_matter": "Patent application procedures, divisional applications, pre-grant opposition under Rule 55, post-grant opposition under Rules 55A-62, and compulsory licensing procedures under Chapter XIII.",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "instrument_id": "IND-RULE-COMP-CSR-2014",
+      "official_title": "The Companies (Corporate Social Responsibility Policy) Rules, 2014",
+      "instrument_type": "CENTRAL_RULES",
+      "parent_statute_id": "IND-STAT-COMP-2013",
+      "parent_statute_title": "The Companies Act, 2013",
+      "enabling_provisions": [
+        "Section 135",
+        "Section 469(1)",
+        "Section 469(2)"
+      ],
+      "issuing_authority": "Ministry of Corporate Affairs",
+      "gazette_notification_number": "G.S.R. 129(E)",
+      "publication_date": "2014-02-27",
+      "commencement_date": "2014-04-01",
+      "commencement_rule_ref": "Rule 1(2): 'They shall come into force on the 1st day of April, 2014.'",
+      "status": "ACTIVE_IN_FORCE",
+      "amendment_history": [
+        {
+          "amending_rules_title": "Companies (Corporate Social Responsibility Policy) Amendment Rules, 2021",
+          "notification": "G.S.R. 40(E)",
+          "effective_date": "2021-01-22",
+          "impact": "Introduced mandatory impact assessment under Rule 8(3), annual action plan under Rule 5(2), and unspent escrow monitoring under Rule 10 aligning with Section 135 decriminalization."
+        }
+      ],
+      "subject_matter": "CSR committee responsibilities, calculation of net profit under Rule 2(1)(h), eligible CSR activities under Schedule VII, and reporting formats.",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    },
+    {
+      "instrument_id": "IND-RULE-TRADEMARKS-2017",
+      "official_title": "The Trade Marks Rules, 2017",
+      "instrument_type": "CENTRAL_RULES",
+      "parent_statute_id": "IND-STAT-TRADEMARKS-1999",
+      "parent_statute_title": "The Trade Marks Act, 1999",
+      "enabling_provisions": [
+        "Section 157"
+      ],
+      "issuing_authority": "Ministry of Commerce and Industry (DPIIT)",
+      "gazette_notification_number": "G.S.R. 199(E)",
+      "publication_date": "2017-03-06",
+      "commencement_date": "2017-03-06",
+      "commencement_rule_ref": "Rule 1(2): 'They shall come into force on the date of their publication in the Official Gazette.'",
+      "replaces_instrument_id": "IND-RULE-TRADEMARKS-2002",
+      "status": "ACTIVE_IN_FORCE",
+      "subject_matter": "Fee rationalization for startups/individuals, electronic filing, expedited examination under Rule 34, Madrid Protocol procedures under Chapter V, and determination of well-known trade marks under Rule 124.",
+      "verification_status": "AUTHENTICITY_VERIFIED"
+    }
+  ]
+}

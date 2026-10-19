@@ -745,6 +745,123 @@ class TemporalLawEngine:
         except Exception:
             return []
 
+    def resolve_constitution_bench_precedent(
+        self, article_ref: str
+    ) -> List[Dict[str, Any]]:
+        """Queries landmark Constitution Bench precedents interpreting or ruling on a specific constitutional article."""
+        manifest_path = Path(__file__).resolve().parent.parent.parent / "data" / "22_central_legislation" / "constitution_bench_manifest.json"
+        if not manifest_path.exists():
+            return []
+        try:
+            with open(manifest_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            matches = []
+            clean_art = article_ref.strip().lower()
+            for case in data.get("cases", []):
+                for art in case.get("target_constitutional_articles", []):
+                    if clean_art in art.lower() or art.lower() in clean_art:
+                        matches.append(case)
+                        break
+            return matches
+        except Exception:
+            return []
+
+    def resolve_delegated_rule_for_statute(
+        self, statute_id: str, section: Optional[str] = None
+    ) -> List[Dict[str, Any]]:
+        """Queries Central Delegated Legislation Registry for rules made under a parent Act and enabling section."""
+        manifest_path = Path(__file__).resolve().parent.parent.parent / "data" / "22_central_legislation" / "delegated_legislation_manifest.json"
+        if not manifest_path.exists():
+            return []
+        try:
+            with open(manifest_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            matches = []
+            for rule in data.get("instruments", []):
+                if rule.get("parent_statute_id") == statute_id:
+                    if section:
+                        enablings = rule.get("enabling_provisions", [])
+                        if any(section in e for e in enablings):
+                            matches.append(rule)
+                    else:
+                        matches.append(rule)
+            return matches
+        except Exception:
+            return []
+
+    def compare_cross_statute_definitions(
+        self, term: str, statute_ids: Optional[List[str]] = None
+    ) -> Dict[str, Any]:
+        """Compares statutory definitions across enactments to prevent illicit semantic conflation."""
+        manifest_path = Path(__file__).resolve().parent.parent.parent / "data" / "22_central_legislation" / "cross_statute_definitions.json"
+        if not manifest_path.exists():
+            return {"error": "cross_statute_definitions.json not found"}
+        try:
+            with open(manifest_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            clean_term = term.strip().lower()
+            term_entry = None
+            for entry in data.get("terms", []):
+                term_key = entry.get("term_key", "").lower()
+                concept = entry.get("concept_name", "").lower()
+                def_terms = [d.get("term", "").lower() for d in entry.get("definitions", [])]
+                if clean_term in term_key or clean_term == term_key or clean_term in def_terms:
+                    term_entry = entry
+                    break
+            if not term_entry:
+                return {"term": term, "found": False, "definitions": []}
+
+            defs_list = term_entry.get("definitions", [])
+            statutory_defs: Dict[str, Any] = {}
+            for d in defs_list:
+                sid = d.get("statute_id")
+                if not statute_ids or sid in statute_ids:
+                    statutory_defs[sid] = d
+
+            return {
+                "term_key": term_entry.get("term_key"),
+                "concept_name": term_entry.get("concept_name"),
+                "found": True,
+                "comparative_semantics": term_entry.get("comparative_semantics"),
+                "doctrinal_warning": term_entry.get("doctrinal_warning"),
+                "definitions": statutory_defs,
+            }
+        except Exception as e:
+            return {"error": str(e)}
+
+    def resolve_term_definition(
+        self, term: str, statute_id: str, query_date_str: Optional[str] = None
+    ) -> Dict[str, Any]:
+        """Resolves the precise statutory definition of a term within a specific statute and temporal validity."""
+        comp = self.compare_cross_statute_definitions(term, [statute_id])
+        if not comp.get("found"):
+            return {"error": f"Term '{term}' not found in cross-statute taxonomy"}
+        defs = comp.get("definitions", {})
+        if statute_id not in defs:
+            return {"error": f"Term '{term}' has no definition under statute '{statute_id}'"}
+
+        stat_def = defs[statute_id]
+        op_status = stat_def.get("operational_status", "CURRENTLY_IN_FORCE")
+        is_in_force = op_status == "CURRENTLY_IN_FORCE"
+        validity = stat_def.get("temporal_validity", [None, None])
+
+        return {
+            "term": stat_def.get("term", term),
+            "statute_id": statute_id,
+            "statute_title": stat_def.get("statute_title"),
+            "section": stat_def.get("section"),
+            "definition_text": stat_def.get("verbatim_excerpt"),
+            "in_force": is_in_force,
+            "operational_status": op_status,
+            "temporal_validity": validity,
+            "statutory_exclusions": stat_def.get("statutory_exclusions", []),
+            "statutory_inclusions": stat_def.get("statutory_inclusions", []),
+            "query_date": query_date_str,
+            "doctrinal_warning": comp.get("doctrinal_warning"),
+        }
+
+
+
 
 def build_default_temporal_engine() -> TemporalLawEngine:
     """Pre-configures known statutory timelines for Indian law."""
