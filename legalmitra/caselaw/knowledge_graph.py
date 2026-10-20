@@ -322,6 +322,234 @@ class LegalKnowledgeGraph:
             "superseded_by_legislation": supersession_details,
         }
 
+    def validate_graph_integrity(self) -> Dict[str, Any]:
+        """
+        Validates referential integrity, endpoint validity, edge consistency,
+        and temporal interval logic across the entire graph.
+        """
+        orphan_edge_endpoints = []
+        duplicate_edges = set()
+        seen_edges = set()
+        invalid_temporal_edges = []
+
+        for edge_id, edge in self._edges.items():
+            # 1. Endpoint existence
+            if edge.source_id not in self._nodes or edge.target_id not in self._nodes:
+                orphan_edge_endpoints.append({
+                    "edge_id": edge_id,
+                    "source_id": edge.source_id,
+                    "target_id": edge.target_id,
+                    "source_exists": edge.source_id in self._nodes,
+                    "target_exists": edge.target_id in self._nodes,
+                })
+
+            # 2. Duplicate detection
+            edge_key = (edge.source_id, edge.target_id, edge.relation)
+            if edge_key in seen_edges:
+                duplicate_edges.add(edge_id)
+            seen_edges.add(edge_key)
+
+            # 3. Temporal validity logic
+            if edge.valid_from and edge.valid_to:
+                try:
+                    vf = datetime.date.fromisoformat(edge.valid_from)
+                    vt = datetime.date.fromisoformat(edge.valid_to)
+                    if vf > vt:
+                        invalid_temporal_edges.append({
+                            "edge_id": edge_id,
+                            "valid_from": edge.valid_from,
+                            "valid_to": edge.valid_to,
+                            "error": "valid_from is later than valid_to",
+                        })
+                except ValueError as err:
+                    invalid_temporal_edges.append({
+                        "edge_id": edge_id,
+                        "valid_from": edge.valid_from,
+                        "valid_to": edge.valid_to,
+                        "error": str(err),
+                    })
+
+        is_valid = (len(orphan_edge_endpoints) == 0) and (len(duplicate_edges) == 0) and (len(invalid_temporal_edges) == 0)
+
+        return {
+            "total_nodes": len(self._nodes),
+            "total_edges": len(self._edges),
+            "is_valid": is_valid,
+            "orphan_endpoints_count": len(orphan_edge_endpoints),
+            "orphan_endpoints": orphan_edge_endpoints,
+            "duplicate_edges_count": len(duplicate_edges),
+            "duplicate_edges": list(duplicate_edges),
+            "invalid_temporal_edges_count": len(invalid_temporal_edges),
+            "invalid_temporal_edges": invalid_temporal_edges,
+        }
+
+    def resolve_precedent_conflict(
+        self,
+        case_id_a: str,
+        case_id_b: str,
+        target_jurisdiction: str = "IN",
+        statutory_provision_id: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        """
+        Doctrinally resolves an apparent or real conflict between two judicial authorities.
+        Evaluates:
+        1. Hierarchical supremacy (Supreme Court binds High Courts under Art. 141).
+        2. Bench strength (Larger bench binds smaller bench of same court).
+        3. Territorial jurisdiction (High Court binds its state; persuasive elsewhere).
+        4. Overruling / subsequent treatment.
+        5. Different statutory versions (legislative supersession / divergence).
+        6. Preserves unresolved conflicts between co-equal benches of coordinate jurisdiction.
+        """
+        node_a = self.get_node(case_id_a)
+        node_b = self.get_node(case_id_b)
+
+        if not node_a or not node_b:
+            return {
+                "conflict_status": "MISSING_AUTHORITY_EVIDENCE",
+                "is_resolvable": False,
+                "binding_authority": None,
+                "rationale": f"One or both authorities missing from graph: '{case_id_a}', '{case_id_b}'",
+                "competing_positions": [],
+                "requires_qualification": True,
+                "abstain_recommended": True,
+            }
+
+        # Check overruling
+        overruled_a, reason_a = self.is_case_overruled(case_id_a)
+        overruled_b, reason_b = self.is_case_overruled(case_id_b)
+
+        if overruled_a and not overruled_b:
+            return {
+                "conflict_status": "RESOLVED_BY_OVERRULING",
+                "is_resolvable": True,
+                "binding_authority": case_id_b,
+                "subordinate_or_defunct_authority": case_id_a,
+                "rationale": f"Authority '{node_a.name}' was overruled ({reason_a}), leaving '{node_b.name}' operative.",
+                "competing_positions": [{"case_id": case_id_b, "status": "ACTIVE_LAW"}, {"case_id": case_id_a, "status": "OVERRULED"}],
+                "requires_qualification": False,
+                "abstain_recommended": False,
+            }
+        elif overruled_b and not overruled_a:
+            return {
+                "conflict_status": "RESOLVED_BY_OVERRULING",
+                "is_resolvable": True,
+                "binding_authority": case_id_a,
+                "subordinate_or_defunct_authority": case_id_b,
+                "rationale": f"Authority '{node_b.name}' was overruled ({reason_b}), leaving '{node_a.name}' operative.",
+                "competing_positions": [{"case_id": case_id_a, "status": "ACTIVE_LAW"}, {"case_id": case_id_b, "status": "OVERRULED"}],
+                "requires_qualification": False,
+                "abstain_recommended": False,
+            }
+
+        # Extract court and bench details
+        props_a = node_a.properties or {}
+        props_b = node_b.properties or {}
+
+        court_a = "SC" if "SC" in node_a.node_id or node_a.jurisdiction == "IN" else "HC"
+        court_b = "SC" if "SC" in node_b.node_id or node_b.jurisdiction == "IN" else "HC"
+
+        bench_a = props_a.get("bench_strength", 2)
+        bench_b = props_b.get("bench_strength", 2)
+
+        # 1. Supreme Court vs High Court
+        if court_a == "SC" and court_b == "HC":
+            return {
+                "conflict_status": "RESOLVED_BY_HIERARCHY",
+                "is_resolvable": True,
+                "binding_authority": case_id_a,
+                "subordinate_authority": case_id_b,
+                "rationale": f"Supreme Court ruling in '{node_a.name}' is binding on all courts under Article 141, superseding High Court view in '{node_b.name}'.",
+                "competing_positions": [{"case_id": case_id_a, "status": "BINDING_ARTICLE_141"}, {"case_id": case_id_b, "status": "SUBORDINATE_HC"}],
+                "requires_qualification": False,
+                "abstain_recommended": False,
+            }
+        elif court_b == "SC" and court_a == "HC":
+            return {
+                "conflict_status": "RESOLVED_BY_HIERARCHY",
+                "is_resolvable": True,
+                "binding_authority": case_id_b,
+                "subordinate_authority": case_id_a,
+                "rationale": f"Supreme Court ruling in '{node_b.name}' is binding on all courts under Article 141, superseding High Court view in '{node_a.name}'.",
+                "competing_positions": [{"case_id": case_id_b, "status": "BINDING_ARTICLE_141"}, {"case_id": case_id_a, "status": "SUBORDINATE_HC"}],
+                "requires_qualification": False,
+                "abstain_recommended": False,
+            }
+
+        # 2. Bench Strength (Same Court)
+        if court_a == court_b:
+            if bench_a > bench_b:
+                return {
+                    "conflict_status": "RESOLVED_BY_BENCH_STRENGTH",
+                    "is_resolvable": True,
+                    "binding_authority": case_id_a,
+                    "subordinate_authority": case_id_b,
+                    "rationale": f"Larger bench ({bench_a} judges) in '{node_a.name}' prevails over smaller bench ({bench_b} judges) in '{node_b.name}' of the same court.",
+                    "competing_positions": [{"case_id": case_id_a, "bench": bench_a}, {"case_id": case_id_b, "bench": bench_b}],
+                    "requires_qualification": False,
+                    "abstain_recommended": False,
+                }
+            elif bench_b > bench_a:
+                return {
+                    "conflict_status": "RESOLVED_BY_BENCH_STRENGTH",
+                    "is_resolvable": True,
+                    "binding_authority": case_id_b,
+                    "subordinate_authority": case_id_a,
+                    "rationale": f"Larger bench ({bench_b} judges) in '{node_b.name}' prevails over smaller bench ({bench_a} judges) in '{node_a.name}' of the same court.",
+                    "competing_positions": [{"case_id": case_id_b, "bench": bench_b}, {"case_id": case_id_a, "bench": bench_a}],
+                    "requires_qualification": False,
+                    "abstain_recommended": False,
+                }
+
+        # 3. Territorial Jurisdiction (High Courts)
+        if court_a == "HC" and court_b == "HC" and node_a.jurisdiction != node_b.jurisdiction:
+            if target_jurisdiction == node_a.jurisdiction:
+                return {
+                    "conflict_status": "RESOLVED_BY_TERRITORIAL_JURISDICTION",
+                    "is_resolvable": True,
+                    "binding_authority": case_id_a,
+                    "persuasive_authority": case_id_b,
+                    "rationale": f"For forum '{target_jurisdiction}', '{node_a.name}' ({node_a.jurisdiction}) is binding territorial precedent, while '{node_b.name}' ({node_b.jurisdiction}) is persuasive.",
+                    "competing_positions": [{"case_id": case_id_a, "status": "BINDING_FORUM"}, {"case_id": case_id_b, "status": "PERSUASIVE_OTHER_STATE"}],
+                    "requires_qualification": True,
+                    "abstain_recommended": False,
+                }
+            elif target_jurisdiction == node_b.jurisdiction:
+                return {
+                    "conflict_status": "RESOLVED_BY_TERRITORIAL_JURISDICTION",
+                    "is_resolvable": True,
+                    "binding_authority": case_id_b,
+                    "persuasive_authority": case_id_a,
+                    "rationale": f"For forum '{target_jurisdiction}', '{node_b.name}' ({node_b.jurisdiction}) is binding territorial precedent, while '{node_a.name}' ({node_a.jurisdiction}) is persuasive.",
+                    "competing_positions": [{"case_id": case_id_b, "status": "BINDING_FORUM"}, {"case_id": case_id_a, "status": "PERSUASIVE_OTHER_STATE"}],
+                    "requires_qualification": True,
+                    "abstain_recommended": False,
+                }
+            elif target_jurisdiction == "IN":
+                # National query facing inter-High Court split
+                return {
+                    "conflict_status": "UNRESOLVED_INTER_HIGH_COURT_SPLIT",
+                    "is_resolvable": False,
+                    "binding_authority": None,
+                    "rationale": f"Direct conflict between co-equal High Courts ({node_a.jurisdiction}: '{node_a.name}' vs {node_b.jurisdiction}: '{node_b.name}') on central statutory interpretation without Supreme Court resolution.",
+                    "competing_positions": [
+                        {"case_id": case_id_a, "name": node_a.name, "jurisdiction": node_a.jurisdiction},
+                        {"case_id": case_id_b, "name": node_b.name, "jurisdiction": node_b.jurisdiction},
+                    ],
+                    "requires_qualification": True,
+                    "abstain_recommended": False,
+                }
+
+        # 4. Co-equal Benches of Coordinate Jurisdiction (Unresolved)
+        return {
+            "conflict_status": "UNRESOLVED_CO_EQUAL_BENCH_SPLIT",
+            "is_resolvable": False,
+            "binding_authority": None,
+            "rationale": f"Unresolved conflict between co-equal benches of coordinate jurisdiction: '{node_a.name}' and '{node_b.name}'.",
+            "competing_positions": [{"case_id": case_id_a, "name": node_a.name}, {"case_id": case_id_b, "name": node_b.name}],
+            "requires_qualification": True,
+            "abstain_recommended": False,
+        }
+
 
 
 

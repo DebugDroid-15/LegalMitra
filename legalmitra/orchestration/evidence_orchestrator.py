@@ -52,6 +52,7 @@ class OrchestratedEvidenceSet:
     definition_disambiguations: List[Dict[str, Any]] = field(default_factory=list)
     temporal_regimes: List[Dict[str, Any]] = field(default_factory=list)
     unresolved_conflicts: List[Dict[str, Any]] = field(default_factory=list)
+    authority_resolution_traces: List[Dict[str, Any]] = field(default_factory=list)
     total_items_retrieved: int = 0
     corpus_coverage_complete: bool = True
     coverage_warnings: List[str] = field(default_factory=list)
@@ -398,12 +399,49 @@ class UnifiedEvidenceOrchestrator:
                         conflict_notes="Uncommenced statute cannot displace active legislation.",
                     ))
 
-        # 6. Cross-Statute Definition Disambiguation Retrieval
+        # 6. Point-in-Time Statutory Applicability Tracing
+        if parsed_query.query_date:
+            for act_id in parsed_query.applicable_acts:
+                for prov in parsed_query.candidate_provisions:
+                    sec_clean = prov.replace("Section", "").replace("sec.", "").replace("s.", "").strip()
+                    # Match provision ID if registered
+                    candidates = [
+                        f"COP-SEC-{sec_clean}", f"SEC-CRPC-{sec_clean}", f"SEC-BNSS-{sec_clean}",
+                        f"PAT-SEC-{sec_clean.upper()}", f"HSA-SEC-{sec_clean}", f"IBC-SEC-{sec_clean}",
+                        f"DPDP-SEC-{sec_clean}", f"IT-SEC-{sec_clean.upper()}", f"FACT-SEC-{sec_clean}",
+                        f"IDA-SEC-{sec_clean.upper()}"
+                    ]
+                    for cand_pid in candidates:
+                        if cand_pid in self.temporal_engine._versions:
+                            res_pit = self.temporal_engine.resolve_point_in_time_applicability(
+                                cand_pid, query_date_str=parsed_query.query_date, jurisdiction=parsed_query.jurisdiction
+                            )
+                            evidence_set.authority_resolution_traces.append(res_pit)
+                            if res_pit.get("applicability_state") in ("SUPERSEDED_OR_REPEALED", "NOT_YET_IN_FORCE", "PARTIALLY_COMMENCED"):
+                                evidence_set.coverage_warnings.append(
+                                    f"Point-in-time check for {cand_pid} on {parsed_query.query_date}: {res_pit.get('rationale')}"
+                                )
+
+        # 7. Cross-Statute Definition Disambiguation Retrieval
         for term in parsed_query.ambiguous_terms:
             taxonomy_terms = self.definitions_manifest.get("terms", [])
             for t_entry in taxonomy_terms:
                 if t_entry.get("term", "").lower() == term.lower():
                     evidence_set.definition_disambiguations.append(t_entry)
+
+        # 8. Precedent Conflict Resolution Tracing
+        if len(evidence_set.judicial_precedents) >= 2:
+            p_ids = [p.source_id for p in evidence_set.judicial_precedents if p.source_id.startswith("CASE-")]
+            for i in range(len(p_ids)):
+                for j in range(i + 1, len(p_ids)):
+                    ca, cb = p_ids[i], p_ids[j]
+                    if self.knowledge_graph.get_node(ca) and self.knowledge_graph.get_node(cb):
+                        conf_res = self.knowledge_graph.resolve_precedent_conflict(
+                            ca, cb, target_jurisdiction=parsed_query.jurisdiction
+                        )
+                        if conf_res.get("conflict_status") not in ("MISSING_AUTHORITY_EVIDENCE", "RESOLVED_BY_HIERARCHY"):
+                            evidence_set.unresolved_conflicts.append(conf_res)
+                            evidence_set.authority_resolution_traces.append(conf_res)
 
         # Total items
         evidence_set.total_items_retrieved = (

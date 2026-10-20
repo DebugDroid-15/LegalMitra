@@ -1,12 +1,12 @@
 {
-  "release_id": "LEGALMITRA-RELEASE-PHASE53",
-  "target_version": "0.53.0",
+  "release_id": "LEGALMITRA-RELEASE-PHASE54",
+  "target_version": "0.54.0",
   "total_gates": 11,
   "passed_gates": 10,
   "failed_gates": 0,
   "pending_gates": 1,
   "overall_decision": "STAGE_GATED_PENDING_ADVOCATE_SIGN_OFF",
-  "evaluated_at": "2026-10-19T18:28:29.398857Z",
+  "evaluated_at": "2026-10-20T06:22:58.892218Z",
   "gates": [
     {
       "gate_id": "RG-01-PROVENANCE",
@@ -22,7 +22,7 @@
         "quarantined_scaffold_chunks": 6,
         "database_path": "C:\\PROJECTS\\LegalMitra\\data\\legalmitra_kb.db"
       },
-      "verified_at": "2026-10-19T18:28:28.921249Z"
+      "verified_at": "2026-10-20T06:22:57.238058Z"
     },
     {
       "gate_id": "RG-02-TEMPORAL-CORRECTNESS",
@@ -37,7 +37,7 @@
         "evaluated_temporal_cases": 19,
         "accuracy": 1.0
       },
-      "verified_at": "2026-10-19T18:28:28.923245Z"
+      "verified_at": "2026-10-20T06:22:57.241055Z"
     },
     {
       "gate_id": "RG-03-PRECEDENT-HIERARCHY",
@@ -53,7 +53,7 @@
         "referral_case_handled": "CASE-SC-RAMESH-CHANDRA-REF-2019",
         "stayed_precedent_handled": "CASE-SC-ST-STEPHENS-STAY-2023"
       },
-      "verified_at": "2026-10-19T18:28:28.923245Z"
+      "verified_at": "2026-10-20T06:22:57.241055Z"
     },
     {
       "gate_id": "RG-04-CLAIM-GROUNDING",
@@ -61,15 +61,15 @@
       "description": "Ensures every material legal assertion is grounded in authentic statutory or precedent extracts.",
       "category": "LEGAL_VALIDITY",
       "threshold": ">= 90% claim grounding rate; >= 90% citation validity",
-      "actual_value": "Claim Support: 96.6%; Citation Validity: 98.6%",
+      "actual_value": "Claim Support: 97.2%; Citation Validity: 98.8%",
       "status": "PASSED",
       "blocking": true,
       "evidence": {
-        "material_claim_support": 0.9664429530201343,
-        "citation_validity": 0.986013986013986,
-        "sample_cases_evaluated": 35
+        "material_claim_support": 0.9717514124293786,
+        "citation_validity": 0.9882352941176471,
+        "sample_cases_evaluated": 41
       },
-      "verified_at": "2026-10-19T18:28:29.244859Z"
+      "verified_at": "2026-10-20T06:22:58.246674Z"
     },
     {
       "gate_id": "RG-05-CLARIFICATION-ABSTENTION",
@@ -89,7 +89,7 @@
           "CLARIFICATION_REQUIRED"
         ]
       },
-      "verified_at": "2026-10-19T18:28:29.244859Z"
+      "verified_at": "2026-10-20T06:22:58.247696Z"
     },
     {
       "gate_id": "RG-06-CITATION-INTEGRITY",
@@ -104,7 +104,7 @@
         "neutral_citation_regex_audit": "Active regex and knowledge-base cross-check",
         "synthetic_scaffold_interception": "Active quarantine check"
       },
-      "verified_at": "2026-10-19T18:28:29.244859Z"
+      "verified_at": "2026-10-20T06:22:58.247696Z"
     },
     {
       "gate_id": "RG-07-ADVERSARIAL-SECURITY",
@@ -121,7 +121,7 @@
         "failed_attacks": 0,
         "robustness_rate": 1.0
       },
-      "verified_at": "2026-10-19T18:28:29.369855Z"
+      "verified_at": "2026-10-20T06:22:58.776244Z"
     },
     {
       "gate_id": "RG-08-DATABASE-ISOLATION",
@@ -138,7 +138,7 @@
         "distinct_files": true,
         "table_isolation_verified": true
       },
-      "verified_at": "2026-10-19T18:28:29.370855Z"
+      "verified_at": "2026-10-20T06:22:58.780234Z"
     },
     {
       "gate_id": "RG-09-REGRESSION-INTEGRITY",
@@ -154,7 +154,7 @@
         "phase40_50_test_count": 159,
         "test_pass_rate": 1.0
       },
-      "verified_at": "2026-10-19T18:28:29.370855Z"
+      "verified_at": "2026-10-20T06:22:58.780234Z"
     },
     {
       "gate_id": "RG-10-HELD-OUT-EVALUATION",
@@ -166,11 +166,11 @@
       "status": "PASSED",
       "blocking": true,
       "evidence": {
-        "held_out_case_count": 55,
+        "held_out_case_count": 64,
         "exact_duplicates": 0,
         "max_cross_split_jaccard": 0.36363636363636365
       },
-      "verified_at": "2026-10-19T18:28:29.391847Z"
+      "verified_at": "2026-10-20T06:22:58.888747Z"
     },
     {
       "gate_id": "RG-11-LEGAL-REVIEW",
@@ -188,7 +188,7 @@
         "governing_statute": "Advocates Act, 1961",
         "notes": "Governance invariant strictly preserved: Automated tools cannot self-certify advocate review."
       },
-      "verified_at": "2026-10-19T18:28:29.398857Z"
+      "verified_at": "2026-10-20T06:22:58.891211Z"
     }
   ]
 }

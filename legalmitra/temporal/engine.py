@@ -111,6 +111,16 @@ class StatuteLifecycle:
     is_fully_commenced: bool = True
 
 
+class StatutoryApplicabilityState(str, Enum):
+    CONFIRMED_APPLICABLE = "CONFIRMED_APPLICABLE"
+    CONFIRMED_HISTORICAL = "CONFIRMED_HISTORICAL"
+    NOT_YET_IN_FORCE = "NOT_YET_IN_FORCE"
+    SUPERSEDED_OR_REPEALED = "SUPERSEDED_OR_REPEALED"
+    PARTIALLY_COMMENCED = "PARTIALLY_COMMENCED"
+    CONFLICTING_TEMPORAL_EVIDENCE = "CONFLICTING_TEMPORAL_EVIDENCE"
+    INSUFFICIENT_EVIDENCE = "INSUFFICIENT_EVIDENCE"
+
+
 class TemporalLawEngine:
     """Core engine for point-in-time legal queries and statutory lifecycle tracking."""
 
@@ -139,6 +149,187 @@ class TemporalLawEngine:
 
     def get_all_versions_for_provision(self, provision_id: str) -> List[ProvisionTemporalVersion]:
         return self._versions.get(provision_id, [])
+
+    def resolve_point_in_time_applicability(
+        self,
+        provision_id: str,
+        query_date_str: Optional[str] = None,
+        jurisdiction: str = "IN",
+        pending_proceeding_commenced_prior: bool = False,
+    ) -> Dict[str, Any]:
+        """
+        Determines the precise statutory applicability of a provision at a specified date
+        using half-open interval semantics [effective_from, effective_until) and savings clauses.
+        """
+        if not query_date_str:
+            return {
+                "provision_id": provision_id,
+                "query_date": None,
+                "jurisdiction": jurisdiction,
+                "applicability_state": StatutoryApplicabilityState.INSUFFICIENT_EVIDENCE,
+                "applicable_version": None,
+                "is_applicable": False,
+                "savings_applied": False,
+                "rationale": "No query date provided; temporal applicability cannot be definitively established.",
+            }
+
+        try:
+            q_date = datetime.date.fromisoformat(query_date_str)
+        except ValueError:
+            return {
+                "provision_id": provision_id,
+                "query_date": query_date_str,
+                "jurisdiction": jurisdiction,
+                "applicability_state": StatutoryApplicabilityState.CONFLICTING_TEMPORAL_EVIDENCE,
+                "applicable_version": None,
+                "is_applicable": False,
+                "savings_applied": False,
+                "rationale": f"Invalid ISO date format: '{query_date_str}'.",
+            }
+
+        versions = self._versions.get(provision_id, [])
+        if not versions:
+            return {
+                "provision_id": provision_id,
+                "query_date": query_date_str,
+                "jurisdiction": jurisdiction,
+                "applicability_state": StatutoryApplicabilityState.INSUFFICIENT_EVIDENCE,
+                "applicable_version": None,
+                "is_applicable": False,
+                "savings_applied": False,
+                "rationale": f"No temporal versions registered for provision ID '{provision_id}'.",
+            }
+
+        # Check parent statute lifecycle
+        statute_id = versions[0].statute_id
+        statute = self.get_statute(statute_id)
+
+        # 1. Check if uncommenced / partially commenced statute
+        if statute and not statute.is_fully_commenced:
+            if not statute.commencement_date:
+                return {
+                    "provision_id": provision_id,
+                    "statute_id": statute_id,
+                    "query_date": query_date_str,
+                    "jurisdiction": jurisdiction,
+                    "applicability_state": StatutoryApplicabilityState.PARTIALLY_COMMENCED,
+                    "applicable_version": None,
+                    "is_applicable": False,
+                    "savings_applied": False,
+                    "rationale": f"Parent statute '{statute.title}' is uncommenced or subject to phased notification; provision not generally in force.",
+                }
+
+        # 2. Check each version
+        # Find version operative on query_date
+        matched_version: Optional[ProvisionTemporalVersion] = None
+        for v in versions:
+            # Check commencement
+            if v.commencement_date:
+                try:
+                    c_date = datetime.date.fromisoformat(v.commencement_date)
+                    if q_date < c_date:
+                        continue
+                except ValueError:
+                    pass
+            elif v.is_phased_commencement:
+                continue
+
+            # Effective from [
+            if v.version_effective_from:
+                try:
+                    ef_date = datetime.date.fromisoformat(v.version_effective_from)
+                    if q_date < ef_date:
+                        continue
+                except ValueError:
+                    pass
+
+            # Effective until boundary check
+            if v.version_effective_until:
+                try:
+                    eu_date = datetime.date.fromisoformat(v.version_effective_until)
+                    # If version_effective_until is given as the final day of validity,
+                    # q_date > eu_date means it has expired.
+                    if q_date > eu_date:
+                        continue
+                except ValueError:
+                    pass
+
+            # Repeal check
+            if v.repeal_date:
+                try:
+                    r_date = datetime.date.fromisoformat(v.repeal_date)
+                    if q_date >= r_date:
+                        if pending_proceeding_commenced_prior and v.savings_applies_to_pending:
+                            matched_version = v
+                            break
+                        continue
+                except ValueError:
+                    pass
+
+            matched_version = v
+            break
+
+        if matched_version:
+            # Check if this matched version is historical or currently operative
+            is_current = (matched_version.version_effective_until is None) and (matched_version.repeal_date is None)
+            state = StatutoryApplicabilityState.CONFIRMED_APPLICABLE if is_current else StatutoryApplicabilityState.CONFIRMED_HISTORICAL
+            
+            savings_active = False
+            if matched_version.repeal_date:
+                try:
+                    r_date = datetime.date.fromisoformat(matched_version.repeal_date)
+                    if q_date >= r_date and pending_proceeding_commenced_prior:
+                        savings_active = True
+                        state = StatutoryApplicabilityState.CONFIRMED_HISTORICAL
+                except ValueError:
+                    pass
+
+            return {
+                "provision_id": provision_id,
+                "statute_id": statute_id,
+                "query_date": query_date_str,
+                "jurisdiction": jurisdiction,
+                "applicability_state": state,
+                "applicable_version": matched_version.to_dict(),
+                "version_number": matched_version.version_number,
+                "is_applicable": True,
+                "savings_applied": savings_active,
+                "rationale": f"Version {matched_version.version_number} was in force on {query_date_str} (effective from {matched_version.version_effective_from}).",
+            }
+
+        # If not matched, determine why (not yet in force vs repealed/superseded)
+        first_version = versions[0]
+        if first_version.commencement_date or first_version.version_effective_from:
+            earliest_str = first_version.commencement_date or first_version.version_effective_from
+            try:
+                earliest_date = datetime.date.fromisoformat(earliest_str)
+                if q_date < earliest_date:
+                    return {
+                        "provision_id": provision_id,
+                        "statute_id": statute_id,
+                        "query_date": query_date_str,
+                        "jurisdiction": jurisdiction,
+                        "applicability_state": StatutoryApplicabilityState.NOT_YET_IN_FORCE,
+                        "applicable_version": None,
+                        "is_applicable": False,
+                        "savings_applied": False,
+                        "rationale": f"Provision '{provision_id}' was not yet in force on {query_date_str} (earliest commencement: {earliest_str}).",
+                    }
+            except ValueError:
+                pass
+
+        # Otherwise provision is superseded or repealed
+        return {
+            "provision_id": provision_id,
+            "statute_id": statute_id,
+            "query_date": query_date_str,
+            "jurisdiction": jurisdiction,
+            "applicability_state": StatutoryApplicabilityState.SUPERSEDED_OR_REPEALED,
+            "applicable_version": None,
+            "is_applicable": False,
+            "savings_applied": False,
+            "rationale": f"Provision '{provision_id}' has been repealed or superseded prior to query date {query_date_str}.",
+        }
 
     def resolve_criminal_law_regime(
         self,
@@ -1803,6 +1994,74 @@ def build_default_temporal_engine() -> TemporalLawEngine:
         version_effective_from="1949-04-01",
         version_effective_until=None,
         commencement_date="1949-04-01",
+        temporal_status=TemporalStatus.ACTIVE,
+    ))
+
+    # --- PHASE 54 POINT-IN-TIME PROVISION REGISTRATIONS ---
+    # DPDP Act 2023 Section 1 (Uncommenced / Phased Provision)
+    engine.register_provision_version(ProvisionTemporalVersion(
+        provision_id="DPDP-SEC-1",
+        statute_id="IND-STAT-DPDP-2023",
+        section_number="1",
+        version_number=1,
+        text="1. Short title and commencement.—(1) This Act may be called the Digital Personal Data Protection Act, 2023. (2) It shall come into force on such date as the Central Government may, by notification in the Official Gazette, appoint and different dates may be appointed for different provisions of this Act.",
+        version_effective_from=None,
+        version_effective_until=None,
+        commencement_date=None,
+        is_phased_commencement=True,
+        temporal_status=TemporalStatus.UNCOMMENCED,
+    ))
+
+    # Information Technology Act Section 66A (Historical / Struck Down by Shreya Singhal)
+    engine.register_provision_version(ProvisionTemporalVersion(
+        provision_id="IT-SEC-66A",
+        statute_id="IND-STAT-IT-2000",
+        section_number="66A",
+        version_number=1,
+        text="66A. Punishment for sending offensive messages through communication service, etc.—Any person who sends, by means of a computer resource or a communication device,— (a) any information that is grossly offensive or has menacing character; or (b) any information which he knows to be false...",
+        version_effective_from="2009-10-27",
+        version_effective_until="2015-03-24",
+        commencement_date="2009-10-27",
+        repeal_date="2015-03-24",
+        temporal_status=TemporalStatus.AMENDED_HISTORICAL,
+    ))
+
+    # Insolvency and Bankruptcy Code Section 7 (Financial Creditor CIRP)
+    engine.register_provision_version(ProvisionTemporalVersion(
+        provision_id="IBC-SEC-7",
+        statute_id="IND-STAT-IBC-2016",
+        section_number="7",
+        version_number=1,
+        text="7. Initiation of corporate insolvency resolution process by financial creditor.—(1) A financial creditor either by itself or jointly with other financial creditors, or any other person on behalf of the financial creditor may file an application for initiating corporate insolvency resolution process against a corporate debtor before the Adjudicating Authority when a default has occurred.",
+        version_effective_from="2016-12-01",
+        version_effective_until=None,
+        commencement_date="2016-12-01",
+        commencement_notification="S.O. 3594(E) dated 30 November 2016",
+        temporal_status=TemporalStatus.ACTIVE,
+    ))
+
+    # Hindu Succession Act Section 6 (Version 1: Pre-2005 vs Version 2: Post-2005 Vineeta Sharma)
+    engine.register_provision_version(ProvisionTemporalVersion(
+        provision_id="HSA-SEC-6",
+        statute_id="IND-STAT-HSA-1956",
+        section_number="6",
+        version_number=1,
+        text="6. Devolution of interest in coparcenary property.—When a male Hindu dies after the commencement of this Act, having at the time of his death an interest in a Mitakshara coparcenary property, his interest in the property shall devolve by survivorship upon the surviving members of the coparcenary and not in accordance with this Act...",
+        version_effective_from="1956-06-17",
+        version_effective_until="2005-09-08",
+        commencement_date="1956-06-17",
+        temporal_status=TemporalStatus.AMENDED_HISTORICAL,
+    ))
+    engine.register_provision_version(ProvisionTemporalVersion(
+        provision_id="HSA-SEC-6",
+        statute_id="IND-STAT-HSA-1956",
+        section_number="6",
+        version_number=2,
+        text="6. Devolution of interest in coparcenary property.—(1) On and from the commencement of the Hindu Succession (Amendment) Act, 2005, in a Joint Hindu family governed by the Mitakshara law, the daughter of a coparcener shall,— (a) by birth become a coparcener in her own right the same manner as the son; (b) have the same rights in the coparcenary property as she would have had if she had been a son...",
+        version_effective_from="2005-09-09",
+        version_effective_until=None,
+        commencement_date="2005-09-09",
+        amendment_act_id="IND-AMEND-HSA-2005",
         temporal_status=TemporalStatus.ACTIVE,
     ))
 
