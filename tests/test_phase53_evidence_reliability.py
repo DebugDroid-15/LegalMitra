@@ -163,12 +163,12 @@ class TestPhase53EvidenceReliability:
         with open(manifest_path, "r", encoding="utf-8") as f:
             data = json.load(f)
 
-        assert data["benchmark_suite_id"] in ("LEGALMITRA-BENCHMARK-PIT-V9", "LEGALMITRA-BENCHMARK-PIT-V10", "LEGALMITRA-BENCHMARK-PIT-V11", "LEGALMITRA-BENCHMARK-PIT-V12")
-        assert data["version"] in ("9.0.0", "10.0.0", "11.0.0", "12.0.0")
-        assert data["total_test_cases"] in (140, 164, 188, 212)
-        assert data["split_counts"]["development"] in (60, 70, 78, 88)
-        assert data["split_counts"]["validation"] in (25, 30, 35, 40)
-        assert data["split_counts"]["held_out_evaluation"] in (55, 64, 75, 84)
+        assert data["benchmark_suite_id"] in ("LEGALMITRA-BENCHMARK-PIT-V9", "LEGALMITRA-BENCHMARK-PIT-V10", "LEGALMITRA-BENCHMARK-PIT-V11", "LEGALMITRA-BENCHMARK-PIT-V12", "LEGALMITRA-BENCHMARK-PIT-V13")
+        assert data["version"] in ("9.0.0", "10.0.0", "11.0.0", "12.0.0", "13.0.0")
+        assert data["total_test_cases"] in (140, 164, 188, 212, 240)
+        assert data["split_counts"]["development"] in (60, 70, 78, 88, 100)
+        assert data["split_counts"]["validation"] in (25, 30, 35, 40, 46)
+        assert data["split_counts"]["held_out_evaluation"] in (55, 64, 75, 84, 94)
 
         # Check new Phase 53 cases are present
         case_ids = {c["case_id"] for c in data["test_cases"]}
@@ -179,7 +179,7 @@ class TestPhase53EvidenceReliability:
         auditor = ContaminationAuditor()
         report = auditor.audit_manifest(data["test_cases"])
 
-        assert report.total_cases_audited in (140, 164, 188, 212)
+        assert report.total_cases_audited in (140, 164, 188, 212, 240)
         assert report.exact_duplicates_count == 0
         assert report.near_duplicates_count == 0
         assert report.max_cross_split_jaccard <= 0.85
@@ -191,10 +191,10 @@ class TestPhase53EvidenceReliability:
         evaluator = ReleaseGateEvaluator()
         summary = evaluator.evaluate_all_gates()
 
-        assert summary.release_id in ("LEGALMITRA-RELEASE-PHASE53", "LEGALMITRA-RELEASE-PHASE54", "LEGALMITRA-RELEASE-PHASE55", "LEGALMITRA-RELEASE-PHASE56")
-        assert summary.target_version in ("0.53.0", "0.54.0", "0.55.0", "0.56.0")
-        assert summary.total_gates in (11, 15)
-        assert summary.passed_gates in (10, 14)
+        assert summary.release_id in ("LEGALMITRA-RELEASE-PHASE53", "LEGALMITRA-RELEASE-PHASE54", "LEGALMITRA-RELEASE-PHASE55", "LEGALMITRA-RELEASE-PHASE56", "LEGALMITRA-RELEASE-PHASE57")
+        assert summary.target_version in ("0.53.0", "0.54.0", "0.55.0", "0.56.0", "0.57.0")
+        assert summary.total_gates in (11, 15, 20)
+        assert summary.passed_gates in (10, 14, 19)
         assert summary.failed_gates == 0
         assert summary.pending_gates == 1
         assert summary.overall_decision == "STAGE_GATED_PENDING_ADVOCATE_SIGN_OFF"
@@ -202,7 +202,7 @@ class TestPhase53EvidenceReliability:
         # Gate RG-10 held-out evaluation
         rg10 = [g for g in summary.gates if g.gate_id == "RG-10-HELD-OUT-EVALUATION"][0]
         assert rg10.status == GateStatus.PASSED
-        assert rg10.evidence["held_out_case_count"] in (55, 64, 75, 84)
+        assert rg10.evidence["held_out_case_count"] in (55, 64, 75, 84, 94)
 
         # Gate RG-11 advocate review
         rg11 = [g for g in summary.gates if g.gate_id == "RG-11-LEGAL-REVIEW"][0]
