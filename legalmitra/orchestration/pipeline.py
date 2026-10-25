@@ -76,6 +76,7 @@ class OrchestratedLegalResponse:
     telemetry: PipelineExecutionTelemetry
     timestamp: str
     evidence_matrix: Optional[Any] = None
+    proposition_provenance: List[Any] = field(default_factory=list)
 
 
 class LegalQueryPipeline:
@@ -256,5 +257,6 @@ class LegalQueryPipeline:
             telemetry=telemetry,
             timestamp=datetime.now(timezone.utc).isoformat(),
             evidence_matrix=matrix,
+            proposition_provenance=getattr(assembled_ans, 'proposition_provenance', []),
         )
 

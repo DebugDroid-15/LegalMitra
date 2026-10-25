@@ -46,7 +46,30 @@ class PropositionVerdict(str, Enum):
     OMITTED_MATERIAL_QUALIFICATION = "OMITTED_MATERIAL_QUALIFICATION"
     PREMISE_DEPENDENCY_FAILED = "PREMISE_DEPENDENCY_FAILED"
     UNVERIFIABLE = "UNVERIFIABLE"
+    UNAVAILABLE_OR_UNINDEXED_SOURCE = "UNAVAILABLE_OR_UNINDEXED_SOURCE"
+    AUTHENTIC_BUT_UNSUPPORTED = "AUTHENTIC_BUT_UNSUPPORTED"
 
+
+
+class CitationStatus(str, Enum):
+    """Classification of citation validity and availability."""
+    AUTHENTIC_GROUNDED = "AUTHENTIC_GROUNDED"
+    UNINDEXED_OR_UNAVAILABLE = "UNINDEXED_OR_UNAVAILABLE"
+    SYNTHETIC_QUARANTINED = "SYNTHETIC_QUARANTINED"
+    FABRICATED = "FABRICATED"
+
+
+class CitationVerificationResult(tuple):
+    """
+    Subclasses 2-tuple (is_valid, is_quarantined) for full backward compatibility with existing tests,
+    while carrying citation_status metadata.
+    """
+    def __new__(cls, is_valid: bool, is_quarantined: bool, citation_status: CitationStatus = CitationStatus.AUTHENTIC_GROUNDED):
+        obj = super().__new__(cls, (is_valid, is_quarantined))
+        obj.is_valid = is_valid
+        obj.is_quarantined = is_quarantined
+        obj.citation_status = citation_status
+        return obj
 
 class OverstatementSeverity(str, Enum):
     """Severity of legal overstatement."""
@@ -194,8 +217,9 @@ class IndependentClaimEvaluator:
         "admiralty courts act 1861": "Superseded by Admiralty (Jurisdiction and Settlement of Maritime Claims) Act, 2017",
     }
 
-    def __init__(self, db_path: Optional[str] = None):
+    def __init__(self, db_path: Optional[str] = None, knowledge_graph: Optional[Any] = None):
         self.db_path = db_path or os.path.join(os.getcwd(), "data", "legalmitra_kb.db")
+        self.kg = knowledge_graph
 
     def evaluate_response(
         self,
@@ -221,11 +245,12 @@ class IndependentClaimEvaluator:
         # Check citations across the knowledge base
         citation_validity_map = {}
         for cit in citations:
-            is_valid, is_quarantined = self._verify_citation(cit)
-            citation_validity_map[cit] = (is_valid, is_quarantined)
-            if not is_valid:
+            res = self._verify_citation(cit)
+            citation_validity_map[cit] = res
+            status = getattr(res, "citation_status", CitationStatus.FABRICATED if not res[0] else CitationStatus.AUTHENTIC_GROUNDED)
+            if status == CitationStatus.FABRICATED:
                 has_fabricated = True
-            if is_quarantined:
+            if res[1]:
                 has_quarantined = True
 
         # Evaluate each extracted proposition
@@ -340,18 +365,19 @@ class IndependentClaimEvaluator:
         ]
         return meaningful if meaningful else [text.strip()]
 
-    def _verify_citation(self, citation: str) -> Tuple[bool, bool]:
+    def _verify_citation(self, citation: str) -> CitationVerificationResult:
         """
-        Returns (is_valid, is_quarantined).
-        Verifies against KB or standard statutory registries.
+        Returns CitationVerificationResult (subclass of Tuple[bool, bool]).
+        Verifies against KB or standard statutory registries, distinguishing
+        fabricated citations from unindexed/unavailable citations (DEF-59-01).
         """
         cit_upper = citation.upper()
         if "IND-JUD-DEL-2024-BAIL" in cit_upper:
-            return False, True  # Quarantined scaffold!
+            return CitationVerificationResult(False, True, CitationStatus.SYNTHETIC_QUARANTINED)
         
         # Check known fabricated citation signatures
-        if "INVENTED" in cit_upper or "FAKE" in cit_upper or "2099 SCC" in cit_upper or "99999" in cit_upper:
-            return False, False
+        if "INVENTED" in cit_upper or "FAKE" in cit_upper or "2099 SCC" in cit_upper or "99999" in cit_upper or "CASE-FAKE" in cit_upper:
+            return CitationVerificationResult(False, False, CitationStatus.FABRICATED)
 
         # If DB exists, check chunks or metadata
         if os.path.exists(self.db_path):
@@ -367,7 +393,8 @@ class IndependentClaimEvaluator:
                 conn.close()
                 if row is not None:
                     is_scaffold = bool(row[0])
-                    return True, is_scaffold
+                    status = CitationStatus.SYNTHETIC_QUARANTINED if is_scaffold else CitationStatus.AUTHENTIC_GROUNDED
+                    return CitationVerificationResult(not is_scaffold, is_scaffold, status)
             except Exception:
                 pass
 
@@ -398,7 +425,11 @@ class IndependentClaimEvaluator:
             r"IN\s+RE",
         ]
         is_pattern_valid = any(re.search(pat, cit_upper) for pat in valid_patterns)
-        return is_pattern_valid, False
+        if is_pattern_valid:
+            return CitationVerificationResult(True, False, CitationStatus.AUTHENTIC_GROUNDED)
+
+        # Unindexed / unavailable source (not fabricated, but ungrounded in repository)
+        return CitationVerificationResult(False, False, CitationStatus.UNINDEXED_OR_UNAVAILABLE)
 
     def _evaluate_single_proposition(
         self,
@@ -427,25 +458,61 @@ class IndependentClaimEvaluator:
                     rationale="Quarantined synthetic scaffold detected in proposition authority grounding",
                 )
 
-        # Check fabricated citations
-        for cit, (val, quar) in citation_validity_map.items():
+        # Check fabricated vs unindexed/unavailable citations (DEF-59-01)
+        for cit, res in citation_validity_map.items():
+            val, quar = res[0], res[1]
+            status = getattr(res, "citation_status", None)
             if not val and not quar and (cit.lower() in prop_lower or len(citations) == 1):
-                return PropositionEvaluation(
-                    proposition_id=prop_id,
-                    proposition_text=prop_text,
-                    cited_authorities=[cit],
-                    verdict=PropositionVerdict.FABRICATED_CITATION,
-                    citation_valid=False,
-                    substantive_support=False,
-                    overstatement_severity=OverstatementSeverity.CRITICAL_ABSOLUTE_DISTORTION,
-                    overstatement_details="Citation does not correspond to genuine legal authority",
-                    rationale="Fabricated citation detected",
-                )
+                if status == CitationStatus.UNINDEXED_OR_UNAVAILABLE:
+                    return PropositionEvaluation(
+                        proposition_id=prop_id,
+                        proposition_text=prop_text,
+                        cited_authorities=[cit],
+                        verdict=PropositionVerdict.UNAVAILABLE_OR_UNINDEXED_SOURCE,
+                        citation_valid=False,
+                        substantive_support=False,
+                        overstatement_severity=OverstatementSeverity.NONE,
+                        overstatement_details="Citation is genuine or external but not indexed in the verified repository",
+                        rationale="Authority is unindexed or unavailable in repository; claim cannot be verified as grounded law",
+                    )
+                else:
+                    return PropositionEvaluation(
+                        proposition_id=prop_id,
+                        proposition_text=prop_text,
+                        cited_authorities=[cit],
+                        verdict=PropositionVerdict.FABRICATED_CITATION,
+                        citation_valid=False,
+                        substantive_support=False,
+                        overstatement_severity=OverstatementSeverity.CRITICAL_ABSOLUTE_DISTORTION,
+                        overstatement_details="Citation does not correspond to genuine legal authority",
+                        rationale="Fabricated citation detected",
+                    )
 
-        # Check overruled precedent
+        # Check overruled precedent with knowledge graph and proposition-level holding scopes (DEF-59-04)
+        if self.kg is not None:
+            for cit in citations:
+                for node_id, node in getattr(self.kg, "_nodes", {}).items():
+                    if node.name.lower() in prop_lower or node_id.lower() in prop_lower or cit.lower() in node.name.lower():
+                        is_overruled, reason = self.kg.is_case_overruled(node_id, target_proposition=prop_text)
+                        if is_overruled:
+                            return PropositionEvaluation(
+                                proposition_id=prop_id,
+                                proposition_text=prop_text,
+                                cited_authorities=citations,
+                                verdict=PropositionVerdict.TEMPORALLY_SUPERSEDED,
+                                citation_valid=True,
+                                substantive_support=False,
+                                overstatement_severity=OverstatementSeverity.CRITICAL_ABSOLUTE_DISTORTION,
+                                overstatement_details=f"Overruled precedent holding cited as controlling: {reason}",
+                                temporal_validity=False,
+                                rationale=f"Precedent is overruled on this proposition: {reason}",
+                            )
+
         for overruled, rationale in self.KNOWN_OVERRULED_CASES.items():
             if overruled in prop_lower and ("binding" in prop_lower or "governs" in prop_lower or "held that" in prop_lower):
                 if "vineeta sharma" not in prop_lower:
+                    if "subhash kashinath" in overruled and "preliminary enquiry" not in prop_lower and "prior sanction" not in prop_lower:
+                        continue
                     return PropositionEvaluation(
                         proposition_id=prop_id,
                         proposition_text=prop_text,

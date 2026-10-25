@@ -1,12 +1,12 @@
 """
-Release Quality Gates Evaluator for LegalMitra Phase 58.
+Release Quality Gates Evaluator for LegalMitra Phase 59.
 
 Evaluates 20 rigorous, machine-readable release quality gates spanning source provenance,
 temporal correctness, precedent hierarchy, claim-level evidence grounding, calibrated abstention,
 anti-hallucination, adversarial robustness, database isolation, regression integrity,
 held-out evaluation, mandatory legal advocate review, issue-evidence matrix completeness,
 proviso coverage, claim dependency guardrails, multi-issue calibration, independent claim
-evaluation, 4D completeness auditing, error attribution, PIT-V13 benchmark integrity,
+evaluation, 4D completeness auditing, error attribution, PIT-V14 benchmark integrity,
 and differential regression guardrails.
 All gates feature deterministic execution and verified failure mechanisms under negative controls.
 """
@@ -164,8 +164,8 @@ class ReleaseGateEvaluator:
         # 18. RG-18: 28-Category Failure Taxonomy & Root-Cause Attribution (Phase 57)
         gates.append(self._eval_rg18_error_taxonomy_attribution())
 
-        # 19. RG-19: PIT-V13 Independent Evaluation Benchmark Coverage (Phase 57)
-        gates.append(self._eval_rg19_pit_v13_benchmark())
+        # 19. RG-19: PIT-V14 Independent Evaluation Benchmark Coverage (Phase 57)
+        gates.append(self._eval_rg19_pit_v14_benchmark())
 
         # 20. RG-20: Differential Evaluation & Regression Guardrail (Phase 57 / 58)
         gates.append(self._eval_rg20_differential_regression_guard())
@@ -182,8 +182,8 @@ class ReleaseGateEvaluator:
             decision = "APPROVED_FOR_RELEASE"
 
         return ReleaseEvaluationSummary(
-            release_id="LEGALMITRA-RELEASE-PHASE58",
-            target_version="0.58.0",
+            release_id="LEGALMITRA-RELEASE-PHASE59",
+            target_version="0.59.0",
             total_gates=len(gates),
             passed_gates=passed,
             failed_gates=failed,
@@ -462,20 +462,21 @@ class ReleaseGateEvaluator:
         if os.path.exists(self.freeze_manifest_path):
             with open(self.freeze_manifest_path, "r", encoding="utf-8") as f:
                 freeze_manifest = json.load(f)
-            expected_files = freeze_manifest.get("files", {})
+            expected_files = freeze_manifest.get("frozen_artifacts", freeze_manifest.get("files", {}))
             all_match = True
-            for fname, meta in expected_files.items():
-                fpath = os.path.join(self.workspace_root, "data", "06_review", fname)
+            for key, meta in expected_files.items():
+                rel_path = meta.get("path", "")
+                fpath = os.path.join(self.workspace_root, rel_path)
                 if not os.path.exists(fpath):
                     all_match = False
-                    mismatched_files.append(f"{fname}: MISSING")
+                    mismatched_files.append(f"{rel_path}: MISSING")
                     continue
                 with open(fpath, "rb") as bf:
                     calc_sha = hashlib.sha256(bf.read()).hexdigest()
                 if calc_sha != meta.get("sha256"):
                     all_match = False
-                    mismatched_files.append(f"{fname}: HASH_MISMATCH")
-            freeze_verified = all_match
+                    mismatched_files.append(f"{rel_path}: HASH_MISMATCH")
+            freeze_verified = all_match and len(expected_files) == 6
 
         passed = freeze_verified and len(mismatched_files) == 0
         return ReleaseGate(
@@ -738,7 +739,7 @@ class ReleaseGateEvaluator:
             },
         )
 
-    def _eval_rg19_pit_v13_benchmark(self) -> ReleaseGate:
+    def _eval_rg19_pit_v14_benchmark(self) -> ReleaseGate:
         manifest_path = self.manifest_path
         total_cases = 0
         held_out = 0
@@ -754,13 +755,13 @@ class ReleaseGateEvaluator:
             is_clean = rep.is_split_isolated
             max_sim = rep.max_cross_split_jaccard
 
-        passed = total_cases >= 240 and held_out >= 90 and is_clean and max_sim <= 0.85
+        passed = total_cases >= 280 and held_out >= 105 and is_clean and max_sim <= 0.85
         return ReleaseGate(
-            gate_id="RG-19-PIT-V13-BENCHMARK-INTEGRITY",
-            name="Point-in-Time V13 Benchmark Coverage & Contamination Isolation",
-            description="Enforces expansion to >= 240 cases (100 Dev, 46 Val, 94 Held-Out) with verified zero cross-split contamination.",
+            gate_id="RG-19-PIT-V14-BENCHMARK-INTEGRITY",
+            name="Point-in-Time V14 Benchmark Coverage & Contamination Isolation",
+            description="Enforces expansion to >= 280 cases (115 Dev, 55 Val, 110 Held-Out) with verified zero cross-split contamination.",
             category="LEGAL_VALIDITY",
-            threshold=">= 240 cases; >= 90 held-out cases; 0 exact duplicates; max similarity <= 0.85",
+            threshold=">= 280 cases; >= 105 held-out cases; 0 exact duplicates; max similarity <= 0.85",
             actual_value=f"{total_cases} total cases ({held_out} held-out); 0 duplicates; max Jaccard {max_sim:.3f}",
             status=GateStatus.PASSED if passed else GateStatus.FAILED,
             evidence={
@@ -770,6 +771,8 @@ class ReleaseGateEvaluator:
                 "max_similarity": max_sim,
             },
         )
+
+    _eval_rg19_pit_v13_benchmark = _eval_rg19_pit_v14_benchmark
 
     def _eval_rg20_differential_regression_guard(self) -> ReleaseGate:
         from legalmitra.evaluation.differential_evaluator import DifferentialEvaluator
@@ -783,7 +786,7 @@ class ReleaseGateEvaluator:
             {"case_id": "PIT-002", "passed": True, "verdict": "ANSWER_QUALIFIED"},
             {"case_id": "PIT-213", "passed": True, "verdict": "ANSWER_SUPPORTED"},
         ]
-        rep = diff_eval.compare_runs(baseline_cases, candidate_cases, "PIT-V12", "PIT-V13")
+        rep = diff_eval.compare_runs(baseline_cases, candidate_cases, "PIT-V12", "PIT-V14")
         passed = (
             rep.is_regression_free
             and rep.critical_safety_regressions == 0

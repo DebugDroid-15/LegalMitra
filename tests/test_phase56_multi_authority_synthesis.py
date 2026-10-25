@@ -221,12 +221,12 @@ class TestPhase56PITV12BenchmarkAndReleaseGates:
         with open(manifest_path, "r", encoding="utf-8") as f:
             data = json.load(f)
 
-        assert data["benchmark_suite_id"] in ("LEGALMITRA-BENCHMARK-PIT-V12", "LEGALMITRA-BENCHMARK-PIT-V13")
-        assert data["version"] in ("12.0.0", "13.0.0")
-        assert len(data["test_cases"]) in (212, 240)
-        assert data["split_counts"]["development"] in (88, 100)
-        assert data["split_counts"]["validation"] in (40, 46)
-        assert data["split_counts"]["held_out_evaluation"] in (84, 94)
+        assert data["benchmark_suite_id"] in ("LEGALMITRA-BENCHMARK-PIT-V12", "LEGALMITRA-BENCHMARK-PIT-V13", "LEGALMITRA-BENCHMARK-PIT-V14")
+        assert data["version"] in ("12.0.0", "13.0.0", "14.0.0")
+        assert len(data["test_cases"]) in (212, 240, 280)
+        assert data["split_counts"]["development"] in (88, 100, 115)
+        assert data["split_counts"]["validation"] in (40, 46, 55)
+        assert data["split_counts"]["held_out_evaluation"] in (84, 94, 110)
 
         # Run ContaminationAuditor
         auditor = ContaminationAuditor()
@@ -240,8 +240,8 @@ class TestPhase56PITV12BenchmarkAndReleaseGates:
         evaluator = ReleaseGateEvaluator()
         summary = evaluator.evaluate_all_gates()
 
-        assert summary.release_id in ("LEGALMITRA-RELEASE-PHASE56", "LEGALMITRA-RELEASE-PHASE57", "LEGALMITRA-RELEASE-PHASE58")
-        assert summary.target_version in ("0.56.0", "0.57.0", "0.58.0")
+        assert summary.release_id in ("LEGALMITRA-RELEASE-PHASE56", "LEGALMITRA-RELEASE-PHASE57", "LEGALMITRA-RELEASE-PHASE58", "LEGALMITRA-RELEASE-PHASE59")
+        assert summary.target_version in ("0.56.0", "0.57.0", "0.58.0", "0.59.0")
         assert summary.total_gates in (15, 20)
         assert summary.passed_gates in (14, 19)
         assert summary.failed_gates == 0
