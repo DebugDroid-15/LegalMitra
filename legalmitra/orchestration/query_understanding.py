@@ -189,6 +189,10 @@ class LegalQueryAnalyzer:
             acts.append("IND-STAT-SRA-1963")
         if any(term in q_lower for term in ["transfer of property", "section 53a"]):
             acts.append("IND-STAT-TPA-1882")
+        if any(term in q_lower for term in ["it act", "information technology", "section 66a", "66a"]):
+            acts.append("IND-STAT-IT-2000")
+            if "66a" in q_lower:
+                provisions.append("Section 66A")
         if any(term in q_lower for term in ["copyright"]):
             acts.append("IND-STAT-COPYRIGHT-1957")
             if any(term in q_lower for term in ["rule", "rules", "registration"]):

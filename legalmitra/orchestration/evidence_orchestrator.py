@@ -290,6 +290,15 @@ class UnifiedEvidenceOrchestrator:
         # Evaluate status of all candidate precedents
         for prec_id in parsed_query.candidate_precedents:
             status = self.knowledge_graph.evaluate_precedent_status(prec_id)
+            evidence_set.authority_resolution_traces.append({
+                "trace_type": "precedent_status",
+                "precedent_id": prec_id,
+                "status": status.get("status"),
+                "is_good_law": status.get("is_good_law"),
+                "is_overruled": status.get("is_overruled"),
+                "is_referred": status.get("is_referred"),
+                "has_active_stay": status.get("has_active_stay"),
+            })
             if status.get("status") == "operation_stayed":
                 evidence_set.contrary_authorities.append(EvidenceItem(
                     item_id=prec_id,
@@ -416,6 +425,7 @@ class UnifiedEvidenceOrchestrator:
                             res_pit = self.temporal_engine.resolve_point_in_time_applicability(
                                 cand_pid, query_date_str=parsed_query.query_date, jurisdiction=parsed_query.jurisdiction
                             )
+                            res_pit["trace_type"] = "statutory_applicability"
                             evidence_set.authority_resolution_traces.append(res_pit)
                             if res_pit.get("applicability_state") in ("SUPERSEDED_OR_REPEALED", "NOT_YET_IN_FORCE", "PARTIALLY_COMMENCED"):
                                 evidence_set.coverage_warnings.append(
@@ -439,9 +449,11 @@ class UnifiedEvidenceOrchestrator:
                         conf_res = self.knowledge_graph.resolve_precedent_conflict(
                             ca, cb, target_jurisdiction=parsed_query.jurisdiction
                         )
-                        if conf_res.get("conflict_status") not in ("MISSING_AUTHORITY_EVIDENCE", "RESOLVED_BY_HIERARCHY"):
-                            evidence_set.unresolved_conflicts.append(conf_res)
+                        if conf_res.get("conflict_status") != "MISSING_AUTHORITY_EVIDENCE":
+                            conf_res["trace_type"] = "precedent_conflict"
                             evidence_set.authority_resolution_traces.append(conf_res)
+                            if not conf_res.get("is_resolvable", True) or conf_res.get("requires_qualification", False):
+                                evidence_set.unresolved_conflicts.append(conf_res)
 
         # Total items
         evidence_set.total_items_retrieved = (
