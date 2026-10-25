@@ -1,12 +1,12 @@
 {
-  "release_id": "LEGALMITRA-RELEASE-PHASE55",
-  "target_version": "0.55.0",
-  "total_gates": 11,
-  "passed_gates": 10,
+  "release_id": "LEGALMITRA-RELEASE-PHASE56",
+  "target_version": "0.56.0",
+  "total_gates": 15,
+  "passed_gates": 14,
   "failed_gates": 0,
   "pending_gates": 1,
   "overall_decision": "STAGE_GATED_PENDING_ADVOCATE_SIGN_OFF",
-  "evaluated_at": "2026-10-25T14:59:25.560478Z",
+  "evaluated_at": "2026-10-25T15:34:50.372797Z",
   "gates": [
     {
       "gate_id": "RG-01-PROVENANCE",
@@ -22,7 +22,7 @@
         "quarantined_scaffold_chunks": 6,
         "database_path": "C:\\PROJECTS\\LegalMitra\\data\\legalmitra_kb.db"
       },
-      "verified_at": "2026-10-25T14:59:23.869656Z"
+      "verified_at": "2026-10-25T15:34:49.615564Z"
     },
     {
       "gate_id": "RG-02-TEMPORAL-CORRECTNESS",
@@ -37,7 +37,7 @@
         "evaluated_temporal_cases": 19,
         "accuracy": 1.0
       },
-      "verified_at": "2026-10-25T14:59:23.875663Z"
+      "verified_at": "2026-10-25T15:34:49.619559Z"
     },
     {
       "gate_id": "RG-03-PRECEDENT-HIERARCHY",
@@ -53,7 +53,7 @@
         "referral_case_handled": "CASE-SC-RAMESH-CHANDRA-REF-2019",
         "stayed_precedent_handled": "CASE-SC-ST-STEPHENS-STAY-2023"
       },
-      "verified_at": "2026-10-25T14:59:23.875663Z"
+      "verified_at": "2026-10-25T15:34:49.619559Z"
     },
     {
       "gate_id": "RG-04-CLAIM-GROUNDING",
@@ -61,15 +61,15 @@
       "description": "Ensures every material legal assertion is grounded in authentic statutory or precedent extracts.",
       "category": "LEGAL_VALIDITY",
       "threshold": ">= 90% claim grounding rate; >= 90% citation validity",
-      "actual_value": "Claim Support: 97.5%; Citation Validity: 99.0%",
+      "actual_value": "Claim Support: 97.5%; Citation Validity: 99.1%",
       "status": "PASSED",
       "blocking": true,
       "evidence": {
-        "material_claim_support": 0.975,
-        "citation_validity": 0.9896373056994818,
-        "sample_cases_evaluated": 47
+        "material_claim_support": 0.9745762711864406,
+        "citation_validity": 0.9906103286384976,
+        "sample_cases_evaluated": 53
       },
-      "verified_at": "2026-10-25T14:59:24.927277Z"
+      "verified_at": "2026-10-25T15:34:50.061173Z"
     },
     {
       "gate_id": "RG-05-CLARIFICATION-ABSTENTION",
@@ -89,7 +89,7 @@
           "CLARIFICATION_REQUIRED"
         ]
       },
-      "verified_at": "2026-10-25T14:59:24.928281Z"
+      "verified_at": "2026-10-25T15:34:50.061173Z"
     },
     {
       "gate_id": "RG-06-CITATION-INTEGRITY",
@@ -104,7 +104,7 @@
         "neutral_citation_regex_audit": "Active regex and knowledge-base cross-check",
         "synthetic_scaffold_interception": "Active quarantine check"
       },
-      "verified_at": "2026-10-25T14:59:24.928281Z"
+      "verified_at": "2026-10-25T15:34:50.061173Z"
     },
     {
       "gate_id": "RG-07-ADVERSARIAL-SECURITY",
@@ -121,7 +121,7 @@
         "failed_attacks": 0,
         "robustness_rate": 1.0
       },
-      "verified_at": "2026-10-25T14:59:25.465176Z"
+      "verified_at": "2026-10-25T15:34:50.252225Z"
     },
     {
       "gate_id": "RG-08-DATABASE-ISOLATION",
@@ -138,7 +138,7 @@
         "distinct_files": true,
         "table_isolation_verified": true
       },
-      "verified_at": "2026-10-25T14:59:25.468183Z"
+      "verified_at": "2026-10-25T15:34:50.253225Z"
     },
     {
       "gate_id": "RG-09-REGRESSION-INTEGRITY",
@@ -154,7 +154,7 @@
         "phase40_50_test_count": 159,
         "test_pass_rate": 1.0
       },
-      "verified_at": "2026-10-25T14:59:25.468183Z"
+      "verified_at": "2026-10-25T15:34:50.253225Z"
     },
     {
       "gate_id": "RG-10-HELD-OUT-EVALUATION",
@@ -162,15 +162,15 @@
       "description": "Evaluates generalization on independently curated, held-out evaluation cases with verified zero split contamination.",
       "category": "LEGAL_VALIDITY",
       "threshold": ">= 55 held-out cases; 0 exact duplicates; max similarity <= 0.85; >= 90% pass rate",
-      "actual_value": "75 held-out cases verified; 0 exact duplicates; max similarity 0.58",
+      "actual_value": "84 held-out cases verified; 0 exact duplicates; max similarity 0.59",
       "status": "PASSED",
       "blocking": true,
       "evidence": {
-        "held_out_case_count": 75,
+        "held_out_case_count": 84,
         "exact_duplicates": 0,
-        "max_cross_split_jaccard": 0.5789473684210527
+        "max_cross_split_jaccard": 0.5925925925925926
       },
-      "verified_at": "2026-10-25T14:59:25.557780Z"
+      "verified_at": "2026-10-25T15:34:50.325747Z"
     },
     {
       "gate_id": "RG-11-LEGAL-REVIEW",
@@ -188,7 +188,80 @@
         "governing_statute": "Advocates Act, 1961",
         "notes": "Governance invariant strictly preserved: Automated tools cannot self-certify advocate review."
       },
-      "verified_at": "2026-10-25T14:59:25.560478Z"
+      "verified_at": "2026-10-25T15:34:50.328750Z"
+    },
+    {
+      "gate_id": "RG-12-ISSUE-EVIDENCE-COMPLETENESS",
+      "name": "Issue-Level Evidence Completeness and Traceability",
+      "description": "Verifies that all material legal issues have explicit evidentiary backing, candidate rules, and temporal status in the IssueEvidenceMatrix.",
+      "category": "LEGAL_VALIDITY",
+      "threshold": "100% decomposed issues linked to candidate rules and temporal status",
+      "actual_value": "IssueEvidenceMatrix operational with 2 verified records",
+      "status": "PASSED",
+      "blocking": true,
+      "evidence": {
+        "matrix_available": true,
+        "record_count": 2,
+        "verified_fields": [
+          "candidate_rules",
+          "temporal_status",
+          "claim_validation_outcome",
+          "issue_disposition"
+        ]
+      },
+      "verified_at": "2026-10-25T15:34:50.340752Z"
+    },
+    {
+      "gate_id": "RG-13-MATERIAL-EXCEPTION-COVERAGE",
+      "name": "Material Statutory Exception and Proviso Preservation",
+      "description": "Guarantees that material statutory exceptions, provisos, and legislative bars are never suppressed when primary general rules are retrieved.",
+      "category": "LEGAL_VALIDITY",
+      "threshold": "100% preservation of applicable statutory exceptions and provisos",
+      "actual_value": "Statutory exceptions verified present in response authorities: True",
+      "status": "PASSED",
+      "blocking": true,
+      "evidence": {
+        "tested_statute": "Hindu Succession Act, 1956 Section 6(1) Proviso",
+        "exceptions_identified": [
+          "Statutory Exception: Section 6(1) Proviso: Savings of registered partitions executed prior to 20 December 2004"
+        ],
+        "proviso_preserved": true
+      },
+      "verified_at": "2026-10-25T15:34:50.352748Z"
+    },
+    {
+      "gate_id": "RG-14-CLAIM-DEPENDENCY-INTEGRITY",
+      "name": "Claim Dependency Validation and Premise Guardrails",
+      "description": "Enforces that downstream conclusions dependent on unverified or unsupported intermediate claims are suppressed from unconditional affirmation.",
+      "category": "LEGAL_VALIDITY",
+      "threshold": "100% downstream premise dependency enforcement",
+      "actual_value": "Dependency guardrail active: downstream premise suppression verified (True)",
+      "status": "PASSED",
+      "blocking": true,
+      "evidence": {
+        "has_unsupported_dependencies": true,
+        "dependent_issue_suppressed": true,
+        "failure_notes": [
+          "Downstream issue 'ISSUE-2' depends on prerequisite 'ISSUE-1', which has unresolved outcome 'INSUFFICIENT_EVIDENCE'. Unconditional affirmation suppressed."
+        ]
+      },
+      "verified_at": "2026-10-25T15:34:50.352748Z"
+    },
+    {
+      "gate_id": "RG-15-MULTI-ISSUE-CALIBRATION",
+      "name": "Multi-Issue Partial and Conditional Answer Calibration",
+      "description": "Validates calibrated emission of ANSWER_PARTIAL for multi-issue inquiries with divergent legal statuses and ANSWER_CONDITIONAL for factual contingencies.",
+      "category": "LEGAL_VALIDITY",
+      "threshold": "Accurate calibrated emission of ANSWER_PARTIAL and ANSWER_CONDITIONAL without binary conflation",
+      "actual_value": "Calibrated multi-issue partial response verified: True (ANSWER_PARTIAL)",
+      "status": "PASSED",
+      "blocking": true,
+      "evidence": {
+        "tested_state": "ANSWER_PARTIAL",
+        "is_partial_validated": true,
+        "resolved_portion_present": true
+      },
+      "verified_at": "2026-10-25T15:34:50.372797Z"
     }
   ]
 }

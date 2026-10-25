@@ -9,6 +9,7 @@ from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional, Tuple
 
+from legalmitra.orchestration.evidence_matrix import ClaimDependencyValidator, IssueEvidenceMatrix
 from legalmitra.orchestration.evidence_orchestrator import EvidenceItem, OrchestratedEvidenceSet
 from legalmitra.orchestration.fact_analyzer import FactAnalysisReport
 from legalmitra.orchestration.query_understanding import ParsedLegalQuery
@@ -49,6 +50,7 @@ class AssembledAnswer:
     temporally_superseded_count: int
     practical_next_steps: List[str]
     disclaimer: str
+    evidence_matrix: Optional[IssueEvidenceMatrix] = None
 
 
 class EvidenceTraceableAnswerAssembler:
@@ -59,6 +61,7 @@ class EvidenceTraceableAnswerAssembler:
 
     def __init__(self, temporal_engine: TemporalLawEngine):
         self.temporal_engine = temporal_engine
+        self.dependency_validator = ClaimDependencyValidator()
 
     def assemble_answer(
         self,
@@ -71,6 +74,13 @@ class EvidenceTraceableAnswerAssembler:
         governing_provisions: List[str] = []
         competing_authorities: List[str] = []
         citations: List[str] = []
+
+        # Build Phase 56 Issue-Level Evidence Matrix
+        matrix = self.dependency_validator.build_matrix(
+            parsed_query=parsed_query,
+            evidence_set=evidence_set,
+            fact_report=fact_report,
+        )
 
         # 1. Synthesize candidate claims from IRAC units and retrieved evidence
         claim_idx = 1
@@ -245,6 +255,28 @@ class EvidenceTraceableAnswerAssembler:
             claims.append(c)
             claim_idx += 1
 
+        # Synthesize claims for statutory exceptions & provisos identified in evidence matrix (Phase 56)
+        for rec in matrix.records:
+            for exc in rec.applicable_exceptions:
+                if exc not in competing_authorities:
+                    competing_authorities.append(f"Statutory Exception: {exc}")
+                req_qual = rec.issue_disposition.value in ("QUALIFIED_ANSWER", "CONDITIONAL_ANSWER")
+                exc_claim = AssembledClaim(
+                    claim_id=f"CLAIM-{claim_idx}",
+                    claim_text=f"Material Exception / Proviso ({rec.issue_id}): {exc}",
+                    supporting_evidence_ids=rec.selected_evidence_ids,
+                    verbatim_passage=exc[:200],
+                    statutory_version=rec.temporal_status,
+                    jurisdiction=parsed_query.jurisdiction or "IN",
+                    authority_status="STATUTORY_EXCEPTION_PROVISO",
+                    validation_verdict="PARTIALLY_SUPPORTED" if rec.issue_disposition.value == "QUALIFIED_ANSWER" else "SUPPORTED",
+                    validation_rationale=rec.disposition_rationale or "Material statutory qualification/exception verified.",
+                    is_supported=True,
+                    requires_qualification=req_qual,
+                )
+                claims.append(exc_claim)
+                claim_idx += 1
+
         # Handle fabricated citation checks if user explicitly mentioned suspicious cases
         fake_matches = re.findall(r"\b(?:\d{4}\s+)?[A-Z]{2,5}\s*99999\b", parsed_query.original_query)
         if not fake_matches and "99999" in parsed_query.original_query:
@@ -311,6 +343,29 @@ class EvidenceTraceableAnswerAssembler:
                 "Direct Position:\n"
                 "LegalMitra cannot bypass statutory law, constitutional limits, or verified evidence. "
                 "All inquiries are processed strictly under authoritative Indian enactments and binding judicial precedent."
+            )
+        elif matrix.has_partial_support:
+            # Multi-issue calibrated partial answer
+            part_a_items = []
+            part_b_items = []
+            for r in matrix.records:
+                if r.issue_disposition.value in ("DIRECT_ANSWER", "QUALIFIED_ANSWER", "CONDITIONAL_ANSWER"):
+                    part_a_items.append(f"- Issue {r.issue_id} ({r.issue_statement}): {r.disposition_rationale} Rules: {', '.join(r.candidate_rules)}")
+                else:
+                    part_b_items.append(f"- Issue {r.issue_id} ({r.issue_statement}): {r.disposition_rationale} Status: {r.temporal_status}")
+            
+            prose_sections.append(
+                "Direct Position (Multi-Issue Calibrated Determination):\n"
+                "This inquiry involves multiple distinct legal issues with differing operational statuses.\n\n"
+                "1. Substantively Resolved Issues:\n" + "\n".join(part_a_items) + "\n\n"
+                "2. Unresolved / Contingent Issues:\n" + "\n".join(part_b_items)
+            )
+        elif matrix.is_conditional:
+            cond_lines = [r.conditional_reasoning for r in matrix.records if r.conditional_reasoning]
+            prose_sections.append(
+                "Direct Position (Conditional Legal Determination):\n"
+                "The applicable legal rule is contingent upon specific factual conditions:\n"
+                + "\n\n".join(cond_lines)
             )
         elif raw_draft_answer and len(raw_draft_answer.strip()) > 30:
             prose_sections.append(f"Direct Position:\n{raw_draft_answer.strip()}")
@@ -380,5 +435,6 @@ class EvidenceTraceableAnswerAssembler:
             temporally_superseded_count=temporally_superseded_count,
             practical_next_steps=practical_steps,
             disclaimer=disclaimer,
+            evidence_matrix=matrix,
         )
 

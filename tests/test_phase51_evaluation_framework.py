@@ -42,10 +42,10 @@ def test_benchmark_manifest_structure_and_splits():
         data = json.load(f)
 
     assert "LEGALMITRA-BENCHMARK-PIT" in data.get("benchmark_suite_id", "")
-    assert data.get("version") in ("7.0.0", "8.0.0", "9.0.0", "10.0.0", "11.0.0")
+    assert data.get("version") in ("7.0.0", "8.0.0", "9.0.0", "10.0.0", "11.0.0", "12.0.0")
 
     test_cases = data.get("test_cases", [])
-    assert len(test_cases) in (100, 120, 140, 164, 188), f"Expected 100, 120, 140, or 164 test cases, found {len(test_cases)}"
+    assert len(test_cases) in (100, 120, 140, 164, 188, 212), f"Expected 100, 120, 140, 164, 188, or 212 test cases, found {len(test_cases)}"
 
     split_counts = {"development": 0, "validation": 0, "held_out_evaluation": 0}
     case_ids = set()
@@ -57,9 +57,9 @@ def test_benchmark_manifest_structure_and_splits():
         assert split in split_counts, f"Invalid split: {split}"
         split_counts[split] += 1
 
-    assert split_counts["development"] in (50, 60, 70, 78)
-    assert split_counts["validation"] in (20, 25, 30, 35)
-    assert split_counts["held_out_evaluation"] in (30, 50, 55, 64, 75)
+    assert split_counts["development"] in (50, 60, 70, 78, 88)
+    assert split_counts["validation"] in (20, 25, 30, 35, 40)
+    assert split_counts["held_out_evaluation"] in (30, 50, 55, 64, 75, 84)
 
 
 # ==============================================================================
@@ -73,13 +73,13 @@ def test_contamination_and_split_isolation():
     auditor = ContaminationAuditor()
     report = auditor.audit_manifest(cases)
 
-    assert report.total_cases_audited in (100, 120, 140, 164, 188)
+    assert report.total_cases_audited in (100, 120, 140, 164, 188, 212)
     assert report.exact_duplicates_count == 0, f"Found exact duplicate queries: {report.exact_duplicates_count}"
     assert report.near_duplicates_count == 0
     assert report.max_cross_split_jaccard <= 0.85, f"Cross-split Jaccard similarity too high: {report.max_cross_split_jaccard}"
-    assert report.split_counts["development"] in (50, 60, 70, 78)
-    assert report.split_counts["validation"] in (20, 25, 30, 35)
-    assert report.split_counts["held_out_evaluation"] in (30, 50, 55, 64, 75)
+    assert report.split_counts["development"] in (50, 60, 70, 78, 88)
+    assert report.split_counts["validation"] in (20, 25, 30, 35, 40)
+    assert report.split_counts["held_out_evaluation"] in (30, 50, 55, 64, 75, 84)
     assert report.is_split_isolated is True
     assert report.audit_verdict == "PASS"
 
@@ -94,7 +94,7 @@ def test_held_out_cases_sample_execution():
         cases = json.load(f).get("test_cases", [])
 
     held_out = [c for c in cases if c.get("split") == "held_out_evaluation"]
-    assert len(held_out) in (30, 50, 55, 64, 75)
+    assert len(held_out) in (30, 50, 55, 64, 75, 84)
 
     # Test key representative cases from held-out evaluation
     test_samples = [
@@ -211,8 +211,8 @@ def test_release_quality_gates():
     evaluator = ReleaseGateEvaluator()
     summary = evaluator.evaluate_all_gates()
 
-    assert summary.total_gates == 11
-    assert summary.passed_gates == 10
+    assert summary.total_gates in (11, 15)
+    assert summary.passed_gates in (10, 14)
     assert summary.failed_gates == 0
     assert summary.pending_gates == 1
     assert summary.overall_decision == "STAGE_GATED_PENDING_ADVOCATE_SIGN_OFF"
@@ -236,7 +236,7 @@ def test_release_quality_gates():
     with open(RELEASE_GATES_PATH, "r", encoding="utf-8") as f:
         mf = json.load(f)
     assert mf["overall_decision"] == "STAGE_GATED_PENDING_ADVOCATE_SIGN_OFF"
-    assert len(mf["gates"]) == 11
+    assert len(mf["gates"]) in (11, 15)
 
 
 # ==============================================================================

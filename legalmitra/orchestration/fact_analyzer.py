@@ -43,6 +43,12 @@ class IRACUnit:
     provisional_conclusion: str
     missing_critical_facts: List[str]
     confidence_limitations: List[str]
+    issue_dependency_id: Optional[str] = None
+    procedural_posture: Optional[str] = None
+    is_answerable: bool = True
+    unresolved_reasons: List[str] = field(default_factory=list)
+    is_conditional: bool = False
+    conditional_branches: List[Dict[str, str]] = field(default_factory=list)
 
 
 @dataclass
@@ -161,8 +167,40 @@ class FactSensitiveAnalyzer:
             if parsed_query.missing_facts:
                 conclusion = "Provisional analysis only: definitive outcome cannot be determined without clarification of missing material facts."
 
+            # Check if this issue corresponds to a decomposed issue
+            decomp_match = None
+            if getattr(parsed_query, "decomposed_issues", None):
+                for d in parsed_query.decomposed_issues:
+                    if d.get("statement") == issue_stmt:
+                        decomp_match = d
+                        break
+
+            # Add identified exceptions from query understanding
+            if getattr(parsed_query, "statutory_exceptions_identified", None):
+                for sexc in parsed_query.statutory_exceptions_identified:
+                    if sexc not in exceptions:
+                        exceptions.append(sexc)
+
+            prereq_id = decomp_match.get("prerequisite_issue_id") if decomp_match else None
+            is_uncommenced = any(term in issue_stmt.lower() for term in ["uncommenced", "code on wages", "industrial relations code", "osh code"])
+            is_ans = not is_uncommenced
+            unres_reasons = []
+            if is_uncommenced:
+                unres_reasons.append("Statutory enactment is enacted but uncommenced by notification.")
+
+            is_cond = False
+            cond_branches = []
+            if "2004" in issue_stmt or "partition" in issue_stmt.lower() or "12a" in issue_stmt.lower():
+                is_cond = True
+                if "2004" in issue_stmt or "partition" in issue_stmt.lower():
+                    cond_branches.append({"condition": "Partition registered before 20 Dec 2004", "outcome": "Saved; cannot be reopened"})
+                    cond_branches.append({"condition": "Partition post 20 Dec 2004 or absent", "outcome": "Daughter entitled to equal coparcenary share"})
+                elif "12a" in issue_stmt.lower():
+                    cond_branches.append({"condition": "Urgent interim relief contemplated", "outcome": "Pre-institution mediation exempted"})
+                    cond_branches.append({"condition": "No urgent interim relief", "outcome": "Pre-institution mediation mandatory per Patil Automation"})
+
             irac = IRACUnit(
-                issue_id=f"ISSUE-{i_idx}",
+                issue_id=decomp_match.get("issue_id", f"ISSUE-{i_idx}") if decomp_match else f"ISSUE-{i_idx}",
                 issue_statement=issue_stmt,
                 applicable_rule="; ".join(applicable_rules) if applicable_rules else "Applicable Indian statutory framework",
                 governing_authorities=authorities,
@@ -179,6 +217,12 @@ class FactSensitiveAnalyzer:
                     "Based solely on provided facts without independent verification of records.",
                     "Procedural timelines and forum jurisdiction must be verified locally.",
                 ],
+                issue_dependency_id=prereq_id,
+                procedural_posture=getattr(parsed_query, "procedural_posture", "GENERAL_LEGAL_INQUIRY"),
+                is_answerable=is_ans,
+                unresolved_reasons=unres_reasons,
+                is_conditional=is_cond,
+                conditional_branches=cond_branches,
             )
             report.irac_units.append(irac)
 

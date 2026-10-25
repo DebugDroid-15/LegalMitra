@@ -54,6 +54,9 @@ class PipelineExecutionTelemetry:
     policy_state: str = ""
     clarification_posed: bool = False
     abstention_triggered: bool = False
+    has_partial_support: bool = False
+    is_conditional: bool = False
+    issue_matrix_records_count: int = 0
 
 
 @dataclass
@@ -72,6 +75,7 @@ class OrchestratedLegalResponse:
     policy_result: PolicyEvaluationResult
     telemetry: PipelineExecutionTelemetry
     timestamp: str
+    evidence_matrix: Optional[Any] = None
 
 
 class LegalQueryPipeline:
@@ -205,7 +209,20 @@ class LegalQueryPipeline:
                 "Preliminary Statutory Context:\n"
                 + final_text
             )
+        elif policy_result.state == LegalResponseState.ANSWER_PARTIAL:
+            final_text = (
+                "PARTIAL LEGAL DETERMINATION (MULTI-ISSUE CALIBRATED SYNTHESIS):\n"
+                f"{policy_result.policy_rationale}\n\n"
+                + final_text
+            )
+        elif policy_result.state == LegalResponseState.ANSWER_CONDITIONAL:
+            final_text = (
+                "CONDITIONAL LEGAL DETERMINATION (ALTERNATIVE FACTUAL BRANCHES):\n"
+                f"{policy_result.policy_rationale}\n\n"
+                + final_text
+            )
 
+        matrix = getattr(assembled_ans, "evidence_matrix", None)
         telemetry = PipelineExecutionTelemetry(
             start_time=start_t,
             end_time=end_t,
@@ -219,6 +236,9 @@ class LegalQueryPipeline:
             policy_state=policy_result.state.value,
             clarification_posed=policy_result.requires_clarifying_question,
             abstention_triggered=policy_result.state.value.startswith("ABSTAIN"),
+            has_partial_support=bool(matrix and matrix.has_partial_support),
+            is_conditional=bool(matrix and matrix.is_conditional),
+            issue_matrix_records_count=len(matrix.records) if matrix else 0,
         )
 
         return OrchestratedLegalResponse(
@@ -235,5 +255,6 @@ class LegalQueryPipeline:
             policy_result=policy_result,
             telemetry=telemetry,
             timestamp=datetime.now(timezone.utc).isoformat(),
+            evidence_matrix=matrix,
         )
 

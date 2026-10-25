@@ -136,13 +136,13 @@ class TestPhase52CorpusIntegrity:
             data = json.load(f)
 
         assert "LEGALMITRA-BENCHMARK-PIT" in data["benchmark_suite_id"]
-        assert data["total_test_cases"] in (120, 140, 164, 188)
+        assert data["total_test_cases"] in (120, 140, 164, 188, 212)
 
         # Run contamination auditor
         auditor = ContaminationAuditor()
         report = auditor.audit_manifest(data["test_cases"])
 
-        assert report.total_cases_audited in (120, 140, 164, 188)
+        assert report.total_cases_audited in (120, 140, 164, 188, 212)
         assert report.exact_duplicates_count == 0
         assert report.near_duplicates_count == 0
         assert report.max_cross_split_jaccard <= 0.85
@@ -154,10 +154,10 @@ class TestPhase52CorpusIntegrity:
         evaluator = ReleaseGateEvaluator()
         summary = evaluator.evaluate_all_gates()
 
-        assert summary.release_id in ("LEGALMITRA-RELEASE-PHASE52", "LEGALMITRA-RELEASE-PHASE53", "LEGALMITRA-RELEASE-PHASE54", "LEGALMITRA-RELEASE-PHASE55")
-        assert summary.target_version in ("0.52.0", "0.53.0", "0.54.0", "0.55.0")
-        assert summary.total_gates == 11
-        assert summary.passed_gates == 10
+        assert summary.release_id in ("LEGALMITRA-RELEASE-PHASE52", "LEGALMITRA-RELEASE-PHASE53", "LEGALMITRA-RELEASE-PHASE54", "LEGALMITRA-RELEASE-PHASE55", "LEGALMITRA-RELEASE-PHASE56")
+        assert summary.target_version in ("0.52.0", "0.53.0", "0.54.0", "0.55.0", "0.56.0")
+        assert summary.total_gates in (11, 15)
+        assert summary.passed_gates in (10, 14)
         assert summary.failed_gates == 0
         assert summary.pending_gates == 1
         assert summary.overall_decision == "STAGE_GATED_PENDING_ADVOCATE_SIGN_OFF"
@@ -165,7 +165,7 @@ class TestPhase52CorpusIntegrity:
         # Check Gate RG-10 held-out evaluation
         rg10 = [g for g in summary.gates if g.gate_id == "RG-10-HELD-OUT-EVALUATION"][0]
         assert rg10.status == GateStatus.PASSED
-        assert rg10.evidence["held_out_case_count"] in (50, 55, 64, 75)
+        assert rg10.evidence["held_out_case_count"] in (50, 55, 64, 75, 84)
 
         # Check Gate RG-11 legal review
         rg11 = [g for g in summary.gates if g.gate_id == "RG-11-LEGAL-REVIEW"][0]

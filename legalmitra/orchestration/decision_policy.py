@@ -19,6 +19,8 @@ class LegalResponseState(str, Enum):
     ABSTAIN_INSUFFICIENT_EVIDENCE = "ABSTAIN_INSUFFICIENT_EVIDENCE"
     ABSTAIN_AUTHORITY_CONFLICT = "ABSTAIN_AUTHORITY_CONFLICT"
     ABSTAIN_TEMPORAL_UNCERTAINTY = "ABSTAIN_TEMPORAL_UNCERTAINTY"
+    ANSWER_CONDITIONAL = "ANSWER_CONDITIONAL"
+    ANSWER_PARTIAL = "ANSWER_PARTIAL"
     ABSTAIN_SOURCE_INTEGRITY_FAILURE = "ABSTAIN_SOURCE_INTEGRITY_FAILURE"
 
 
@@ -33,6 +35,7 @@ class PolicyEvaluationResult:
     policy_rationale: str
     permitted_assertions: List[str]
     prohibited_assertions: List[str]
+    evidence_matrix: Optional[Any] = None
 
 
 class LegalDecisionPolicy:
@@ -58,6 +61,39 @@ class LegalDecisionPolicy:
                 permitted_assertions=["Disclose that the cited authority does not exist or lacks verified provenance."],
                 prohibited_assertions=["Do not substantiate or validate legal claims based on nonexistent authorities."],
             )
+
+        # Check evidence matrix outcomes (Phase 56 Multi-Issue Synthesis)
+        matrix = getattr(assembled_answer, "evidence_matrix", None)
+        if matrix:
+            # Check for partial support: some issues answerable, others uncommenced or requiring clarification
+            if matrix.has_partial_support:
+                supported_issues = [r.issue_statement for r in matrix.records if r.issue_disposition.value in ("DIRECT_ANSWER", "QUALIFIED_ANSWER", "CONDITIONAL_ANSWER")]
+                unresolved_issues = [r.issue_statement for r in matrix.records if r.issue_disposition.value not in ("DIRECT_ANSWER", "QUALIFIED_ANSWER", "CONDITIONAL_ANSWER")]
+                return PolicyEvaluationResult(
+                    state=LegalResponseState.ANSWER_PARTIAL,
+                    allows_partial_answer=True,
+                    requires_clarifying_question=False,
+                    clarifying_question=None,
+                    missing_evidence_or_fact=f"Unresolved / uncommenced components: {'; '.join(unresolved_issues[:2])}",
+                    policy_rationale="Multi-issue inquiry resolved with calibrated separation: substantive issues are answered with verified authority while uncommenced/unresolved regimes are explicitly disclosed.",
+                    permitted_assertions=[f"Substantiate verified issues: {'; '.join(supported_issues[:2])}."],
+                    prohibited_assertions=["Do not treat uncommenced codes or unresolved issues as definitively applicable."],
+                    evidence_matrix=matrix,
+                )
+
+            # Check for conditional reasoning: answerable across alternative factual branches
+            if matrix.is_conditional and not parsed_query.clarification_necessary:
+                return PolicyEvaluationResult(
+                    state=LegalResponseState.ANSWER_CONDITIONAL,
+                    allows_partial_answer=True,
+                    requires_clarifying_question=False,
+                    clarifying_question=None,
+                    missing_evidence_or_fact=None,
+                    policy_rationale="Legal answer is structured conditionally across verified alternative factual branches (e.g. pre-2004 vs post-2004 partition or urgent interim relief exception).",
+                    permitted_assertions=["Assert the legal positions conditionally based on the explicit factual branches."],
+                    prohibited_assertions=["Do not assert one factual branch as proven without verification of records."],
+                    evidence_matrix=matrix,
+                )
 
         # 2. Check for empty evidence set -> ABSTAIN_INSUFFICIENT_EVIDENCE
         if evidence_set.total_items_retrieved == 0:
