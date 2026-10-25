@@ -155,6 +155,7 @@ class LegalDecisionPolicy:
             or assembled_answer.contradicted_claims_count > 0
             or assembled_answer.temporally_superseded_count > 0
             or parsed_query.is_adversarial_injection
+            or len(parsed_query.alleged_facts_unverified) > 0
         )
         if has_qualifications:
             return PolicyEvaluationResult(

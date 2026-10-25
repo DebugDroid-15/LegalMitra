@@ -77,6 +77,10 @@ class OrchestratedLegalResponse:
     timestamp: str
     evidence_matrix: Optional[Any] = None
     proposition_provenance: List[Any] = field(default_factory=list)
+    provenance_audit: Optional[Any] = None
+    post_generation_eval: Optional[Any] = None
+    provenance_audit: Optional[Any] = None
+    post_generation_eval: Optional[Any] = None
 
 
 class LegalQueryPipeline:
@@ -105,6 +109,10 @@ class LegalQueryPipeline:
             temporal_engine=self.temporal_engine
         )
         self.decision_policy = LegalDecisionPolicy()
+        from legalmitra.evaluation.provenance_model import PropositionProvenanceAuditor
+        self.provenance_auditor = PropositionProvenanceAuditor()
+        from legalmitra.evaluation.provenance_model import PropositionProvenanceAuditor
+        self.provenance_auditor = PropositionProvenanceAuditor()
 
     def execute(
         self,
@@ -172,10 +180,46 @@ class LegalQueryPipeline:
 
         # Step 14: Format final response based on policy decision
         steps.append("14. Return answer with traceable sources and limitations")
+
+        # Step 15: Post-generation safety verification & provenance audit
+        steps.append("15. Post-generation safety evaluation & provenance audit")
+        prov_audit_report = None
+        if hasattr(assembled_ans, "proposition_provenance") and assembled_ans.proposition_provenance:
+            prov_audit_report = self.provenance_auditor.audit_propositions(assembled_ans.proposition_provenance)
+            if prov_audit_report.quarantined_scaffold_count > 0:
+                policy_result.state = LegalResponseState.ABSTAIN_SOURCE_INTEGRITY_FAILURE
+                policy_result.policy_rationale = (
+                    "CRITICAL SAFETY INTERCEPT: Quarantined synthetic scaffold "
+                    "(IND-JUD-DEL-2024-BAIL) was detected in assembled proposition provenance."
+                )
+
         end_t = time.time()
         duration = end_t - start_t
 
         final_text = assembled_ans.answer_text
+
+        # Detect intra-answer internal contradiction in final prose
+        lower_final = final_text.lower()
+        has_internal_contradiction = False
+        if ("injunction may be granted" in lower_final or "grant an injunction" in lower_final) and (
+            "bars the grant of an injunction" in lower_final
+            or "shall not grant an injunction" in lower_final
+            or "bars the grant of injunction" in lower_final
+            or "injunction cannot be granted" in lower_final
+        ):
+            has_internal_contradiction = True
+        elif "absolute right" in lower_final and ("prohibited" in lower_final or "barred" in lower_final or "statutory bar" in lower_final):
+            has_internal_contradiction = True
+
+        if has_internal_contradiction and policy_result.state == LegalResponseState.ANSWER_SUPPORTED:
+            policy_result.state = LegalResponseState.CLARIFICATION_REQUIRED
+            policy_result.clarifying_question = "Material contradiction detected between affirmative claim and statutory bar."
+            final_text = (
+                "CLARIFICATION REQUIRED BEFORE DEFINITIVE DETERMINATION:\n"
+                f"{policy_result.clarifying_question}\n\n"
+                "Preliminary Statutory Context:\n"
+                + final_text
+            )
         if policy_result.state == LegalResponseState.ABSTAIN_SOURCE_INTEGRITY_FAILURE:
             final_text = (
                 "ABSTENTION — SOURCE INTEGRITY FAILURE:\n"
@@ -258,5 +302,6 @@ class LegalQueryPipeline:
             timestamp=datetime.now(timezone.utc).isoformat(),
             evidence_matrix=matrix,
             proposition_provenance=getattr(assembled_ans, 'proposition_provenance', []),
+            provenance_audit=prov_audit_report,
         )
 

@@ -109,10 +109,29 @@ class LegalPropositionProvenance:
     review_notes: str = ""
     audit_hash: str = ""
 
+    def compute_canonical_audit_hash(self) -> str:
+        """
+        Computes a deterministic canonical SHA-256 audit digest binding the proposition
+        to its exact source identifier, pinpoint reference, and proposition text.
+        """
+        raw = f"{self.proposition_id}:{self.source_id}:{self.pinpoint_reference}:{self.proposition_text}"
+        return hashlib.sha256(raw.encode("utf-8")).hexdigest()[:16]
+
+    def verify_hash_integrity(self) -> tuple:
+        """
+        Recomputes the canonical audit hash and verifies that content or metadata
+        has not been altered post-creation.
+        """
+        if not self.audit_hash:
+            return False, "Missing audit hash: proposition was not cryptographically bound."
+        expected = self.compute_canonical_audit_hash()
+        if self.audit_hash != expected:
+            return False, f"Cryptographic tamper detected: audit hash '{self.audit_hash}' does not match expected '{expected}'."
+        return True, "Hash verified"
+
     def __post_init__(self):
         if not self.audit_hash:
-            raw = f"{self.proposition_id}:{self.source_id}:{self.pinpoint_reference}:{self.proposition_text}"
-            self.audit_hash = hashlib.sha256(raw.encode("utf-8")).hexdigest()[:16]
+            self.audit_hash = self.compute_canonical_audit_hash()
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -201,6 +220,18 @@ class PropositionProvenanceAuditor:
         """
         issues: List[str] = []
 
+        # 0. Cryptographic Integrity Check
+        if hasattr(prop, "verify_hash_integrity"):
+            hash_valid, hash_msg = prop.verify_hash_integrity()
+            if not hash_valid:
+                issues.append(f"Proposition {prop.proposition_id}: {hash_msg}")
+
+        # 0. Cryptographic Integrity Check
+        if hasattr(prop, "verify_hash_integrity"):
+            hash_valid, hash_msg = prop.verify_hash_integrity()
+            if not hash_valid:
+                issues.append(f"Proposition {prop.proposition_id}: {hash_msg}")
+
         # 1. Quarantined Scaffold Check
         if (
             "IND-JUD-DEL-2024-BAIL" in prop.source_id
@@ -209,6 +240,30 @@ class PropositionProvenanceAuditor:
         ):
             prop.authenticity_status = AuthenticityStatus.SYNTHETIC_QUARANTINED
             issues.append(f"Proposition {prop.proposition_id}: Illegally derives from quarantined synthetic scaffold.")
+
+        # 1b. Unauthorized Promotion to ADVOCATE_REVIEWED
+        if (
+            EvidenceLifecycleState.ADVOCATE_REVIEWED in prop.evidence_states
+            or prop.highest_verified_state == EvidenceLifecycleState.ADVOCATE_REVIEWED
+        ):
+            # Must have verifiable advocate enrollment record
+            has_adv_notes = bool(prop.review_notes and any(k in prop.review_notes.lower() for k in ["advocate", "enrollment", "bar council", "adv-"]))
+            if not has_adv_notes:
+                issues.append(
+                    f"Proposition {prop.proposition_id}: Unauthorized promotion to ADVOCATE_REVIEWED without recorded advocate credentials."
+                )
+
+        # 1b. Unauthorized Promotion to ADVOCATE_REVIEWED
+        if (
+            EvidenceLifecycleState.ADVOCATE_REVIEWED in prop.evidence_states
+            or prop.highest_verified_state == EvidenceLifecycleState.ADVOCATE_REVIEWED
+        ):
+            # Must have verifiable advocate enrollment record
+            has_adv_notes = bool(prop.review_notes and any(k in prop.review_notes.lower() for k in ["advocate", "enrollment", "bar council", "adv-"]))
+            if not has_adv_notes:
+                issues.append(
+                    f"Proposition {prop.proposition_id}: Unauthorized promotion to ADVOCATE_REVIEWED without recorded advocate credentials."
+                )
 
         # 2. Sequential Evidence State Satisfaction Check
         # To reach SUBSTANTIVELY_SUPPORTS, must have PASSAGE_RETRIEVABLE and SOURCE_AUTHENTICITY_VERIFIED

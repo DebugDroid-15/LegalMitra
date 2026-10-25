@@ -318,7 +318,7 @@ class LegalQueryAnalyzer:
         sentences = [s.strip() for s in re.split(r"[.?!;]", clean_q) if s.strip()]
         for s in sentences:
             s_low = s.lower()
-            if any(term in s_low for term in ["alleged", "claimed", "states that", "claims that", "accused of"]):
+            if any(term in s_low for term in ["alleged", "claimed", "states that", "claims that", "accused of", "forged", "forgery", "fraud", "disputed"]):
                 alleged_facts.append(s)
             elif any(term in s_low for term in ["if", "assuming", "suppose", "let us assume"]):
                 implicit_assumptions.append(s)
@@ -511,6 +511,29 @@ class LegalQueryAnalyzer:
                 "governing_issue_id": "ISSUE-1",
                 "dependency_type": "TEMPORAL_COEXISTENCE",
                 "description": "Predecessor Act (IDA 1947) remains operative substantive law; uncommenced Code cannot be enforced."
+            })
+
+        # Compound Pattern 6: Arbitration Sec 34 + Uncommenced Code on Wages
+        elif ("arbitrat" in q_lower or "34" in q_lower or "award" in q_lower) and any(t in q_lower for t in ["code on wages", "wages 2019", "uncommenced code"]):
+            decomposed_issues.append({
+                "issue_id": "ISSUE-1",
+                "statement": "Grounds for setting aside arbitral award under Section 34 of Arbitration and Conciliation Act, 1996",
+                "governing_statute": "IND-STAT-ARB-1996 Section 34",
+                "relationship_type": "PRIMARY_RULE",
+                "prerequisite_issue_id": None,
+            })
+            decomposed_issues.append({
+                "issue_id": "ISSUE-2",
+                "statement": "Inapplicability of uncommenced Code on Wages, 2019 pending Central Government Gazette commencement notification",
+                "governing_statute": "IND-STAT-WAGES-2019 Section 1(3)",
+                "relationship_type": "UNCOMMENCED_REGIME",
+                "prerequisite_issue_id": None,
+            })
+            issue_dependencies.append({
+                "dependent_issue_id": "ISSUE-2",
+                "governing_issue_id": "ISSUE-1",
+                "dependency_type": "TEMPORAL_COEXISTENCE",
+                "description": "Arbitration claims proceed under active Arbitration Act 1996; uncommenced wage code cannot be enforced."
             })
 
         # Compound Pattern 5: Commercial Courts Act Sec 12A Mediation + Urgent Interim Relief
