@@ -191,8 +191,8 @@ class TestPhase53EvidenceReliability:
         evaluator = ReleaseGateEvaluator()
         summary = evaluator.evaluate_all_gates()
 
-        assert summary.release_id in ("LEGALMITRA-RELEASE-PHASE53", "LEGALMITRA-RELEASE-PHASE54", "LEGALMITRA-RELEASE-PHASE55", "LEGALMITRA-RELEASE-PHASE56", "LEGALMITRA-RELEASE-PHASE57")
-        assert summary.target_version in ("0.53.0", "0.54.0", "0.55.0", "0.56.0", "0.57.0")
+        assert summary.release_id in ("LEGALMITRA-RELEASE-PHASE53", "LEGALMITRA-RELEASE-PHASE54", "LEGALMITRA-RELEASE-PHASE55", "LEGALMITRA-RELEASE-PHASE56", "LEGALMITRA-RELEASE-PHASE57", "LEGALMITRA-RELEASE-PHASE58")
+        assert summary.target_version in ("0.53.0", "0.54.0", "0.55.0", "0.56.0", "0.57.0", "0.58.0")
         assert summary.total_gates in (11, 15, 20)
         assert summary.passed_gates in (10, 14, 19)
         assert summary.failed_gates == 0

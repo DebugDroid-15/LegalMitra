@@ -327,8 +327,8 @@ class TestPhase57DifferentialEvaluationAndBenchmark:
         evaluator = ReleaseGateEvaluator()
         summary = evaluator.evaluate_all_gates()
 
-        assert summary.release_id == "LEGALMITRA-RELEASE-PHASE57"
-        assert summary.target_version == "0.57.0"
+        assert summary.release_id in ("LEGALMITRA-RELEASE-PHASE57", "LEGALMITRA-RELEASE-PHASE58")
+        assert summary.target_version in ("0.57.0", "0.58.0")
         assert summary.total_gates == 20
         assert summary.passed_gates == 19
         assert summary.failed_gates == 0

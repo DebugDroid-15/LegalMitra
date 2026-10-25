@@ -16,3 +16,4 @@ with open('tests/test_phase55_temporal_authority_trace.py', 'w', encoding='utf-8
     f.write(c)
 
 print('Updated 53 and 55 successfully!')
+

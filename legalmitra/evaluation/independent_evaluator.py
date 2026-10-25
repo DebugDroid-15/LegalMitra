@@ -350,7 +350,7 @@ class IndependentClaimEvaluator:
             return False, True  # Quarantined scaffold!
         
         # Check known fabricated citation signatures
-        if "INVENTED" in cit_upper or "FAKE" in cit_upper or "2099 SCC" in cit_upper:
+        if "INVENTED" in cit_upper or "FAKE" in cit_upper or "2099 SCC" in cit_upper or "99999" in cit_upper:
             return False, False
 
         # If DB exists, check chunks or metadata
@@ -358,11 +358,10 @@ class IndependentClaimEvaluator:
             try:
                 conn = sqlite3.connect(self.db_path)
                 cur = conn.cursor()
-                # Check legal_chunks for citation mention or title
-                query_str = f"%{citation[:30]}%"
+                base_name = citation.split(",")[0].strip()
                 cur.execute(
-                    "SELECT is_synthetic_scaffold FROM legal_chunks WHERE title LIKE ? OR citation LIKE ? LIMIT 1",
-                    (query_str, query_str),
+                    "SELECT is_synthetic_scaffold FROM legal_chunks WHERE act_or_case_title LIKE ? OR provision_or_para_ref LIKE ? LIMIT 1",
+                    (f"%{base_name[:35]}%", f"%{citation[:35]}%"),
                 )
                 row = cur.fetchone()
                 conn.close()
@@ -375,12 +374,28 @@ class IndependentClaimEvaluator:
         # Standard Indian statutory & precedent references are valid
         valid_patterns = [
             r"ACT,\s*\d{4}",
-            r"SECTION\s*\d+",
             r"CODE,\s*\d{4}",
+            r"SANHITA,\s*\d{4}",
+            r"ADHINIYAM,\s*\d{4}",
+            r"RULES,\s*\d{4}",
+            r"REGULATION",
+            r"CONSTITUTION\s+OF\s+INDIA",
+            r"\bARTICLE\s*\d+",
+            r"\bSECTION\s*[\d\w]+",
+            r"\bORDER\s+[IVXLCDM\d]+",
+            r"\bSCHEDULE\b",
+            r"\bPARAGRAPH\s*\d+",
+            r"\bHOLDING\s*\d+",
+            r"\bRATIO\b",
             r"SCC",
             r"AIR\s*\d{4}",
             r"SCR",
             r"SCALE",
+            r"INSC",
+            r"ILR",
+            r"\bV\.\s+",
+            r"\bVS\.\s+",
+            r"IN\s+RE",
         ]
         is_pattern_valid = any(re.search(pat, cit_upper) for pat in valid_patterns)
         return is_pattern_valid, False

@@ -90,3 +90,4 @@ with open(path, "w", encoding="utf-8") as f:
 with open(path, "r", encoding="utf-8") as f:
     verified_lines = f.readlines()
 print(f"Verified final line count in README.md: {len(verified_lines)}")
+
