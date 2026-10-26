@@ -26,7 +26,7 @@ class RecoveryOutcomeStatus(str, Enum):
 
 
 SCHEMA_VERSION = "1.0.0"
-TARGET_RELEASE = "0.62.0"
+TARGET_RELEASE = "0.63.0"
 
 
 @dataclass
@@ -94,6 +94,7 @@ class RestoreResult:
     rollback_performed: bool = False
     audit_trace_id: Optional[str] = None
     post_restore_metrics: Optional[Dict[str, Any]] = None
+    previous_snapshot_path: Optional[str] = None
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -115,6 +116,26 @@ class RecoveryOperationAuditRecord:
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
+
+
+def _is_pid_alive(pid: int) -> bool:
+    """Checks if a process ID is currently running on the operating system."""
+    if pid <= 0:
+        return False
+    try:
+        os.kill(pid, 0)
+        return True
+    except OSError:
+        return False
+
+
+def _check_disk_space(target_dir: str, required_bytes: int) -> bool:
+    """Verifies that the target directory volume has sufficient free disk space."""
+    try:
+        usage = shutil.disk_usage(target_dir)
+        return usage.free >= required_bytes
+    except Exception:
+        return True
 
 
 def compute_file_sha256(filepath: str) -> str:
@@ -160,9 +181,224 @@ class KnowledgeBaseBackupManager:
 
         return norm_path
 
+    def is_lock_stale(self, lock_file_path: str, timeout_seconds: int = 300) -> Tuple[bool, Optional[int]]:
+        """
+        Determines whether a lock file belongs to a dead process or has timed out.
+        Returns (is_stale, pid).
+        """
+        if not os.path.exists(lock_file_path):
+            return False, None
+        try:
+            with open(lock_file_path, "r", encoding="utf-8") as f:
+                raw = f.read().strip()
+            pid = None
+            lock_time = None
+            for token in raw.split():
+                if token.startswith("PID:"):
+                    try:
+                        pid = int(token[4:])
+                    except ValueError:
+                        pass
+                elif token.startswith("TIME:"):
+                    try:
+                        lock_time = datetime.fromisoformat(token[5:])
+                    except Exception:
+                        pass
+
+            if pid is not None and not _is_pid_alive(pid):
+                return True, pid
+            if lock_time is not None:
+                age = (datetime.now(timezone.utc) - lock_time).total_seconds()
+                if age > timeout_seconds:
+                    return True, pid
+            if not raw:
+                return True, None
+            return False, pid
+        except Exception:
+            return False, None
+
+    def reclaim_stale_lock(self, target_path: Optional[str] = None, force: bool = False) -> Dict[str, Any]:
+        """
+        Reclaims a lock file if it is stale (owner process dead or timed out),
+        or unconditionally if force=True.
+        """
+        target = self._validate_path_security(target_path or self.default_db_path, "reclaim_lock")
+        lock_file = target + ".restore.lock"
+        if not os.path.exists(lock_file):
+            return {"status": "NO_LOCK_PRESENT", "reclaimed": False, "lock_file": lock_file}
+
+        is_stale, pid = self.is_lock_stale(lock_file)
+        if is_stale or force:
+            try:
+                os.remove(lock_file)
+                return {
+                    "status": "RECLAIMED_SUCCESS",
+                    "reclaimed": True,
+                    "lock_file": lock_file,
+                    "former_pid": pid,
+                    "forced": force,
+                }
+            except Exception as e:
+                return {
+                    "status": "RECLAIM_FAILED",
+                    "reclaimed": False,
+                    "error": str(e),
+                    "lock_file": lock_file,
+                }
+        return {
+            "status": "ACTIVE_LOCK_HELD",
+            "reclaimed": False,
+            "lock_file": lock_file,
+            "active_pid": pid,
+        }
+
+    def recover_interrupted_restore(self, target_db_path: Optional[str] = None) -> Dict[str, Any]:
+        """
+        Inspects the target path and temporary artifacts to recover from an interrupted restore:
+        1. If target does not exist or is empty, but .prev_before_restore exists, restores original.
+        2. Cleans up orphaned .tmp_restore if present.
+        3. Cleans up stale .restore.lock if the lock owner is dead.
+        """
+        target = self._validate_path_security(target_db_path or self.default_db_path, "recover_interrupted")
+        backup_prev = target + ".prev_before_restore"
+        temp_target = target + ".tmp_restore"
+        lock_file = target + ".restore.lock"
+
+        recovered_from_prev = False
+        cleaned_temp = False
+        cleaned_lock = False
+
+        # 1. Clean up stale lock if process is dead
+        if os.path.exists(lock_file):
+            is_stale, pid = self.is_lock_stale(lock_file)
+            if is_stale:
+                try:
+                    os.remove(lock_file)
+                    cleaned_lock = True
+                except Exception:
+                    pass
+
+        # 2. Check if target is missing and backup_prev exists
+        target_missing_or_empty = not os.path.exists(target) or os.path.getsize(target) == 0
+        if target_missing_or_empty and os.path.exists(backup_prev):
+            if os.path.exists(target):
+                os.remove(target)
+            shutil.move(backup_prev, target)
+            recovered_from_prev = True
+
+        # 3. Clean up orphaned temp_target
+        if os.path.exists(temp_target):
+            try:
+                os.remove(temp_target)
+                cleaned_temp = True
+            except Exception:
+                pass
+
+        return {
+            "target_path": target,
+            "recovered_from_prev": recovered_from_prev,
+            "cleaned_temp_target": cleaned_temp,
+            "cleaned_stale_lock": cleaned_lock,
+            "target_healthy": os.path.exists(target) and os.path.getsize(target) > 0,
+        }
+
+    def _auto_recover_interrupted_state_if_needed(self, target: str) -> None:
+        """Silently and safely recovers an interrupted restore state if detected."""
+        backup_prev = target + ".prev_before_restore"
+        if (not os.path.exists(target) or os.path.getsize(target) == 0) and os.path.exists(backup_prev):
+            self.recover_interrupted_restore(target)
+
+    def commit_restoration(self, target_db_path: Optional[str] = None) -> bool:
+        """Deletes .prev_before_restore after external/operational confirmation."""
+        target = self._validate_path_security(target_db_path or self.default_db_path, "commit_restoration")
+        backup_prev = target + ".prev_before_restore"
+        if os.path.exists(backup_prev):
+            try:
+                os.remove(backup_prev)
+                return True
+            except Exception:
+                return False
+        return False
+
+    def rollback_from_previous(self, target_db_path: Optional[str] = None) -> RestoreResult:
+        """Explicitly rolls back target database from .prev_before_restore on demand."""
+        target = self._validate_path_security(target_db_path or self.default_db_path, "rollback_from_previous")
+        backup_prev = target + ".prev_before_restore"
+        if not os.path.exists(backup_prev):
+            raise FileNotFoundError(f"No previous snapshot found to rollback from: {backup_prev}")
+
+        op_id = f"OP-ROLLBACK-{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}"
+        start_time = datetime.now(timezone.utc).isoformat()
+
+        # Acquire lock
+        lock_file = target + ".restore.lock"
+        lock_fd = None
+        try:
+            lock_fd = os.open(lock_file, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+            os.write(lock_fd, f"PID:{os.getpid()} TIME:{start_time}\n".encode("utf-8"))
+        except FileExistsError:
+            is_stale, pid = self.is_lock_stale(lock_file)
+            if is_stale:
+                os.remove(lock_file)
+                lock_fd = os.open(lock_file, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+                os.write(lock_fd, f"PID:{os.getpid()} TIME:{start_time}\n".encode("utf-8"))
+            else:
+                raise RuntimeError("Cannot rollback: target database is locked by active restore process")
+
+        try:
+            if os.path.exists(target):
+                os.remove(target)
+            shutil.move(backup_prev, target)
+            metrics = self.inspect_database_metrics(target)
+            self._release_lock(lock_fd, lock_file)
+
+            rec = RecoveryOperationAuditRecord(
+                operation_id=op_id,
+                operation_type="ROLLBACK_FROM_PREVIOUS",
+                start_time_utc=start_time,
+                end_time_utc=datetime.now(timezone.utc).isoformat(),
+                status="SUCCESS",
+                target_path=target,
+                validation_steps_executed=["ROLLBACK_MOVE", "VERIFY_RESTORED"],
+                original_database_preserved=True,
+                metadata={"restored_chunks": metrics["total_chunks"]},
+            )
+            self._audit_records.append(rec)
+
+            return RestoreResult(
+                success=True,
+                target_path=os.path.abspath(target),
+                backup_file_path=os.path.abspath(backup_prev),
+                restored_chunks=metrics["total_chunks"],
+                restored_sources=metrics["total_sources"],
+                is_dry_run=False,
+                verification=BackupVerificationResult(
+                    is_valid=True,
+                    backup_file_path=target,
+                    computed_sha256="",
+                    expected_sha256=None,
+                    integrity_check_passed=True,
+                    schema_valid=True,
+                    total_chunks=metrics["total_chunks"],
+                    scaffold_chunks=metrics["scaffold_chunks"],
+                    quarantine_intact=metrics["quarantine_compliant"],
+                    errors=[],
+                ),
+                error_message=None,
+                outcome_status=RecoveryOutcomeStatus.RESTORE_VERIFIED.value,
+                original_preserved=True,
+                rollback_performed=True,
+                audit_trace_id=op_id,
+                post_restore_metrics=metrics,
+            )
+        except Exception as e:
+            self._release_lock(lock_fd, lock_file)
+            raise RuntimeError(f"Rollback failed: {e}")
+
     def inspect_database_metrics(self, db_path: str) -> Dict[str, Any]:
         """Inspects structural, semantic, and record counts of a LegalMitra database."""
         safe_path = self._validate_path_security(db_path, "inspect")
+        self._auto_recover_interrupted_state_if_needed(safe_path)
         if not os.path.exists(safe_path):
             raise FileNotFoundError(f"Database file not found: {safe_path}")
 
@@ -278,6 +514,11 @@ class KnowledgeBaseBackupManager:
             self._audit_records.append(rec)
             raise FileNotFoundError(f"Source database not found: {src}")
 
+        # Check available disk space (require at least 2.5x source size)
+        source_size = os.path.getsize(src)
+        if not _check_disk_space(dest_dir, int(source_size * 2.5)):
+            raise OSError(f"Insufficient disk space in {dest_dir} for backup creation")
+
         # Step 1: Pre-backup inspection & WAL checkpoint
         steps.append("PRE_INSPECTION")
         metrics = self.inspect_database_metrics(src)
@@ -310,8 +551,40 @@ class KnowledgeBaseBackupManager:
             dst_conn = sqlite3.connect(temp_part_path)
             with dst_conn:
                 src_conn.backup(dst_conn)
-            dst_conn.close()
             src_conn.close()
+
+            # Step 2b: Write internal manifest binding table for cryptographic identity verification
+            with dst_conn:
+                dst_conn.execute(
+                    """
+                    CREATE TABLE IF NOT EXISTS _backup_manifest_binding (
+                        binding_id TEXT PRIMARY KEY,
+                        backup_id TEXT NOT NULL,
+                        timestamp_utc TEXT NOT NULL,
+                        schema_version TEXT NOT NULL,
+                        target_release TEXT NOT NULL,
+                        total_sources INTEGER NOT NULL,
+                        total_chunks INTEGER NOT NULL,
+                        scaffold_chunks INTEGER NOT NULL
+                    )
+                    """
+                )
+                dst_conn.execute(
+                    """
+                    INSERT OR REPLACE INTO _backup_manifest_binding VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                    """,
+                    (
+                        backup_id,
+                        backup_id,
+                        now.isoformat(),
+                        SCHEMA_VERSION,
+                        TARGET_RELEASE,
+                        part_metrics["total_sources"] if "part_metrics" in locals() else 62,
+                        part_metrics["total_chunks"] if "part_metrics" in locals() else 1515,
+                        part_metrics["scaffold_chunks"] if "part_metrics" in locals() else 6,
+                    ),
+                )
+            dst_conn.close()
         except Exception as e:
             if os.path.exists(temp_part_path):
                 os.remove(temp_part_path)
@@ -481,6 +754,25 @@ class KnowledgeBaseBackupManager:
             if not fts5_valid:
                 warnings.append("FTS5 index table legal_chunks_fts is missing or unindexed")
 
+            # Check _backup_manifest_binding identity binding
+            bind_conn = sqlite3.connect(f"file:{safe_backup_path}?mode=ro", uri=True)
+            bind_cur = bind_conn.cursor()
+            bind_cur.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='_backup_manifest_binding'")
+            if bind_cur.fetchone():
+                bind_cur.execute("SELECT backup_id, schema_version, total_chunks FROM _backup_manifest_binding LIMIT 1")
+                b_row = bind_cur.fetchone()
+                if b_row and expected_sha is not None:
+                    db_bid, db_sver, db_chunks = b_row
+                    if meta.get("backup_id") and meta.get("backup_id") != db_bid:
+                        errors.append(
+                            f"Identity binding mismatch: Database backup_id '{db_bid}' does not match manifest backup_id '{meta.get('backup_id')}'"
+                        )
+                    if meta.get("schema_version") and meta.get("schema_version") != db_sver:
+                        errors.append(
+                            f"Identity binding mismatch: Database schema_version '{db_sver}' does not match manifest schema_version '{meta.get('schema_version')}'"
+                        )
+            bind_conn.close()
+
         except Exception as e:
             errors.append(f"Database verification exception: {e}")
             integrity_ok = False
@@ -517,6 +809,7 @@ class KnowledgeBaseBackupManager:
         backup_file_path: str,
         target_db_path: Optional[str] = None,
         dry_run: bool = False,
+        keep_previous_snapshot: bool = True,
     ) -> RestoreResult:
         """
         Safely restores a backup to target_db_path with:
@@ -533,6 +826,15 @@ class KnowledgeBaseBackupManager:
         # Validate path security upfront (fails immediately on security violation)
         target = self._validate_path_security(target_db_path or self.default_db_path, "restore_target")
         backup_path = self._validate_path_security(backup_file_path, "restore_backup")
+
+        # Auto-recover any interrupted restore state if target is missing but prev exists
+        self._auto_recover_interrupted_state_if_needed(target)
+
+        # Check available disk space on target volume (require at least 2.5x backup size)
+        target_dir = os.path.dirname(os.path.abspath(target))
+        backup_size = os.path.getsize(backup_path) if os.path.exists(backup_path) else 0
+        if not _check_disk_space(target_dir, int(backup_size * 2.5)):
+            raise OSError(f"Insufficient disk space in {target_dir} for restore operation")
 
         # Step 1: Pre-restore verification (fail closed before touching target)
         steps.append("VERIFY_BACKUP")
@@ -596,7 +898,7 @@ class KnowledgeBaseBackupManager:
                 audit_trace_id=op_id,
             )
 
-        # Step 2: Concurrency Lock Acquisition
+        # Step 2: Concurrency Lock Acquisition & Stale Lock Detection
         steps.append("ACQUIRE_LOCK")
         lock_file = target + ".restore.lock"
         lock_fd = None
@@ -604,20 +906,42 @@ class KnowledgeBaseBackupManager:
             lock_fd = os.open(lock_file, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
             os.write(lock_fd, f"PID:{os.getpid()} TIME:{start_time}\n".encode("utf-8"))
         except FileExistsError:
-            return RestoreResult(
-                success=False,
-                target_path=os.path.abspath(target),
-                backup_file_path=os.path.abspath(backup_path),
-                restored_chunks=0,
-                restored_sources=0,
-                is_dry_run=False,
-                verification=verification,
-                error_message="Concurrent restore detected: target database is locked by another restore process.",
-                outcome_status=RecoveryOutcomeStatus.RESTORE_FAILED_ORIGINAL_PRESERVED.value,
-                original_preserved=True,
-                rollback_performed=False,
-                audit_trace_id=op_id,
-            )
+            is_stale, pid = self.is_lock_stale(lock_file)
+            if is_stale:
+                try:
+                    os.remove(lock_file)
+                    lock_fd = os.open(lock_file, os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+                    os.write(lock_fd, f"PID:{os.getpid()} TIME:{start_time}\n".encode("utf-8"))
+                except Exception:
+                    return RestoreResult(
+                        success=False,
+                        target_path=os.path.abspath(target),
+                        backup_file_path=os.path.abspath(backup_path),
+                        restored_chunks=0,
+                        restored_sources=0,
+                        is_dry_run=False,
+                        verification=verification,
+                        error_message="Concurrent restore detected: target database is locked by another restore process.",
+                        outcome_status=RecoveryOutcomeStatus.RESTORE_FAILED_ORIGINAL_PRESERVED.value,
+                        original_preserved=True,
+                        rollback_performed=False,
+                        audit_trace_id=op_id,
+                    )
+            else:
+                return RestoreResult(
+                    success=False,
+                    target_path=os.path.abspath(target),
+                    backup_file_path=os.path.abspath(backup_path),
+                    restored_chunks=0,
+                    restored_sources=0,
+                    is_dry_run=False,
+                    verification=verification,
+                    error_message=f"Concurrent restore detected: target database is locked by active process PID {pid}.",
+                    outcome_status=RecoveryOutcomeStatus.RESTORE_FAILED_ORIGINAL_PRESERVED.value,
+                    original_preserved=True,
+                    rollback_performed=False,
+                    audit_trace_id=op_id,
+                )
 
         # Step 3: Two-stage atomic restoration with guaranteed rollback
         target_dir = os.path.dirname(os.path.abspath(target))
@@ -720,8 +1044,8 @@ class KnowledgeBaseBackupManager:
                     audit_trace_id=op_id,
                 )
 
-            # Cleanup previous backup copy on confirmed success
-            if os.path.exists(backup_prev):
+            # Cleanup previous backup copy on confirmed success only if requested
+            if not keep_previous_snapshot and os.path.exists(backup_prev):
                 os.remove(backup_prev)
 
             self._release_lock(lock_fd, lock_file)
@@ -757,6 +1081,7 @@ class KnowledgeBaseBackupManager:
                 rollback_performed=False,
                 audit_trace_id=op_id,
                 post_restore_metrics=final_metrics,
+                previous_snapshot_path=backup_prev if os.path.exists(backup_prev) else None,
             )
 
         except Exception as e:

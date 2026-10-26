@@ -207,7 +207,7 @@ class CorpusReconciler:
         return CorpusReconciliationReport(
             audit_id=f"RECON-AUDIT-{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}",
             timestamp_utc=datetime.now(timezone.utc).isoformat(),
-            target_release="0.62.0",
+            target_release="0.63.0",
             overall_status=overall_status,
             total_sources=total_sources,
             authentic_sources=authentic_sources,
@@ -257,7 +257,7 @@ class CorpusReconciler:
         return {
             "comparison_id": f"DIFF-RECON-{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}",
             "timestamp_utc": datetime.now(timezone.utc).isoformat(),
-            "target_release": "0.62.0",
+            "target_release": "0.63.0",
             "is_semantically_identical": is_semantically_identical,
             "metrics": {
                 "pre_sources": pre_report.total_sources,
@@ -277,11 +277,120 @@ class CorpusReconciler:
             "status": "RESTORE_SEMANTICALLY_VERIFIED" if is_semantically_identical else "SEMANTIC_DISCREPANCY_DETECTED",
         }
 
+    def compare_databases_deep(
+        self,
+        pre_db_path: str,
+        post_db_path: str,
+    ) -> Dict[str, Any]:
+        """
+        Phase 63: Performs deep, record-level semantic and cryptographic comparison
+        between two SQLite database files, verifying exact matching of chunk IDs,
+        source IDs, quarantine flags, and content hashes.
+        """
+        res = {
+            "comparison_id": f"DEEP-RECON-{datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')}",
+            "timestamp_utc": datetime.now(timezone.utc).isoformat(),
+            "target_release": "0.63.0",
+            "pre_db_path": os.path.abspath(pre_db_path),
+            "post_db_path": os.path.abspath(post_db_path),
+            "is_identical": False,
+            "chunk_count_match": False,
+            "source_count_match": False,
+            "missing_chunks_in_post": [],
+            "extra_chunks_in_post": [],
+            "missing_sources_in_post": [],
+            "extra_sources_in_post": [],
+            "content_checksum_mismatches": [],
+            "quarantine_status_mismatches": [],
+            "errors": [],
+        }
+
+        if not os.path.exists(pre_db_path):
+            res["errors"].append(f"Pre-restore database not found: {pre_db_path}")
+            return res
+        if not os.path.exists(post_db_path):
+            res["errors"].append(f"Post-restore database not found: {post_db_path}")
+            return res
+
+        conn_pre = sqlite3.connect(f"file:{os.path.abspath(pre_db_path)}?mode=ro", uri=True)
+        cur_pre = conn_pre.cursor()
+
+        conn_post = sqlite3.connect(f"file:{os.path.abspath(post_db_path)}?mode=ro", uri=True)
+        cur_post = conn_post.cursor()
+
+        # 1. Fetch sources
+        cur_pre.execute("SELECT document_id, is_synthetic_scaffold FROM sources")
+        pre_sources = {row[0]: row[1] for row in cur_pre.fetchall()}
+        cur_post.execute("SELECT document_id, is_synthetic_scaffold FROM sources")
+        post_sources = {row[0]: row[1] for row in cur_post.fetchall()}
+
+        res["source_count_match"] = (len(pre_sources) == len(post_sources))
+        missing_srcs = set(pre_sources.keys()) - set(post_sources.keys())
+        extra_srcs = set(post_sources.keys()) - set(pre_sources.keys())
+        res["missing_sources_in_post"] = sorted(list(missing_srcs))
+        res["extra_sources_in_post"] = sorted(list(extra_srcs))
+
+        # 2. Fetch chunks with content hash
+        cur_pre.execute("SELECT chunk_id, source_id, is_synthetic_scaffold, content FROM legal_chunks")
+        pre_chunks = {}
+        for row in cur_pre.fetchall():
+            c_hash = hashlib.sha256(row[3].encode("utf-8") if isinstance(row[3], str) else b"").hexdigest()
+            pre_chunks[row[0]] = {
+                "source_id": row[1],
+                "scaffold": row[2],
+                "content_hash": c_hash,
+            }
+
+        cur_post.execute("SELECT chunk_id, source_id, is_synthetic_scaffold, content FROM legal_chunks")
+        post_chunks = {}
+        for row in cur_post.fetchall():
+            c_hash = hashlib.sha256(row[3].encode("utf-8") if isinstance(row[3], str) else b"").hexdigest()
+            post_chunks[row[0]] = {
+                "source_id": row[1],
+                "scaffold": row[2],
+                "content_hash": c_hash,
+            }
+
+        conn_pre.close()
+        conn_post.close()
+
+        res["chunk_count_match"] = (len(pre_chunks) == len(post_chunks))
+        missing_chunks = set(pre_chunks.keys()) - set(post_chunks.keys())
+        extra_chunks = set(post_chunks.keys()) - set(pre_chunks.keys())
+        res["missing_chunks_in_post"] = sorted(list(missing_chunks))
+        res["extra_chunks_in_post"] = sorted(list(extra_chunks))
+
+        # Verify content hashes and quarantine flags for common chunks
+        common_chunk_ids = set(pre_chunks.keys()) & set(post_chunks.keys())
+        content_mismatches = []
+        quarantine_mismatches = []
+
+        for cid in common_chunk_ids:
+            if pre_chunks[cid]["content_hash"] != post_chunks[cid]["content_hash"]:
+                content_mismatches.append(cid)
+            if pre_chunks[cid]["scaffold"] != post_chunks[cid]["scaffold"]:
+                quarantine_mismatches.append(cid)
+
+        res["content_checksum_mismatches"] = sorted(content_mismatches)
+        res["quarantine_status_mismatches"] = sorted(quarantine_mismatches)
+
+        res["is_identical"] = (
+            res["chunk_count_match"]
+            and res["source_count_match"]
+            and len(res["missing_chunks_in_post"]) == 0
+            and len(res["extra_chunks_in_post"]) == 0
+            and len(res["missing_sources_in_post"]) == 0
+            and len(res["extra_sources_in_post"]) == 0
+            and len(res["content_checksum_mismatches"]) == 0
+            and len(res["quarantine_status_mismatches"]) == 0
+        )
+        return res
+
     def _empty_report(self, errors: List[str]) -> CorpusReconciliationReport:
         return CorpusReconciliationReport(
             audit_id=f"RECON-AUDIT-FAILED",
             timestamp_utc=datetime.now(timezone.utc).isoformat(),
-            target_release="0.62.0",
+            target_release="0.63.0",
             overall_status="FAILED",
             total_sources=0,
             authentic_sources=0,

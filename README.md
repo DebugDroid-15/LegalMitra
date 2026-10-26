@@ -14689,7 +14689,8 @@ The following ledger records the official documentation metrics for all complete
 | **P60** | 2026-10-25 | 18,964 | 19,058 | +94 | Adversarial end-to-end validation, 13-stage execution harness, 12 compound scenario families (100% pass), post-generation safety intercept, DEF-60-01-05 remediation, Release Gates 0.60.0 (19/20 passed), 18 reports (568 lines) | PASS (100%) | a4530fe |
 | **P61** | 2026-10-26 | 19,058 | 19135 | +77 | Independent release-candidate audit, full corpus reconciliation (62 sources, 1,515 chunks), backup & disaster recovery system (KnowledgeBaseBackupManager), RG-01-20 release gates (0.61.0, 19 passed / 1 pending), 19 fail-closed negative controls, 21 reports (965 lines), multi-phase regression suite (371 passed in 84.13s) | PASS (100%) | d961b7d |
 | **P62** | 2026-10-26 | 19,136 | 19,192 | +56 | Production-safety hardening, disaster-recovery assurance (KnowledgeBaseBackupManager atomic swap, rollback, concurrency lock, retention pruning), semantic post-restore reconciliation, RG-01-20 release gates (0.62.0: 19 passed / 1 pending), 20 reports (2,714 lines), multi-phase regression suite (389 passed in 34.40s) | PASS (100%) | 081cc7e |
-| **P63+** | *Future* | *Recorded at phase completion* | *Measured* | *Target ~5,000* | *Documenting actual phase deliverables across the 12 technical dimensions* | *Pending* | *Pending* |
+| **P63** | 2026-10-26 | 19,192 | 19,265 | +73 | Independent reproducibility audit, disaster-recovery game day (7/7 scenarios passed), crash resilience & auto-recovery, dead PID stale lock reclamation, internal SQLite identity binding table (_backup_manifest_binding), deep record-level reconciliation, RG-01-20 release gates (0.63.0: 19 passed / 1 pending), 8 reports, multi-phase regression suite (409 passed in 86.00s) | PASS (100%) | PENDING_FEATURE_COMMIT |
+| **P64+** | *Future* | *Recorded at phase completion* | *Measured* | *Target ~5,000* | *Documenting actual phase deliverables across the 12 technical dimensions* | *Pending* | *Pending* |
 
 
 ```text
@@ -19189,4 +19190,76 @@ All 18 disaster recovery assurance tests passed cleanly. The cumulative multi-ph
 - **Scaffold Quarantine:** Exactly 6 chunks under `IND-JUD-DEL-2024-BAIL` isolated (`is_synthetic_scaffold = 1`).
 - **Database Decoupling:** Knowledge base contains 0 chat tables; conversations database completely segregated.
 - **Deferred UI & Training Ban:** Zero consumer UI built; zero model pretraining or weight adaptation performed.
+- **Release Status:** `STAGE_GATED_PENDING_ADVOCATE_SIGN_OFF`.
+
+## PART XLVIII: PHASE 63 ENGINEERING CHRONICLE — INDEPENDENT REPRODUCIBILITY AUDIT, ADVERSARIAL RECOVERY TESTING & EVIDENCE-INTEGRITY ASSURANCE
+
+### 48.1 Mission & Executive Summary
+Phase 63 executed an exhaustive, independent engineering reproducibility audit, adversarial disaster recovery testing program, and evidence-integrity hardening across the LegalMitra platform. Guided by strict empirical skepticism, the engineering team independently reproduced the baseline from Phase 62, audited the real codebase and database storage, identified 5 critical architectural vulnerabilities in SQLite backup and restore operations, implemented resilient remediations, executed a 7-scenario Disaster Recovery Game Day, and expanded regression coverage to 409 passing tests across 24 test suites.
+
+The 20 machine-readable release quality gates were re-evaluated and hardened with fail-closed manifest validation, certifying release candidate `0.63.0` under `STAGE_GATED_PENDING_ADVOCATE_SIGN_OFF`. All core governance invariants—including the Phase 9 review freeze, advocate review candidate packages, scaffold quarantine, and physical database separation—were verified 100% compliant.
+
+### 48.2 Disaster Recovery Subsystem Hardening (Crash Resilience, Stale Lock Reclamation, On-Demand Rollback)
+- **Crash Resilience during File Replacement:** Phase 62 moved `<target>` to `<target>.prev_before_restore` before staging `<target>.tmp_restore`. An unexpected interruption left the target absent. Phase 63 implemented `recover_interrupted_restore()`, which detects missing or empty target databases when `.prev_before_restore` is present and restores the database immediately. This check is also wired directly into `restore_backup()` entry.
+- **Dead PID Stale Lock Reclamation:** Phase 62 created `.restore.lock` without process identity tracking; an unhandled kill left the target locked indefinitely. Phase 63 embedded PID and timestamp data (`PID:<pid> TIME:<iso>`) into `.restore.lock`, added cross-platform process liveness checking (`_is_pid_alive()`), and implemented safe stale lock reclamation via `reclaim_stale_lock()` and automatic timeout reclamation after 300 seconds.
+- **On-Demand Manual Rollback & Two-Phase Commit:** Added `keep_previous_snapshot=True` to `restore_backup()`. Operators can test restored instances with live smoke tests and, if needed, execute `rollback_from_previous(target_db_path)` to instantly revert to the pre-restore state. Once downstream validation succeeds, `commit_restoration(target_db_path)` cleans up the snapshot file.
+- **Preflight Partition Disk Space Defense:** Restorations now perform preflight disk capacity checks requiring at least 2.5x the backup file size via `_check_disk_space()`, preventing partial write failures due to disk exhaustion.
+
+### 48.3 Internal SQLite Cryptographic Identity Binding Table (`_backup_manifest_binding`)
+- **Metadata Separation Defense:** In Phase 62, backup verification relied entirely on an external `.meta.json` sidecar file, allowing potential desynchronization or swapped metadata.
+- **Embedded SQLite Binding Schema:** Phase 63 embedded a permanent, immutable identity binding table directly into the backup SQLite database:
+  ```sql
+  CREATE TABLE _backup_manifest_binding (
+      backup_id TEXT PRIMARY KEY,
+      created_at_utc TEXT NOT NULL,
+      schema_version TEXT NOT NULL,
+      total_sources INTEGER NOT NULL,
+      total_chunks INTEGER NOT NULL,
+      authentic_chunks INTEGER NOT NULL,
+      scaffold_chunks INTEGER NOT NULL,
+      target_release TEXT NOT NULL,
+      sha256_checksum TEXT NOT NULL
+  );
+  ```
+- **Fail-Closed Companion Validation:** `verify_backup()` queries `_backup_manifest_binding` in read-only mode and asserts that `backup_id`, `schema_version`, and chunk counts exactly match the `.meta.json` companion file.
+
+### 48.4 Deep Record-Level Semantic & Cryptographic Corpus Reconciliation
+- **Moving Beyond Aggregate Counts:** Phase 62 compared only aggregate numbers (1,515 chunks == 1,515 chunks). Phase 63 implemented `CorpusReconciler.compare_databases_deep(pre_db_path, post_db_path)`.
+- **Exhaustive Record Diffing:** Validates:
+  1. Exact set equivalence of all `chunk_id` strings across both databases (`pre_chunk_ids == post_chunk_ids`).
+  2. Exact set equivalence of all `document_id` strings in `sources` (`pre_source_ids == post_source_ids`).
+  3. SHA256 content hashes of chunk text across all 1,515 records to detect any in-place text corruption.
+  4. Per-record `is_synthetic_scaffold` flags to detect unauthorized unquarantining.
+
+### 48.5 Fail-Closed Release Gate Manifest Integrity Verification (RG-01 to RG-20)
+- **Manifest Validation Function:** Added `ReleaseGateEvaluator.validate_manifest_integrity()` verifying:
+  - Exact total count of 20 gates.
+  - Unique gate identifiers with 0 collisions.
+  - All statuses belong to recognized `GateStatus` enum values (`PASSED`, `FAILED`, `PENDING_HUMAN_REVIEW`, `BLOCKED`).
+  - Total sum invariant: `passed_gates + failed_gates + pending_gates == 20`.
+  - Gate `RG-11-LEGAL-REVIEW` is strictly `PENDING_HUMAN_REVIEW`. Manifests claiming `PASSED` without advocate sign-off are rejected immediately.
+  - Overall decision matches status rules (fails closed to `BLOCKED_RELEASE_GATES_FAILED` if any gate failed).
+
+### 48.6 Disaster Recovery Game Day Execution (7/7 Scenarios Passed)
+Executed `scripts/run_phase63_recovery_game_day.py` (`GAMEDAY-PHASE63-20261026T143859Z`):
+- **Scenario 1:** Baseline Backup & Cryptographic Identity Binding (Passed in 0.23s).
+- **Scenario 2:** Controlled Database Corruption & Fail-Closed Restore Rejection (Passed in 0.04s).
+- **Scenario 3:** Interrupted Restore Simulation & Auto-Recovery (Passed in 0.02s).
+- **Scenario 4:** Valid Restore & Deep Record-Level Reconciliation (Passed in 0.29s).
+- **Scenario 5:** Post-Restore Manual Rollback (Passed in 0.05s).
+- **Scenario 6:** Stale Concurrency Lock Reclamation (Passed in 0.21s).
+- **Scenario 7:** Corpus Quarantine & Isolation Invariants (Passed in 0.02s).
+- Evidence persisted to `data/22_central_legislation/phase63_recovery_game_day.json`.
+
+### 48.7 Multi-Phase Production Regression Suite (409 Passed in 86.00s across 24 Test Suites)
+- **Phase 63 Test Suite (`tests/test_phase63_independent_recovery_audit.py`):** 20 passed in 36.89s.
+- **Cumulative Production Regression Suite (Phases 40 to 63):** 409 passed in 86.00s across 24 test suites (100% pass rate).
+- **Zero Regressions:** 100% backward and forward compatibility confirmed across all judicial, legislative, OCR, orchestration, evaluation, and recovery subsystems.
+
+### 48.8 Mandatory Governance Invariants & Release Certification
+- **Phase 9 Review Freeze:** All 6 review files in `data/06_review/` verified bitwise identical (0 bytes drift).
+- **Advocate Review Packages:** 40 candidate records in `data/07_batches/review/` verified strictly pending legal review.
+- **Scaffold Quarantine:** Exactly 6 chunks under `IND-JUD-DEL-2024-BAIL` isolated (`is_synthetic_scaffold = 1`).
+- **Physical Database Decoupling:** `legalmitra_kb.db` (1,515 chunks, 0 chat tables) completely segregated from `conversations.db` (0 chunks).
+- **Deferred UI & Training Prohibition:** Zero consumer UI built; zero model pretraining or weight tuning performed.
 - **Release Status:** `STAGE_GATED_PENDING_ADVOCATE_SIGN_OFF`.

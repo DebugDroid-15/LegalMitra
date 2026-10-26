@@ -182,8 +182,8 @@ class ReleaseGateEvaluator:
             decision = "APPROVED_FOR_RELEASE"
 
         return ReleaseEvaluationSummary(
-            release_id="LEGALMITRA-RELEASE-PHASE62",
-            target_version="0.62.0",
+            release_id="LEGALMITRA-RELEASE-PHASE63",
+            target_version="0.63.0",
             total_gates=len(gates),
             passed_gates=passed,
             failed_gates=failed,
@@ -809,6 +809,90 @@ class ReleaseGateEvaluator:
                 "is_regression_free": rep.is_regression_free,
             },
         )
+
+    @staticmethod
+    def validate_manifest_integrity(manifest_data: Dict[str, Any]) -> Dict[str, Any]:
+        """
+        Phase 63 Independent Verification of Release Gate Manifest Integrity.
+        Ensures fail-closed verification:
+        1. Exact count of 20 gates.
+        2. Unique gate IDs.
+        3. All gate statuses belong to known GateStatus enum values.
+        4. passed + failed + pending == 20.
+        5. RG-11-LEGAL-REVIEW is strictly PENDING_HUMAN_REVIEW (advocate sign-off required).
+        6. overall_decision matches gate statuses (if failed > 0 -> BLOCKED_RELEASE_GATES_FAILED,
+           else if pending > 0 -> STAGE_GATED_PENDING_ADVOCATE_SIGN_OFF).
+        """
+        errors = []
+        warnings = []
+        gates = manifest_data.get("gates", [])
+        total_gates = manifest_data.get("total_gates", len(gates))
+
+        if len(gates) != 20:
+            errors.append(f"Gate count mismatch: expected 20 gates, found {len(gates)}")
+        if total_gates != 20:
+            errors.append(f"Total gates header mismatch: expected 20, recorded {total_gates}")
+
+        gate_ids = set()
+        status_counts = {"PASSED": 0, "FAILED": 0, "PENDING_HUMAN_REVIEW": 0, "BLOCKED": 0}
+        valid_statuses = set(GateStatus.__members__.keys()) | {s.value for s in GateStatus}
+
+        for g in gates:
+            gid = g.get("gate_id")
+            if not gid:
+                errors.append("Encountered gate with missing gate_id")
+                continue
+            if gid in gate_ids:
+                errors.append(f"Duplicate gate ID detected: {gid}")
+            gate_ids.add(gid)
+
+            st = g.get("status")
+            if st not in valid_statuses:
+                errors.append(f"Gate {gid} has unknown/unrecognized status '{st}' (fail-closed triggered)")
+            else:
+                status_counts[st] = status_counts.get(st, 0) + 1
+
+        rg11_gate = next((g for g in gates if g.get("gate_id") == "RG-11-LEGAL-REVIEW"), None)
+        if not rg11_gate:
+            errors.append("Mandatory governance gate RG-11-LEGAL-REVIEW is missing from manifest")
+        elif rg11_gate.get("status") != GateStatus.PENDING_HUMAN_REVIEW.value:
+            errors.append(
+                f"Governance violation: RG-11-LEGAL-REVIEW status is '{rg11_gate.get('status')}', must be strictly PENDING_HUMAN_REVIEW"
+            )
+
+        passed_recorded = manifest_data.get("passed_gates", 0)
+        failed_recorded = manifest_data.get("failed_gates", 0)
+        pending_recorded = manifest_data.get("pending_gates", 0)
+
+        if passed_recorded != status_counts["PASSED"]:
+            errors.append(f"Passed gates mismatch: manifest claims {passed_recorded}, counted {status_counts['PASSED']}")
+        if failed_recorded != status_counts["FAILED"]:
+            errors.append(f"Failed gates mismatch: manifest claims {failed_recorded}, counted {status_counts['FAILED']}")
+        if pending_recorded != status_counts["PENDING_HUMAN_REVIEW"]:
+            errors.append(f"Pending gates mismatch: manifest claims {pending_recorded}, counted {status_counts['PENDING_HUMAN_REVIEW']}")
+
+        if (passed_recorded + failed_recorded + pending_recorded) != 20:
+            errors.append(f"Gate sum mismatch: {passed_recorded} + {failed_recorded} + {pending_recorded} != 20")
+
+        overall_decision = manifest_data.get("overall_decision")
+        expected_decision = (
+            "BLOCKED_RELEASE_GATES_FAILED" if status_counts["FAILED"] > 0
+            else ("STAGE_GATED_PENDING_ADVOCATE_SIGN_OFF" if status_counts["PENDING_HUMAN_REVIEW"] > 0 else "APPROVED_FOR_RELEASE")
+        )
+        if overall_decision != expected_decision:
+            errors.append(
+                f"Overall decision mismatch: recorded '{overall_decision}', expected '{expected_decision}'"
+            )
+
+        is_valid = len(errors) == 0
+        return {
+            "is_valid": is_valid,
+            "total_gates": len(gates),
+            "gate_ids": sorted(list(gate_ids)),
+            "status_distribution": status_counts,
+            "errors": errors,
+            "warnings": warnings,
+        }
 
     def generate_manifest(self, output_path: Optional[str] = None) -> str:
         summary = self.evaluate_all_gates()

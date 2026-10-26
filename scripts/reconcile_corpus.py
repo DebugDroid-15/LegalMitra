@@ -14,7 +14,7 @@ def main():
     parser = argparse.ArgumentParser(description="LegalMitra Corpus Reconciliation Runner")
     parser.add_argument(
         "--output",
-        default="data/22_central_legislation/phase61_reconciliation_report.json",
+        default="data/22_central_legislation/phase63_reconciliation_report.json",
         help="Path to save reconciliation report JSON",
     )
     args = parser.parse_args()

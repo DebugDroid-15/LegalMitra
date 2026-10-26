@@ -1,0 +1,100 @@
+{
+  "report_id": "GAMEDAY-PHASE63-20261026T143859Z",
+  "target_release": "0.63.0",
+  "start_time_utc": "2026-10-26T14:38:58.024604+00:00",
+  "end_time_utc": "2026-10-26T14:38:59.008316+00:00",
+  "overall_status": "PASSED",
+  "total_scenarios": 7,
+  "passed_scenarios": 7,
+  "failed_scenarios": 0,
+  "scenarios": [
+    {
+      "scenario_id": "SCENARIO-01-BASELINE-BACKUP-AND-BINDING",
+      "description": "Create verified backup and validate internal SQLite identity binding table",
+      "duration_seconds": 0.229,
+      "passed": true,
+      "details": {
+        "backup_id": "KB-BACKUP-20261026T143858_084474Z",
+        "backup_file": "C:\\PROJECTS\\LegalMitra\\data\\backups\\phase63_gameday\\legalmitra_kb_20261026T143858_084474Z.db",
+        "sha256": "7e16333be61dadc7da1da03953393d974c7b6f7dcd657672100cbd16126203a6",
+        "total_chunks": 1515,
+        "binding_table_row": [
+          "KB-BACKUP-20261026T143858_084474Z",
+          "1.0.0",
+          1515,
+          "0.63.0"
+        ],
+        "verification_valid": true
+      }
+    },
+    {
+      "scenario_id": "SCENARIO-02-CORRUPTION-FAIL-CLOSED",
+      "description": "Simulate byte-level database corruption and verify fail-closed restore refusal",
+      "duration_seconds": 0.044,
+      "passed": true,
+      "details": {
+        "corrupt_backup_path": "C:\\PROJECTS\\LegalMitra\\data\\backups\\phase63_gameday\\corrupted_test_snapshot.db",
+        "outcome_status": "RESTORE_FAILED_ORIGINAL_PRESERVED",
+        "error_message": "Backup verification failed: Database verification exception: file is not a database",
+        "original_preserved": true
+      }
+    },
+    {
+      "scenario_id": "SCENARIO-03-INTERRUPTED-RESTORE-AUTO-RECOVERY",
+      "description": "Simulate process crash during target replacement and verify automated state recovery",
+      "duration_seconds": 0.022,
+      "passed": true,
+      "details": {
+        "recovery_message": "recovered_from_prev=True, target_healthy=True",
+        "target_restored_chunks": 1515
+      }
+    },
+    {
+      "scenario_id": "SCENARIO-04-VALID-RESTORE-DEEP-RECONCILIATION",
+      "description": "Perform valid restore and cryptographically verify all 1,515 chunk records match exactly",
+      "duration_seconds": 0.292,
+      "passed": true,
+      "details": {
+        "restored_chunks": 1515,
+        "restored_sources": 62,
+        "is_semantically_identical": true,
+        "checksum_mismatches": 0,
+        "quarantine_mismatches": 0
+      }
+    },
+    {
+      "scenario_id": "SCENARIO-05-POST-RESTORE-ROLLBACK",
+      "description": "Trigger rollback_from_previous to revert target DB to previous pre-restore snapshot",
+      "duration_seconds": 0.055,
+      "passed": true,
+      "details": {
+        "rolled_back_chunks": 1515,
+        "quarantine_compliant": true
+      }
+    },
+    {
+      "scenario_id": "SCENARIO-06-STALE-LOCK-RECLAMATION",
+      "description": "Simulate dead process lockfile and verify automated safe lock reclamation",
+      "duration_seconds": 0.211,
+      "passed": true,
+      "details": {
+        "stale_detected": true,
+        "recorded_pid": 999999,
+        "restore_succeeded_after_reclaim": true
+      }
+    },
+    {
+      "scenario_id": "SCENARIO-07-CORPUS-QUARANTINE-AND-ISOLATION",
+      "description": "Verify zero drift on primary knowledge base, scaffold quarantine, and review packages",
+      "duration_seconds": 0.024,
+      "passed": true,
+      "details": {
+        "overall_status": "PASSED",
+        "total_sources": 62,
+        "total_chunks": 1515,
+        "quarantined_chunks": 6,
+        "review_pending_count": 40
+      }
+    }
+  ]
+}

@@ -15,7 +15,7 @@ def main():
     parser = argparse.ArgumentParser(description="Backup LegalMitra Knowledge Base")
     parser.add_argument("--source", default="data/legalmitra_kb.db", help="Source SQLite database path")
     parser.add_argument("--backup-dir", default="data/backups", help="Target backup directory")
-    parser.add_argument("--notes", default="Phase 62 Operational Snapshot", help="Notes for the backup manifest")
+    parser.add_argument("--notes", default="Phase 63 Operational Snapshot", help="Notes for the backup manifest")
     parser.add_argument("--list", action="store_true", help="List all available backups in directory")
     parser.add_argument("--prune", type=int, default=None, help="Prune backups keeping N most recent (guarded)")
     args = parser.parse_args()
