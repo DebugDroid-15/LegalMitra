@@ -1001,5 +1001,91 @@ class LegalKnowledgeBase:
         cursor.execute("SELECT 1 FROM sources WHERE document_id = ?", (source_id,))
         return cursor.fetchone() is not None
 
+    def audit_search_index(self) -> dict:
+        """
+        Audit consistency between legal_chunks and legal_chunks_fts.
+        Returns detailed status of missing or orphan chunks without modifying the DB.
+        """
+        cursor = self.conn.cursor()
+        total_chunks = cursor.execute("SELECT COUNT(*) FROM legal_chunks").fetchone()[0]
+        total_fts = cursor.execute("SELECT COUNT(*) FROM legal_chunks_fts").fetchone()[0]
 
+        cursor.execute("""
+            SELECT chunk_id FROM legal_chunks
+            WHERE chunk_id NOT IN (SELECT chunk_id FROM legal_chunks_fts)
+        """)
+        missing_in_fts = [row[0] for row in cursor.fetchall()]
+
+        cursor.execute("""
+            SELECT chunk_id FROM legal_chunks_fts
+            WHERE chunk_id NOT IN (SELECT chunk_id FROM legal_chunks)
+        """)
+        orphan_in_fts = [row[0] for row in cursor.fetchall()]
+
+        is_consistent = (len(missing_in_fts) == 0 and len(orphan_in_fts) == 0 and total_chunks == total_fts)
+
+        return {
+            "total_chunks": total_chunks,
+            "total_fts_rows": total_fts,
+            "missing_in_fts_count": len(missing_in_fts),
+            "missing_in_fts": missing_in_fts,
+            "orphan_in_fts_count": len(orphan_in_fts),
+            "orphan_in_fts": orphan_in_fts,
+            "is_consistent": is_consistent,
+        }
+
+    def reconcile_and_repair_search_index(self, auto_repair: bool = True) -> dict:
+        """
+        Audit and optionally repair desynchronizations between legal_chunks and legal_chunks_fts.
+        Ensures 100% full-text search indexing across all active and authoritative legal chunks.
+        """
+        audit = self.audit_search_index()
+        if not auto_repair or audit["is_consistent"]:
+            return audit
+
+        cursor = self.conn.cursor()
+        repaired_inserted = 0
+        repaired_deleted = 0
+
+        # Remove orphan rows from FTS
+        if audit["orphan_in_fts"]:
+            for orphan_id in audit["orphan_in_fts"]:
+                cursor.execute("DELETE FROM legal_chunks_fts WHERE chunk_id = ?", (orphan_id,))
+                repaired_deleted += 1
+
+        # Insert missing rows into FTS
+        if audit["missing_in_fts"]:
+            cursor.execute("""
+                SELECT chunk_id, content, act_or_case_title, provision_or_para_ref, metadata_json
+                FROM legal_chunks
+                WHERE chunk_id NOT IN (SELECT chunk_id FROM legal_chunks_fts)
+            """)
+            missing_rows = cursor.fetchall()
+            for row in missing_rows:
+                chunk_id = row[0]
+                content = row[1]
+                act_or_case_title = row[2]
+                provision_or_para_ref = row[3]
+                meta_str = row[4]
+                title = act_or_case_title
+                if meta_str:
+                    try:
+                        m = json.loads(meta_str)
+                        if isinstance(m, dict) and "title" in m:
+                            title = m["title"]
+                    except Exception:
+                        pass
+                cursor.execute("""
+                    INSERT INTO legal_chunks_fts (
+                        chunk_id, content, title, act_or_case_title, provision_or_para_ref
+                    ) VALUES (?, ?, ?, ?, ?);
+                """, (chunk_id, content, title, act_or_case_title, provision_or_para_ref))
+                repaired_inserted += 1
+
+        self.conn.commit()
+
+        post_audit = self.audit_search_index()
+        post_audit["repaired_inserted"] = repaired_inserted
+        post_audit["repaired_deleted"] = repaired_deleted
+        return post_audit
 

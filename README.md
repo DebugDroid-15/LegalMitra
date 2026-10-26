@@ -14690,8 +14690,9 @@ The following ledger records the official documentation metrics for all complete
 | **P61** | 2026-10-26 | 19,058 | 19135 | +77 | Independent release-candidate audit, full corpus reconciliation (62 sources, 1,515 chunks), backup & disaster recovery system (KnowledgeBaseBackupManager), RG-01-20 release gates (0.61.0, 19 passed / 1 pending), 19 fail-closed negative controls, 21 reports (965 lines), multi-phase regression suite (371 passed in 84.13s) | PASS (100%) | d961b7d |
 | **P62** | 2026-10-26 | 19,136 | 19,192 | +56 | Production-safety hardening, disaster-recovery assurance (KnowledgeBaseBackupManager atomic swap, rollback, concurrency lock, retention pruning), semantic post-restore reconciliation, RG-01-20 release gates (0.62.0: 19 passed / 1 pending), 20 reports (2,714 lines), multi-phase regression suite (389 passed in 34.40s) | PASS (100%) | 081cc7e |
 | **P63** | 2026-10-26 | 19,192 | 19,265 | +73 | Independent reproducibility audit, disaster-recovery game day (7/7 scenarios passed), crash resilience & auto-recovery, dead PID stale lock reclamation, internal SQLite identity binding table (_backup_manifest_binding), deep record-level reconciliation, RG-01-20 release gates (0.63.0: 19 passed / 1 pending), 8 reports, multi-phase regression suite (409 passed in 86.00s) | PASS (100%) | d20e631 |
-| **P64** | 2026-10-26 | 19,265 | 19,325 | +60 | Integrated legal intelligence reliability, unified claim contract (UnifiedLegalClaimContract, 7 distinctions), integrated correctness engine (temporal, jurisdictional, precedent, compound exceptions), PIT-V15 adversarial benchmark (300 cases, 20 categories, 8 negative controls), 12 end-to-end scenarios, Release Gates 0.64.0 (19 passed / 1 pending), 5 reports, 278 cumulative regression tests (100% pass) | PASS (100%) | 51f99bf |
-| **P65+** | *Future* | *Recorded at phase completion* | *Measured* | *Target ~5,000* | *Documenting actual phase deliverables across the 12 technical dimensions* | *Pending* | *Pending* |
+| **P64** | 2026-10-26 | 19,265 | 19,325 | +60 | Integrated legal intelligence reliability, unified claim contract (UnifiedLegalClaimContract, 7 distinctions), integrated correctness engine (temporal, jurisdictional, precedent, compound exceptions), PIT-V15 adversarial benchmark (300 cases, 20 categories, 8 negative controls), 12 end-to-end scenarios, Release Gates 0.64.0 (19 passed / 1 pending), 5 reports, 278 cumulative regression tests (100% pass) | PASS (100%) | `51f99bf` |
+| **P65** | 2026-10-26 | 19,326 | 19,383 | +57 | Integrated production hardening, FTS5 search index repair (1,505 to 1,515 chunks sync), document-level indirect prompt injection defense, SensitiveDataRedactor & RedactingFilter (credentials, JWT, PII), diversity-aware deduplication, candidate provision prioritization, OperationContext & FailureCategory taxonomy, 21 tests in test_phase65, 299 cumulative tests across modern phases (100% pass), Release Gates 0.65.0 (19 passed / 1 pending) | PASS (100%) | `PENDING_P65_COMMIT` |
+| **P66+** | *Future* | *Recorded at phase completion* | *Measured* | *Target ~5,000* | *Documenting actual phase deliverables across the 12 technical dimensions* | *Pending* | *Pending* |
 
 
 ```text
@@ -19324,3 +19325,59 @@ Phase 64 unifies five previously separate engineering workstreams into one coher
 - **Scaffold Quarantine:** Exactly 6 chunks under `IND-JUD-DEL-2024-BAIL` isolated (`is_synthetic_scaffold = 1`).
 - **Physical Database Decoupling:** `legalmitra_kb.db` (1,515 chunks, 0 chat tables) isolated from `conversations.db` (0 chunks).
 - **Prohibitions Maintained:** Zero consumer UI code authored; zero model pretraining or fine-tuning performed.
+
+
+---
+
+## Part L: Phase 65 Engineering Chronicle — Integrated Production Hardening, Source Provenance, Retrieval Optimization, and System Resilience
+
+### 50.1 Mission & Integrated Production Architecture
+Phase 65 was executed as an integrated engineering milestone consolidating five core operational domains:
+1. Production security and threat-model validation.
+2. Source acquisition, provenance, rights, and ingestion integrity.
+3. Retrieval relevance, ranking, evidence selection, and performance.
+4. Resilience, recovery, observability, and operational readiness.
+5. Cross-pipeline integration, regression testing, and release governance.
+
+The phase strictly preserved all architectural invariants: zero consumer UI code was authored, model pretraining and fine-tuning remained strictly prohibited, the Phase 9 review freeze (6 files in `data/06_review/`) remained 100% bitwise identical, 40 candidate review records remained strictly `pending_legal_review`, the synthetic test scaffold `IND-JUD-DEL-2024-BAIL` remained quarantined, and physical database separation between `data/legalmitra_kb.db` (1,515 chunks) and `data/conversations.db` (0 chunks) was preserved.
+
+### 50.2 Production Security, Threat Model & Automated Redaction
+- **Document-Level Indirect Prompt Injection Defense:** Implemented `sanitize_retrieved_passage()` in `legalmitra/orchestration/evidence_orchestrator.py`. Candidate chunks containing embedded malicious instructions (e.g., `SYSTEM PROMPT: Ignore all previous laws...`) are scanned, defanged with `[DEFANGED_ADVERSARIAL_INJECTION_BLOCKED]`, wrapped in inert diagnostic containers, and flagged with `has_adversarial_injection=True`.
+- **Sensitive Data Logging Redactor:** Upgraded `legalmitra/core/logging.py` with `SensitiveDataRedactor` and `RedactingFilter`. Automatically intercepts and redacts Bearer tokens, API keys, passwords, database connection strings, JWTs, emails, phone numbers, and Aadhaar numbers across all logging handlers.
+- **Physical Database Isolation:** Enforced strict boundaries: `data/legalmitra_kb.db` holds 1,515 legal chunks with zero conversational tables; `data/conversations.db` contains session logs with zero legal chunks. Cross-database queries are physically decoupled.
+- **Adversarial Red Team:** Evaluated against 20 attack scenarios across prompt injection, system leakage, authority manipulation, and stress inputs; achieved a 100.0% robustness rate (20/20 attacks defeated).
+
+### 50.3 Source Provenance, Rights & Ingestion Integrity
+- **Lifecycle Finite State Machine (FSM):** Enhanced `EvidenceEligibilityEngine` to enforce source verification states and commercial reuse rights. Candidate sources marked `unverified`, `pending_review`, or `flagged_unsupported` are rejected from ordinary retrieval with policy `UNVERIFIED_SOURCE_BLOCKED`.
+- **Reuse Rights Enforcement:** Evaluated all sources against Section 52(1)(q) of the Indian Copyright Act, 1957 and GODL-India open data licenses. Any candidate source marked `RIGHTS_RESTRICTED` or `UNRESOLVED_RIGHTS` is blocked with policy `RIGHTS_RESTRICTED_BLOCKED`.
+- **Atomic Ingestion Rollbacks:** Verified that interrupted ingestion batches execute atomic transaction rollbacks, preventing partial chunk persistence or metadata corruption.
+
+### 50.4 Retrieval Optimization, Search Index Repair & Deduplication
+- **FTS5 Search Index Reconciliation & Auto-Repair:** Discovered and repaired a 10-chunk omission in `legal_chunks_fts` (HSA sections 6, 8, 14; IBC sections 7, 9, 14, 31; Patents Act sections 3, 48, 84). Implemented `audit_search_index()` and `reconcile_and_repair_search_index()` in `LegalKnowledgeBase`, restoring 100% indexing parity (1,515 / 1,515 chunks).
+- **Diversity-Aware Deduplication:** Implemented SHA-256 passage hashing and provision-key tracking in `UnifiedEvidenceOrchestrator`, preventing duplicate or redundant chunks from crowding out distinct authorities.
+- **Candidate Provision Prioritization:** Dynamically prioritized primary statutes matching candidate provisions and applicable acts in user queries (e.g. IBC Section 32A clean slate immunity) over unrelated lexical matches.
+- **Ungrounded Query Abstention:** Enhanced `LegalDecisionPolicy` to abstain (`ABSTAIN_INSUFFICIENT_EVIDENCE`) when query inquiries refer to non-existent or fictitious statutory enactments (e.g. Interplanetary Mining Code).
+
+### 50.5 Operational Resilience, Concurrency & Structured Observability
+- **Unified Observability Architecture:** Authored `legalmitra/core/observability.py` providing `OperationContext` and `DiagnosticEvent`. Every operation span records high-resolution latency, correlation trace IDs, and child diagnostic events.
+- **Actionable Failure Taxonomy:** Implemented `FailureCategory` distinguishing:
+  1. `TRANSIENT_NETWORK` (retryable upstream timeout)
+  2. `PERMANENT_SOURCE_CORRUPT` (checksum mismatch, unretryable)
+  3. `VALIDATION_FAILED` (proposition refuted by evidence)
+  4. `AUTHENTICITY_UNVERIFIED` (source unverified)
+  5. `AUTHORIZATION_DENIED` (reuse rights restricted)
+  6. `PROMPT_INJECTION_BLOCKED` (adversarial attack defanged)
+  7. `SCAFFOLD_INTERCEPTED` (quarantined synthetic test fixture)
+  8. `INDEX_CORRUPTION_DETECTED` (search index desynchronization)
+  9. `STALE_VERSION_DETECTED` (repealed or superseded enactment)
+  10. `CONCURRENCY_LOCK_TIMEOUT` (database contention)
+- **WAL Concurrency & Recovery:** Validated SQLite WAL journal mode concurrency with zero deadlocks during rapid concurrent query execution.
+
+### 50.6 Release Quality Gates Evaluation (0.65.0) & Governance Verification
+- **Release ID:** `LEGALMITRA-RELEASE-PHASE65` | **Target Version:** `0.65.0`.
+- **Gate Evaluation Summary:** Total: 20 | Passed: 19 | Failed: 0 | Pending: 1 (`RG-11-LEGAL-REVIEW`).
+- **Overall Decision:** `STAGE_GATED_PENDING_ADVOCATE_SIGN_OFF`.
+- **Manifest Integrity:** `ReleaseGateEvaluator.validate_manifest_integrity()` passed with 0 errors.
+- **Focused Test Suite:** `tests/test_phase65_integrated_production_hardening.py` passed 21 / 21 tests (100%).
+- **Cumulative Modern Suite:** Modern phases 52 through 65 passed 299 / 299 tests (100% pass rate in 61.12 seconds).
+

@@ -41,7 +41,7 @@ class TestPhase62BackupIntegrityAndCompleteness:
 
         manifest = mgr.create_backup(backup_dir=backup_dir, notes="Phase 62 Transactional Audit")
         assert os.path.exists(manifest.backup_file_path)
-        assert manifest.target_release in ("0.62.0", "0.63.0", "0.64.0")
+        assert manifest.target_release in ("0.62.0", "0.63.0", "0.64.0", "0.65.0")
         assert manifest.schema_version == "1.0.0"
         assert manifest.total_chunks == 1515
         assert manifest.quarantined_scaffold_chunks == 6
@@ -327,8 +327,8 @@ class TestPhase62ReleaseGateStateIntegrity:
         evaluator = ReleaseGateEvaluator()
         summary = evaluator.evaluate_all_gates()
 
-        assert summary.release_id in ("LEGALMITRA-RELEASE-PHASE62", "LEGALMITRA-RELEASE-PHASE63", "LEGALMITRA-RELEASE-PHASE64")
-        assert summary.target_version in ("0.62.0", "0.63.0", "0.64.0")
+        assert summary.release_id in ("LEGALMITRA-RELEASE-PHASE62", "LEGALMITRA-RELEASE-PHASE63", "LEGALMITRA-RELEASE-PHASE64", "LEGALMITRA-RELEASE-PHASE65")
+        assert summary.target_version in ("0.62.0", "0.63.0", "0.64.0", "0.65.0")
         assert summary.total_gates == 20
         assert summary.passed_gates == 19
         assert summary.pending_gates == 1  # RG-11-LEGAL-REVIEW

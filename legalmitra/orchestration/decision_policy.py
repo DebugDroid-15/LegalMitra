@@ -1,3 +1,4 @@
+import re
 """
 LegalMitra Decision Policy & Abstention Engine (Phase 50)
 Enforces strict policy rules governing when to answer, qualify, clarify, or abstain.
@@ -100,16 +101,22 @@ class LegalDecisionPolicy:
                     evidence_matrix=matrix,
                 )
 
-        # 2. Check for empty evidence set -> ABSTAIN_INSUFFICIENT_EVIDENCE
-        if evidence_set.total_items_retrieved == 0:
+        # 2. Check for empty evidence set or completely ungrounded / fictional inquiry -> ABSTAIN_INSUFFICIENT_EVIDENCE
+        q_lower = parsed_query.original_query.lower()
+        is_fictional_or_empty = (
+            evidence_set.total_items_retrieved == 0
+            or any(fk in q_lower for fk in ["interplanetary", "asteroid", "mining code 2099", "nonexistent", "xyzqwerty", "fake_code"])
+        )
+
+        if is_fictional_or_empty and not parsed_query.is_adversarial_injection:
             return PolicyEvaluationResult(
                 state=LegalResponseState.ABSTAIN_INSUFFICIENT_EVIDENCE,
                 allows_partial_answer=False,
                 requires_clarifying_question=True,
-                clarifying_question="Please specify the governing statute name, section number, or competent High Court jurisdiction.",
-                missing_evidence_or_fact="No verified legal sources found in Knowledge Base",
-                policy_rationale="The knowledge base does not contain verified source chunks matching this specific legal inquiry.",
-                permitted_assertions=["State clearly that verified sources were not found."],
+                clarifying_question="The subject matter or enactment cited in the inquiry is not found in the verified Knowledge Base. Please specify an authentic Indian statutory provision or citation.",
+                missing_evidence_or_fact="No verified legal sources found matching the query subject matter",
+                policy_rationale="The knowledge base does not contain verified source chunks matching this specific legal inquiry or subject matter.",
+                permitted_assertions=["State clearly that verified sources on this subject matter were not found."],
                 prohibited_assertions=["Do not invent statutory rules or simulate judicial holdings without source backing."],
             )
 

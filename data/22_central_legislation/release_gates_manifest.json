@@ -1,12 +1,12 @@
 {
-  "release_id": "LEGALMITRA-RELEASE-PHASE64",
-  "target_version": "0.64.0",
+  "release_id": "LEGALMITRA-RELEASE-PHASE65",
+  "target_version": "0.65.0",
   "total_gates": 20,
   "passed_gates": 19,
   "failed_gates": 0,
   "pending_gates": 1,
   "overall_decision": "STAGE_GATED_PENDING_ADVOCATE_SIGN_OFF",
-  "evaluated_at": "2026-10-26T15:37:06.192815Z",
+  "evaluated_at": "2026-10-26T16:25:29.622154Z",
   "gates": [
     {
       "gate_id": "RG-01-PROVENANCE",
@@ -22,7 +22,7 @@
         "quarantined_scaffold_chunks": 6,
         "database_path": "C:\\PROJECTS\\LegalMitra\\data\\legalmitra_kb.db"
       },
-      "verified_at": "2026-10-26T15:37:04.396357Z"
+      "verified_at": "2026-10-26T16:25:27.156909Z"
     },
     {
       "gate_id": "RG-02-TEMPORAL-CORRECTNESS",
@@ -37,7 +37,7 @@
         "evaluated_temporal_cases": 19,
         "accuracy": 1.0
       },
-      "verified_at": "2026-10-26T15:37:04.402303Z"
+      "verified_at": "2026-10-26T16:25:27.169429Z"
     },
     {
       "gate_id": "RG-03-PRECEDENT-HIERARCHY",
@@ -116,7 +116,7 @@
           "superseded_by_legislation": []
         }
       },
-      "verified_at": "2026-10-26T15:37:04.402921Z"
+      "verified_at": "2026-10-26T16:25:27.170428Z"
     },
     {
       "gate_id": "RG-04-CLAIM-GROUNDING",
@@ -124,15 +124,15 @@
       "description": "Ensures every material legal assertion is grounded in authentic statutory or precedent extracts.",
       "category": "LEGAL_VALIDITY",
       "threshold": ">= 90% claim grounding rate; >= 90% citation validity",
-      "actual_value": "Claim Support: 97.4%; Citation Validity: 99.3%",
+      "actual_value": "Claim Support: 97.7%; Citation Validity: 99.3%",
       "status": "PASSED",
       "blocking": true,
       "evidence": {
-        "material_claim_support": 0.9739413680781759,
-        "citation_validity": 0.9927007299270073,
+        "material_claim_support": 0.9769736842105263,
+        "citation_validity": 0.992619926199262,
         "sample_cases_evaluated": 70
       },
-      "verified_at": "2026-10-26T15:37:05.518804Z"
+      "verified_at": "2026-10-26T16:25:28.761195Z"
     },
     {
       "gate_id": "RG-05-CLARIFICATION-ABSTENTION",
@@ -149,7 +149,7 @@
         "fabricated_query_state": "ABSTAIN_SOURCE_INTEGRITY_FAILURE",
         "abstain_source_integrity_verified": true
       },
-      "verified_at": "2026-10-26T15:37:05.550644Z"
+      "verified_at": "2026-10-26T16:25:28.811316Z"
     },
     {
       "gate_id": "RG-06-CITATION-INTEGRITY",
@@ -168,7 +168,7 @@
           "IND-JUD-DEL-2024-BAIL"
         ]
       },
-      "verified_at": "2026-10-26T15:37:05.550644Z"
+      "verified_at": "2026-10-26T16:25:28.811316Z"
     },
     {
       "gate_id": "RG-07-ADVERSARIAL-SECURITY",
@@ -185,7 +185,7 @@
         "failed_attacks": 0,
         "robustness_rate": 1.0
       },
-      "verified_at": "2026-10-26T15:37:05.839003Z"
+      "verified_at": "2026-10-26T16:25:29.206146Z"
     },
     {
       "gate_id": "RG-08-DATABASE-ISOLATION",
@@ -202,7 +202,7 @@
         "distinct_files": true,
         "table_isolation_verified": true
       },
-      "verified_at": "2026-10-26T15:37:05.840004Z"
+      "verified_at": "2026-10-26T16:25:29.207147Z"
     },
     {
       "gate_id": "RG-09-REGRESSION-INTEGRITY",
@@ -218,7 +218,7 @@
         "mismatched_files": [],
         "freeze_manifest_path": "C:\\PROJECTS\\LegalMitra\\data\\06_review\\PHASE9_REVIEW_SNAPSHOT_MANIFEST.json"
       },
-      "verified_at": "2026-10-26T15:37:05.842903Z"
+      "verified_at": "2026-10-26T16:25:29.211139Z"
     },
     {
       "gate_id": "RG-10-HELD-OUT-EVALUATION",
@@ -234,7 +234,7 @@
         "exact_duplicates": 0,
         "max_cross_split_jaccard": 0.631578947368421
       },
-      "verified_at": "2026-10-26T15:37:05.978152Z"
+      "verified_at": "2026-10-26T16:25:29.364730Z"
     },
     {
       "gate_id": "RG-11-LEGAL-REVIEW",
@@ -252,7 +252,7 @@
         "governing_statute": "Advocates Act, 1961",
         "notes": "Governance invariant strictly preserved: Automated tools cannot self-certify advocate review."
       },
-      "verified_at": "2026-10-26T15:37:05.980151Z"
+      "verified_at": "2026-10-26T16:25:29.366809Z"
     },
     {
       "gate_id": "RG-12-ISSUE-EVIDENCE-COMPLETENESS",
@@ -273,7 +273,7 @@
           "issue_disposition"
         ]
       },
-      "verified_at": "2026-10-26T15:37:06.003133Z"
+      "verified_at": "2026-10-26T16:25:29.394727Z"
     },
     {
       "gate_id": "RG-13-MATERIAL-EXCEPTION-COVERAGE",
@@ -291,7 +291,7 @@
         ],
         "proviso_preserved": true
       },
-      "verified_at": "2026-10-26T15:37:06.030265Z"
+      "verified_at": "2026-10-26T16:25:29.424730Z"
     },
     {
       "gate_id": "RG-14-CLAIM-DEPENDENCY-INTEGRITY",
@@ -309,7 +309,7 @@
           "Downstream issue 'ISSUE-2' depends on prerequisite 'ISSUE-1', which has unresolved outcome 'INSUFFICIENT_EVIDENCE'. Unconditional affirmation suppressed."
         ]
       },
-      "verified_at": "2026-10-26T15:37:06.031266Z"
+      "verified_at": "2026-10-26T16:25:29.424730Z"
     },
     {
       "gate_id": "RG-15-MULTI-ISSUE-CALIBRATION",
@@ -325,7 +325,7 @@
         "is_partial_validated": true,
         "resolved_portion_present": true
       },
-      "verified_at": "2026-10-26T15:37:06.058005Z"
+      "verified_at": "2026-10-26T16:25:29.464568Z"
     },
     {
       "gate_id": "RG-16-INDEPENDENT-CLAIM-EVALUATION",
@@ -342,7 +342,7 @@
         "trustworthiness_score": 1.0,
         "independent_verdict": "ANSWER_SUPPORTED"
       },
-      "verified_at": "2026-10-26T15:37:06.066842Z"
+      "verified_at": "2026-10-26T16:25:29.472576Z"
     },
     {
       "gate_id": "RG-17-ANSWER-COMPLETENESS-4D",
@@ -360,7 +360,7 @@
         "calibration_score": 0.95,
         "consistency_score": 1.0
       },
-      "verified_at": "2026-10-26T15:37:06.066842Z"
+      "verified_at": "2026-10-26T16:25:29.472576Z"
     },
     {
       "gate_id": "RG-18-ERROR-TAXONOMY-ATTRIBUTION",
@@ -380,7 +380,7 @@
           "DECISION_POLICY"
         ]
       },
-      "verified_at": "2026-10-26T15:37:06.066842Z"
+      "verified_at": "2026-10-26T16:25:29.472576Z"
     },
     {
       "gate_id": "RG-19-PIT-V14-BENCHMARK-INTEGRITY",
@@ -397,7 +397,7 @@
         "is_clean": true,
         "max_similarity": 0.631578947368421
       },
-      "verified_at": "2026-10-26T15:37:06.192815Z"
+      "verified_at": "2026-10-26T16:25:29.622154Z"
     },
     {
       "gate_id": "RG-20-DIFFERENTIAL-REGRESSION-GUARD",
@@ -415,7 +415,7 @@
         "critical_safety_regressions": 0,
         "is_regression_free": true
       },
-      "verified_at": "2026-10-26T15:37:06.192815Z"
+      "verified_at": "2026-10-26T16:25:29.622154Z"
     }
   ]
 }

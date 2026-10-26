@@ -5,7 +5,9 @@ Constitution Benches, judicial precedents, and cross-statute definitions,
 strictly preserving contrary and qualifying authorities.
 """
 
+import hashlib
 import json
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set, Tuple
@@ -39,6 +41,8 @@ class EvidenceItem:
     conflict_notes: Optional[str] = None
     provenance_status: str = "OFFICIAL_VERIFIED"
     relevance_score: float = 1.0
+    has_adversarial_injection: bool = False
+    is_defanged: bool = False
 
 
 @dataclass
@@ -56,6 +60,40 @@ class OrchestratedEvidenceSet:
     total_items_retrieved: int = 0
     corpus_coverage_complete: bool = True
     coverage_warnings: List[str] = field(default_factory=list)
+
+
+
+
+def sanitize_retrieved_passage(passage: str) -> Tuple[str, bool]:
+    """
+    Detect and defang indirect prompt injection embedded inside retrieved legal documents.
+    Neutralizes adversarial instructions (e.g. 'SYSTEM PROMPT:', 'ignore previous rules')
+    preventing prompt hijacking during legal synthesis.
+    """
+    if not passage:
+        return passage, False
+
+    adversarial_patterns = [
+        re.compile(r"(?i)\b(?:system\s*prompt|instruction\s*override)\s*:", re.IGNORECASE),
+        re.compile(r"(?i)\bignore\s+(?:all\s+)?(?:previous|prior)\s+(?:instructions|rules|laws)\b", re.IGNORECASE),
+        re.compile(r"(?i)\bdisregard\s+(?:all\s+)?(?:prior|previous|existing)\s+(?:rules|laws|statutes)\b", re.IGNORECASE),
+        re.compile(r"(?i)\byou\s+are\s+now\s+(?:an?\s+)?unrestricted\b", re.IGNORECASE),
+        re.compile(r"(?i)\bbypass\s+(?:all\s+)?safety\s+filters\b", re.IGNORECASE),
+        re.compile(r"(?i)\bjailbreak\b", re.IGNORECASE),
+        re.compile(r"(?i)\bdo\s+not\s+follow\s+the\s+constitution\b", re.IGNORECASE),
+    ]
+
+    has_injection = False
+    sanitized = passage
+    for pat in adversarial_patterns:
+        if pat.search(sanitized):
+            has_injection = True
+            sanitized = pat.sub("[DEFANGED_ADVERSARIAL_INJECTION_BLOCKED]", sanitized)
+
+    if has_injection:
+        sanitized = f"[DEFANGED ADVERSARIAL PASSAGE]: {sanitized}"
+
+    return sanitized, has_injection
 
 
 class UnifiedEvidenceOrchestrator:
@@ -118,6 +156,7 @@ class UnifiedEvidenceOrchestrator:
         from legalmitra.corpus.eligibility import EvidenceEligibilityEngine
         eligibility_engine = EvidenceEligibilityEngine()
 
+        seen_fingerprints: Set[str] = set()
         for r in raw_results:
             # Check scaffold quarantine and source eligibility
             verdict = eligibility_engine.evaluate_chunk_eligibility(
@@ -129,16 +168,29 @@ class UnifiedEvidenceOrchestrator:
             if not verdict.is_eligible:
                 continue
 
+            # Diversity-aware deduplication: prevent near-identical chunks or repeated provisions from crowding out distinct authorities
+            content_hash = hashlib.sha256(r.content.strip().encode("utf-8")).hexdigest()
+            provision_key = f"{r.source_id}::{r.provision_or_para_ref}"
+            if content_hash in seen_fingerprints or provision_key in seen_fingerprints:
+                continue
+            seen_fingerprints.add(content_hash)
+            seen_fingerprints.add(provision_key)
+
+            # Document-level indirect prompt injection defense
+            sanitized_text, has_injection = sanitize_retrieved_passage(r.content)
+
             item = EvidenceItem(
                 item_id=r.chunk_id,
                 source_id=r.source_id,
                 title=r.act_or_case_title,
                 source_type="PRIMARY_STATUTE" if "IND-STAT" in r.source_id else "JUDICIAL_PRECEDENT",
                 provision_or_para_ref=r.provision_or_para_ref,
-                passage_text=r.content,
+                passage_text=sanitized_text,
                 effective_date=r.effective_date.isoformat() if r.effective_date else None,
                 authority_level=r.authority_level.value,
                 relevance_score=getattr(r, "score", 1.0),
+                has_adversarial_injection=has_injection,
+                is_defanged=has_injection,
             )
             if item.source_type == "PRIMARY_STATUTE":
                 evidence_set.primary_statutes.append(item)
@@ -454,6 +506,33 @@ class UnifiedEvidenceOrchestrator:
                             evidence_set.authority_resolution_traces.append(conf_res)
                             if not conf_res.get("is_resolvable", True) or conf_res.get("requires_qualification", False):
                                 evidence_set.unresolved_conflicts.append(conf_res)
+
+        # Ensure diversity across primary statutes by deduplicating repeated provisions/items
+        unique_statutes: List[EvidenceItem] = []
+        seen_stat_keys = set()
+        for ps in evidence_set.primary_statutes:
+            key = f"{ps.source_id}::{ps.provision_or_para_ref}"
+            if key not in seen_stat_keys:
+                seen_stat_keys.add(key)
+                unique_statutes.append(ps)
+        evidence_set.primary_statutes = unique_statutes
+
+        # Prioritize primary statutes matching candidate provisions and applicable acts
+        def _statute_sort_key(s: EvidenceItem) -> Tuple[int, int]:
+            matches_prov = 0
+            if parsed_query.candidate_provisions:
+                norm_cands = {cp.lower().replace("section", "").strip() for cp in parsed_query.candidate_provisions if cp.strip()}
+                norm_ref = s.provision_or_para_ref.lower().replace("section", "").strip()
+                if any(nc and nc in norm_ref for nc in norm_cands):
+                    matches_prov = -1
+
+            matches_act = 0
+            if parsed_query.applicable_acts and s.source_id in parsed_query.applicable_acts:
+                matches_act = -1
+
+            return (matches_prov, matches_act)
+
+        evidence_set.primary_statutes.sort(key=_statute_sort_key)
 
         # Total items
         evidence_set.total_items_retrieved = (

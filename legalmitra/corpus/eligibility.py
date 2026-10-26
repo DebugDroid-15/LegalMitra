@@ -1,7 +1,7 @@
 """
-Evidence Eligibility Engine & Safeguards — LegalMitra Phase 52
-Implements Workstream E: Evidence Eligibility Policy, Fail-Closed Retrieval Guards,
-Scaffold Quarantine, and Temporal Validation.
+Evidence Eligibility Engine & Safeguards — LegalMitra Phase 65
+Implements Workstream E & B: Evidence Eligibility Policy, Fail-Closed Retrieval Guards,
+Scaffold Quarantine, Source Lifecycle Verification, Reuse Rights Validation, and Temporal Checks.
 """
 
 import json
@@ -32,9 +32,10 @@ class EvidenceEligibilityEngine:
     Enforces fail-closed rules and quarantine standards on candidate legal evidence chunks.
     Non-negotiable invariants:
     1. Synthetic scaffold chunks (is_synthetic_scaffold=1 or IND-JUD-DEL-2024-BAIL) are STRICTLY QUARANTINED.
-    2. Sources flagged as 'flagged_unsupported' or 'unverified_automated' test fixtures (e.g. IND-UNSUPPORTED-001) are REJECTED.
+    2. Sources flagged as 'flagged_unsupported' or 'unverified' test fixtures (e.g. IND-UNSUPPORTED-001) are REJECTED.
     3. Model pretraining use is STRICTLY PROHIBITED for all records.
     4. Substantive statutory provisions whose commencement is unnotified trigger TEMPORAL_WARNING.
+    5. Sources with unresolved reuse rights (RIGHTS_RESTRICTED, UNRESOLVED_RIGHTS) are REJECTED from authoritative answering.
     """
 
     def __init__(self, workspace_root: Optional[str] = None):
@@ -50,9 +51,15 @@ class EvidenceEligibilityEngine:
         cur = conn.cursor()
         cur.execute(
             "SELECT document_id, title, source_type, is_synthetic_scaffold, repeal_status, "
-            "verification_status, effective_date FROM sources"
+            "verification_status, effective_date, metadata_json FROM sources"
         )
         for r in cur.fetchall():
+            meta = {}
+            if len(r) > 7 and r[7]:
+                try:
+                    meta = json.loads(r[7])
+                except Exception:
+                    meta = {}
             self._source_cache[r[0]] = {
                 "document_id": r[0],
                 "title": r[1],
@@ -61,8 +68,13 @@ class EvidenceEligibilityEngine:
                 "repeal_status": r[4],
                 "verification_status": r[5],
                 "effective_date": r[6],
+                "metadata": meta,
             }
         conn.close()
+
+    def register_in_memory_source(self, document_id: str, record: Dict[str, Any]) -> None:
+        """Register or override a source record in memory for testing or lifecycle tracking."""
+        self._source_cache[document_id] = record
 
     def evaluate_chunk_eligibility(
         self,
@@ -70,6 +82,7 @@ class EvidenceEligibilityEngine:
         chunk_id: Optional[str] = None,
         is_synthetic_scaffold: bool = False,
         as_of_date: Optional[str] = None,
+        source_metadata: Optional[Dict[str, Any]] = None,
     ) -> EvidenceEligibilityVerdict:
         """
         Evaluate if a candidate chunk or source is eligible for legal query retrieval.
@@ -83,7 +96,25 @@ class EvidenceEligibilityEngine:
                 quarantine_policy="STRICT_SCAFFOLD_QUARANTINE",
             )
 
-        # 2. Check source info
+        # Check explicit source_metadata override if provided
+        if source_metadata:
+            v_status = str(source_metadata.get("verification_status", "")).lower()
+            if v_status in ("unverified", "pending_review", "flagged_unsupported"):
+                return EvidenceEligibilityVerdict(
+                    is_eligible=False,
+                    rejection_reason=f"Source ID '{source_id}' is unverified ({v_status}); excluded from authoritative retrieval.",
+                    quarantine_policy="UNVERIFIED_SOURCE_BLOCKED",
+                )
+            rights_val = str(source_metadata.get("rights_status") or source_metadata.get("reuse_rights") or "").upper()
+            if rights_val in ("RIGHTS_RESTRICTED", "UNRESOLVED_RIGHTS", "RESTRICTED", "PROPRIETARY_UNLICENSED"):
+                return EvidenceEligibilityVerdict(
+                    is_eligible=False,
+                    rejection_reason=f"Source ID '{source_id}' has unresolved or restricted reuse rights ({rights_val}).",
+                    quarantine_policy="RIGHTS_RESTRICTED_BLOCKED",
+                    rights_basis=rights_val,
+                )
+
+        # 2. Check source info in cache
         s_info = self._source_cache.get(source_id)
         if not s_info:
             # Check if it's a known test fixture
@@ -106,6 +137,26 @@ class EvidenceEligibilityEngine:
                 is_eligible=False,
                 rejection_reason="Source is marked as synthetic scaffold in sources table.",
                 quarantine_policy="STRICT_SCAFFOLD_QUARANTINE",
+            )
+
+        # Explicit unverified check in cached source info
+        v_status = str(s_info.get("verification_status", "")).lower()
+        if v_status in ("unverified", "pending_review", "flagged_unsupported"):
+            return EvidenceEligibilityVerdict(
+                is_eligible=False,
+                rejection_reason=f"Source ID '{source_id}' is unverified ({v_status}); excluded from authoritative retrieval.",
+                quarantine_policy="UNVERIFIED_SOURCE_BLOCKED",
+            )
+
+        # Explicit reuse rights check
+        meta = s_info.get("metadata") or {}
+        rights_val = str(meta.get("rights_status") or meta.get("reuse_rights") or "").upper()
+        if rights_val in ("RIGHTS_RESTRICTED", "UNRESOLVED_RIGHTS", "RESTRICTED", "PROPRIETARY_UNLICENSED"):
+            return EvidenceEligibilityVerdict(
+                is_eligible=False,
+                rejection_reason=f"Source ID '{source_id}' has unresolved or restricted reuse rights ({rights_val}).",
+                quarantine_policy="RIGHTS_RESTRICTED_BLOCKED",
+                rights_basis=rights_val,
             )
 
         # Unsupported or test fixtures with 0 parsed content
@@ -133,5 +184,5 @@ class EvidenceEligibilityEngine:
             rejection_reason=None,
             quarantine_policy=None,
             temporal_warning=temporal_warning,
-            rights_basis="GODL-India / Section 52(1)(q) Copyright Act, 1957",
+            rights_basis=meta.get("rights_basis") or "GODL-India / Section 52(1)(q) Copyright Act, 1957",
         )
