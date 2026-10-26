@@ -1290,8 +1290,8 @@ class TemporalLawEngine:
                 }
 
         # 2c. Jurisdiction check
-        valid_jurisdictions = ("IN", "IN-SC", "IN-DL", "IN-DL-HC", "IN-MH", "IN-MH-HC", "ALL_INDIA")
-        if jurisdiction and jurisdiction not in valid_jurisdictions:
+        is_indian = (jurisdiction == "ALL_INDIA") or (jurisdiction and (jurisdiction.startswith("IN") or jurisdiction.startswith("IN-")))
+        if jurisdiction and not is_indian:
             return {
                 "claim": claim_text,
                 "cited_authority": cited_case_id or cited_statute_id,

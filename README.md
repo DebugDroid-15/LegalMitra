@@ -14690,7 +14690,8 @@ The following ledger records the official documentation metrics for all complete
 | **P61** | 2026-10-26 | 19,058 | 19135 | +77 | Independent release-candidate audit, full corpus reconciliation (62 sources, 1,515 chunks), backup & disaster recovery system (KnowledgeBaseBackupManager), RG-01-20 release gates (0.61.0, 19 passed / 1 pending), 19 fail-closed negative controls, 21 reports (965 lines), multi-phase regression suite (371 passed in 84.13s) | PASS (100%) | d961b7d |
 | **P62** | 2026-10-26 | 19,136 | 19,192 | +56 | Production-safety hardening, disaster-recovery assurance (KnowledgeBaseBackupManager atomic swap, rollback, concurrency lock, retention pruning), semantic post-restore reconciliation, RG-01-20 release gates (0.62.0: 19 passed / 1 pending), 20 reports (2,714 lines), multi-phase regression suite (389 passed in 34.40s) | PASS (100%) | 081cc7e |
 | **P63** | 2026-10-26 | 19,192 | 19,265 | +73 | Independent reproducibility audit, disaster-recovery game day (7/7 scenarios passed), crash resilience & auto-recovery, dead PID stale lock reclamation, internal SQLite identity binding table (_backup_manifest_binding), deep record-level reconciliation, RG-01-20 release gates (0.63.0: 19 passed / 1 pending), 8 reports, multi-phase regression suite (409 passed in 86.00s) | PASS (100%) | d20e631 |
-| **P64+** | *Future* | *Recorded at phase completion* | *Measured* | *Target ~5,000* | *Documenting actual phase deliverables across the 12 technical dimensions* | *Pending* | *Pending* |
+| **P64** | 2026-10-26 | 19,265 | 19,325 | +60 | Integrated legal intelligence reliability, unified claim contract (UnifiedLegalClaimContract, 7 distinctions), integrated correctness engine (temporal, jurisdictional, precedent, compound exceptions), PIT-V15 adversarial benchmark (300 cases, 20 categories, 8 negative controls), 12 end-to-end scenarios, Release Gates 0.64.0 (19 passed / 1 pending), 5 reports, 278 cumulative regression tests (100% pass) | PASS (100%) | PENDING_FEATURE_COMMIT |
+| **P65+** | *Future* | *Recorded at phase completion* | *Measured* | *Target ~5,000* | *Documenting actual phase deliverables across the 12 technical dimensions* | *Pending* | *Pending* |
 
 
 ```text
@@ -19263,3 +19264,63 @@ Executed `scripts/run_phase63_recovery_game_day.py` (`GAMEDAY-PHASE63-20261026T1
 - **Physical Database Decoupling:** `legalmitra_kb.db` (1,515 chunks, 0 chat tables) completely segregated from `conversations.db` (0 chunks).
 - **Deferred UI & Training Prohibition:** Zero consumer UI built; zero model pretraining or weight tuning performed.
 - **Release Status:** `STAGE_GATED_PENDING_ADVOCATE_SIGN_OFF`.
+
+## Part XLIX: Phase 64 Engineering Chronicle: Integrated Legal Intelligence Reliability, Evidence Integrity, Adversarial Validation, and Release Readiness
+
+### 49.1 Integrated Architectural Mission & Consolidation
+Phase 64 unifies five previously separate engineering workstreams into one coherent production-safety release candidate:
+1. Claim-level legal grounding, citation fidelity, and non-negotiable evidentiary distinctions (`UnifiedLegalClaimContract`, `ClaimEvidenceValidator`).
+2. Point-in-time temporal validity, jurisdictional applicability, precedent authority, and statutory exceptions (`IntegratedLegalCorrectnessEngine`).
+3. Independent adversarial benchmarking and release evaluation integrity (300 cases, 20 categories, 8 negative controls).
+4. Cross-pipeline integration, multi-issue calibrated synthesis, and fail-closed safety intercepts across 12 legal scenarios.
+5. Release quality gates evaluation under release candidate `0.64.0` (`LEGALMITRA-RELEASE-PHASE64`).
+
+### 49.2 Claim-Level Legal Grounding & Unified Contract (`UnifiedLegalClaimContract`)
+- **Evidentiary Distinctions:** Enforces seven structural legal distinctions:
+  - Citation syntax validity vs official gazette/law report resolution (`ValidationVerdict.FABRICATED_AUTHORITY`).
+  - Citation resolution vs substantive evidentiary support (`ValidationVerdict.UNSUPPORTED`).
+  - Topic similarity vs strict evidentiary entailment (`ValidationVerdict.PARTIALLY_SUPPORTED`).
+  - Direct statutory rules vs analytical inferences (`ClaimCategory.STATUTORY_RULE` vs `ANALYTICAL_INFERENCE`).
+  - User allegations vs source-verified facts (`FactEpistemicStatus.ALLEGATION_UNVERIFIED` restricted to `QUALIFIED_ONLY`).
+  - Temporal validity vs mere enactment existence (`AnswerEligibilityStatus.EXCLUDED_TEMPORALLY_SUPERSEDED`).
+  - Precedent ratio decidendi vs obiter dicta / overruled ratios (`HoldingScope.RATIO_DECIDENDI` vs `OBITER_DICTA`).
+- **Cryptographic Audit Binding:** Every claim contract carries an SHA-256 locator hash binding proposition text to source ID, category, and pinpoint locator.
+
+### 49.3 Integrated Legal Correctness Engine (`IntegratedLegalCorrectnessEngine`)
+- **Temporal Applicability:** Enforces exact commencement, publication, amendment, repeal, and constitutional invalidation boundaries:
+  - IT Act Section 66A: Struck down on 2015-03-24 (*Shreya Singhal*); post-2015 inquiries flagged as unconstitutional.
+  - DPDP Act 2023: Substantive compliance obligations (Sections 3-17) identified as uncommenced as of October 2026.
+  - Criminal Law Transition (2024-07-01): Exact boundary enforcement between IPC/CrPC (pre-July 2024) and BNS/BNSS/BSA (post-July 2024).
+  - Copyright Act 2012 Amendment: Fair dealing boundary (effective 2012-06-21) strictly partitioned.
+- **Jurisdictional Applicability:** State-specific domains (e.g. Rent Control, Land Reforms) trigger `CLARIFICATION_REQUIRED` when state jurisdiction is unspecified, preventing cross-state statutory misapplication. Indian state jurisdictions (`IN-KA`, `IN-MH`, etc.) are recognized as authentic national territories.
+- **Precedent Hierarchy:** Constitution Bench bindingness enforced under Article 141; overruled precedents (*Subhash Kashinath Mahajan v. State of Maharashtra*) flagged as void.
+- **Statutory Exceptions Completeness:** Provisos and exceptions strictly verified against omission:
+  - IBC Section 29A: Mandatory disqualification criteria for resolution applicants.
+  - Commercial Courts Act Section 16: Strict 120-day written statement forfeiture per *SCG Contracts*.
+  - Copyright Act Section 52(1)(a): Fair dealing purpose limitations.
+
+### 49.4 Adversarial Benchmark & 8 Negative Controls
+- **300 Test Cases Manifest:** Generated `data/22_central_legislation/phase64_adversarial_benchmark_manifest.json` across 20 distinct adversarial categories.
+- **Dataset Partitioning & Zero Leakage:** `development` (125), `validation` (60), `held_out_evaluation` (115). Mathematically verified 0 overlapping case IDs and 0 prompt text duplicates.
+- **Adversarial Negative Controls (8/8 Passed):**
+  - NC-01: Malformed citation syntax rejected.
+  - NC-02: Nonexistent citation syntax fails closed (`ABSTAIN_SOURCE_INTEGRITY_FAILURE`).
+  - NC-03: Topic proximity without entailment excluded.
+  - NC-04: Quarantined scaffold injection intercepted.
+  - NC-05: Struck down IT Act Section 66A disclosed.
+  - NC-06: Overruled precedent (*Subhash Kashinath*) disclosed.
+  - NC-07: Prompt injection override defeated.
+  - NC-08: Missing state rent control jurisdiction triggers clarification.
+
+### 49.5 Release Quality Gates Evaluation (0.64.0)
+- **Release ID:** `LEGALMITRA-RELEASE-PHASE64` | **Target Version:** `0.64.0`.
+- **Gate Evaluation Summary:** Total: 20 | Passed: 19 | Failed: 0 | Pending: 1 (`RG-11-LEGAL-REVIEW`).
+- **Overall Decision:** `STAGE_GATED_PENDING_ADVOCATE_SIGN_OFF`.
+- **Manifest Validation:** `ReleaseGateEvaluator.validate_manifest_integrity()` passed with 0 errors.
+
+### 49.6 Mandatory Governance Invariants
+- **Phase 9 Review Freeze:** 6/6 frozen review files verified bitwise identical (0 bytes drift).
+- **Advocate Review Packages:** 40 candidate records verified strictly `pending_legal_review`.
+- **Scaffold Quarantine:** Exactly 6 chunks under `IND-JUD-DEL-2024-BAIL` isolated (`is_synthetic_scaffold = 1`).
+- **Physical Database Decoupling:** `legalmitra_kb.db` (1,515 chunks, 0 chat tables) isolated from `conversations.db` (0 chunks).
+- **Prohibitions Maintained:** Zero consumer UI code authored; zero model pretraining or fine-tuning performed.

@@ -34,6 +34,7 @@ class AssembledClaim:
     required_qualifications: List[str] = field(default_factory=list)
     pending_legal_review: bool = True
     proposition_provenance: Optional[Any] = None
+    unified_contract: Optional[Any] = None
 
 
 @dataclass
@@ -53,6 +54,7 @@ class AssembledAnswer:
     disclaimer: str
     evidence_matrix: Optional[IssueEvidenceMatrix] = None
     proposition_provenance: List[Any] = field(default_factory=list)
+    unified_claims: List[Any] = field(default_factory=list)
 
 
 class EvidenceTraceableAnswerAssembler:
@@ -64,6 +66,8 @@ class EvidenceTraceableAnswerAssembler:
     def __init__(self, temporal_engine: TemporalLawEngine):
         self.temporal_engine = temporal_engine
         self.dependency_validator = ClaimDependencyValidator()
+        from legalmitra.orchestration.legal_correctness import IntegratedLegalCorrectnessEngine
+        self.correctness_engine = IntegratedLegalCorrectnessEngine(temporal_engine=self.temporal_engine)
 
 
     def _build_provenance_for_claim(
@@ -435,10 +439,85 @@ class EvidenceTraceableAnswerAssembler:
             claims.append(c)
             claim_idx += 1
 
+        # Step 1.5: Phase 64 Integrated Legal Correctness Audit
+        from legalmitra.orchestration.claim_contract import (
+            AnswerEligibilityStatus,
+            ClaimCategory,
+            HoldingScope,
+            SupportRelationship,
+            UnifiedLegalClaimContract,
+            ValidationVerdict,
+        )
+        unified_contracts = []
+        for c in claims:
+            cat = ClaimCategory.STATUTORY_RULE
+            if "Exception" in c.claim_text or "Proviso" in c.claim_text:
+                cat = ClaimCategory.STATUTORY_EXCEPTION
+            elif "Constitution Bench" in c.claim_text or "precedent" in c.authority_status.lower():
+                cat = ClaimCategory.PRECEDENT_RATIO
+
+            contract = UnifiedLegalClaimContract(
+                claim_id=c.claim_id,
+                claim_text=c.claim_text,
+                claim_category=cat,
+                supporting_evidence_ids=c.supporting_evidence_ids,
+                source_id=c.supporting_evidence_ids[0] if c.supporting_evidence_ids else None,
+                pinpoint_locator=c.claim_text,
+                jurisdiction=c.jurisdiction,
+                temporal_applicability_status=c.statutory_version or "IN_FORCE",
+                claim_supported=c.is_supported,
+            )
+
+            contract = self.correctness_engine.audit_claim_correctness(contract, parsed_query)
+            c.unified_contract = contract
+            unified_contracts.append(contract)
+
+            if contract.answer_eligibility_status == AnswerEligibilityStatus.EXCLUDED_UNSUPPORTED:
+                c.is_supported = False
+                c.validation_verdict = contract.validation_result.value.upper()
+                c.validation_rationale = contract.validation_reason
+            elif contract.answer_eligibility_status == AnswerEligibilityStatus.EXCLUDED_CONTRADICTED:
+                c.is_supported = True
+                c.validation_verdict = contract.validation_result.value.upper()
+                c.validation_rationale = contract.validation_reason
+                c.requires_qualification = True
+            elif contract.answer_eligibility_status == AnswerEligibilityStatus.EXCLUDED_TEMPORALLY_SUPERSEDED:
+                c.is_supported = True
+                c.validation_verdict = contract.validation_result.value.upper()
+                c.validation_rationale = contract.validation_reason
+                c.requires_qualification = True
+            elif contract.answer_eligibility_status == AnswerEligibilityStatus.QUALIFIED_ONLY:
+                c.requires_qualification = True
+                if contract.validation_reason and contract.validation_reason not in c.required_qualifications:
+                    c.required_qualifications.append(contract.validation_reason)
+
         # 2. Count validation outcomes
-        unsupported_count = sum(1 for c in claims if c.validation_verdict == "UNSUPPORTED")
-        contradicted_count = sum(1 for c in claims if c.validation_verdict == "CONTRADICTED")
-        temporally_superseded_count = sum(1 for c in claims if c.validation_verdict == "TEMPORALLY_UNRESOLVED")
+        unsupported_count = sum(
+            1 for c in claims
+            if c.authority_status in ("FABRICATED_CITATION", "QUARANTINED_SCAFFOLD")
+            or c.validation_verdict in ("UNSUPPORTED", "FABRICATED_AUTHORITY", "QUARANTINED_SCAFFOLD")
+            or (not c.is_supported and c.validation_verdict not in (
+                "PRECEDENT_STATUS_UNCERTAIN",
+                "PRECEDENT_OVERRULED",
+                "TEMPORALLY_UNCERTAIN",
+                "TEMPORALLY_SUPERSEDED",
+                "TEMPORALLY_UNRESOLVED",
+                "UNCOMMENCED",
+                "UNCOMMENCED_FOR_FACT_DATE",
+                "JURISDICTION_UNCERTAIN",
+                "JURISDICTIONAL_MISMATCH",
+                "PARTIALLY_SUPPORTED",
+                "QUALIFIED_SUPPORT",
+            ))
+        )
+        contradicted_count = sum(
+            1 for c in claims
+            if c.validation_verdict in ("CONTRADICTED", "PRECEDENT_OVERRULED", "PRECEDENT_STATUS_UNCERTAIN")
+        )
+        temporally_superseded_count = sum(
+            1 for c in claims
+            if c.validation_verdict in ("TEMPORALLY_UNRESOLVED", "TEMPORALLY_SUPERSEDED", "TEMPORALLY_UNCERTAIN", "UNCOMMENCED", "UNCOMMENCED_FOR_FACT_DATE")
+        )
 
         if contradicted_count > 0:
             overall_status = "CONTRADICTED_DETECTED"

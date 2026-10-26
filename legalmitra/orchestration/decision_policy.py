@@ -50,7 +50,12 @@ class LegalDecisionPolicy:
         assembled_answer: AssembledAnswer,
     ) -> PolicyEvaluationResult:
         # 1. Check for fabricated citation or scaffold contamination -> ABSTAIN_SOURCE_INTEGRITY_FAILURE
-        if assembled_answer.unsupported_claims_count > 0:
+        has_fabricated_or_scaffold = any(
+            c.authority_status in ("FABRICATED_CITATION", "QUARANTINED_SCAFFOLD")
+            or c.validation_verdict in ("FABRICATED_AUTHORITY", "QUARANTINED_SCAFFOLD")
+            for c in assembled_answer.claims
+        )
+        if has_fabricated_or_scaffold or (assembled_answer.unsupported_claims_count > 0 and not parsed_query.clarification_necessary):
             return PolicyEvaluationResult(
                 state=LegalResponseState.ABSTAIN_SOURCE_INTEGRITY_FAILURE,
                 allows_partial_answer=False,
