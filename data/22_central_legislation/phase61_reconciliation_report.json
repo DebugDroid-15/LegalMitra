@@ -1,0 +1,38 @@
+{
+  "audit_id": "RECON-AUDIT-20261026T120549Z",
+  "timestamp_utc": "2026-10-26T12:05:49.621713+00:00",
+  "target_release": "0.61.0",
+  "overall_status": "PASSED",
+  "total_sources": 62,
+  "authentic_sources": 61,
+  "quarantined_sources": 1,
+  "total_chunks": 1515,
+  "authentic_chunks": 1509,
+  "quarantined_chunks": 6,
+  "orphaned_chunks": 0,
+  "unchunked_sources": [
+    "IND-GUIDE-SCI-PROC-2025",
+    "IND-UNSUPPORTED-001"
+  ],
+  "duplicate_chunk_ids": 0,
+  "duplicate_content_patterns": 7,
+  "scaffold_quarantine_compliant": true,
+  "review_package_records": 40,
+  "review_package_pending_count": 40,
+  "benchmark_v14_total_cases": 280,
+  "benchmark_v14_splits": {
+    "development": 115,
+    "validation": 55,
+    "held_out_evaluation": 110
+  },
+  "benchmark_contamination_clean": true,
+  "findings": [
+    "Quarantine compliance verified: exactly 6 chunks isolated under IND-JUD-DEL-2024-BAIL.",
+    "Zero orphaned chunks detected in knowledge base.",
+    "Identified 2 unchunked reference/control sources: ['IND-GUIDE-SCI-PROC-2025', 'IND-UNSUPPORTED-001']",
+    "Zero duplicate chunk IDs found.",
+    "All 40 advocate review candidates verified strictly pending_legal_review.",
+    "PIT-V14 benchmark verified: 280 cases with zero cross-split leakage."
+  ],
+  "errors": []
+}
