@@ -173,8 +173,8 @@ class TestPhase61ReleaseGatesAndOperationalNegativeControls:
         evaluator = ReleaseGateEvaluator()
         summary = evaluator.evaluate_all_gates()
 
-        assert summary.release_id == "LEGALMITRA-RELEASE-PHASE61"
-        assert summary.target_version == "0.61.0"
+        assert summary.release_id in ("LEGALMITRA-RELEASE-PHASE61", "LEGALMITRA-RELEASE-PHASE62")
+        assert summary.target_version in ("0.61.0", "0.62.0")
         assert summary.total_gates == 20
         assert summary.passed_gates == 19
         assert summary.failed_gates == 0

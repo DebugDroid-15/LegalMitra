@@ -1,12 +1,12 @@
 {
-  "release_id": "LEGALMITRA-RELEASE-PHASE61",
-  "target_version": "0.61.0",
+  "release_id": "LEGALMITRA-RELEASE-PHASE62",
+  "target_version": "0.62.0",
   "total_gates": 20,
   "passed_gates": 19,
   "failed_gates": 0,
   "pending_gates": 1,
   "overall_decision": "STAGE_GATED_PENDING_ADVOCATE_SIGN_OFF",
-  "evaluated_at": "2026-10-26T12:00:24.737672Z",
+  "evaluated_at": "2026-10-26T13:51:46.462988Z",
   "gates": [
     {
       "gate_id": "RG-01-PROVENANCE",
@@ -22,7 +22,7 @@
         "quarantined_scaffold_chunks": 6,
         "database_path": "C:\\PROJECTS\\LegalMitra\\data\\legalmitra_kb.db"
       },
-      "verified_at": "2026-10-26T12:00:20.195325Z"
+      "verified_at": "2026-10-26T13:51:45.136558Z"
     },
     {
       "gate_id": "RG-02-TEMPORAL-CORRECTNESS",
@@ -37,7 +37,7 @@
         "evaluated_temporal_cases": 19,
         "accuracy": 1.0
       },
-      "verified_at": "2026-10-26T12:00:20.204462Z"
+      "verified_at": "2026-10-26T13:51:45.141085Z"
     },
     {
       "gate_id": "RG-03-PRECEDENT-HIERARCHY",
@@ -116,7 +116,7 @@
           "superseded_by_legislation": []
         }
       },
-      "verified_at": "2026-10-26T12:00:20.205464Z"
+      "verified_at": "2026-10-26T13:51:45.142087Z"
     },
     {
       "gate_id": "RG-04-CLAIM-GROUNDING",
@@ -132,7 +132,7 @@
         "citation_validity": 0.9927007299270073,
         "sample_cases_evaluated": 70
       },
-      "verified_at": "2026-10-26T12:00:23.195789Z"
+      "verified_at": "2026-10-26T13:51:46.003543Z"
     },
     {
       "gate_id": "RG-05-CLARIFICATION-ABSTENTION",
@@ -149,7 +149,7 @@
         "fabricated_query_state": "ABSTAIN_SOURCE_INTEGRITY_FAILURE",
         "abstain_source_integrity_verified": true
       },
-      "verified_at": "2026-10-26T12:00:23.298404Z"
+      "verified_at": "2026-10-26T13:51:46.026557Z"
     },
     {
       "gate_id": "RG-06-CITATION-INTEGRITY",
@@ -168,7 +168,7 @@
           "IND-JUD-DEL-2024-BAIL"
         ]
       },
-      "verified_at": "2026-10-26T12:00:23.298404Z"
+      "verified_at": "2026-10-26T13:51:46.027562Z"
     },
     {
       "gate_id": "RG-07-ADVERSARIAL-SECURITY",
@@ -185,7 +185,7 @@
         "failed_attacks": 0,
         "robustness_rate": 1.0
       },
-      "verified_at": "2026-10-26T12:00:24.161863Z"
+      "verified_at": "2026-10-26T13:51:46.209365Z"
     },
     {
       "gate_id": "RG-08-DATABASE-ISOLATION",
@@ -202,7 +202,7 @@
         "distinct_files": true,
         "table_isolation_verified": true
       },
-      "verified_at": "2026-10-26T12:00:24.165817Z"
+      "verified_at": "2026-10-26T13:51:46.210365Z"
     },
     {
       "gate_id": "RG-09-REGRESSION-INTEGRITY",
@@ -218,7 +218,7 @@
         "mismatched_files": [],
         "freeze_manifest_path": "C:\\PROJECTS\\LegalMitra\\data\\06_review\\PHASE9_REVIEW_SNAPSHOT_MANIFEST.json"
       },
-      "verified_at": "2026-10-26T12:00:24.172088Z"
+      "verified_at": "2026-10-26T13:51:46.211364Z"
     },
     {
       "gate_id": "RG-10-HELD-OUT-EVALUATION",
@@ -234,7 +234,7 @@
         "exact_duplicates": 0,
         "max_cross_split_jaccard": 0.631578947368421
       },
-      "verified_at": "2026-10-26T12:00:24.419590Z"
+      "verified_at": "2026-10-26T13:51:46.299910Z"
     },
     {
       "gate_id": "RG-11-LEGAL-REVIEW",
@@ -252,7 +252,7 @@
         "governing_statute": "Advocates Act, 1961",
         "notes": "Governance invariant strictly preserved: Automated tools cannot self-certify advocate review."
       },
-      "verified_at": "2026-10-26T12:00:24.423574Z"
+      "verified_at": "2026-10-26T13:51:46.300912Z"
     },
     {
       "gate_id": "RG-12-ISSUE-EVIDENCE-COMPLETENESS",
@@ -273,7 +273,7 @@
           "issue_disposition"
         ]
       },
-      "verified_at": "2026-10-26T12:00:24.468768Z"
+      "verified_at": "2026-10-26T13:51:46.313933Z"
     },
     {
       "gate_id": "RG-13-MATERIAL-EXCEPTION-COVERAGE",
@@ -291,7 +291,7 @@
         ],
         "proviso_preserved": true
       },
-      "verified_at": "2026-10-26T12:00:24.513280Z"
+      "verified_at": "2026-10-26T13:51:46.332927Z"
     },
     {
       "gate_id": "RG-14-CLAIM-DEPENDENCY-INTEGRITY",
@@ -309,7 +309,7 @@
           "Downstream issue 'ISSUE-2' depends on prerequisite 'ISSUE-1', which has unresolved outcome 'INSUFFICIENT_EVIDENCE'. Unconditional affirmation suppressed."
         ]
       },
-      "verified_at": "2026-10-26T12:00:24.514300Z"
+      "verified_at": "2026-10-26T13:51:46.332927Z"
     },
     {
       "gate_id": "RG-15-MULTI-ISSUE-CALIBRATION",
@@ -325,7 +325,7 @@
         "is_partial_validated": true,
         "resolved_portion_present": true
       },
-      "verified_at": "2026-10-26T12:00:24.553929Z"
+      "verified_at": "2026-10-26T13:51:46.353446Z"
     },
     {
       "gate_id": "RG-16-INDEPENDENT-CLAIM-EVALUATION",
@@ -342,7 +342,7 @@
         "trustworthiness_score": 1.0,
         "independent_verdict": "ANSWER_SUPPORTED"
       },
-      "verified_at": "2026-10-26T12:00:24.563981Z"
+      "verified_at": "2026-10-26T13:51:46.358440Z"
     },
     {
       "gate_id": "RG-17-ANSWER-COMPLETENESS-4D",
@@ -360,7 +360,7 @@
         "calibration_score": 0.95,
         "consistency_score": 1.0
       },
-      "verified_at": "2026-10-26T12:00:24.563981Z"
+      "verified_at": "2026-10-26T13:51:46.359443Z"
     },
     {
       "gate_id": "RG-18-ERROR-TAXONOMY-ATTRIBUTION",
@@ -380,7 +380,7 @@
           "DECISION_POLICY"
         ]
       },
-      "verified_at": "2026-10-26T12:00:24.563981Z"
+      "verified_at": "2026-10-26T13:51:46.359443Z"
     },
     {
       "gate_id": "RG-19-PIT-V14-BENCHMARK-INTEGRITY",
@@ -397,7 +397,7 @@
         "is_clean": true,
         "max_similarity": 0.631578947368421
       },
-      "verified_at": "2026-10-26T12:00:24.737672Z"
+      "verified_at": "2026-10-26T13:51:46.462988Z"
     },
     {
       "gate_id": "RG-20-DIFFERENTIAL-REGRESSION-GUARD",
@@ -415,7 +415,7 @@
         "critical_safety_regressions": 0,
         "is_regression_free": true
       },
-      "verified_at": "2026-10-26T12:00:24.737672Z"
+      "verified_at": "2026-10-26T13:51:46.462988Z"
     }
   ]
 }

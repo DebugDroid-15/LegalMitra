@@ -1,0 +1,76 @@
+{
+  "manifest_version": "1.0.0",
+  "phase": "PHASE62",
+  "generated_at": "2026-10-26T13:49:32.715541+00:00",
+  "total_records": 3,
+  "traces": [
+    {
+      "operation_id": "OP-BACKUP-20261026T134932Z",
+      "operation_type": "BACKUP",
+      "start_time_utc": "2026-10-26T13:49:32.456407+00:00",
+      "end_time_utc": "2026-10-26T13:49:32.542939+00:00",
+      "status": "SUCCESS",
+      "target_path": "C:\\Users\\HP\\AppData\\Local\\Temp\\tmpal48pexu\\backups\\legalmitra_kb_20261026T134932Z.db",
+      "validation_steps_executed": [
+        "INITIALIZE",
+        "PRE_INSPECTION",
+        "STREAM_ONLINE_BACKUP",
+        "VALIDATE_PARTIAL",
+        "ATOMIC_PROMOTE",
+        "COMPLETE"
+      ],
+      "original_database_preserved": true,
+      "error_category": null,
+      "error_details": null,
+      "metadata": {
+        "backup_id": "KB-BACKUP-20261026T134932Z",
+        "sha256": "dd21ac7a34d5c11b1e472e89bb8a25ad0414930552376a3cc54afbfb7a3a9d36",
+        "total_chunks": 1515
+      }
+    },
+    {
+      "operation_id": "OP-RESTORE-20261026T134932Z",
+      "operation_type": "RESTORE_DRY_RUN",
+      "start_time_utc": "2026-10-26T13:49:32.572563+00:00",
+      "end_time_utc": "2026-10-26T13:49:32.625011+00:00",
+      "status": "SUCCESS",
+      "target_path": "C:\\Users\\HP\\AppData\\Local\\Temp\\tmpal48pexu\\restored_test.db",
+      "validation_steps_executed": [
+        "START",
+        "VERIFY_BACKUP",
+        "DRY_RUN_COMPLETE"
+      ],
+      "original_database_preserved": true,
+      "error_category": null,
+      "error_details": null,
+      "metadata": {
+        "restored_chunks": 1515
+      }
+    },
+    {
+      "operation_id": "OP-RESTORE-20261026T134932Z",
+      "operation_type": "RESTORE",
+      "start_time_utc": "2026-10-26T13:49:32.625011+00:00",
+      "end_time_utc": "2026-10-26T13:49:32.710558+00:00",
+      "status": "SUCCESS",
+      "target_path": "C:\\Users\\HP\\AppData\\Local\\Temp\\tmpal48pexu\\restored_test.db",
+      "validation_steps_executed": [
+        "START",
+        "VERIFY_BACKUP",
+        "ACQUIRE_LOCK",
+        "STAGE_TEMP_COPY",
+        "VERIFY_TEMP_TARGET",
+        "ATOMIC_SWAP",
+        "POST_RESTORE_VERIFY",
+        "RESTORE_SUCCESS"
+      ],
+      "original_database_preserved": false,
+      "error_category": null,
+      "error_details": null,
+      "metadata": {
+        "restored_chunks": 1515,
+        "restored_sources": 62
+      }
+    }
+  ]
+}

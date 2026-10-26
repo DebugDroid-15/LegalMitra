@@ -182,8 +182,8 @@ class ReleaseGateEvaluator:
             decision = "APPROVED_FOR_RELEASE"
 
         return ReleaseEvaluationSummary(
-            release_id="LEGALMITRA-RELEASE-PHASE61",
-            target_version="0.61.0",
+            release_id="LEGALMITRA-RELEASE-PHASE62",
+            target_version="0.62.0",
             total_gates=len(gates),
             passed_gates=passed,
             failed_gates=failed,

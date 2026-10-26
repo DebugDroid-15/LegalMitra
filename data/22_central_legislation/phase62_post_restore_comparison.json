@@ -1,0 +1,22 @@
+{
+  "comparison_id": "DIFF-RECON-20261026T134917Z",
+  "timestamp_utc": "2026-10-26T13:49:17.934716+00:00",
+  "target_release": "0.62.0",
+  "is_semantically_identical": true,
+  "metrics": {
+    "pre_sources": 62,
+    "post_sources": 62,
+    "source_difference": 0,
+    "pre_chunks": 1515,
+    "post_chunks": 1515,
+    "chunk_difference": 0,
+    "pre_scaffold_chunks": 6,
+    "post_scaffold_chunks": 6,
+    "scaffold_difference": 0,
+    "post_orphaned_chunks": 0,
+    "post_duplicate_chunk_ids": 0
+  },
+  "quarantine_preserved": true,
+  "unchunked_sources_preserved": true,
+  "status": "RESTORE_SEMANTICALLY_VERIFIED"
+}

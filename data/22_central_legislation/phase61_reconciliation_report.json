@@ -1,7 +1,7 @@
 {
-  "audit_id": "RECON-AUDIT-20261026T120549Z",
-  "timestamp_utc": "2026-10-26T12:05:49.621713+00:00",
-  "target_release": "0.61.0",
+  "audit_id": "RECON-AUDIT-20261026T141018Z",
+  "timestamp_utc": "2026-10-26T14:10:18.176661+00:00",
+  "target_release": "0.62.0",
   "overall_status": "PASSED",
   "total_sources": 62,
   "authentic_sources": 61,

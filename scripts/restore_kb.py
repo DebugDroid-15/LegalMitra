@@ -25,15 +25,20 @@ def main():
         dry_run=args.dry_run,
     )
 
+    print(f"\nRecovery Outcome Status: {result.outcome_status}")
+    print(f"Original Database Preserved: {result.original_preserved}")
+    print(f"Rollback Performed: {result.rollback_performed}")
+    print(f"Audit Trace ID: {result.audit_trace_id}")
+
     if result.success:
-        print(f"[OK] Restore {'dry-run' if result.is_dry_run else 'execution'} SUCCESSFUL!")
+        print(f"\n[OK] Restore {'dry-run' if result.is_dry_run else 'execution'} SUCCESSFUL!")
         print(f"  Source Backup: {result.backup_file_path}")
         print(f"  Target DB:     {result.target_path}")
         print(f"  Restored Sources: {result.restored_sources} | Chunks: {result.restored_chunks}")
         print(f"  Integrity Verified: {result.verification.integrity_check_passed}")
         print(f"  Quarantine Intact:  {result.verification.quarantine_intact}")
     else:
-        print(f"[FAIL] Restore FAILED: {result.error_message}", file=sys.stderr)
+        print(f"\n[FAIL] Restore FAILED: {result.error_message}", file=sys.stderr)
         for err in result.verification.errors:
             print(f"  - {err}", file=sys.stderr)
         sys.exit(1)
