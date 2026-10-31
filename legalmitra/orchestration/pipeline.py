@@ -93,7 +93,9 @@ class LegalQueryPipeline:
         kb: Optional[LegalKnowledgeBase] = None,
         temporal_engine: Optional[TemporalLawEngine] = None,
         knowledge_graph: Optional[LegalKnowledgeGraph] = None,
+        model_adapter: Optional[Any] = None,
     ):
+        self.model_adapter = model_adapter
         self.kb = kb or LegalKnowledgeBase()
         self.temporal_engine = temporal_engine or build_default_temporal_engine()
         self.knowledge_graph = knowledge_graph or build_national_judicial_knowledge_graph()
@@ -106,7 +108,8 @@ class LegalQueryPipeline:
         )
         self.fact_analyzer = FactSensitiveAnalyzer()
         self.answer_assembler = EvidenceTraceableAnswerAssembler(
-            temporal_engine=self.temporal_engine
+            temporal_engine=self.temporal_engine,
+            model_adapter=self.model_adapter,
         )
         self.decision_policy = LegalDecisionPolicy()
         from legalmitra.evaluation.provenance_model import PropositionProvenanceAuditor

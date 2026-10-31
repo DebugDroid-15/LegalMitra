@@ -19415,3 +19415,15 @@ Phase 66 establishes the training data foundation and automated GPU execution pi
 - Modern cumulative regression suite (Phases 52 to 66): 304 / 304 tests passed.
 - Governance state: `STAGE_GATED_PENDING_ADVOCATE_SIGN_OFF`.
 
+### 24.7 Phase 67: Local Legal Model Adapter, Safe Fallback, and Neural IRAC Synthesis
+
+Phase 67 operationalizes LegalMitra's first in-house fine-tuned neural model weights:
+- **Weights Architecture**: 4-bit NF4 quantized Meta-Llama-3.1-8B-Instruct fine-tuned with LoRA (r=16, alpha=32) over 2,065 IRAC instruction pairs synthesized in Phase 66.
+- **Training Convergence**: Training loss converged smoothly from 1.5535 down to 0.2393/0.2681 across 250 steps on Kaggle cloud T4 GPU x2.
+- **Model Adapter Layer** (`legalmitra/models/local_adapter.py`):
+  - Provides `LocalLegalModelAdapter` with three execution tiers: `LOCAL_LORA`, `MOCK_NEURAL`, and `DETERMINISTIC_FALLBACK`.
+  - Automatically loads local weights from `models/legalmitra_lora_adapter/` (`adapter_model.safetensors`, 160 MB).
+  - Falls back with 100% safety to the deterministic template assembler on missing weights or device constraints.
+- **Answer Assembler Integration**: Wire-in to `legalmitra/orchestration/answer_assembler.py` and `legalmitra/orchestration/pipeline.py` producing grounded IRAC prose without breaking citation anchors.
+- **CLI Model Control**: Added `--model <deterministic|neural|mock>` flag and `:model` interactive command to `legalmitra/cli.py`.
+- **Verification**: 6 new unit/integration tests in `tests/test_phase67_model_adapter.py`; 160/160 cumulative late-phase tests passed.

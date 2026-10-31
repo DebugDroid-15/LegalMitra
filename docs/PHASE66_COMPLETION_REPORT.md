@@ -90,3 +90,4 @@ To train your in-house model on Kaggle using the artifacts generated in Phase 66
 ## 5. Certification
 
 Phase 66 of LegalMitra is fully executed and formally certified. All dataset artifacts, training configurations, and verification tests are serialized. The platform is ready for model fine-tuning under governance state `STAGE_GATED_PENDING_ADVOCATE_SIGN_OFF`.
+

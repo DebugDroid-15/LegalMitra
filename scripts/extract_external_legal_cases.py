@@ -109,3 +109,4 @@ def run_extraction(sample_limit: int = 500) -> Path:
 
 if __name__ == "__main__":
     run_extraction(sample_limit=500)
+

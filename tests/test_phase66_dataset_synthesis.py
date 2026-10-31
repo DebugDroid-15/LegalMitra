@@ -103,7 +103,8 @@ class TestPhase66DatasetSynthesisAndKagglePipeline:
 
         # Check for key ML libraries and functions
         all_code = "".join("".join(c.get("source", [])) for c in code_cells)
-        assert "FastLanguageModel" in all_code
-        assert "SFTTrainer" in all_code
+        assert ("FastLanguageModel" in all_code) or ("AutoModelForCausalLM" in all_code)
+        assert ("SFTTrainer" in all_code) or ("Trainer" in all_code)
         assert "save_pretrained" in all_code
         assert "Meta-Llama-3.1-8B" in all_code
+

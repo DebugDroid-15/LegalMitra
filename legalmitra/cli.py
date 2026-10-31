@@ -14,6 +14,7 @@ from typing import Any, Dict, List, Optional
 
 from legalmitra.orchestration.decision_policy import LegalResponseState
 from legalmitra.orchestration.pipeline import LegalQueryPipeline, OrchestratedLegalResponse
+from legalmitra.models.local_adapter import LocalLegalModelAdapter, ModelAdapterConfig
 
 
 # Terminal Colors & Styling
@@ -235,6 +236,7 @@ def run_interactive_repl(pipeline: LegalQueryPipeline, initial_date: Optional[st
     print(f"  {Colors.CYAN}:jurisdiction <CODE>{Colors.RESET} - Set jurisdiction (e.g. IN, IN-DL, IN-MH)")
     print(f"  {Colors.CYAN}:verbose{Colors.RESET}            - Toggle detailed IRAC, facts & claim rationale")
     print(f"  {Colors.CYAN}:json{Colors.RESET}               - Toggle raw JSON output mode")
+    print(f"  {Colors.CYAN}:model <neural|det|mock>{Colors.RESET} - Set answer synthesis mode (neural, deterministic, mock)")
     print(f"  {Colors.CYAN}:demo{Colors.RESET}               - Select and run a landmark benchmark demo case")
     print(f"  {Colors.CYAN}:help{Colors.RESET}               - Display available commands")
     print(f"  {Colors.CYAN}:quit{Colors.RESET} / {Colors.CYAN}:q{Colors.RESET}         - Exit interface")
@@ -359,6 +361,7 @@ def main():
     parser.add_argument("-q", "--query", type=str, default=None, help="Legal question to evaluate")
     parser.add_argument("-d", "--date", type=str, default=None, help="Temporal as-of date (YYYY-MM-DD)")
     parser.add_argument("-j", "--jurisdiction", type=str, default=None, help="Jurisdiction code (e.g. IN, IN-DL, IN-MH)")
+    parser.add_argument("--model", type=str, choices=["deterministic", "neural", "mock"], default="deterministic", help="Answer synthesis mode (deterministic, neural, mock)")
     parser.add_argument("-v", "--verbose", action="store_true", help="Display detailed IRAC decomposition, claims, and telemetry")
     parser.add_argument("--json", action="store_true", help="Output raw JSON response")
     parser.add_argument("-o", "--output", type=str, default=None, help="Save JSON response to output file")
@@ -367,8 +370,14 @@ def main():
 
     args = parser.parse_args()
 
-    # Initialize LegalQueryPipeline
-    pipeline = LegalQueryPipeline()
+    # Initialize LegalQueryPipeline with model adapter if requested
+    adapter = None
+    if args.model == "neural":
+        adapter = LocalLegalModelAdapter()
+    elif args.model == "mock":
+        adapter = LocalLegalModelAdapter(ModelAdapterConfig(enable_mock_for_testing=True))
+
+    pipeline = LegalQueryPipeline(model_adapter=adapter)
 
     if args.demo and not args.query:
         print_banner()

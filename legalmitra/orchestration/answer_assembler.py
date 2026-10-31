@@ -63,7 +63,8 @@ class EvidenceTraceableAnswerAssembler:
     ensuring ungrounded or contradicted claims are never emitted as settled law.
     """
 
-    def __init__(self, temporal_engine: TemporalLawEngine):
+    def __init__(self, temporal_engine: TemporalLawEngine, model_adapter: Optional[Any] = None):
+        self.model_adapter = model_adapter
         self.temporal_engine = temporal_engine
         self.dependency_validator = ClaimDependencyValidator()
         from legalmitra.orchestration.legal_correctness import IntegratedLegalCorrectnessEngine
@@ -531,6 +532,30 @@ class EvidenceTraceableAnswerAssembler:
         # 3. Assemble User-Facing Prose
         prose_sections = []
 
+        # Neural IRAC Generation with Deterministic Fallback
+        neural_prose_generated = None
+        if self.model_adapter and not parsed_query.is_adversarial_injection:
+            try:
+                # Prepare grounded provisions and precedents from verified claims
+                grounded_provs = []
+                for p_str in governing_provisions:
+                    grounded_provs.append({"act": p_str, "section": "", "text": ""})
+                grounded_precs = []
+                for prec_str in competing_authorities:
+                    grounded_precs.append({"case_title": prec_str, "citation": "", "ratio": ""})
+                
+                temp_context = f"Target query date: {parsed_query.target_date or 'Current'}"
+                res = self.model_adapter.generate_natural_answer(
+                    query=parsed_query.normalized_query,
+                    provisions=grounded_provs,
+                    precedents=grounded_precs,
+                    temporal_context=temp_context
+                )
+                if not res.fallback_used and res.answer_text and len(res.answer_text.strip()) > 30:
+                    neural_prose_generated = res.answer_text.strip()
+            except Exception:
+                neural_prose_generated = None
+
         # A. Direct Answer
         if parsed_query.is_adversarial_injection:
             prose_sections.append(
@@ -561,6 +586,8 @@ class EvidenceTraceableAnswerAssembler:
                 "The applicable legal rule is contingent upon specific factual conditions:\n"
                 + "\n\n".join(cond_lines)
             )
+        elif neural_prose_generated:
+            prose_sections.append(f"Direct Position (Neural Grounded Synthesis):\n{neural_prose_generated}")
         elif raw_draft_answer and len(raw_draft_answer.strip()) > 30:
             prose_sections.append(f"Direct Position:\n{raw_draft_answer.strip()}")
         elif claims:
