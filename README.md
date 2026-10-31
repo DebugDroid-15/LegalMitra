@@ -14692,7 +14692,8 @@ The following ledger records the official documentation metrics for all complete
 | **P63** | 2026-10-26 | 19,192 | 19,265 | +73 | Independent reproducibility audit, disaster-recovery game day (7/7 scenarios passed), crash resilience & auto-recovery, dead PID stale lock reclamation, internal SQLite identity binding table (_backup_manifest_binding), deep record-level reconciliation, RG-01-20 release gates (0.63.0: 19 passed / 1 pending), 8 reports, multi-phase regression suite (409 passed in 86.00s) | PASS (100%) | d20e631 |
 | **P64** | 2026-10-26 | 19,265 | 19,325 | +60 | Integrated legal intelligence reliability, unified claim contract (UnifiedLegalClaimContract, 7 distinctions), integrated correctness engine (temporal, jurisdictional, precedent, compound exceptions), PIT-V15 adversarial benchmark (300 cases, 20 categories, 8 negative controls), 12 end-to-end scenarios, Release Gates 0.64.0 (19 passed / 1 pending), 5 reports, 278 cumulative regression tests (100% pass) | PASS (100%) | `51f99bf` |
 | **P65** | 2026-10-26 | 19,326 | 19,383 | +57 | Integrated production hardening, FTS5 search index repair (1,505 to 1,515 chunks sync), document-level indirect prompt injection defense, SensitiveDataRedactor & RedactingFilter (credentials, JWT, PII), diversity-aware deduplication, candidate provision prioritization, OperationContext & FailureCategory taxonomy, 21 tests in test_phase65, 299 cumulative tests across modern phases (100% pass), Release Gates 0.65.0 (19 passed / 1 pending) | PASS (100%) | `8fc5065` |
-| **P66+** | *Future* | *Recorded at phase completion* | *Measured* | *Target ~5,000* | *Documenting actual phase deliverables across the 12 technical dimensions* | *Pending* | *Pending* |
+| **P66** | 2026-10-31 | 19,383 | 19,417 | +34 | Pre-fine-tuning dataset extraction, KanoonGPT case law normalization (500 cases), instruction synthesis (2,065 Alpaca & ShareGPT pairs), Kaggle 4-bit QLoRA training notebook (Unsloth Llama-3.1-8B), 5 tests in test_phase66, 304 cumulative tests (100% pass) | PASS (100%) | `PENDING_P66_COMMIT` |
+| **P67+** | *Future* | *Recorded at phase completion* | *Measured* | *Target ~5,000* | *Documenting actual phase deliverables across the 12 technical dimensions* | *Pending* | *Pending* |
 
 
 ```text
@@ -19380,4 +19381,37 @@ The phase strictly preserved all architectural invariants: zero consumer UI code
 - **Manifest Integrity:** `ReleaseGateEvaluator.validate_manifest_integrity()` passed with 0 errors.
 - **Focused Test Suite:** `tests/test_phase65_integrated_production_hardening.py` passed 21 / 21 tests (100%).
 - **Cumulative Modern Suite:** Modern phases 52 through 65 passed 299 / 299 tests (100% pass rate in 61.12 seconds).
+
+
+---
+
+## Part LI: Phase 66 Engineering Chronicle — Pre-Fine-Tuning Dataset Extraction, Legal Instruction Synthesis, and Kaggle Training Pipeline
+
+### 51.1 Mission & Zero-Regression Architecture
+Phase 66 establishes the training data foundation and automated GPU execution pipeline required to build LegalMitra's proprietary in-house Indian Legal LLM without relying on external commercial APIs. The phase was executed with zero modifications to existing pipeline logic (`LegalQueryPipeline`, `knowledge_base.py`, `release_gates.py`), strictly preserving all 1,515 knowledge base chunks, 62 sources, 40 pending advocate review candidates, and the quarantine barrier around `IND-JUD-DEL-2024-BAIL`.
+
+### 51.2 KanoonGPT Case Law Extraction (`scripts/extract_external_legal_cases.py`)
+- Connected to `KanoonGPT/indian-case-laws` via streaming Parquet.
+- Filtered and extracted 500 high-signal High Court and Supreme Court decisions with docket numbers, CNR numbers, decision dates, and ratio summaries into `data/23_external_training/kanoongpt_normalized_cases.jsonl`.
+- Data remains strictly segregated in `data/23_external_training/` without touching `data/legalmitra_kb.db`.
+
+### 51.3 Legal Instruction Synthesis Engine (`scripts/build_legal_instruction_dataset.py`)
+- Synthesized **2,065 instruction pairs** combining:
+  1. 1,509 authentic statutory provisions with section citations.
+  2. 500 normalized case law ratios and judicial holdings.
+  3. 100 anti-hallucination and prompt-injection defense pairs.
+- Exported train / validation splits:
+  - `data/23_external_training/legal_instructions_train.jsonl` (1,858 records).
+  - `data/23_external_training/legal_instructions_val.jsonl` (207 records).
+  - `data/23_external_training/legal_instructions_sharegpt.json` (2,065 multi-turn records).
+
+### 51.4 Kaggle 4-Bit QLoRA Fine-Tuning Notebook (`kaggle/legalmitra_qlora_training.ipynb`)
+- Configured for Kaggle's free GPU tier (Tesla T4 or P100, 16GB VRAM).
+- Employs Unsloth + PEFT 4-bit quantization on `Meta-Llama-3.1-8B-Instruct`.
+- Complete 7-stage workflow: environment setup, 4-bit model loading, LoRA parameter attachment, dataset mapping, `SFTTrainer` execution (~2 hours), inference testing, and adapter/GGUF export.
+
+### 51.5 Verification & Governance Invariants
+- `tests/test_phase66_dataset_synthesis.py`: 5 / 5 tests passed (100%).
+- Modern cumulative regression suite (Phases 52 to 66): 304 / 304 tests passed.
+- Governance state: `STAGE_GATED_PENDING_ADVOCATE_SIGN_OFF`.
 
