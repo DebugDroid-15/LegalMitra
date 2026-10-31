@@ -19427,3 +19427,18 @@ Phase 67 operationalizes LegalMitra's first in-house fine-tuned neural model wei
 - **Answer Assembler Integration**: Wire-in to `legalmitra/orchestration/answer_assembler.py` and `legalmitra/orchestration/pipeline.py` producing grounded IRAC prose without breaking citation anchors.
 - **CLI Model Control**: Added `--model <deterministic|neural|mock>` flag and `:model` interactive command to `legalmitra/cli.py`.
 - **Verification**: 6 new unit/integration tests in `tests/test_phase67_model_adapter.py`; 160/160 cumulative late-phase tests passed.
+
+### 24.8 Phase 68: Multi-Turn Legal Dialogue Memory & Clarification Resolver
+
+Phase 68 operationalizes conversational multi-turn context tracking and interactive clarification resolution:
+- **Dialogue State Engine** (`legalmitra/orchestration/dialogue_manager.py`):
+  - Tracks `DialogueTurn` and `DialogueSession` states.
+  - Implements coreference enrichment for short follow-up inquiries.
+  - Automatically preserves temporal point-in-time date and territorial jurisdiction across successive turns.
+- **Interactive Clarification Loop**:
+  - Resolves `CLARIFICATION_REQUIRED` prompts when the user replies with missing decisive facts (e.g. state jurisdiction on rent control).
+- **Prompt History Injection**:
+  - Formats prior dialogue turns into Llama-3.1-Instruct format in `LocalLegalModelAdapter.build_irac_prompt()`.
+- **CLI Commands**:
+  - `:history` displays session dialogue turns; `:reset` resets session context.
+- **Verification**: 6 new unit/integration tests in `tests/test_phase68_dialogue_memory.py`; 38/38 cumulative tests passed across Phases 65–68.

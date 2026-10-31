@@ -226,6 +226,7 @@ def run_interactive_repl(pipeline: LegalQueryPipeline, initial_date: Optional[st
     """Run an interactive Read-Eval-Print-Loop (REPL) session."""
     print_banner()
 
+    session_id = f"cli_session_{int(time.time())}"
     context_date = initial_date
     jurisdiction = initial_jurisdiction
     is_verbose = verbose
@@ -237,6 +238,8 @@ def run_interactive_repl(pipeline: LegalQueryPipeline, initial_date: Optional[st
     print(f"  {Colors.CYAN}:verbose{Colors.RESET}            - Toggle detailed IRAC, facts & claim rationale")
     print(f"  {Colors.CYAN}:json{Colors.RESET}               - Toggle raw JSON output mode")
     print(f"  {Colors.CYAN}:model <neural|det|mock>{Colors.RESET} - Set answer synthesis mode (neural, deterministic, mock)")
+    print(f"  {Colors.CYAN}:history{Colors.RESET}            - Display dialogue turn history for this session")
+    print(f"  {Colors.CYAN}:reset{Colors.RESET}              - Reset multi-turn session memory and context")
     print(f"  {Colors.CYAN}:demo{Colors.RESET}               - Select and run a landmark benchmark demo case")
     print(f"  {Colors.CYAN}:help{Colors.RESET}               - Display available commands")
     print(f"  {Colors.CYAN}:quit{Colors.RESET} / {Colors.CYAN}:q{Colors.RESET}         - Exit interface")
@@ -340,6 +343,7 @@ def run_interactive_repl(pipeline: LegalQueryPipeline, initial_date: Optional[st
                 query=user_input,
                 context_date=context_date,
                 jurisdiction=jurisdiction,
+                session_id=session_id,
             )
             print(f"\r{' ' * 60}\r", end="")
 

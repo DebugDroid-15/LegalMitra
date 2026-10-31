@@ -37,6 +37,7 @@ from legalmitra.orchestration.query_understanding import (
     ParsedLegalQuery,
 )
 from legalmitra.temporal.engine import TemporalLawEngine, build_default_temporal_engine
+from legalmitra.orchestration.dialogue_manager import LegalDialogueManager, DialogueSession
 
 
 @dataclass
@@ -112,6 +113,7 @@ class LegalQueryPipeline:
             model_adapter=self.model_adapter,
         )
         self.decision_policy = LegalDecisionPolicy()
+        self.dialogue_manager = LegalDialogueManager()
         from legalmitra.evaluation.provenance_model import PropositionProvenanceAuditor
         self.provenance_auditor = PropositionProvenanceAuditor()
         from legalmitra.evaluation.provenance_model import PropositionProvenanceAuditor
@@ -124,6 +126,7 @@ class LegalQueryPipeline:
         jurisdiction: Optional[str] = None,
         raw_draft_answer: Optional[str] = None,
         limit: int = 6,
+        session_id: Optional[str] = None,
     ) -> OrchestratedLegalResponse:
         """
         Executes the 14-step deterministic orchestration sequence.
@@ -131,11 +134,22 @@ class LegalQueryPipeline:
         start_t = time.time()
         steps = []
 
+        # Contextualize query across dialogue history if session is active
+        ctx = self.dialogue_manager.contextualize_query(
+            query=query,
+            session_id=session_id,
+            context_date=context_date,
+            jurisdiction=jurisdiction
+        )
+        effective_query = ctx["enriched_query"]
+        effective_date = ctx["effective_date"]
+        effective_jurisdiction = ctx["effective_jurisdiction"]
+
         # Step 1: Parse the query & extract structured representation
         steps.append("1. Parse query and extract structured representation")
-        parsed_q = self.query_analyzer.parse_query(query, context_date=context_date)
-        if jurisdiction and not parsed_q.jurisdiction:
-            parsed_q.jurisdiction = jurisdiction
+        parsed_q = self.query_analyzer.parse_query(effective_query, context_date=effective_date)
+        if effective_jurisdiction and not parsed_q.jurisdiction:
+            parsed_q.jurisdiction = effective_jurisdiction
 
         # Step 2: Identify candidate legal issues
         steps.append("2. Identify candidate legal issues")
@@ -288,6 +302,20 @@ class LegalQueryPipeline:
             is_conditional=bool(matrix and matrix.is_conditional),
             issue_matrix_records_count=len(matrix.records) if matrix else 0,
         )
+
+        # Record turn in dialogue session if session_id is active
+        if session_id:
+            self.dialogue_manager.record_turn(
+                session_id=session_id,
+                user_query=query,
+                response_state=policy_result.state,
+                answer_text=final_text,
+                citations=assembled_ans.citations,
+                governing_provisions=assembled_ans.governing_provisions,
+                context_date=effective_date,
+                jurisdiction=effective_jurisdiction,
+                clarifying_question=policy_result.clarifying_question
+            )
 
         return OrchestratedLegalResponse(
             query=query,

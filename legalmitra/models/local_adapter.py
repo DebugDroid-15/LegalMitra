@@ -138,7 +138,8 @@ class LocalLegalModelAdapter:
         query: str,
         provisions: List[Dict[str, Any]],
         precedents: List[Dict[str, Any]],
-        temporal_context: Optional[str] = None
+        temporal_context: Optional[str] = None,
+        dialogue_history: Optional[str] = None
     ) -> str:
         """Format the query and retrieved evidence into Llama-3.1 IRAC prompt."""
         evidence_lines = []
@@ -163,7 +164,10 @@ class LocalLegalModelAdapter:
 
         evidence_str = "\n".join(evidence_lines)
 
+        dialogue_section = f"Prior Conversation History:\n{dialogue_history}\n\n" if dialogue_history else ""
+
         user_content = (
+            f"{dialogue_section}"
             f"Legal Query: {query}\n\n"
             f"Evidence and Precedents:\n{evidence_str}\n\n"
             f"Please provide an authoritative IRAC response (Issue, Rule, Application, Conclusion) "
@@ -184,7 +188,8 @@ class LocalLegalModelAdapter:
         query: str,
         provisions: List[Dict[str, Any]],
         precedents: List[Dict[str, Any]],
-        temporal_context: Optional[str] = None
+        temporal_context: Optional[str] = None,
+        dialogue_history: Optional[str] = None
     ) -> ModelGenerationResult:
         """Generate a natural conversational legal response grounded in evidence."""
         # 1. Handle mock testing mode
@@ -215,7 +220,7 @@ class LocalLegalModelAdapter:
         try:
             import torch
 
-            prompt = self.build_irac_prompt(query, provisions, precedents, temporal_context)
+            prompt = self.build_irac_prompt(query, provisions, precedents, temporal_context, dialogue_history)
             inputs = self._tokenizer(prompt, return_tensors="pt")
             if torch.cuda.is_available():
                 inputs = {k: v.cuda() for k, v in inputs.items()}
