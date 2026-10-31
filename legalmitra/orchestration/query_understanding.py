@@ -87,6 +87,22 @@ class LegalQueryAnalyzer:
         ],
     }
 
+    # Colloquial layperson to statutory terminology mapping
+    LAYPERSON_SYNONYMS = {
+        "minor theft": "petty theft under Section 303(2) BNS or Section 379 IPC, as well as juvenile justice under the Juvenile Justice Act",
+        "petty theft": "theft of property valued under five thousand rupees under Section 303(2) Bharatiya Nyaya Sanhita, 2023",
+        "cheque bounce": "dishonour of cheque for insufficiency of funds under Section 138 Negotiable Instruments Act",
+        "bounce cheque": "dishonour of cheque under Section 138 Negotiable Instruments Act",
+        "tenant not leaving": "eviction of tenant and termination of tenancy under Section 106 Transfer of Property Act and State Rent Control Act",
+        "landlord evict": "eviction of tenant for personal bona fide requirement under Rent Control Act",
+        "police not taking fir": "refusal by police to register FIR under Section 175(3) BNSS or Section 156(3) CrPC",
+        "anticipatory bail": "direction for grant of bail to person apprehending arrest under Section 482 BNSS or Section 438 CrPC",
+        "divorce mutual": "dissolution of marriage by mutual consent under Section 13B Hindu Marriage Act, 1955",
+        "consumer complaint": "consumer dispute and unfair trade practice under Consumer Protection Act, 2019",
+        "company fraud": "corporate fraud and oppression or mismanagement under Companies Act, 2013",
+        "cyber fraud": "unauthorized electronic access and cyber fraud under Information Technology Act, 2000 and Section 318 BNS",
+    }
+
     # Cross-statute ambiguous terms
     AMBIGUOUS_TERMS = [
         "workman", "employee", "goods", "wages", "commercial dispute",
@@ -118,6 +134,12 @@ class LegalQueryAnalyzer:
         """
         clean_q = query.strip()
         q_lower = clean_q.lower()
+
+        # Layperson vocabulary enrichment: expand colloquial phrases into formal legal issues
+        matched_statutory_hints = []
+        for colloquial, formal_expansion in self.LAYPERSON_SYNONYMS.items():
+            if colloquial in q_lower:
+                matched_statutory_hints.append(formal_expansion)
 
         # 0. Check for adversarial injection attempts
         is_adversarial = False
@@ -587,6 +609,10 @@ class LegalQueryAnalyzer:
         # If decomposed issues identified, update candidate_issues
         if decomposed_issues:
             issues = [d["statement"] for d in decomposed_issues]
+
+        for hint in matched_statutory_hints:
+            if hint not in issues:
+                issues.append(hint)
 
         if not issues:
             issues.append(f"Substantive and procedural rights governing '{clean_q[:60]}...' under Indian law")

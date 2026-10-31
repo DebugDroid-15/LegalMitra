@@ -71,11 +71,16 @@ with st.sidebar:
     st.markdown("**Enterprise Indian Legal Reasoning Engine**")
     st.divider()
 
-    st.subheader("1. Synthesis Model")
+    st.subheader("1. Synthesis Model and Perspective")
     chosen_mode = st.radio(
         "Response Generation Mode:",
         ["Deterministic Engine", "Mock Neural (IRAC Simulator)", "Neural LoRA (Kaggle Fine-Tuned)"],
         index=1,
+    )
+    audience_perspective = st.selectbox(
+        "Target Audience View:",
+        ["Dual-Layer (Plain English + Lawyer Analysis)", "Citizen Focus (Plain English First)", "Lawyer Focus (Strict Statutory IRAC)"],
+        index=0,
     )
     if chosen_mode != st.session_state.model_mode:
         st.session_state.model_mode = chosen_mode

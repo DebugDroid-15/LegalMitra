@@ -183,6 +183,55 @@ class EvidenceTraceableAnswerAssembler:
             review_notes="Proposition assembled with verifiable evidence provenance. Pending advocate review.",
         )
 
+    def _generate_plain_english_summary(
+        self,
+        parsed_query: Any,
+        governing_provisions: List[str],
+        claims: List[Any]
+    ) -> str:
+        q_text = (getattr(parsed_query, "original_query", "") or "").lower()
+        domain = getattr(parsed_query, "legal_domain", "GENERAL_CIVIL")
+
+        points = []
+        if "minor theft" in q_text or "petty theft" in q_text:
+            points.append(
+                "If someone commits a small or petty theft (such as stolen property value below INR 5,000 as a first offence):\n"
+                "- 1. Under Bharatiya Nyaya Sanhita, 2023 (BNS), punishment can be community service rather than mandatory jail time.\n"
+                "- 2. If 'minor' refers to a child under 18 years, the Juvenile Justice Act applies: children are not imprisoned in regular jails and are rehabilitated through the Juvenile Justice Board."
+            )
+        elif "cheque bounce" in q_text or "bounce" in q_text:
+            points.append(
+                "If a cheque bounces due to insufficient funds:\n"
+                "- 1. You must send a statutory demand notice within 30 days of receiving the bank memo.\n"
+                "- 2. The other party gets 15 mandatory days to clear the payment.\n"
+                "- 3. If unpaid, a criminal complaint under Section 138 NI Act can be filed in court."
+            )
+        elif "evict" in q_text or "tenant" in q_text or "landlord" in q_text:
+            points.append(
+                "Regarding rental property and eviction:\n"
+                "- 1. A landlord cannot arbitrarily throw out a tenant or disconnect electricity/water without due legal process.\n"
+                "- 2. A formal 15-day notice to quit or proceedings under State Rent Control law must be instituted."
+            )
+        elif "injunction" in q_text or "infrastructure" in q_text:
+            points.append(
+                "Regarding stay orders against public infrastructure projects:\n"
+                "- 1. Courts are prohibited by Section 20A Specific Relief Act from issuing stay orders that halt public projects.\n"
+                "- 2. Claimants must seek monetary compensation rather than stopping project construction."
+            )
+        elif domain == "CRIMINAL":
+            points.append(
+                "Under Indian criminal law:\n"
+                "- 1. The date of the incident decides whether IPC (prior to 1 July 2024) or BNS (after 1 July 2024) applies.\n"
+                "- 2. For serious offences, police must register an FIR and cannot detain anyone without legal authorization."
+            )
+        else:
+            points.append(
+                "In plain words, this inquiry is governed by specific statutory provisions. "
+                "Any legal rights or remedies depend on verifiable documentary evidence and strict adherence to statutory deadlines."
+            )
+
+        return "### Plain-English Summary (For Quick Understanding)\n" + "\n".join(points)
+
     def assemble_answer(
         self,
         parsed_query: ParsedLegalQuery,
@@ -531,6 +580,11 @@ class EvidenceTraceableAnswerAssembler:
 
         # 3. Assemble User-Facing Prose
         prose_sections = []
+
+        # Plain English Citizen Layer
+        plain_summary = self._generate_plain_english_summary(parsed_query, governing_provisions, claims)
+        if plain_summary and not parsed_query.is_adversarial_injection:
+            prose_sections.append(plain_summary)
 
         # Neural IRAC Generation with Deterministic Fallback
         neural_prose_generated = None
