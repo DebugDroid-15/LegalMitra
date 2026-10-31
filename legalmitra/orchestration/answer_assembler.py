@@ -544,9 +544,10 @@ class EvidenceTraceableAnswerAssembler:
                 for prec_str in competing_authorities:
                     grounded_precs.append({"case_title": prec_str, "citation": "", "ratio": ""})
                 
-                temp_context = f"Target query date: {parsed_query.target_date or 'Current'}"
+                q_date = getattr(parsed_query, 'query_date', None) or 'Current'
+                temp_context = f'Target query date: {q_date}'
                 res = self.model_adapter.generate_natural_answer(
-                    query=parsed_query.normalized_query,
+                    query=getattr(parsed_query, "original_query", ""),
                     provisions=grounded_provs,
                     precedents=grounded_precs,
                     temporal_context=temp_context
