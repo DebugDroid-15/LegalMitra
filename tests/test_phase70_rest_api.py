@@ -128,3 +128,4 @@ class TestPhase70RestApiEndpoints:
         assert "/api/v1/chat" in schema["paths"]
         assert "/api/v1/draft" in schema["paths"]
         assert "/api/v1/health" in schema["paths"]
+

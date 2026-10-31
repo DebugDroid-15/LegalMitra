@@ -301,3 +301,4 @@ def draft_statutory_notice(req: NoticeDraftRequest):
         statutory_citations=draft.statutory_citations,
         created_at=draft.created_at,
     )
+
