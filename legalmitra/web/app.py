@@ -329,6 +329,8 @@ with tab_corpus:
         results = kb.search(search_query, limit=5)
         st.write(f"Found {len(results)} authoritative chunks:")
         for r in results:
-            with st.expander(f"📌 {r.act_name} — Section {r.section_number}"):
-                st.markdown(f"**Chunk ID:** `{r.chunk_id}` | **Enactment Year:** `{r.enactment_year}`")
-                st.text(r.chunk_text[:400] + ("..." if len(r.chunk_text) > 400 else ""))
+            title = r.act_or_case_title or "Statutory Law"
+            ref = r.provision_or_para_ref or (f"Section {r.section_number}" if r.section_number else "")
+            with st.expander(f"📌 {title} {('— ' + ref) if ref else ''}"):
+                st.markdown(f"**Chunk ID:** `{r.chunk_id}` | **Date:** `{r.effective_date or r.document_date or 'N/A'}` | **Jurisdiction:** `{r.jurisdiction}`")
+                st.text(r.content[:400] + ("..." if len(r.content) > 400 else ""))

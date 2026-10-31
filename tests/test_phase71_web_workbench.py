@@ -49,3 +49,4 @@ class TestPhase71WebWorkbench:
         )
         assert draft.mandatory_cure_period_days == 15
         assert len(draft.full_notice_markdown) > 100
+
