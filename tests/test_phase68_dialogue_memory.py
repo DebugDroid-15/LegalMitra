@@ -136,3 +136,4 @@ class TestPhase68MultiTurnDialogueMemory:
         )
         assert resp2.response_state is not None
         assert "Direct Position" in resp2.answer_text
+

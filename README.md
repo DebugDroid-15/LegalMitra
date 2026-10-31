@@ -19442,3 +19442,17 @@ Phase 68 operationalizes conversational multi-turn context tracking and interact
 - **CLI Commands**:
   - `:history` displays session dialogue turns; `:reset` resets session context.
 - **Verification**: 6 new unit/integration tests in `tests/test_phase68_dialogue_memory.py`; 38/38 cumulative tests passed across Phases 65–68.
+
+### 24.9 Phase 69: Statutory Legal Notice & Document Drafting Engine
+
+Phase 69 implements LegalMitra's statutory drafting engine for legally enforceable demand notices:
+- **Drafting Core** (`legalmitra/drafting/notice_engine.py`):
+  - `StatutoryNoticeDraftingEngine` with support for:
+    - Section 138 Negotiable Instruments Act (Cheque dishonour 15-day statutory demand).
+    - Section 21 Arbitration and Conciliation Act (Arbitration invocation 30-day nomination).
+    - Section 106 Transfer of Property Act (Tenancy termination 15-day notice to quit).
+    - Section 8 Insolvency and Bankruptcy Code (Form 3 operational creditor 10-day demand).
+    - General contractual and intellectual property cease-and-desist notices.
+  - Enforces mandatory statutory cure windows, advocate headers, and criminal penalty warnings.
+- **CLI Command**: Added `:draft <ni138|arb21|tpa106|ibc8>` inside `python -m legalmitra.cli -i`.
+- **Verification**: 5 new unit/integration tests in `tests/test_phase69_statutory_drafting.py`; 43/43 cumulative tests passed across Phases 65–69.

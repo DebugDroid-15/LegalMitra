@@ -15,6 +15,7 @@ from typing import Any, Dict, List, Optional
 from legalmitra.orchestration.decision_policy import LegalResponseState
 from legalmitra.orchestration.pipeline import LegalQueryPipeline, OrchestratedLegalResponse
 from legalmitra.models.local_adapter import LocalLegalModelAdapter, ModelAdapterConfig
+from legalmitra.drafting import StatutoryNoticeDraftingEngine, NoticeType, NoticeParty
 
 
 # Terminal Colors & Styling
@@ -238,6 +239,7 @@ def run_interactive_repl(pipeline: LegalQueryPipeline, initial_date: Optional[st
     print(f"  {Colors.CYAN}:verbose{Colors.RESET}            - Toggle detailed IRAC, facts & claim rationale")
     print(f"  {Colors.CYAN}:json{Colors.RESET}               - Toggle raw JSON output mode")
     print(f"  {Colors.CYAN}:model <neural|det|mock>{Colors.RESET} - Set answer synthesis mode (neural, deterministic, mock)")
+    print(f"  {Colors.CYAN}:draft <type>{Colors.RESET}           - Generate statutory legal notice (ni138, arb21, tpa106, ibc8)")
     print(f"  {Colors.CYAN}:history{Colors.RESET}            - Display dialogue turn history for this session")
     print(f"  {Colors.CYAN}:reset{Colors.RESET}              - Reset multi-turn session memory and context")
     print(f"  {Colors.CYAN}:demo{Colors.RESET}               - Select and run a landmark benchmark demo case")
