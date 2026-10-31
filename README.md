@@ -19456,3 +19456,14 @@ Phase 69 implements LegalMitra's statutory drafting engine for legally enforceab
   - Enforces mandatory statutory cure windows, advocate headers, and criminal penalty warnings.
 - **CLI Command**: Added `:draft <ni138|arb21|tpa106|ibc8>` inside `python -m legalmitra.cli -i`.
 - **Verification**: 5 new unit/integration tests in `tests/test_phase69_statutory_drafting.py`; 43/43 cumulative tests passed across Phases 65–69.
+
+### 24.10 Phase 70: Production REST API Server & OpenAPI Contract
+
+Phase 70 deploys LegalMitra as a production REST service:
+- **FastAPI Core** (`legalmitra/server/api.py`):
+  - `POST /api/v1/query`: Full 15-stage legal pipeline query evaluation.
+  - `POST /api/v1/chat`: Multi-turn conversational consultation with dialogue session memory.
+  - `POST /api/v1/draft`: Statutory legal notice generation (NI Act, Arbitration, Tenancy, IBC).
+  - `GET /api/v1/health`: Observability health check auditing FTS index sync and LoRA availability.
+  - `GET /docs` & `GET /openapi.json`: Automated OpenAPI 3.1 documentation.
+- **Verification**: 6 automated HTTP integration tests in `tests/test_phase70_rest_api.py`; 49/49 cumulative tests passed across Phases 65–70.

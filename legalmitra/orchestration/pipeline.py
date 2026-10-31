@@ -305,6 +305,8 @@ class LegalQueryPipeline:
 
         # Record turn in dialogue session if session_id is active
         if session_id:
+            resolved_jurisdiction = parsed_q.jurisdiction or effective_jurisdiction
+            resolved_date = parsed_q.query_date or effective_date
             self.dialogue_manager.record_turn(
                 session_id=session_id,
                 user_query=query,
@@ -312,8 +314,8 @@ class LegalQueryPipeline:
                 answer_text=final_text,
                 citations=assembled_ans.citations,
                 governing_provisions=assembled_ans.governing_provisions,
-                context_date=effective_date,
-                jurisdiction=effective_jurisdiction,
+                context_date=resolved_date,
+                jurisdiction=resolved_jurisdiction,
                 clarifying_question=policy_result.clarifying_question
             )
 
