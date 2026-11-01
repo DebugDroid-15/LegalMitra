@@ -34,6 +34,10 @@ from legalmitra.models.local_adapter import (
     LocalLegalModelAdapter,
     ModelAdapterConfig,
 )
+from legalmitra.models.gguf_adapter import (
+    LocalGGUFModelAdapter,
+    GGUFAdapterConfig,
+)
 from legalmitra.orchestration.decision_policy import LegalResponseState
 from legalmitra.orchestration.pipeline import LegalQueryPipeline
 from legalmitra.caselaw.visualizer import AuthorityGraphVisualizer
@@ -55,7 +59,11 @@ if "model_mode" not in st.session_state:
 
 def update_pipeline_model(mode: str):
     """Update pipeline's model adapter according to selection."""
-    if mode == "Neural LoRA (Kaggle Fine-Tuned)":
+    if mode == "Local GGUF (4-bit CPU Offline)":
+        adapter = LocalGGUFModelAdapter()
+        st.session_state.pipeline.model_adapter = adapter
+        st.session_state.pipeline.answer_assembler.model_adapter = adapter
+    elif mode == "Neural LoRA (Kaggle Fine-Tuned)":
         adapter = LocalLegalModelAdapter()
         st.session_state.pipeline.model_adapter = adapter
         st.session_state.pipeline.answer_assembler.model_adapter = adapter
@@ -75,10 +83,17 @@ with st.sidebar:
     st.divider()
 
     st.subheader("1. Synthesis Model and Perspective")
+    mode_options = [
+        "Deterministic Engine",
+        "Local GGUF (4-bit CPU Offline)",
+        "Mock Neural (IRAC Simulator)",
+        "Neural LoRA (Kaggle Fine-Tuned)",
+    ]
+    cur_idx = mode_options.index(st.session_state.model_mode) if st.session_state.model_mode in mode_options else 1
     chosen_mode = st.radio(
         "Response Generation Mode:",
-        ["Deterministic Engine", "Mock Neural (IRAC Simulator)", "Neural LoRA (Kaggle Fine-Tuned)"],
-        index=1,
+        mode_options,
+        index=cur_idx,
     )
     audience_perspective = st.selectbox(
         "Target Audience View:",

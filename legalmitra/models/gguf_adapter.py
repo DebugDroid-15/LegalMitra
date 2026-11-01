@@ -206,3 +206,4 @@ class LocalGGUFModelAdapter:
                 fallback_used=True,
                 error_message=str(exc)
             )
+

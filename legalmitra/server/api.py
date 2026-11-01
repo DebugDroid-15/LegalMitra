@@ -29,6 +29,10 @@ from legalmitra.models.local_adapter import (
     ModelAdapterConfig,
     ModelExecutionMode,
 )
+from legalmitra.models.gguf_adapter import (
+    LocalGGUFModelAdapter,
+    GGUFAdapterConfig,
+)
 from legalmitra.orchestration.decision_policy import LegalResponseState
 from legalmitra.orchestration.pipeline import LegalQueryPipeline
 from legalmitra.caselaw.visualizer import AuthorityGraphVisualizer
@@ -55,17 +59,23 @@ app.add_middleware(
 # Shared Pipeline Singletons
 _default_pipeline: Optional[LegalQueryPipeline] = None
 _mock_pipeline: Optional[LegalQueryPipeline] = None
+_gguf_pipeline: Optional[LegalQueryPipeline] = None
 
 
 def get_pipeline(model_mode: str = "deterministic") -> LegalQueryPipeline:
     """Retrieve or initialize pipeline instance according to requested model mode."""
-    global _default_pipeline, _mock_pipeline
+    global _default_pipeline, _mock_pipeline, _gguf_pipeline
 
     if model_mode == "mock":
         if _mock_pipeline is None:
             mock_adapter = LocalLegalModelAdapter(ModelAdapterConfig(enable_mock_for_testing=True))
             _mock_pipeline = LegalQueryPipeline(model_adapter=mock_adapter)
         return _mock_pipeline
+    elif model_mode == "gguf":
+        if _gguf_pipeline is None:
+            gguf_adapter = LocalGGUFModelAdapter()
+            _gguf_pipeline = LegalQueryPipeline(model_adapter=gguf_adapter)
+        return _gguf_pipeline
     elif model_mode == "neural":
         adapter = LocalLegalModelAdapter()
         return LegalQueryPipeline(model_adapter=adapter)
@@ -81,7 +91,7 @@ class QueryRequest(BaseModel):
     query: str = Field(..., description="The substantive legal question to evaluate.")
     context_date: Optional[str] = Field(None, description="Point-in-time date (YYYY-MM-DD).")
     jurisdiction: Optional[str] = Field(None, description="Territorial jurisdiction code (e.g. IN, IN-DL, IN-MH).")
-    model_mode: str = Field("deterministic", description="Synthesis mode: deterministic, neural, or mock.")
+    model_mode: str = Field("deterministic", description="Synthesis mode: deterministic, gguf, neural, or mock.")
     language: Optional[str] = Field(None, description="Language mode: en, hi, or hinglish (defaults to auto-detect).")
 
 
@@ -116,7 +126,7 @@ class ChatRequest(BaseModel):
     message: str = Field(..., description="User message or follow-up question.")
     context_date: Optional[str] = Field(None, description="Optional override date.")
     jurisdiction: Optional[str] = Field(None, description="Optional override jurisdiction.")
-    model_mode: str = Field("deterministic", description="deterministic, neural, or mock.")
+    model_mode: str = Field("deterministic", description="deterministic, gguf, neural, or mock.")
     language: Optional[str] = Field(None, description="Language mode: en, hi, or hinglish (defaults to auto-detect).")
 
 
@@ -164,6 +174,7 @@ class HealthResponse(BaseModel):
     version: str
     fts_index_healthy: bool
     lora_adapter_available: bool
+    gguf_model_available: bool
     active_sessions_count: int
 
 
@@ -183,11 +194,13 @@ def check_health():
     except Exception:
         fts_healthy = False
 
+    gguf_adapter = LocalGGUFModelAdapter()
     return HealthResponse(
         status="healthy",
         version="1.0.0",
         fts_index_healthy=fts_healthy,
         lora_adapter_available=adapter.is_available,
+        gguf_model_available=gguf_adapter.is_available,
         active_sessions_count=len(pipeline.dialogue_manager.sessions),
     )
 

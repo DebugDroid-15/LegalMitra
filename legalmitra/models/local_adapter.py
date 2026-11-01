@@ -22,6 +22,7 @@ class ModelExecutionMode(str, Enum):
     DETERMINISTIC_FALLBACK = "deterministic_fallback"
     MOCK_NEURAL = "mock_neural"
     LOCAL_LORA = "local_lora"
+    LOCAL_GGUF = "local_gguf"
 
 
 @dataclass

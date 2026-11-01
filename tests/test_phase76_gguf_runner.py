@@ -65,3 +65,4 @@ class TestPhase76GGUFRunner:
         result = adapter.generate_natural_answer("Query", [], [])
         assert result.fallback_used is True
         assert result.execution_mode == ModelExecutionMode.DETERMINISTIC_FALLBACK
+
