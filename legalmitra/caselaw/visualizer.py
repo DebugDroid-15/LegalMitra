@@ -218,3 +218,4 @@ class AuthorityGraphVisualizer:
 </body>
 </html>"""
         return html_template
+

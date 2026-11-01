@@ -95,3 +95,4 @@ class TestPhase75AuthorityGraphVisualizer:
         assert res.headers["content-type"].startswith("text/html")
         assert "vis-network" in res.text
         assert "SEC-BSA-63" in res.text
+
