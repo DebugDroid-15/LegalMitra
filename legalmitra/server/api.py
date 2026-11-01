@@ -80,6 +80,7 @@ class QueryRequest(BaseModel):
     context_date: Optional[str] = Field(None, description="Point-in-time date (YYYY-MM-DD).")
     jurisdiction: Optional[str] = Field(None, description="Territorial jurisdiction code (e.g. IN, IN-DL, IN-MH).")
     model_mode: str = Field("deterministic", description="Synthesis mode: deterministic, neural, or mock.")
+    language: Optional[str] = Field(None, description="Language mode: en, hi, or hinglish (defaults to auto-detect).")
 
 
 class ClaimResponseItem(BaseModel):
@@ -94,6 +95,7 @@ class ClaimResponseItem(BaseModel):
 
 class QueryResponse(BaseModel):
     query: str
+    detected_language: str
     response_state: str
     policy_rationale: str
     requires_clarification: bool
@@ -113,12 +115,14 @@ class ChatRequest(BaseModel):
     context_date: Optional[str] = Field(None, description="Optional override date.")
     jurisdiction: Optional[str] = Field(None, description="Optional override jurisdiction.")
     model_mode: str = Field("deterministic", description="deterministic, neural, or mock.")
+    language: Optional[str] = Field(None, description="Language mode: en, hi, or hinglish (defaults to auto-detect).")
 
 
 class ChatResponse(BaseModel):
     session_id: str
     turn_index: int
     user_message: str
+    detected_language: str
     response_state: str
     answer_text: str
     clarification_requested: Optional[str] = None
@@ -212,8 +216,10 @@ def evaluate_legal_query(req: QueryRequest):
                 validation_rationale=c.validation_rationale,
             ))
 
+    lang = getattr(resp.parsed_query, "detected_language", "en") if resp.parsed_query else "en"
     return QueryResponse(
         query=resp.query,
+        detected_language=lang,
         response_state=resp.response_state.value,
         policy_rationale=resp.policy_result.policy_rationale,
         requires_clarification=resp.policy_result.requires_clarifying_question,
@@ -245,10 +251,12 @@ def execute_chat_turn(req: ChatRequest):
     sess = pipeline.dialogue_manager.get_or_create_session(req.session_id)
     turn_idx = len(sess.turns)
 
+    lang = getattr(resp.parsed_query, "detected_language", "en") if resp.parsed_query else "en"
     return ChatResponse(
         session_id=req.session_id,
         turn_index=turn_idx,
         user_message=req.message,
+        detected_language=lang,
         response_state=resp.response_state.value,
         answer_text=resp.answer_text,
         clarification_requested=resp.policy_result.clarifying_question,

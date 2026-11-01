@@ -48,6 +48,8 @@ class ParsedLegalQuery:
     issue_dependencies: List[Dict[str, Any]] = field(default_factory=list)
     decomposed_issues: List[Dict[str, Any]] = field(default_factory=list)
     statutory_exceptions_identified: List[str] = field(default_factory=list)
+    detected_language: str = "en"
+    search_normalized_query: Optional[str] = None
 
 
 class LegalQueryAnalyzer:
@@ -135,11 +137,21 @@ class LegalQueryAnalyzer:
         clean_q = query.strip()
         q_lower = clean_q.lower()
 
-        # Layperson vocabulary enrichment: expand colloquial phrases into formal legal issues
+        # Indic & Layperson vocabulary enrichment (Phase 73)
+        from legalmitra.orchestration.indic_translator import IndicLegalTranslator
+        detected_lang = IndicLegalTranslator.detect_language(clean_q)
+        indic_match = IndicLegalTranslator.analyze_indic_query(clean_q)
+        search_normalized = None
+
         matched_statutory_hints = []
         for colloquial, formal_expansion in self.LAYPERSON_SYNONYMS.items():
             if colloquial in q_lower:
                 matched_statutory_hints.append(formal_expansion)
+
+        if indic_match:
+            search_normalized = indic_match["search_keywords"]
+            if indic_match["statute"] not in matched_statutory_hints:
+                matched_statutory_hints.append(f"Applicability of {indic_match['statute']} governing {indic_match['canonical']}")
 
         # 0. Check for adversarial injection attempts
         is_adversarial = False
@@ -193,6 +205,16 @@ class LegalQueryAnalyzer:
         # 4. Extract Applicable Acts & Provisions
         acts = []
         provisions = []
+
+        if indic_match:
+            for act_code in indic_match.get("acts", []):
+                if act_code not in acts:
+                    acts.append(act_code)
+            for prov in indic_match.get("provisions", []):
+                if prov not in provisions:
+                    provisions.append(prov)
+            if primary_domain == "GENERAL_CIVIL" and indic_match.get("domain"):
+                primary_domain = indic_match["domain"]
         delegated_instruments = []
         precedents = []
 
@@ -685,4 +707,6 @@ class LegalQueryAnalyzer:
             issue_dependencies=issue_dependencies,
             decomposed_issues=decomposed_issues,
             statutory_exceptions_identified=statutory_exceptions,
+            detected_language=detected_lang,
+            search_normalized_query=search_normalized,
         )

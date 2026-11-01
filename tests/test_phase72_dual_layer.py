@@ -43,3 +43,4 @@ class TestPhase72DualLayerSynthesis:
 
         assert "### Plain-English Summary (For Quick Understanding)" in resp.answer_text
         assert "due legal process" in resp.answer_text or "notice to quit" in resp.answer_text
+

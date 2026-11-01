@@ -82,6 +82,11 @@ with st.sidebar:
         ["Dual-Layer (Plain English + Lawyer Analysis)", "Citizen Focus (Plain English First)", "Lawyer Focus (Strict Statutory IRAC)"],
         index=0,
     )
+    language_choice = st.selectbox(
+        "Language Mode (Indic / English):",
+        ["Auto-Detect (Hindi / Hinglish / English)", "हिन्दी (Hindi)", "Hinglish (Conversational)", "English"],
+        index=0,
+    )
     if chosen_mode != st.session_state.model_mode:
         st.session_state.model_mode = chosen_mode
         update_pipeline_model(chosen_mode)

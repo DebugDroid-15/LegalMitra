@@ -187,10 +187,18 @@ class EvidenceTraceableAnswerAssembler:
         self,
         parsed_query: Any,
         governing_provisions: List[str],
-        claims: List[Any]
+        claims: List[Any],
+        target_language: Optional[str] = None
     ) -> str:
         q_text = (getattr(parsed_query, "original_query", "") or "").lower()
         domain = getattr(parsed_query, "legal_domain", "GENERAL_CIVIL")
+        lang = target_language or getattr(parsed_query, "detected_language", "en")
+
+        # Check IndicLegalTranslator for language-aware plain summary (Phase 73)
+        from legalmitra.orchestration.indic_translator import IndicLegalTranslator
+        indic_summary = IndicLegalTranslator.get_plain_summary(q_text, target_lang=lang)
+        if indic_summary:
+            return indic_summary
 
         points = []
         if "minor theft" in q_text or "petty theft" in q_text:

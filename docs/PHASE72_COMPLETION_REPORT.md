@@ -56,3 +56,4 @@ tests/test_phase72_dual_layer.py::TestPhase72DualLayerSynthesis::test_plain_engl
 ```
 
 Full late-phase regression suite (Phases 65–72): **56 passed in 6.19s** (0 regressions).
+

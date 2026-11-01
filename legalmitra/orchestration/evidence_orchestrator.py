@@ -135,7 +135,12 @@ class UnifiedEvidenceOrchestrator:
         evidence_set = OrchestratedEvidenceSet()
 
         # 1. Primary Knowledge Base Retrieval (FTS5 search)
-        search_query = parsed_query.original_query
+        # Use search_normalized_query for Indic/Hinglish queries to ensure English statutory hit in FTS5
+        if getattr(parsed_query, "search_normalized_query", None):
+            search_query = f"{parsed_query.search_normalized_query} {parsed_query.original_query}"
+        else:
+            search_query = parsed_query.original_query
+
         # Augment with candidate provisions and acts
         if parsed_query.candidate_provisions:
             search_query += " " + " ".join(parsed_query.candidate_provisions)
