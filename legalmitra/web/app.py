@@ -41,6 +41,7 @@ from legalmitra.models.gguf_adapter import (
 from legalmitra.orchestration.decision_policy import LegalResponseState
 from legalmitra.orchestration.pipeline import LegalQueryPipeline
 from legalmitra.caselaw.visualizer import AuthorityGraphVisualizer
+from legalmitra.caselaw.brief_engine import JudgmentSummarizerEngine
 import streamlit.components.v1 as components
 
 # Session State Initialization
@@ -140,8 +141,9 @@ with st.sidebar:
     )
 
 # --- MAIN WORKBENCH TABS ---
-tab_chat, tab_drafting, tab_corpus, tab_graph = st.tabs([
+tab_chat, tab_brief, tab_drafting, tab_corpus, tab_graph = st.tabs([
     "💬 Conversational Legal Assistant",
+    "⚖️ Case Brief & Judgment Summarizer",
     "📝 Statutory Notice Drafting Studio",
     "📚 Knowledge Base & Corpus Explorer",
     "🕸️ Precedent & Authority Graph",
@@ -224,6 +226,64 @@ with tab_chat:
                     "claims": claims_payload,
                     "citations": resp.citations,
                 })
+
+
+# ==============================================================================
+# TAB 2: CASE BRIEF & JUDGMENT SUMMARIZER (PHASE 77)
+# ==============================================================================
+with tab_brief:
+    st.markdown("### Judicial Case Brief & Judgment Summarizer Studio")
+    st.caption("Paste any Indian Court judgment or order to automatically extract Coram, Ratio Decidendi, Dispositions, and active BNS/BNSS statutory cross-mappings.")
+
+    sample_judgment = """IN THE SUPREME COURT OF INDIA
+CRIMINAL APPELLATE JURISDICTION
+CRIMINAL APPEAL NO. 1420 OF 2023
+
+Vikram Singh & Anr.                     ...Appellants
+                                Versus
+State of Punjab & Ors.                  ...Respondents
+
+CORAM:
+HON'BLE MR. JUSTICE ABHAY S. OKA
+HON'BLE MR. JUSTICE UJJAL BHUYAN
+
+JUDGMENT
+1. This appeal arises out of the conviction recorded under Section 302 of the IPC and Section 41A of the CrPC.
+2. Learned counsel for the appellant placed reliance on Arnesh Kumar v. State of Bihar (2014) 8 SCC 273.
+3. We hold that strict compliance with procedural safeguards prior to arrest is an integral component of Article 21. Where police officers fail to record reasons under Section 41A of the CrPC, the detention is vitiated in law.
+4. In view of the above discussion, the criminal appeal is allowed. The impugned judgment is set aside."""
+
+    user_judgment_input = st.text_area(
+        "Paste Court Judgment / Order Text:",
+        value=sample_judgment,
+        height=220,
+    )
+
+    if st.button("Generate Executive Case Brief ⚖️", type="primary"):
+        with st.spinner("Analyzing judicial text and mapping 2024 statutory transitions..."):
+            brief = JudgmentSummarizerEngine.summarize_judgment(user_judgment_input)
+            
+            # Display metrics
+            m_col1, m_col2, m_col3 = st.columns(3)
+            with m_col1:
+                st.metric("Court Jurisdiction", brief.metadata.court_name)
+            with m_col2:
+                st.metric("Final Disposition", brief.disposition.split('.')[0])
+            with m_col3:
+                st.metric("Statutory Transitions Detected", len(brief.statutory_transitions))
+
+            st.divider()
+
+            # Render Brief Markdown
+            st.markdown(brief.full_brief_markdown)
+
+            # Download Options
+            st.download_button(
+                label="📥 Download Case Brief (Markdown)",
+                data=brief.full_brief_markdown,
+                file_name=f"case_brief_{brief.metadata.case_title.replace(' ', '_')[:25]}.md",
+                mime="text/markdown",
+            )
 
 
 # ==============================================================================

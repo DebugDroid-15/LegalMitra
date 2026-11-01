@@ -36,6 +36,7 @@ from legalmitra.models.gguf_adapter import (
 from legalmitra.orchestration.decision_policy import LegalResponseState
 from legalmitra.orchestration.pipeline import LegalQueryPipeline
 from legalmitra.caselaw.visualizer import AuthorityGraphVisualizer
+from legalmitra.caselaw.brief_engine import JudgmentSummarizerEngine, CaseBrief
 
 logger = logging.getLogger(__name__)
 
@@ -432,3 +433,39 @@ def get_authority_graph_html(
     visualizer = AuthorityGraphVisualizer()
     html_content = visualizer.render_visjs_html(focus_node_id=focus_node, height=height)
     return Response(content=html_content, media_type="text/html")
+
+
+# --- Case Brief & Judgment Summarizer Endpoints (Phase 77) ---
+
+class JudgmentSummarizeRequest(BaseModel):
+    judgment_text: str = Field(..., description="Raw text of the Supreme Court or High Court judgment/order.")
+
+
+@app.post("/api/v1/brief/summarize", tags=["Judicial Case Briefs"])
+def summarize_court_judgment(req: JudgmentSummarizeRequest):
+    """Parses a court judgment to extract Coram, Ratio Decidendi, Disposition, and BNS transitions."""
+    if not req.judgment_text.strip():
+        raise HTTPException(status_code=400, detail="judgment_text cannot be empty.")
+    
+    brief = JudgmentSummarizerEngine.summarize_judgment(req.judgment_text)
+    return {
+        "court": brief.metadata.court_name,
+        "title": brief.metadata.case_title,
+        "coram": brief.metadata.bench_coram,
+        "disposition": brief.disposition,
+        "ratio_decidendi": brief.ratio_decidendi,
+        "obiter_dicta": brief.obiter_dicta,
+        "statutory_transitions": [
+            {
+                "cited_act": t.cited_act,
+                "cited_section": t.cited_section,
+                "modern_act": t.modern_act,
+                "modern_section": t.modern_section,
+                "status_note": t.status_note
+            }
+            for t in brief.statutory_transitions
+        ],
+        "key_precedents_relied": brief.key_precedents_relied,
+        "full_brief_markdown": brief.full_brief_markdown,
+        "created_at": brief.created_at,
+    }
