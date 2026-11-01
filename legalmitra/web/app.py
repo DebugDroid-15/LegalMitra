@@ -28,6 +28,7 @@ from legalmitra.drafting import (
     NoticeParty,
     NoticeType,
     StatutoryNoticeDraftingEngine,
+    StatutoryNoticeExportEngine,
 )
 from legalmitra.models.local_adapter import (
     LocalLegalModelAdapter,
@@ -309,13 +310,34 @@ with tab_drafting:
 
         st.success(f"Draft Generated Successfully! Mandatory Cure Window: {draft.mandatory_cure_period_days} Days.")
         st.markdown(draft.full_notice_markdown)
-        st.download_button(
-            label="💾 Download Notice (.md)",
-            data=draft.full_notice_markdown,
-            file_name=f"legal_notice_{target_ntype.value.lower()}.md",
-            mime="text/markdown",
-            use_container_width=True,
-        )
+        pdf_bytes = StatutoryNoticeExportEngine.export_to_pdf(draft)
+        docx_bytes = StatutoryNoticeExportEngine.export_to_docx(draft)
+
+        col_d1, col_d2, col_d3 = st.columns(3)
+        with col_d1:
+            st.download_button(
+                label="📄 Download Court-Ready PDF",
+                data=pdf_bytes,
+                file_name=f"legal_notice_{target_ntype.value.lower()}.pdf",
+                mime="application/pdf",
+                use_container_width=True,
+            )
+        with col_d2:
+            st.download_button(
+                label="📝 Download Word (.docx)",
+                data=docx_bytes,
+                file_name=f"legal_notice_{target_ntype.value.lower()}.docx",
+                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                use_container_width=True,
+            )
+        with col_d3:
+            st.download_button(
+                label="💾 Download Markdown (.md)",
+                data=draft.full_notice_markdown,
+                file_name=f"legal_notice_{target_ntype.value.lower()}.md",
+                mime="text/markdown",
+                use_container_width=True,
+            )
 
 
 # ==============================================================================

@@ -14,7 +14,7 @@ import os
 import time
 from typing import Any, Dict, List, Optional
 
-from fastapi import FastAPI, HTTPException, Query, status
+from fastapi import FastAPI, HTTPException, Query, Response, status
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
@@ -22,6 +22,7 @@ from legalmitra.drafting import (
     NoticeParty,
     NoticeType,
     StatutoryNoticeDraftingEngine,
+    StatutoryNoticeExportEngine,
 )
 from legalmitra.models.local_adapter import (
     LocalLegalModelAdapter,
@@ -310,3 +311,87 @@ def draft_statutory_notice(req: NoticeDraftRequest):
         created_at=draft.created_at,
     )
 
+
+
+@app.post("/api/v1/draft/export/pdf", tags=["Document Drafting"])
+def export_notice_as_pdf(req: NoticeDraftRequest):
+    """Generates and streams a court-ready PDF notice."""
+    mapping = {
+        "ni138": NoticeType.CHEQUE_BOUNCE_NI_ACT_138,
+        "138": NoticeType.CHEQUE_BOUNCE_NI_ACT_138,
+        "cheque": NoticeType.CHEQUE_BOUNCE_NI_ACT_138,
+        "arb21": NoticeType.ARBITRATION_INVOCATION_SEC_21,
+        "arbitration": NoticeType.ARBITRATION_INVOCATION_SEC_21,
+        "tpa106": NoticeType.TENANCY_TERMINATION_TPA_106,
+        "tenancy": NoticeType.TENANCY_TERMINATION_TPA_106,
+        "ibc8": NoticeType.IBC_OPERATIONAL_CREDITOR_SEC_8,
+        "ibc": NoticeType.IBC_OPERATIONAL_CREDITOR_SEC_8,
+        "general": NoticeType.GENERAL_LEGAL_DEMAND,
+    }
+    ntype = mapping.get(req.notice_type.lower(), NoticeType.CHEQUE_BOUNCE_NI_ACT_138)
+    s_party = NoticeParty(
+        name=req.sender.name,
+        address=req.sender.address,
+        advocate_name=req.sender.advocate_name,
+        advocate_enrollment=req.sender.advocate_enrollment,
+    )
+    r_party = NoticeParty(name=req.recipient.name, address=req.recipient.address)
+
+    draft = StatutoryNoticeDraftingEngine.draft_notice(
+        notice_type=ntype,
+        sender=s_party,
+        recipient=r_party,
+        facts=req.facts,
+        as_of_date=req.as_of_date,
+    )
+
+    pdf_bytes = StatutoryNoticeExportEngine.export_to_pdf(draft)
+    filename = f"legal_notice_{draft.notice_type.value}.pdf"
+
+    return Response(
+        content=pdf_bytes,
+        media_type="application/pdf",
+        headers={"Content-Disposition": f'attachment; filename="{filename}"'},
+    )
+
+
+@app.post("/api/v1/draft/export/docx", tags=["Document Drafting"])
+def export_notice_as_docx(req: NoticeDraftRequest):
+    """Generates and streams an editable court-ready DOCX notice."""
+    mapping = {
+        "ni138": NoticeType.CHEQUE_BOUNCE_NI_ACT_138,
+        "138": NoticeType.CHEQUE_BOUNCE_NI_ACT_138,
+        "cheque": NoticeType.CHEQUE_BOUNCE_NI_ACT_138,
+        "arb21": NoticeType.ARBITRATION_INVOCATION_SEC_21,
+        "arbitration": NoticeType.ARBITRATION_INVOCATION_SEC_21,
+        "tpa106": NoticeType.TENANCY_TERMINATION_TPA_106,
+        "tenancy": NoticeType.TENANCY_TERMINATION_TPA_106,
+        "ibc8": NoticeType.IBC_OPERATIONAL_CREDITOR_SEC_8,
+        "ibc": NoticeType.IBC_OPERATIONAL_CREDITOR_SEC_8,
+        "general": NoticeType.GENERAL_LEGAL_DEMAND,
+    }
+    ntype = mapping.get(req.notice_type.lower(), NoticeType.CHEQUE_BOUNCE_NI_ACT_138)
+    s_party = NoticeParty(
+        name=req.sender.name,
+        address=req.sender.address,
+        advocate_name=req.sender.advocate_name,
+        advocate_enrollment=req.sender.advocate_enrollment,
+    )
+    r_party = NoticeParty(name=req.recipient.name, address=req.recipient.address)
+
+    draft = StatutoryNoticeDraftingEngine.draft_notice(
+        notice_type=ntype,
+        sender=s_party,
+        recipient=r_party,
+        facts=req.facts,
+        as_of_date=req.as_of_date,
+    )
+
+    docx_bytes = StatutoryNoticeExportEngine.export_to_docx(draft)
+    filename = f"legal_notice_{draft.notice_type.value}.docx"
+
+    return Response(
+        content=docx_bytes,
+        media_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        headers={"Content-Disposition": f'attachment; filename="{filename}"'},
+    )

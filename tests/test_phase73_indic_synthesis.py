@@ -111,3 +111,4 @@ class TestPhase73IndicSynthesis:
         chat_data = chat_res.json()
         assert chat_data["detected_language"] == "hi"
         assert chat_data["response_state"] == "ANSWER_SUPPORTED"
+
