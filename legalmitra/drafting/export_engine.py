@@ -380,3 +380,4 @@ class StatutoryNoticeExportEngine:
 
         doc.build(elements)
         return buffer.getvalue()
+

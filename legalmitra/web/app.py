@@ -36,6 +36,8 @@ from legalmitra.models.local_adapter import (
 )
 from legalmitra.orchestration.decision_policy import LegalResponseState
 from legalmitra.orchestration.pipeline import LegalQueryPipeline
+from legalmitra.caselaw.visualizer import AuthorityGraphVisualizer
+import streamlit.components.v1 as components
 
 # Session State Initialization
 if "session_id" not in st.session_state:
@@ -123,10 +125,11 @@ with st.sidebar:
     )
 
 # --- MAIN WORKBENCH TABS ---
-tab_chat, tab_drafting, tab_corpus = st.tabs([
+tab_chat, tab_drafting, tab_corpus, tab_graph = st.tabs([
     "💬 Conversational Legal Assistant",
     "📝 Statutory Notice Drafting Studio",
     "📚 Knowledge Base & Corpus Explorer",
+    "🕸️ Precedent & Authority Graph",
 ])
 
 # ==============================================================================
@@ -366,3 +369,42 @@ with tab_corpus:
             with st.expander(f"📌 {title} {('— ' + ref) if ref else ''}"):
                 st.markdown(f"**Chunk ID:** `{r.chunk_id}` | **Date:** `{r.effective_date or r.document_date or 'N/A'}` | **Jurisdiction:** `{r.jurisdiction}`")
                 st.text(r.content[:400] + ("..." if len(r.content) > 400 else ""))
+
+
+# ==============================================================================
+# TAB 4: PRECEDENT & AUTHORITY GRAPH EXPLORER (PHASE 75)
+# ==============================================================================
+with tab_graph:
+    st.markdown("### National Judicial Knowledge Graph Visualizer")
+    st.caption("Interactive visual network connecting Statutes (BNS, BNSS, BSA, SRA, NI Act) with Article 141 Supreme Court binding ratios and overrulings.")
+
+    col_g1, col_g2 = st.columns([2, 1])
+    with col_g1:
+        entity_selection = st.multiselect(
+            "Filter Authority Node Types:",
+            ["case", "section", "article", "statute", "delegated_rule"],
+            default=["case", "section", "article"],
+        )
+    with col_g2:
+        graph_view_mode = st.selectbox(
+            "Graph View Scope:",
+            ["Full Authority Subgraph", "Constitutional Benches (Art 141)", "Criminal Law Reform (BNS / BNSS / BSA)"],
+        )
+
+    # Initialize Visualizer
+    kg_visualizer = AuthorityGraphVisualizer()
+
+    # Configure scope
+    focus_id = None
+    if graph_view_mode == "Constitutional Benches (Art 141)":
+        focus_id = "CASE-SC-CONST-KESAVANANDA-1973"
+    elif graph_view_mode == "Criminal Law Reform (BNS / BNSS / BSA)":
+        focus_id = "SEC-BSA-63"
+
+    graph_html = kg_visualizer.render_visjs_html(
+        focus_node_id=focus_id,
+        entity_filter=entity_selection if not focus_id else None,
+        height="600px",
+    )
+
+    components.html(graph_html, height=640, scrolling=False)

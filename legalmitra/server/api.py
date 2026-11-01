@@ -31,6 +31,7 @@ from legalmitra.models.local_adapter import (
 )
 from legalmitra.orchestration.decision_policy import LegalResponseState
 from legalmitra.orchestration.pipeline import LegalQueryPipeline
+from legalmitra.caselaw.visualizer import AuthorityGraphVisualizer
 
 logger = logging.getLogger(__name__)
 
@@ -395,3 +396,26 @@ def export_notice_as_docx(req: NoticeDraftRequest):
         media_type="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
         headers={"Content-Disposition": f'attachment; filename="{filename}"'},
     )
+
+
+# --- Authority Knowledge Graph Endpoints (Phase 75) ---
+
+@app.get("/api/v1/graph/subgraph", tags=["Knowledge Graph"])
+def get_authority_subgraph(
+    focus_node: Optional[str] = Query(None, description="Optional center node ID (e.g. SEC-BSA-63, CASE-KESAVANANDA)"),
+    max_hops: int = Query(1, description="Neighborhood depth around focus node"),
+):
+    """Returns node and edge payloads for the National Judicial Knowledge Graph."""
+    visualizer = AuthorityGraphVisualizer()
+    return visualizer.get_subgraph_data(focus_node_id=focus_node, max_hops=max_hops)
+
+
+@app.get("/api/v1/graph/html", tags=["Knowledge Graph"])
+def get_authority_graph_html(
+    focus_node: Optional[str] = Query(None, description="Optional center node ID"),
+    height: str = Query("600px", description="Render height for HTML container"),
+):
+    """Returns an interactive standalone Vis.js HTML document rendering the authority network."""
+    visualizer = AuthorityGraphVisualizer()
+    html_content = visualizer.render_visjs_html(focus_node_id=focus_node, height=height)
+    return Response(content=html_content, media_type="text/html")
