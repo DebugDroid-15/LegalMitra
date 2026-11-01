@@ -26,3 +26,4 @@ def test_brief_summarize_endpoint_empty_error():
     client = TestClient(app)
     response = client.post("/api/v1/brief/summarize", json={"judgment_text": "   "})
     assert response.status_code == 400
+

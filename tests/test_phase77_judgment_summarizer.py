@@ -117,3 +117,4 @@ class TestPhase77JudgmentSummarizer:
         assert "Ratio Decidendi" in brief.full_brief_markdown
         assert "Statutory Transition Notice" in brief.full_brief_markdown
         assert "Appeal Allowed" in brief.full_brief_markdown
+

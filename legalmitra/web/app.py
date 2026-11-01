@@ -42,6 +42,7 @@ from legalmitra.orchestration.decision_policy import LegalResponseState
 from legalmitra.orchestration.pipeline import LegalQueryPipeline
 from legalmitra.caselaw.visualizer import AuthorityGraphVisualizer
 from legalmitra.caselaw.brief_engine import JudgmentSummarizerEngine
+from legalmitra.drafting.contract_auditor import ContractRiskAuditorEngine, RiskSeverity
 import streamlit.components.v1 as components
 
 # Session State Initialization
@@ -141,9 +142,10 @@ with st.sidebar:
     )
 
 # --- MAIN WORKBENCH TABS ---
-tab_chat, tab_brief, tab_drafting, tab_corpus, tab_graph = st.tabs([
+tab_chat, tab_brief, tab_contract, tab_drafting, tab_corpus, tab_graph = st.tabs([
     "💬 Conversational Legal Assistant",
     "⚖️ Case Brief & Judgment Summarizer",
+    "🛡️ Contract & Agreement Risk Auditor",
     "📝 Statutory Notice Drafting Studio",
     "📚 Knowledge Base & Corpus Explorer",
     "🕸️ Precedent & Authority Graph",
@@ -282,6 +284,63 @@ JUDGMENT
                 label="📥 Download Case Brief (Markdown)",
                 data=brief.full_brief_markdown,
                 file_name=f"case_brief_{brief.metadata.case_title.replace(' ', '_')[:25]}.md",
+                mime="text/markdown",
+            )
+
+
+# ==============================================================================
+# TAB 3: CONTRACT & AGREEMENT RISK AUDITOR (PHASE 78)
+# ==============================================================================
+with tab_contract:
+    st.markdown("### Commercial Contract & Agreement Statutory Risk Auditor")
+    st.caption("Audits commercial contracts, NDAs, and employment agreements against Indian Contract Act Section 27, Section 28, and Supreme Court precedent.")
+
+    sample_contract = """MASTER CONSULTANCY & EMPLOYMENT AGREEMENT
+
+1. Non-Compete:
+Following termination of this Agreement for any reason, the Consultant covenants that they shall not directly or indirectly engage in any competing business for a period of 2 years within the territory of India.
+
+2. Limitation of Legal Action:
+Any dispute or claim arising under this agreement must be submitted within 90 days of the cause of action, failing which all claims shall be permanently extinguished and barred.
+
+3. Dispute Resolution & Arbitration:
+All disputes shall be referred to a sole arbitrator who shall be appointed unilaterally by the Managing Director of the Company. The venue of arbitration shall be Mumbai.
+
+4. Indemnity:
+The Consultant shall indemnify and hold harmless the Company from and against any and all losses, damages, liabilities, costs, and expenses without any limitation whatsoever."""
+
+    user_contract_input = st.text_area(
+        "Paste Contract / Agreement Text for Audit:",
+        value=sample_contract,
+        height=220,
+    )
+    contract_doc_title = st.text_input("Contract Document Title:", "Master Consultancy Agreement")
+
+    if st.button("Audit Contract & Check Statutory Risks 🛡️", type="primary"):
+        with st.spinner("Auditing contract clauses against Section 27, Section 28, and Supreme Court precedent..."):
+            report = ContractRiskAuditorEngine.audit_contract(user_contract_input, title=contract_doc_title)
+
+            # Display metrics
+            rc_col1, rc_col2, rc_col3, rc_col4 = st.columns(4)
+            with rc_col1:
+                st.metric("Risk Score", f"{report.composite_risk_score}/100")
+            with rc_col2:
+                st.metric("Critical Void Risks", report.critical_risks_count)
+            with rc_col3:
+                st.metric("High Exposure Risks", report.high_risks_count)
+            with rc_col4:
+                st.metric("Total Issues Flagged", len(report.findings))
+
+            st.divider()
+
+            # Render Audit Report Markdown
+            st.markdown(report.executive_summary_markdown)
+
+            # Download Options
+            st.download_button(
+                label="📥 Download Contract Audit Scorecard (Markdown)",
+                data=report.executive_summary_markdown,
+                file_name=f"contract_audit_{report.contract_title.replace(' ', '_')[:25]}.md",
                 mime="text/markdown",
             )
 

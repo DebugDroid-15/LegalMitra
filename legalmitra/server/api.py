@@ -37,6 +37,7 @@ from legalmitra.orchestration.decision_policy import LegalResponseState
 from legalmitra.orchestration.pipeline import LegalQueryPipeline
 from legalmitra.caselaw.visualizer import AuthorityGraphVisualizer
 from legalmitra.caselaw.brief_engine import JudgmentSummarizerEngine, CaseBrief
+from legalmitra.drafting.contract_auditor import ContractRiskAuditorEngine, ContractAuditReport
 
 logger = logging.getLogger(__name__)
 
@@ -468,4 +469,44 @@ def summarize_court_judgment(req: JudgmentSummarizeRequest):
         "key_precedents_relied": brief.key_precedents_relied,
         "full_brief_markdown": brief.full_brief_markdown,
         "created_at": brief.created_at,
+    }
+
+
+# --- Commercial Agreement & Contract Risk Auditor Endpoints (Phase 78) ---
+
+class ContractAuditRequest(BaseModel):
+    contract_text: str = Field(..., description="Full text of the commercial agreement, NDA, employment or lease contract.")
+    contract_title: Optional[str] = Field("Commercial Agreement", description="Title or description of the contract.")
+
+
+@app.post("/api/v1/contract/audit", tags=["Contract Risk Auditing"])
+def audit_commercial_contract(req: ContractAuditRequest):
+    """Audits commercial contract clauses against Section 27, Section 28, and Supreme Court precedent."""
+    if not req.contract_text.strip():
+        raise HTTPException(status_code=400, detail="contract_text cannot be empty.")
+    
+    report = ContractRiskAuditorEngine.audit_contract(req.contract_text, title=req.contract_title or "Commercial Agreement")
+    return {
+        "contract_title": report.contract_title,
+        "composite_risk_score": report.composite_risk_score,
+        "overall_compliance_verdict": report.overall_compliance_verdict,
+        "critical_risks_count": report.critical_risks_count,
+        "high_risks_count": report.high_risks_count,
+        "medium_risks_count": report.medium_risks_count,
+        "total_clauses_analyzed": report.total_clauses_analyzed,
+        "findings": [
+            {
+                "clause_category": f.clause_category,
+                "flagged_text": f.flagged_text,
+                "severity": f.severity.value,
+                "governing_statute": f.governing_statute,
+                "statutory_violation": f.statutory_violation,
+                "judicial_authority": f.judicial_authority,
+                "risk_explanation": f.risk_explanation,
+                "recommended_counter_clause": f.recommended_counter_clause
+            }
+            for f in report.findings
+        ],
+        "executive_summary_markdown": report.executive_summary_markdown,
+        "created_at": report.created_at,
     }
