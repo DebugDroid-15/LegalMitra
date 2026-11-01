@@ -1,7 +1,8 @@
-"""Local GGUF CPU inference adapter for LegalMitra.
+"""Local GGUF CPU inference adapter for LegalMitra (Phase 76 & 79).
 
 Integrates llama-cpp-python to run quantized 4-bit Llama-3.1-8B-Instruct
 with fine-tuned LegalMitra LoRA delta weights directly on CPU without GPU dependencies.
+Supports both batch generation and real-time Server-Sent Events (SSE) token streaming.
 """
 
 from __future__ import annotations
@@ -9,7 +10,7 @@ from __future__ import annotations
 import logging
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, Iterator, List, Optional
 
 from legalmitra.models.local_adapter import ModelExecutionMode, ModelGenerationResult
 
@@ -146,7 +147,7 @@ class LocalGGUFModelAdapter:
         temporal_context: Optional[str] = None,
         dialogue_history: Optional[str] = None
     ) -> ModelGenerationResult:
-        """Generate legal response using local quantized GGUF model."""
+        """Generate legal response using local quantized GGUF model in batch mode."""
         if self.config.enable_mock_for_testing:
             simulated = (
                 f"### Issue\nApplicability of penal provisions to query: '{query}'.\n\n"
@@ -207,3 +208,46 @@ class LocalGGUFModelAdapter:
                 error_message=str(exc)
             )
 
+    def stream_natural_answer(
+        self,
+        query: str,
+        provisions: List[Dict[str, Any]],
+        precedents: List[Dict[str, Any]],
+        temporal_context: Optional[str] = None,
+        dialogue_history: Optional[str] = None
+    ) -> Iterator[str]:
+        """Stream generated response token-by-token (Phase 79)."""
+        if self.config.enable_mock_for_testing:
+            mock_tokens = [
+                "### Issue\n", "The legal inquiry ", f"concerns '{query}'.\n\n",
+                "### Rule\n", "Under the Bharatiya Nyaya Sanhita, 2023, ", "the statutory provisions govern.\n\n",
+                "### Conclusion\n", "The matter stands resolved in accordance with law."
+            ]
+            for tok in mock_tokens:
+                yield tok
+            return
+
+        if not self._is_loaded:
+            success = self.load_model()
+            if not success:
+                yield "Error: Local GGUF model weights are not loaded. Reverting to deterministic response."
+                return
+
+        try:
+            prompt = self.build_prompt(query, provisions, precedents, temporal_context, dialogue_history)
+            stream_gen = self._llm(
+                prompt,
+                max_tokens=self.config.max_new_tokens,
+                temperature=self.config.temperature,
+                top_p=self.config.top_p,
+                stop=["<|eot_id|>", "<|end_of_text|>"],
+                stream=True
+            )
+            for chunk in stream_gen:
+                delta = chunk["choices"][0]["text"]
+                if delta:
+                    yield delta
+
+        except Exception as exc:
+            logger.error("Error during GGUF token streaming: %s", exc)
+            yield f"\n[Streaming Interrupted: {exc}]"

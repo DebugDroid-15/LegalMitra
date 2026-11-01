@@ -101,3 +101,4 @@ class TestPhase78ContractAuditor:
         assert report.composite_risk_score == 0
         assert "COMPLIANT" in report.overall_compliance_verdict
         assert "No critical statutory violations detected" in report.executive_summary_markdown
+

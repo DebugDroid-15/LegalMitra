@@ -15,6 +15,8 @@ import time
 from typing import Any, Dict, List, Optional
 
 from fastapi import FastAPI, HTTPException, Query, Response, status
+from fastapi.responses import StreamingResponse
+import json
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
@@ -510,3 +512,44 @@ def audit_commercial_contract(req: ContractAuditRequest):
         "executive_summary_markdown": report.executive_summary_markdown,
         "created_at": report.created_at,
     }
+
+
+# --- Real-Time Token Streaming Endpoints (Phase 79) ---
+
+class StreamQueryRequest(BaseModel):
+    query: str = Field(..., description="The legal query to stream answers for.")
+    context_date: Optional[str] = Field(None, description="Point-in-time date.")
+    jurisdiction: Optional[str] = Field(None, description="Territorial jurisdiction code.")
+    mock_mode: bool = Field(False, description="Use fast mock generator for testing streaming client.")
+
+
+@app.post("/api/v1/query/stream", tags=["Real-Time Token Streaming"])
+def stream_legal_query(req: StreamQueryRequest):
+    """Streams generated IRAC response token-by-token via Server-Sent Events (SSE)."""
+    if not req.query.strip():
+        raise HTTPException(status_code=400, detail="Query text cannot be empty.")
+
+    # Retrieve evidence from pipeline
+    pipeline = get_pipeline("deterministic")
+    resolved = pipeline.execute(query=req.query, context_date=req.context_date, jurisdiction=req.jurisdiction)
+    provisions = [{"act": prov, "section": "", "text": prov} for prov in resolved.governing_provisions]
+    precedents = [{"case_title": cit, "citation": "", "ratio": cit} for cit in resolved.citations]
+
+    # Initialize adapter
+    adapter_cfg = GGUFAdapterConfig(enable_mock_for_testing=req.mock_mode)
+    adapter = LocalGGUFModelAdapter(adapter_cfg)
+
+    def event_generator():
+        yield f"event: metadata\ndata: {json.dumps({'query': req.query, 'status': 'generating'})}\n\n"
+        for token in adapter.stream_natural_answer(
+            query=req.query,
+            provisions=provisions,
+            precedents=precedents,
+            temporal_context=resolved.policy_result.policy_rationale
+        ):
+            # Encode token payload for SSE
+            chunk_payload = json.dumps({"token": token})
+            yield f"event: token\ndata: {chunk_payload}\n\n"
+        yield f"event: done\ndata: {json.dumps({'status': 'completed'})}\n\n"
+
+    return StreamingResponse(event_generator(), media_type="text/event-stream")

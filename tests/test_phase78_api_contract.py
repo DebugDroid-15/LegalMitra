@@ -25,3 +25,4 @@ def test_contract_audit_endpoint_empty_error():
     client = TestClient(app)
     response = client.post("/api/v1/contract/audit", json={"contract_text": "  "})
     assert response.status_code == 400
+
