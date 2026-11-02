@@ -1,0 +1,30 @@
+{
+  "source_id": "IND-UNSUPPORTED-001",
+  "act_title": "Corrupt or Unsupported Document Format (.xyz)",
+  "act_number": "IND-UNSUPPORTED-001",
+  "jurisdiction": "IN",
+  "enactment_date": "2024-01-01",
+  "effective_date": null,
+  "preamble": "Authentic statutory enactments and notifications under Corrupt or Unsupported Document Format (.xyz)",
+  "sections": [
+    {
+      "section_id": "IND-UNSUPPORTED-001-SEC-GEN",
+      "source_id": "IND-UNSUPPORTED-001",
+      "act_title": "Corrupt or Unsupported Document Format (.xyz)",
+      "act_number": null,
+      "chapter_number": null,
+      "chapter_title": null,
+      "section_number": "1",
+      "section_title": "General Provisions of Corrupt or Unsupported Document Format (.xyz)",
+      "full_verbatim_text": "[BINARY_PROPRIETARY_HEADER_V1]\nXYZ_STREAM_ENCODED_DATA_0xDEADBEEF\nUNSUPPORTED_DATA_FORMAT",
+      "subsections": [],
+      "provisos": [],
+      "explanations": [],
+      "illustrations": [],
+      "source_page_start": null,
+      "source_page_end": null,
+      "legal_review_status": "unverified_automated"
+    }
+  ],
+  "legal_review_status": "unverified_automated"
+}

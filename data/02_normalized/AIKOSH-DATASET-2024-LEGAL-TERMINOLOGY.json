@@ -1,0 +1,30 @@
+{
+  "source_id": "AIKOSH-DATASET-2024-LEGAL-TERMINOLOGY",
+  "act_title": "IndiaAI / AI Kosh Standardized Bilingual Legal Terminology Lexicon",
+  "act_number": "AIKOSH-DATASET-2024-LEGAL-TERMINOLOGY",
+  "jurisdiction": "IN",
+  "enactment_date": "2024-01-01",
+  "effective_date": null,
+  "preamble": "Authentic statutory enactments and notifications under IndiaAI / AI Kosh Standardized Bilingual Legal Terminology Lexicon",
+  "sections": [
+    {
+      "section_id": "AIKOSH-DATASET-2024-LEGAL-TERMINOLOGY-SEC-GEN",
+      "source_id": "AIKOSH-DATASET-2024-LEGAL-TERMINOLOGY",
+      "act_title": "IndiaAI / AI Kosh Standardized Bilingual Legal Terminology Lexicon",
+      "act_number": null,
+      "chapter_number": null,
+      "chapter_title": null,
+      "section_number": "1",
+      "section_title": "General Provisions of IndiaAI / AI Kosh Standardized Bilingual Legal Terminology Lexicon",
+      "full_verbatim_text": "# INDIA-AI SOVEREIGN LEGAL TERMINOLOGY LEXICON (ENGLISH - HINDI)\nJurisdiction: National Legal Knowledge Graph\nPublisher: MeitY & IndiaAI Consortium\n\nTERMS:\n1. \"First Information Report (FIR)\" -> \"प्रथम सूचना रिपोर्ट\" (Section 173 BNSS)\n2. \"Cognizable Offence\" -> \"संज्ञेय अपराध\" (Police may arrest without warrant)\n3. \"Non-bailable Offence\" -> \"गैर-जमानती अपराध\" (Bail is judicial discretion)\n4. \"Anticipatory Bail\" -> \"अग्रिम जमानत\" (Section 482 BNSS)\n5. \"Criminal Breach of Trust\" -> \"आपराधिक विश्वासघात\" (Section 316 BNS)\n6. \"Cheating\" -> \"धोखाधड़ी\" (Section 318 BNS)\n7. \"Quashing of FIR\" -> \"प्राथमिकी रद्द करना\" (Section 528 BNSS)\n8. \"Data Principal\" -> \"डेटा स्वामी\" (Section 2(j) DPDP Act 2023)\n9. \"Data Fiduciary\" -> \"डेटा न्यासी\" (Section 2(i) DPDP Act 2023)",
+      "subsections": [],
+      "provisos": [],
+      "explanations": [],
+      "illustrations": [],
+      "source_page_start": null,
+      "source_page_end": null,
+      "legal_review_status": "unverified_automated"
+    }
+  ],
+  "legal_review_status": "unverified_automated"
+}

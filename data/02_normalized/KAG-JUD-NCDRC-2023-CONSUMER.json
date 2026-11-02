@@ -1,0 +1,34 @@
+{
+  "judgment_id": "KAG-JUD-NCDRC-2023-CONSUMER",
+  "source_id": "KAG-JUD-NCDRC-2023-CONSUMER",
+  "case_title": "M/s Landmark Builders v. Consumer Association (NCDRC 2023)",
+  "case_number": null,
+  "court": "Other Specialized Tribunal",
+  "jurisdiction": "IN",
+  "bench_coram": [
+    "Hon'ble Bench of Supreme Court of India"
+  ],
+  "judgment_date": "2024-01-01",
+  "citations": [],
+  "paragraphs": [
+    {
+      "paragraph_number": 1,
+      "verbatim_text": "NATIONAL CONSUMER DISPUTES REDRESSAL COMMISSION, NEW DELHI\nConsumer Case No. 89 of 2021\nIn Re: Delay in handing over possession of residential flats.",
+      "page_number": null,
+      "is_heading_or_transition": false
+    },
+    {
+      "paragraph_number": 2,
+      "verbatim_text": "RATIO:\nFailure of builder to deliver possession within the contractually stipulated period constitutes deficiency in service under Section 2(11) of the Consumer Protection Act, 2019. The allottee cannot be compelled to wait indefinitely and is entitled to full refund with reasonable interest.",
+      "page_number": null,
+      "is_heading_or_transition": false
+    }
+  ],
+  "issues_framed": [],
+  "holdings": [],
+  "ratio_decidendi": null,
+  "obiter_dicta": null,
+  "final_disposition": null,
+  "is_victim_identity_redacted": true,
+  "legal_review_status": "unverified_automated"
+}

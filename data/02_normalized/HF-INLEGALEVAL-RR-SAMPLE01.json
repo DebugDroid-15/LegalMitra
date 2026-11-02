@@ -1,0 +1,28 @@
+{
+  "judgment_id": "HF-INLEGALEVAL-RR-SAMPLE01",
+  "source_id": "HF-INLEGALEVAL-RR-SAMPLE01",
+  "case_title": "InLegalEval Rhetorical Role Tagged Judgment Extract",
+  "case_number": null,
+  "court": "Supreme Court of India",
+  "jurisdiction": "IN",
+  "bench_coram": [
+    "Hon'ble Bench of Supreme Court of India"
+  ],
+  "judgment_date": "2024-01-01",
+  "citations": [],
+  "paragraphs": [
+    {
+      "paragraph_number": 1,
+      "verbatim_text": "[FACTS] The appellant was appointed as a cashier in the respondent bank and entrusted with the safe custody of cash. On 14.05.2018, a shortage of Rs. 4,50,000 was discovered during surprise inspection.\n[ARGUMENT_PETITIONER] Learned senior counsel for the appellant argued that mere deficit in accounts without specific proof of dishonest misappropriation does not attract Section 405 IPC (now Section 316 BNS).\n[RATIO] Entrustment is the foundational ingredient of Criminal Breach of Trust. However, prosecution must establish that the accused converted the property with dishonest intent at the material moment.\n[RULING] The appeal is allowed in part, and the conviction under Section 409 is modified in light of absence of conclusive dishonest conversion evidence.",
+      "page_number": null,
+      "is_heading_or_transition": false
+    }
+  ],
+  "issues_framed": [],
+  "holdings": [],
+  "ratio_decidendi": null,
+  "obiter_dicta": null,
+  "final_disposition": null,
+  "is_victim_identity_redacted": true,
+  "legal_review_status": "unverified_automated"
+}

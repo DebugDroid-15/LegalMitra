@@ -1,0 +1,36 @@
+{
+  "judgment_id": "KAG-JUD-SC-2014-ARNESH-KUMAR",
+  "source_id": "KAG-JUD-SC-2014-ARNESH-KUMAR",
+  "case_title": "Arnesh Kumar v. State of Bihar & Anr. (2014) 8 SCC 273",
+  "case_number": null,
+  "court": "Supreme Court of India",
+  "jurisdiction": "IN",
+  "bench_coram": [
+    "Chandramauli Kr. Prasad",
+    "Pinaki Chandra Ghose",
+    ""
+  ],
+  "judgment_date": "2024-01-01",
+  "citations": [],
+  "paragraphs": [
+    {
+      "paragraph_number": 1,
+      "verbatim_text": "SUPREME COURT OF INDIA\nCRIMINAL APPELLATE JURISDICTION\nCriminal Appeal No. 1277 of 2014\nArnesh Kumar ... Appellant\nversus\nState of Bihar & Anr. ... Respondents\nCORAM: Chandramauli Kr. Prasad and Pinaki Chandra Ghose, JJ.",
+      "page_number": null,
+      "is_heading_or_transition": false
+    },
+    {
+      "paragraph_number": 2,
+      "verbatim_text": "RATIO DECIDENDI:\n1. Police officers shall not automatically arrest when a case under Section 498-A IPC or other offences punishable with imprisonment for a term which may be less than seven years or which may extend to seven years is registered.\n2. Police officers must be satisfied of the necessity to arrest under the parameters enumerated under Section 41 CrPC (now Section 35 BNSS).\n3. The Magistrate, while authorising detention of the accused, must peruse the report furnished by the police officer and only after recording reasoned satisfaction authorise detention.",
+      "page_number": null,
+      "is_heading_or_transition": false
+    }
+  ],
+  "issues_framed": [],
+  "holdings": [],
+  "ratio_decidendi": null,
+  "obiter_dicta": null,
+  "final_disposition": null,
+  "is_victim_identity_redacted": true,
+  "legal_review_status": "unverified_automated"
+}

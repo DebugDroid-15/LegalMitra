@@ -1,0 +1,30 @@
+{
+  "source_id": "HF-ILQA-QA-SAMPLE01",
+  "act_title": "ILQA Indian Legal Question-Answering Grounded Pair",
+  "act_number": "HF-ILQA-QA-SAMPLE01",
+  "jurisdiction": "IN",
+  "enactment_date": "2024-01-01",
+  "effective_date": null,
+  "preamble": "Authentic statutory enactments and notifications under ILQA Indian Legal Question-Answering Grounded Pair",
+  "sections": [
+    {
+      "section_id": "HF-ILQA-QA-SAMPLE01-SEC-GEN",
+      "source_id": "HF-ILQA-QA-SAMPLE01",
+      "act_title": "ILQA Indian Legal Question-Answering Grounded Pair",
+      "act_number": null,
+      "chapter_number": null,
+      "chapter_title": null,
+      "section_number": "1",
+      "section_title": "General Provisions of ILQA Indian Legal Question-Answering Grounded Pair",
+      "full_verbatim_text": "QUESTION: Under what statutory provisions can a citizen seek quashing of an unjustified FIR where the allegations disclose purely civil dispute?\nANSWER: Under Section 528 of the Bharatiya Nagarik Suraksha Sanhita, 2023 (formerly Section 482 of the Code of Criminal Procedure, 1973), the High Court retains inherent powers to prevent abuse of the process of any court and to secure the ends of justice. As settled in State of Haryana v. Bhajan Lal (1992 Supp (1) SCC 335), where the allegations made in the FIR, even if taken at their face value, do not prima facie constitute any offence, the High Court may quash proceedings.",
+      "subsections": [],
+      "provisos": [],
+      "explanations": [],
+      "illustrations": [],
+      "source_page_start": null,
+      "source_page_end": null,
+      "legal_review_status": "unverified_automated"
+    }
+  ],
+  "legal_review_status": "unverified_automated"
+}
