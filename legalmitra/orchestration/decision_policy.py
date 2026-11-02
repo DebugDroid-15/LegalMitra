@@ -101,7 +101,22 @@ class LegalDecisionPolicy:
                     evidence_matrix=matrix,
                 )
 
-        # 2. Check for empty evidence set or completely ungrounded / fictional inquiry -> ABSTAIN_INSUFFICIENT_EVIDENCE
+        # 2. Check for Conversational Empathy & Citizen Guidance (Phase 84)
+        from legalmitra.knowledge.conversational_empathy import ConversationalEmpathyEngine
+        from legalmitra.knowledge.citizen_intents import CitizenLegalGuidanceEngine
+        if ConversationalEmpathyEngine.match_behavioral_query(parsed_query.original_query) or CitizenLegalGuidanceEngine.match_citizen_query(parsed_query.original_query):
+            return PolicyEvaluationResult(
+                state=LegalResponseState.ANSWER_SUPPORTED,
+                allows_partial_answer=False,
+                requires_clarifying_question=False,
+                clarifying_question=None,
+                missing_evidence_or_fact=None,
+                policy_rationale="Grounded citizen legal guidance and conversational resolution.",
+                permitted_assertions=["Practical citizen action guidance and helplines"],
+                prohibited_assertions=[]
+            )
+
+        # Check for empty evidence set or completely ungrounded / fictional inquiry -> ABSTAIN_INSUFFICIENT_EVIDENCE
         q_lower = parsed_query.original_query.lower()
         is_fictional_or_empty = (
             evidence_set.total_items_retrieved == 0

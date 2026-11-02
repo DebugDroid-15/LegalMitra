@@ -48,3 +48,4 @@ class TestPhase79TokenStreaming:
         client = TestClient(app)
         response = client.post("/api/v1/query/stream", json={"query": "   "})
         assert response.status_code == 400
+

@@ -37,3 +37,4 @@ def test_api_chat_turn_deterministic():
     data = response.json()
     assert data["session_id"] == "test_sess_gguf_integration"
     assert "Section 138" in data["answer_text"] or "138" in str(data["citations"])
+

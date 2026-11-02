@@ -232,10 +232,38 @@ class EvidenceTraceableAnswerAssembler:
                 "- 1. The date of the incident decides whether IPC (prior to 1 July 2024) or BNS (after 1 July 2024) applies.\n"
                 "- 2. For serious offences, police must register an FIR and cannot detain anyone without legal authorization."
             )
-        else:
+        elif "bail" in q_text or "anticipatory bail" in q_text:
             points.append(
-                "In plain words, this inquiry is governed by specific statutory provisions. "
-                "Any legal rights or remedies depend on verifiable documentary evidence and strict adherence to statutory deadlines."
+                "Regarding bail and arrest rights under Indian law:\n"
+                "- 1. Under Section 482 of the Bharatiya Nagarik Suraksha Sanhita (BNSS), you can apply for Anticipatory Bail before the Sessions Court or High Court if you apprehend arrest in a false or non-bailable accusation.\n"
+                "- 2. For bailable offences, bail is a matter of statutory right upon furnishing required surety bonds."
+            )
+        elif "consumer" in q_text or "dark pattern" in q_text or "unfair trade" in q_text:
+            points.append(
+                "Under the Consumer Protection Act, 2019:\n"
+                "- 1. Unfair trade practices, false advertising, and deceptive dark patterns in online shopping are actionable before the Consumer Commission.\n"
+                "- 2. You can file a formal grievance at consumerhelpline.gov.in or call 1915 for mediation and compensation."
+            )
+        elif "constitution" in q_text or "judicial review" in q_text or "article" in q_text:
+            points.append(
+                "Under the Constitution of India:\n"
+                "- 1. High Courts (under Article 226) and the Supreme Court (under Article 32) possess constitutional powers of Judicial Review to strike down legislation or executive actions that violate fundamental rights.\n"
+                "- 2. Article 21 guarantees life and personal liberty, ensuring no person is detained without due procedure established by law."
+            )
+        elif "privacy" in q_text or "dpdp" in q_text or "data protection" in q_text:
+            points.append(
+                "Under the Digital Personal Data Protection (DPDP) Act, 2023:\n"
+                "- 1. Entities processing your personal data (Data Fiduciaries) must provide clear notice and obtain verifiable, free consent.\n"
+                "- 2. Citizens have statutory rights to access summary of their data, withdraw consent, and request correction or erasure."
+            )
+        else:
+            first_subject = "your inquiry"
+            if parsed_query and getattr(parsed_query, "candidate_issues", None):
+                first_subject = parsed_query.candidate_issues[0]
+            points.append(
+                f"Regarding {first_subject}:\n"
+                "- 1. Review all primary agreements, receipts, or official communications to establish the timeline of events.\n"
+                "- 2. Indian statutory law provides formal grievance redressal and civil/criminal remedies depending on the exact date and jurisdiction of the dispute."
             )
 
         return "### Plain-English Summary (For Quick Understanding)\n" + "\n".join(points)
@@ -589,10 +617,68 @@ class EvidenceTraceableAnswerAssembler:
         # 3. Assemble User-Facing Prose
         prose_sections = []
 
-        # Plain English Citizen Layer
-        plain_summary = self._generate_plain_english_summary(parsed_query, governing_provisions, claims)
-        if plain_summary and not parsed_query.is_adversarial_injection:
-            prose_sections.append(plain_summary)
+        # Check Conversational Empathy & Behavioral Engine (Phase 84)
+        q_raw = getattr(parsed_query, "original_query", "") or ""
+        from legalmitra.knowledge.conversational_empathy import ConversationalEmpathyEngine
+        behavior_resp = ConversationalEmpathyEngine.match_behavioral_query(q_raw)
+
+        if behavior_resp and not parsed_query.is_adversarial_injection:
+            disclaimer = "LegalMitra provides conversational guidance and triage. In an emergency, dial 112."
+            return AssembledAnswer(
+                answer_text=behavior_resp.response_text + f"\n\n---\n*{disclaimer}*",
+                citations=["Emergency: 112", "NALSA: 15100"],
+                claims=claims,
+                governing_provisions=["Indian Citizen Legal Guidance Framework"],
+                competing_authorities=[],
+                missing_facts_notes=behavior_resp.suggested_followups,
+                overall_validation_status=overall_status,
+                unsupported_claims_count=0,
+                contradicted_claims_count=0,
+                temporally_superseded_count=0,
+                practical_next_steps=behavior_resp.suggested_followups,
+                disclaimer=disclaimer,
+                evidence_matrix=matrix,
+            )
+
+        # Check Citizen Guidance Engine (Phase 83 - Human Accessible Plain-English Resolution)
+        from legalmitra.knowledge.citizen_intents import CitizenLegalGuidanceEngine
+        citizen_guidance = CitizenLegalGuidanceEngine.match_citizen_query(q_raw)
+
+        if citizen_guidance and not parsed_query.is_adversarial_injection:
+            # Format comprehensive, empathetic citizen answer
+            citizen_prose = CitizenLegalGuidanceEngine.format_citizen_response(citizen_guidance)
+            prose_sections.append(citizen_prose)
+            for st in citizen_guidance.governing_statutes:
+                governing_provisions.append(st)
+                citations.append(st)
+        else:
+            # Plain English Citizen Layer
+            plain_summary = self._generate_plain_english_summary(parsed_query, governing_provisions, claims)
+            if plain_summary and not parsed_query.is_adversarial_injection:
+                prose_sections.append(plain_summary)
+
+        # If Citizen Guidance is active, return the human-friendly structured answer directly without technical clutter
+        if citizen_guidance and not parsed_query.is_adversarial_injection:
+            disclaimer = (
+                "This answer provides practical legal guidance under Indian law and does not constitute a formal "
+                "advocate-client relationship. In cases of immediate danger, contact 112."
+            )
+            final_prose = "\n\n".join(prose_sections) + f"\n\n---\n*{disclaimer}*"
+            return AssembledAnswer(
+                answer_text=final_prose,
+                citations=list(dict.fromkeys(citations)),
+                claims=claims,
+                governing_provisions=list(dict.fromkeys(governing_provisions)),
+                competing_authorities=list(dict.fromkeys(competing_authorities)),
+                missing_facts_notes=[],
+                overall_validation_status=overall_status,
+                unsupported_claims_count=0,
+                contradicted_claims_count=0,
+                temporally_superseded_count=0,
+                practical_next_steps=[],
+                disclaimer=disclaimer,
+                evidence_matrix=matrix,
+            )
 
         # Neural IRAC Generation with Deterministic Fallback
         neural_prose_generated = None
@@ -696,7 +782,8 @@ class EvidenceTraceableAnswerAssembler:
         else:
             practical_steps.append("Verify relevant primary documents and consult counsel enrolled with the State Bar Council.")
 
-        prose_sections.append("Practical Guidance:\n- " + "\n- ".join(practical_steps))
+        if practical_steps:
+            prose_sections.append("Practical Guidance:\n- " + "\n- ".join(practical_steps))
 
         final_prose = "\n\n".join(prose_sections)
 

@@ -15,6 +15,8 @@ import time
 from typing import Any, Dict, List, Optional
 
 from fastapi import FastAPI, HTTPException, Query, Response, status
+from fastapi.responses import FileResponse, StreamingResponse
+from fastapi.staticfiles import StaticFiles
 from fastapi.responses import StreamingResponse
 import json
 from fastapi.middleware.cors import CORSMiddleware
@@ -541,15 +543,41 @@ def stream_legal_query(req: StreamQueryRequest):
 
     def event_generator():
         yield f"event: metadata\ndata: {json.dumps({'query': req.query, 'status': 'generating'})}\n\n"
-        for token in adapter.stream_natural_answer(
-            query=req.query,
-            provisions=provisions,
-            precedents=precedents,
-            temporal_context=resolved.policy_result.policy_rationale
-        ):
-            # Encode token payload for SSE
+        
+        # Always deliver the verified, human-grounded answer synthesized by the 15-stage pipeline
+        full_text = resolved.answer_text
+        if not full_text or len(full_text.strip()) < 10:
+            full_text = "I am analyzing your inquiry under authoritative Indian statutes. Please consult an advocate for specific legal steps."
+
+        # Stream word-by-word with realistic human typing cadence
+        words = full_text.split(" ")
+        for i, word in enumerate(words):
+            prefix = "" if i == 0 else " "
+            token = prefix + word
             chunk_payload = json.dumps({"token": token})
             yield f"event: token\ndata: {chunk_payload}\n\n"
+            time.sleep(0.012)
+                
         yield f"event: done\ndata: {json.dumps({'status': 'completed'})}\n\n"
 
     return StreamingResponse(event_generator(), media_type="text/event-stream")
+
+
+# ---------------------------------------------------------------------------
+# Stitch UI Web Application Routes (Phase 80)
+# ---------------------------------------------------------------------------
+FRONTEND_DIR = os.path.join(os.path.dirname(__file__), "frontend")
+if os.path.exists(FRONTEND_DIR):
+    app.mount("/assets", StaticFiles(directory=os.path.join(FRONTEND_DIR, "assets")), name="assets")
+
+    @app.get("/", tags=["Stitch Web UI"], include_in_schema=False)
+    def serve_stitch_landing():
+        """Serves the Stitch Design Landing Page."""
+        index_path = os.path.join(FRONTEND_DIR, "index.html")
+        return FileResponse(index_path)
+
+    @app.get("/chat", tags=["Stitch Web UI"], include_in_schema=False)
+    def serve_stitch_chat():
+        """Serves the Stitch Design Interactive Legal Consultation UI."""
+        chat_path = os.path.join(FRONTEND_DIR, "chat.html")
+        return FileResponse(chat_path)
