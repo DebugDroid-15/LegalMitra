@@ -608,6 +608,43 @@ def transcribe_voice_query(req: VoiceTranscribeRequest):
     }
 
 
+# ---------------------------------------------------------------------------
+# Digital India Bhashini Document OCR (Phase 94)
+# ---------------------------------------------------------------------------
+class DocumentOCRRequest(BaseModel):
+    document_base64: str = Field(..., description="Base64-encoded PDF or image scan of FIR, notice, or agreement.")
+    language: str = Field("mr", description="Indic language code (e.g. mr, hi, ta, te, en).")
+
+
+@app.post("/api/v1/document/ocr-analyze", tags=["Digital India Bhashini Gateway"])
+def analyze_document_scan(req: DocumentOCRRequest):
+    """Extracts text from scanned FIRs, complaints, or notices and detects statutory penal provisions."""
+    if not req.document_base64.strip():
+        raise HTTPException(status_code=400, detail="document_base64 cannot be empty.")
+    from legalmitra.multilingual.ocr_engine import BhashiniLegalOCREngine
+    ocr = BhashiniLegalOCREngine()
+    result = ocr.analyze_base64(req.document_base64, language=req.language)
+    if not result.success:
+        raise HTTPException(status_code=500, detail=result.error_message)
+    return {
+        "success": True,
+        "document_type": result.document_type,
+        "language": result.language,
+        "extracted_text": result.extracted_text,
+        "detected_statutes": [
+            {
+                "raw_mention": s.raw_mention,
+                "statute_code": s.statute_code,
+                "section_number": s.section_number,
+                "normalized_canonical": s.normalized_canonical
+            }
+            for s in result.detected_statutes
+        ],
+        "latency_ms": result.latency_ms,
+        "provider": result.provider
+    }
+
+
 # Digital India Bhashini Gateway (Phase 92)
 # ---------------------------------------------------------------------------
 @app.get('/api/v1/bhashini/status', tags=['Digital India Bhashini Gateway'])
