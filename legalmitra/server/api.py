@@ -949,6 +949,25 @@ def calculate_financial_compensation(req: FinancialCalculationApiRequest):
     }
 
 
+# Phase 102: e-Courts & NJDG Live CNR Case Tracker
+# ---------------------------------------------------------------------------
+class TrackCNRRequest(BaseModel):
+    cnr: str = Field(..., description="16-character Case Record Number (CNR), e.g. MHAU010012342023")
+    target_lang: str = Field("en", description="Target language code for plain-language explanation")
+
+@app.post("/api/v1/cases/track-cnr", tags=["e-Courts Case Tracker"])
+def track_cnr_case(payload: TrackCNRRequest):
+    """
+    Validates a 16-character CNR number, tracks live court status from e-Courts/NJDG,
+    and returns parsed hearing history with plain-language citizen guidance.
+    """
+    from legalmitra.integrations.ecourts_client import ecourts_client
+    result = ecourts_client.track_case(payload.cnr, target_lang=payload.target_lang)
+    if not result.get("success"):
+        raise HTTPException(status_code=400, detail=result.get("error", "Invalid CNR"))
+    return result
+
+
 # Digital India Bhashini Gateway (Phase 92)
 # ---------------------------------------------------------------------------
 @app.get('/api/v1/bhashini/status', tags=['Digital India Bhashini Gateway'])
