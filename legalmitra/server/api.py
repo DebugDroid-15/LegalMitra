@@ -552,22 +552,23 @@ def stream_legal_query(req: StreamQueryRequest):
         yield f"event: metadata\ndata: {json.dumps({'query': req.query, 'status': 'generating'})}\n\n"
         
         # Determine base answer text
-        # If deterministic output is raw statutory claims or abstains, generate rich, detailed IRAC legal synthesis
         full_text = resolved.answer_text
+        # Check if query specifically targets Criminal Breach of Trust or FIR
+        q_lower = effective_query.lower()
         if (
             not full_text
             or len(full_text.strip()) < 20
             or "ABSTENTION" in full_text
-            or "the governing legal standard is:" in full_text
-            or "Direct Position:\n- Under The" in full_text
         ):
             from legalmitra.training.aikosh_finetuner import AIKoshLegalFineTuner
             finetuner = AIKoshLegalFineTuner()
             full_text = finetuner.generate_response(effective_query)
         else:
-            # Compact multi-line scattered spacing
+            # Compact multi-line scattered spacing and ensure clean IRAC presentation
             import re
             full_text = re.sub(r'\n{3,}', '\n\n', full_text)
+            # Remove repetitive mechanical standard headers if present
+            full_text = full_text.replace("the governing legal standard is: ", "")
 
         # 3. If original query was in an Indic language, translate back while protecting statutory numbers
         if detected_lang != IndicLanguageCode.ENGLISH:

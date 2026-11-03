@@ -9,7 +9,9 @@ window.insertPrompt = function(promptText) {
     if (inputField) {
         inputField.value = promptText;
         const sendBtn = document.getElementById("stitch-send-btn");
-        if (sendBtn) sendBtn.click();
+        if (sendBtn && !sendBtn.disabled) {
+            sendBtn.click();
+        }
     }
 };
 /**
@@ -346,17 +348,7 @@ function initStitchFullSuite() {
         });
     });
 
-    // 4. Quick-Prompt Suggestion Chips
-    const promptChips = document.querySelectorAll('.max-w-4xl button[type="button"], .grid button[type="button"], button[onclick*="insertPrompt"]');
-    promptChips.forEach(chip => {
-        chip.addEventListener("click", () => {
-            const text = chip.innerText.trim();
-            if (inputField) {
-                inputField.value = text;
-                submitQuery(text);
-            }
-        });
-    });
+    // 4. Quick-Prompt Suggestion Chips (delegated to window.insertPrompt to avoid duplicate submissions)
 
     // 5. Sidebar Navigation Links & Recent Conversations
     document.querySelectorAll('[data-path="recent-conversations"]').forEach(link => {
