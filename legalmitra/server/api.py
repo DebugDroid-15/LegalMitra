@@ -564,11 +564,24 @@ def stream_legal_query(req: StreamQueryRequest):
             finetuner = AIKoshLegalFineTuner()
             full_text = finetuner.generate_response(effective_query)
         else:
-            # Compact multi-line scattered spacing and ensure clean IRAC presentation
+            # Compact multi-line scattered spacing and ensure clean, structured Markdown presentation
             import re
-            full_text = re.sub(r'\n{3,}', '\n\n', full_text)
-            # Remove repetitive mechanical standard headers if present
+            # 1. Promote plain section titles to Markdown H3 headers
+            full_text = re.sub(r'^(Direct Position(?:\s*\(.*?\))?):', r'### \1', full_text, flags=re.MULTILINE)
+            full_text = re.sub(r'^(Applicable Legal Provisions(?:\s*& Authorities)?):', r'### \1', full_text, flags=re.MULTILINE)
+            full_text = re.sub(r'^(Practical Guidance(?:\s*\(.*?\))?):', r'### \1', full_text, flags=re.MULTILINE)
+            full_text = re.sub(r'^(Material Exceptions(?:\s*&.*?)?):', r'### \1', full_text, flags=re.MULTILINE)
+            full_text = re.sub(r'^(Decisive factual dependencies.*):', r'### \1', full_text, flags=re.MULTILINE)
+            
+            # 2. Bold Act & Section citations for visual hierarchy and readability
+            full_text = re.sub(r'\b(The\s+Bharatiya\s+(?:Nyaya|Nagarik\s+Suraksha|Sakshya)\s+Sanhita,\s*2023)', r'**\1**', full_text)
+            full_text = re.sub(r'\b(Indian\s+Penal\s+Code,\s*1860|Indian\s+Penal\s+Code)', r'**\1**', full_text)
+            full_text = re.sub(r'\b(Section\s+[0-9]+(?:\([0-9a-zA-Z]+\))?)', r'**\1**', full_text)
+            
+            # 3. Clean repetitive mechanical boilerplate
+            full_text = full_text.replace(", the governing legal standard is: ", ": ")
             full_text = full_text.replace("the governing legal standard is: ", "")
+            full_text = re.sub(r'\n{3,}', '\n\n', full_text)
 
         # 3. If original query was in an Indic language, translate back while protecting statutory numbers
         if detected_lang != IndicLanguageCode.ENGLISH:
