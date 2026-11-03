@@ -839,6 +839,44 @@ def calculate_statutory_limitation(req: LimitationCalculateRequest):
     }
 
 
+# ---------------------------------------------------------------------------
+# Guided Conversational Citizen Intake Wizard (Phase 100)
+# ---------------------------------------------------------------------------
+class CitizenIntakeRequest(BaseModel):
+    incident_description: str = Field(..., description="Plain-language description of grievance in English or Indic dialect.")
+    incident_date: str = Field(..., description="Date of dispute or incident (YYYY-MM-DD or DD-MM-YYYY).")
+    state_or_city: str = Field(..., description="Location, City, or State of dispute.")
+    user_goal: Optional[str] = Field(None, description="What outcome the citizen desires.")
+    language: str = Field("mr", description="Language of citizen.")
+
+
+@app.post("/api/v1/intake/resolve", tags=["Citizen Intake Wizard"])
+def resolve_citizen_intake(req: CitizenIntakeRequest):
+    """Structures raw conversational citizen inputs into an authoritative statutory query."""
+    from legalmitra.intake.wizard_engine import CitizenIntakeWizardEngine, CitizenIntakeInput
+    engine = CitizenIntakeWizardEngine()
+    intake_data = CitizenIntakeInput(
+        incident_description=req.incident_description,
+        incident_date_str=req.incident_date,
+        state_or_city=req.state_or_city,
+        user_goal=req.user_goal,
+        language=req.language
+    )
+    res = engine.resolve_intake(intake_data)
+    return {
+        "success": res.success,
+        "broad_domain": res.broad_domain,
+        "statutory_governance_framework": res.statutory_governance_framework,
+        "temporal_applicability": res.temporal_applicability,
+        "competent_forum": res.competent_forum,
+        "suggested_statutes": res.suggested_statutes,
+        "synthesized_legal_query": res.synthesized_legal_query,
+        "immediate_citizen_actions": res.immediate_citizen_actions,
+        "recommended_notice_template": res.recommended_notice_template,
+        "recommended_limitation_category": res.recommended_limitation_category
+    }
+
+
 # Digital India Bhashini Gateway (Phase 92)
 # ---------------------------------------------------------------------------
 @app.get('/api/v1/bhashini/status', tags=['Digital India Bhashini Gateway'])
