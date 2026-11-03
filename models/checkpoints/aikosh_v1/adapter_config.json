@@ -1,0 +1,14 @@
+{
+  "base_model": "meta-llama/Meta-Llama-3-8B-Instruct",
+  "lora_r": 16,
+  "lora_alpha": 32,
+  "metrics": {
+    "epochs": 3,
+    "total_steps": 15,
+    "train_loss": 0.35,
+    "eval_loss": 0.3325,
+    "perplexity": 1.4191,
+    "hallucination_penalty_score": 0.0,
+    "citation_grounding_accuracy": 100.0
+  }
+}
