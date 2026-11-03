@@ -1136,6 +1136,53 @@ def list_firm_matters(firm_id: str):
     return [m.model_dump() for m in matters]
 
 
+# Phase 109: Enterprise Security, RBAC & DPDP Act Compliance
+# ---------------------------------------------------------------------------
+class PIIAnonymizationRequest(BaseModel):
+    raw_text: str = Field(..., description="Legal query or document text containing personal citizen data")
+
+class ConsentGrantRequest(BaseModel):
+    user_id: str = Field(..., description="Citizen or advocate user ID")
+    purpose: Optional[str] = Field("Legal Consultation & Multi-Tier Statutory Analysis", description="Processing purpose")
+
+class AccessCheckRequest(BaseModel):
+    role: str = Field("ASSOCIATE_ADVOCATE", description="LITIGANT | ASSOCIATE_ADVOCATE | SENIOR_PARTNER | SYSTEM_ADMIN")
+    target_action: str = Field(..., description="Action to verify (e.g. upload_vault_doc, export_client_brief)")
+
+@app.post("/api/v1/security/dpdp/anonymize", tags=["Enterprise Security & DPDP Compliance"])
+def anonymize_citizen_pii(payload: PIIAnonymizationRequest):
+    """
+    Scrubs Indian identity numbers (Aadhaar, PAN), phone numbers, and emails
+    prior to model evaluation ensuring Zero-Retention compliance under DPDP Act 2023.
+    """
+    from legalmitra.security.dpdp_engine import dpdp_compliance_engine
+    result = dpdp_compliance_engine.scrub_pii(payload.raw_text)
+    return result.model_dump()
+
+@app.post("/api/v1/security/dpdp/consent", tags=["Enterprise Security & DPDP Compliance"])
+def record_dpdp_consent(payload: ConsentGrantRequest):
+    """Records a verifiable Section 6 DPDP consent token with clear retention limits."""
+    from legalmitra.security.dpdp_engine import dpdp_compliance_engine
+    consent = dpdp_compliance_engine.generate_consent_record(payload.user_id, payload.purpose)
+    return consent.model_dump()
+
+@app.post("/api/v1/security/rbac/verify", tags=["Enterprise Security & DPDP Compliance"])
+def verify_user_authorization(payload: AccessCheckRequest):
+    """Enforces enterprise role-based authorization across practice resources."""
+    from legalmitra.security.dpdp_engine import dpdp_compliance_engine, UserRole
+    try:
+        user_role = UserRole(payload.role)
+    except ValueError:
+        raise HTTPException(status_code=400, detail=f"Invalid role: {payload.role}")
+    
+    allowed = dpdp_compliance_engine.authorize_action(user_role, payload.target_action)
+    return {
+        "role": payload.role,
+        "target_action": payload.target_action,
+        "is_authorized": allowed
+    }
+
+
 # Digital India Bhashini Gateway (Phase 92)
 # ---------------------------------------------------------------------------
 @app.get('/api/v1/bhashini/status', tags=['Digital India Bhashini Gateway'])
