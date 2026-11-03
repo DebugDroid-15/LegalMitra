@@ -552,16 +552,30 @@ def stream_legal_query(req: StreamQueryRequest):
         yield f"event: metadata\ndata: {json.dumps({'query': req.query, 'status': 'generating'})}\n\n"
         
         # Determine base answer text
+        full_text = resolved.answer_text or ""
         q_lower = effective_query.lower().strip()
 
-        # Handle conversational greetings, platform queries, and general inquiries
+        # Handle conversational greetings, platform queries, and language support queries
         conversational_greetings = [
             "hi", "hello", "hey", "how can you help me", "how can you help", "who are you", 
             "what can you do", "help me", "help", "namaste", "kem cho", "vanakkam"
         ]
         is_greeting = any(q_lower == g or q_lower.startswith(g + " ") or q_lower.endswith(" " + g) for g in conversational_greetings)
-        
-        if is_greeting:
+        is_lang_query = any(w in q_lower for w in ["what language", "which language", "languages do you", "language support", "languages support"])
+
+        if is_lang_query:
+            full_text = (
+                "### 🌐 Multilingual Sovereign Language Support\n\n"
+                "**LegalMitra supports English and all 22 Scheduled Indian Languages** recognized under the Eighth Schedule of the Constitution of India, powered by the **Digital India Bhashini** AI stack.\n\n"
+                "### 🇮🇳 Supported Scheduled Languages:\n"
+                "- **Northern / Western:** Hindi (हिन्दी), Marathi (मराठी), Gujarati (ગુજરાતી), Punjabi (ਪੰਜਾਬੀ), Kashmiri (کأشُر), Sindhi (سنڌي), Urdu (اردو), Dogri (डोगरी).\n"
+                "- **Southern:** Tamil (தமிழ்), Telugu (తెలుగు), Kannada (ಕನ್ನಡ), Malayalam (മലയാളം).\n"
+                "- **Eastern / North-Eastern:** Bengali (বাংলা), Odia (ଓଡ଼ିଆ), Assamese (অসমীয়া), Maithili (मैथिली), Santali (ᱥᱟᱱᱛᱟᱲᱤ), Bodo (बड़ो), Manipuri (মৈতৈলোন্), Nepali (नेपाली).\n"
+                "- **Classical / Scriptural:** Sanskrit (संस्कृतम्), Konkani (कोंकणी).\n\n"
+                "### 🛡️ How Citations Are Protected:\n"
+                "All statutory citations (e.g. **Section 173(4) BNSS**, **Section 318(4) BNS**, **Section 138 NI Act**) are automatically shielded with token protection so that section numbers remain 100% legally accurate across every translation."
+            )
+        elif is_greeting:
             full_text = (
                 "### ⚖️ Welcome to LegalMitra — Sovereign Indian Legal Intelligence\n\n"
                 "I am **LegalMitra**, your statutory legal assistant specializing in Indian jurisprudence, the new **2024–2025 Criminal Codes**, and civil remedies.\n\n"
@@ -574,9 +588,9 @@ def stream_legal_query(req: StreamQueryRequest):
                 "Describe your situation or query in plain words (e.g. *'Police refused to file my FIR'*, *'Cheque bounced for 5 lakhs'*, or *'What is BNS 318?'*)."
             )
         elif (
-            not resolved.answer_text
-            or len(resolved.answer_text.strip()) < 20
-            or "ABSTENTION" in resolved.answer_text
+            not full_text
+            or len(full_text.strip()) < 20
+            or "ABSTENTION" in full_text
         ):
             from legalmitra.training.aikosh_finetuner import AIKoshLegalFineTuner
             finetuner = AIKoshLegalFineTuner()
