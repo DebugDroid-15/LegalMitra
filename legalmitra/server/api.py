@@ -645,6 +645,33 @@ def analyze_document_scan(req: DocumentOCRRequest):
     }
 
 
+# ---------------------------------------------------------------------------
+# Digital India Bhashini IndicTrans2 NMT (Phase 95)
+# ---------------------------------------------------------------------------
+class IndicTranslationRequest(BaseModel):
+    text: str = Field(..., description="English or Indic statutory legal text to translate.")
+    target_language: str = Field("mr", description="Target 22 scheduled language code or dialect (e.g. mr, hi, ta, te, bn, gu, kn, bho).")
+
+
+@app.post("/api/v1/nmt/translate", tags=["Digital India Bhashini Gateway"])
+def translate_statutory_text(req: IndicTranslationRequest):
+    """Translates legal response across 22 Indic languages and dialects while strictly preserving statutory citations."""
+    if not req.text.strip():
+        raise HTTPException(status_code=400, detail="text cannot be empty.")
+    from legalmitra.multilingual.indictrans2_engine import SovereignIndicTrans2Engine
+    nmt = SovereignIndicTrans2Engine()
+    result = nmt.translate_with_sovereign_fidelity(req.text, target_language=req.target_language)
+    return {
+        "success": True,
+        "source_language": result.source_language.value,
+        "target_language": result.target_language.value,
+        "translated_text": result.translated_text,
+        "preserved_citations_count": len(result.preserved_citations),
+        "preserved_citations": result.preserved_citations,
+        "is_sovereign_grounded": result.is_sovereign_grounded
+    }
+
+
 # Digital India Bhashini Gateway (Phase 92)
 # ---------------------------------------------------------------------------
 @app.get('/api/v1/bhashini/status', tags=['Digital India Bhashini Gateway'])
