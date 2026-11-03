@@ -1062,6 +1062,80 @@ def handle_bot_webhook(payload: InboundBotMessage):
     return sovereign_bot_gateway.process_inbound(payload)
 
 
+# Phase 108: Multi-Tenant Advocate Practice Management & Sovereign Vault
+# ---------------------------------------------------------------------------
+class CreateMatterRequest(BaseModel):
+    tenant_firm_id: str = Field("FIRM-MUMBAI-01", description="Tenant firm or practice ID")
+    client_name: str = Field(..., description="Client name")
+    case_title: str = Field(..., description="Brief title of the case")
+    court_jurisdiction: str = Field(..., description="Court name and jurisdiction")
+    dispute_category: str = Field("Criminal / Civil", description="Category of law")
+    lead_advocate: str = Field("Adv. Senior Counsel", description="Lead arguing advocate")
+    cnr_number: Optional[str] = Field(None, description="Optional 16-character CNR number")
+
+class AddTimelineRequest(BaseModel):
+    matter_id: str = Field(..., description="Matter ID")
+    stage_name: str = Field(..., description="Procedural milestone / hearing stage")
+    recorded_notes: str = Field(..., description="Hearing details or client notes")
+    advocate_id: str = Field("Adv. Senior Counsel", description="Advocate recording the note")
+
+class UploadVaultDocRequest(BaseModel):
+    matter_id: str = Field(..., description="Matter ID")
+    doc_title: str = Field(..., description="Document title")
+    category: str = Field("Pleadings", description="Category: Summons, Evidence, Order, Notice")
+    raw_text_content: str = Field(..., description="Confidential document text to encrypt at rest")
+
+@app.post("/api/v1/vault/matter/create", tags=["Practice Management & Vault"])
+def create_advocate_matter(payload: CreateMatterRequest):
+    """Creates a new isolated client matter in the multi-tenant practice manager."""
+    from legalmitra.vault.practice_engine import practice_vault_engine
+    matter = practice_vault_engine.create_matter(
+        tenant_firm_id=payload.tenant_firm_id,
+        client_name=payload.client_name,
+        case_title=payload.case_title,
+        court_jurisdiction=payload.court_jurisdiction,
+        dispute_category=payload.dispute_category,
+        lead_advocate=payload.lead_advocate,
+        cnr_number=payload.cnr_number
+    )
+    return matter.model_dump()
+
+@app.post("/api/v1/vault/matter/timeline", tags=["Practice Management & Vault"])
+def add_matter_timeline_entry(payload: AddTimelineRequest):
+    """Appends a timestamped hearing milestone to the client matter timeline."""
+    from legalmitra.vault.practice_engine import practice_vault_engine
+    updated = practice_vault_engine.add_timeline_entry(
+        matter_id=payload.matter_id,
+        stage_name=payload.stage_name,
+        recorded_notes=payload.recorded_notes,
+        advocate_id=payload.advocate_id
+    )
+    if not updated:
+        raise HTTPException(status_code=404, detail="Matter ID not found")
+    return updated.model_dump()
+
+@app.post("/api/v1/vault/document/upload", tags=["Practice Management & Vault"])
+def upload_encrypted_vault_document(payload: UploadVaultDocRequest):
+    """Encrypts and stores a confidential client pleading or evidence file in the matter vault."""
+    from legalmitra.vault.practice_engine import practice_vault_engine
+    doc = practice_vault_engine.upload_vault_document(
+        matter_id=payload.matter_id,
+        doc_title=payload.doc_title,
+        category=payload.category,
+        raw_text_content=payload.raw_text_content
+    )
+    if not doc:
+        raise HTTPException(status_code=404, detail="Matter ID not found")
+    return doc.model_dump()
+
+@app.get("/api/v1/vault/firm/{firm_id}/matters", tags=["Practice Management & Vault"])
+def list_firm_matters(firm_id: str):
+    """Retrieves all matters associated with a tenant law firm."""
+    from legalmitra.vault.practice_engine import practice_vault_engine
+    matters = practice_vault_engine.list_firm_matters(firm_id)
+    return [m.model_dump() for m in matters]
+
+
 # Digital India Bhashini Gateway (Phase 92)
 # ---------------------------------------------------------------------------
 @app.get('/api/v1/bhashini/status', tags=['Digital India Bhashini Gateway'])
