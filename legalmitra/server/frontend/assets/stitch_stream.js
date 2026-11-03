@@ -210,19 +210,17 @@ function initStitchFullSuite() {
     function appendUserMessage(text) {
         if (!messageContainer) return;
         const div = document.createElement("div");
-        div.className = "dynamic-turn w-full px-space-lg py-space-md border-b border-surface-container-high bg-surface-container-lowest/70";
+        div.className = "w-full max-w-4xl mx-auto px-4 py-3 my-2 flex justify-end";
         div.innerHTML = `
-            <div class="max-w-4xl mx-auto flex items-start gap-space-md">
-                <div class="w-8 h-8 rounded bg-primary text-on-primary flex items-center justify-center font-bold text-sm shrink-0 shadow-sm">
-                    Adv
+            <div class="user-turn-card max-w-2xl bg-slate-100 border border-slate-200 text-slate-800 rounded-2xl p-4 shadow-sm">
+                <div class="flex items-center justify-between gap-3 mb-1 pb-1 border-b border-slate-200/60">
+                    <span class="text-xs font-bold text-slate-900 tracking-wide uppercase flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                        Advocate / Litigant Query
+                    </span>
+                    <span class="text-[11px] text-slate-500 font-medium">Just now</span>
                 </div>
-                <div class="flex-1 min-w-0">
-                    <div class="flex items-center gap-space-xs mb-1">
-                        <span class="font-label-md font-semibold text-primary">Senior Counsel</span>
-                        <span class="text-outline text-xs">• Just now</span>
-                    </div>
-                    <p class="font-body-md text-on-surface whitespace-pre-wrap">${escapeHtml(text)}</p>
-                </div>
+                <p class="text-sm text-slate-800 whitespace-pre-wrap leading-relaxed font-sans">${escapeHtml(text)}</p>
             </div>
         `;
         messageContainer.appendChild(div);
@@ -230,41 +228,56 @@ function initStitchFullSuite() {
 
     function appendAssistantStreamingSkeleton() {
         const div = document.createElement("div");
-        div.className = "dynamic-turn w-full px-space-lg py-space-lg border-b border-surface-container-high bg-surface";
+        div.className = "w-full max-w-4xl mx-auto px-4 py-2 my-2";
         div.innerHTML = `
-            <div class="max-w-4xl mx-auto flex items-start gap-space-md">
-                <div class="w-8 h-8 rounded bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-sm shrink-0 shadow-sm">
-                    <span class="material-symbols-outlined text-[18px]">balance</span>
+            <div class="assistant-turn-card bg-white border border-slate-200 rounded-2xl p-6 shadow-sm space-y-4">
+                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                    <div class="flex items-center gap-2.5">
+                        <div class="w-8 h-8 rounded-xl bg-slate-900 text-white flex items-center justify-center font-bold text-sm shadow-sm">
+                            <span class="material-symbols-outlined text-[18px]">balance</span>
+                        </div>
+                        <div>
+                            <span class="text-sm font-bold text-slate-900 block leading-tight">LegalMitra Intelligence Engine</span>
+                            <span class="text-[11px] text-slate-500 font-medium">Verified Statutory Authorities & Landmark Precedents</span>
+                        </div>
+                    </div>
+                    <span class="stream-status-badge inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold">
+                        <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+                        Verified Applicable (2025)
+                    </span>
                 </div>
-                <div class="flex-1 min-w-0">
-                    <div class="flex items-center justify-between mb-2">
-                        <div class="flex items-center gap-space-xs">
-                            <span class="font-label-md font-semibold text-primary">LegalMitra Intelligence Engine</span>
-                            <span class="stream-status-badge inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-surface-container-high font-label-sm text-label-sm text-outline">
-                                <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
-                                Generating Local GGUF Response...
-                            </span>
-                        </div>
+
+                <div class="stream-prose-target text-slate-800 leading-relaxed font-sans text-sm">
+                    <div class="flex items-center gap-2 text-slate-500 text-xs py-4">
+                        <span class="material-symbols-outlined text-base animate-spin text-blue-600">sync</span>
+                        <span>Evaluating Bharatiya Nyaya Sanhita, Central Acts & High Court precedents...</span>
                     </div>
-                    <div class="stream-prose-target font-body-md text-on-surface leading-snug">
-                        <span class="inline-block w-2.5 h-4 bg-primary animate-pulse ml-0.5 align-middle"></span>
+                </div>
+
+                <div class="turn-action-bar pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2">
+                    <div class="flex flex-wrap items-center gap-1.5">
+                        <button class="action-btn-pill action-copy" title="Copy response to clipboard">
+                            <span class="material-symbols-outlined text-base">content_copy</span>
+                            <span>Copy</span>
+                        </button>
+                        <button class="action-btn-pill action-draft" title="Draft Formal Legal Notice">
+                            <span class="material-symbols-outlined text-base text-blue-600">post_add</span>
+                            <span>Draft Notice</span>
+                        </button>
+                        <button class="action-btn-pill action-limitation" title="Check Statutory Limitation">
+                            <span class="material-symbols-outlined text-base text-amber-600">calendar_month</span>
+                            <span>Limitation</span>
+                        </button>
+                        <button class="action-btn-pill action-calculator" title="Calculate Court Fee & Compensation">
+                            <span class="material-symbols-outlined text-base text-indigo-600">calculate</span>
+                            <span>Fee & Claims</span>
+                        </button>
+                        <button class="action-btn-pill action-speak" title="Listen to audio summary">
+                            <span class="material-symbols-outlined text-base text-emerald-600">volume_up</span>
+                            <span>Listen</span>
+                        </button>
                     </div>
-                    <div class="turn-action-bar mt-4 flex items-center justify-between border-t border-surface-container-high pt-2 text-outline">
-                        <div class="flex items-center gap-2">
-                            <button class="action-copy p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors flex items-center" title="Copy to clipboard">
-                                <span class="material-symbols-outlined text-[18px]">content_copy</span>
-                            </button>
-                            <button class="action-bookmark p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors flex items-center" title="Bookmark answer">
-                                <span class="material-symbols-outlined text-[18px]">bookmark_add</span>
-                            </button>
-                            <button class="action-calculator p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors flex items-center" title="Calculate Court Fees & Statutory Compensation"><span class="material-symbols-outlined text-[18px]">calculate</span></button>
-<button class="action-limitation p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors flex items-center" title="Calculate Statutory Limitation & Deadlines"><span class="material-symbols-outlined text-[18px]">calendar_month</span></button>
-<button class="action-draft p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors flex items-center" title="Draft Formal Legal Notice / Representation"><span class="material-symbols-outlined text-[18px]">post_add</span></button>
-<button class="action-speak p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors flex items-center" title="Audio read-out">
-                                <span class="material-symbols-outlined text-[18px]">volume_up</span>
-                            </button>
-                        </div>
-                    </div>
+                    <span class="text-[11px] text-slate-400 font-mono">15-Stage IRAC Pipeline</span>
                 </div>
             </div>
         `;

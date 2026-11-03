@@ -1,0 +1,149 @@
+/* =========================================================================
+   LegalMitra Sovereign Intelligence Design System - Professional Typography
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+    --lm-primary: #0f172a;
+    --lm-accent: #2563eb;
+    --lm-accent-hover: #1d4ed8;
+    --lm-surface: #ffffff;
+    --lm-bg: #f8fafc;
+    --lm-border: #e2e8f0;
+    --lm-text-main: #1e293b;
+    --lm-text-muted: #64748b;
+    --lm-badge-bg: #eff6ff;
+    --lm-badge-text: #1d4ed8;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !important;
+    background-color: #f8fafc !important;
+    color: var(--lm-text-main) !important;
+}
+
+/* Response Container Elevation & Card Styling */
+.dynamic-turn {
+    padding: 1.5rem 1.75rem !important;
+    border-bottom: 1px solid #e2e8f0 !important;
+    transition: background 0.15s ease;
+}
+
+.dynamic-turn:hover {
+    background-color: #fafbfc;
+}
+
+/* User Bubble Design */
+.user-turn-card {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 1rem;
+    padding: 1rem 1.25rem;
+}
+
+/* Assistant Bubble Design */
+.assistant-turn-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 1.25rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    padding: 1.5rem 1.75rem;
+}
+
+/* Executive Legal Typography */
+.stream-prose-target {
+    font-size: 0.95rem !important;
+    line-height: 1.65 !important;
+    color: #1e293b !important;
+}
+
+/* Main Legal Headings */
+.stream-prose-target h2, .stream-prose-target h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    margin-top: 1.25rem !important;
+    margin-bottom: 0.5rem !important;
+    padding-bottom: 0.35rem;
+    border-bottom: 1px solid #f1f5f9;
+    letter-spacing: -0.015em;
+}
+
+.stream-prose-target h2:first-child, .stream-prose-target h3:first-child {
+    margin-top: 0 !important;
+}
+
+/* Paragraphs & Flow */
+.stream-prose-target p {
+    margin-top: 0.4rem !important;
+    margin-bottom: 0.6rem !important;
+    color: #334155 !important;
+}
+
+/* List Items with High Definition Bullets */
+.stream-prose-target ul, .stream-prose-target ol {
+    margin-top: 0.4rem !important;
+    margin-bottom: 0.75rem !important;
+    padding-left: 1.25rem !important;
+}
+
+.stream-prose-target li {
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.25rem !important;
+    line-height: 1.55 !important;
+    color: #334155 !important;
+}
+
+/* Highlighted Statutory Act & Section Badges */
+.stream-prose-target strong {
+    color: #0f172a !important;
+    font-weight: 600 !important;
+}
+
+/* Section Citations Accent Pill */
+.statute-pill {
+    display: inline-flex;
+    align-items: center;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    color: #0f172a;
+    font-weight: 600;
+    font-size: 0.825rem;
+    padding: 0.1rem 0.45rem;
+    border-radius: 0.375rem;
+    margin: 0 0.15rem;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Action Icon Strip */
+.turn-action-bar {
+    margin-top: 1.25rem !important;
+    padding-top: 0.75rem !important;
+    border-top: 1px solid #f1f5f9 !important;
+}
+
+.action-btn-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.775rem;
+    font-weight: 600;
+    color: #475569;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    transition: all 0.15s ease;
+    cursor: pointer;
+}
+
+.action-btn-pill:hover {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border-color: #bfdbfe;
+    box-shadow: 0 1px 3px rgba(37, 99, 235, 0.1);
+}

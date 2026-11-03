@@ -566,12 +566,13 @@ def stream_legal_query(req: StreamQueryRequest):
         else:
             # Compact multi-line scattered spacing and ensure clean, structured Markdown presentation
             import re
-            # 1. Promote plain section titles to Markdown H3 headers
-            full_text = re.sub(r'^(Direct Position(?:\s*\(.*?\))?):', r'### \1', full_text, flags=re.MULTILINE)
-            full_text = re.sub(r'^(Applicable Legal Provisions(?:\s*& Authorities)?):', r'### \1', full_text, flags=re.MULTILINE)
-            full_text = re.sub(r'^(Practical Guidance(?:\s*\(.*?\))?):', r'### \1', full_text, flags=re.MULTILINE)
-            full_text = re.sub(r'^(Material Exceptions(?:\s*&.*?)?):', r'### \1', full_text, flags=re.MULTILINE)
-            full_text = re.sub(r'^(Decisive factual dependencies.*):', r'### \1', full_text, flags=re.MULTILINE)
+            # 1. Promote plain section titles to Markdown H3 headers with icons
+            full_text = re.sub(r'^(Direct Position(?:\s*\(.*?\))?):?', r'### ⚖️ \1', full_text, flags=re.MULTILINE)
+            full_text = re.sub(r'^(Applicable Legal Provisions(?:\s*& Authorities)?):?', r'### 📜 \1', full_text, flags=re.MULTILINE)
+            full_text = re.sub(r'^(Practical Guidance(?:\s*\(.*?\))?):?', r'### 🛡️ \1', full_text, flags=re.MULTILINE)
+            full_text = re.sub(r'^(Material Exceptions(?:\s*&.*?)?):?', r'### ⚠️ \1', full_text, flags=re.MULTILINE)
+            full_text = re.sub(r'^(Decisive factual dependencies.*):?', r'### 🔍 \1', full_text, flags=re.MULTILINE)
+            full_text = re.sub(r'^(Plain-English Summary.*):?', r'### 💡 \1', full_text, flags=re.MULTILINE)
             
             # 2. Bold Act & Section citations for visual hierarchy and readability
             full_text = re.sub(r'\b(The\s+Bharatiya\s+(?:Nyaya|Nagarik\s+Suraksha|Sakshya)\s+Sanhita,\s*2023)', r'**\1**', full_text)
