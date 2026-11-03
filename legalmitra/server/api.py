@@ -989,6 +989,23 @@ def get_statutory_redline_diff(payload: TriCodeDiffRequest):
     return result.model_dump()
 
 
+# Phase 104: Pinpoint Gazette Source Peek & Citation Inspector
+# ---------------------------------------------------------------------------
+class GazetteInspectRequest(BaseModel):
+    statute: str = Field(..., description="Statute code (e.g. BNS, BNSS, BSA)")
+    section: str = Field(..., description="Section number (e.g. 318, 173, 61)")
+
+@app.post("/api/v1/corpus/gazette-inspect", tags=["Statutory Gazette Inspector"])
+def inspect_statute_gazette(payload: GazetteInspectRequest):
+    """
+    Retrieves authentic official Gazette notification text, enactment authorities,
+    and digital provenance hash for zero-hallucination verification.
+    """
+    from legalmitra.corpus.gazette_inspector import gazette_inspector
+    result = gazette_inspector.inspect_section(payload.statute, payload.section)
+    return result.model_dump()
+
+
 # Digital India Bhashini Gateway (Phase 92)
 # ---------------------------------------------------------------------------
 @app.get('/api/v1/bhashini/status', tags=['Digital India Bhashini Gateway'])
