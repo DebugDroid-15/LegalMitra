@@ -968,6 +968,27 @@ def track_cnr_case(payload: TrackCNRRequest):
     return result
 
 
+# Phase 103: Tri-Code Redline Diff & Statutory Transition Visualizer
+# ---------------------------------------------------------------------------
+class TriCodeDiffRequest(BaseModel):
+    old_code: str = Field("IPC", description="Legacy Code (IPC, CrPC, IEA)")
+    old_section: str = Field("420", description="Legacy section number")
+    new_code: str = Field("BNS", description="Reformed Code (BNS, BNSS, BSA)")
+    new_section: str = Field("318(4)", description="Reformed section number")
+
+@app.post("/api/v1/crosswalk/redline-diff", tags=["Tri-Code Crosswalk & Transition"])
+def get_statutory_redline_diff(payload: TriCodeDiffRequest):
+    """
+    Computes side-by-side redline diffs and substantive changes between colonial and reformed codes.
+    """
+    from legalmitra.corpus.redline_engine import tri_code_redline_engine
+    result = tri_code_redline_engine.compare_sections(
+        payload.old_code, payload.old_section,
+        payload.new_code, payload.new_section
+    )
+    return result.model_dump()
+
+
 # Digital India Bhashini Gateway (Phase 92)
 # ---------------------------------------------------------------------------
 @app.get('/api/v1/bhashini/status', tags=['Digital India Bhashini Gateway'])
