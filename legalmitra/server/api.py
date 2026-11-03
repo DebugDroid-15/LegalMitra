@@ -552,13 +552,31 @@ def stream_legal_query(req: StreamQueryRequest):
         yield f"event: metadata\ndata: {json.dumps({'query': req.query, 'status': 'generating'})}\n\n"
         
         # Determine base answer text
-        full_text = resolved.answer_text
-        # Check if query specifically targets Criminal Breach of Trust or FIR
-        q_lower = effective_query.lower()
-        if (
-            not full_text
-            or len(full_text.strip()) < 20
-            or "ABSTENTION" in full_text
+        q_lower = effective_query.lower().strip()
+
+        # Handle conversational greetings, platform queries, and general inquiries
+        conversational_greetings = [
+            "hi", "hello", "hey", "how can you help me", "how can you help", "who are you", 
+            "what can you do", "help me", "help", "namaste", "kem cho", "vanakkam"
+        ]
+        is_greeting = any(q_lower == g or q_lower.startswith(g + " ") or q_lower.endswith(" " + g) for g in conversational_greetings)
+        
+        if is_greeting:
+            full_text = (
+                "### ⚖️ Welcome to LegalMitra — Sovereign Indian Legal Intelligence\n\n"
+                "I am **LegalMitra**, your statutory legal assistant specializing in Indian jurisprudence, the new **2024–2025 Criminal Codes**, and civil remedies.\n\n"
+                "### 💡 How I Can Assist You:\n"
+                "- **New Criminal Laws (BNS, BNSS, BSA):** Explain transitions from IPC, CrPC, and Evidence Act (e.g., Cheating, Cyber Fraud, e-FIR procedure, Bail).\n"
+                "- **Citizen Remedies:** Police refusal to file FIR, consumer defect grievances, domestic disputes, and cheque dishonour under Section 138 NI Act.\n"
+                "- **Actionable Litigant Tools:** One-click legal notices (PDF/Word), statutory limitation deadlines, court fee & MACT compensation calculations, and e-Courts CNR case tracking.\n"
+                "- **Multilingual Support:** Ask your legal question in **English, Hindi, Marathi, Tamil**, or any of the 22 Scheduled Indian Languages.\n\n"
+                "### 🛡️ How to Get Started:\n"
+                "Describe your situation or query in plain words (e.g. *'Police refused to file my FIR'*, *'Cheque bounced for 5 lakhs'*, or *'What is BNS 318?'*)."
+            )
+        elif (
+            not resolved.answer_text
+            or len(resolved.answer_text.strip()) < 20
+            or "ABSTENTION" in resolved.answer_text
         ):
             from legalmitra.training.aikosh_finetuner import AIKoshLegalFineTuner
             finetuner = AIKoshLegalFineTuner()
