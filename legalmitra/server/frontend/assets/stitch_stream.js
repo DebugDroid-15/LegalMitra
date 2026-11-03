@@ -91,7 +91,7 @@ function initStitchFullSuite() {
     function renderFormattedMarkdown(text) {
         if (window.marked && typeof window.marked.parse === "function") {
             try {
-                return window.marked.parse(text);
+                const compacted = text.replace(/\n{3,}/g, "\n\n"); return window.marked.parse(compacted, { breaks: true, gfm: true });
             } catch (e) {
                 console.error("Markdown parse error:", e);
             }
@@ -244,7 +244,7 @@ function initStitchFullSuite() {
                             </span>
                         </div>
                     </div>
-                    <div class="stream-prose-target font-body-md text-on-surface whitespace-pre-wrap leading-relaxed">
+                    <div class="stream-prose-target font-body-md text-on-surface leading-snug">
                         <span class="inline-block w-2.5 h-4 bg-primary animate-pulse ml-0.5 align-middle"></span>
                     </div>
                     <div class="turn-action-bar mt-4 flex items-center justify-between border-t border-surface-container-high pt-2 text-outline">
