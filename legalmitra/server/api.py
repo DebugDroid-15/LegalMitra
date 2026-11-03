@@ -726,6 +726,66 @@ def synthesize_voice_advice(req: VoiceSynthesizeRequest):
     }
 
 
+# ---------------------------------------------------------------------------
+# One-Click Statutory Notice & Representation Drafter (Phase 98)
+# ---------------------------------------------------------------------------
+class GenerateNoticeRequest(BaseModel):
+    template_type: str = Field(..., description="Template type: police_fir_refusal_sp, cheque_dishonour_138, consumer_deficiency_notice, tenant_eviction_notice, general_legal_demand.")
+    sender_name: str = Field(..., description="Complainant / Client full legal name.")
+    sender_address: str = Field(..., description="Postal address of complainant.")
+    recipient_name: str = Field(..., description="Name of recipient (Officer / Respondent / Accused).")
+    recipient_designation: str = Field("Superintendent of Police", description="Designation of recipient.")
+    recipient_address: str = Field(..., description="Postal address of recipient.")
+    incident_date: str = Field(..., description="Date of dispute or offence.")
+    cause_of_action_facts: str = Field(..., description="Statement of facts disclosing grievance.")
+    claim_amount: Optional[str] = Field(None, description="Monetary claim or cheque amount in INR.")
+    cheque_number: Optional[str] = Field(None, description="Cheque number for NI Act Sec 138 notices.")
+    cheque_date: Optional[str] = Field(None, description="Cheque date.")
+    police_station_name: Optional[str] = Field(None, description="Name of local police station for Sec 173(4) BNSS.")
+    advocate_name: Optional[str] = Field("LegalMitra Sovereign Counsel", description="Advocate signature name.")
+    advocate_enrollment: Optional[str] = Field("Enrolled under Advocates Act, 1961", description="Advocate bar enrollment.")
+
+
+@app.post("/api/v1/draft/generate", tags=["Statutory Notice Drafter"])
+def generate_statutory_notice(req: GenerateNoticeRequest):
+    """Generates legally binding statutory notice in Markdown, PDF, and Word (.docx)."""
+    from legalmitra.drafting.engine import StatutoryNoticeDrafter, NoticeDraftRequest, NoticeTemplateType
+    
+    try:
+        t_type = NoticeTemplateType(req.template_type)
+    except ValueError:
+        t_type = NoticeTemplateType.GENERAL_LEGAL_DEMAND
+
+    draft_req = NoticeDraftRequest(
+        template_type=t_type,
+        sender_name=req.sender_name,
+        sender_address=req.sender_address,
+        recipient_name=req.recipient_name,
+        recipient_designation=req.recipient_designation,
+        recipient_address=req.recipient_address,
+        incident_date=req.incident_date,
+        cause_of_action_facts=req.cause_of_action_facts,
+        claim_amount=req.claim_amount,
+        cheque_number=req.cheque_number,
+        cheque_date=req.cheque_date,
+        police_station_name=req.police_station_name,
+        advocate_name=req.advocate_name,
+        advocate_enrollment=req.advocate_enrollment
+    )
+
+    drafter = StatutoryNoticeDrafter()
+    result = drafter.generate_draft(draft_req)
+    return {
+        "success": result.success,
+        "template_type": result.template_type.value,
+        "title": result.title,
+        "statutory_provision": result.statutory_provision,
+        "full_text_markdown": result.full_text_markdown,
+        "pdf_base64": result.pdf_base64,
+        "docx_base64": result.docx_base64
+    }
+
+
 # Digital India Bhashini Gateway (Phase 92)
 # ---------------------------------------------------------------------------
 @app.get('/api/v1/bhashini/status', tags=['Digital India Bhashini Gateway'])

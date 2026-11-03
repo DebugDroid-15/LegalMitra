@@ -257,7 +257,8 @@ function initStitchFullSuite() {
                             <button class="action-bookmark p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors flex items-center" title="Bookmark answer">
                                 <span class="material-symbols-outlined text-[18px]">bookmark_add</span>
                             </button>
-                            <button class="action-speak p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors flex items-center" title="Audio read-out">
+                            <button class="action-draft p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors flex items-center" title="Draft Formal Legal Notice / Representation"><span class="material-symbols-outlined text-[18px]">post_add</span></button>
+<button class="action-speak p-1.5 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-primary transition-colors flex items-center" title="Audio read-out">
                                 <span class="material-symbols-outlined text-[18px]">volume_up</span>
                             </button>
                         </div>
@@ -272,6 +273,14 @@ function initStitchFullSuite() {
     function wireBubbleActions(containerEl, query, fullText) {
         const copyBtn = containerEl.querySelector(".action-copy");
         const bookmarkBtn = containerEl.querySelector(".action-bookmark");
+        const draftBtn = containerEl.querySelector(".action-draft");
+        if (draftBtn) {
+            draftBtn.addEventListener("click", () => {
+                if (window.openNoticeDrafterModal) {
+                    window.openNoticeDrafterModal({ facts: fullText });
+                }
+            });
+        }
         const speakBtn = containerEl.querySelector(".action-speak");
 
         if (copyBtn) {
