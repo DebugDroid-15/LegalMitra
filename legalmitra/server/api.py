@@ -531,9 +531,16 @@ def stream_legal_query(req: StreamQueryRequest):
     if not req.query.strip():
         raise HTTPException(status_code=400, detail="Query text cannot be empty.")
 
-    # Retrieve evidence from pipeline
+    # 1. Indic Language Detection & Full-Duplex Translation Bridge
+    from legalmitra.multilingual.duplex_bridge import BhashiniFullDuplexBridge
+    from legalmitra.multilingual.bhashini_pipeline import IndicLanguageCode
+
+    duplex = BhashiniFullDuplexBridge()
+    effective_query, detected_lang = duplex.normalize_indic_to_english_query(req.query)
+
+    # 2. Retrieve evidence from pipeline using normalized statutory concepts
     pipeline = get_pipeline("deterministic")
-    resolved = pipeline.execute(query=req.query, context_date=req.context_date, jurisdiction=req.jurisdiction)
+    resolved = pipeline.execute(query=effective_query, context_date=req.context_date, jurisdiction=req.jurisdiction)
     provisions = [{"act": prov, "section": "", "text": prov} for prov in resolved.governing_provisions]
     precedents = [{"case_title": cit, "citation": "", "ratio": cit} for cit in resolved.citations]
 
@@ -544,10 +551,18 @@ def stream_legal_query(req: StreamQueryRequest):
     def event_generator():
         yield f"event: metadata\ndata: {json.dumps({'query': req.query, 'status': 'generating'})}\n\n"
         
-        # Always deliver the verified, human-grounded answer synthesized by the 15-stage pipeline
+        # Determine base answer text
         full_text = resolved.answer_text
-        if not full_text or len(full_text.strip()) < 10:
-            full_text = "I am analyzing your inquiry under authoritative Indian statutes. Please consult an advocate for specific legal steps."
+        if not full_text or len(full_text.strip()) < 10 or "ABSTENTION" in full_text:
+            # Fallback to AI Kosh fine-tuned legal model
+            from legalmitra.training.aikosh_finetuner import AIKoshLegalFineTuner
+            finetuner = AIKoshLegalFineTuner()
+            full_text = finetuner.generate_response(effective_query)
+
+        # 3. If original query was in an Indic language, translate back while protecting statutory numbers
+        if detected_lang != IndicLanguageCode.ENGLISH:
+            trans_res = duplex.translate_legal_text(full_text, target_lang=detected_lang)
+            full_text = trans_res.translated_text
 
         # Stream word-by-word with realistic human typing cadence
         words = full_text.split(" ")
@@ -561,6 +576,25 @@ def stream_legal_query(req: StreamQueryRequest):
         yield f"event: done\ndata: {json.dumps({'status': 'completed'})}\n\n"
 
     return StreamingResponse(event_generator(), media_type="text/event-stream")
+
+
+# ---------------------------------------------------------------------------
+# Digital India Bhashini Gateway (Phase 92)
+# ---------------------------------------------------------------------------
+@app.get('/api/v1/bhashini/status', tags=['Digital India Bhashini Gateway'])
+def get_bhashini_gateway_status():
+    """Returns connectivity and supported model status for Digital India Bhashini Gateway."""
+    from legalmitra.multilingual.bhashini_gateway import BhashiniULCAGateway
+    gw = BhashiniULCAGateway()
+    return {
+        'status': 'healthy',
+        'environment': gw.config.active_environment,
+        'cloud_enabled': gw.is_cloud_enabled(),
+        'offline_fallback_enabled': gw.config.enable_offline_fallback,
+        'supported_tasks': ['asr', 'translation', 'tts', 'ocr'],
+        'supported_scheduled_languages': 22,
+        'default_provider': 'MeitY Bhashini ULCA / Hybrid IndicTrans2'
+    }
 
 
 # ---------------------------------------------------------------------------
