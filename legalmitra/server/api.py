@@ -877,6 +877,78 @@ def resolve_citizen_intake(req: CitizenIntakeRequest):
     }
 
 
+# ---------------------------------------------------------------------------
+# Court Fee, MACT & RERA Compensation Estimator (Phase 101)
+# ---------------------------------------------------------------------------
+class FinancialCalculationApiRequest(BaseModel):
+    calc_type: str = Field(..., description="Calculation type: civil_court_fee, mact_accident_compensation, rera_delayed_possession, cheque_138_recovery.")
+    state: str = Field("maharashtra", description="State jurisdiction: maharashtra, delhi, karnataka, uttar_pradesh, tamil_nadu, all_india_default.")
+    claim_amount: float = Field(0.0, description="Claim amount / suit valuation / cheque value in INR.")
+    victim_age: Optional[int] = Field(None, description="Age of victim for MACT multiplier.")
+    monthly_income: Optional[float] = Field(None, description="Monthly income for MACT calculation.")
+    dependents_count: Optional[int] = Field(None, description="Number of legal dependents.")
+    is_permanent_employed: Optional[bool] = Field(True, description="Whether permanently employed (for Pranay Sethi future prospects).")
+    total_amount_paid_to_builder: Optional[float] = Field(None, description="Total amount paid to builder for RERA claims.")
+    delay_months: Optional[int] = Field(None, description="Delay in flat possession in months.")
+    sbi_mclr_rate_percent: float = Field(8.75, description="Benchmark SBI MCLR rate for RERA interest.")
+
+
+@app.post("/api/v1/calculators/court-fee", tags=["Financial & Compensation Calculator"])
+def calculate_financial_compensation(req: FinancialCalculationApiRequest):
+    """Calculates state court fees, MACT fatal accident compensation, and RERA refund interest."""
+    from legalmitra.calculators.financial_engine import (
+        FinancialCompensationEngine,
+        FinancialCalculationRequest,
+        FinancialCalculatorType,
+        StateJurisdiction
+    )
+
+    try:
+        c_type = FinancialCalculatorType(req.calc_type)
+    except ValueError:
+        c_type = FinancialCalculatorType.CIVIL_COURT_FEE
+
+    try:
+        s_enum = StateJurisdiction(req.state)
+    except ValueError:
+        s_enum = StateJurisdiction.MAHARASHTRA
+
+    engine = FinancialCompensationEngine()
+    calc_req = FinancialCalculationRequest(
+        calc_type=c_type,
+        state=s_enum,
+        claim_amount=req.claim_amount,
+        victim_age=req.victim_age,
+        monthly_income=req.monthly_income,
+        dependents_count=req.dependents_count,
+        is_permanent_employed=req.is_permanent_employed,
+        total_amount_paid_to_builder=req.total_amount_paid_to_builder,
+        delay_months=req.delay_months,
+        sbi_mclr_rate_percent=req.sbi_mclr_rate_percent
+    )
+
+    result = engine.calculate(calc_req)
+    return {
+        "success": result.success,
+        "calc_type": result.calc_type,
+        "state_jurisdiction": result.state_jurisdiction,
+        "total_estimated_amount": result.total_estimated_amount,
+        "formatted_total_inr": result.formatted_total_inr,
+        "primary_enactment": result.primary_enactment,
+        "landmark_precedent": result.landmark_precedent,
+        "breakdown_heads": [
+            {
+                "head_name": h.head_name,
+                "amount_inr": h.amount_inr,
+                "statutory_governance": h.statutory_governance,
+                "calculation_breakdown": h.calculation_breakdown
+            }
+            for h in result.breakdown_heads
+        ],
+        "practical_guidance": result.practical_guidance
+    }
+
+
 # Digital India Bhashini Gateway (Phase 92)
 # ---------------------------------------------------------------------------
 @app.get('/api/v1/bhashini/status', tags=['Digital India Bhashini Gateway'])
