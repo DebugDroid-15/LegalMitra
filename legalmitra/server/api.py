@@ -1006,6 +1006,23 @@ def inspect_statute_gazette(payload: GazetteInspectRequest):
     return result.model_dump()
 
 
+# Phase 105: Multi-Agent Adversarial "Moot Court" Case Simulator
+# ---------------------------------------------------------------------------
+class MootCourtRequest(BaseModel):
+    fact_summary: str = Field(..., description="Summary of facts or dispute scenario")
+    dispute_category: str = Field("Criminal Breach & Cheating", description="Dispute category or legal topic")
+
+@app.post("/api/v1/simulation/moot-court", tags=["Adversarial Case Simulator"])
+def simulate_moot_court_proceeding(payload: MootCourtRequest):
+    """
+    Simulates a 3-agent courtroom proceeding featuring Petitioner Counsel submissions,
+    Defence rebuttals, and Presiding Judicial Bench findings with risk assessment.
+    """
+    from legalmitra.simulation.moot_court_engine import moot_court_simulator
+    result = moot_court_simulator.simulate(payload.fact_summary, payload.dispute_category)
+    return result.model_dump()
+
+
 # Digital India Bhashini Gateway (Phase 92)
 # ---------------------------------------------------------------------------
 @app.get('/api/v1/bhashini/status', tags=['Digital India Bhashini Gateway'])
