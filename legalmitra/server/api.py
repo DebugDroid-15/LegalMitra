@@ -1023,6 +1023,32 @@ def simulate_moot_court_proceeding(payload: MootCourtRequest):
     return result.model_dump()
 
 
+# Phase 106: Commercial Contract Statutory Risk Auditor & Clause Redliner
+# ---------------------------------------------------------------------------
+class ContractAuditRedlineRequest(BaseModel):
+    contract_text: str = Field(..., description="Full contract or clause text")
+    contract_title: Optional[str] = Field("Commercial Agreement", description="Contract title")
+    generate_docx: bool = Field(True, description="Whether to export track-changes DOCX")
+
+@app.post("/api/v1/contract/audit-full", tags=["Contract Risk Auditing"])
+def audit_and_redline_contract(payload: ContractAuditRedlineRequest):
+    """
+    Performs statutory risk auditing and line-by-line redline clause drafting
+    with optional downloadable track-changes Word document (.docx).
+    """
+    from legalmitra.drafting.contract_redliner_engine import commercial_contract_auditor
+    audit = commercial_contract_auditor.audit_contract_text(payload.contract_text, payload.contract_title)
+    docx_path = None
+    if payload.generate_docx:
+        docx_path = commercial_contract_auditor.generate_docx_redline(audit)
+    
+    res = audit.model_dump()
+    res["docx_export_path"] = docx_path
+    if docx_path:
+        res["docx_download_url"] = f"/api/v1/draft/download?path={docx_path.replace(os.sep, '/')}"
+    return res
+
+
 # Digital India Bhashini Gateway (Phase 92)
 # ---------------------------------------------------------------------------
 @app.get('/api/v1/bhashini/status', tags=['Digital India Bhashini Gateway'])
