@@ -1049,6 +1049,19 @@ def audit_and_redline_contract(payload: ContractAuditRedlineRequest):
     return res
 
 
+# Phase 107: WhatsApp & Telegram Sovereign Voice Bot Integration
+# ---------------------------------------------------------------------------
+from legalmitra.integrations.bot_gateway import InboundBotMessage, OutboundBotResponse, sovereign_bot_gateway
+
+@app.post("/api/v1/integrations/bot-webhook", response_model=OutboundBotResponse, tags=["WhatsApp & Telegram Bot Webhook"])
+def handle_bot_webhook(payload: InboundBotMessage):
+    """
+    Handles inbound messages, voice notes, and scanned documents from WhatsApp Cloud API
+    and Telegram bots, returning text and synthesized voice responses in 22 languages.
+    """
+    return sovereign_bot_gateway.process_inbound(payload)
+
+
 # Digital India Bhashini Gateway (Phase 92)
 # ---------------------------------------------------------------------------
 @app.get('/api/v1/bhashini/status', tags=['Digital India Bhashini Gateway'])
