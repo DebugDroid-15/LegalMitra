@@ -786,6 +786,59 @@ def generate_statutory_notice(req: GenerateNoticeRequest):
     }
 
 
+# ---------------------------------------------------------------------------
+# Statutory Limitation & Procedural Timeline Calculator (Phase 99)
+# ---------------------------------------------------------------------------
+class LimitationCalculateRequest(BaseModel):
+    category: str = Field(..., description="Dispute category: cheque_dishonour_138, money_recovery_debt, consumer_complaint, arbitration_award_challenge, high_court_appeal_civil.")
+    incident_date: str = Field(..., description="Date of cause of action (YYYY-MM-DD or DD-MM-YYYY).")
+    current_date: Optional[str] = Field(None, description="Point-in-time calculation reference date.")
+
+
+@app.post("/api/v1/calculators/limitation", tags=["Statutory Limitation Calculator"])
+def calculate_statutory_limitation(req: LimitationCalculateRequest):
+    """Calculates limitation period, expiry deadlines, and Section 5 condonation eligibility."""
+    from legalmitra.calculators.limitation_engine import StatutoryLimitationEngine, DisputeCategory
+    
+    try:
+        cat_enum = DisputeCategory(req.category)
+    except ValueError:
+        cat_enum = DisputeCategory.CHEQUE_DISHONOUR_138
+
+    engine = StatutoryLimitationEngine()
+    result = engine.calculate_timeline(
+        category=cat_enum,
+        event_date_str=req.incident_date,
+        current_date_str=req.current_date
+    )
+    return {
+        "success": result.success,
+        "dispute_category": result.dispute_category,
+        "start_event_date": result.start_event_date,
+        "calculated_current_date": result.calculated_current_date,
+        "final_limitation_expiry_date": result.final_limitation_expiry_date,
+        "days_remaining": result.days_remaining,
+        "is_time_barred": result.is_time_barred,
+        "is_condonation_of_delay_permissible": result.is_condonation_of_delay_permissible,
+        "condonation_governing_law": result.condonation_governing_law,
+        "primary_enactment": result.primary_enactment,
+        "statutory_citation": result.statutory_citation,
+        "milestones": [
+            {
+                "step_number": m.step_number,
+                "title": m.title,
+                "statutory_deadline_date": m.statutory_deadline_date,
+                "duration_days": m.duration_days,
+                "governing_section": m.governing_section,
+                "status": m.status,
+                "instruction": m.instruction
+            }
+            for m in result.milestones
+        ],
+        "practical_advocate_advice": result.practical_advocate_advice
+    }
+
+
 # Digital India Bhashini Gateway (Phase 92)
 # ---------------------------------------------------------------------------
 @app.get('/api/v1/bhashini/status', tags=['Digital India Bhashini Gateway'])
