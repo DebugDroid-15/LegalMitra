@@ -672,6 +672,36 @@ def translate_statutory_text(req: IndicTranslationRequest):
     }
 
 
+# ---------------------------------------------------------------------------
+# Digital India Bhashini TTS (Phase 96)
+# ---------------------------------------------------------------------------
+class VoiceSynthesizeRequest(BaseModel):
+    text: str = Field(..., description="Legal explanation text to synthesize into spoken audio.")
+    language: str = Field("mr", description="Indic language code (e.g. mr, hi, ta, te, bn, gu, kn, en).")
+    gender: str = Field("female", description="Voice gender: female or male.")
+
+
+@app.post("/api/v1/voice/synthesize", tags=["Digital India Bhashini Gateway"])
+def synthesize_voice_advice(req: VoiceSynthesizeRequest):
+    """Synthesizes legal guidance into native Indic voice audio for non-literate citizens."""
+    if not req.text.strip():
+        raise HTTPException(status_code=400, detail="text cannot be empty.")
+    from legalmitra.multilingual.tts_engine import BhashiniLegalTTSEngine
+    tts = BhashiniLegalTTSEngine()
+    result = tts.synthesize_speech(req.text, language=req.language, gender=req.gender)
+    if not result.success:
+        raise HTTPException(status_code=500, detail=result.error_message)
+    return {
+        "success": True,
+        "language": result.language,
+        "audio_base64": result.audio_base64,
+        "audio_format": result.audio_format,
+        "duration_seconds": result.duration_seconds,
+        "latency_ms": result.latency_ms,
+        "provider": result.provider
+    }
+
+
 # Digital India Bhashini Gateway (Phase 92)
 # ---------------------------------------------------------------------------
 @app.get('/api/v1/bhashini/status', tags=['Digital India Bhashini Gateway'])
