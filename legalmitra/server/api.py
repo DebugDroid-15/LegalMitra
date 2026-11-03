@@ -579,6 +579,35 @@ def stream_legal_query(req: StreamQueryRequest):
 
 
 # ---------------------------------------------------------------------------
+# ---------------------------------------------------------------------------
+# Digital India Bhashini ASR (Phase 93)
+# ---------------------------------------------------------------------------
+class VoiceTranscribeRequest(BaseModel):
+    audio_base64: str = Field(..., description="Base64-encoded audio.")
+    language: str = Field("mr", description="Indic language code.")
+
+
+@app.post("/api/v1/voice/transcribe", tags=["Digital India Bhashini Gateway"])
+def transcribe_voice_query(req: VoiceTranscribeRequest):
+    """Transcribes citizen voice query into native Indic legal text via Bhashini ASR."""
+    if not req.audio_base64.strip():
+        raise HTTPException(status_code=400, detail="audio_base64 payload cannot be empty.")
+    from legalmitra.multilingual.asr_engine import BhashiniASREngine
+    asr = BhashiniASREngine()
+    result = asr.transcribe_base64(req.audio_base64, language=req.language)
+    if not result.success:
+        raise HTTPException(status_code=500, detail=result.error_message)
+    return {
+        "success": True,
+        "language": result.language,
+        "transcription": result.transcription,
+        "confidence_score": result.confidence_score,
+        "duration_seconds": result.duration_seconds,
+        "latency_ms": result.latency_ms,
+        "provider": result.provider
+    }
+
+
 # Digital India Bhashini Gateway (Phase 92)
 # ---------------------------------------------------------------------------
 @app.get('/api/v1/bhashini/status', tags=['Digital India Bhashini Gateway'])
