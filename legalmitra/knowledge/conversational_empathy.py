@@ -257,8 +257,12 @@ class ConversationalEmpathyEngine:
         if any(cp in q for cp in capability_phrases):
             return next(b for b in CONVERSATIONAL_BEHAVIORS if b.behavior_id == "BEHAVIOR_CAPABILITY")
 
-        # 1. Open distress
-        if any(p in q for p in ["mere saath galat", "mere sath galat", "kya karu", "something wrong happened", "kuch galat hua"]):
+        # 1. Open distress (ONLY when query is broad/vague, NOT when specific facts like otp, bank, cheque, police, fir, rent, landlord, salary are present)
+        distress_triggers = ["mere saath galat", "mere sath galat", "kya karu", "something wrong happened", "kuch galat hua", "help me please"]
+        specific_fact_keywords = ["otp", "bank", "account", "paisa", "paise", "cheque", "bounce", "police", "fir", "landlord", "flat", "makan", "tenant", "kiray", "salary", "fired", "dhokha", "fraud", "scam", "kat gaye", "bhaag gaya"]
+        has_specific_facts = any(k in q for k in specific_fact_keywords)
+
+        if not has_specific_facts and any(p in q for p in distress_triggers):
             return next(b for b in CONVERSATIONAL_BEHAVIORS if b.behavior_id == "BEHAVIOR_DISTRESS_OPEN")
 
         # 2. Urgent police arrest

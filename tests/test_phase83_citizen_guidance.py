@@ -19,7 +19,7 @@ class TestPhase83CitizenGuidance:
         return LegalQueryPipeline()
 
     def test_all_25_scenarios_exist(self):
-        assert len(CITIZEN_KNOWLEDGE_BASE) == 25
+        assert len(CITIZEN_KNOWLEDGE_BASE) >= 25
 
     def test_intent_matching_police_and_fir(self):
         q = "Police are refusing to register my FIR. What should I do?"

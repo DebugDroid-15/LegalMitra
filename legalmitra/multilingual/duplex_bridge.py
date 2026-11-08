@@ -17,17 +17,23 @@ from legalmitra.multilingual.bhashini_pipeline import (
 
 # Common colloquial Indic legal terms mapped directly to English concepts for the retrieval engine
 COLLOQUIAL_INDIC_LEGAL_MAP = [
-    # FIR refusal & police complaints
-    (r'(?:एफआयआर|एफआईआर|fir).*?(?:नकार|मना|घेतली नाही|not registering)', 'police refusal to register FIR Section 173(4) BNSS Section 154 CrPC representation to Superintendent of Police'),
+    # FIR refusal & police complaints (Hindi, Marathi, Tamil, Telugu, Hinglish)
+    (r'(?:police|पोलीस|पुलिस|station).*?(?:complaint|fir|तक्रार|शिकायत).*?(?:refus|not|नाही|मना|nahit|edukka|maatengraanga|panradhu|kya karu)', 'police refusal to register FIR Section 173(4) BNSS Section 154 CrPC representation to Superintendent of Police'),
+    (r'(?:एफआयआर|एफआईआर|fir).*?(?:नकार|मना|घेतली नाही|not registering|nahi likh|nondvat nahit)', 'police refusal to register FIR Section 173(4) BNSS Section 154 CrPC representation to Superintendent of Police'),
     (r'(?:तक्रार|शिकायत|complaint).*?(?:पोलीस|पुलिस)', 'police complaint cognizable offence FIR Section 173 BNSS'),
+    # Cheque Bounce (Hinglish, Hindi, Marathi, Tamil)
+    (r'(?:cheque|check|धनादेश).*?(?:bounce|बाउंस|dishonour|mismatch|sign|funds)', 'cheque bounce dishonour Section 138 Negotiable Instruments Act statutory demand notice 30 days'),
+    # Landlord & Tenant Eviction
+    (r'(?:landlord|flat|room|luggage|kiraye|makan malik|bhadekaru).*?(?:lock|threw|evict|nikal|khali|throw)', 'illegal tenant eviction without due process of law Section 106 Transfer of Property Act'),
+    # Cyber & UPI fraud / OTP theft
+    (r'(?:otp|upi|cyber|call karke|account se).*?(?:kat gaye|stole|fraud|deducted|nikal gaye)', 'cyber financial fraud helpline 1930 golden hour lien cybercrime.gov.in Section 66D IT Act'),
     # Arrest & Bail
     (r'(?:अटक|गिरफ्तारी|arrest).*?(?:हक्क|अधिकार|rights)', 'arrest rights Section 47 BNSS grounds of arrest notification to relative Section 48 BNSS'),
     (r'(?:पूर्वजामीन|अग्रिम जमानत|anticipatory bail)', 'Anticipatory bail Section 482 BNSS Section 438 CrPC Arnesh Kumar guidelines'),
     (r'(?:जामीन|जमानत|bail)', 'bail procedure non-bailable offence Judicial Magistrate'),
     # Cheating & Fraud
-    (r'(?:फसवणूक|धोखाधड़ी|cheating|scam)', 'cheating Section 318 BNS Section 420 IPC dishonest misappropriation'),
+    (r'(?:फसवणूक|धोखाधड़ी|cheating|scam|bhaag gaya|farar|le liye)', 'cheating Section 318 BNS Section 420 IPC dishonest misappropriation Section 316 criminal breach of trust'),
     (r'(?:विश्वासघात|breach of trust)', 'criminal breach of trust Section 316 BNS Section 405 IPC entrustment'),
-    # Cyber & UPI fraud
     (r'(?:सायबर|साइबर|upi|पैसे cut|fraud).*?(?:रुपये|पैसे|money)', 'cyber financial fraud helpline 1930 golden hour lien cybercrime.gov.in'),
     # Eviction & Landlord
     (r'(?:भाडेकरू|किराएदार|मकान मालिक|घर खाली|evict)', 'illegal tenant eviction without due process of law Specific Relief Act Section 6')
@@ -97,12 +103,11 @@ class BhashiniFullDuplexBridge(BhashiniIndicLegalBridge):
         """
         Translates a user's native Indic/colloquial query into an authoritative
         English statutory search term suitable for FTS5 and the RAG pipeline.
+        Handles both native script queries and Latin-script transliterations (Hinglish/Tanglish/Manglish).
         """
         lang = self.detect_language(query)
-        if lang == IndicLanguageCode.ENGLISH:
-            return query, lang
 
-        # Match against legal intent expressions
+        # Match against legal intent expressions across all scripts/languages
         for pattern, english_search_terms in COLLOQUIAL_INDIC_LEGAL_MAP:
             if re.search(pattern, query, re.IGNORECASE):
                 return english_search_terms, lang

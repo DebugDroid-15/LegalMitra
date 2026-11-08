@@ -575,6 +575,52 @@ CITIZEN_KNOWLEDGE_BASE: List[CitizenLegalGuidance] = [
             "Order IX CPC allows the court to make an ex-parte decree if defendant fails to appear after valid service. BNSS provisions authorize arrest warrants for non-appearance after summons."
         ),
         keywords=["received a court notice", "can i ignore court notice", "court notice ignore kar sakte hain", "court summons ignore", "what if ignore court notice"]
+    ),
+    # 26. Cheque Bounce & Dishonour (Section 138 NI Act)
+    CitizenLegalGuidance(
+        scenario_id="Q26_CHEQUE_BOUNCE_DISHONOUR",
+        category="Banking, Negotiable Instruments & Debt Recovery",
+        direct_answer=(
+            "If a cheque bounces due to insufficient funds, signature mismatch, or account closed, "
+            "you have a statutory criminal remedy under Section 138 of the Negotiable Instruments Act, 1881."
+        ),
+        step_by_step_actions=[
+            "Collect the original bounced cheque and the Bank Return Memo (Dishonour Memo) showing the exact return reason (such as 'Funds Insufficient' or 'Signature Differs').",
+            "Issue a formal Statutory Demand Notice in writing to the drawer within 30 days of receiving the bank memo, demanding payment of the cheque amount.",
+            "Give the drawer a mandatory 15-day cure period from the date they receive the notice to clear the outstanding amount.",
+            "If the drawer fails to make the payment within 15 days, file a Criminal Complaint under Section 138 NI Act before the Judicial Magistrate within 30 days thereafter.",
+            "The offence is punishable with imprisonment up to 2 years, or fine which may extend to twice the amount of the cheque, or both."
+        ],
+        evidence_to_preserve=["Original cheque", "Bank return/dishonour memo", "Copy of statutory demand notice", "Postal receipt & delivery tracking proof"],
+        helplines=["15100 (Free Legal Aid)", "Local District Legal Services Authority"],
+        governing_statutes=["The Negotiable Instruments Act, 1881 (Section 138)", "The Negotiable Instruments Act, 1881 (Section 142)"],
+        legal_provisions_summary=(
+            "Section 138 of the Negotiable Instruments Act criminalizes the dishonour of cheques drawn for the discharge of any debt or other liability. Under Supreme Court precedent (Laxmi Dyechem v. State of Gujarat), dishonour on grounds of 'signature mismatch' is fully covered under Section 138."
+        ),
+        keywords=["cheque bounce", "cheque bounce ho gaya", "cheque dishonour", "sign mismatch", "signature mismatch cheque", "cheque return", "cheque bounced"]
+    ),
+    # 27. Cheating, Business Fraud & Monetary Duping (Section 318 BNS / 420 IPC)
+    CitizenLegalGuidance(
+        scenario_id="Q27_CHEATING_MONEY_DUPING",
+        category="Criminal Fraud, Cheating & Misappropriation",
+        direct_answer=(
+            "Taking money dishonestly by false representation or deception and fleeing constitutes "
+            "criminal cheating under Section 318 of the Bharatiya Nyaya Sanhita (BNS), 2023 (erstwhile Section 420 IPC)."
+        ),
+        step_by_step_actions=[
+            "Draft a detailed written complaint stating the facts: when the money was handed over, false promises made (e.g. shop/business deal), and how the person absconded.",
+            "File the complaint with the local Police Station demanding an FIR for Cheating and Criminal Breach of Trust under Section 318(4) and Section 316 BNS.",
+            "If the police refuse to register the FIR, send your complaint by registered/speed post to the Superintendent of Police (SP/DCP) under Section 173(4) BNSS.",
+            "If no action is taken, file an application before the Judicial Magistrate under Section 175(3) BNSS seeking court directions to the police to register FIR and recover the money.",
+            "Compile all proofs: bank account statements, UPI transaction IDs, WhatsApp/call logs, witnesses, and shop/business agreements."
+        ],
+        evidence_to_preserve=["Bank transfer statement / cash receipts", "WhatsApp chat promises & agreement proofs", "Identity details & photo of the accused", "Witness statements"],
+        helplines=["112 (Police Emergency)", "15100 (Free Legal Aid Helpline)"],
+        governing_statutes=["The Bharatiya Nyaya Sanhita, 2023 (Section 318(4) Cheating)", "The Bharatiya Nyaya Sanhita, 2023 (Section 316 Criminal Breach of Trust)", "The Bharatiya Nagarik Suraksha Sanhita, 2023 (Section 173(4))"],
+        legal_provisions_summary=(
+            "Section 318(4) BNS penalizes cheating and dishonestly inducing delivery of property with imprisonment up to 7 years and fine. Section 316 BNS penalizes criminal breach of trust."
+        ),
+        keywords=["paise le liye aur bhaag gaya", "paisa lekar bhaag gaya", "cheating karke bhaag gaya", "shop fraud money", "dukaan ke naam par paise", "paise lekar farar", "fraud money cheating"]
     )
 ]
 
@@ -653,11 +699,16 @@ class CitizenLegalGuidanceEngine:
                 if ("college" in q_words or "university" in q_words or "school" in q_words) and ("certificates" in q_words or "certificate" in q_words or "marksheet" in q_words or "degree" in q_words):
                     score += 10
             elif guidance.scenario_id == "Q15_SUDDEN_TERMINATION":
-                if ("fired" in q_words or "terminated" in q_words or "termination" in q_words or "job" in q_words or "unlawful termination" in q_lower) and ("notice" in q_words or "bina notice" in q_lower or "rights" in q_words or "unlawful" in q_words or "employment" in q_words):
-                    score += 15
+                # Guard against tenant eviction or cheque disputes triggering sudden termination
+                is_tenant = any(w in q_words for w in ["landlord", "flat", "rent", "tenant", "room", "house", "makan", "luggage", "locked"])
+                is_cheque = any(w in q_words for w in ["cheque", "bounce", "bank", "mismatch"])
+                if not is_tenant and not is_cheque:
+                    if ("fired" in q_words or "terminated" in q_words or "termination" in q_words or "job" in q_words or "unlawful termination" in q_lower) and ("notice" in q_words or "bina notice" in q_lower or "rights" in q_words or "unlawful" in q_words or "employment" in q_words or "company" in q_words or "boss" in q_words):
+                        score += 15
             elif guidance.scenario_id == "Q16_ILLEGAL_EVICTION":
-                if ("landlord" in q_words or "makan malik" in q_lower or "rented" in q_words) and ("leave" in q_words or "throw" in q_words or "evict" in q_words or "tomorrow" in q_words):
-                    score += 10
+                if any(w in q_words for w in ["landlord", "flat", "rent", "tenant", "room", "house", "makan", "luggage", "bhadekaru"]) or "makan malik" in q_lower:
+                    if any(w in q_words for w in ["leave", "throw", "evict", "locked", "tomorrow", "vacate", "out", "nikal"]):
+                        score += 25
             elif guidance.scenario_id == "Q17_LAND_ENCROACHMENT":
                 if ("neighbour" in q_words or "neighbor" in q_words or "padosi" in q_words) and ("land" in q_words or "plot" in q_words or "occupied" in q_words or "encroached" in q_words or "kabza" in q_words):
                     score += 10
@@ -665,8 +716,9 @@ class CitizenLegalGuidanceEngine:
                 if ("loud music" in q_lower or "music" in q_words or "speaker" in q_words or "sound" in q_words) and ("night" in q_words or "every night" in q_lower or "raat" in q_words or "neighbour" in q_words):
                     score += 10
             elif guidance.scenario_id == "Q19_VEHICLE_ACCIDENT_DUTIES":
-                if ("hit" in q_words or "accident" in q_words or "collision" in q_words) and ("bike" in q_words or "car" in q_words or "vehicle" in q_words):
-                    score += 10
+                is_cheque = "cheque" in q_words or "bounce" in q_words
+                if not is_cheque and ("hit" in q_words or "accident" in q_words or "collision" in q_words) and ("bike" in q_words or "car" in q_words or "vehicle" in q_words or "road" in q_words):
+                    score += 15
             elif guidance.scenario_id == "Q20_FREE_LEGAL_AID":
                 if ("cannot afford" in q_lower or "no money" in q_lower or "paise nahi" in q_lower or "free" in q_words) and ("lawyer" in q_words or "advocate" in q_words or "case" in q_words or "legal aid" in q_lower):
                     score += 10
@@ -685,6 +737,12 @@ class CitizenLegalGuidanceEngine:
             elif guidance.scenario_id == "Q25_COURT_NOTICE_IGNORING":
                 if ("court" in q_words or "summons" in q_words or "notice" in q_words) and ("ignore" in q_words or "don't understand" in q_lower or "received" in q_words):
                     score += 10
+            elif guidance.scenario_id == "Q26_CHEQUE_BOUNCE_DISHONOUR":
+                if ("cheque" in q_words or "check" in q_words) and ("bounce" in q_words or "bounced" in q_words or "dishonour" in q_words or "mismatch" in q_words or "sign" in q_words or "return" in q_words):
+                    score += 30
+            elif guidance.scenario_id == "Q27_CHEATING_MONEY_DUPING":
+                if ("paise" in q_words or "rupaye" in q_words or "paisa" in q_words or "money" in q_words or "lakh" in q_words) and ("bhaag" in q_words or "farar" in q_words or "cheated" in q_words or "dhokha" in q_words or "dukaan" in q_words or "lekar" in q_words or "le liye" in q_lower):
+                    score += 30
 
             if score > highest_score and score >= 4:
                 highest_score = score
