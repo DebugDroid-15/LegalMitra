@@ -107,7 +107,14 @@ class BhashiniFullDuplexBridge(BhashiniIndicLegalBridge):
         """
         lang = self.detect_language(query)
 
-        # 1. Phase 111: Deep dialectal & colloquial normalization
+        # 1. Check Phase 112: Multi-intent compound queries (do not collapse compound issues into single search terms)
+        from legalmitra.orchestration.multi_intent_guard import MultiIntentDisambiguationGuard
+        compound_check = MultiIntentDisambiguationGuard.analyze_query(query)
+        if compound_check.is_compound_query:
+            # Preserve original compound query text for pipeline multi-issue resolution
+            return query, lang
+
+        # 2. Phase 111: Deep dialectal & colloquial normalization
         from legalmitra.multilingual.colloquial_normalizer import (
             IndicColloquialNormalizer,
             CanonicalLegalIntent,

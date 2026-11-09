@@ -640,6 +640,61 @@ class EvidenceTraceableAnswerAssembler:
                 evidence_matrix=matrix,
             )
 
+        # Phase 112: Multi-Intent Disambiguation & Fact Extraction Guard
+        from legalmitra.orchestration.multi_intent_guard import (
+            MultiIntentDisambiguationGuard,
+            UrgencyTier,
+        )
+        multi_intent_res = MultiIntentDisambiguationGuard.analyze_query(q_raw)
+
+        if multi_intent_res.is_compound_query and not parsed_query.is_adversarial_injection:
+            # Construct comprehensive dual/multi-issue guidance
+            compound_parts = []
+            compound_parts.append(
+                f"### Multi-Issue Legal Determination\n"
+                f"Your query involves **{len(multi_intent_res.sub_issues)} distinct legal issues** requiring separate statutory pathways:"
+            )
+
+            for issue in multi_intent_res.sub_issues:
+                statutes_formatted = ", ".join(issue.governing_statutes)
+                compound_parts.append(
+                    f"#### Issue {issue.issue_index}: {issue.issue_title} ({issue.primary_category})\n"
+                    f"- **Immediate Practical Action:** {issue.immediate_action}\n"
+                    f"- **Governing Indian Law:** {statutes_formatted}\n"
+                    f"- **Statutory Limitation / Timeline:** {issue.statutory_limitation_or_timeline or 'Standard statutory limitation applies.'}"
+                )
+                for st in issue.governing_statutes:
+                    governing_provisions.append(st)
+                    citations.append(st)
+
+            if multi_intent_res.extracted_facts.monetary_amounts:
+                amts = ", ".join(multi_intent_res.extracted_facts.monetary_amounts)
+                compound_parts.append(f"**Identified Claim Amounts:** {amts}")
+
+            if multi_intent_res.primary_urgency == UrgencyTier.IMMEDIATE_EMERGENCY:
+                compound_parts.append("> [!IMPORTANT]\n> **Emergency Detected:** If you or your family are under imminent physical threat, dial **112** immediately.")
+
+            disclaimer = (
+                "This answer provides structured guidance for compound legal disputes under Indian law. "
+                "Consult an enrolled advocate for filing civil suits or criminal complaints."
+            )
+            compound_text = "\n\n".join(compound_parts) + f"\n\n---\n*{disclaimer}*"
+            return AssembledAnswer(
+                answer_text=compound_text,
+                citations=list(dict.fromkeys(citations)),
+                claims=claims,
+                governing_provisions=list(dict.fromkeys(governing_provisions)),
+                competing_authorities=[],
+                missing_facts_notes=[],
+                overall_validation_status=overall_status,
+                unsupported_claims_count=0,
+                contradicted_claims_count=0,
+                temporally_superseded_count=0,
+                practical_next_steps=[si.immediate_action for si in multi_intent_res.sub_issues],
+                disclaimer=disclaimer,
+                evidence_matrix=matrix,
+            )
+
         # Check Citizen Guidance Engine (Phase 83 - Human Accessible Plain-English Resolution)
         from legalmitra.knowledge.citizen_intents import CitizenLegalGuidanceEngine
         citizen_guidance = CitizenLegalGuidanceEngine.match_citizen_query(q_raw)
