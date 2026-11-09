@@ -377,8 +377,10 @@ CITIZEN_KNOWLEDGE_BASE: List[CitizenLegalGuidance] = [
         ],
         evidence_to_preserve=["Rent agreement", "Bank statements / rent receipts", "Photos/videos of any lockout or disconnection", "Messages from landlord"],
         helplines=["112 (Police Emergency)", "15100 (NALSA Legal Aid)"],
-        governing_statutes=["Transfer of Property Act, 1882 (Section 106)", "The Bharatiya Nyaya Sanhita, 2023 (Section 329)", "State Rent Control Acts"],
+        governing_statutes=["Transfer of Property Act, 1882 (Section 106)", "The Bharatiya Nyaya Sanhita, 2023 (Section 329)", "Specific Relief Act, 1963 (Section 6)", "State Rent Control Acts"],
         legal_provisions_summary=(
+            "Section 106 Transfer of Property Act mandates clear written notice prior to termination of lease. "
+            "Section 6 of the Specific Relief Act, 1963 provides that if any person is dispossessed without consent of immovable property otherwise than in due course of law, he may recover possession. "
             "The Supreme Court in Midnapore Zamindary and subsequent rulings firmly established that even a tenant whose lease has expired cannot be dispossessed except in accordance with law."
         ),
         keywords=["landlord asking to leave tomorrow", "throw me out immediately", "makan malik nikal raha hai", "landlord evict tomorrow", "illegal eviction locks"]
@@ -841,8 +843,21 @@ class CitizenLegalGuidanceEngine:
 
             # Specific high-intent keyword boosts for all citizen scenarios (Q1-Q25)
             if guidance.scenario_id == "Q1_FIR_REFUSAL":
-                if ("fir" in q_words or "police complaint" in q_lower or "complaint" in q_words) and ("refus" in q_lower or "not registering" in q_lower or "nahi likh" in q_lower or "mana" in q_lower):
-                    score += 15
+                if (
+                    ("fir" in q_words or "police complaint" in q_lower or "complaint" in q_words or "police station" in q_lower or "police" in q_words or "sho" in q_words)
+                    and (
+                        "refus" in q_lower
+                        or "not registering" in q_lower
+                        or "nahi likh" in q_lower
+                        or "mana" in q_lower
+                        or "edukka" in q_lower
+                        or "maatengraanga" in q_lower
+                        or "nahi le rahe" in q_lower
+                        or "bhaga raha" in q_lower
+                        or "nondvat nahit" in q_lower
+                    )
+                ):
+                    score += 35
             elif guidance.scenario_id == "Q2_ARREST_GROUNDS":
                 if ("arrest" in q_words or "hirasat" in q_lower) and ("without telling" in q_lower or "grounds" in q_words or "reason" in q_words or "bina bataye" in q_lower or "kyu" in q_lower):
                     score += 15
@@ -850,8 +865,11 @@ class CitizenLegalGuidanceEngine:
                 if ("threatening" in q_words or "threat" in q_words or "dhamki" in q_lower) and ("beat" in q_words or "hit" in q_words or "kill" in q_words or "maarne" in q_lower or "police" in q_words):
                     score += 15
             elif guidance.scenario_id == "Q4_CYBER_BANK_FRAUD":
-                if ("stole" in q_words or "stolen" in q_words or "fraud" in q_words or "paise kat gaye" in q_lower or "deducted" in q_words) and ("bank" in q_words or "account" in q_words or "1930" in q_words or "pretending" in q_words or "cyber" in q_words):
-                    score += 15
+                if (
+                    ("stole" in q_words or "stolen" in q_words or "fraud" in q_words or "paise kat gaye" in q_lower or "deducted" in q_words or "gayab" in q_lower or "upi pin" in q_lower or "otp" in q_words)
+                    and ("bank" in q_words or "account" in q_words or "1930" in q_words or "pretending" in q_words or "cyber" in q_words or "upi" in q_words or "call" in q_words or "lakh" in q_words)
+                ):
+                    score += 35
             elif guidance.scenario_id == "Q5_FAKE_SOCIAL_PROFILE":
                 if ("fake" in q_words or "impersonat" in q_lower or "misuse" in q_words) and ("instagram" in q_words or "profile" in q_words or "account" in q_words or "photos" in q_words or "photo" in q_words):
                     score += 15
@@ -890,9 +908,21 @@ class CitizenLegalGuidanceEngine:
                     if ("fired" in q_words or "terminated" in q_words or "termination" in q_words or "job" in q_words or "unlawful termination" in q_lower) and ("notice" in q_words or "bina notice" in q_lower or "rights" in q_words or "unlawful" in q_words or "employment" in q_words or "company" in q_words or "boss" in q_words):
                         score += 15
             elif guidance.scenario_id == "Q16_ILLEGAL_EVICTION":
-                if any(w in q_words for w in ["landlord", "flat", "rent", "tenant", "room", "house", "makan", "luggage", "bhadekaru"]) or "makan malik" in q_lower:
-                    if any(w in q_words for w in ["leave", "throw", "evict", "locked", "tomorrow", "vacate", "out", "nikal"]):
-                        score += 25
+                # Guard against domestic violence / matrimonial cruelty matching eviction
+                is_matrimonial = any(w in q_words for w in ["pati", "husband", "sasural", "dahej", "dowry", "wife", "patni"])
+                if not is_matrimonial and (
+                    any(w in q_words for w in ["landlord", "flat", "rent", "tenant", "room", "house", "makan", "luggage", "bhadekaru", "ghar", "malak"])
+                    or "makan malik" in q_lower
+                    or "ghar malak" in q_lower
+                    or "ghar malakane" in q_lower
+                ):
+                    if (
+                        any(w in q_words for w in ["leave", "throw", "evict", "locked", "tomorrow", "vacate", "out", "nikal", "kaadhle", "phekla", "phek"])
+                        or "baher kaadhle" in q_lower
+                        or "luggage phekla" in q_lower
+                        or "samaan bahar" in q_lower
+                    ):
+                        score += 35
             elif guidance.scenario_id == "Q17_LAND_ENCROACHMENT":
                 if ("neighbour" in q_words or "neighbor" in q_words or "padosi" in q_words) and ("land" in q_words or "plot" in q_words or "occupied" in q_words or "encroached" in q_words or "kabza" in q_words):
                     score += 10
@@ -931,8 +961,11 @@ class CitizenLegalGuidanceEngine:
                 if ("posh" in q_lower or "sexual harassment" in q_lower or "internal committee" in q_lower) or (("office" in q_words or "workplace" in q_words or "colleague" in q_words or "boss" in q_words) and ("harassment" in q_words or "inappropriate" in q_words or "touching" in q_words)):
                     score += 30
             elif guidance.scenario_id == "Q29_DOMESTIC_VIOLENCE_PROTECTION":
-                if ("domestic violence" in q_lower or "gharelu hinsa" in q_lower or "protection order" in q_lower) or (("husband" in q_words or "pati" in q_words or "in laws" in q_lower) and ("beating" in q_words or "maarpeet" in q_words or "cruelty" in q_words or "torture" in q_words)):
-                    score += 30
+                if (
+                    ("domestic violence" in q_lower or "gharelu hinsa" in q_lower or "protection order" in q_lower or "dahej" in q_lower or "dowry" in q_lower)
+                    or (("husband" in q_words or "pati" in q_words or "in laws" in q_lower or "sasural" in q_words) and ("beating" in q_words or "maarpeet" in q_words or "cruelty" in q_words or "torture" in q_words or "nikal" in q_words or "ghar se nikal" in q_lower))
+                ):
+                    score += 35
             elif guidance.scenario_id == "Q30_BUILDER_DELAY_RERA":
                 if ("rera" in q_words or "builder" in q_words) and ("possession" in q_words or "delay" in q_words or "delayed" in q_words or "flat" in q_words or "refund" in q_words):
                     score += 30

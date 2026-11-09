@@ -107,12 +107,7 @@ class BhashiniFullDuplexBridge(BhashiniIndicLegalBridge):
         """
         lang = self.detect_language(query)
 
-        # Check if query matches a known citizen scenario directly; if so, preserve query
-        from legalmitra.knowledge.citizen_intents import CitizenLegalGuidanceEngine
-        if CitizenLegalGuidanceEngine.match_citizen_query(query):
-            return query, lang
-
-        # 2. Phase 111: Deep dialectal & colloquial normalization
+        # 1. Phase 111: Deep dialectal & colloquial normalization
         from legalmitra.multilingual.colloquial_normalizer import (
             IndicColloquialNormalizer,
             CanonicalLegalIntent,
