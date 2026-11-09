@@ -210,12 +210,13 @@ class BhashiniIndicLegalBridge:
         """
         citations = []
         pattern = re.compile(
-            r'(?:Section\s+[0-9A-Z]+(?:\([0-9a-z]+\))?\s*(?:of\s+)?(?:BNSS|BNS|BSA|CrPC|IPC|IEA|DPDP)?'
+            r'(?:Section\s+[0-9A-Z]+(?:\([0-9a-z]+\))*(?:\s*(?:of\s+the\s+|of\s+)?(?:BNSS|BNS|BSA|CrPC|IPC|IEA|DPDP))?'
             r'|\(?[0-9]{4}\)?\s+[0-9]*\s*(?:SCC|SCR|AIR|INSC)\s+[0-9]+'
             r'|S\.?O\.?\s*[0-9]+(?:\([A-Z]\))?'
-            r'|Bharatiya\s+(?:Nyaya|Nagarik\s+Suraksha|Sakshya)\s+Sanhita(?:,\s*2023)?'
-            r'|Indian\s+Penal\s+Code(?:,\s*1860)?'
-            r'|Code\s+of\s+Criminal\s+Procedure(?:,\s*1973)?)',
+            r'|(?:The\s+)?Bharatiya\s+(?:Nyaya|Nagarik\s+Suraksha|Sakshya)\s+Sanhita(?:,\s*2023)?'
+            r'|(?:The\s+)?Indian\s+Penal\s+Code(?:,\s*1860)?'
+            r'|(?:The\s+)?Code\s+of\s+Criminal\s+Procedure(?:,\s*1973)?'
+            r'|(?:The\s+)?Negotiable\s+Instruments\s+Act(?:,\s*1881)?)',
             re.IGNORECASE
         )
 

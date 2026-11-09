@@ -163,6 +163,10 @@ class BhashiniFullDuplexBridge(BhashiniIndicLegalBridge):
         # Restore preserved citations in bold English formatting
         final_text = self.restore_citations(translated, citations)
 
+        # Apply Phase 117 Regional Output Synthesizer for headers and disclaimers
+        from legalmitra.multilingual.regional_synthesizer import BhashiniRegionalOutputSynthesizer
+        final_text = BhashiniRegionalOutputSynthesizer.synthesize_regional_text(final_text, target_lang)
+
         return MultilingualTranslationResult(
             source_language=IndicLanguageCode.ENGLISH,
             target_language=target_lang,
