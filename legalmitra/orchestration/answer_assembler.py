@@ -257,16 +257,13 @@ class EvidenceTraceableAnswerAssembler:
                 "- 2. Citizens have statutory rights to access summary of their data, withdraw consent, and request correction or erasure."
             )
         else:
-            first_subject = "your inquiry"
-            if parsed_query and getattr(parsed_query, "candidate_issues", None):
-                first_subject = parsed_query.candidate_issues[0]
             points.append(
-                f"Regarding {first_subject}:\n"
-                "- 1. Review all primary agreements, receipts, or official communications to establish the timeline of events.\n"
-                "- 2. Indian statutory law provides formal grievance redressal and civil/criminal remedies depending on the exact date and jurisdiction of the dispute."
+                f"### 💡 Key Actionable Points\n"
+                f"- 1. Review all primary agreements, receipts, or official communications to establish the timeline of events.\n"
+                f"- 2. Indian statutory law provides formal grievance redressal and civil/criminal remedies depending on the exact date and jurisdiction of the dispute."
             )
 
-        return "### Plain-English Summary (For Quick Understanding)\n" + "\n".join(points)
+        return "\n\n".join(points)
 
     def assemble_answer(
         self,
