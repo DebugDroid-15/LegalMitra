@@ -600,6 +600,10 @@ def stream_legal_query(req: StreamQueryRequest):
             from legalmitra.orchestration.tone_calibrator import ResponseFormatToneCalibrator
             full_text = ResponseFormatToneCalibrator.calibrate_prose(full_text, query=effective_query)
 
+            # Phase 118: Edge Case Hallucination & Zero-Doubt Verification Engine
+            from legalmitra.orchestration.zero_doubt_engine import ZeroDoubtVerificationEngine
+            full_text = ZeroDoubtVerificationEngine.guard_and_sanitize(full_text, query=effective_query)
+
         # 3. If original query was in an Indic language, translate back while protecting statutory numbers
         if detected_lang != IndicLanguageCode.ENGLISH:
             trans_res = duplex.translate_legal_text(full_text, target_lang=detected_lang)
