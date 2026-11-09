@@ -98,46 +98,16 @@ class LocalGGUFModelAdapter:
         temporal_context: Optional[str] = None,
         dialogue_history: Optional[str] = None
     ) -> str:
-        """Format the legal prompt with Llama-3.1 instruct tags."""
-        evidence_lines = []
-        if temporal_context:
-            evidence_lines.append(f"Temporal Context: {temporal_context}")
-
-        if provisions:
-            evidence_lines.append("Statutory Provisions:")
-            for p in provisions:
-                act = p.get("act", "Statute")
-                sec = p.get("section", "")
-                text = p.get("text", "")
-                evidence_lines.append(f"- {act} {sec}: {text}")
-
-        if precedents:
-            evidence_lines.append("Judicial Precedents:")
-            for prec in precedents:
-                title = prec.get("case_title", "Precedent")
-                cit = prec.get("citation", "")
-                ratio = prec.get("ratio", "")
-                evidence_lines.append(f"- {title} ({cit}): {ratio}")
-
-        evidence_str = "\n".join(evidence_lines)
-        dialogue_section = f"Prior Conversation History:\n{dialogue_history}\n\n" if dialogue_history else ""
-
-        user_content = (
-            f"{dialogue_section}"
-            f"Legal Query: {query}\n\n"
-            f"Evidence and Precedents:\n{evidence_str}\n\n"
-            f"Please provide an authoritative IRAC response (Issue, Rule, Application, Conclusion) "
-            f"grounded strictly in the statutory provisions and precedents above."
+        """Format the legal prompt using Phase 116 GGUFStructuredPromptBuilder."""
+        from legalmitra.models.prompt_optimizer import GGUFStructuredPromptBuilder
+        return GGUFStructuredPromptBuilder.build_optimized_prompt(
+            query=query,
+            provisions=provisions,
+            precedents=precedents,
+            temporal_context=temporal_context,
+            dialogue_history=dialogue_history,
+            include_few_shot=True
         )
-
-        prompt = (
-            "<|start_header_id|>system<|end_header_id|>\n\n"
-            "You are LegalMitra AI, an expert Indian legal assistant. You answer queries using IRAC methodology "
-            "grounded strictly in the provided statutory provisions and court precedents. Never extrapolate beyond verified facts.<|eot_id|>\n"
-            f"<|start_header_id|>user<|end_header_id|>\n\n{user_content}<|eot_id|>\n"
-            "<|start_header_id|>assistant<|end_header_id|>\n\n"
-        )
-        return prompt
 
     def generate_natural_answer(
         self,
