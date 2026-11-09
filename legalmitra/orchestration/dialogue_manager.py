@@ -93,15 +93,10 @@ class LegalDialogueManager:
                 f"User Clarifying Response: '{query.strip()}'. "
             )
 
-        # Context synthesis: If this is a follow-up query, append prior topic context
-        enriched_query = query.strip()
-        if session.turns and not is_clarification_response:
-            last_turn = session.turns[-1]
-            # Coreference hint if user asks brief follow-up ("what about...", "can I...", "under that law")
-            short_followup_starters = ("what about", "can i", "is it", "does it", "under this", "in that case", "and what if")
-            lower_q = query.strip().lower()
-            if any(lower_q.startswith(starter) for starter in short_followup_starters) or len(query.split()) <= 6:
-                enriched_query = f"{query.strip()} (Context from prior question: '{last_turn.user_query}')"
+        # Context synthesis: Integrate Phase 115 MultiTurnTopicPivotResolver
+        from legalmitra.orchestration.topic_resolver import MultiTurnTopicPivotResolver
+        topic_analysis = MultiTurnTopicPivotResolver.resolve_turn(query, session)
+        enriched_query = topic_analysis.resolved_query
 
         return {
             "enriched_query": enriched_query,
