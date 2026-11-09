@@ -103,11 +103,20 @@ class BhashiniFullDuplexBridge(BhashiniIndicLegalBridge):
         """
         Translates a user's native Indic/colloquial query into an authoritative
         English statutory search term suitable for FTS5 and the RAG pipeline.
-        Handles both native script queries and Latin-script transliterations (Hinglish/Tanglish/Manglish).
+        Integrates Phase 111 IndicColloquialNormalizer for dialectal intent disambiguation.
         """
         lang = self.detect_language(query)
 
-        # Match against legal intent expressions across all scripts/languages
+        # 1. Phase 111: Deep dialectal & colloquial normalization
+        from legalmitra.multilingual.colloquial_normalizer import (
+            IndicColloquialNormalizer,
+            CanonicalLegalIntent,
+        )
+        norm_res = IndicColloquialNormalizer.normalize_query(query)
+        if norm_res.confidence_score >= 0.85 and norm_res.canonical_search_query:
+            return norm_res.canonical_search_query, lang
+
+        # 2. Secondary regex map matching across all scripts/languages
         for pattern, english_search_terms in COLLOQUIAL_INDIC_LEGAL_MAP:
             if re.search(pattern, query, re.IGNORECASE):
                 return english_search_terms, lang
