@@ -621,6 +621,190 @@ CITIZEN_KNOWLEDGE_BASE: List[CitizenLegalGuidance] = [
             "Section 318(4) BNS penalizes cheating and dishonestly inducing delivery of property with imprisonment up to 7 years and fine. Section 316 BNS penalizes criminal breach of trust."
         ),
         keywords=["paise le liye aur bhaag gaya", "paisa lekar bhaag gaya", "cheating karke bhaag gaya", "shop fraud money", "dukaan ke naam par paise", "paise lekar farar", "fraud money cheating"]
+    ),
+    # 28. Workplace Sexual Harassment (POSH Act, 2013)
+    CitizenLegalGuidance(
+        scenario_id="Q28_POSH_WORKPLACE_HARASSMENT",
+        category="Women Rights & Workplace Protection",
+        direct_answer=(
+            "Under the POSH Act, 2013, every working woman has the statutory right to a safe workplace free from sexual harassment, "
+            "with mandatory Internal Committee (IC) redressal and criminal remedies under Section 75 BNS."
+        ),
+        step_by_step_actions=[
+            "Submit a formal written complaint to your employer's Internal Committee (IC) within 3 months of the incident (extendable by another 3 months upon reasonable grounds).",
+            "If the employer has fewer than 10 employees or the complaint is against the employer directly, file the complaint before the Local Committee (LC) constituted by the District Officer.",
+            "You have the right to request interim relief during inquiry, such as paid leave up to 3 months or transfer to another department.",
+            "In addition to IC proceedings, you have the right to lodge a police FIR under Section 75 of Bharatiya Nyaya Sanhita, 2023 (sexual harassment).",
+            "The employer is legally mandated to maintain strict confidentiality of the complainant and proceedings."
+        ],
+        evidence_to_preserve=["Emails, chat messages, audio/video recordings", "Details of witnesses or colleagues informed", "Medical/counselling records if applicable"],
+        helplines=["1091 (Women Police Helpline)", "112 (Emergency)", "181 (Women in Distress Helpline)"],
+        governing_statutes=["Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013", "The Bharatiya Nyaya Sanhita, 2023 (Section 75)"],
+        legal_provisions_summary=(
+            "The POSH Act 2013 mandates an IC in every workplace with 10+ employees. Section 75 BNS (erstwhile 354A IPC) provides criminal punishment up to 3 years."
+        ),
+        keywords=["sexual harassment workplace", "posh act complaint", "office me harassment", "boss touching inappropriately", "harassment by manager", "internal committee posh"]
+    ),
+    # 29. Domestic Violence & Protection Orders (DV Act, 2005)
+    CitizenLegalGuidance(
+        scenario_id="Q29_DOMESTIC_VIOLENCE_PROTECTION",
+        category="Family & Domestic Protection",
+        direct_answer=(
+            "You are protected under the Protection of Women from Domestic Violence Act, 2005 against physical, emotional, "
+            "verbal, sexual, or economic abuse, and cannot be evicted from the shared household."
+        ),
+        step_by_step_actions=[
+            "Approach the local Protection Officer (PO) or Service Provider, or file an application directly before the Judicial Magistrate under Section 12 DV Act.",
+            "You can seek immediate Protection Orders (restraining the abuser from entering your workplace or residence), Residence Orders (ensuring you cannot be thrown out), and Monetary Relief.",
+            "In emergency situations of physical violence, call 112 or 181 immediately for police intervention and medical assistance.",
+            "You are entitled to Free Legal Aid through DLSA under the Legal Services Authorities Act (Helpline 15100).",
+            "Lodge a police complaint under Section 85 & 86 BNS (erstwhile Section 498A IPC) if cruelty or dowry harassment is involved."
+        ],
+        evidence_to_preserve=["Medical examination report / MLC", "Photographs of injuries", "Threatening messages / call recordings", "Proof of marriage and residence"],
+        helplines=["112 (Emergency Police)", "181 (Women Helpline)", "15100 (Free Legal Aid)"],
+        governing_statutes=["Protection of Women from Domestic Violence Act, 2005 (Section 12, 18, 19)", "The Bharatiya Nyaya Sanhita, 2023 (Section 85 & 86)"],
+        legal_provisions_summary=(
+            "DV Act 2005 provides civil remedies including right to reside in shared household, interim maintenance, and protection orders. Section 85 BNS penalizes cruelty by husband or relatives."
+        ),
+        keywords=["domestic violence", "patni par maarpeet", "husband beating me", "in laws harassment", "domestic abuse protection order", "gharelu hinsa"]
+    ),
+    # 30. Builder Delay & Flat Possession (RERA, 2016)
+    CitizenLegalGuidance(
+        scenario_id="Q30_BUILDER_DELAY_RERA",
+        category="Real Estate & Builder Disputes",
+        direct_answer=(
+            "If a builder fails to hand over possession of your apartment within the agreed timeline, "
+            "you have the statutory right under Section 18 of RERA to demand a full refund with interest or monthly delay compensation."
+        ),
+        step_by_step_actions=[
+            "Check your Builder-Buyer Agreement (BBA) for the committed possession date and grace period.",
+            "File a formal online complaint before your State Real Estate Regulatory Authority (RERA) under Section 31 of RERA.",
+            "Under Section 18 RERA, you can choose to: (a) Withdraw from the project and claim 100% refund of amount paid with prescribed interest (SBI MCLR + 2%), or (b) Stay in the project and claim monthly interest for every month of delay until possession.",
+            "Builders cannot rely on one-sided penalty clauses (e.g. ₹5/sq ft) as the Supreme Court (Pioneer Urban v. Govindan) held such clauses constitute unfair trade practices.",
+            "If the project is unregistered or in gross violation, file a concurrent consumer grievance before NCDRC."
+        ],
+        evidence_to_preserve=["Builder-Buyer Agreement / Allotment Letter", "Payment receipts and bank statements", "RERA registration details of the project", "Correspondence regarding delay"],
+        helplines=["State RERA Online Portal", "1915 (National Consumer Helpline)"],
+        governing_statutes=["Real Estate (Regulation and Development) Act, 2016 (Section 18 & 31)", "Consumer Protection Act, 2019"],
+        legal_provisions_summary=(
+            "Section 18 RERA mandates return of amount with interest if promoter fails to give possession according to agreement terms. State RERA authorities possess binding adjudicatory powers."
+        ),
+        keywords=["builder delay flat possession", "flat possession delay", "rera complaint builder", "builder not giving possession", "delayed possession refund rera"]
+    ),
+    # 31. Online Defamation, Trolling & Blackmail (Section 356 BNS / IT Act)
+    CitizenLegalGuidance(
+        scenario_id="Q31_ONLINE_DEFAMATION_TROLLING",
+        category="Cyber Privacy & Reputation Rights",
+        direct_answer=(
+            "Publishing false, damaging, or abusive statements online to ruin reputation is punishable "
+            "as criminal defamation under Section 356 BNS and actionable under cyber intermediary liability rules."
+        ),
+        step_by_step_actions=[
+            "Take certified screenshots / URL recordings showing the post, handle, comments, and exact timestamp before the offender deletes them.",
+            "Report the defamatory post to the platform's Grievance Officer under the IT (Intermediary Guidelines) Rules, 2021 for takedown within 24-36 hours.",
+            "Issue a formal Legal Notice to the publisher demanding an unconditional apology and immediate deletion of defamatory content.",
+            "File a Criminal Defamation Complaint before the Judicial Magistrate under Section 356 of Bharatiya Nyaya Sanhita, 2023.",
+            "File a Civil Defamation Suit before the Civil Court claiming financial damages for loss of personal or professional reputation."
+        ],
+        evidence_to_preserve=["Screenshots of defamatory content with URLs", "Proof of electronic communication", "Proof of damages / financial or reputational loss"],
+        helplines=["cybercrime.gov.in", "1930 (if extortion/money demanded)"],
+        governing_statutes=["The Bharatiya Nyaya Sanhita, 2023 (Section 356 Defamation)", "Information Technology (Intermediary Guidelines) Rules, 2021"],
+        legal_provisions_summary=(
+            "Section 356 BNS (erstwhile Section 499 & 500 IPC) punishes defamation with simple imprisonment up to 2 years or fine or community service."
+        ),
+        keywords=["online defamation", "defaming on instagram", "false allegations social media", "character assassination online", "criminal defamation notice"]
+    ),
+    # 32. Telegram / Task / Crypto Scam (Section 66D IT Act & 318 BNS)
+    CitizenLegalGuidance(
+        scenario_id="Q32_TELEGRAM_TASK_CRYPTO_SCAM",
+        category="Cybercrime & High-Yield Investment Scams",
+        direct_answer=(
+            "Part-time job offers, YouTube like tasks, and fake crypto investment schemes on Telegram "
+            "are organized cyber frauds punishable under Section 66D of the IT Act and Section 318(4) BNS."
+        ),
+        step_by_step_actions=[
+            "Immediately stop depositing further funds; scammers will falsely claim 'tax fee' or 'unlock charge' to release your money.",
+            "Dial 1930 without delay to request a lien/freeze on the mule bank accounts where your money was transferred.",
+            "Lodge an urgent cybercrime complaint on https://cybercrime.gov.in under 'Financial Fraud' with the UTR numbers and beneficiary account details.",
+            "Contact your home bank to file a disputed electronic transaction form and freeze your UPI ID/netbanking credentials.",
+            "Preserve Telegram chat exports, payment screenshots, and scam website URLs."
+        ],
+        evidence_to_preserve=["Telegram chats and group screenshots", "Bank transfer UTR / Transaction IDs", "Beneficiary account numbers / UPI IDs", "Website login screenshots"],
+        helplines=["1930 (National Cybercrime Helpline)", "cybercrime.gov.in"],
+        governing_statutes=["Information Technology Act, 2000 (Section 66D)", "The Bharatiya Nyaya Sanhita, 2023 (Section 318(4))"],
+        legal_provisions_summary=(
+            "Section 66D IT Act punishes cheating by personation and online fraud with imprisonment up to 3 years. Section 318(4) BNS provides up to 7 years for cheating."
+        ),
+        keywords=["telegram task scam", "youtube like task money fraud", "part time job telegram scam", "crypto investment fraud", "telegram review scam paise"]
+    ),
+    # 33. Ancestral Property Partition & Coparcenary (Hindu Succession Act, 1956)
+    CitizenLegalGuidance(
+        scenario_id="Q33_ANCESTRAL_PROPERTY_PARTITION",
+        category="Property, Succession & Family Inheritance",
+        direct_answer=(
+            "Under the Hindu Succession (Amendment) Act, 2005, daughters have equal coparcenary rights by birth "
+            "in ancestral property identical to sons, and can demand partition through a civil suit."
+        ),
+        step_by_step_actions=[
+            "Establish the nature of property: Ancestral property is inherited up to four generations through male/female lineage without prior testamentary partition.",
+            "Under the landmark Supreme Court ruling in Vineeta Sharma v. Rakesh Sharma (2020), daughters are coparceners by birth regardless of whether the father was alive in 2005.",
+            "Issue a formal Legal Notice to other co-sharers demanding amicable partition by metes and bounds.",
+            "If co-sharers refuse or attempt to sell without consent, file a Suit for Partition and Permanent Injunction before the Civil Court to restrain alienations.",
+            "Preserve Khatiyan, Jamabandi revenue records, genealogical tree (Vanshavali), and mutation entries."
+        ],
+        evidence_to_preserve=["Genealogical family tree (Vanshavali)", "Revenue land records (7/12, Khatiyan, Jamabandi)", "Title deeds of property", "Death certificates of deceased ancestors"],
+        helplines=["District Civil Court Front Desk", "15100 (Free Legal Aid)"],
+        governing_statutes=["Hindu Succession Act, 1956 (Section 6)", "Code of Civil Procedure, 1908 (Order XX Rule 18 Partition)"],
+        legal_provisions_summary=(
+            "Section 6 Hindu Succession Act confers equal coparcenary rights upon daughters by birth. Order XX Rule 18 CPC governs the passing of preliminary and final decrees in partition suits."
+        ),
+        keywords=["ancestral property partition", "daughter share in father property", "pustaini zameen batwara", "equal share in ancestral property", "partition suit civil"]
+    ),
+    # 34. Medical Negligence & Doctor Laparoscopy/Surgery Error (Consumer Protection Act)
+    CitizenLegalGuidance(
+        scenario_id="Q34_MEDICAL_NEGLIGENCE",
+        category="Consumer Rights & Healthcare Liability",
+        direct_answer=(
+            "Substandard medical care, surgical errors, or failure to exercise reasonable medical diligence "
+            "constitute deficiency of service actionable before the Consumer Commission and criminal negligence under Section 106(1) BNS."
+        ),
+        step_by_step_actions=[
+            "Immediately request complete, certified copies of all medical records, bedhead tickets, operative notes, and diagnostic reports under the MCI Code of Ethics.",
+            "Apply to the State Medical Council for an inquiry by an independent medical board into the professional conduct of the doctor/hospital.",
+            "Under the Bolam test affirmed by the Supreme Court in Jacob Mathew v. State of Punjab, medical negligence requires proving the doctor breached the standard of ordinary skilled practitioners.",
+            "File a Consumer Complaint before the District/State Consumer Commission seeking compensation for deficiency in service and medical expenses.",
+            "In gross recklessness causing death, an FIR under Section 106(1) BNS (causing death by negligence) can be lodged subject to preliminary medical opinion."
+        ],
+        evidence_to_preserve=["Complete hospital case records & discharge summary", "Original medical bills and pharmacy receipts", "Diagnostic films, MRI/CT scans, biopsy reports", "Expert medical second opinions"],
+        helplines=["1915 (National Consumer Helpline)", "State Medical Council"],
+        governing_statutes=["Consumer Protection Act, 2019 (Section 35)", "The Bharatiya Nyaya Sanhita, 2023 (Section 106(1))"],
+        legal_provisions_summary=(
+            "Hospitals and doctors are service providers under Consumer Protection Act 2019. Section 106(1) BNS governs death caused by rash or negligent acts."
+        ),
+        keywords=["medical negligence doctor", "hospital wrong surgery", "doctor ki laparwahi", "negligence by hospital compensation", "wrong treatment consumer complaint"]
+    ),
+    # 35. Anticipatory Bail Procedure (Section 482 BNSS / 438 CrPC)
+    CitizenLegalGuidance(
+        scenario_id="Q35_ANTICIPATORY_BAIL",
+        category="Criminal Law & Pre-Arrest Protection",
+        direct_answer=(
+            "If you have reasonable apprehension of being arrested in a false or non-bailable case, "
+            "you can apply for Anticipatory Bail before the Sessions Court or High Court under Section 482 BNSS."
+        ),
+        step_by_step_actions=[
+            "Engage an advocate to draft an Anticipatory Bail Application under Section 482 of the Bharatiya Nagarik Suraksha Sanhita (BNSS), 2023 (erstwhile Section 438 CrPC).",
+            "Present facts demonstrating your clean antecedents, roots in society, absence of flight risk, and willingness to cooperate with police investigation.",
+            "Demonstrate whether the FIR/complaint is motivated by malice, business rivalry, or matrimonial acrimony.",
+            "The Sessions Court or High Court can grant interim protection from arrest pending final hearing.",
+            "Under the landmark Supreme Court ruling in Arnesh Kumar v. State of Bihar, police cannot arrest automatically in offences punishable up to 7 years without serving Section 35(3) BNSS notice."
+        ],
+        evidence_to_preserve=["Copy of FIR or complaint if available", "Proof of employment, residence, and clean police record", "Alibi evidence if you were not present at the scene", "Threatening messages from complainant"],
+        helplines=["15100 (NALSA Free Legal Aid)", "Local Sessions Court Bar Association"],
+        governing_statutes=["The Bharatiya Nagarik Suraksha Sanhita, 2023 (Section 482)", "The Bharatiya Nagarik Suraksha Sanhita, 2023 (Section 35(3))"],
+        legal_provisions_summary=(
+            "Section 482 BNSS empowers High Courts and Sessions Courts to direct release of an applicant on bail in anticipation of arrest. Section 35(3) BNSS mandates notice of appearance for offences up to 7 years."
+        ),
+        keywords=["anticipatory bail procedure", "agrim jamanat kaise lein", "apprehending arrest false case", "bail before arrest bnss 482", "pre arrest bail application"]
     )
 ]
 
@@ -742,6 +926,30 @@ class CitizenLegalGuidanceEngine:
                     score += 30
             elif guidance.scenario_id == "Q27_CHEATING_MONEY_DUPING":
                 if ("paise" in q_words or "rupaye" in q_words or "paisa" in q_words or "money" in q_words or "lakh" in q_words) and ("bhaag" in q_words or "farar" in q_words or "cheated" in q_words or "dhokha" in q_words or "dukaan" in q_words or "lekar" in q_words or "le liye" in q_lower):
+                    score += 30
+            elif guidance.scenario_id == "Q28_POSH_WORKPLACE_HARASSMENT":
+                if ("posh" in q_lower or "sexual harassment" in q_lower or "internal committee" in q_lower) or (("office" in q_words or "workplace" in q_words or "colleague" in q_words or "boss" in q_words) and ("harassment" in q_words or "inappropriate" in q_words or "touching" in q_words)):
+                    score += 30
+            elif guidance.scenario_id == "Q29_DOMESTIC_VIOLENCE_PROTECTION":
+                if ("domestic violence" in q_lower or "gharelu hinsa" in q_lower or "protection order" in q_lower) or (("husband" in q_words or "pati" in q_words or "in laws" in q_lower) and ("beating" in q_words or "maarpeet" in q_words or "cruelty" in q_words or "torture" in q_words)):
+                    score += 30
+            elif guidance.scenario_id == "Q30_BUILDER_DELAY_RERA":
+                if ("rera" in q_words or "builder" in q_words) and ("possession" in q_words or "delay" in q_words or "delayed" in q_words or "flat" in q_words or "refund" in q_words):
+                    score += 30
+            elif guidance.scenario_id == "Q31_ONLINE_DEFAMATION_TROLLING":
+                if ("defamation" in q_words or "defame" in q_words or "defaming" in q_words or "character assassination" in q_lower) and ("online" in q_words or "instagram" in q_words or "social media" in q_lower or "post" in q_words):
+                    score += 30
+            elif guidance.scenario_id == "Q32_TELEGRAM_TASK_CRYPTO_SCAM":
+                if ("telegram" in q_words or "task" in q_words or "crypto" in q_words) and ("scam" in q_words or "fraud" in q_words or "part time job" in q_lower or "like task" in q_lower or "freeze" in q_words):
+                    score += 30
+            elif guidance.scenario_id == "Q33_ANCESTRAL_PROPERTY_PARTITION":
+                if ("ancestral property" in q_lower or "pustaini" in q_lower or "coparcenary" in q_lower or "partition suit" in q_lower) or (("daughter" in q_words or "beti" in q_words or "father" in q_words) and ("share" in q_words or "partition" in q_words or "property" in q_words or "batwara" in q_words)):
+                    score += 30
+            elif guidance.scenario_id == "Q34_MEDICAL_NEGLIGENCE":
+                if ("medical negligence" in q_lower or "doctor" in q_words or "hospital" in q_words) and ("negligence" in q_words or "wrong surgery" in q_lower or "laparoscopy" in q_words or "operation" in q_words or "treatment" in q_words or "patient death" in q_lower):
+                    score += 30
+            elif guidance.scenario_id == "Q35_ANTICIPATORY_BAIL":
+                if ("anticipatory bail" in q_lower or "agrim jamanat" in q_lower or "apprehending arrest" in q_lower or "pre arrest bail" in q_lower) or (("arrest" in q_words or "jail" in q_words) and ("false case" in q_lower or "quash" in q_words or "bail application" in q_lower)):
                     score += 30
 
             if score > highest_score and score >= 4:
