@@ -182,13 +182,14 @@ class HealthResponse(BaseModel):
     lora_adapter_available: bool
     gguf_model_available: bool
     active_sessions_count: int
+    semantic_cache_stats: Optional[Dict[str, Any]] = None
 
 
 # --- API Routes ---
 
 @app.get("/api/v1/health", response_model=HealthResponse, tags=["System Health"])
 def check_health():
-    """Verify system health, FTS index parity, and LoRA adapter availability."""
+    """Verify system health, FTS index parity, LoRA adapter availability, and cache stats."""
     pipeline = get_pipeline("deterministic")
     adapter = LocalLegalModelAdapter()
     
@@ -200,6 +201,9 @@ def check_health():
     except Exception:
         fts_healthy = False
 
+    from legalmitra.telemetry.production_cache import get_semantic_cache
+    cache_stats = get_semantic_cache().stats()
+
     gguf_adapter = LocalGGUFModelAdapter()
     return HealthResponse(
         status="healthy",
@@ -208,7 +212,22 @@ def check_health():
         lora_adapter_available=adapter.is_available,
         gguf_model_available=gguf_adapter.is_available,
         active_sessions_count=len(pipeline.dialogue_manager.sessions),
+        semantic_cache_stats=cache_stats,
     )
+
+
+@app.get("/api/v1/telemetry/stats", tags=["System Telemetry"])
+def get_telemetry_metrics():
+    """Retrieve real-time cache and telemetry statistics."""
+    from legalmitra.telemetry.production_cache import get_semantic_cache, get_live_telemetry
+    cache = get_semantic_cache()
+    telemetry = get_live_telemetry()
+    return {
+        "status": "active",
+        "cache": cache.stats(),
+        "recent_queries": telemetry.get_recent_events(limit=25),
+        "unrecognized_slang_count": len(telemetry.get_unrecognized_slang_inputs()),
+    }
 
 
 @app.post("/api/v1/query", response_model=QueryResponse, tags=["Legal Evaluation"])
@@ -531,14 +550,47 @@ def stream_legal_query(req: StreamQueryRequest):
     if not req.query.strip():
         raise HTTPException(status_code=400, detail="Query text cannot be empty.")
 
+    t_start = time.time()
+
     # 1. Indic Language Detection & Full-Duplex Translation Bridge
     from legalmitra.multilingual.duplex_bridge import BhashiniFullDuplexBridge
     from legalmitra.multilingual.bhashini_pipeline import IndicLanguageCode
+    from legalmitra.telemetry.production_cache import get_semantic_cache, get_live_telemetry
 
     duplex = BhashiniFullDuplexBridge()
     effective_query, detected_lang = duplex.normalize_indic_to_english_query(req.query)
+    lang_code_str = detected_lang.value if hasattr(detected_lang, "value") else str(detected_lang)
 
-    # 2. Retrieve evidence from pipeline using normalized statutory concepts
+    cache = get_semantic_cache()
+    telemetry = get_live_telemetry()
+
+    # 2. Check High-Speed Semantic Cache (<5ms response time)
+    cached_entry = cache.get(effective_query, language=lang_code_str)
+    if cached_entry:
+        dur_ms = (time.time() - t_start) * 1000.0
+        telemetry.record_query(
+            raw_query=req.query,
+            normalized_query=cached_entry.normalized_query,
+            detected_language=lang_code_str,
+            cache_hit=True,
+            latency_ms=dur_ms,
+            has_recognized_intent=True,
+            statutory_citations_count=len(cached_entry.citations),
+        )
+
+        def cached_event_generator():
+            yield f"event: metadata\ndata: {json.dumps({'query': req.query, 'status': 'generating', 'cache_hit': True})}\n\n"
+            words = cached_entry.answer_text.split(" ")
+            for i, word in enumerate(words):
+                prefix = "" if i == 0 else " "
+                token = prefix + word
+                yield f"event: token\ndata: {json.dumps({'token': token})}\n\n"
+                time.sleep(0.005)
+            yield f"event: done\ndata: {json.dumps({'status': 'completed', 'cache_hit': True})}\n\n"
+
+        return StreamingResponse(cached_event_generator(), media_type="text/event-stream")
+
+    # 3. Retrieve evidence from pipeline using normalized statutory concepts
     pipeline = get_pipeline("deterministic")
     resolved = pipeline.execute(query=effective_query, context_date=req.context_date, jurisdiction=req.jurisdiction)
     provisions = [{"act": prov, "section": "", "text": prov} for prov in resolved.governing_provisions]
@@ -608,6 +660,28 @@ def stream_legal_query(req: StreamQueryRequest):
         if detected_lang != IndicLanguageCode.ENGLISH:
             trans_res = duplex.translate_legal_text(full_text, target_lang=detected_lang)
             full_text = trans_res.translated_text
+
+        # 4. Phase 120: Cache validated response for sub-5ms future retrieval & record telemetry
+        if full_text and len(full_text.strip()) > 50 and "ABSTENTION" not in full_text:
+            cache.put(
+                query=effective_query,
+                answer_text=full_text,
+                citations=resolved.citations,
+                governing_provisions=resolved.governing_provisions,
+                language=lang_code_str,
+            )
+
+        dur_ms = (time.time() - t_start) * 1000.0
+        telemetry.record_query(
+            raw_query=req.query,
+            normalized_query=effective_query,
+            detected_language=lang_code_str,
+            cache_hit=False,
+            latency_ms=dur_ms,
+            has_recognized_intent=bool(resolved.citations),
+            statutory_citations_count=len(resolved.citations),
+            is_unrecognized_slang=(len(resolved.citations) == 0 and "ABSTENTION" in full_text),
+        )
 
         # Stream word-by-word with realistic human typing cadence
         words = full_text.split(" ")
